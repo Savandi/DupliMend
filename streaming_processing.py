@@ -1,15 +1,24 @@
 from collections import defaultdict, deque
 from tdigest import TDigest
+from river.drift import ADWIN
 import pandas as pd
 import time
 
-# Initialize constants and structures
+# --- PARAMETERS ---
 quantiles = [0.25, 0.5, 0.75]  # Define quantile thresholds
 features_to_discretize = ['age', 'heart_rate']  # Specify the features to discretize
-sliding_window = deque(maxlen=100)  # Sliding window to maintain recent values
+adaptive_window_min_size = 50  # Minimum adaptive sliding window size
+adaptive_window_max_size = 200  # Maximum adaptive sliding window size
+initial_window_size = 100  # Initial sliding window size for each feature
+bin_density_threshold = 10  # Threshold for adjusting bin density
+
+# --- GLOBAL VARIABLES ---
+sliding_windows = defaultdict(lambda: deque(maxlen=initial_window_size))  # Adaptive sliding windows for features
+window_sizes = defaultdict(lambda: initial_window_size)  # Store adaptive window sizes for each feature
+adwin_detectors = defaultdict(ADWIN)  # ADWIN drift detectors for each feature
 
 
-# Class for Decaying T-Digest
+# --- CLASS FOR DECAYING T-DIGEST ---
 class DecayingTDigest(TDigest):
     def __init__(self, decay_factor=0.9):
         super().__init__()
@@ -27,20 +36,54 @@ class DecayingTDigest(TDigest):
 decaying_digest = DecayingTDigest()
 
 
-# Adaptive quantile binning with density-sensitive adjustments
-def adaptive_quantile_binning(value, bin_density_threshold=10):
-    # Update Decaying T-Digest and get quantile bins
+# --- ADAPTIVE SLIDING WINDOW FUNCTIONS ---
+def adjust_window_size(feature, drift_detected):
+    """
+    Dynamically adjust sliding window size based on drift detection.
+    """
+    current_size = window_sizes[feature]
+    if drift_detected:
+        new_size = max(adaptive_window_min_size, current_size // 2)  # Halve the window size
+    else:
+        new_size = min(adaptive_window_max_size, current_size + 10)  # Gradually increase size
+    window_sizes[feature] = new_size
+    print(f"Adjusting window size for feature '{feature}' to: {new_size}")
+    return deque(maxlen=new_size)
+
+
+# --- DISCRETIZATION FUNCTIONS ---
+def detect_drift(feature, sliding_window_values):
+    """
+    Detect drift in feature values using ADWIN.
+    """
+    adwin = adwin_detectors[feature]
+    for value in sliding_window_values:
+        adwin.update(value)
+    return adwin.detected_change()
+
+
+def adaptive_quantile_binning(value, feature):
+    """
+    Perform adaptive quantile binning with dynamic adjustments for density.
+    """
+    # Update Decaying T-Digest and sliding window
     decaying_digest.update_with_decay(value)
+    sliding_windows[feature].append(value)
+
+    # Detect drift and adjust window size if needed
+    drift_detected = detect_drift(feature, sliding_windows[feature])
+    sliding_windows[feature] = adjust_window_size(feature, drift_detected)
+
+    # Compute quantile bins
     bins = [decaying_digest.percentile(q * 100) for q in quantiles]
-    density = [0] * len(bins)  # Track density for each bin
+    density = [0] * len(bins)
 
     # Assign value to a bin and adjust bins adaptively
     for i, bin_threshold in enumerate(bins):
         if value < bin_threshold:
             density[i] += 1
-            # Split bin if density exceeds the threshold
             if density[i] > bin_density_threshold:
-                bins.insert(i + 1, (bins[i] + bins[i + 1]) / 2)  # Add a midpoint bin
+                bins.insert(i + 1, (bins[i] + bins[i + 1]) / 2)  # Split bin
             return f"Quantile_Bin_{i}"
 
     # Merge sparse bins if density is too low
@@ -52,43 +95,33 @@ def adaptive_quantile_binning(value, bin_density_threshold=10):
     return f"Quantile_Bin_{len(bins)}"
 
 
-# Sliding window binning with recency sensitivity
-def sliding_window_binning(value):
-    # Add value to sliding window
-    sliding_window.append(value)
-    sorted_window = sorted(sliding_window)  # Sort the sliding window
-    bins = [sorted_window[int(len(sorted_window) * q)] for q in quantiles]  # Calculate quantiles
-
-    # Assign value to a bin
-    for i, bin_threshold in enumerate(bins):
-        if value < bin_threshold:
-            return f"Quantile_Bin_{i}"
-    return f"Quantile_Bin_{len(bins)}"
-
-
-# Process event with both enhancements
+# --- EVENT PROCESSING ---
 def process_event(event):
+    """
+    Process an event for adaptive discretization.
+    """
     for feature in features_to_discretize:
         if feature in event:
-            # Apply adaptive quantile binning with sliding window
-            event[f'{feature}_quantile_bin'] = adaptive_quantile_binning(event[feature])
+            event[f'{feature}_quantile_bin'] = adaptive_quantile_binning(event[feature], feature)
     return event
 
 
-# Streaming function to process events
+# --- STREAMING FUNCTION ---
 def stream_event_log(df, delay=1):
+    """
+    Stream and process events with adaptive discretization.
+    """
     for _, event in df.iterrows():
         event = process_event(event)  # Process the event
-        yield event
+        print("Processed event with adaptive quantile bins:\n", event)
         time.sleep(delay)  # Simulate streaming delay
 
 
+# --- MAIN SCRIPT ---
 # Load and prepare event log
 df_event_log = pd.read_csv('C:/Users/drana/Downloads/Mine Log Abstract 2.csv', encoding='ISO-8859-1')
 df_event_log['Timestamp'] = pd.to_datetime(df_event_log['Timestamp'])  # Convert timestamp to datetime
 df_event_log = df_event_log.sort_values(by='Timestamp')  # Sort by timestamp
 
-
 # Process each event in the stream
-for event in stream_event_log(df_event_log):
-    print("Processed event with adaptive quantile bins and sliding window:\n", event)
+stream_event_log(df_event_log)
