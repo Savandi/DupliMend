@@ -1,9 +1,7 @@
 from collections import defaultdict, deque
 from river.cluster import DBSTREAM
 from tdigest import TDigest
-import pandas as pd
 import time
-import datetime as dt
 
 # --- PARAMETERS ---
 quantiles = [0.25, 0.5, 0.75]  # Define quantile thresholds
@@ -100,14 +98,3 @@ def stream_event_log(df, delay=1):
         event = process_event(event)  # Process each event
         yield event
         time.sleep(delay)  # Simulate streaming delay
-
-
-# --- MAIN SCRIPT ---
-# Load and prepare event log
-df_event_log = pd.read_csv('C:/Users/drana/Downloads/Mine Log Abstract 2.csv', encoding='ISO-8859-1')
-df_event_log['timestamp'] = pd.to_datetime(df_event_log['timestamp'])  # Convert timestamp to datetime
-df_event_log = df_event_log.sort_values(by='timestamp')  # Sort by timestamp
-
-# Process each event in the stream
-for event in stream_event_log(df_event_log):
-    print("Processed event with dynamic temporal and hybrid binning:", event)
