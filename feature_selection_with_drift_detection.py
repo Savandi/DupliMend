@@ -47,7 +47,7 @@ def update_control_flow_matrices(previous_activity, current_activity):
 
 
 def compute_control_flow_score(activity):
-    """
+    """Dyn
     Compute the control-flow score for an activity based on the footprint matrix.
     """
     if activity not in footprint_matrix:
