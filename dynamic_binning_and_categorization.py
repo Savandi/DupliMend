@@ -3,98 +3,45 @@ from river.cluster import DBSTREAM
 from tdigest import TDigest
 import time
 
-# --- PARAMETERS ---
-quantiles = [0.25, 0.5, 0.75]  # Define quantile thresholds
-sliding_window_size = 100  # Sliding window for recency-sensitive adjustments
-bin_density_threshold = 10  # Density threshold for hybrid binning
-features_to_discretize = ['age', 'heart_rate', 'timestamp']  # Features for dynamic binning
+def stream_event_log(
+    df, timestamp_column, control_flow_column, resource_column, case_id_column,
+    data_columns, features_to_discretize, quantiles, sliding_window_size,
+    bin_density_threshold, dbstream_params, delay=1
+):
+    sliding_window = defaultdict(lambda: deque(maxlen=sliding_window_size))
+    feature_tdigest = defaultdict(TDigest)
+    streaming_dbstream_models = defaultdict(
+        lambda: DBSTREAM(
+            clustering_threshold=dbstream_params["clustering_threshold"],
+            fading_factor=dbstream_params["fading_factor"],
+            cleanup_interval=dbstream_params["cleanup_interval"],
+            intersection_factor=dbstream_params["intersection_factor"],
+            minimum_weight=dbstream_params["minimum_weight"]
+        )
+    )
 
-# --- GLOBAL VARIABLES ---
-sliding_window = defaultdict(lambda: deque(maxlen=sliding_window_size))  # Sliding windows for all features
-feature_tdigest = defaultdict(TDigest)  # T-digest structures for numerical features
-streaming_dbstream_models = {}  # DBSTREAM models for clustering
+    def extract_temporal_features(timestamp):
+        return {'hour': timestamp.hour, 'day_of_week': timestamp.weekday()}
 
+    def hybrid_binning(value, feature):
+        feature_tdigest[feature].update(value)
+        bins = [feature_tdigest[feature].percentile(q * 100) for q in quantiles]
+        for i, bin_threshold in enumerate(bins):
+            if value < bin_threshold:
+                sliding_window[feature].append(value)
+                if len(sliding_window[feature]) > bin_density_threshold:
+                    bins.insert(i + 1, (bins[i] + bins[i + 1]) / 2)
+                return f"{feature}_Quantile_Bin_{i}"
+        return f"{feature}_Quantile_Bin_{len(bins)}"
 
-# --- HELPER FUNCTIONS ---
-def extract_temporal_features(timestamp):
-    """
-    Dynamically extract temporal features (hour, day of the week, dynamic season) from a timestamp.
-    """
-    hour = timestamp.hour
-    day_of_week = timestamp.weekday()
-    month = timestamp.month
-
-    # Dynamic categorization for seasons using clustering
-    if 'season' not in streaming_dbstream_models:
-        streaming_dbstream_models['season'] = DBSTREAM(epsilon=0.5, mu=5)
-
-    season_model = streaming_dbstream_models['season']
-    season_cluster = season_model.predict_one([[month]]) or 0  # Predict cluster for the current month
-    season_label = f"Season_Cluster_{season_cluster}"
-
-    return {'hour': hour, 'day_of_week': day_of_week, 'season': season_label}
-
-
-def hybrid_binning(value, feature):
-    """
-    Apply hybrid binning (quantile-based + density-sensitive) for numerical features.
-    """
-    # Update T-digest for the feature
-    feature_tdigest[feature].update(value)
-    bins = [feature_tdigest[feature].percentile(q * 100) for q in quantiles]
-
-    # Assign value to a bin based on density
-    for i, bin_threshold in enumerate(bins):
-        if value < bin_threshold:
-            sliding_window[feature].append(value)
-
-            # Density-sensitive adjustments
-            if len(sliding_window[feature]) > bin_density_threshold:
-                bins.insert(i + 1, (bins[i] + bins[i + 1]) / 2)  # Split dense bins
-            return f"{feature}_Quantile_Bin_{i}"
-
-    return f"{feature}_Quantile_Bin_{len(bins)}"
-
-
-def dynamic_clustering(value, feature):
-    """
-    Perform incremental clustering for categorical or fine-grained numerical features using DBSTREAM.
-    """
-    if feature not in streaming_dbstream_models:
-        streaming_dbstream_models[feature] = DBSTREAM(epsilon=0.5, mu=5)
-
-    # Update the DBSTREAM model
-    dbstream = streaming_dbstream_models[feature]
-    value_reshaped = [[value]] if isinstance(value, (int, float)) else [[hash(value)]]
-    dbstream.learn_one(value_reshaped[0])
-
-    # Assign the value to a cluster
-    cluster_label = dbstream.predict_one(value_reshaped[0])
-    return f"{feature}_Cluster_{cluster_label}"
-
-
-def process_event(event):
-    """
-    Process each event and dynamically bin features.
-    """
-    for feature in features_to_discretize:
-        if feature in event:
-            if feature == 'timestamp':
-                # Extract temporal features and create bins dynamically
-                temporal_features = extract_temporal_features(event[feature])
-                for temp_feature, temp_value in temporal_features.items():
-                    event[f'{feature}_{temp_feature}_bin'] = dynamic_clustering(temp_value, temp_feature)
-            else:
-                # Apply hybrid binning for numerical features
-                event[f'{feature}_bin'] = hybrid_binning(event[feature], feature)
-    return event
-
-
-def stream_event_log(df, delay=1):
-    """
-    Streaming function to process events.
-    """
     for _, event in df.iterrows():
-        event = process_event(event)  # Process each event
-        yield event
-        time.sleep(delay)  # Simulate streaming delay
+        event_dict = event.to_dict()
+        for feature in features_to_discretize:
+            if feature in event_dict:
+                if feature == timestamp_column:
+                    for temp_feature, temp_value in extract_temporal_features(event_dict[feature]).items():
+                        event_dict[f"{feature}_{temp_feature}_bin"] = temp_value
+                else:
+                    event_dict[f"{feature}_bin"] = hybrid_binning(event_dict[feature], feature)
+        yield event_dict
+        time.sleep(delay)
