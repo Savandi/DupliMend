@@ -39,9 +39,10 @@ for event in stream_event_log(
     top_features = select_features(
         event,
         previous_event,
-        activity_column=control_flow_column,
+        activity_column=control_flow_column,  # Map control_flow_column to activity_column
         timestamp_column=timestamp_column,
         resource_column=resource_column,
+        case_id_column=case_id_column,  # Add this argument
         data_columns=data_columns,
         top_n=top_n_features
     )

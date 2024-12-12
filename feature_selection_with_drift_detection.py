@@ -7,16 +7,8 @@ from config import adaptive_window_min_size, adaptive_window_max_size, initial_w
 directly_follows_matrix = defaultdict(lambda: defaultdict(int))  # Directly follows relationships
 footprint_matrix = defaultdict(lambda: defaultdict(float))  # Footprint matrix with stability/forgetting
 
-# Drift detectors for each perspective
-control_flow_drift = ADWIN()
-resource_drift = ADWIN()
-time_drift = ADWIN()
-data_drift = ADWIN()
-
-# Feature windows
-feature_window_sizes = defaultdict(lambda: initial_window_size)
-feature_importance_windows = defaultdict(lambda: deque(maxlen=initial_window_size))
-
+# Drift detectors for each feature
+drift_detector = defaultdict(ADWIN)
 
 def configure_window_sizes():
     """
@@ -27,7 +19,7 @@ def configure_window_sizes():
     feature_importance_windows = defaultdict(lambda: deque(maxlen=initial_window_size))
 
 
-def select_features(event, previous_event, activity_column, timestamp_column, resource_column, data_columns, top_n=3):
+def select_features(event, previous_event, activity_column, timestamp_column, resource_column, case_id_column, data_columns, top_n=3):
     """
     Compute feature scores, detect drift, and select top dataset features.
     """
@@ -56,6 +48,13 @@ def select_features(event, previous_event, activity_column, timestamp_column, re
 def adjust_window_size(feature, drift_detected):
     """
     Adjust the sliding window size dynamically based on drift detection.
+
+    Parameters:
+        feature (str): The feature being processed.
+        drift_detected (bool): Whether drift was detected for the feature.
+
+    Returns:
+        deque: A deque with the adjusted maximum length.
     """
     current_size = feature_window_sizes[feature]
     new_size = max(adaptive_window_min_size, current_size // 2) if drift_detected else min(adaptive_window_max_size, current_size + 10)
@@ -91,14 +90,17 @@ def compute_feature_scores(event, previous_event, activity_column, timestamp_col
     return feature_scores
 
 
+# --- DRIFT DETECTION ---
 def detect_drift(feature, feature_scores):
     """
     Use ADWIN to detect drift in feature scores.
     """
-    avg_score = np.mean(feature_scores) if feature_scores else 0
-
     # Ensure the drift detector exists for the feature
     if feature not in drift_detector:
-        drift_detector[feature] = ADWIN()
+        drift_detector[feature] = ADWIN()  # Initialize an ADWIN detector for the feature
 
+    # Avoid calculating drift on empty feature scores
+    avg_score = np.mean(feature_scores) if len(feature_scores) > 0 else 0
+
+    # Update the drift detector and return whether drift was detected
     return drift_detector[feature].update(avg_score)
