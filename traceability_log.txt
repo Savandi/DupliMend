@@ -1,0 +1,178 @@
+2024-12-16 01:25:48,446 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineName': Middlemount Mine
+2024-12-16 01:25:48,446 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineType': Coal Mine - Surface
+2024-12-16 01:25:48,446 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineTypeGroup': Coal Mine - Surface
+2024-12-16 01:25:48,446 - INFO - NEW_VECTOR - Incident: []
+2024-12-16 01:25:48,446 - INFO - ADD_VECTOR - Incident: []
+2024-12-16 01:25:48,447 - INFO - REMOVE_VECTOR - Incident: Fully decayed vector: []
+2024-12-16 01:25:48,447 - INFO - NO_CHANGE - Incident: Insufficient vectors for analysis.
+2024-12-16 01:25:49,568 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineName': Broadmeadow Mine
+2024-12-16 01:25:49,568 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineType': Coal Mine - Underground
+2024-12-16 01:25:49,568 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineTypeGroup': Coal Mine - Underground
+2024-12-16 01:25:49,568 - INFO - NEW_VECTOR - Incident: []
+2024-12-16 01:25:49,568 - INFO - ADD_VECTOR - Incident: []
+2024-12-16 01:25:49,568 - INFO - REMOVE_VECTOR - Incident: Fully decayed vector: []
+2024-12-16 01:25:49,568 - INFO - NO_CHANGE - Incident: Insufficient vectors for analysis.
+2024-12-16 01:25:50,688 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineName': Moorvale Mine
+2024-12-16 01:25:50,688 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineType': Coal Mine - Surface
+2024-12-16 01:25:50,689 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineTypeGroup': Coal Mine - Surface
+2024-12-16 01:25:50,689 - INFO - NEW_VECTOR - Incident: []
+2024-12-16 01:25:50,689 - INFO - ADD_VECTOR - Incident: []
+2024-12-16 01:25:50,689 - INFO - REMOVE_VECTOR - Incident: Fully decayed vector: []
+2024-12-16 01:25:50,689 - INFO - NO_CHANGE - Incident: Insufficient vectors for analysis.
+2024-12-16 01:25:51,817 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineName': Weipa
+2024-12-16 01:25:51,817 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineType': Metalliferous Mine - Surface
+2024-12-16 01:25:51,817 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineTypeGroup': Metalliferous Mine - Surface
+2024-12-16 01:25:51,817 - INFO - NEW_VECTOR - Incident: []
+2024-12-16 01:25:51,817 - INFO - ADD_VECTOR - Incident: []
+2024-12-16 01:25:51,817 - INFO - REMOVE_VECTOR - Incident: Fully decayed vector: []
+2024-12-16 01:25:51,817 - INFO - NO_CHANGE - Incident: Insufficient vectors for analysis.
+2024-12-16 01:25:52,947 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineName': Rocklands
+2024-12-16 01:25:52,947 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineType': Metalliferous Mine - Surface
+2024-12-16 01:25:52,947 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineTypeGroup': Metalliferous Mine - Surface
+2024-12-16 01:25:52,947 - INFO - NEW_VECTOR - Incident: []
+2024-12-16 01:25:52,947 - INFO - ADD_VECTOR - Incident: []
+2024-12-16 01:25:52,947 - INFO - REMOVE_VECTOR - Incident: Fully decayed vector: []
+2024-12-16 01:25:52,947 - INFO - NO_CHANGE - Incident: Insufficient vectors for analysis.
+2024-12-16 01:25:54,075 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineName': Newlands Mine - Open Cut
+2024-12-16 01:25:54,075 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineType': Coal Mine - Surface
+2024-12-16 01:25:54,075 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineTypeGroup': Coal Mine - Surface
+2024-12-16 01:25:54,075 - INFO - NEW_VECTOR - Incident: []
+2024-12-16 01:25:54,075 - INFO - ADD_VECTOR - Incident: []
+2024-12-16 01:25:54,075 - INFO - REMOVE_VECTOR - Incident: Fully decayed vector: []
+2024-12-16 01:25:54,075 - INFO - NO_CHANGE - Incident: Insufficient vectors for analysis.
+2024-12-16 01:25:55,205 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineName': Oaky North Mine
+2024-12-16 01:25:55,205 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineType': Coal Mine - Underground
+2024-12-16 01:25:55,205 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineTypeGroup': Coal Mine - Underground
+2024-12-16 01:25:55,205 - INFO - NEW_VECTOR - Incident: []
+2024-12-16 01:25:55,205 - INFO - ADD_VECTOR - Incident: []
+2024-12-16 01:25:55,205 - INFO - REMOVE_VECTOR - Incident: Fully decayed vector: []
+2024-12-16 01:25:55,205 - INFO - NO_CHANGE - Incident: Insufficient vectors for analysis.
+2024-12-16 01:25:56,325 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineName': Foxleigh Mine
+2024-12-16 01:25:56,326 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineType': Coal Mine - Surface
+2024-12-16 01:25:56,326 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineTypeGroup': Coal Mine - Surface
+2024-12-16 01:25:56,326 - INFO - NEW_VECTOR - Incident: []
+2024-12-16 01:25:56,326 - INFO - ADD_VECTOR - Incident: []
+2024-12-16 01:25:56,326 - INFO - REMOVE_VECTOR - Incident: Fully decayed vector: []
+2024-12-16 01:25:56,326 - INFO - NO_CHANGE - Incident: Insufficient vectors for analysis.
+2024-12-16 01:25:57,458 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineName': George Fisher Mine
+2024-12-16 01:25:57,458 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineType': Metalliferous Mine - Underground
+2024-12-16 01:25:57,459 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineTypeGroup': Metalliferous Mine - Underground
+2024-12-16 01:25:57,459 - INFO - NEW_VECTOR - Incident: []
+2024-12-16 01:25:57,459 - INFO - ADD_VECTOR - Incident: []
+2024-12-16 01:25:57,459 - INFO - REMOVE_VECTOR - Incident: Fully decayed vector: []
+2024-12-16 01:25:57,459 - INFO - NO_CHANGE - Incident: Insufficient vectors for analysis.
+2024-12-16 01:25:58,577 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineName': Middlemount Mine
+2024-12-16 01:25:58,577 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineType': Coal Mine - Surface
+2024-12-16 01:25:58,577 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineTypeGroup': Coal Mine - Surface
+2024-12-16 01:25:58,577 - INFO - NEW_VECTOR - Incident: []
+2024-12-16 01:25:58,577 - INFO - ADD_VECTOR - Incident: []
+2024-12-16 01:25:58,577 - INFO - REMOVE_VECTOR - Incident: Fully decayed vector: []
+2024-12-16 01:25:58,578 - INFO - NO_CHANGE - Incident: Insufficient vectors for analysis.
+2024-12-16 01:25:59,700 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineName': Blackwater Mine
+2024-12-16 01:25:59,700 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineType': Coal Mine - Surface
+2024-12-16 01:25:59,700 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineTypeGroup': Coal Mine - Surface
+2024-12-16 01:25:59,700 - INFO - NEW_VECTOR - Incident: []
+2024-12-16 01:25:59,700 - INFO - ADD_VECTOR - Incident: []
+2024-12-16 01:25:59,700 - INFO - REMOVE_VECTOR - Incident: Fully decayed vector: []
+2024-12-16 01:25:59,700 - INFO - NO_CHANGE - Incident: Insufficient vectors for analysis.
+2024-12-16 01:28:49,204 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineName': Middlemount Mine
+2024-12-16 01:28:49,204 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineType': Coal Mine - Surface
+2024-12-16 01:28:49,205 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineTypeGroup': Coal Mine - Surface
+2024-12-16 01:28:49,205 - INFO - NEW_VECTOR - Incident: []
+2024-12-16 01:28:49,205 - INFO - ADD_VECTOR - Incident: []
+2024-12-16 01:28:49,205 - INFO - REMOVE_VECTOR - Incident: Fully decayed vector: []
+2024-12-16 01:28:49,205 - INFO - NO_CHANGE - Incident: Insufficient vectors for analysis.
+2024-12-16 01:28:50,327 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineName': Broadmeadow Mine
+2024-12-16 01:28:50,327 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineType': Coal Mine - Underground
+2024-12-16 01:28:50,327 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineTypeGroup': Coal Mine - Underground
+2024-12-16 01:28:50,327 - INFO - NEW_VECTOR - Incident: []
+2024-12-16 01:28:50,328 - INFO - ADD_VECTOR - Incident: []
+2024-12-16 01:28:50,328 - INFO - REMOVE_VECTOR - Incident: Fully decayed vector: []
+2024-12-16 01:28:50,328 - INFO - NO_CHANGE - Incident: Insufficient vectors for analysis.
+2024-12-16 01:28:51,448 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineName': Moorvale Mine
+2024-12-16 01:28:51,448 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineType': Coal Mine - Surface
+2024-12-16 01:28:51,448 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineTypeGroup': Coal Mine - Surface
+2024-12-16 01:28:51,448 - INFO - NEW_VECTOR - Incident: []
+2024-12-16 01:28:51,448 - INFO - ADD_VECTOR - Incident: []
+2024-12-16 01:28:51,448 - INFO - REMOVE_VECTOR - Incident: Fully decayed vector: []
+2024-12-16 01:28:51,448 - INFO - NO_CHANGE - Incident: Insufficient vectors for analysis.
+2024-12-16 01:28:52,574 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineName': Weipa
+2024-12-16 01:28:52,574 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineType': Metalliferous Mine - Surface
+2024-12-16 01:28:52,574 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineTypeGroup': Metalliferous Mine - Surface
+2024-12-16 01:28:52,574 - INFO - NEW_VECTOR - Incident: []
+2024-12-16 01:28:52,574 - INFO - ADD_VECTOR - Incident: []
+2024-12-16 01:28:52,574 - INFO - REMOVE_VECTOR - Incident: Fully decayed vector: []
+2024-12-16 01:28:52,574 - INFO - NO_CHANGE - Incident: Insufficient vectors for analysis.
+2024-12-16 01:28:53,691 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineName': Rocklands
+2024-12-16 01:28:53,691 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineType': Metalliferous Mine - Surface
+2024-12-16 01:28:53,692 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineTypeGroup': Metalliferous Mine - Surface
+2024-12-16 01:28:53,692 - INFO - NEW_VECTOR - Incident: []
+2024-12-16 01:28:53,692 - INFO - ADD_VECTOR - Incident: []
+2024-12-16 01:28:53,692 - INFO - REMOVE_VECTOR - Incident: Fully decayed vector: []
+2024-12-16 01:28:53,692 - INFO - NO_CHANGE - Incident: Insufficient vectors for analysis.
+2024-12-16 01:28:54,804 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineName': Newlands Mine - Open Cut
+2024-12-16 01:28:54,804 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineType': Coal Mine - Surface
+2024-12-16 01:28:54,804 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineTypeGroup': Coal Mine - Surface
+2024-12-16 01:28:54,804 - INFO - NEW_VECTOR - Incident: []
+2024-12-16 01:28:54,804 - INFO - ADD_VECTOR - Incident: []
+2024-12-16 01:28:54,804 - INFO - REMOVE_VECTOR - Incident: Fully decayed vector: []
+2024-12-16 01:28:54,804 - INFO - NO_CHANGE - Incident: Insufficient vectors for analysis.
+2024-12-16 01:28:55,937 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineName': Oaky North Mine
+2024-12-16 01:28:55,937 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineType': Coal Mine - Underground
+2024-12-16 01:28:55,937 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineTypeGroup': Coal Mine - Underground
+2024-12-16 01:28:55,937 - INFO - NEW_VECTOR - Incident: []
+2024-12-16 01:28:55,937 - INFO - ADD_VECTOR - Incident: []
+2024-12-16 01:28:55,937 - INFO - REMOVE_VECTOR - Incident: Fully decayed vector: []
+2024-12-16 01:28:55,937 - INFO - NO_CHANGE - Incident: Insufficient vectors for analysis.
+2024-12-16 01:28:57,055 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineName': Foxleigh Mine
+2024-12-16 01:28:57,055 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineType': Coal Mine - Surface
+2024-12-16 01:28:57,055 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineTypeGroup': Coal Mine - Surface
+2024-12-16 01:28:57,056 - INFO - NEW_VECTOR - Incident: []
+2024-12-16 01:28:57,056 - INFO - ADD_VECTOR - Incident: []
+2024-12-16 01:28:57,056 - INFO - REMOVE_VECTOR - Incident: Fully decayed vector: []
+2024-12-16 01:28:57,056 - INFO - NO_CHANGE - Incident: Insufficient vectors for analysis.
+2024-12-16 01:28:58,191 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineName': George Fisher Mine
+2024-12-16 01:28:58,191 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineType': Metalliferous Mine - Underground
+2024-12-16 01:28:58,191 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineTypeGroup': Metalliferous Mine - Underground
+2024-12-16 01:28:58,191 - INFO - NEW_VECTOR - Incident: []
+2024-12-16 01:28:58,191 - INFO - ADD_VECTOR - Incident: []
+2024-12-16 01:28:58,192 - INFO - REMOVE_VECTOR - Incident: Fully decayed vector: []
+2024-12-16 01:28:58,192 - INFO - NO_CHANGE - Incident: Insufficient vectors for analysis.
+2024-12-16 01:28:59,323 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineName': Middlemount Mine
+2024-12-16 01:28:59,323 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineType': Coal Mine - Surface
+2024-12-16 01:28:59,323 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineTypeGroup': Coal Mine - Surface
+2024-12-16 01:28:59,323 - INFO - NEW_VECTOR - Incident: []
+2024-12-16 01:28:59,323 - INFO - ADD_VECTOR - Incident: []
+2024-12-16 01:28:59,323 - INFO - REMOVE_VECTOR - Incident: Fully decayed vector: []
+2024-12-16 01:28:59,323 - INFO - NO_CHANGE - Incident: Insufficient vectors for analysis.
+2024-12-16 01:29:00,446 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineName': Blackwater Mine
+2024-12-16 01:29:00,446 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineType': Coal Mine - Surface
+2024-12-16 01:29:00,446 - INFO - SKIP - Incident: Skipping non-numeric value for feature 'MineTypeGroup': Coal Mine - Surface
+2024-12-16 01:29:00,446 - INFO - NEW_VECTOR - Incident: []
+2024-12-16 01:29:00,446 - INFO - ADD_VECTOR - Incident: []
+2024-12-16 01:29:00,446 - INFO - REMOVE_VECTOR - Incident: Fully decayed vector: []
+2024-12-16 01:29:00,446 - INFO - NO_CHANGE - Incident: Insufficient vectors for analysis.
+2024-12-16 01:31:08,196 - INFO - NEW_VECTOR - Incident: [1.0, 1.0, 1.0]
+2024-12-16 01:31:08,197 - INFO - ADD_VECTOR - Incident: [1.0, 1.0, 1.0]
+2024-12-16 01:31:08,197 - INFO - REMOVE_VECTOR - Incident: Fully decayed vector: [1.0, 1.0, 1.0]
+2024-12-16 01:31:08,197 - INFO - NO_CHANGE - Incident: Insufficient vectors for analysis.
+2024-12-16 01:31:09,326 - INFO - NEW_VECTOR - Incident: [1.0, 1.0, 1.0]
+2024-12-16 01:31:09,327 - INFO - ADD_VECTOR - Incident: [1.0, 1.0, 1.0]
+2024-12-16 01:31:09,327 - INFO - REMOVE_VECTOR - Incident: Fully decayed vector: [1.0, 1.0, 1.0]
+2024-12-16 01:31:09,327 - INFO - NO_CHANGE - Incident: Insufficient vectors for analysis.
+2024-12-16 01:31:10,441 - INFO - NEW_VECTOR - Incident: [1.0, 1.0, 1.0]
+2024-12-16 01:31:10,441 - INFO - ADD_VECTOR - Incident: [1.0, 1.0, 1.0]
+2024-12-16 01:31:10,441 - INFO - REMOVE_VECTOR - Incident: Fully decayed vector: [1.0, 1.0, 1.0]
+2024-12-16 01:31:10,441 - INFO - NO_CHANGE - Incident: Insufficient vectors for analysis.
+2024-12-16 01:31:11,562 - INFO - NEW_VECTOR - Incident: [1.0, 1.0, 1.0]
+2024-12-16 01:31:11,562 - INFO - ADD_VECTOR - Incident: [1.0, 1.0, 1.0]
+2024-12-16 01:31:11,562 - INFO - REMOVE_VECTOR - Incident: Fully decayed vector: [1.0, 1.0, 1.0]
+2024-12-16 01:31:11,562 - INFO - NO_CHANGE - Incident: Insufficient vectors for analysis.
+2024-12-16 01:31:12,692 - INFO - NEW_VECTOR - Incident: [1.0, 1.0, 1.0]
+2024-12-16 01:31:12,693 - INFO - ADD_VECTOR - Incident: [1.0, 1.0, 1.0]
+2024-12-16 01:31:12,693 - INFO - REMOVE_VECTOR - Incident: Fully decayed vector: [1.0, 1.0, 1.0]
+2024-12-16 01:31:12,693 - INFO - NO_CHANGE - Incident: Insufficient vectors for analysis.
+2024-12-16 01:31:13,813 - INFO - NEW_VECTOR - Incident: [1.0, 1.0, 1.0]
+2024-12-16 01:31:13,813 - INFO - ADD_VECTOR - Incident: [1.0, 1.0, 1.0]
+2024-12-16 01:31:13,813 - INFO - REMOVE_VECTOR - Incident: Fully decayed vector: [1.0, 1.0, 1.0]
+2024-12-16 01:31:13,814 - INFO - NO_CHANGE - Incident: Insufficient vectors for analysis.
