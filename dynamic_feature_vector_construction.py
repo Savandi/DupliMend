@@ -1,132 +1,100 @@
-from collections import defaultdict, deque
-import numpy as np
+from collections import defaultdict
 from river.drift import ADWIN
-from config import adaptive_window_min_size, adaptive_window_max_size, initial_window_size
+from sklearn.metrics.pairwise import cosine_similarity
+from sklearn.cluster import DBSCAN
+import numpy as np
+import logging
+from datetime import datetime, timedelta
+from config import splitting_threshold, merging_threshold, temporal_decay_rate, forgetting_threshold, grace_period_duration
 
 # --- GLOBAL VARIABLES ---
-feature_vectors = defaultdict(lambda: deque(maxlen=initial_window_size))  # Dynamic feature vectors per feature
-feature_window_sizes = defaultdict(lambda: initial_window_size)  # Adaptive window sizes
-adaptive_bin_models = defaultdict(lambda: ADWIN())  # Drift-aware bin models for feature scoring
+feature_vectors = defaultdict(list)  # Store distinct feature vectors per activity label
+aggregated_vectors = defaultdict(list)  # Aggregated vectors per activity label for merging analysis
+vector_metadata = defaultdict(lambda: defaultdict(dict))  # Track recency, frequency, and creation time
+audit_log = []  # List to track splits/merges for auditability
 
-# --- DYNAMIC FEATURE VECTOR CONSTRUCTION ---
-def construct_dynamic_feature_vector(event, top_features, timestamp_column, decay_rate=0.01):
-    """
-    Construct a dynamic feature vector for the current event.
+# --- FUNCTION DEFINITIONS ---
 
-    Parameters:
-        event (dict): The current event being processed.
-        top_features (list): Top features selected in Step 2.
-        timestamp_column (str): The column representing the timestamp.
-        decay_rate (float): The rate of temporal decay for older features.
+def apply_temporal_decay(value, time_difference):
+    return value * np.exp(-temporal_decay_rate * time_difference)
 
-    Returns:
-        dict: A dynamic feature vector for the event.
-    """
-    current_time = event[timestamp_column]
-    dynamic_vector = {}
+def compute_similarity(vector1, vector2):
+    vector1 = np.array(vector1).reshape(1, -1)
+    vector2 = np.array(vector2).reshape(1, -1)
+    return cosine_similarity(vector1, vector2)[0][0]
 
-    for feature in top_features:
-        value = event.get(feature, None)
-        if value is not None:
-            if feature in feature_vectors:
-                past_values = np.array([v[1] for v in feature_vectors[feature]])
-                time_differences = np.array([
-                    (current_time - v[0]).total_seconds() for v in feature_vectors[feature]
-                ])
-                weights = np.exp(-decay_rate * time_differences)
-                dynamic_value = np.sum(past_values * weights) / np.sum(weights)
-            else:
-                dynamic_value = value
+def compute_similarity_matrix(vectors):
+    return cosine_similarity(np.array(vectors))
 
-            # Update the feature vector with current event data
-            feature_vectors[feature].append((current_time, value))
-            dynamic_vector[feature] = dynamic_value
+def aggregate_vector(cluster):
+    return np.mean(cluster, axis=0)
 
-    return dynamic_vector
+def log_split_merge_change(change_type, activity_label, details):
+    timestamp = datetime.now().isoformat()
+    entry = {"timestamp": timestamp, "change_type": change_type, "activity_label": activity_label, "details": details}
+    audit_log.append(entry)
+    logging.info(f"{change_type.upper()} - {activity_label}: {details}")
 
-# --- UNIFIED RECENCY-SENSITIVE MECHANISM ---
-def integrate_with_unified_mechanism(dynamic_vector, sliding_windows, decay_rate=0.01):
-    """
-    Integrate the constructed dynamic feature vector with the unified recency-sensitive mechanism.
+def analyze_feature_vector_group(activity_label):
+    if len(feature_vectors[activity_label]) <= 1:
+        print(f"No change detected for activity: {activity_label}")
+        return "no_change", activity_label
 
-    Parameters:
-        dynamic_vector (dict): The dynamic feature vector.
-        sliding_windows (dict): Adaptive sliding windows.
-        decay_rate (float): Temporal decay rate.
+    print(f"Analyzing feature vectors for activity label '{activity_label}': {feature_vectors[activity_label]}")
+    similarity_matrix = compute_similarity_matrix(feature_vectors[activity_label])
+    print(f"Similarity Matrix for '{activity_label}':\n{similarity_matrix}")
 
-    Returns:
-        dict: Unified feature vector.
-    """
-    unified_vector = {}
+    clustering = DBSCAN(eps=1 - splitting_threshold, min_samples=2, metric="precomputed").fit(1 - similarity_matrix)
+    labels = clustering.labels_
+    unique_clusters = set(labels) - {-1}
 
-    for feature, value in dynamic_vector.items():
-        if feature in sliding_windows:
-            sliding_window = sliding_windows[feature]
-            sliding_window.append(value)
+    if len(unique_clusters) > 1:
+        split_details = {f"{activity_label}_{i}": [feature_vectors[activity_label][j] for j in range(len(labels)) if labels[j] == i] for i in unique_clusters}
+        log_split_merge_change("split", activity_label, split_details)
+        print(f"Split detected for '{activity_label}': {split_details}")
+        return "split", split_details
 
-            # Compute recency-sensitive value
-            time_weights = np.exp(-decay_rate * np.arange(len(sliding_window)))
-            weighted_sum = np.dot(sliding_window, time_weights)
-            unified_vector[feature] = weighted_sum / time_weights.sum()
-        else:
-            unified_vector[feature] = value
+    aggregated_vectors[activity_label] = aggregate_vector(feature_vectors[activity_label])
+    print(f"Aggregated Vector for '{activity_label}': {aggregated_vectors[activity_label]}")
+    aggregated_similarity = compute_similarity_matrix([aggregated_vectors[activity_label]])
+    if aggregated_similarity[0][0] > merging_threshold:
+        log_split_merge_change("merge", activity_label, {"merged_to": activity_label})
+        print(f"Merging detected for '{activity_label}'")
+        return "merge", activity_label
 
-    return unified_vector
+    print(f"No change for activity label '{activity_label}' after analysis.")
+    return "no_change", activity_label
 
-# --- ADAPTIVE SLIDING WINDOW ADJUSTMENT ---
-def adjust_window_size_for_vector(feature, drift_detected):
-    """
-    Adjust the sliding window size dynamically for feature vectors.
+def process_event(event, top_features, timestamp_column):
+    activity_label = event["Activity"]
+    timestamp = event[timestamp_column]
+    new_vector = [event.get(feature, 0) for feature in top_features]
 
-    Parameters:
-        feature (str): Feature name.
-        drift_detected (bool): Whether drift was detected for the feature.
+    match_found = False
+    for i, existing_vector in enumerate(feature_vectors[activity_label]):
+        similarity = compute_similarity(existing_vector, new_vector)
+        if similarity >= merging_threshold:
+            vector_metadata[activity_label][i]["frequency"] += 1
+            vector_metadata[activity_label][i]["recency"] = timestamp
+            match_found = True
+            break
 
-    Returns:
-        deque: Updated sliding window.
-    """
-    current_size = feature_window_sizes[feature]
-    new_size = max(adaptive_window_min_size, current_size // 2) if drift_detected else min(adaptive_window_max_size,
-                                                                                           current_size + 10)
-    feature_window_sizes[feature] = new_size
-    return deque(maxlen=new_size)
+    if not match_found:
+        feature_vectors[activity_label].append(new_vector)
+        vector_metadata[activity_label][len(feature_vectors[activity_label]) - 1] = {
+            "frequency": 1,
+            "recency": timestamp,
+            "created": timestamp,
+        }
 
-# --- DRIFT DETECTION FOR FEATURES ---
-def detect_feature_drift(feature, feature_scores):
-    """
-    Use ADWIN to detect drift in feature scores.
+    for i in range(len(feature_vectors[activity_label]) - 1, -1, -1):
+        vector_info = vector_metadata[activity_label][i]
+        time_since_last_update = (datetime.now() - vector_info["recency"]).total_seconds()
+        if datetime.now() - vector_info["created"] < timedelta(seconds=grace_period_duration):
+            continue
+        vector_info["frequency"] *= apply_temporal_decay(1.0, time_since_last_update)
+        if vector_info["frequency"] < forgetting_threshold:
+            feature_vectors[activity_label].pop(i)
+            vector_metadata[activity_label].pop(i)
 
-    Parameters:
-        feature (str): Feature name.
-        feature_scores (list): Scores for the feature.
-
-    Returns:
-        bool: True if drift is detected, False otherwise.
-    """
-    if feature not in adaptive_bin_models:
-        adaptive_bin_models[feature] = ADWIN()
-
-    avg_score = np.mean(feature_scores) if len(feature_scores) > 0 else 0
-    return adaptive_bin_models[feature].update(avg_score)
-
-# --- MAIN PROCESSING FUNCTION ---
-def process_event(event, top_features, timestamp_column, sliding_windows):
-    """
-    Process an event to construct and integrate the dynamic feature vector.
-
-    Parameters:
-        event (dict): The current event being processed.
-        top_features (list): Top features selected in Step 2.
-        timestamp_column (str): The column representing the timestamp.
-        sliding_windows (dict): Adaptive sliding windows from Step 2.
-
-    Returns:
-        dict: Unified feature vector for the event.
-    """
-    # Step 1: Construct the dynamic feature vector
-    dynamic_vector = construct_dynamic_feature_vector(event, top_features, timestamp_column)
-
-    # Step 2: Integrate with the unified recency-sensitive mechanism
-    unified_vector = integrate_with_unified_mechanism(dynamic_vector, sliding_windows)
-
-    return unified_vector
+    return analyze_feature_vector_group(activity_label)
