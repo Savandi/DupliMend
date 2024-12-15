@@ -17,6 +17,7 @@ forgetting_factor = 0.9
 adaptive_window_min_size = 50
 adaptive_window_max_size = 200
 initial_window_size = 100
+temporal_decay_rate = 0.01
 
 # Clustering and Drift Detection Parameters
 dbstream_params = {

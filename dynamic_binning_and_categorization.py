@@ -28,9 +28,9 @@ class AdaptiveBinning:
 
 
 def stream_event_log(
-    df, timestamp_column, control_flow_column, resource_column, case_id_column,
-    data_columns, features_to_discretize, quantiles, sliding_window_size,
-    bin_density_threshold, dbstream_params, delay=1
+        df, timestamp_column, control_flow_column, resource_column, case_id_column,
+        data_columns, features_to_discretize, quantiles, sliding_window_size,
+        bin_density_threshold, dbstream_params, delay=1
 ):
     sliding_window = defaultdict(lambda: deque(maxlen=sliding_window_size))
     adaptive_bin_models = defaultdict(lambda: AdaptiveBinning(initial_bins=10, drift_threshold=0.05))
@@ -57,6 +57,7 @@ def stream_event_log(
         return model.assign_bin(value)
 
     for _, event in df.iterrows():
+        print(f"Yielding Event ID: {event['EventID']}")  # Debugging: Check if duplicates are here
         event_dict = event.to_dict()
         for feature in features_to_discretize:
             if feature in event_dict:

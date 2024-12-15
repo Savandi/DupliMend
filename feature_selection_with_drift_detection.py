@@ -1,9 +1,10 @@
 from collections import defaultdict, deque
 from river.drift import ADWIN
-from sklearn.feature_selection import mutual_info_classif
-import numpy as np
 from config import adaptive_window_min_size, adaptive_window_max_size, initial_window_size
-
+from sklearn.feature_selection import mutual_info_classif, f_classif
+from sklearn.preprocessing import OneHotEncoder
+import numpy as np
+import pandas as pd
 
 # --- GLOBAL VARIABLES ---
 directly_follows_matrix = defaultdict(lambda: defaultdict(int))  # Directly follows relationships
@@ -20,15 +21,78 @@ def configure_window_sizes():
     feature_importance_windows = defaultdict(lambda: deque(maxlen=initial_window_size))
 
 
-def ensemble_feature_scoring(features, target):
+def ensemble_feature_scoring(event, activity_label):
     """
-    Combine multiple feature selection methods (e.g., correlation, mutual information).
+    Score features using multiple scoring methods and ensemble the results.
+
+    Parameters:
+        event (dict): The event being processed.
+        activity_label (str): The activity label for which features are scored.
+
+    Returns:
+        dict: A dictionary containing ensemble scores for all features.
     """
-    scores = {}
-    scores["mutual_information"] = {
-        f: mutual_info_classif(features[[f]], target, discrete_features='auto')[0] for f in features
-    }
-    return {f: scores["mutual_information"][f] for f in features}
+    import pandas as pd
+    import numpy as np
+    from sklearn.feature_selection import mutual_info_classif, f_classif
+    from sklearn.preprocessing import OneHotEncoder
+
+    # Exclude the activity label and handle missing values
+    features = {k: v for k, v in event.items() if k != activity_label and not pd.isna(v)}
+
+    # Separate numeric and categorical features
+    numeric_features = {k: v for k, v in features.items() if isinstance(v, (int, float))}
+    categorical_features = {k: v for k, v in features.items() if isinstance(v, str)}
+
+    # Convert to arrays
+    numeric_array = np.array(list(numeric_features.values())).reshape(1, -1) if numeric_features else np.empty((0, 0))
+    categorical_array = np.array(list(categorical_features.values())).reshape(1,
+                                                                              -1) if categorical_features else np.empty(
+        (0, 0))
+
+    # Encode categorical features
+    encoder = OneHotEncoder(handle_unknown="ignore", sparse_output=False)
+    encoded_categorical = encoder.fit_transform(categorical_array) if categorical_features else np.empty((0, 0))
+
+    # Align dimensions for numeric and categorical arrays
+    if numeric_array.shape[0] != encoded_categorical.shape[0]:
+        max_rows = max(numeric_array.shape[0], encoded_categorical.shape[0])
+        numeric_array = np.resize(numeric_array, (max_rows, numeric_array.shape[1]))
+        encoded_categorical = np.resize(encoded_categorical, (max_rows, encoded_categorical.shape[1]))
+
+    # Combine numeric and categorical into a feature matrix
+    feature_matrix = np.hstack(
+        [numeric_array, encoded_categorical]) if numeric_array.size > 0 or encoded_categorical.size > 0 else np.empty(
+        (0, 0))
+
+    # Prepare feature keys and labels for scoring
+    feature_keys = list(numeric_features.keys()) + list(categorical_features.keys())
+    target = [activity_label] * feature_matrix.shape[0]
+
+    # Compute scores using multiple methods
+    scores = {"mutual_information": {}, "f_statistic": {}}
+    if feature_matrix.size > 0:  # Only compute scores if there are valid features
+        valid_features = [
+            i for i in range(feature_matrix.shape[1]) if np.nanstd(feature_matrix[:, i]) > 0
+        ]  # Filter out zero-variance features
+
+        for i in valid_features:
+            try:
+                scores["mutual_information"][feature_keys[i]] = mutual_info_classif(
+                    feature_matrix[:, [i]], target, discrete_features=False
+                )[0]
+                scores["f_statistic"][feature_keys[i]] = f_classif(
+                    feature_matrix[:, [i]], target
+                )[0][0]
+            except ValueError:  # Gracefully handle computation errors
+                scores["mutual_information"][feature_keys[i]] = 0
+                scores["f_statistic"][feature_keys[i]] = 0
+
+    # Aggregate scores into an ensemble score
+    ensemble_scores = {key: scores["mutual_information"].get(key, 0) + scores["f_statistic"].get(key, 0)
+                       for key in feature_keys}
+
+    return ensemble_scores
 
 
 def temporal_weighting(score, event_time, current_time, decay_rate=0.01):
@@ -39,12 +103,24 @@ def temporal_weighting(score, event_time, current_time, decay_rate=0.01):
     return score * np.exp(-decay_rate * time_diff)
 
 
-def adaptive_threshold(feature_scores, variability_threshold=0.1):
+def adaptive_threshold(feature_scores):
     """
-    Dynamically adjust the threshold for selecting top N features.
+    Dynamically adjust the number of top features based on score variability.
+
+    Parameters:
+        feature_scores (dict): Feature scores.
+
+    Returns:
+        int: Number of top features to select.
     """
-    variability = np.std(list(feature_scores.values()))
-    return max(3, int(variability / variability_threshold))
+
+    scores = np.array(list(feature_scores.values()))
+    if len(scores) == 0:
+        return 3  # Default to a minimum threshold when no scores are available
+
+    variability = np.nanstd(scores)  # Use nanstd to handle NaN values gracefully
+    variability_threshold = 0.1  # Define a default threshold for variability
+    return max(3, int(np.nan_to_num(variability) / variability_threshold))  # Handle NaN with nan_to_num
 
 
 def compute_feature_scores(event, previous_event, activity_column, timestamp_column, resource_column, data_columns):
@@ -90,6 +166,7 @@ def select_features(event, previous_event, activity_column, timestamp_column, re
     """
     Compute feature scores, detect drift, and select top dataset features.
     """
+    # Compute feature scores
     feature_scores = compute_feature_scores(
         event, previous_event, activity_column, timestamp_column, resource_column, data_columns
     )
@@ -123,7 +200,6 @@ def select_features(event, previous_event, activity_column, timestamp_column, re
 
     # Select top N features
     top_features = sorted(aggregated_scores, key=aggregated_scores.get, reverse=True)[:top_n]
-    print(f"Activity: {event[activity_column]}, Top Features: {top_features}")
     return top_features
 
 
