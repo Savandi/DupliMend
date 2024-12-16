@@ -1246,3 +1246,48 @@
 2024-12-16 20:49:42,003 - INFO - DBSTREAM_MICRO_CLUSTERS - Incident: Total clusters: 3, Details: [{'centroid': array([0, 0, 0]), 'weight': 1, 'last_updated_event': 1}, {'centroid': array([0, 1, 1]), 'weight': 1, 'last_updated_event': 2}, {'centroid': array([2, 0, 0]), 'weight': 1, 'last_updated_event': 3}]
 2024-12-16 20:49:43,107 - INFO - NEW_VECTOR - Incident: [3 2 2]
 2024-12-16 20:49:43,107 - INFO - DBSTREAM_MICRO_CLUSTERS - Incident: Total clusters: 4, Details: [{'centroid': array([0, 0, 0]), 'weight': 1, 'last_updated_event': 1}, {'centroid': array([0, 1, 1]), 'weight': 1, 'last_updated_event': 2}, {'centroid': array([2, 0, 0]), 'weight': 1, 'last_updated_event': 3}, {'centroid': array([3, 2, 2]), 'weight': 1, 'last_updated_event': 4}]
+2024-12-17 01:11:15,563 - INFO - NEW_VECTOR - Incident: [0 0 0]
+2024-12-17 01:11:15,574 - INFO - DBSTREAM_UPDATE - DBStream: {'vector': array([0, 0, 0])}
+2024-12-17 01:11:15,574 - INFO - DBSTREAM_MICRO_CLUSTERS - Incident: Total clusters: 1, Details: [{'centroid': array([0, 0, 0]), 'weight': 1, 'last_updated_event': 1}]
+2024-12-17 01:14:23,113 - INFO - NEW_VECTOR - Incident: [0 0 0]
+2024-12-17 01:14:23,113 - INFO - DBSTREAM_UPDATE - DBStream: {'vector': array([0, 0, 0])}
+2024-12-17 01:14:23,113 - INFO - DBSTREAM_MICRO_CLUSTERS - Incident: Total clusters: 1, Details: [{'centroid': array([0, 0, 0]), 'weight': 1, 'last_updated_event': 1}]
+2024-12-17 01:14:24,216 - INFO - NEW_VECTOR - Incident: [0 1 1]
+2024-12-17 01:14:24,217 - INFO - DBSTREAM_UPDATE - DBStream: {'vector': array([0, 1, 1])}
+2024-12-17 01:14:24,217 - INFO - DBSTREAM_MICRO_CLUSTERS - Incident: Total clusters: 2, Details: [{'centroid': array([0, 0, 0]), 'weight': 1, 'last_updated_event': 1}, {'centroid': array([0, 1, 1]), 'weight': 1, 'last_updated_event': 2}]
+2024-12-17 01:14:25,320 - INFO - NEW_VECTOR - Incident: [2 0 0]
+2024-12-17 01:14:25,321 - INFO - DBSTREAM_UPDATE - DBStream: {'vector': array([2, 0, 0])}
+2024-12-17 01:14:25,321 - INFO - DBSTREAM_MICRO_CLUSTERS - Incident: Total clusters: 3, Details: [{'centroid': array([0, 0, 0]), 'weight': 1, 'last_updated_event': 1}, {'centroid': array([0, 1, 1]), 'weight': 1, 'last_updated_event': 2}, {'centroid': array([2, 0, 0]), 'weight': 1, 'last_updated_event': 3}]
+2024-12-17 01:14:26,424 - INFO - NEW_VECTOR - Incident: [3 2 2]
+2024-12-17 01:14:26,424 - INFO - DBSTREAM_UPDATE - DBStream: {'vector': array([3, 2, 2])}
+2024-12-17 01:14:26,425 - INFO - DBSTREAM_MICRO_CLUSTERS - Incident: Total clusters: 4, Details: [{'centroid': array([0, 0, 0]), 'weight': 1, 'last_updated_event': 1}, {'centroid': array([0, 1, 1]), 'weight': 1, 'last_updated_event': 2}, {'centroid': array([2, 0, 0]), 'weight': 1, 'last_updated_event': 3}, {'centroid': array([3, 2, 2]), 'weight': 1, 'last_updated_event': 4}]
+2024-12-17 01:14:27,527 - INFO - NEW_VECTOR - Incident: [3 2 2]
+2024-12-17 01:14:27,528 - INFO - DBSTREAM_UPDATE - DBStream: {'vector': array([3, 2, 2])}
+2024-12-17 01:14:27,528 - INFO - DBSTREAM_MICRO_CLUSTERS - Incident: Total clusters: 5, Details: [{'centroid': array([0, 0, 0]), 'weight': 1, 'last_updated_event': 1}, {'centroid': array([0, 1, 1]), 'weight': 1, 'last_updated_event': 2}, {'centroid': array([2, 0, 0]), 'weight': 1, 'last_updated_event': 3}, {'centroid': array([3, 2, 2]), 'weight': 1, 'last_updated_event': 4}, {'centroid': array([3, 2, 2]), 'weight': 1, 'last_updated_event': 5}]
+2024-12-17 01:14:28,632 - INFO - NEW_VECTOR - Incident: [3 0 0]
+2024-12-17 01:14:28,632 - INFO - DBSTREAM_UPDATE - DBStream: {'vector': array([3, 0, 0])}
+2024-12-17 01:14:28,632 - INFO - DBSTREAM_MICRO_CLUSTERS - Incident: Total clusters: 6, Details: [{'centroid': array([0, 0, 0]), 'weight': 1, 'last_updated_event': 1}, {'centroid': array([0, 1, 1]), 'weight': 1, 'last_updated_event': 2}, {'centroid': array([2, 0, 0]), 'weight': 1, 'last_updated_event': 3}, {'centroid': array([3, 2, 2]), 'weight': 1, 'last_updated_event': 4}, {'centroid': array([3, 2, 2]), 'weight': 1, 'last_updated_event': 5}, {'centroid': array([3, 0, 0]), 'weight': 1, 'last_updated_event': 6}]
+2024-12-17 01:14:29,737 - INFO - NEW_VECTOR - Incident: [4 1 1]
+2024-12-17 01:14:29,737 - INFO - DBSTREAM_UPDATE - DBStream: {'vector': array([4, 1, 1])}
+2024-12-17 01:14:29,737 - INFO - DBSTREAM_MICRO_CLUSTERS - Incident: Total clusters: 7, Details: [{'centroid': array([0, 0, 0]), 'weight': 1, 'last_updated_event': 1}, {'centroid': array([0, 1, 1]), 'weight': 1, 'last_updated_event': 2}, {'centroid': array([2, 0, 0]), 'weight': 1, 'last_updated_event': 3}, {'centroid': array([3, 2, 2]), 'weight': 1, 'last_updated_event': 4}, {'centroid': array([3, 2, 2]), 'weight': 1, 'last_updated_event': 5}, {'centroid': array([3, 0, 0]), 'weight': 1, 'last_updated_event': 6}, {'centroid': array([4, 1, 1]), 'weight': 1, 'last_updated_event': 7}]
+2024-12-17 01:14:30,841 - INFO - NEW_VECTOR - Incident: [1 0 0]
+2024-12-17 01:14:30,841 - INFO - DBSTREAM_UPDATE - DBStream: {'vector': array([1, 0, 0])}
+2024-12-17 01:14:30,841 - INFO - DBSTREAM_MICRO_CLUSTERS - Incident: Total clusters: 8, Details: [{'centroid': array([0, 0, 0]), 'weight': 1, 'last_updated_event': 1}, {'centroid': array([0, 1, 1]), 'weight': 1, 'last_updated_event': 2}, {'centroid': array([2, 0, 0]), 'weight': 1, 'last_updated_event': 3}, {'centroid': array([3, 2, 2]), 'weight': 1, 'last_updated_event': 4}, {'centroid': array([3, 2, 2]), 'weight': 1, 'last_updated_event': 5}, {'centroid': array([3, 0, 0]), 'weight': 1, 'last_updated_event': 6}, {'centroid': array([4, 1, 1]), 'weight': 1, 'last_updated_event': 7}, {'centroid': array([1, 0, 0]), 'weight': 1, 'last_updated_event': 8}]
+2024-12-17 01:14:31,945 - INFO - NEW_VECTOR - Incident: [2 3 3]
+2024-12-17 01:14:31,945 - INFO - DBSTREAM_UPDATE - DBStream: {'vector': array([2, 3, 3])}
+2024-12-17 01:14:31,945 - INFO - DBSTREAM_MICRO_CLUSTERS - Incident: Total clusters: 9, Details: [{'centroid': array([0, 0, 0]), 'weight': 1, 'last_updated_event': 1}, {'centroid': array([0, 1, 1]), 'weight': 1, 'last_updated_event': 2}, {'centroid': array([2, 0, 0]), 'weight': 1, 'last_updated_event': 3}, {'centroid': array([3, 2, 2]), 'weight': 1, 'last_updated_event': 4}, {'centroid': array([3, 2, 2]), 'weight': 1, 'last_updated_event': 5}, {'centroid': array([3, 0, 0]), 'weight': 1, 'last_updated_event': 6}, {'centroid': array([4, 1, 1]), 'weight': 1, 'last_updated_event': 7}, {'centroid': array([1, 0, 0]), 'weight': 1, 'last_updated_event': 8}, {'centroid': array([2, 3, 3]), 'weight': 1, 'last_updated_event': 9}]
+2024-12-17 01:14:33,049 - INFO - NEW_VECTOR - Incident: [3 0 0]
+2024-12-17 01:14:33,049 - INFO - DBSTREAM_UPDATE - DBStream: {'vector': array([3, 0, 0])}
+2024-12-17 01:14:33,049 - INFO - DBSTREAM_MICRO_CLUSTERS - Incident: Total clusters: 10, Details: [{'centroid': array([0, 0, 0]), 'weight': 1, 'last_updated_event': 1}, {'centroid': array([0, 1, 1]), 'weight': 1, 'last_updated_event': 2}, {'centroid': array([2, 0, 0]), 'weight': 1, 'last_updated_event': 3}, {'centroid': array([3, 2, 2]), 'weight': 1, 'last_updated_event': 4}, {'centroid': array([3, 2, 2]), 'weight': 1, 'last_updated_event': 5}, {'centroid': array([3, 0, 0]), 'weight': 1, 'last_updated_event': 6}, {'centroid': array([4, 1, 1]), 'weight': 1, 'last_updated_event': 7}, {'centroid': array([1, 0, 0]), 'weight': 1, 'last_updated_event': 8}, {'centroid': array([2, 3, 3]), 'weight': 1, 'last_updated_event': 9}, {'centroid': array([3, 0, 0]), 'weight': 1, 'last_updated_event': 10}]
+2024-12-17 01:14:34,153 - INFO - NEW_VECTOR - Incident: [0 0 0]
+2024-12-17 01:14:34,153 - INFO - DBSTREAM_UPDATE - DBStream: {'vector': array([0, 0, 0])}
+2024-12-17 01:14:34,165 - INFO - DBSTREAM_MICRO_CLUSTERS - Incident: Total clusters: 11, Details: [{'centroid': array([0, 0, 0]), 'weight': 0.02, 'last_updated_event': 1}, {'centroid': array([0, 1, 1]), 'weight': 1, 'last_updated_event': 2}, {'centroid': array([2, 0, 0]), 'weight': 1, 'last_updated_event': 3}, {'centroid': array([3, 2, 2]), 'weight': 1, 'last_updated_event': 4}, {'centroid': array([3, 2, 2]), 'weight': 1, 'last_updated_event': 5}, {'centroid': array([3, 0, 0]), 'weight': 1, 'last_updated_event': 6}, {'centroid': array([4, 1, 1]), 'weight': 1, 'last_updated_event': 7}, {'centroid': array([1, 0, 0]), 'weight': 1, 'last_updated_event': 8}, {'centroid': array([2, 3, 3]), 'weight': 1, 'last_updated_event': 9}, {'centroid': array([3, 0, 0]), 'weight': 1, 'last_updated_event': 10}, {'centroid': array([0, 0, 0]), 'weight': 1, 'last_updated_event': 11}]
+2024-12-17 01:34:07,685 - INFO - NEW_VECTOR - Incident: [0 0 0]
+2024-12-17 01:34:07,685 - INFO - DBSTREAM_UPDATE - DBStream: {'vector': array([0, 0, 0])}
+2024-12-17 01:34:07,685 - INFO - DBSTREAM_MICRO_CLUSTERS - Incident: Total clusters: 1, Details: [{'centroid': array([0, 0, 0]), 'weight': 1, 'last_updated_event': 1}]
+2024-12-17 01:34:08,791 - INFO - NEW_VECTOR - Incident: [0 1 1]
+2024-12-17 01:34:08,791 - INFO - DBSTREAM_UPDATE - DBStream: {'vector': array([0, 1, 1])}
+2024-12-17 01:34:08,791 - INFO - DBSTREAM_MICRO_CLUSTERS - Incident: Total clusters: 2, Details: [{'centroid': array([0, 0, 0]), 'weight': 1, 'last_updated_event': 1}, {'centroid': array([0, 1, 1]), 'weight': 1, 'last_updated_event': 2}]
+2024-12-17 01:34:09,895 - INFO - NEW_VECTOR - Incident: [2 0 0]
+2024-12-17 01:34:09,895 - INFO - DBSTREAM_UPDATE - DBStream: {'vector': array([2, 0, 0])}
+2024-12-17 01:34:09,895 - INFO - DBSTREAM_MICRO_CLUSTERS - Incident: Total clusters: 3, Details: [{'centroid': array([0, 0, 0]), 'weight': 1, 'last_updated_event': 1}, {'centroid': array([0, 1, 1]), 'weight': 1, 'last_updated_event': 2}, {'centroid': array([2, 0, 0]), 'weight': 1, 'last_updated_event': 3}]

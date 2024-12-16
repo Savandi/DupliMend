@@ -6,7 +6,7 @@ from feature_selection_with_drift_detection import select_features, configure_wi
 from config import *
 import pandas as pd
 import time
-from homonym_detection import log_cluster_summary, handle_temporal_decay
+from homonym_detection import handle_temporal_decay, log_cluster_summary
 
 # Configure sliding window sizes
 configure_window_sizes()
@@ -48,7 +48,6 @@ for event in stream_event_log(
     activity_label = event[control_flow_column]
     print(f"Processing Event ID: {event_id}, Activity: {activity_label}")
 
-    # Select features
     top_features = select_features(
         event,
         None,
@@ -61,11 +60,10 @@ for event in stream_event_log(
     print(f"Top Features: {top_features}")
 
     # Process event
-    result = process_event({"activity_label": activity_label, "new_vector": event, "top_features": top_features})
+    result = process_event(event, top_features, timestamp_column)
     print(f"Change Detected: {result}")
-
     # Periodically log cluster summaries and handle temporal decay
-    if event_id % log_frequency == 0:
+    if isinstance(event_id, int) and event_id % log_frequency == 0:
         log_cluster_summary(dbstream_instances[activity_label])
         handle_temporal_decay(activity_label)
 

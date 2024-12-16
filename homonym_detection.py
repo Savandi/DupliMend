@@ -12,6 +12,7 @@ from config import (
     dbstream_params,
     grace_period_events,
 )
+from logging_utils import log_traceability
 
 # --- GLOBAL VARIABLES ---
 feature_vectors = defaultdict(list)
@@ -54,17 +55,6 @@ def compute_contextual_weighted_similarity(v1, v2, w1, w2, alpha=positional_pena
 
     similarity = (weighted_sum / normalization_factor) * length_penalty
     return similarity
-
-
-def log_traceability(action, activity_label, details):
-    """
-    Log traceability and auditability details.
-    """
-    timestamp = datetime.now().isoformat()
-    entry = {"timestamp": timestamp, "action": action, "activity_label": activity_label, "details": details}
-    audit_log.append(entry)
-    logging.info(f"{action.upper()} - {activity_label}: {details}")
-
 
 def log_merge_or_split(action, clusters_involved, details=None):
     """
@@ -182,3 +172,18 @@ def handle_temporal_decay(activity_label):
             del metadata[vector]
         else:
             metadata[vector]["frequency"] = decayed_frequency
+
+def log_cluster_summary(dbstream_instance):
+    """
+    Log a periodic summary of cluster dynamics.
+    """
+    micro_clusters = dbstream_instance.get_micro_clusters()
+    event_count = sum(cluster["weight"] for cluster in micro_clusters)
+    active_clusters = len(micro_clusters)
+    avg_weight = event_count / active_clusters if active_clusters > 0 else 0
+
+    log_traceability("cluster_summary", "Periodic Update", {
+        "total_clusters": active_clusters,
+        "average_weight": avg_weight,
+        "event_count": event_count
+    })
