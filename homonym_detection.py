@@ -1,5 +1,4 @@
 from collections import defaultdict
-from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
 import logging
 from datetime import datetime
@@ -11,13 +10,15 @@ from config import (
     forgetting_threshold,
     positional_penalty_alpha,
     dbstream_params,
+    grace_period_events,
 )
 
 # --- GLOBAL VARIABLES ---
-feature_vectors = defaultdict(list)  # Feature vectors per activity label
+feature_vectors = defaultdict(list)
 vector_metadata = defaultdict(lambda: defaultdict(lambda: {"frequency": 0, "recency": datetime.now()}))
-audit_log = []  # Traceability log
-dbstream_clusters = defaultdict(lambda: DBStream(**dbstream_params))  # One DBStream instance per activity label
+audit_log = []
+dbstream_clusters = defaultdict(lambda: DBStream(**dbstream_params))
+event_counter = 0  # Track the number of processed events for logging frequency
 
 # Configure logging
 logging.basicConfig(
@@ -33,6 +34,7 @@ def apply_temporal_decay(value, time_difference):
     Apply temporal decay to a value based on time difference.
     """
     return value * np.exp(-temporal_decay_rate * time_difference)
+
 
 def compute_contextual_weighted_similarity(v1, v2, w1, w2, alpha=positional_penalty_alpha):
     """
@@ -53,6 +55,7 @@ def compute_contextual_weighted_similarity(v1, v2, w1, w2, alpha=positional_pena
     similarity = (weighted_sum / normalization_factor) * length_penalty
     return similarity
 
+
 def log_traceability(action, activity_label, details):
     """
     Log traceability and auditability details.
@@ -71,14 +74,25 @@ def log_merge_or_split(action, clusters_involved, details=None):
         action, "Cluster Analysis",
         {
             "clusters_involved": clusters_involved,
-            "details": details or "N/A"
-        }
+            "details": details or "N/A",
+        },
     )
-def analyze_splits_and_merges(activity_label, dbstream_instance):
+
+
+def aggregate_vectors(cluster_vectors):
     """
-    Analyze DBStream clusters to detect splits or merges.
+    Compute an aggregated vector (mean centroid) for a set of cluster vectors.
     """
+    return np.mean(cluster_vectors, axis=0)
+
+
+def analyze_splits_and_merges(activity_label):
+    """
+    Analyze DBStream clusters to detect splits or merges for a specific activity.
+    """
+    dbstream_instance = dbstream_clusters[activity_label]
     micro_clusters = dbstream_instance.get_micro_clusters()
+
     if len(micro_clusters) <= 1:
         log_traceability("no_change", activity_label, "Insufficient clusters for analysis.")
         return "no_change", activity_label
@@ -90,7 +104,10 @@ def analyze_splits_and_merges(activity_label, dbstream_instance):
     for i in range(len(cluster_vectors)):
         for j in range(i, len(cluster_vectors)):
             similarity_matrix[i][j] = compute_contextual_weighted_similarity(
-                cluster_vectors[i], cluster_vectors[j], [1.0] * len(cluster_vectors[0]), [1.0] * len(cluster_vectors[0])
+                cluster_vectors[i],
+                cluster_vectors[j],
+                [1.0] * len(cluster_vectors[0]),
+                [1.0] * len(cluster_vectors[0]),
             )
             similarity_matrix[j][i] = similarity_matrix[i][j]
 
@@ -103,19 +120,23 @@ def analyze_splits_and_merges(activity_label, dbstream_instance):
         log_merge_or_split("split", split_clusters, {"similarity_matrix": similarity_matrix.tolist()})
         return "split", split_clusters
 
-    # Detect merges
+    # Detect merges using aggregated vector
+    aggregated_vector = aggregate_vectors(cluster_vectors)
     merged_clusters = []
     for i, centroid in enumerate(cluster_vectors):
-        for j, other_centroid in enumerate(cluster_vectors):
-            if i != j and similarity_matrix[i][j] > merging_threshold:
-                merged_clusters.append((i, j))
+        similarity = compute_contextual_weighted_similarity(
+            centroid, aggregated_vector, [1.0] * len(aggregated_vector), [1.0] * len(aggregated_vector)
+        )
+        if similarity > merging_threshold:
+            merged_clusters.append(i)
 
     if merged_clusters:
-        log_merge_or_split("merge", merged_clusters, {"similarity_matrix": similarity_matrix.tolist()})
+        log_merge_or_split("merge", merged_clusters, {"aggregated_vector": aggregated_vector.tolist()})
         return "merge", merged_clusters
 
     log_traceability("no_change", activity_label, "No significant change detected.")
     return "no_change", activity_label
+
 
 def process_event(event_data):
     """
@@ -129,30 +150,35 @@ def process_event(event_data):
     """
     activity_label = event_data["activity_label"]
     new_vector = event_data["new_vector"]
-    dbstream_instance = event_data["dbstream_model"]
+
+    dbstream_instance = dbstream_clusters[activity_label]  # Use activity-specific DBStream instance
 
     # Log the incoming vector for traceability
     log_traceability("analyze_vector", activity_label, {"new_vector": new_vector})
 
-    # Analyze DBStream clusters
+    # Update DBStream with the new vector
     cluster_id = dbstream_instance.partial_fit(new_vector)
     log_traceability("update_clusters", activity_label, {"new_vector": new_vector, "cluster_id": cluster_id})
 
     # Detect splits and merges
-    return analyze_splits_and_merges(activity_label, dbstream_instance)
+    return analyze_splits_and_merges(activity_label)
 
 
-def log_cluster_summary(dbstream_instance):
+def handle_temporal_decay(activity_label):
     """
-    Log a periodic summary of cluster dynamics.
+    Apply temporal decay to clusters for a specific activity.
     """
-    micro_clusters = dbstream_instance.get_micro_clusters()
-    event_count = sum(cluster["weight"] for cluster in micro_clusters)
-    active_clusters = len(micro_clusters)
-    avg_weight = event_count / active_clusters if active_clusters > 0 else 0
+    metadata = vector_metadata[activity_label]
+    current_time = datetime.now()
 
-    log_traceability("cluster_summary", "Periodic Update", {
-        "total_clusters": active_clusters,
-        "average_weight": avg_weight,
-        "event_count": event_count
-    })
+    for vector, data in list(metadata.items()):
+        if data["frequency"] < grace_period_events:
+            continue  # Skip decay for vectors within the grace period
+
+        time_diff = (current_time - data["recency"]).total_seconds()
+        decayed_frequency = apply_temporal_decay(data["frequency"], time_diff)
+
+        if decayed_frequency < forgetting_threshold:
+            del metadata[vector]
+        else:
+            metadata[vector]["frequency"] = decayed_frequency

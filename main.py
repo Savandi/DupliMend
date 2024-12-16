@@ -6,16 +6,15 @@ from feature_selection_with_drift_detection import select_features, configure_wi
 from config import *
 import pandas as pd
 import time
-from homonym_detection import log_cluster_summary
+from homonym_detection import log_cluster_summary, handle_temporal_decay
 
 # Configure sliding window sizes
 configure_window_sizes()
 
-# Initialize DBStream instance
-dbstream_instance = DBStream(**dbstream_params)
+# Initialize DBStream instances
+dbstream_instances = defaultdict(lambda: DBStream(**dbstream_params))
 
 # Load and prepare the event log
-# Update the file path based on environment
 df_event_log = pd.read_csv('C:/Users/drana/Downloads/Mine Log Abstract 2.csv', encoding='ISO-8859-1')
 
 # Auto-detect data_columns
@@ -40,30 +39,35 @@ for event in stream_event_log(
     sliding_window_size=sliding_window_size,
     bin_density_threshold=bin_density_threshold,
     quantiles=quantiles,
-    delay=1  # Optional: Added a delay for debugging purposes
+    delay=1
 ):
     event_id = event.get("EventID")
     if event_id in processed_event_ids:
         continue
 
-    print(f"Processing Event ID: {event_id}")
+    activity_label = event[control_flow_column]
+    print(f"Processing Event ID: {event_id}, Activity: {activity_label}")
+
+    # Select features
     top_features = select_features(
         event,
-        None,  # Assuming no previous event in this implementation
+        None,
         control_flow_column,
         timestamp_column,
         resource_column,
         data_columns,
-        top_n=top_n_features  # Use the top_n_features parameter from config
+        top_n=top_n_features
     )
+    print(f"Top Features: {top_features}")
 
-    print(f"Activity: {event[control_flow_column]}, Top Features: {top_features}")
-    result = process_event(event, top_features, timestamp_column)
+    # Process event
+    result = process_event({"activity_label": activity_label, "new_vector": event, "top_features": top_features})
     print(f"Change Detected: {result}")
 
-    # Call it in the main loop
+    # Periodically log cluster summaries and handle temporal decay
     if event_id % log_frequency == 0:
-        log_cluster_summary(dbstream_instance)
+        log_cluster_summary(dbstream_instances[activity_label])
+        handle_temporal_decay(activity_label)
 
     processed_event_ids.add(event_id)
     time.sleep(0.1)
