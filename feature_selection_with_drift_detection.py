@@ -200,6 +200,7 @@ def select_features(event, previous_event, activity_column, timestamp_column, re
 
     # Select top N features
     top_features = sorted(aggregated_scores, key=aggregated_scores.get, reverse=True)[:top_n]
+    # Return the selected features
     return top_features
 
 

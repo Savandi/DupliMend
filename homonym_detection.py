@@ -26,7 +26,6 @@ logging.basicConfig(
     format="%(asctime)s - %(levelname)s - %(message)s",
 )
 
-
 # --- FUNCTION DEFINITIONS ---
 
 def apply_temporal_decay(value, time_difference):
@@ -34,7 +33,6 @@ def apply_temporal_decay(value, time_difference):
     Apply temporal decay to a value based on time difference.
     """
     return value * np.exp(-temporal_decay_rate * time_difference)
-
 
 def compute_contextual_weighted_similarity(v1, v2, w1, w2, alpha=positional_penalty_alpha):
     """
@@ -55,7 +53,6 @@ def compute_contextual_weighted_similarity(v1, v2, w1, w2, alpha=positional_pena
     similarity = (weighted_sum / normalization_factor) * length_penalty
     return similarity
 
-
 def log_traceability(action, activity_label, details):
     """
     Log traceability and auditability details.
@@ -66,6 +63,17 @@ def log_traceability(action, activity_label, details):
     logging.info(f"{action.upper()} - {activity_label}: {details}")
 
 
+def log_merge_or_split(action, clusters_involved, details=None):
+    """
+    Logs merge or split actions for traceability.
+    """
+    log_traceability(
+        action, "Cluster Analysis",
+        {
+            "clusters_involved": clusters_involved,
+            "details": details or "N/A"
+        }
+    )
 def analyze_splits_and_merges(activity_label, dbstream_instance):
     """
     Analyze DBStream clusters to detect splits or merges.
@@ -81,56 +89,70 @@ def analyze_splits_and_merges(activity_label, dbstream_instance):
 
     for i in range(len(cluster_vectors)):
         for j in range(i, len(cluster_vectors)):
-            similarity = compute_contextual_weighted_similarity(
+            similarity_matrix[i][j] = compute_contextual_weighted_similarity(
                 cluster_vectors[i], cluster_vectors[j], [1.0] * len(cluster_vectors[0]), [1.0] * len(cluster_vectors[0])
             )
-            similarity_matrix[i][j] = similarity
-            similarity_matrix[j][i] = similarity
+            similarity_matrix[j][i] = similarity_matrix[i][j]
 
     # Detect splits
-    cluster_labels = [
+    split_clusters = [
         f"Cluster_{i}" for i, cluster in enumerate(micro_clusters)
         if np.any(similarity_matrix[i] < splitting_threshold)
     ]
-    if len(cluster_labels) > 1:
-        log_traceability("split", activity_label, {"clusters": cluster_labels})
-        return "split", cluster_labels
+    if len(split_clusters) > 1:
+        log_merge_or_split("split", split_clusters, {"similarity_matrix": similarity_matrix.tolist()})
+        return "split", split_clusters
 
     # Detect merges
-    aggregated_vector = np.mean(cluster_vectors, axis=0)
-    merged_similarity = compute_contextual_weighted_similarity(
-        aggregated_vector, aggregated_vector, [1.0] * len(aggregated_vector), [1.0] * len(aggregated_vector)
-    )
-    if merged_similarity > merging_threshold:
-        log_traceability("merge", activity_label, {"merged_to": activity_label})
-        return "merge", activity_label
+    merged_clusters = []
+    for i, centroid in enumerate(cluster_vectors):
+        for j, other_centroid in enumerate(cluster_vectors):
+            if i != j and similarity_matrix[i][j] > merging_threshold:
+                merged_clusters.append((i, j))
+
+    if merged_clusters:
+        log_merge_or_split("merge", merged_clusters, {"similarity_matrix": similarity_matrix.tolist()})
+        return "merge", merged_clusters
 
     log_traceability("no_change", activity_label, "No significant change detected.")
     return "no_change", activity_label
 
-
-def process_event(event, top_features):
+def process_event(event_data):
     """
-    Process an event to construct and analyze feature vectors.
+    Analyze feature vectors for splits and merges using DBStream.
+
+    Parameters:
+        event_data (dict): Data from the previous step, including the vector and DBStream model.
+
+    Returns:
+        tuple: Result of split/merge analysis.
     """
-    activity_label = event["Activity"]
+    activity_label = event_data["activity_label"]
+    new_vector = event_data["new_vector"]
+    dbstream_instance = event_data["dbstream_model"]
 
-    # Construct feature vector
-    new_vector = []
-    for feature in top_features:
-        value = event.get(feature, 0)  # Assume 0 for missing features
-        if isinstance(value, (int, float)):  # Encoded features must be numeric
-            new_vector.append(value)
-        else:
-            log_traceability("skip_feature", activity_label, f"Skipping non-numeric feature '{feature}' with value '{value}'")
+    # Log the incoming vector for traceability
+    log_traceability("analyze_vector", activity_label, {"new_vector": new_vector})
 
-    log_traceability("new_vector", activity_label, new_vector)
-
-    # Update DBStream clusters
-    dbstream_instance = dbstream_clusters[activity_label]
+    # Analyze DBStream clusters
     cluster_id = dbstream_instance.partial_fit(new_vector)
-
     log_traceability("update_clusters", activity_label, {"new_vector": new_vector, "cluster_id": cluster_id})
 
-    # Analyze clusters for splits and merges
+    # Detect splits and merges
     return analyze_splits_and_merges(activity_label, dbstream_instance)
+
+
+def log_cluster_summary(dbstream_instance):
+    """
+    Log a periodic summary of cluster dynamics.
+    """
+    micro_clusters = dbstream_instance.get_micro_clusters()
+    event_count = sum(cluster["weight"] for cluster in micro_clusters)
+    active_clusters = len(micro_clusters)
+    avg_weight = event_count / active_clusters if active_clusters > 0 else 0
+
+    log_traceability("cluster_summary", "Periodic Update", {
+        "total_clusters": active_clusters,
+        "average_weight": avg_weight,
+        "event_count": event_count
+    })
