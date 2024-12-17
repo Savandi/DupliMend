@@ -2,8 +2,8 @@ from collections import defaultdict
 import numpy as np
 import logging
 from datetime import datetime
-from dbstream import DBStream
-from config import (
+from src.homonym_mend.dbstream import DBStream
+from config.config import (
     splitting_threshold,
     merging_threshold,
     temporal_decay_rate,
@@ -12,7 +12,7 @@ from config import (
     dbstream_params,
     grace_period_events,
 )
-from logging_utils import log_traceability
+from src.utils.logging_utils import log_traceability
 
 # --- GLOBAL VARIABLES ---
 feature_vectors = defaultdict(list)
@@ -23,7 +23,7 @@ event_counter = 0  # Track the number of processed events for logging frequency
 
 # Configure logging
 logging.basicConfig(
-    filename="traceability_log.txt",
+    filename="../../traceability_log.txt",
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s",
 )

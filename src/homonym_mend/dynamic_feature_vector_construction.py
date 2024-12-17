@@ -2,17 +2,12 @@ from collections import defaultdict
 from datetime import datetime
 import numpy as np
 import logging
-from config import (
-    splitting_threshold,
-    merging_threshold,
-    forgetting_threshold,
-    positional_penalty_alpha,
+from config.config import (
     temporal_decay_rate,
     dbstream_params
 )
-from custom_label_encoder import CustomLabelEncoder
-from dbstream import DBStream
-from homonym_detection import compute_contextual_weighted_similarity
+from src.utils.custom_label_encoder import CustomLabelEncoder
+from src.homonym_mend.dbstream import DBStream
 
 # --- GLOBAL VARIABLES ---
 feature_vectors = defaultdict(list)
@@ -24,7 +19,7 @@ encoders = defaultdict()  # Encoders for categorical features
 
 # --- LOGGING CONFIGURATION ---
 logging.basicConfig(
-    filename="traceability_log.txt",
+    filename="../../traceability_log.txt",
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s",
 )

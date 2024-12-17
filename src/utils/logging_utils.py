@@ -4,7 +4,7 @@ from datetime import datetime
 
 # Configure logging
 logging.basicConfig(
-    filename="traceability_log.txt",
+    filename="../../traceability_log.txt",
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s",
 )

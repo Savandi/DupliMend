@@ -8,3 +8,8 @@ __pycache__/feature_selection_with_drift_detection.cpython-312.pyc
 __pycache__/dynamic_feature_vector_construction.cpython-312.pyc
 __pycache__/dynamic_binning_and_categorization.cpython-312.pyc
 __pycache__/dbstream.cpython-312.pyc
+venv/
+*.log
+*.pyc
+__pycache__/
+.DS_Store

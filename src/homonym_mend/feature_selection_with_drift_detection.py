@@ -1,6 +1,6 @@
 from collections import defaultdict, deque
 from river.drift import ADWIN
-from config import adaptive_window_min_size, adaptive_window_max_size, initial_window_size
+from config.config import adaptive_window_min_size, adaptive_window_max_size, initial_window_size
 from sklearn.feature_selection import mutual_info_classif, f_classif
 from sklearn.preprocessing import OneHotEncoder
 import numpy as np
@@ -32,11 +32,6 @@ def ensemble_feature_scoring(event, activity_label):
     Returns:
         dict: A dictionary containing ensemble scores for all features.
     """
-    import pandas as pd
-    import numpy as np
-    from sklearn.feature_selection import mutual_info_classif, f_classif
-    from sklearn.preprocessing import OneHotEncoder
-
     # Exclude the activity label and handle missing values
     features = {k: v for k, v in event.items() if k != activity_label and not pd.isna(v)}
 

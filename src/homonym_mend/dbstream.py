@@ -1,5 +1,5 @@
 import numpy as np
-from logging_utils import log_traceability
+from src.utils.logging_utils import log_traceability
 
 class DBStream:
     """

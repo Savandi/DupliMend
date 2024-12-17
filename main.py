@@ -1,12 +1,12 @@
 from collections import defaultdict, deque
-from dbstream import DBStream
-from dynamic_feature_vector_construction import process_event
-from dynamic_binning_and_categorization import stream_event_log
-from feature_selection_with_drift_detection import select_features, configure_window_sizes
-from config import *
+from src.homonym_mend.dbstream import DBStream
+from src.homonym_mend.dynamic_feature_vector_construction import process_event
+from src.homonym_mend.dynamic_binning_and_categorization import stream_event_log
+from src.homonym_mend.feature_selection_with_drift_detection import select_features, configure_window_sizes
+from config.config import *
 import pandas as pd
 import time
-from homonym_detection import handle_temporal_decay, log_cluster_summary
+from src.homonym_mend.homonym_detection import handle_temporal_decay, log_cluster_summary
 
 # Configure sliding window sizes
 configure_window_sizes()
