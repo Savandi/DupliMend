@@ -1,101 +1,92 @@
 import numpy as np
+from collections import defaultdict, Counter
 from src.utils.logging_utils import log_traceability
+
 
 class DBStream:
     """
-    DBStream: Density-Based Stream Clustering Algorithm with Grace Period for Decay.
+    DBStream: Custom version for clustering categorical/discretized feature vectors.
+    Tracks the most frequent feature vector as the cluster centroid.
     """
-    def __init__(self, clustering_threshold=1.0, fading_factor=0.01, cleanup_interval=2, intersection_factor=0.3, grace_period_events=10):
-        self.clustering_threshold = clustering_threshold
-        self.fading_factor = fading_factor
-        self.cleanup_interval = cleanup_interval
-        self.intersection_factor = intersection_factor
-        self.grace_period_events = grace_period_events
+    def __init__(self, params):
+        """
+        Initialize DBStream with configuration parameters.
+
+        Parameters:
+            params (dict): Dictionary containing DBStream configuration parameters.
+        """
+        self.clustering_threshold = params.get("clustering_threshold", 1.0)
+        self.fading_factor = params.get("fading_factor", 0.01)
+        self.grace_period_events = params.get("grace_period_events", 10)
+        self.cleanup_interval = params.get("cleanup_interval", 2)
         self.micro_clusters = []  # List of micro-clusters
-        self.current_event_count = 0  # Track the number of processed events
+        self.event_count = 0  # Track the number of processed events
 
     def partial_fit(self, vector):
         """
-        Incrementally update micro-clusters with a new feature vector.
+        Incrementally fit a new feature vector into clusters, tracking the most frequent vector as centroid.
         """
         log_traceability("dbstream_update", "DBStream", {"vector": vector})
 
+        # Update existing clusters or create a new cluster
         matched_cluster = None
-        self.current_event_count += 1  # Increment event counter for each new vector
+        self.event_count += 1
 
         for cluster in self.micro_clusters:
-            # Skip low-weight clusters
-            if cluster["weight"] < 0.01:
-                continue
-
-            # Check if the cluster's grace period has elapsed
-            if self.current_event_count - cluster["last_updated_event"] >= self.grace_period_events:
-                similarity = self._similarity(cluster["centroid"], vector)
-                if similarity >= self.clustering_threshold:
-                    # Update existing cluster
-                    cluster["centroid"] = self._update_centroid(cluster["centroid"], vector, cluster["weight"])
-                    cluster["weight"] += 1
-                    cluster["last_updated_event"] = self.current_event_count
-                    matched_cluster = cluster
-                    break
+            # Compare the new vector with cluster's centroid
+            similarity = self._vector_similarity(vector, cluster["centroid"])
+            if abs(similarity - 1.0) < 1e-6:  # Identical vectors
+                cluster["vector_frequencies"][tuple(vector)] += 1  # Increase frequency
+                cluster["last_updated"] = self.event_count
+                cluster["centroid"] = self._most_frequent_vector(cluster["vector_frequencies"])
+                matched_cluster = cluster
+                break
 
         if not matched_cluster:
-            # Create a new micro-cluster
-            new_cluster = {"centroid": vector, "weight": 1, "last_updated_event": self.current_event_count}
+            # Create a new cluster
+            new_cluster = {
+                "centroid": vector,
+                "vector_frequencies": Counter({tuple(vector): 1}),
+                "last_updated": self.event_count
+            }
             self.micro_clusters.append(new_cluster)
+            log_traceability("new_cluster", "DBStream", {"centroid": vector})
 
-        # Apply decay to clusters if grace period has elapsed
-        self._decay_clusters()
-
-        return matched_cluster or new_cluster
-
-    def _decay_clusters(self):
-        """
-        Apply decay to all micro-clusters based on the fading factor.
-        """
-        for cluster in self.micro_clusters:
-            # Only decay clusters after grace period
-            if self.current_event_count - cluster["last_updated_event"] >= self.grace_period_events:
-                cluster["weight"] *= self.fading_factor
-
-        # Remove clusters with weights below threshold
-        self.micro_clusters = [c for c in self.micro_clusters if c["weight"] > 0.01]
+        # Apply temporal decay
+        self._apply_decay()
 
     def get_micro_clusters(self):
         """
-        Return all micro-clusters.
+        Return a summary of micro-clusters and their centroids.
         """
-        return self.micro_clusters
+        return [{"centroid": list(cluster["centroid"]), "frequency": cluster["vector_frequencies"], "last_updated": cluster["last_updated"]}
+                for cluster in self.micro_clusters]
 
-    def set_micro_clusters(self, micro_clusters):
+    def _apply_decay(self):
         """
-        Set the list of micro-clusters.
+        Apply temporal decay to vector frequencies and clean up outdated clusters.
         """
-        self.micro_clusters = micro_clusters
+        for cluster in self.micro_clusters:
+            # Apply decay only to older vectors beyond the grace period
+            if self.event_count - cluster["last_updated"] > self.grace_period_events:
+                for vector in list(cluster["vector_frequencies"]):
+                    cluster["vector_frequencies"][vector] *= self.fading_factor
+                    if cluster["vector_frequencies"][vector] < 1e-2:  # Threshold for removal
+                        del cluster["vector_frequencies"][vector]
 
-    def _similarity(self, v1, v2):
-        """
-        Compute similarity between two vectors (cosine similarity).
-        """
-        return np.dot(v1, v2) / (np.linalg.norm(v1) * np.linalg.norm(v2))
+                if not cluster["vector_frequencies"]:
+                    self.micro_clusters.remove(cluster)  # Remove empty clusters
+                else:
+                    cluster["centroid"] = self._most_frequent_vector(cluster["vector_frequencies"])
 
-    def _update_centroid(self, centroid, vector, weight):
+    def _vector_similarity(self, v1, v2):
         """
-        Update the centroid of a micro-cluster with weighted averaging.
+        Compute similarity between two vectors (exact match for categorical/discretized vectors).
         """
-        return [(c * weight + v) / (weight + 1) for c, v in zip(centroid, vector)]
+        return 1.0 if np.array_equal(v1, v2) else 0.0
 
-
-def cleanup_clusters(dbstream_instance, weight_threshold=0.5):
-    """
-    Remove clusters with weights below a defined threshold.
-    """
-    micro_clusters = dbstream_instance.get_micro_clusters()
-    retained_clusters = [
-        cluster for cluster in micro_clusters if cluster["weight"] >= weight_threshold
-    ]
-    dbstream_instance.set_micro_clusters(retained_clusters)
-    log_traceability("cleanup", "Cluster Maintenance", {
-        "removed_clusters": len(micro_clusters) - len(retained_clusters),
-        "retained_clusters": len(retained_clusters)
-    })
+    def _most_frequent_vector(self, vector_frequencies):
+        """
+        Return the most frequent vector in the cluster.
+        """
+        return max(vector_frequencies, key=vector_frequencies.get)

@@ -25,10 +25,11 @@ positional_penalty_alpha = 0.8  # Positional penalty for misaligned features
 
 # --- Clustering and Drift Detection Parameters ---
 dbstream_params = {
-    "clustering_threshold": 1.5,  # Increased slightly from 1.0 to reduce new cluster creation
+    "clustering_threshold": 0.9,  # Increased slightly from 1.0 to reduce new cluster creation
     "fading_factor": 0.02,        # Increased slightly from 0.01 to retain cluster memory longer
     "cleanup_interval": 2,        # Cleanup frequency (unchanged)
-    "intersection_factor": 0.3    # Similarity threshold for merging
+    "intersection_factor": 0.3,
+    "grace_period_events": 10
 }
 # --- Splitting and Merging Parameters ---
 splitting_threshold = 0.8  # Threshold for splitting clusters

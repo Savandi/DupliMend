@@ -2,27 +2,31 @@ from collections import defaultdict
 from datetime import datetime
 import numpy as np
 import logging
-from config.config import (
-    temporal_decay_rate,
-    dbstream_params
-)
+from config.config import temporal_decay_rate
 from src.utils.custom_label_encoder import CustomLabelEncoder
-from src.homonym_mend.dbstream import DBStream
+
 
 # --- GLOBAL VARIABLES ---
 feature_vectors = defaultdict(list)
 vector_metadata = defaultdict(lambda: defaultdict(lambda: {"frequency": 0, "recency": datetime.now()}))
 event_counter = defaultdict(int)  # Track events per activity
 audit_log = []
-streaming_dbstream_models = defaultdict(lambda: DBStream(**dbstream_params))
 encoders = defaultdict()  # Encoders for categorical features
 
 # --- LOGGING CONFIGURATION ---
-logging.basicConfig(
-    filename="../../traceability_log.txt",
-    level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s",
-)
+try:
+    logging.basicConfig(
+        filename="../../traceability_log.txt",
+        level=logging.INFO,
+        format="%(asctime)s - %(levelname)s - %(message)s",
+    )
+except PermissionError:
+    logging.basicConfig(
+        filename="traceability_log.txt",
+        level=logging.INFO,
+        format="%(asctime)s - %(levelname)s - %(message)s",
+    )
+    print("Permission denied for logging to '../../traceability_log.txt'. Using local log file instead.")
 
 # --- FUNCTION DEFINITIONS ---
 
@@ -87,15 +91,5 @@ def process_event(event, top_features, timestamp_column):
 
     log_traceability("new_vector", activity_label, new_vector)
 
-    dbstream_model = streaming_dbstream_models[activity_label]
-    dbstream_model.partial_fit(new_vector)
-
-    micro_clusters = dbstream_model.get_micro_clusters()
-    log_traceability(
-        "dbstream_micro_clusters", activity_label,
-        f"Total clusters: {len(micro_clusters)}, Details: {micro_clusters}"
-    )
-
     # Return relevant data for the next step
-    return {"activity_label": activity_label, "new_vector": new_vector, "dbstream_model": dbstream_model}
-
+    return {"activity_label": activity_label, "new_vector": new_vector}

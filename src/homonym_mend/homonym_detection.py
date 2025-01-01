@@ -18,8 +18,8 @@ from src.utils.logging_utils import log_traceability
 feature_vectors = defaultdict(list)
 vector_metadata = defaultdict(lambda: defaultdict(lambda: {"frequency": 0, "recency": datetime.now()}))
 audit_log = []
-dbstream_clusters = defaultdict(lambda: DBStream(**dbstream_params))
-event_counter = 0  # Track the number of processed events for logging frequency
+dbstream_clusters = defaultdict(lambda: DBStream(dbstream_params))
+event_counter = defaultdict(int)  # Track the number of processed events per activity label
 
 # Configure logging
 logging.basicConfig(
@@ -35,7 +35,6 @@ def apply_temporal_decay(value, time_difference):
     Apply temporal decay to a value based on time difference.
     """
     return value * np.exp(-temporal_decay_rate * time_difference)
-
 
 def compute_contextual_weighted_similarity(v1, v2, w1, w2, alpha=positional_penalty_alpha):
     """
@@ -68,13 +67,11 @@ def log_merge_or_split(action, clusters_involved, details=None):
         },
     )
 
-
 def aggregate_vectors(cluster_vectors):
     """
     Compute an aggregated vector (mean centroid) for a set of cluster vectors.
     """
     return np.mean(cluster_vectors, axis=0)
-
 
 def analyze_splits_and_merges(activity_label):
     """
@@ -86,6 +83,12 @@ def analyze_splits_and_merges(activity_label):
     if len(micro_clusters) <= 1:
         log_traceability("no_change", activity_label, "Insufficient clusters for analysis.")
         return "no_change", activity_label
+
+    # Log current clusters for debugging
+    log_traceability("current_clusters", activity_label, {
+        "total_clusters": len(micro_clusters),
+        "details": micro_clusters
+    })
 
     # Compute similarity between micro-clusters
     cluster_vectors = [cluster["centroid"] for cluster in micro_clusters]
@@ -127,7 +130,6 @@ def analyze_splits_and_merges(activity_label):
     log_traceability("no_change", activity_label, "No significant change detected.")
     return "no_change", activity_label
 
-
 def process_event(event_data):
     """
     Analyze feature vectors for splits and merges using DBStream.
@@ -141,18 +143,28 @@ def process_event(event_data):
     activity_label = event_data["activity_label"]
     new_vector = event_data["new_vector"]
 
-    dbstream_instance = dbstream_clusters[activity_label]  # Use activity-specific DBStream instance
+    # Check if this is a new activity_label being processed
+    if activity_label not in dbstream_clusters:
+        log_traceability("new_activity_label", activity_label, "Initialized a new cluster group")
+
+    # Access or create the DBStream instance for the activity_label
+    dbstream_instance = dbstream_clusters[activity_label]
 
     # Log the incoming vector for traceability
-    log_traceability("analyze_vector", activity_label, {"new_vector": new_vector})
+    log_traceability("incoming_vector", activity_label, {"vector": new_vector})
 
     # Update DBStream with the new vector
     cluster_id = dbstream_instance.partial_fit(new_vector)
-    log_traceability("update_clusters", activity_label, {"new_vector": new_vector, "cluster_id": cluster_id})
+    log_traceability("cluster_update", activity_label, {
+        "new_vector": new_vector,
+        "cluster_id": cluster_id,
+        "micro_clusters": dbstream_instance.get_micro_clusters()
+    })
 
     # Detect splits and merges
-    return analyze_splits_and_merges(activity_label)
-
+    result = analyze_splits_and_merges(activity_label)
+    log_traceability("split_merge_result", activity_label, {"result": result})
+    return result
 
 def handle_temporal_decay(activity_label):
     """
