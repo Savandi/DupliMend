@@ -4,7 +4,7 @@ import numpy as np
 import logging
 from config.config import temporal_decay_rate
 from src.utils.custom_label_encoder import CustomLabelEncoder
-
+from src.utils.logging_utils import log_traceability
 
 # --- GLOBAL VARIABLES ---
 feature_vectors = defaultdict(list)
@@ -50,15 +50,6 @@ def encode_categorical_feature(feature, value):
         encoded_value = -1  # Fallback for encoding errors
     return encoded_value
 
-def log_traceability(action, activity_label, details):
-    """
-    Log traceability and auditability details.
-    """
-    timestamp = datetime.now().isoformat()
-    entry = {"timestamp": timestamp, "action": action, "activity_label": activity_label, "details": details}
-    audit_log.append(entry)
-    logging.info(f"{action.upper()} - {activity_label}: {details}")
-
 def process_event(event, top_features, timestamp_column):
     """
     Process an event to construct and analyze dynamic feature vectors.
@@ -89,7 +80,7 @@ def process_event(event, top_features, timestamp_column):
         )
         return None
 
-    log_traceability("new_vector", activity_label, new_vector)
+    log_traceability("new_vector", activity_label, {"vector": new_vector, "features": top_features})
 
     # Return relevant data for the next step
     return {"activity_label": activity_label, "new_vector": new_vector}

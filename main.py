@@ -1,4 +1,6 @@
 from collections import defaultdict, deque
+from src.homonym_mend.dynamic_feature_vector_construction import process_event as construct_feature_vector
+from src.homonym_mend.homonym_detection import process_event as analyze_split_merge
 from src.homonym_mend.dynamic_feature_vector_construction import process_event
 from src.homonym_mend.dynamic_binning_and_categorization import stream_event_log
 from src.homonym_mend.feature_selection_with_drift_detection import select_features, configure_window_sizes
@@ -8,12 +10,29 @@ import pandas as pd
 import time
 import logging
 
+from src.utils.logging_utils import log_traceability
+
 # Configure sliding window sizes
 configure_window_sizes()
+# Generate synthetic data
+synthetic_data = generate_synthetic_dataset(num_clusters=3, num_samples_per_cluster=50, overlap=True)
 
+# Ensure required columns are formatted properly
+synthetic_data = synthetic_data.rename(columns={
+    'Feature_1': 'NumericFeature_1',
+    'Feature_2': 'NumericFeature_2',
+    'Feature_3': 'NumericFeature_3'
+})
+
+# Set the dataframe as the event log
+df_event_log = synthetic_data
+
+# Auto-detect data columns
+excluded_columns = {control_flow_column, timestamp_column, resource_column, case_id_column}
+data_columns = [col for col in df_event_log.columns if col not in excluded_columns]
 # Load and prepare the event log
-df_event_log = pd.read_csv('C:/Users/Kalukapu/Documents/Mine Log Abstract 2.csv', encoding='ISO-8859-1')
-
+# df_event_log = pd.read_csv('C:/Users/Kalukapu/Documents/Mine Log Abstract 2.csv', encoding='ISO-8859-1')
+df_event_log = pd.read_csv('C:/Users/drana/Downloads/Mine Log Abstract 2.csv', encoding='ISO-8859-1')
 # Auto-detect data_columns
 excluded_columns = {control_flow_column, timestamp_column, resource_column, case_id_column}
 data_columns = [col for col in df_event_log.columns if col not in excluded_columns]
@@ -56,9 +75,20 @@ for event in stream_event_log(
     )
     print(f"Top Features: {top_features}")
 
-    # Process event
-    result = process_event(event, top_features, timestamp_column)
-    print(f"Change Detected: {result}")
+    # Step 1: Construct feature vector
+    feature_vector_data = construct_feature_vector(event, top_features, timestamp_column)
+    if not feature_vector_data:
+        print("Feature vector construction failed. Skipping event.")
+        continue
+    # Log the constructed feature vector
+    print(f"Constructed Feature Vector: {feature_vector_data['new_vector']}")
+
+    # Step 2: Analyze splits and merges
+    split_merge_result = analyze_split_merge(feature_vector_data)
+    print(f"Split/Merge Analysis Result: {split_merge_result}")
+
+    # Log the split and merge analysis result
+    log_traceability("split_merge_analysis", feature_vector_data["activity_label"], {"result": split_merge_result})
 
     # Periodically log cluster summaries and handle temporal decay
     if isinstance(event_id, int) and event_id % log_frequency == 0:
@@ -66,9 +96,4 @@ for event in stream_event_log(
         handle_temporal_decay(activity_label)  # Apply decay (handled by homonym_detection)
 
     processed_event_ids.add(event_id)
-    logging.basicConfig(
-        filename="../../traceability_log.txt",
-        level=logging.INFO,
-        format="%(asctime)s - %(levelname)s - %(message)s",
-    )
     time.sleep(0.1)

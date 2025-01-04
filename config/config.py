@@ -1,12 +1,18 @@
 # --- Perspective Column Mapping ---
+#control_flow_column = 'Activity'
+#timestamp_column = 'Timestamp'
+#resource_column = 'Resource'
+#case_id_column = 'CaseID'
+data_columns = []  # To be auto-detected
 control_flow_column = 'Activity'
 timestamp_column = 'Timestamp'
 resource_column = 'Resource'
-case_id_column = 'CaseID'
-data_columns = []  # To be auto-detected
+case_id_column = None  # No explicit CaseID in the synthetic data
+
 
 # --- Discretization and Binning Parameters ---
-features_to_discretize = ['age', 'heart_rate', timestamp_column]
+#features_to_discretize = ['age', 'heart_rate', timestamp_column]
+features_to_discretize = ['NumericFeature_1', 'NumericFeature_2', 'NumericFeature_3']
 quantiles = [0.25, 0.5, 0.75]
 sliding_window_size = 100
 bin_density_threshold = 10
