@@ -1,20 +1,17 @@
 # --- Perspective Column Mapping ---
-#control_flow_column = 'Activity'
-#timestamp_column = 'Timestamp'
-#resource_column = 'Resource'
-#case_id_column = 'CaseID'
-data_columns = []  # To be auto-detected
 control_flow_column = 'Activity'
 timestamp_column = 'Timestamp'
 resource_column = 'Resource'
-case_id_column = None  # No explicit CaseID in the synthetic data
+case_id_column = 'CaseID'  # Define CaseID explicitly
+event_id_column = 'EventID'  # Add EventID column for explicit exclusion
 
+# --- Data Columns ---
+data_columns = []  # To be auto-detected
 
 # --- Discretization and Binning Parameters ---
-#features_to_discretize = ['age', 'heart_rate', timestamp_column]
 features_to_discretize = ['NumericFeature_1', 'NumericFeature_2', 'NumericFeature_3']
 quantiles = [0.25, 0.5, 0.75]
-sliding_window_size = 100
+sliding_window_size = 150
 bin_density_threshold = 10
 drift_threshold = 0.05  # For ADWIN drift detection in binning
 grace_period_events = 50  # Number of events to delay decay for new vectors
@@ -31,14 +28,16 @@ positional_penalty_alpha = 0.8  # Positional penalty for misaligned features
 
 # --- Clustering and Drift Detection Parameters ---
 dbstream_params = {
-    "clustering_threshold": 0.9,  # Increased slightly from 1.0 to reduce new cluster creation
-    "fading_factor": 0.02,        # Increased slightly from 0.01 to retain cluster memory longer
-    "cleanup_interval": 2,        # Cleanup frequency (unchanged)
+    "clustering_threshold": 0.9,
+    "fading_factor": 0.02,
+    "cleanup_interval": 2,
     "intersection_factor": 0.3,
-    "grace_period_events": 10
+    "grace_period_events": 50
 }
-# --- Splitting and Merging Parameters ---
-splitting_threshold = 0.8  # Threshold for splitting clusters
-merging_threshold = 0.95  # Threshold for merging aggregated vectors
 
+# --- Splitting and Merging Parameters ---
+splitting_threshold = 0.70
+merging_threshold = 0.80
+
+# --- Logging Parameters ---
 log_frequency = 10

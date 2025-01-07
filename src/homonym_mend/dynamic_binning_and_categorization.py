@@ -61,8 +61,16 @@ class AdaptiveBinning:
         upper_bound = self.bins[bin_index + 1]
         mid_point = (lower_bound + upper_bound) / 2
 
-        # Adjust bin edges
-        self.bins[bin_index + 1:bin_index + 2] = [mid_point, upper_bound]
+        # Stop splitting if the bin width is too small
+        min_bin_width = 0.01  # Define a minimum width threshold
+        if (upper_bound - lower_bound) < min_bin_width:
+            print(f"Stopping split: Bin width too small [{lower_bound}, {upper_bound}]")
+            return
+
+        print(f"Splitting bin: [{lower_bound}, {upper_bound}] into [{lower_bound}, {mid_point}, {upper_bound}]")
+
+        # Insert the new midpoint into the bins array
+        self.bins = np.insert(self.bins, bin_index + 1, mid_point)
 
         # Recalculate bin counts (optional but keeps accurate tracking)
         self.bin_counts = defaultdict(int)

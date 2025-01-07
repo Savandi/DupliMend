@@ -1,54 +1,59 @@
-import numpy as np
+import random
 import pandas as pd
+import numpy as np
 from datetime import datetime, timedelta
 
-def generate_synthetic_dataset(num_clusters=3, num_samples_per_cluster=100, overlap=False):
-    """
-    Generate a synthetic dataset with defined clusters and optional overlap.
 
-    Parameters:
-        num_clusters (int): Number of clusters to generate.
-        num_samples_per_cluster (int): Number of samples per cluster.
-        overlap (bool): If True, clusters will overlap slightly.
+def generate_synthetic_log(version: int, num_cases=10, events_per_case=5):
+    activities_v1 = ["Submit", "Review", "Approve", "Archive"]
+    activities_v2 = ["Submit", "Review", "Approve", "Archive", "Finalize"]
+    activities_v3 = ["Submit", "Submit", "Review", "Approve", "Archive", "Submit"]
 
-    Returns:
-        pd.DataFrame: Synthetic dataset with features and labels.
-    """
-    np.random.seed(42)  # For reproducibility
-    data = []
-    base_time = datetime(2023, 1, 1, 8, 0)  # Start of the process
-    activity_labels = [f"Activity_{i}" for i in range(num_clusters)]
-    resources = [f"Resource_{i}" for i in range(5)]  # Example resources
+    activity_versions = {
+        1: activities_v1,
+        2: activities_v2,
+        3: activities_v3  # Version 3 introduces multiple contexts for "Submit"
+    }
 
-    for cluster_id in range(num_clusters):
-        # Generate cluster center
-        center = np.random.uniform(0, 10, size=3)
-        if overlap:
-            # Shift center slightly for overlap
-            center += np.random.uniform(-1, 1, size=3)
-        for sample in range(num_samples_per_cluster):
-            # Generate data points around the center with slight noise
-            point = center + np.random.normal(scale=0.5, size=3)
+    activities = activity_versions.get(version, activities_v1)
 
-            # Add a timestamp with incremental time steps
-            timestamp = base_time + timedelta(minutes=sample + cluster_id * 10)
+    log = []
+    for case_id in range(1, num_cases + 1):
+        start_time = datetime(2023, 1, 1, 8, 0, 0)
+        for event_id in range(events_per_case):
+            activity = random.choice(activities)
+            # Introduce homonyms (different contexts for "Submit")
+            if activity == "Submit" and version == 3:
+                # Randomly vary contextual features to mimic homonymy
+                resource = random.choice(["UserA", "UserB", "System"])
+                numeric_feature_1 = random.uniform(1, 10)
+                numeric_feature_2 = random.uniform(1, 5)
+            else:
+                resource = random.choice(["UserA", "UserB", "UserC"])
+                numeric_feature_1 = random.uniform(5, 15)
+                numeric_feature_2 = random.uniform(10, 20)
 
-            # Randomly assign a resource
-            resource = np.random.choice(resources)
+            log.append({
+                "EventID": len(log) + 1,
+                "CaseID": case_id,
+                "Timestamp": start_time + timedelta(minutes=event_id * 5),
+                "Activity": activity,
+                "Resource": resource,
+                "NumericFeature_1": round(numeric_feature_1, 2),
+                "NumericFeature_2": round(numeric_feature_2, 2)
+            })
 
-            # Append event with features
-            data.append([timestamp, resource, *point, activity_labels[cluster_id]])
+    return pd.DataFrame(log)
 
-    # Create a DataFrame
-    columns = ['Timestamp', 'Resource', 'Feature_1', 'Feature_2', 'Feature_3', 'Activity']
-    return pd.DataFrame(data, columns=columns)
 
-# Generate synthetic data with clear clusters
-clear_clusters = generate_synthetic_dataset(num_clusters=3, num_samples_per_cluster=50)
+# Generate logs for three versions
+log_v1 = generate_synthetic_log(version=1, num_cases=10, events_per_case=10)
+log_v2 = generate_synthetic_log(version=2, num_cases=10, events_per_case=10)
+log_v3 = generate_synthetic_log(version=3, num_cases=10, events_per_case=10)
 
-# Generate synthetic data with overlapping clusters
-overlapping_clusters = generate_synthetic_dataset(num_clusters=3, num_samples_per_cluster=50, overlap=True)
+# Save logs for reference
+log_v1.to_csv("synthetic_log_v1.csv", index=False)
+log_v2.to_csv("synthetic_log_v2.csv", index=False)
+log_v3.to_csv("synthetic_log_v3.csv", index=False)
 
-# Save for testing
-clear_clusters.to_csv("clear_clusters.csv", index=False)
-overlapping_clusters.to_csv("overlapping_clusters.csv", index=False)
+print("Logs generated and saved: synthetic_log_v1.csv, synthetic_log_v2.csv, synthetic_log_v3.csv")
