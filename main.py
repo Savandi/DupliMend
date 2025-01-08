@@ -30,7 +30,7 @@ configure_window_sizes()
 
 # Set the dataframe as the event log
 #df_event_log = synthetic_data
-df_event_log = pd.read_csv('./src/homonym_mend/combined_synthetic_log.csv', encoding='ISO-8859-1')
+df_event_log = pd.read_csv('./src/homonym_mend/updated_combined_synthetic_log.csv', encoding='ISO-8859-1')
 # Load and prepare the event log
 # df_event_log = pd.read_csv('C:/Users/Kalukapu/Documents/Mine Log Abstract 2.csv', encoding='ISO-8859-1')
 #df_event_log = pd.read_csv('C:/Users/drana/Downloads/Mine Log Abstract 2.csv', encoding='ISO-8859-1')
@@ -40,13 +40,15 @@ data_columns = [col for col in df_event_log.columns if col not in excluded_colum
 df_event_log[timestamp_column] = pd.to_datetime(df_event_log[timestamp_column])
 df_event_log = df_event_log.sort_values(by=timestamp_column)
 
+
 # Streaming and processing events
 print(f"Total events in dataset: {len(df_event_log)}")
+print(f"Total unique Event IDs: {len(df_event_log['EventID'].unique())}")
 processed_event_ids = set()
 
 sliding_windows = defaultdict(lambda: deque(maxlen=sliding_window_size))
 
-for event in stream_event_log(
+for iteration, event in enumerate(stream_event_log(
         df=df_event_log,
         timestamp_column=timestamp_column,
         control_flow_column=control_flow_column,
@@ -58,13 +60,13 @@ for event in stream_event_log(
         bin_density_threshold=bin_density_threshold,
         quantiles=quantiles,
         delay=1
-):
+), start=1):
     event_id = event.get("EventID")
     if event_id in processed_event_ids:
         continue
 
     activity_label = event[control_flow_column]
-    print(f"Processing Event ID: {event_id}, Activity: {activity_label}", flush=True)
+    print(f"Processing Event: {iteration}, Activity: {activity_label}", flush=True)
 
     top_features = select_features(
         event,

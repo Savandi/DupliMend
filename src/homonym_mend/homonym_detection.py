@@ -12,21 +12,18 @@ from config.config import (
     positional_penalty_alpha,
     dbstream_params,
     grace_period_events,
-    adaptive_threshold_variability,
-)
+    adaptive_threshold_min_variability)
 
 # --- GLOBAL VARIABLES ---
+cluster_grace_period = timedelta(seconds=grace_period_events)
 feature_vectors = defaultdict(list)
 vector_metadata = defaultdict(lambda: defaultdict(lambda: {"frequency": 0, "recency": datetime.now()}))
 audit_log = []
 dbstream_clusters = defaultdict(lambda: DBStream(dbstream_params))
 event_counter = defaultdict(int)  # Track the number of processed events per activity label
-
 adaptive_split_threshold = splitting_threshold
 adaptive_merge_threshold = merging_threshold
-
 cluster_last_updated = defaultdict(lambda: datetime.min)
-cluster_grace_period = timedelta(seconds=5)
 
 # Configure logging
 logging.basicConfig(
@@ -36,13 +33,39 @@ logging.basicConfig(
 )
 
 # --- FUNCTION DEFINITIONS ---
+def adaptive_threshold_variability(feature_vectors):
+    """
+    Compute variability factor based on feature vectors' dispersion.
+    Higher variability leads to less aggressive splitting/merging thresholds.
+    """
+    if len(feature_vectors) <= 1:
+        return adaptive_threshold_min_variability  # Use stricter lower bound
+
+    # Compute pairwise distances between feature vectors
+    distances = []
+    for i in range(len(feature_vectors)):
+        for j in range(i + 1, len(feature_vectors)):
+            distances.append(np.linalg.norm(np.array(feature_vectors[i]) - np.array(feature_vectors[j])))
+
+    if not distances:
+        return adaptive_threshold_min_variability  # Use stricter lower bound
+
+    mean_distance = np.mean(distances)
+    std_distance = np.std(distances)
+
+    # Normalize the variability (mean +/- std range)
+    variability_factor = min(max((mean_distance + std_distance) / 10.0, adaptive_threshold_min_variability), 1.5)
+    return variability_factor
+
 def adjust_thresholds(recent_variability):
     """
     Dynamically adjust splitting and merging thresholds based on recent variability.
     """
     global adaptive_split_threshold, adaptive_merge_threshold
 
-    if recent_variability > adaptive_threshold_variability:
+    min_variability = adaptive_threshold_min_variability  # Use the configured lower bound
+
+    if recent_variability > min_variability:
         adaptive_split_threshold = min(1.0, adaptive_split_threshold + 0.05)
         adaptive_merge_threshold = max(0.5, adaptive_merge_threshold - 0.05)
     else:
@@ -93,51 +116,76 @@ def aggregate_vectors(cluster_vectors):
     return np.mean(cluster_vectors, axis=0)
 
 def analyze_splits_and_merges(activity_label, dbstream_instance):
-    """
-    Analyze DBStream clusters to detect splits or merges for a specific activity.
-    """
-    global cluster_last_updated, adaptive_split_threshold
-
     micro_clusters = dbstream_instance.get_micro_clusters()
-    recent_variability = dbstream_instance.compute_cluster_variability()
-    adjust_thresholds(recent_variability)
 
     if len(micro_clusters) <= 1:
+        log_traceability("no_change", activity_label, "Insufficient clusters for analysis.")
         return "no_change", activity_label
 
-    # Compute similarity between micro-clusters
-    cluster_vectors = [cluster["centroid"] for cluster in micro_clusters]
+    # Compute variability-based adaptive thresholds
+    feature_vectors = [cluster["centroid"] for cluster in micro_clusters]
+    variability = adaptive_threshold_variability(feature_vectors)
+    adjust_thresholds(variability)  # Use adjust_thresholds to update thresholds dynamically
+
+    dynamic_splitting_threshold = adaptive_split_threshold
+    dynamic_merging_threshold = adaptive_merge_threshold
+
+    log_traceability("current_clusters", activity_label, {
+        "total_clusters": len(micro_clusters),
+        "dynamic_splitting_threshold": dynamic_splitting_threshold,
+        "dynamic_merging_threshold": dynamic_merging_threshold,
+    })
+
+    # Temporal stability check
+    now = datetime.now()
+    stable_clusters = [
+        cluster for cluster_id, cluster in enumerate(micro_clusters)
+        if (now - cluster_last_updated[cluster_id]).total_seconds() > cluster_grace_period.total_seconds()
+    ]
+    if len(stable_clusters) < len(micro_clusters):
+        log_traceability("no_split_due_to_stability", activity_label, "Clusters not stable long enough.")
+        return "no_change", activity_label
+
+    # Compute similarity matrix
+    cluster_vectors = [cluster["centroid"] for cluster in stable_clusters]
     similarity_matrix = np.zeros((len(cluster_vectors), len(cluster_vectors)))
 
     for i in range(len(cluster_vectors)):
         for j in range(i, len(cluster_vectors)):
-            similarity_matrix[i][j] = 1 - np.linalg.norm(cluster_vectors[i] - cluster_vectors[j])
+            similarity_matrix[i][j] = compute_contextual_weighted_similarity(
+                cluster_vectors[i],
+                cluster_vectors[j],
+                [1.0] * len(cluster_vectors[0]),
+                [1.0] * len(cluster_vectors[0]),
+            )
             similarity_matrix[j][i] = similarity_matrix[i][j]
 
     # Detect splits
-    split_clusters = []
-    for i, cluster in enumerate(micro_clusters):
-        if (datetime.now() - cluster_last_updated[i]) < cluster_grace_period:
-            continue  # Skip recently updated clusters
-
-        if np.any(similarity_matrix[i] < adaptive_split_threshold):
-            split_clusters.append(f"Cluster_{i}")
-
-    if split_clusters:
+    split_clusters = [
+        f"Cluster_{i}" for i, cluster in enumerate(stable_clusters)
+        if np.any(similarity_matrix[i] < dynamic_splitting_threshold)
+    ]
+    if len(split_clusters) > 1:
+        log_merge_or_split("split", split_clusters, {"similarity_matrix": similarity_matrix.tolist()})
         return "split", split_clusters
 
-    # Detect merges using aggregated vector
-    aggregated_vector = np.mean(cluster_vectors, axis=0)
+    # Detect merges
+    aggregated_vector = aggregate_vectors(cluster_vectors)
     merged_clusters = []
     for i, centroid in enumerate(cluster_vectors):
-        similarity = 1 - np.linalg.norm(centroid - aggregated_vector)
-        if similarity > adaptive_merge_threshold:
+        similarity = compute_contextual_weighted_similarity(
+            centroid, aggregated_vector, [1.0] * len(aggregated_vector), [1.0] * len(aggregated_vector)
+        )
+        if similarity > dynamic_merging_threshold:
             merged_clusters.append(i)
 
     if merged_clusters:
+        log_merge_or_split("merge", merged_clusters, {"aggregated_vector": aggregated_vector.tolist()})
         return "merge", merged_clusters
 
+    log_traceability("no_change", activity_label, "No significant change detected.")
     return "no_change", activity_label
+
 def process_event(event_data):
     """
     Process an incoming event and analyze splits or merges.
@@ -161,9 +209,14 @@ def process_event(event_data):
     cluster_last_updated[cluster_id] = datetime.now()
 
     # Analyze for splits or merges
+    feature_vectors = [cluster["centroid"] for cluster in dbstream_instance.get_micro_clusters()]
+    variability = adaptive_threshold_variability(feature_vectors)
+    adjust_thresholds(variability)  # Adjust thresholds dynamically
+
     result = analyze_splits_and_merges(activity_label, dbstream_instance)
     log_traceability("split_merge_result", activity_label, {"result": result})
     return result
+
 def handle_temporal_decay(activity_label):
     """
     Apply temporal decay to clusters for a specific activity.
@@ -172,7 +225,7 @@ def handle_temporal_decay(activity_label):
     current_time = datetime.now()
 
     for vector, data in list(metadata.items()):
-        if data["frequency"] < grace_period_events:
+        if data["frequency"] < grace_period_events:  # Reference global config
             continue  # Skip decay for vectors within the grace period
 
         time_diff = (current_time - data["recency"]).total_seconds()

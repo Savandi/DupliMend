@@ -8,7 +8,7 @@ class AdaptiveBinning:
     """
     Adaptive binning approach combining quantile-based binning with density-based adjustments.
     """
-    def __init__(self, initial_bins=10, bin_density_threshold=10, drift_threshold=0.05):
+    def __init__(self, initial_bins=10, bin_density_threshold=50, drift_threshold=0.05):
         self.initial_bins = initial_bins
         self.bin_density_threshold = bin_density_threshold
         self.drift_detector = ADWIN(delta=drift_threshold)
@@ -115,9 +115,9 @@ def extract_temporal_features(timestamp):
 
 
 def stream_event_log(
-    df, timestamp_column, control_flow_column, resource_column, case_id_column,
-    data_columns, features_to_discretize, sliding_window_size,
-    bin_density_threshold, quantiles=None, delay=1
+        df, timestamp_column, control_flow_column, resource_column, case_id_column,
+        data_columns, features_to_discretize, sliding_window_size,
+        bin_density_threshold, quantiles=None, delay=1
 ):
     sliding_window = defaultdict(lambda: deque(maxlen=sliding_window_size))
     adaptive_bin_models = defaultdict(
@@ -127,14 +127,23 @@ def stream_event_log(
         )
     )
 
+    # Ensure uniqueness of events
+    seen_event_ids = set()
+
     for _, event in df.iterrows():
         event_dict = event.to_dict()
+        event_id = event_dict.get('EventID')
+
+        # Skip duplicate EventIDs
+        if event_id in seen_event_ids:
+            print(f"Skipping duplicate Event ID: {event_id}")
+            continue
+        seen_event_ids.add(event_id)
 
         # Apply binning for selected features
         for feature in features_to_discretize:
             if feature in event_dict:
                 if feature == timestamp_column:
-                    # Extract and bin temporal features
                     for temp_feature, temp_value in extract_temporal_features(event_dict[feature]).items():
                         event_dict[f"{feature}_{temp_feature}_bin"] = temp_value
                 else:
@@ -142,5 +151,6 @@ def stream_event_log(
                     adaptive_model.update_bins(event_dict[feature])
                     event_dict[f"{feature}_bin"] = adaptive_model.assign_bin(event_dict[feature])
 
+        print(f"Streaming Event ID: {event_id}")
         yield event_dict
         time.sleep(delay)

@@ -1,7 +1,7 @@
 import numpy as np
 from collections import defaultdict, Counter
 from src.utils.logging_utils import log_traceability
-
+from config.config import grace_period_events
 
 class DBStream:
     """
@@ -17,7 +17,7 @@ class DBStream:
         """
         self.clustering_threshold = params.get("clustering_threshold", 1.0)
         self.fading_factor = params.get("fading_factor", 0.01)
-        self.grace_period_events = params.get("grace_period_events", 10)
+        self.grace_period_events = params.get("grace_period_events", grace_period_events)
         self.cleanup_interval = params.get("cleanup_interval", 2)
         self.micro_clusters = []  # List of micro-clusters
         self.event_count = 0  # Track the number of processed events
