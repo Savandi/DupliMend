@@ -8,7 +8,11 @@ from config.config import *
 import pandas as pd
 import time
 import logging
-
+logging.basicConfig(
+    filename="../../logs/traceability_log.txt",
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s",
+)
 from src.utils.logging_utils import log_traceability
 
 from config.config import (

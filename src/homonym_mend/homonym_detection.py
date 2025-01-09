@@ -25,12 +25,12 @@ adaptive_split_threshold = splitting_threshold
 adaptive_merge_threshold = merging_threshold
 cluster_last_updated = defaultdict(lambda: datetime.min)
 
-# Configure logging
-logging.basicConfig(
-    filename="../../traceability_log.txt",
-    level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s",
-)
+# # Configure logging
+# logging.basicConfig(
+#     filename="../../traceability_log.txt",
+#     level=logging.INFO,
+#     format="%(asctime)s - %(levelname)s - %(message)s",
+# )
 
 # --- FUNCTION DEFINITIONS ---
 def adaptive_threshold_variability(feature_vectors):
