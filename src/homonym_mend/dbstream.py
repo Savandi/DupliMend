@@ -23,18 +23,22 @@ class DBStream:
         self.event_count = 0  # Track the number of processed events
 
     def partial_fit(self, vector):
+        """
+        Incrementally fit a new feature vector into clusters, tracking the most frequent vector as centroid.
+        """
         log_traceability("dbstream_update", "DBStream", {"vector": vector})
 
+        # Update existing clusters or create a new cluster
         matched_cluster = None
         self.event_count += 1
 
         for cluster in self.micro_clusters:
+            # Compare the new vector with cluster's centroid
             similarity = self._vector_similarity(vector, cluster["centroid"])
             if abs(similarity - 1.0) < 1e-6:  # Identical vectors
-                cluster["vector_frequencies"][tuple(vector)] += 1
+                cluster["vector_frequencies"][tuple(vector)] += 1  # Increase frequency
                 cluster["last_updated"] = self.event_count
                 cluster["centroid"] = self._most_frequent_vector(cluster["vector_frequencies"])
-                cluster["age"] += 1  # Increment age for existing cluster
                 matched_cluster = cluster
                 break
 
@@ -43,14 +47,12 @@ class DBStream:
             new_cluster = {
                 "centroid": vector,
                 "vector_frequencies": Counter({tuple(vector): 1}),
-                "last_updated": self.event_count,
-                "age": 0  # Initialize age for new cluster
+                "last_updated": self.event_count
             }
             self.micro_clusters.append(new_cluster)
             log_traceability("new_cluster", "DBStream", {"centroid": vector})
-        else:
-            matched_cluster["age"] += 1  # Increment age for matched cluster
 
+        # Apply temporal decay
         self._apply_decay()
 
     def get_micro_clusters(self):
