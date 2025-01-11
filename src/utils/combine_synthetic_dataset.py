@@ -38,6 +38,7 @@ combined_log.loc[:4, "NumericFeature_2"] = [3.1, 2.9, 1.2, 4.4, 3.3]
 # Ensure unique EventIDs
 combined_log['EventID'] = range(1, len(combined_log) + 1)
 
+<<<<<<< Updated upstream:src/utils/combine_synthetic_dataset.py
 # Ensure unique timestamps
 combined_log['Timestamp'] = pd.to_datetime(combined_log['Timestamp'])  # Convert to datetime if not already
 df = combined_log.sort_values('Timestamp')  # Sort by Timestamp
@@ -49,3 +50,12 @@ df.to_csv(output_path, index=False, encoding='ISO-8859-1')
 
 
 print("Combined synthetic log generated and saved as 'updated_combined_synthetic_log.csv'.")
+=======
+# Assign unique event IDs
+combined_log["EventID"] = range(1, len(combined_log) + 1)
+
+# Save the combined log
+combined_log.to_csv("combined_synthetic_log.csv", index=False)
+
+print("Combined synthetic log generated and saved as 'combined_synthetic_log.csv'.")
+>>>>>>> Stashed changes:src/homonym_mend/combine_synthetic_dataset.py

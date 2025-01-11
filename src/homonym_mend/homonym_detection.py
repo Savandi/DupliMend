@@ -81,6 +81,7 @@ def apply_temporal_decay(value, time_difference):
 def compute_contextual_weighted_similarity(v1, v2, w1, w2, alpha=positional_penalty_alpha):
     """
     Compute contextual weighted similarity for two feature vectors.
+    Stricter penalties are applied for dissimilar features.
     """
     n, m = len(v1), len(v2)
     length_penalty = min(n, m) / max(n, m)
@@ -89,15 +90,17 @@ def compute_contextual_weighted_similarity(v1, v2, w1, w2, alpha=positional_pena
     weighted_sum = 0
     for i in range(n):
         for j in range(m):
-            sim = 1 - abs(v1[i] - v2[j])  # Numerical similarity for encoded features
-            positional_penalty = 1 if i == j else alpha
+            # Apply a stricter penalty for larger differences
+            sim = 1 - (abs(v1[i] - v2[j]) ** 2)  # Squaring amplifies dissimilarity
+            sim = max(sim, 0)  # Ensure similarity does not go negative
+            positional_penalty = alpha if i != j else 1
             weight = (w1[i] + w2[j]) / 2
             weighted_sum += sim * positional_penalty * weight
 
     similarity = (weighted_sum / normalization_factor) * length_penalty
     return similarity
 
-def log_merge_or_split(action, clusters_involved, details=None):
+def                                                                                                                                                                         log_merge_or_split(action, clusters_involved, details=None):
     """
     Logs merge or split actions for traceability.
     """
@@ -125,6 +128,7 @@ def analyze_splits_and_merges(activity_label, dbstream_instance):
     # Compute variability-based adaptive thresholds
     feature_vectors = [cluster["centroid"] for cluster in micro_clusters]
     variability = adaptive_threshold_variability(feature_vectors)
+<<<<<<< Updated upstream
     adjust_thresholds(variability)  # Use adjust_thresholds to update thresholds dynamically
 
     dynamic_splitting_threshold = adaptive_split_threshold
@@ -132,18 +136,37 @@ def analyze_splits_and_merges(activity_label, dbstream_instance):
 
     log_traceability("current_clusters", activity_label, {
         "total_clusters": len(micro_clusters),
+=======
+    dynamic_splitting_threshold = max(splitting_threshold * variability, 0.85)
+    dynamic_merging_threshold = max(merging_threshold * variability, 0.80)
+
+    log_traceability("variability_and_thresholds", activity_label, {
+        "variability_factor": variability,
+>>>>>>> Stashed changes
         "dynamic_splitting_threshold": dynamic_splitting_threshold,
         "dynamic_merging_threshold": dynamic_merging_threshold,
     })
 
+<<<<<<< Updated upstream
     # Temporal stability check
+=======
+    # Temporal stability check with age constraint
+>>>>>>> Stashed changes
     now = datetime.now()
     stable_clusters = [
         cluster for cluster_id, cluster in enumerate(micro_clusters)
         if (now - cluster_last_updated[cluster_id]).total_seconds() > cluster_grace_period.total_seconds()
+<<<<<<< Updated upstream
     ]
     if len(stable_clusters) < len(micro_clusters):
         log_traceability("no_split_due_to_stability", activity_label, "Clusters not stable long enough.")
+=======
+           and cluster.get("age", 0) > 100  # Use .get to handle missing 'age'
+    ]
+
+    if len(stable_clusters) < len(micro_clusters):
+        log_traceability("no_split_due_to_stability", activity_label, "Clusters not stable long enough or too young.")
+>>>>>>> Stashed changes
         return "no_change", activity_label
 
     # Compute similarity matrix
@@ -160,6 +183,9 @@ def analyze_splits_and_merges(activity_label, dbstream_instance):
             )
             similarity_matrix[j][i] = similarity_matrix[i][j]
 
+    # Log the similarity matrix for debugging
+    logging.info(f"Similarity matrix for {activity_label}: {similarity_matrix}")
+
     # Detect splits
     split_clusters = [
         f"Cluster_{i}" for i, cluster in enumerate(stable_clusters)
@@ -169,6 +195,13 @@ def analyze_splits_and_merges(activity_label, dbstream_instance):
         log_merge_or_split("split", split_clusters, {"similarity_matrix": similarity_matrix.tolist()})
         return "split", split_clusters
 
+<<<<<<< Updated upstream
+=======
+    log_traceability("similarity_matrix", activity_label, {
+        "similarity_matrix": similarity_matrix.tolist()
+    })
+
+>>>>>>> Stashed changes
     # Detect merges
     aggregated_vector = aggregate_vectors(cluster_vectors)
     merged_clusters = []
@@ -186,23 +219,42 @@ def analyze_splits_and_merges(activity_label, dbstream_instance):
     log_traceability("no_change", activity_label, "No significant change detected.")
     return "no_change", activity_label
 
+<<<<<<< Updated upstream
+=======
+def normalize_vector(vector):
+    """
+    Normalize a numeric vector to have mean 0 and standard deviation 1.
+    """
+    if np.std(vector) == 0:  # Avoid division by zero
+        return vector
+    return (vector - np.mean(vector)) / np.std(vector)
+
+>>>>>>> Stashed changes
 def process_event(event_data):
     """
     Process an incoming event and analyze splits or merges.
     """
     activity_label = event_data["activity_label"]
     new_vector = event_data["new_vector"]
+
+    # Normalize the vector
+    normalized_vector = normalize_vector(new_vector)
+
+    log_traceability("vector_normalization", activity_label, {
+        "raw_vector": new_vector,
+        "normalized_vector": normalized_vector
+    })
     # Check if this is a new activity_label being processed
     if activity_label not in dbstream_clusters:
         log_traceability("new_activity_label", activity_label, "Initialized a new cluster group")
 
     dbstream_instance = dbstream_clusters[activity_label]
-    log_traceability("incoming_vector", activity_label, {"vector": new_vector})
+    log_traceability("incoming_vector", activity_label, {"vector": normalized_vector})
 
-    # Update DBStream with the new vector
-    cluster_id = dbstream_instance.partial_fit(new_vector)
+    # Update DBStream with the normalized vector
+    cluster_id = dbstream_instance.partial_fit(normalized_vector)
     log_traceability("cluster_update", activity_label, {
-        "new_vector": new_vector,
+        "new_vector": normalized_vector,
         "cluster_id": cluster_id,
         "micro_clusters": dbstream_instance.get_micro_clusters()
     })
