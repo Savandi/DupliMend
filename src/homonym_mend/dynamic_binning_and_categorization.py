@@ -115,9 +115,9 @@ def extract_temporal_features(timestamp):
 
 
 def stream_event_log(
-        df, timestamp_column, control_flow_column, resource_column, case_id_column,
-        data_columns, features_to_discretize, sliding_window_size,
-        bin_density_threshold, quantiles=None, delay=1
+    event_dict, timestamp_column, control_flow_column, resource_column, case_id_column,
+    event_id_column, data_columns, features_to_discretize, sliding_window_size,
+    bin_density_threshold, quantiles=None
 ):
     sliding_window = defaultdict(lambda: deque(maxlen=sliding_window_size))
     adaptive_bin_models = defaultdict(
@@ -126,31 +126,20 @@ def stream_event_log(
             initial_bins=len(quantiles) if quantiles else 10
         )
     )
+    # Apply binning for selected features
+    for feature in features_to_discretize:
+        if feature in event_dict:
+            if feature == timestamp_column:
+                # Extract and bin temporal features
+                for temp_feature, temp_value in extract_temporal_features(event_dict[feature]).items():
+                    event_dict[f"{feature}_{temp_feature}_bin"] = temp_value
+            else:
+                adaptive_model = adaptive_bin_models[feature]
+                adaptive_model.update_bins(event_dict[feature])
+                event_dict[f"{feature}_bin"] = adaptive_model.assign_bin(event_dict[feature])
 
-    # Ensure uniqueness of events
-    seen_event_ids = set()
+    # Debug print to check event_id
+    print(f"Yielding Event ID: {event_dict.get(event_id_column)}")
 
-    for _, event in df.iterrows():
-        event_dict = event.to_dict()
-        event_id = event_dict.get('EventID')
+    return event_dict
 
-        # Skip duplicate EventIDs
-        if event_id in seen_event_ids:
-            print(f"Skipping duplicate Event ID: {event_id}")
-            continue
-        seen_event_ids.add(event_id)
-
-        # Apply binning for selected features
-        for feature in features_to_discretize:
-            if feature in event_dict:
-                if feature == timestamp_column:
-                    for temp_feature, temp_value in extract_temporal_features(event_dict[feature]).items():
-                        event_dict[f"{feature}_{temp_feature}_bin"] = temp_value
-                else:
-                    adaptive_model = adaptive_bin_models[feature]
-                    adaptive_model.update_bins(event_dict[feature])
-                    event_dict[f"{feature}_bin"] = adaptive_model.assign_bin(event_dict[feature])
-
-        print(f"Streaming Event ID: {event_id}")
-        yield event_dict
-        time.sleep(delay)

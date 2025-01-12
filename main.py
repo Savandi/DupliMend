@@ -1,43 +1,27 @@
+import time
 from collections import defaultdict, deque
-from src.homonym_mend.dynamic_feature_vector_construction import process_event as construct_feature_vector
-from src.homonym_mend.homonym_detection import process_event as analyze_split_merge, dbstream_clusters
+
+import pandas as pd
+
+from config.config import *
+from config.config import (
+    event_id_column, case_id_column, features_to_discretize
+)
 from src.homonym_mend.dynamic_binning_and_categorization import stream_event_log
+from src.homonym_mend.dynamic_feature_vector_construction import process_event as construct_feature_vector
 from src.homonym_mend.feature_selection_with_drift_detection import select_features, configure_window_sizes
 from src.homonym_mend.homonym_detection import handle_temporal_decay, log_cluster_summary
-from config.config import *
-import pandas as pd
-import time
-import logging
-logging.basicConfig(
-    filename="../../logs/traceability_log.txt",
-    level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s",
-)
+
+from src.homonym_mend.homonym_detection import process_event as analyze_split_merge, dbstream_clusters
 from src.utils.logging_utils import log_traceability
 
-from config.config import (
-    event_id_column, case_id_column, features_to_discretize, data_columns
-)
 # Configure sliding window sizes
 configure_window_sizes()
-# Generate synthetic data
-#synthetic_data = generate_synthetic_dataset(num_clusters=3, num_samples_per_cluster=50, overlap=True)
-
-#print(synthetic_data.head())
-
-# Ensure required columns are formatted properly
-#synthetic_data = synthetic_data.rename(columns={
-#     'Feature_1': 'NumericFeature_1',
-#     'Feature_2': 'NumericFeature_2',
-#     'Feature_3': 'NumericFeature_3'
-# })
 
 # Set the dataframe as the event log
-#df_event_log = synthetic_data
-df_event_log = pd.read_csv('./src/homonym_mend/updated_combined_synthetic_log.csv', encoding='ISO-8859-1')
-# Load and prepare the event log
-# df_event_log = pd.read_csv('C:/Users/Kalukapu/Documents/Mine Log Abstract 2.csv', encoding='ISO-8859-1')
-#df_event_log = pd.read_csv('C:/Users/drana/Downloads/Mine Log Abstract 2.csv', encoding='ISO-8859-1')
+
+df_event_log = pd.read_csv('./src/homonym_mend/synthetic_log_with_homonyms.csv', encoding='ISO-8859-1')
+
 # Auto-detect data_columns
 excluded_columns = {control_flow_column, timestamp_column, resource_column, case_id_column, event_id_column}
 data_columns = [col for col in df_event_log.columns if col not in excluded_columns]
@@ -52,25 +36,38 @@ processed_event_ids = set()
 
 sliding_windows = defaultdict(lambda: deque(maxlen=sliding_window_size))
 
-for iteration, event in enumerate(stream_event_log(
-        df=df_event_log,
+
+event_counter = 1
+
+for _, event in df_event_log.iterrows():
+    event_dict = event.to_dict()
+    processed_event = stream_event_log(
+        event_dict=event_dict,
         timestamp_column=timestamp_column,
         control_flow_column=control_flow_column,
         resource_column=resource_column,
         case_id_column=case_id_column,
+        event_id_column=event_id_column,
         data_columns=data_columns,
         features_to_discretize=features_to_discretize,
         sliding_window_size=sliding_window_size,
         bin_density_threshold=bin_density_threshold,
-        quantiles=quantiles,
-        delay=1
-), start=1):
-    event_id = event.get("EventID")
+
+        quantiles=quantiles
+    )
+    event_id = event.get(event_id_column)
+    if event_id is None:
+        print("Warning: Event ID is None. Skipping event.")
+        continue
+
     if event_id in processed_event_ids:
+        print(f"Skipping already processed event ID: {event_id}")
         continue
 
     activity_label = event[control_flow_column]
-    print(f"Processing Event: {iteration}, Activity: {activity_label}", flush=True)
+
+    print(f"Processing Event {event_counter}, Event ID: {event_id}, Activity: {activity_label}", flush=True)
+    event_counter += 1
 
     top_features = select_features(
         event,
@@ -104,4 +101,5 @@ for iteration, event in enumerate(stream_event_log(
         handle_temporal_decay(activity_label)
 
     processed_event_ids.add(event_id)
+    print(f"Added Event ID {event_id} to processed_event_ids")
     time.sleep(0.1)
