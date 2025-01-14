@@ -1,6 +1,7 @@
 from collections import defaultdict, deque
 from river.drift import ADWIN
-from config.config import adaptive_window_min_size, adaptive_window_max_size, initial_window_size
+from config.config import adaptive_window_min_size, adaptive_window_max_size, initial_window_size, max_top_n_features, \
+    temporal_decay_rate
 from sklearn.feature_selection import mutual_info_classif, f_classif
 from sklearn.preprocessing import OneHotEncoder
 import numpy as np
@@ -90,7 +91,7 @@ def ensemble_feature_scoring(event, activity_label):
     return ensemble_scores
 
 
-def temporal_weighting(score, event_time, current_time, decay_rate=0.01):
+def temporal_weighting(score, event_time, current_time, decay_rate=temporal_decay_rate):
     """
     Apply temporal decay to feature scores based on time difference.
     """
@@ -111,11 +112,12 @@ def adaptive_threshold(feature_scores):
 
     scores = np.array(list(feature_scores.values()))
     if len(scores) == 0:
-        return 3  # Default to a minimum threshold when no scores are available
+        return max_top_n_features  # Default to a minimum threshold when no scores are available
 
     variability = np.nanstd(scores)  # Use nanstd to handle NaN values gracefully
     variability_threshold = 0.1  # Define a default threshold for variability
-    return max(3, int(np.nan_to_num(variability) / variability_threshold))  # Handle NaN with nan_to_num
+    return max(max_top_n_features,
+               int(np.nan_to_num(variability) / variability_threshold))  # Handle NaN with nan_to_num
 
 
 def compute_feature_scores(event, previous_event, activity_column, timestamp_column, resource_column, data_columns):
@@ -125,25 +127,36 @@ def compute_feature_scores(event, previous_event, activity_column, timestamp_col
     feature_scores = defaultdict(float)
 
     # Control-Flow Perspective
-    if previous_event is not None:
-        feature_scores[activity_column] += 1  # Activity transitions contribute to control-flow
+    if previous_event is not None and activity_column in previous_event:
+        prev_activity = previous_event[activity_column]
+        curr_activity = event[activity_column]
+        print(f"Control-Flow Debug: Previous Activity: {prev_activity}, Current Activity: {curr_activity}")
+        if prev_activity != curr_activity:
+            feature_scores[activity_column] += 1.0  # Weight for activity transitions
+            print(f"Control-Flow Contribution for '{activity_column}': {feature_scores[activity_column]}")
 
     # Temporal Perspective
     temporal_features = ['hour', 'day_of_week', 'season']
     for feature in temporal_features:
         if feature in event:
             feature_scores[feature] += 0.3
+    print(f"Temporal Perspective Scores: {feature_scores}")
 
     # Resource Perspective
     if resource_column in event:
         feature_scores[resource_column] += 0.5
+    print(f"Resource Perspective Scores: {feature_scores}")
 
     # Data Perspective
     for column in data_columns:
         if column in event:
-            feature_scores[column] += 0.2
+            feature_scores[column] += 0.6
+    print(f"Data Perspective Scores: {feature_scores}")
 
+    print(f"Final Feature Scores for Event: {dict(feature_scores)}")  # Log all feature scores
     return feature_scores
+
+
 
 
 def detect_drift(feature, feature_scores):
@@ -157,7 +170,7 @@ def detect_drift(feature, feature_scores):
     return drift_detector[feature].update(avg_score)
 
 
-def select_features(event, previous_event, activity_column, timestamp_column, resource_column, data_columns, top_n=3):
+def select_features(event, previous_event, activity_column, timestamp_column, resource_column, data_columns):
     """
     Compute feature scores, detect drift, and select top dataset features.
     """
@@ -170,9 +183,6 @@ def select_features(event, previous_event, activity_column, timestamp_column, re
     ensemble_scores = ensemble_feature_scoring(event, event[activity_column])
     for feature, score in ensemble_scores.items():
         feature_scores[feature] += score
-
-    # Adjust thresholds for dynamic feature selection
-    top_n = adaptive_threshold(feature_scores)
 
     # Temporal Weighting
     current_time = event[timestamp_column]
@@ -193,8 +203,12 @@ def select_features(event, previous_event, activity_column, timestamp_column, re
         for feature, window in feature_importance_windows.items()
     }
 
+    # Adjust thresholds for dynamic feature selection
+    top_n = adaptive_threshold(feature_scores)
+
     # Select top N features
     top_features = sorted(aggregated_scores, key=aggregated_scores.get, reverse=True)[:top_n]
+
     # Return the selected features
     return top_features
 

@@ -4,21 +4,23 @@ import random
 from datetime import datetime, timedelta
 
 # Parameters for synthetic log generation
-num_cases = 50
-num_events = 300
+num_cases = 100
+num_events = 1000
 start_time = datetime.now() - timedelta(days=30)
 
 # Possible activity labels (with "Submit" as the homonymous label to be detected)
 activity_labels = ["Submit", "Review", "Approve", "Archive", "Finalize"]
 
-# Resources and categorical feature options
+# Resources, locations, shifts, and departments
 resources = ["User_1", "User_2", "User_3", "User_4"]
-categorical_features_1 = ["Team_A", "Team_B", "Team_C"]
-categorical_features_2 = ["High", "Medium", "Low"]
+locations = ["Branch_A", "Branch_B", "Branch_C", "Headquarters"]
+shifts = ["Morning", "Afternoon", "Night"]
+departments = ["HR", "Finance", "IT", "Operations"]
 
 # Numerical feature ranges
-numeric_feature_1_range = (1, 100)
-numeric_feature_2_range = (0, 50)
+processing_time_range = (1, 120)  # Processing time in minutes
+priority_level_range = (1, 5)  # Priority levels (1: Low, 5: High)
+file_size_range = (0.1, 10.0)  # File size in MB
 
 # Generate synthetic log
 event_log = []
@@ -32,27 +34,45 @@ def generate_event_id(event_number):
 def generate_timestamp(base_time, event_idx):
     return base_time + timedelta(minutes=random.randint(1, 120) * event_idx)
 
+def extract_temporal_features(timestamp):
+    return {
+        'hour': timestamp.hour,
+        'day_of_week': timestamp.weekday(),
+        'season': (
+            "Winter" if timestamp.month in [12, 1, 2]
+            else "Spring" if timestamp.month in [3, 4, 5]
+            else "Summer" if timestamp.month in [6, 7, 8]
+            else "Fall"
+        )
+    }
+
 for case_number in range(1, num_cases + 1):
     case_id = generate_case_id(case_number)
     num_events_in_case = random.randint(5, 10)
     base_time = start_time + timedelta(days=random.randint(0, 30))
 
     for event_idx in range(1, num_events_in_case + 1):
-        event_id = generate_event_id(len(event_log) + 1)
-        activity = random.choice(activity_labels)
+        # Generate timestamp with variability
         timestamp = generate_timestamp(base_time, event_idx)
+        temporal_features = extract_temporal_features(timestamp)
 
+        # Assign temporal variability to the event
         event_data = {
-            "EventID": event_id,
+            "EventID": generate_event_id(len(event_log) + 1),
             "CaseID": case_id,
-            "Activity": activity,
+            "Activity": random.choice(activity_labels),
             "Timestamp": timestamp,
             "Resource": random.choice(resources),
-            "NumericFeature_1": random.randint(*numeric_feature_1_range),
-            "NumericFeature_2": random.uniform(*numeric_feature_2_range),
-            "CategoricalFeature_1": random.choice(categorical_features_1),
-            "CategoricalFeature_2": random.choice(categorical_features_2),
+            "Location": random.choice(locations),
+            "Shift": random.choice(shifts),
+            "Department": random.choice(departments),
+            "ProcessingTime": random.randint(*processing_time_range),
+            "PriorityLevel": random.randint(*priority_level_range),
+            "FileSize": round(random.uniform(*file_size_range), 2),
         }
+
+        # Add temporal features to the event
+        event_data.update(temporal_features)
 
         event_log.append(event_data)
 

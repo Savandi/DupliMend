@@ -13,6 +13,7 @@ event_counter = defaultdict(int)  # Track events per activity
 audit_log = []
 encoders = defaultdict()  # Encoders for categorical features
 
+
 # --- LOGGING CONFIGURATION ---
 try:
     logging.basicConfig(
@@ -28,6 +29,7 @@ except PermissionError:
     )
     print("Permission denied for logging to '../../traceability_log.txt'. Using local log file instead.")
 
+
 # --- FUNCTION DEFINITIONS ---
 
 def apply_temporal_decay(value, time_difference):
@@ -35,6 +37,7 @@ def apply_temporal_decay(value, time_difference):
     Apply temporal decay to a value based on time difference.
     """
     return value * np.exp(-temporal_decay_rate * time_difference)
+
 
 def encode_categorical_feature(feature, value):
     """
@@ -50,12 +53,21 @@ def encode_categorical_feature(feature, value):
         encoded_value = -1  # Fallback for encoding errors
     return encoded_value
 
-def process_event(event, top_features, timestamp_column):
+
+def process_event(event, top_features, df_graph):
     """
     Process an event to construct and analyze dynamic feature vectors.
     """
     activity_label = event["Activity"]
     event_counter[activity_label] += 1
+
+    # Add transition to directly follows graph
+    previous_activity = vector_metadata.get("last_activity", {}).get("activity_label")
+    if previous_activity:
+        df_graph.add_transition(previous_activity, activity_label)
+
+    # Update metadata for last activity
+    vector_metadata["last_activity"] = {"activity_label": activity_label}
 
     new_vector = []
     for feature in top_features:

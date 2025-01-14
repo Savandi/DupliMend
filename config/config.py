@@ -20,7 +20,7 @@ drift_threshold = 0.05  # For ADWIN drift detection in binning
 grace_period_events = 10  # Number of events to delay decay for new vectors
 
 # --- Feature Selection Parameters ---
-top_n_features = 3
+max_top_n_features = 5
 forgetting_factor = 0.9
 adaptive_window_min_size = 50
 adaptive_window_max_size = 200
@@ -28,7 +28,8 @@ initial_window_size = 100
 temporal_decay_rate = 0.001
 forgetting_threshold = 0.001
 positional_penalty_alpha = 0.8
-
+lossy_counting_threshold = 0.01
+lossy_counting_error_rate = 0.01
 # --- Clustering and Drift Detection Parameters ---
 dbstream_params = {
     "clustering_threshold": 0.95,
@@ -39,8 +40,8 @@ dbstream_params = {
 
 # --- Splitting and Merging Parameters ---
 
-splitting_threshold = 0.70
-merging_threshold = 0.60
+splitting_threshold = 0.4
+merging_threshold = 0.4
 adaptive_threshold_min_variability = 0.8
 
 # --- Logging Parameters ---

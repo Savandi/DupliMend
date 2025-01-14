@@ -99,11 +99,13 @@ class AdaptiveBinning:
 
 
 def extract_temporal_features(timestamp):
-    """
-    Extract temporal features from a timestamp, such as hour of the day, day of the week, and season.
-    """
+    hour_bin = (
+        "Morning" if 6 <= timestamp.hour < 12 else
+        "Afternoon" if 12 <= timestamp.hour < 18 else
+        "Night"
+    )
     return {
-        'hour': timestamp.hour,
+        'hour_bin': hour_bin,
         'day_of_week': timestamp.weekday(),
         'season': (
             "Winter" if timestamp.month in [12, 1, 2]
@@ -112,6 +114,7 @@ def extract_temporal_features(timestamp):
             else "Fall"
         )
     }
+
 
 
 def stream_event_log(
