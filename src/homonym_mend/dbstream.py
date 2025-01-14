@@ -23,35 +23,33 @@ class DBStream:
         self.event_count = 0  # Track the number of processed events
 
     def partial_fit(self, vector):
-        log_traceability("dbstream_update", "DBStream", {"vector": vector})
-
+        """Update clusters with new vector and return cluster ID."""
+        cluster_id = len(self.micro_clusters)  # Assign new ID
         matched_cluster = None
-        self.event_count += 1
 
-        for cluster in self.micro_clusters:
-            similarity = self._vector_similarity(vector, cluster["centroid"])
-            if abs(similarity - 1.0) < 1e-6:  # Identical vectors
-                cluster["vector_frequencies"][tuple(vector)] += 1
-                cluster["last_updated"] = self.event_count
-                cluster["centroid"] = self._most_frequent_vector(cluster["vector_frequencies"])
-                cluster["age"] += 1  # Increment age for existing cluster
+        for i, cluster in enumerate(self.micro_clusters):
+            if self._vector_similarity(vector, cluster["centroid"]) > self.clustering_threshold:
                 matched_cluster = cluster
+                cluster_id = i
                 break
 
-        if not matched_cluster:
-            # Create a new cluster
+        if matched_cluster:
+            # Update existing cluster
+            matched_cluster["vector_frequencies"][tuple(vector)] += 1
+            matched_cluster["last_updated"] = self.event_count
+            matched_cluster["age"] += 1
+        else:
+            # Create new cluster
             new_cluster = {
                 "centroid": vector,
                 "vector_frequencies": Counter({tuple(vector): 1}),
                 "last_updated": self.event_count,
-                "age": 0  # Initialize age for new cluster
+                "age": 1
             }
             self.micro_clusters.append(new_cluster)
-            log_traceability("new_cluster", "DBStream", {"centroid": vector})
-        else:
-            matched_cluster["age"] += 1  # Increment age for matched cluster
 
-        self._apply_decay()
+        self.event_count += 1
+        return cluster_id  # Return the cluster ID
 
     def get_micro_clusters(self):
         """

@@ -31,8 +31,12 @@ def generate_case_id(case_number):
 def generate_event_id(event_number):
     return f"E_{event_number}"
 
-def generate_timestamp(base_time, event_idx):
-    return base_time + timedelta(minutes=random.randint(1, 120) * event_idx)
+def generate_timestamp(base_time, previous_timestamp=None):
+    # Increment timestamp by a random number of minutes
+    increment_minutes = random.randint(1, 120)
+    if previous_timestamp:
+        return previous_timestamp + timedelta(minutes=increment_minutes)
+    return base_time
 
 def extract_temporal_features(timestamp):
     return {
@@ -50,10 +54,12 @@ for case_number in range(1, num_cases + 1):
     case_id = generate_case_id(case_number)
     num_events_in_case = random.randint(5, 10)
     base_time = start_time + timedelta(days=random.randint(0, 30))
+    previous_timestamp = None
 
     for event_idx in range(1, num_events_in_case + 1):
         # Generate timestamp with variability
-        timestamp = generate_timestamp(base_time, event_idx)
+        timestamp = generate_timestamp(base_time, previous_timestamp)
+        previous_timestamp = timestamp
         temporal_features = extract_temporal_features(timestamp)
 
         # Assign temporal variability to the event

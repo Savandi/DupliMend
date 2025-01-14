@@ -122,38 +122,53 @@ def adaptive_threshold(feature_scores):
 
 def compute_feature_scores(event, previous_event, activity_column, timestamp_column, resource_column, data_columns):
     """
-    Compute scores for individual features based on their associated perspectives.
+    Compute dynamic feature scores without any hardcoding of activity labels or columns.
     """
     feature_scores = defaultdict(float)
 
-    # Control-Flow Perspective
+    # Control-Flow Perspective - Dynamic scoring based on transitions
     if previous_event is not None and activity_column in previous_event:
         prev_activity = previous_event[activity_column]
         curr_activity = event[activity_column]
-        print(f"Control-Flow Debug: Previous Activity: {prev_activity}, Current Activity: {curr_activity}")
-        if prev_activity != curr_activity:
-            feature_scores[activity_column] += 1.0  # Weight for activity transitions
-            print(f"Control-Flow Contribution for '{activity_column}': {feature_scores[activity_column]}")
 
-    # Temporal Perspective
-    temporal_features = ['hour', 'day_of_week', 'season']
-    for feature in temporal_features:
-        if feature in event:
-            feature_scores[feature] += 0.3
-    print(f"Temporal Perspective Scores: {feature_scores}")
+        if prev_activity != curr_activity:
+            # Base weight for activity transitions
+            feature_scores[activity_column] += 1.0
+
+            # Dynamically score contextual transitions
+            for column in data_columns:
+                if column in event and column in previous_event:
+                    if event[column] != previous_event[column]:
+                        # Higher weight for contextual changes during activity transitions
+                        feature_scores[column] += 1.2
 
     # Resource Perspective
     if resource_column in event:
-        feature_scores[resource_column] += 0.5
-    print(f"Resource Perspective Scores: {feature_scores}")
+        feature_scores[resource_column] += 0.8
 
-    # Data Perspective
+    # Data Perspective - Dynamic importance calculation
     for column in data_columns:
         if column in event:
-            feature_scores[column] += 0.6
-    print(f"Data Perspective Scores: {feature_scores}")
+            # Base score for all data columns
+            base_score = 0.6
 
-    print(f"Final Feature Scores for Event: {dict(feature_scores)}")  # Log all feature scores
+            # Enhance score based on value type and patterns
+            try:
+                if isinstance(event[column], (int, float)):
+                    # Numerical columns get slight boost for variance detection
+                    feature_scores[column] += base_score * 1.1
+                elif isinstance(event[column], str):
+                    # Categorical columns base score
+                    feature_scores[column] += base_score
+
+                    # Boost score if the column has high cardinality in recent events
+                    if previous_event and column in previous_event:
+                        if event[column] != previous_event[column]:
+                            feature_scores[column] *= 1.15
+            except Exception:
+                # Fallback to base score if any error in processing
+                feature_scores[column] += base_score
+
     return feature_scores
 
 
@@ -172,45 +187,60 @@ def detect_drift(feature, feature_scores):
 
 def select_features(event, previous_event, activity_column, timestamp_column, resource_column, data_columns):
     """
-    Compute feature scores, detect drift, and select top dataset features.
+    Dynamic feature selection without hardcoding.
     """
-    # Compute feature scores
+    # Get basic feature scores
     feature_scores = compute_feature_scores(
         event, previous_event, activity_column, timestamp_column, resource_column, data_columns
     )
 
-    # Ensemble Scoring
+    # Add ensemble scores
     ensemble_scores = ensemble_feature_scoring(event, event[activity_column])
     for feature, score in ensemble_scores.items():
         feature_scores[feature] += score
 
-    # Temporal Weighting
+    # Apply temporal weighting
     current_time = event[timestamp_column]
     for feature in feature_scores:
-        feature_scores[feature] = temporal_weighting(feature_scores[feature], event[timestamp_column], current_time)
+        feature_scores[feature] = temporal_weighting(
+            feature_scores[feature],
+            event[timestamp_column],
+            current_time
+        )
 
-    # Detect drift and adjust windows
+    # Detect drift and adjust windows dynamically
     for feature, score in feature_scores.items():
         if not feature_importance_windows[feature]:
             feature_importance_windows[feature].append(0)
+
+        # Check for drift
         drift_detected = detect_drift(feature, list(feature_importance_windows[feature]))
         feature_importance_windows[feature] = adjust_window_size(feature, drift_detected)
         feature_importance_windows[feature].append(score)
 
-    # Aggregate scores
-    aggregated_scores = {
-        feature: (sum(window) / len(window)) if len(window) > 0 else 0
-        for feature, window in feature_importance_windows.items()
-    }
+    # Aggregate scores considering drift and temporal aspects
+    aggregated_scores = {}
+    for feature, window in feature_importance_windows.items():
+        if len(window) > 0:
+            # Weight recent scores more heavily
+            weights = np.exp(-0.1 * np.arange(len(window)))
+            weighted_scores = np.multiply(window, weights[::-1])
+            aggregated_scores[feature] = np.sum(weighted_scores) / np.sum(weights)
+        else:
+            aggregated_scores[feature] = 0
 
-    # Adjust thresholds for dynamic feature selection
+    # Dynamic threshold based on score distribution
     top_n = adaptive_threshold(feature_scores)
 
-    # Select top N features
-    top_features = sorted(aggregated_scores, key=aggregated_scores.get, reverse=True)[:top_n]
+    # Select top features while avoiding redundancy
+    selected_features = []
+    sorted_features = sorted(aggregated_scores.items(), key=lambda x: x[1], reverse=True)
 
-    # Return the selected features
-    return top_features
+    for feature, score in sorted_features:
+        if len(selected_features) < top_n:
+            selected_features.append(feature)
+
+    return selected_features
 
 
 def adjust_window_size(feature, drift_detected):

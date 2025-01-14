@@ -12,7 +12,7 @@ from config.config import (
     positional_penalty_alpha,
     dbstream_params,
     grace_period_events,
-    adaptive_threshold_min_variability)
+    adaptive_threshold_min_variability, similarity_penalty, min_cluster_size)
 
 # --- GLOBAL VARIABLES ---
 cluster_grace_period = timedelta(seconds=grace_period_events)
@@ -118,20 +118,24 @@ def aggregate_vectors(cluster_vectors):
     """
     return np.mean(cluster_vectors, axis=0)
 
+
 def analyze_splits_and_merges(activity_label, dbstream_instance):
+    """
+    Enhanced split/merge analysis with improved sensitivity to contextual differences.
+    """
     micro_clusters = dbstream_instance.get_micro_clusters()
 
     if len(micro_clusters) <= 1:
-        log_traceability("no_change", activity_label, "Insufficient clusters for analysis.")
+        log_traceability("no_change", activity_label, "No clusters available.")
         return "no_change", activity_label
 
-    # Compute variability-based adaptive thresholds
+    # Compute variability with increased sensitivity
     feature_vectors = [cluster["centroid"] for cluster in micro_clusters]
     variability = adaptive_threshold_variability(feature_vectors)
 
-
-    dynamic_splitting_threshold = max(splitting_threshold * variability, 0.85)
-    dynamic_merging_threshold = max(merging_threshold * variability, 0.80)
+    # More aggressive thresholds
+    dynamic_splitting_threshold = min(splitting_threshold * variability, 0.5)  # Even lower threshold
+    dynamic_merging_threshold = max(merging_threshold * variability, 0.9)  # Lower merge threshold
 
     log_traceability("variability_and_thresholds", activity_label, {
         "variability_factor": variability,
@@ -139,63 +143,127 @@ def analyze_splits_and_merges(activity_label, dbstream_instance):
         "dynamic_merging_threshold": dynamic_merging_threshold,
     })
 
-    # Temporal stability check with age constraint
-    now = datetime.now()
-    stable_clusters = [
-        cluster for cluster_id, cluster in enumerate(micro_clusters)
-        if (now - cluster_last_updated[cluster_id]).total_seconds() > cluster_grace_period.total_seconds()
-           and cluster.get("age", 0) > 100  # Use .get to handle missing 'age'
-    ]
+    # # Get stable clusters but don't return if some are unstable
+    # now = datetime.now()
+    # stable_clusters = [
+    #     cluster for cluster_id, cluster in enumerate(micro_clusters)
+    #     if (now - cluster_last_updated[cluster_id]).total_seconds() > (
+    #                 cluster_grace_period.total_seconds() / 8)  # Further reduced stability requirement
+    #        and cluster.get("age", 0) > min_cluster_size/2  # Halved age requirement
+    # ]
 
-    if len(stable_clusters) < len(micro_clusters):
-        log_traceability("no_split_due_to_stability", activity_label, "Clusters not stable long enough or too young.")
-        return "no_change", activity_label
+    # # Proceed with analysis even with just one stable cluster
+    # cluster_vectors = [cluster["centroid"] for cluster in stable_clusters]
+    # if not cluster_vectors:
+    #     cluster_vectors = [cluster["centroid"] for cluster in micro_clusters]  # Fall back to all clusters
+    #
+    # similarity_matrix = np.zeros((len(cluster_vectors), len(cluster_vectors)))
+    # feature_weights = compute_feature_weights(cluster_vectors)
 
-    # Compute similarity matrix
-    cluster_vectors = [cluster["centroid"] for cluster in stable_clusters]
+
+    # Get cluster vectors
+    cluster_vectors = [cluster["centroid"] for cluster in micro_clusters]
     similarity_matrix = np.zeros((len(cluster_vectors), len(cluster_vectors)))
+    feature_weights = compute_feature_weights(cluster_vectors)
 
+    # Compute pairwise similarities
     for i in range(len(cluster_vectors)):
         for j in range(i, len(cluster_vectors)):
             similarity_matrix[i][j] = compute_contextual_weighted_similarity(
                 cluster_vectors[i],
                 cluster_vectors[j],
-                [1.0] * len(cluster_vectors[0]),
-                [1.0] * len(cluster_vectors[0]),
+                feature_weights,
+                feature_weights,
+                alpha=similarity_penalty
             )
             similarity_matrix[j][i] = similarity_matrix[i][j]
 
-    # Log the similarity matrix for debugging
     logging.info(f"Similarity matrix for {activity_label}: {similarity_matrix}")
 
-    # Detect splits
-    split_clusters = [
-        f"Cluster_{i}" for i, cluster in enumerate(stable_clusters)
-        if np.any(similarity_matrix[i] < dynamic_splitting_threshold)
-    ]
-    if len(split_clusters) > 1:
-        log_merge_or_split("split", split_clusters, {"similarity_matrix": similarity_matrix.tolist()})
-        return "split", split_clusters
+    # # More aggressive split detection
+    # split_clusters = []
+    # for i, cluster in enumerate(cluster_vectors):
+    #     # Check for any dissimilar pairs
+    #     dissimilar_count = np.sum(similarity_matrix[i] < dynamic_splitting_threshold)
+    #     if dissimilar_count > 0:  # Changed from >= 1 to > 0 for more sensitivity
+    #         split_clusters.append(f"Cluster_{i}")
+    #
+    # # Changed split condition to be more lenient
+    # if len(split_clusters) > 0:  # Changed from > 1 to > 0
+    #     log_merge_or_split("split", split_clusters, {
+    #         "similarity_matrix": similarity_matrix.tolist(),
+    #         "threshold": dynamic_splitting_threshold
+    #     })
+    #     return "split", split_clusters
+    #
+    # # Enhanced merge detection with lower threshold
+    # aggregated_vector = aggregate_vectors(cluster_vectors)
+    # merged_clusters = []
+    #
+    # for i, centroid in enumerate(cluster_vectors):
+    #     similarity = compute_contextual_weighted_similarity(
+    #         centroid,
+    #         aggregated_vector,
+    #         feature_weights,
+    #         feature_weights,
+    #         alpha=0.5  # Reduced from 0.7 for more aggressive merging
+    #     )
+    #     if similarity > dynamic_merging_threshold:
+    #         merged_clusters.append(i)
+    #
+    # if len(potential_merges) > 0 and len(potential_merges) <= 2:
+    #     return "merge", potential_merges
+    #
+    # log_traceability("no_change", activity_label, "No significant change detected.")
+    # return "no_change", activity_label
 
-    log_traceability("similarity_matrix", activity_label, {
-        "similarity_matrix": similarity_matrix.tolist()
-    })
-    # Detect merges
-    aggregated_vector = aggregate_vectors(cluster_vectors)
-    merged_clusters = []
-    for i, centroid in enumerate(cluster_vectors):
-        similarity = compute_contextual_weighted_similarity(
-            centroid, aggregated_vector, [1.0] * len(aggregated_vector), [1.0] * len(aggregated_vector)
-        )
-        if similarity > dynamic_merging_threshold:
-            merged_clusters.append(i)
+    # Check for splits first
+    dissimilar_pairs = []
+    for i in range(len(cluster_vectors)):
+        for j in range(i+1, len(cluster_vectors)):
+            if similarity_matrix[i][j] < dynamic_splitting_threshold:
+                dissimilar_pairs.append((i, j))
 
-    if merged_clusters:
-        log_merge_or_split("merge", merged_clusters, {"aggregated_vector": aggregated_vector.tolist()})
-        return "merge", merged_clusters
+    if dissimilar_pairs:
+        unique_clusters = set([x for pair in dissimilar_pairs for x in pair])
+        if len(unique_clusters) >= 2:
+            return "split", list(unique_clusters)
 
-    log_traceability("no_change", activity_label, "No significant change detected.")
+    # Only check for merges if no splits are found
+    # And use stricter merge criteria
+    potential_merges = []
+    for i in range(len(cluster_vectors)):
+        similar_count = 0
+        for j in range(len(cluster_vectors)):
+            if i != j and similarity_matrix[i][j] > dynamic_merging_threshold:
+                similar_count += 1
+        if similar_count > 0:
+            potential_merges.append(i)
+
+    # Only merge if we find a small number of very similar clusters
+    if len(potential_merges) > 0 and len(potential_merges) <= 2:
+        return "merge", potential_merges
+
     return "no_change", activity_label
+
+def compute_feature_weights(cluster_vectors):
+    """
+    Compute feature importance weights based on variance across clusters.
+    """
+    if not cluster_vectors or len(cluster_vectors[0]) == 0:
+        return np.ones(1)
+
+    vectors_array = np.array(cluster_vectors)
+    variances = np.var(vectors_array, axis=0)
+
+    # Normalize variances to get weights
+    weights = variances / np.sum(variances) if np.sum(variances) > 0 else np.ones_like(variances)
+
+    # Ensure weights don't get too small
+    weights = np.maximum(weights, 0.1)
+    weights = weights / np.sum(weights)
+
+    return weights
 
 
 def normalize_vector(vector):
