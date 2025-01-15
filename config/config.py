@@ -49,14 +49,21 @@ dbstream_params = {
     "cleanup_interval": 1,
     "intersection_factor": 0.15  # Lower to allow more splits
 }
+# Add or update thresholds for similarity
+similarity_threshold_high = 0.8  # High similarity (e.g., for almost identical events)
+similarity_threshold_low = 0.4   # Low similarity (e.g., for loose grouping)
 
 # --- Splitting and Merging Parameters ---
-splitting_threshold = 0.15    # Even more aggressive splitting
-merging_threshold = 0.85     # Much more conservative merging
-min_cluster_size = 2         # Allow smaller clusters
-grace_period_events = 3      # Shorter grace period
-similarity_penalty = 0.3     # Stronger penalty for dissimilarity
-adaptive_threshold_min_variability = 0.6  # Lower minimum variability
+splitting_threshold = 0.001   # Extremely aggressive splitting threshold
+merging_threshold = 0.999    # Extremely conservative merging threshold
+min_cluster_size = 1         # Allow any size clusters
+grace_period_events = 1      # Minimal grace period
+similarity_penalty = 0.05    # Maximum penalty for dissimilarity
+adaptive_threshold_min_variability = 0.1  # Extremely low minimum variability
+
+dynamic_threshold_enabled = True
+default_similarity_threshold = 0.5
+threshold_adjustment_factor = 0.05
 
 # --- Logging Parameters ---
 log_frequency = 10

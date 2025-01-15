@@ -12,7 +12,8 @@ directly_follows_matrix = defaultdict(lambda: defaultdict(int))  # Directly foll
 footprint_matrix = defaultdict(lambda: defaultdict(float))  # Footprint matrix with stability/forgetting
 drift_detector = defaultdict(ADWIN)  # Drift detector for each feature
 
-
+feature_window_sizes = defaultdict(lambda: initial_window_size)
+feature_importance_windows = defaultdict(lambda: deque(maxlen=initial_window_size))
 def configure_window_sizes():
     """
     Configures the initial size for sliding windows globally.
@@ -20,7 +21,6 @@ def configure_window_sizes():
     global feature_window_sizes, feature_importance_windows
     feature_window_sizes = defaultdict(lambda: initial_window_size)
     feature_importance_windows = defaultdict(lambda: deque(maxlen=initial_window_size))
-
 
 def ensemble_feature_scoring(event, activity_label):
     """
@@ -95,8 +95,18 @@ def temporal_weighting(score, event_time, current_time, decay_rate=temporal_deca
     """
     Apply temporal decay to feature scores based on time difference.
     """
-    time_diff = (current_time - event_time).total_seconds()
-    return score * np.exp(-decay_rate * time_diff)
+    try:
+        # Convert string timestamps to datetime objects
+        if isinstance(event_time, str):
+            event_time = pd.to_datetime(event_time)
+        if isinstance(current_time, str):
+            current_time = pd.to_datetime(current_time)
+
+        time_diff = (current_time - event_time).total_seconds()
+        return score * np.exp(-decay_rate * time_diff)
+    except Exception as e:
+        print(f"Warning in temporal_weighting: {e}")
+        return score
 
 
 def adaptive_threshold(feature_scores):
