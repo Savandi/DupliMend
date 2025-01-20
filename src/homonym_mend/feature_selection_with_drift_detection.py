@@ -132,7 +132,7 @@ def adaptive_threshold(feature_scores):
 
 def compute_feature_scores(event, previous_event, activity_column, timestamp_column, resource_column, data_columns):
     """
-    Compute dynamic feature scores without any hardcoding of activity labels or columns.
+    Compute dynamic feature scores
     """
     feature_scores = defaultdict(float)
 
@@ -197,7 +197,7 @@ def detect_drift(feature, feature_scores):
 
 def select_features(event, previous_event, activity_column, timestamp_column, resource_column, data_columns):
     """
-    Dynamic feature selection without hardcoding.
+    Dynamic feature selection
     """
     # Get basic feature scores
     feature_scores = compute_feature_scores(
