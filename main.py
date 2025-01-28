@@ -63,7 +63,7 @@ df_event_log = df_event_log.sort_values(by=timestamp_column)
 binning_models = initialize_binning_models()
 
 # Initialize LabelRefiner
-refined_log_path = f"./{input_log_path}_refined_log.csv"
+refined_log_path = f"./refined_log.csv"
 label_refiner = LabelRefiner(refined_log_path)
 
 # Streaming and processing events
@@ -187,5 +187,4 @@ for _, event in df_event_log.iterrows():
         })
 
 # Save the complete refined stream after processing all events
-label_refiner.save_complete_stream()
 print(f"Refined stream has been saved to {refined_log_path}")
