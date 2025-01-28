@@ -4,8 +4,7 @@ import pandas as pd
 from config.config import *
 from src.homonym_mend.dynamic_binning_and_categorization import stream_event_log, extract_temporal_features, \
     EnhancedAdaptiveBinning
-from src.homonym_mend.dynamic_feature_vector_construction import process_event as construct_feature_vector, \
-    process_event
+from src.homonym_mend.dynamic_feature_vector_construction import process_event as construct_feature_vector
 from src.homonym_mend.feature_selection_with_drift_detection import (
     select_features, configure_window_sizes, compute_feature_scores
 )
@@ -13,6 +12,7 @@ from src.homonym_mend.homonym_detection import (
     handle_temporal_decay, log_cluster_summary, process_event as analyze_split_merge,
     dbstream_clusters, compute_contextual_weighted_similarity, analyze_splits_and_merges
 )
+from src.homonym_mend.label_refinement import LabelRefiner
 from src.utils.directly_follows_graph import DirectlyFollowsGraph
 from src.utils.logging_utils import log_traceability
 
@@ -31,17 +31,15 @@ def initialize_binning_models():
         for feature in features_to_discretize
     }
 
-
 # Initialize Directly Follows Graph
 directly_follows_graph = DirectlyFollowsGraph()
 
 # Configure sliding window sizes
 configure_window_sizes()
-
+input_log_path = './src/homonym_mend/synthetic_log_with_homonyms.csv'
 # Load and prepare event log
-df_event_log = pd.read_csv('./src/homonym_mend/synthetic_log_with_homonyms.csv', encoding='ISO-8859-1')
+df_event_log = pd.read_csv(input_log_path, encoding='ISO-8859-1')
 df_event_log = df_event_log.head(50)
-#df_event_log = pd.read_csv('C:/Users/drana/Downloads/Mine Log Abstract 2.csv', encoding='ISO-8859-1')
 
 def is_valid_timestamp(ts):
     try:
@@ -63,6 +61,10 @@ df_event_log = df_event_log.sort_values(by=timestamp_column)
 
 # Initialize enhanced binning models
 binning_models = initialize_binning_models()
+
+# Initialize LabelRefiner
+refined_log_path = f"./{input_log_path}_refined_log.csv"
+label_refiner = LabelRefiner(refined_log_path)
 
 # Streaming and processing events
 print("\n=== Initial Log Statistics ===")
@@ -163,8 +165,15 @@ for _, event in df_event_log.iterrows():
             continue
 
         # Analyze splits and merges
-        split_merge_result = analyze_split_merge(feature_vector_data)
+        split_merge_result, cluster_id = analyze_split_merge(feature_vector_data)
         print(f"Split/Merge Result for Event ID {event_id}: {split_merge_result}")
+
+        # Refine the activity label based on clustering
+        refined_activity = label_refiner.refine_label(activity_label, cluster_id)
+        event["refined_activity"] = refined_activity
+
+        # Append the refined event to the output log
+        label_refiner.append_event_to_log(event)
 
         processed_event_ids.add(event_id)
         print(f"Added Event ID {event_id} to processed_event_ids")
@@ -176,3 +185,7 @@ for _, event in df_event_log.iterrows():
             "event_id": event.get(event_id_column),
             "error": str(e)
         })
+
+# Save the complete refined stream after processing all events
+label_refiner.save_complete_stream()
+print(f"Refined stream has been saved to {refined_log_path}")
