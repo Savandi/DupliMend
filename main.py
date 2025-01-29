@@ -39,7 +39,6 @@ configure_window_sizes()
 input_log_path = './src/homonym_mend/synthetic_log_with_homonyms.csv'
 # Load and prepare event log
 df_event_log = pd.read_csv(input_log_path, encoding='ISO-8859-1')
-df_event_log = df_event_log.head(50)
 
 def is_valid_timestamp(ts):
     try:
@@ -173,7 +172,7 @@ for _, event in df_event_log.iterrows():
         event["refined_activity"] = refined_activity
 
         # Append the refined event to the output log
-        label_refiner.append_event_to_log(event)
+        label_refiner.append_event_to_csv(event)
 
         processed_event_ids.add(event_id)
         print(f"Added Event ID {event_id} to processed_event_ids")

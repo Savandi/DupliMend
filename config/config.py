@@ -7,11 +7,8 @@ resource_column = 'Resource'
 case_id_column = 'CaseID'
 event_id_column = 'EventID'
 
-# --- Data Columns ---
-data_columns = []
-
 # --- Enhanced Discretization and Binning Parameters ---
-features_to_discretize = ['NumericFeature_1', 'NumericFeature_2', 'NumericFeature_3']
+features_to_discretize = ['Timestamp', 'ProcessingTime', 'FileSize', 'hour', 'day_of_week']
 quantiles = [0.25, 0.5, 0.75]  # Base quantile points
 sliding_window_size = 150
 bin_density_threshold = 10
@@ -44,18 +41,23 @@ lossy_counting_error_rate = 0.01
 
 # --- Clustering and Drift Detection Parameters ---
 dbstream_params = {
-    "clustering_threshold": 0.45,  # Lower threshold to detect more subtle differences
-    "fading_factor": 0.2,    # Increase fading to adapt faster to changes
-    "cleanup_interval": 1,
-    "intersection_factor": 0.15  # Lower to allow more splits
+    "clustering_threshold": 0.35,  # Lower it further to allow more cluster formation
+    "fading_factor": 0.05,         # Reduce fading to retain old clusters longer
+    "cleanup_interval": 2,         # Increase cleanup interval slightly
+    "intersection_factor": 0.1,    # Reduce it so that more splits occur
+    "lambda": 0.0001,              # Reduce decay rate (keeps clusters stable)
+    "beta": 0.15,                  # Make it easier for new clusters to form
+    "cm": 1.3,                     # Reduce merging strength
+    "eps": 0.02,                   # Reduce distance threshold for merging
 }
+
 # Add or update thresholds for similarity
 similarity_threshold_high = 0.8  # High similarity (e.g., for almost identical events)
 similarity_threshold_low = 0.4   # Low similarity (e.g., for loose grouping)
 
 # --- Splitting and Merging Parameters ---
-splitting_threshold = 0.001   # Extremely aggressive splitting threshold
-merging_threshold = 0.999    # Extremely conservative merging threshold
+splitting_threshold = 0.0005  # Extremely aggressive splitting threshold
+merging_threshold = 0.98   # Extremely conservative merging threshold
 min_cluster_size = 1         # Allow any size clusters
 grace_period_events = 1      # Minimal grace period
 similarity_penalty = 0.05    # Maximum penalty for dissimilarity

@@ -4,11 +4,11 @@ import random
 from datetime import datetime, timedelta
 
 # Parameters for synthetic log generation
-num_cases = 100
-num_events = 1000
+num_cases = 200  # Ensuring a larger number of cases
+num_events = 1000  # At least 1000 events
 start_time = datetime.now() - timedelta(days=30)
 
-# Possible activity labels (with "Submit" as the homonymous label to be detected)
+# Possible activity labels
 activity_labels = ["Submit", "Review", "Approve", "Archive", "Finalize"]
 
 # Resources, locations, shifts, and departments
@@ -22,21 +22,30 @@ processing_time_range = (1, 120)  # Processing time in minutes
 priority_level_range = (1, 5)  # Priority levels (1: Low, 5: High)
 file_size_range = (0.1, 10.0)  # File size in MB
 
+# Define trace variants
+trace_variants = [
+    ["Submit", "Archive", "Review", "Submit", "Approve", "Finalize"],
+    ["Submit", "Archive", "Review", "Submit", "Approve"],
+    ["Submit", "Review", "Archive", "Submit", "Approve"],
+    ["Submit", "Review", "Archive", "Submit", "Approve", "Finalize"]
+]
+
 # Generate synthetic log
 event_log = []
+
 
 def generate_case_id(case_number):
     return f"Case_{case_number}"
 
+
 def generate_event_id(event_number):
     return f"E_{event_number}"
 
+
 def generate_timestamp(base_time, previous_timestamp=None):
-    # Increment timestamp by a random number of minutes
     increment_minutes = random.randint(1, 120)
-    if previous_timestamp:
-        return previous_timestamp + timedelta(minutes=increment_minutes)
-    return base_time
+    return previous_timestamp + timedelta(minutes=increment_minutes) if previous_timestamp else base_time
+
 
 def extract_temporal_features(timestamp):
     return {
@@ -50,23 +59,22 @@ def extract_temporal_features(timestamp):
         )
     }
 
+
 for case_number in range(1, num_cases + 1):
     case_id = generate_case_id(case_number)
-    num_events_in_case = random.randint(5, 10)
     base_time = start_time + timedelta(days=random.randint(0, 30))
     previous_timestamp = None
+    variant = random.choice(trace_variants)
 
-    for event_idx in range(1, num_events_in_case + 1):
-        # Generate timestamp with variability
+    for activity in variant:
         timestamp = generate_timestamp(base_time, previous_timestamp)
         previous_timestamp = timestamp
         temporal_features = extract_temporal_features(timestamp)
 
-        # Assign temporal variability to the event
         event_data = {
             "EventID": generate_event_id(len(event_log) + 1),
             "CaseID": case_id,
-            "Activity": random.choice(activity_labels),
+            "Activity": activity,
             "Timestamp": timestamp,
             "Resource": random.choice(resources),
             "Location": random.choice(locations),
@@ -77,17 +85,15 @@ for case_number in range(1, num_cases + 1):
             "FileSize": round(random.uniform(*file_size_range), 2),
         }
 
-        # Add temporal features to the event
         event_data.update(temporal_features)
-
         event_log.append(event_data)
 
-# Shuffle the log to simulate unordered streaming data
+# Shuffle to simulate streaming data
 random.shuffle(event_log)
 
-# Convert to DataFrame and save to CSV
-event_log_df = pd.DataFrame(event_log)
-event_log_df.sort_values(by="Timestamp", inplace=True)
-event_log_df.to_csv("synthetic_log_with_homonyms.csv", index=False)
+# Convert to DataFrame and save
+log_df = pd.DataFrame(event_log)
+log_df.sort_values(by="Timestamp", inplace=True)
+log_df.to_csv("synthetic_log_with_homonyms.csv", index=False)
 
-print("Synthetic log with homonymous labels generated: synthetic_log_with_homonyms.csv")
+print("Synthetic log with homonymous labels and control-flow variants generated: synthetic_log_with_homonyms.csv")

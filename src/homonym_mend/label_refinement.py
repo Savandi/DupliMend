@@ -48,6 +48,7 @@ class LabelRefiner:
         Append the refined event incrementally to the output CSV file.
         :param event: Refined event dictionary.
         """
+        print(f"[DEBUG] Writing to CSV: {event}")  # Debugging
         df = pd.DataFrame([event])
         df.to_csv(self.output_file_path, mode="a", header=False, index=False)
 

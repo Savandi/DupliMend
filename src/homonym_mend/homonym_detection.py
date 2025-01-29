@@ -20,7 +20,7 @@ cluster_grace_period = timedelta(seconds=grace_period_events)
 feature_vectors = defaultdict(list)
 vector_metadata = defaultdict(lambda: defaultdict(lambda: {"frequency": 0, "recency": datetime.now()}))
 audit_log = []
-dbstream_clusters = defaultdict(lambda: DBStream(dbstream_params))
+dbstream_clusters = defaultdict(lambda: DBStream())
 event_counter = defaultdict(int)  # Track the number of processed events per activity label
 adaptive_split_threshold = splitting_threshold
 adaptive_merge_threshold = merging_threshold
@@ -178,6 +178,11 @@ def analyze_splits_and_merges(activity_label, dbstream_instance):
     :return: Tuple containing the split/merge result and a representative cluster_id.
     """
     micro_clusters = dbstream_instance.get_micro_clusters()
+    # 🔹 DEBUG: Check if clustering is working correctly
+    print(f"[DEBUG] Micro-Clusters Found for {activity_label}: {len(micro_clusters)}")
+
+    for idx, cluster in enumerate(micro_clusters):
+        print(f"[DEBUG] Cluster {idx}: Centroid = {cluster.get('centroid')}, Weight = {cluster.get('weight')}")
 
     if len(micro_clusters) <= 1:
         log_traceability("no_change", activity_label, "No clusters available.")
@@ -189,7 +194,8 @@ def analyze_splits_and_merges(activity_label, dbstream_instance):
 
     # More aggressive splitting, more conservative merging
     dynamic_splitting_threshold = min(splitting_threshold * variability, 0.4)  # Lower threshold for easier splits
-    dynamic_merging_threshold = min(max(merging_threshold * variability, 0.9), 0.98)  # Higher threshold for harder merges
+    dynamic_merging_threshold = min(max(merging_threshold * variability, 0.9),
+                                    0.98)  # Higher threshold for harder merges
 
     log_traceability("variability_and_thresholds", activity_label, {
         "variability_factor": variability,
@@ -200,12 +206,22 @@ def analyze_splits_and_merges(activity_label, dbstream_instance):
     # Get cluster vectors and compute similarity
     cluster_vectors = [cluster["centroid"] for cluster in micro_clusters]
     similarity_matrix = compute_similarity_matrix(cluster_vectors)
+    print(f"[DEBUG] Similarity Matrix for {activity_label}:")
+    print(similarity_matrix)
+
+    # 🔹 DEBUG: Log similarity matrix values
+    print(f"[DEBUG] Similarity Matrix for {activity_label}:")
+    for row in similarity_matrix:
+        print(row)
 
     # Analyze similarity distribution
     dissimilar_pairs = []
+    print(f"[DEBUG] Checking for Split in {activity_label} - Similarity Scores:")
     for i in range(len(cluster_vectors)):
         for j in range(i + 1, len(cluster_vectors)):
-            if similarity_matrix[i][j] < dynamic_splitting_threshold:
+            sim_score = similarity_matrix[i][j]
+            print(f"[DEBUG] Similarity {i}-{j}: {sim_score}")
+            if sim_score < dynamic_splitting_threshold:
                 dissimilar_pairs.append((i, j))
 
     if dissimilar_pairs:
@@ -219,9 +235,11 @@ def analyze_splits_and_merges(activity_label, dbstream_instance):
 
     # Check for merges if no splits
     potential_merges = []
+    print(f"[DEBUG] Checking for Merges in {activity_label}")
     for i in range(len(cluster_vectors)):
         similar_neighbors = sum(1 for j in range(len(cluster_vectors))
                                 if i != j and similarity_matrix[i][j] > dynamic_merging_threshold)
+        print(f"[DEBUG] Cluster {i} has {similar_neighbors} highly similar neighbors")
         if similar_neighbors == 1:
             potential_merges.append(i)
 
@@ -234,9 +252,10 @@ def analyze_splits_and_merges(activity_label, dbstream_instance):
             })
             return "merge", potential_merges[0]  # Return a representative cluster ID
 
+    # 🔹 DEBUG: Log if no change was made
+    print(f"[DEBUG] No split/merge detected for {activity_label}")
+
     return "no_change", 0  # Default cluster ID
-
-
 
 
 def normalize_vector(vector):
@@ -270,7 +289,9 @@ def process_event(event_data):
         log_traceability("new_activity_label", activity_label, "Initialized a new cluster group")
 
     dbstream_instance = dbstream_clusters[activity_label]
+    print(f"[DEBUG] Processing Feature Vector for {event_data['activity_label']}: {event_data['new_vector']}")
     cluster_id = dbstream_instance.partial_fit(normalized_vector)  # Assign cluster ID
+    print(f"[DEBUG] Assigned Cluster ID: {cluster_id}")
     log_traceability("cluster_update", activity_label, {
         "new_vector": normalized_vector,
         "cluster_id": cluster_id,
@@ -281,6 +302,7 @@ def process_event(event_data):
     # Analyze splits or merges
     result, cluster_id = analyze_splits_and_merges(activity_label, dbstream_instance)
     log_traceability("split_merge_result", activity_label, {"result": result, "cluster_id": cluster_id})
+    print(f"[DEBUG] Assigned Cluster ID for {activity_label}: {cluster_id}")
     return result, cluster_id
 
 def handle_temporal_decay(activity_label):
