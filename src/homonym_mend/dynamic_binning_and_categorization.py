@@ -45,12 +45,12 @@ class EnhancedAdaptiveBinning:
     """
 
     def __init__(self,
-                 initial_bins=10,
-                 bin_density_threshold=50,
-                 drift_threshold=0.05,
-                 decay_factor=0.95,
-                 min_bin_width=0.01,
-                 quantile_points=None):
+                 initial_bins,
+                 bin_density_threshold,
+                 drift_threshold,
+                 decay_factor,
+                 min_bin_width,
+                 quantile_points):
         self.initial_bins = initial_bins
         self.bin_density_threshold = bin_density_threshold
         self.drift_detector = ADWIN(delta=drift_threshold)
@@ -58,7 +58,7 @@ class EnhancedAdaptiveBinning:
         self.bins = np.linspace(0, 1, initial_bins + 1)
         self.bin_counts = defaultdict(int)
         self.min_bin_width = min_bin_width
-        self.quantile_points = quantile_points or [0.25, 0.5, 0.75]
+        self.quantile_points = quantile_points
         self.window_size = 1000
         self.recent_values = []
 
@@ -89,7 +89,7 @@ class EnhancedAdaptiveBinning:
         print(f"[DEBUG] Value: {new_value} -> Assigned bin: {assigned_bin}")
         print(f"[DEBUG] Bin counts: {dict(self.bin_counts)}")
 
-        # Check density-based conditions
+        assigned_bin = int(round(assigned_bin))  # Ensure it matches bin index format
         if self.bin_counts[assigned_bin] > self.bin_density_threshold:
             print(f"[DEBUG] Splitting bin {assigned_bin} due to high density")
             self._split_bin(assigned_bin)
@@ -160,53 +160,48 @@ class EnhancedAdaptiveBinning:
         """
         Assign a value to the appropriate bin with interpolation.
         """
-        for i, bin_threshold in enumerate(self.bins[:-1]):
-            if value < self.bins[i + 1]:
-                bin_width = self.bins[i + 1] - bin_threshold
-                position = (value - bin_threshold) / bin_width
+        for i in range(len(self.bins) - 1):
+            if self.bins[i] <= value < self.bins[i + 1]:
+                bin_width = self.bins[i + 1] - self.bins[i]
+                position = (value - self.bins[i]) / bin_width if bin_width > 0 else 0
 
-                print(f"[DEBUG] Value {value} assigned to bin {i} (position {position})")
-                return i + position
-        print(f"[DEBUG] Value {value} assigned to last bin {len(self.bins) - 2}")
+                print(f"[DEBUG] Value {value} assigned to bin {i} (position {position:.2f})")
+                return i + position  # Keep floating point bin positions
+
+        # If value is exactly equal to the last bin edge, place it in the last bin
         return len(self.bins) - 2
 
     def _split_bin(self, bin_index):
-        """
-        Split a dense bin into smaller bins.
-        """
+        """Force a split in a dense bin using adjusted median-based splitting."""
         if bin_index >= len(self.bins) - 1:
             return
 
-        lower = self.bins[bin_index]
-        upper = self.bins[bin_index + 1]
+        lower, upper = self.bins[bin_index], self.bins[bin_index + 1]
         width = upper - lower
 
         if width < self.min_bin_width:
-            return
+            return  # Prevent splitting very small bins
 
-        # Extract values that fall within this bin
         values_in_bin = [v for v in self.recent_values if lower <= v < upper]
 
         if not values_in_bin:
-            return
+            return  # No data points available for splitting
 
-        # Compute quantiles **(Convert from NumPy array to list)**
-        q_values = np.quantile(values_in_bin, [0.5]).tolist()
+        # Force median split but shift slightly if it's too close to boundaries
+        median_value = np.median(values_in_bin)
+        if median_value <= lower + self.min_bin_width:
+            median_value += self.min_bin_width
+        if median_value >= upper - self.min_bin_width:
+            median_value -= self.min_bin_width
 
-        # Ensure all values are plain numbers (float)
-        new_boundaries = sorted([lower] + q_values + [upper])
+        # Insert new bin boundary and sort
+        new_boundaries = sorted(set(self.bins) | {median_value})
+        self.bins = np.array(new_boundaries)
 
-        # Update bins array
-        self.bins = np.concatenate([
-            self.bins[:bin_index],
-            new_boundaries,
-            self.bins[bin_index + 2:]
-        ])
-
-        # Reset counts for affected bins
+        # Reset bin counts after split
         self.bin_counts = defaultdict(int)
 
-        print(f"[DEBUG] Split bin {bin_index}: New boundaries {new_boundaries}")
+        print(f"[DEBUG] Split bin {bin_index}: New boundaries {self.bins}")
 
     def _is_sparse_region(self, bin_index):
         """
@@ -214,10 +209,12 @@ class EnhancedAdaptiveBinning:
         """
         count = self.bin_counts[bin_index]
         neighbor_counts = [
-            self.bin_counts[bin_index - 1] if bin_index > 0 else float('inf'),
-            self.bin_counts[bin_index + 1] if bin_index < len(self.bins) - 2 else float('inf')
+            self.bin_counts.get(bin_index - 1, float('inf')),
+            self.bin_counts.get(bin_index + 1, float('inf'))
         ]
-        return count < self.bin_density_threshold / 3 and any(
+
+        # Merge only if the bin AND BOTH neighbors are sparse
+        return count < self.bin_density_threshold / 3 and all(
             nc < self.bin_density_threshold / 3 for nc in neighbor_counts
         )
 
@@ -283,49 +280,30 @@ def stream_event_log(
         event_id_column,
         data_columns,
         features_to_discretize,
-        sliding_window_size,
-        bin_density_threshold,
-        quantiles=None,
-        decay_factor=0.95
+        binning_models  # <-- Pass pre-initialized binning models
 ):
     """
     Streaming event log processor with binning for numerical features only.
     """
-    # Initialize adaptive binning models
-    adaptive_bin_models = defaultdict(
-        lambda: EnhancedAdaptiveBinning(
-            initial_bins=len(quantiles) if quantiles else 10,
-            bin_density_threshold=bin_density_threshold,
-            decay_factor=decay_factor,
-            quantile_points=quantiles or [0.25, 0.5, 0.75]
-        )
-    )
-
-    # Debug: Print which features are being processed
     print(f"[DEBUG] Processing event {event_dict[event_id_column]}")
 
-    # Process each feature that needs discretization
     for feature in features_to_discretize:
         if feature not in event_dict:
             continue
 
-        # Ignore case_id_column and control_flow_column
         if feature in [case_id_column, control_flow_column]:
-            continue
+            continue  # Skip non-numeric columns
 
         if feature == timestamp_column:
-            # Extract and bin temporal features
             temporal_features = extract_temporal_features(event_dict[feature])
             event_dict.update({
                 f"{feature}_{temp_feature}_bin": temp_value
                 for temp_feature, temp_value in temporal_features.items()
             })
         else:
-            # Apply enhanced adaptive binning to numerical values
             try:
                 value = float(event_dict[feature])  # Ensure numeric
-                adaptive_model = adaptive_bin_models[feature]
-                bin_assignment = adaptive_model.update_bins(value)
+                bin_assignment = binning_models[feature].update_bins(value)
                 event_dict[f"{feature}_bin"] = bin_assignment
                 print(f"[DEBUG] Feature {feature}: Value {value} → Bin {bin_assignment}")
             except (ValueError, TypeError) as e:

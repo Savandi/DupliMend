@@ -18,15 +18,15 @@ from src.utils.logging_utils import log_traceability
 
 
 def initialize_binning_models():
-    """Initialize the enhanced binning models with configuration parameters."""
+    """Initialize the enhanced binning models with refined parameters."""
     return {
         feature: EnhancedAdaptiveBinning(
-            initial_bins=initial_bins,
-            bin_density_threshold=bin_density_threshold,
-            drift_threshold=drift_threshold,
-            decay_factor=decay_factor,
-            min_bin_width=min_bin_width,
-            quantile_points=quantiles
+            initial_bins=20,  # More bins to distribute values better
+            bin_density_threshold=10,  # Higher threshold to prevent aggressive merging
+            drift_threshold=0.02,  # Slightly more sensitive to drift
+            decay_factor=0.85,  # Adjust decay to retain history better
+            min_bin_width=0.005,  # Prevent small bins
+            quantile_points=[0.1, 0.3, 0.5, 0.7, 0.9]  # Adjusted quantile points
         )
         for feature in features_to_discretize
     }
@@ -57,7 +57,7 @@ print(f"Data columns used: {data_columns}")
 # Convert timestamp and sort
 df_event_log[timestamp_column] = pd.to_datetime(df_event_log[timestamp_column])
 df_event_log = df_event_log.sort_values(by=timestamp_column)
-
+df_event_log = df_event_log.head(50)
 # Initialize enhanced binning models
 binning_models = initialize_binning_models()
 
@@ -97,10 +97,7 @@ for _, event in df_event_log.iterrows():
             event_id_column=event_id_column,
             data_columns=data_columns,
             features_to_discretize=features_to_discretize,
-            sliding_window_size=sliding_window_size,
-            bin_density_threshold=bin_density_threshold,
-            quantiles=quantiles,
-            decay_factor=decay_factor
+            binning_models=binning_models  # <-- Pass the initialized binning models
         )
 
         # Compute feature scores, including adaptive binning updates
