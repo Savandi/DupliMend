@@ -198,8 +198,13 @@ class EnhancedAdaptiveBinning:
         new_boundaries = sorted(set(self.bins) | {median_value})
         self.bins = np.array(new_boundaries)
 
-        # Reset bin counts after split
-        self.bin_counts = defaultdict(int)
+        # Reset bin counts and redistribute existing values
+        new_bin_counts = defaultdict(int)
+        for value in self.recent_values:
+            reassigned_bin = self._assign_bin(value)  # Ensure values go to new bins
+            new_bin_counts[reassigned_bin] += 1
+
+        self.bin_counts = new_bin_counts  # Update bin count map
 
         print(f"[DEBUG] Split bin {bin_index}: New boundaries {self.bins}")
 
