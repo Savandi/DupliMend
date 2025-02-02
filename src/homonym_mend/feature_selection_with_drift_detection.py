@@ -5,7 +5,6 @@ from config.config import (
     max_top_n_features, temporal_decay_rate, case_id_column, lossy_counting_budget, frequency_decay_threshold,
     decay_after_events, removal_threshold_events
 )
-from main import global_event_counter
 from src.utils.global_state import directly_follows_graph
 from collections import defaultdict
 import numpy as np
@@ -29,7 +28,7 @@ def configure_window_sizes():
     feature_importance_windows = defaultdict(lambda: deque(maxlen=initial_window_size))
 
 
-def forget_old_cases(activity_column):
+def forget_old_cases(activity_column, global_event_counter):
     """
     Remove inactive cases from `previous_events` and related accumulations based on event count decay.
     """
@@ -73,7 +72,7 @@ def compute_feature_scores(event, activity_column, timestamp_column, resource_co
     activity_label = event[activity_column]
 
     # Forget old cases before processing new events
-    forget_old_cases(activity_column)
+    forget_old_cases(activity_column, global_event_counter)
 
     ## --- 1. Compare Against All Past Events of the Same Activity Label (Homonym Detection) ---
     if activity_label in activity_feature_history and len(activity_feature_history[activity_label]) > 0:

@@ -4,12 +4,23 @@ import pandas as pd
 from config.config import *
 from src.homonym_mend.dynamic_binning_and_categorization import stream_event_log, extract_temporal_features, \
     EnhancedAdaptiveBinning
-from src.homonym_mend.feature_selection_with_drift_detection import ( configure_window_sizes, compute_feature_scores
-)
-from src.utils.global_state import directly_follows_graph
 from src.homonym_mend.homonym_detection import analyze_splits_and_merges, dbstream_clusters
 from src.homonym_mend.label_refinement import LabelRefiner
 from src.utils.logging_utils import log_traceability
+
+def initialize_window_sizes():
+    """
+    Lazily import configure_window_sizes to avoid circular import issues.
+    """
+    from src.homonym_mend.feature_selection_with_drift_detection import configure_window_sizes  # Lazy import
+    configure_window_sizes()
+
+def  get_feature_scores(event, case_id_column, control_flow_column, timestamp_column, resource_column, data_columns, global_event_counter):
+    """
+    Lazily import compute_feature_scores to avoid circular import issues.
+    """
+    from src.homonym_mend.feature_selection_with_drift_detection import compute_feature_scores  # Lazy import
+    return compute_feature_scores(event, case_id_column, control_flow_column, timestamp_column, resource_column, data_columns, global_event_counter)
 
 def get_top_features(event, control_flow_column, timestamp_column, resource_column, data_columns):
     """
@@ -17,7 +28,6 @@ def get_top_features(event, control_flow_column, timestamp_column, resource_colu
     """
     from src.homonym_mend.feature_selection_with_drift_detection import select_features  # Lazy import
     return select_features(event, None, control_flow_column, timestamp_column, resource_column, data_columns)
-
 
 def construct_feature_vector(event, top_features):
     """
@@ -44,7 +54,8 @@ def initialize_binning_models():
 global_event_counter = 0
 
 # Configure sliding window sizes
-configure_window_sizes()
+initialize_window_sizes()
+
 input_log_path = './src/homonym_mend/synthetic_log_with_homonyms.csv'
 # Load and prepare event log
 df_event_log = pd.read_csv(input_log_path, encoding='ISO-8859-1')
@@ -118,14 +129,14 @@ for _, event in df_event_log.iterrows():
         )
 
         # Compute feature scores, including adaptive binning updates
-        feature_scores = compute_feature_scores(
+        feature_scores = get_feature_scores(
             event=processed_event,
             case_id_column=case_id_column,
-            activity_column=control_flow_column,
+            control_flow_column=control_flow_column,
             timestamp_column=timestamp_column,
             resource_column=resource_column,
             data_columns=data_columns + list(temporal_features.keys()),
-            global_event_counter=global_event_counter  # Pass event counter
+            global_event_counter=global_event_counter
         )
 
         # Log scores for debugging
@@ -137,10 +148,6 @@ for _, event in df_event_log.iterrows():
                 f"Control-Flow Debug: Previous Activity: {previous_event[control_flow_column]}, "
                 f"Current Activity: {processed_event[control_flow_column]}"
             )
-            # Update the directly follows graph with the transition
-            from_activity = previous_event[control_flow_column]
-            to_activity = processed_event[control_flow_column]
-            directly_follows_graph.add_transition(from_activity, to_activity)
 
         # Update previous_event
         previous_event = processed_event

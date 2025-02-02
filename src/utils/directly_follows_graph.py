@@ -1,6 +1,5 @@
 from collections import defaultdict
 import numpy as np
-from datetime import datetime
 from config.config import lossy_counting_budget, frequency_decay_threshold, decay_after_events, removal_threshold_events
 from main import global_event_counter
 
