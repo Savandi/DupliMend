@@ -1,4 +1,6 @@
 import logging
+
+from src.homonym_mend.dynamic_feature_vector_construction import activity_feature_metadata
 from src.utils.logging_utils import log_traceability
 from collections import defaultdict
 import numpy as np
@@ -270,40 +272,53 @@ def normalize_vector(vector):
 
 def process_event(event_data):
     """
-    Process an incoming event and analyze splits or merges.
-    :param event_data: Event data containing activity_label and feature vector.
-    :return: Tuple containing the split/merge result and the assigned cluster_id.
+    Process an incoming event, assign a cluster, and analyze splits or merges.
     """
     activity_label = event_data["activity_label"]
     new_vector = event_data["new_vector"]
 
-    # Normalize the vector
+    # Normalize the feature vector before clustering
     normalized_vector = normalize_vector(new_vector)
-
     log_traceability("vector_normalization", activity_label, {
         "raw_vector": new_vector,
         "normalized_vector": normalized_vector
     })
 
+    # Ensure a DBStream instance exists for this activity label
     if activity_label not in dbstream_clusters:
+        dbstream_clusters[activity_label] = DBStream()
         log_traceability("new_activity_label", activity_label, "Initialized a new cluster group")
 
     dbstream_instance = dbstream_clusters[activity_label]
-    print(f"[DEBUG] Processing Feature Vector for {event_data['activity_label']}: {event_data['new_vector']}")
-    cluster_id = dbstream_instance.partial_fit(normalized_vector)  # Assign cluster ID
-    print(f"[DEBUG] Assigned Cluster ID: {cluster_id}")
+
+    # Process feature vector through DBStream
+    cluster_id = dbstream_instance.partial_fit(normalized_vector)
+
+    # Store and track cluster assignments in activity_feature_metadata
+    vector_tuple = tuple(normalized_vector)
+    if vector_tuple in activity_feature_metadata[activity_label]:
+        activity_feature_metadata[activity_label][vector_tuple]["frequency"] += 1
+        activity_feature_metadata[activity_label][vector_tuple]["recency"] = datetime.now()
+        activity_feature_metadata[activity_label][vector_tuple]["cluster"] = cluster_id
+    else:
+        # Store new feature vector with cluster metadata
+        activity_feature_metadata[activity_label][vector_tuple] = {
+            "frequency": 1,
+            "recency": datetime.now(),
+            "cluster": cluster_id
+        }
+
     log_traceability("cluster_update", activity_label, {
         "new_vector": normalized_vector,
         "cluster_id": cluster_id,
         "micro_clusters": dbstream_instance.get_micro_clusters()
     })
-    cluster_last_updated[cluster_id] = datetime.now()
 
     # Analyze splits or merges
-    result, cluster_id = analyze_splits_and_merges(activity_label, dbstream_instance)
-    log_traceability("split_merge_result", activity_label, {"result": result, "cluster_id": cluster_id})
-    print(f"[DEBUG] Assigned Cluster ID for {activity_label}: {cluster_id}")
-    return result, cluster_id
+    result, updated_cluster_id = analyze_splits_and_merges(activity_label, dbstream_instance)
+
+    log_traceability("split_merge_result", activity_label, {"result": result, "cluster_id": updated_cluster_id})
+    return result, updated_cluster_id
 
 def handle_temporal_decay(activity_label):
     """

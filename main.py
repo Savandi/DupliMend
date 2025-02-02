@@ -4,14 +4,13 @@ import pandas as pd
 from config.config import *
 from src.homonym_mend.dynamic_binning_and_categorization import stream_event_log, extract_temporal_features, \
     EnhancedAdaptiveBinning
-from src.homonym_mend.dynamic_feature_vector_construction import process_event as construct_feature_vector
+from src.homonym_mend.dynamic_feature_vector_construction import process_event as construct_feature_vector, \
+    activity_feature_metadata
 from src.homonym_mend.feature_selection_with_drift_detection import (
     select_features, configure_window_sizes, compute_feature_scores
 )
-from src.homonym_mend.homonym_detection import (
-    handle_temporal_decay, log_cluster_summary, process_event as analyze_split_merge,
-    dbstream_clusters, compute_contextual_weighted_similarity, analyze_splits_and_merges
-)
+from src.homonym_mend.homonym_detection import analyze_splits_and_merges, dbstream_clusters
+
 from src.homonym_mend.label_refinement import LabelRefiner
 from src.utils.directly_follows_graph import DirectlyFollowsGraph
 from src.utils.logging_utils import log_traceability
@@ -58,6 +57,7 @@ print(f"Data columns used: {data_columns}")
 df_event_log[timestamp_column] = pd.to_datetime(df_event_log[timestamp_column])
 df_event_log = df_event_log.sort_values(by=timestamp_column)
 df_event_log = df_event_log.head(50)
+
 # Initialize enhanced binning models
 binning_models = initialize_binning_models()
 
@@ -103,7 +103,7 @@ for _, event in df_event_log.iterrows():
         # Compute feature scores, including adaptive binning updates
         feature_scores = compute_feature_scores(
             event=processed_event,
-            previous_event=previous_event,
+            case_id_column=case_id_column,
             activity_column=control_flow_column,
             timestamp_column=timestamp_column,
             resource_column=resource_column,
@@ -155,13 +155,20 @@ for _, event in df_event_log.iterrows():
         print(f"Top Features: {top_features}")
 
         # Process the event to construct feature vector
-        feature_vector_data = construct_feature_vector(event, top_features, directly_follows_graph)
+        feature_vector_data = construct_feature_vector(event, top_features)
         if feature_vector_data is None:
             print(f"Warning: Feature vector construction failed for Event ID: {event_id}. Skipping event.")
             continue
 
-        # Analyze splits and merges
-        split_merge_result, cluster_id = analyze_split_merge(feature_vector_data)
+        # Retrieve the correct DBStream instance for the activity label
+        activity_label = feature_vector_data["activity_label"]
+        dbstream_instance = dbstream_clusters.get(activity_label, None)
+
+        if dbstream_instance:
+            split_merge_result, cluster_id = analyze_splits_and_merges(activity_label, dbstream_instance)
+        else:
+            split_merge_result, cluster_id = "no_change", 0  # Default behavior if no DBStream instance exists
+
         print(f"Split/Merge Result for Event ID {event_id}: {split_merge_result}")
 
         # Refine the activity label based on clustering
@@ -170,6 +177,10 @@ for _, event in df_event_log.iterrows():
 
         # Append the refined event to the output log
         label_refiner.append_event_to_csv(event)
+
+        # Store refined activity mapping for future events
+        activity_feature_metadata[activity_label][tuple(feature_vector_data["new_vector"])][
+            "refined_label"] = refined_activity
 
         processed_event_ids.add(event_id)
         print(f"Added Event ID {event_id} to processed_event_ids")

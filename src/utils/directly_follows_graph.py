@@ -11,34 +11,23 @@ class DirectlyFollowsGraph:
         :param use_lossy_counting: Boolean to enable or disable lossy counting.
         :param error_rate: Error rate for lossy counting (used only if lossy counting is enabled).
         """
-        self.graph = defaultdict(lambda: defaultdict(int))
+        self.graph = defaultdict(int)
         self.use_lossy_counting = use_lossy_counting
         self.error_rate = error_rate
         self.total_events = 0
         self.threshold = 0 if not use_lossy_counting else 1 / error_rate
 
-    def add_transition(self, from_activity, to_activity):
+    def add_transition(self, prev_activity, curr_activity):
         """
-        Add a transition to the directly follows graph.
-
-        :param from_activity: The activity from which the transition starts.
-        :param to_activity: The activity to which the transition goes.
+        Track transition frequency globally for feature scoring.
         """
-        self.graph[from_activity][to_activity] += 1
-        self.total_events += 1
+        self.graph[(prev_activity, curr_activity)] = self.graph.get((prev_activity, curr_activity), 0) + 1
 
-        if self.use_lossy_counting:
-            self._apply_lossy_counting()
-
-    def get_frequency(self, from_activity, to_activity):
+    def get_global_frequency(self, prev_activity, curr_activity):
         """
-        Get the frequency of a specific transition.
-
-        :param from_activity: The activity from which the transition starts.
-        :param to_activity: The activity to which the transition goes.
-        :return: Frequency of the transition.
+        Retrieve the total frequency of a transition (prev_activity → curr_activity) across all cases.
         """
-        return self.graph[from_activity][to_activity]
+        return self.graph.get((prev_activity, curr_activity), 0)
 
     def _apply_lossy_counting(self):
         """
