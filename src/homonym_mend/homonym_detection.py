@@ -1,5 +1,6 @@
 import logging
 
+from config import config
 from src.homonym_mend.dynamic_feature_vector_construction import activity_feature_metadata
 from src.utils.logging_utils import log_traceability
 from collections import defaultdict
@@ -14,7 +15,7 @@ from config.config import (
     positional_penalty_alpha,
     dbstream_params,
     grace_period_events,
-    adaptive_threshold_min_variability, similarity_penalty, min_cluster_size)
+    adaptive_threshold_min_variability, similarity_penalty, min_cluster_size, decay_after_events)
 from src.utils.similarity_utils import compute_contextual_weighted_similarity
 
 # --- GLOBAL VARIABLES ---
@@ -75,11 +76,16 @@ def adjust_thresholds(recent_variability):
         adaptive_split_threshold = max(0.6, adaptive_split_threshold - 0.05)
         adaptive_merge_threshold = min(0.9, adaptive_merge_threshold + 0.05)
 
+# def apply_temporal_decay(value, time_difference):
+#     """
+#     Apply temporal decay to a value based on time difference.
+#     """
+#     return value * np.exp(-temporal_decay_rate * time_difference)
 def apply_temporal_decay(value, time_difference):
     """
-    Apply temporal decay to a value based on time difference.
+    Apply temporal decay to feature frequency to prevent over-aggressive drops.
     """
-    return value * np.exp(-temporal_decay_rate * time_difference)
+    return value * np.exp(-temporal_decay_rate * min(time_difference, decay_after_events * 2))
 
 def log_merge_or_split(action, clusters_involved, details=None):
     """

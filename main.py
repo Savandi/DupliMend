@@ -4,17 +4,27 @@ import pandas as pd
 from config.config import *
 from src.homonym_mend.dynamic_binning_and_categorization import stream_event_log, extract_temporal_features, \
     EnhancedAdaptiveBinning
-from src.homonym_mend.dynamic_feature_vector_construction import process_event as construct_feature_vector, \
-    activity_feature_metadata
-from src.homonym_mend.feature_selection_with_drift_detection import (
-    select_features, configure_window_sizes, compute_feature_scores
+from src.homonym_mend.feature_selection_with_drift_detection import ( configure_window_sizes, compute_feature_scores
 )
+from src.utils.global_state import directly_follows_graph
 from src.homonym_mend.homonym_detection import analyze_splits_and_merges, dbstream_clusters
-
 from src.homonym_mend.label_refinement import LabelRefiner
-from src.utils.directly_follows_graph import DirectlyFollowsGraph
 from src.utils.logging_utils import log_traceability
 
+def get_top_features(event, control_flow_column, timestamp_column, resource_column, data_columns):
+    """
+    Lazily import select_features to avoid circular import issues.
+    """
+    from src.homonym_mend.feature_selection_with_drift_detection import select_features  # Lazy import
+    return select_features(event, None, control_flow_column, timestamp_column, resource_column, data_columns)
+
+
+def construct_feature_vector(event, top_features):
+    """
+    Lazily import process_event to avoid circular import issues.
+    """
+    from src.homonym_mend.dynamic_feature_vector_construction import process_event  # Lazy import
+    return process_event(event, top_features)
 
 def initialize_binning_models():
     """Initialize the enhanced binning models with refined parameters."""
@@ -30,8 +40,8 @@ def initialize_binning_models():
         for feature in features_to_discretize
     }
 
-# Initialize Directly Follows Graph
-directly_follows_graph = DirectlyFollowsGraph()
+# Define global_event_counter in main.py instead of global_state.py
+global_event_counter = 0
 
 # Configure sliding window sizes
 configure_window_sizes()
@@ -53,6 +63,12 @@ excluded_columns = {control_flow_column, timestamp_column, resource_column, case
 data_columns = [col for col in df_event_log.columns if col not in excluded_columns]
 print(f"Data columns used: {data_columns}")
 
+# Extract column names dynamically and store globally
+input_columns = list(df_event_log.columns)
+
+# Ensure "refined_activity" is included in output
+input_columns.append("refined_activity")
+
 # Convert timestamp and sort
 df_event_log[timestamp_column] = pd.to_datetime(df_event_log[timestamp_column])
 df_event_log = df_event_log.sort_values(by=timestamp_column)
@@ -63,7 +79,7 @@ binning_models = initialize_binning_models()
 
 # Initialize LabelRefiner
 refined_log_path = f"./refined_log.csv"
-label_refiner = LabelRefiner(refined_log_path)
+label_refiner = LabelRefiner(refined_log_path, input_columns)
 
 # Streaming and processing events
 print("\n=== Initial Log Statistics ===")
@@ -75,11 +91,12 @@ print(f"Activity frequencies:\n{activity_counts}")
 
 processed_event_ids = set()
 sliding_windows = defaultdict(lambda: deque(maxlen=sliding_window_size))
-event_counter = 1
+
 previous_event = None
 
 for _, event in df_event_log.iterrows():
     try:
+        global_event_counter += 1
         # Extract temporal features with enhanced granularity
         temporal_features = extract_temporal_features(event[timestamp_column])
         event.update(temporal_features)
@@ -107,7 +124,8 @@ for _, event in df_event_log.iterrows():
             activity_column=control_flow_column,
             timestamp_column=timestamp_column,
             resource_column=resource_column,
-            data_columns=data_columns + list(temporal_features.keys())
+            data_columns=data_columns + list(temporal_features.keys()),
+            global_event_counter=global_event_counter  # Pass event counter
         )
 
         # Log scores for debugging
@@ -141,17 +159,10 @@ for _, event in df_event_log.iterrows():
             print(f"Warning: Activity label is None for Event ID: {event_id}. Skipping event.")
             continue
 
-        print(f"Processing Event {event_counter}, Event ID: {event_id}, Activity: {activity_label}", flush=True)
-        event_counter += 1
+        print(f"Processing Event {global_event_counter}, Event ID: {event_id}, Activity: {activity_label}", flush=True)
 
-        top_features = select_features(
-            event,
-            None,
-            control_flow_column,
-            timestamp_column,
-            resource_column,
-            data_columns
-        )
+        top_features = get_top_features(event, control_flow_column, timestamp_column, resource_column, data_columns)
+
         print(f"Top Features: {top_features}")
 
         # Process the event to construct feature vector

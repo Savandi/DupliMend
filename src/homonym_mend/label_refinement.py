@@ -1,45 +1,61 @@
 import pandas as pd
 from collections import defaultdict
-from datetime import datetime
+from main import input_columns
 from src.homonym_mend.dynamic_feature_vector_construction import activity_feature_metadata
 
 class LabelRefiner:
-    def __init__(self, output_file_path):
+    def __init__(self, output_file_path, input_columns):
         self.output_file_path = output_file_path
-        self.cluster_mapping = defaultdict(lambda: defaultdict(int))  # Maps activity labels to refined cluster labels
+        self.cluster_mapping = defaultdict(lambda: defaultdict(int))
+        self.input_columns = input_columns  #Store input columns passed from main.py
         self.initialize_csv()
 
     def initialize_csv(self):
         """
-        Create the CSV file with necessary headers if it does not already exist.
+        Create the CSV file with headers retrieved from `main.py`.
         """
-        df = pd.DataFrame(columns=["EventID", "Activity", "Timestamp", "Resource", "CaseID", "refined_activity"])
-        df.to_csv(self.output_file_path, index=False)
+        try:
+            # Use column names provided from main.py
+            refined_df = pd.DataFrame(columns=self.input_columns)
+            refined_df.to_csv(self.output_file_path, index=False)
+
+            print(f"[INFO] Output CSV initialized with columns: {self.input_columns}")
+
+        except Exception as e:
+            print(f"[ERROR] Failed to initialize output CSV: {str(e)}")
 
     def refine_label(self, event_label, cluster_id):
         """
-        Generate a refined label but only apply suffixes if a split has been detected.
+        Generate a refined label but return existing mappings before assigning new ones.
         """
         cluster_suffix = self.cluster_mapping[event_label]
 
         # Retrieve existing cluster assignments for this activity label
         existing_clusters = activity_feature_metadata.get(event_label, {})
 
-        # If there is only one cluster (no split), return the activity label as-is
+        # If only one cluster exists, return the base event label (no suffix)
         if len(existing_clusters) <= 1:
-            return event_label  # No suffix yet since a split hasn't occurred
+            return event_label  # No suffix needed
 
-        # If multiple clusters exist, refine the label
+        # Check if this cluster ID already has an assigned refined label
         if cluster_id in cluster_suffix:
             return f"{event_label}_{cluster_suffix[cluster_id]}"
 
-        # Check if the new cluster is distinct enough from previous ones
-        most_frequent_cluster = max(existing_clusters, key=lambda cid: existing_clusters[cid]["frequency"], default=cluster_id)
-        if existing_clusters[most_frequent_cluster]["frequency"] > 2:  # If the split has happened, assign a suffix
+        # Handle merges: If clusters reduce back to one, revert to the base label
+        active_clusters = [cid for cid in existing_clusters if existing_clusters[cid]["frequency"] > 0]
+
+        if len(active_clusters) == 1:
+            return event_label  # Revert to base label
+
+        # Use the most frequently seen cluster's suffix
+        most_frequent_cluster = max(existing_clusters, key=lambda cid: existing_clusters[cid]["frequency"],
+                                    default=cluster_id)
+
+        if existing_clusters[most_frequent_cluster]["frequency"] > 2:
             cluster_suffix[cluster_id] = cluster_suffix[most_frequent_cluster]
             return f"{event_label}_{cluster_suffix[most_frequent_cluster]}"
 
-        # Otherwise, assign a new suffix since a confirmed split has happened
+        # ✅ Assign a new suffix only if multiple clusters exist
         cluster_suffix[cluster_id] = len(cluster_suffix)
         return f"{event_label}_{cluster_suffix[cluster_id]}"
 

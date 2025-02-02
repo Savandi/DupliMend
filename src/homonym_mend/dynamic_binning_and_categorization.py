@@ -172,41 +172,42 @@ class EnhancedAdaptiveBinning:
         return len(self.bins) - 2
 
     def _split_bin(self, bin_index):
-        """Force a split in a dense bin using adjusted median-based splitting."""
+        """
+        Split a dense bin into two smaller bins while updating bin densities.
+        """
         if bin_index >= len(self.bins) - 1:
             return
 
-        lower, upper = self.bins[bin_index], self.bins[bin_index + 1]
+        lower = self.bins[bin_index]
+        upper = self.bins[bin_index + 1]
         width = upper - lower
 
         if width < self.min_bin_width:
             return  # Prevent splitting very small bins
 
+        # Extract values that fall within this bin
         values_in_bin = [v for v in self.recent_values if lower <= v < upper]
 
         if not values_in_bin:
             return  # No data points available for splitting
 
-        # Force median split but shift slightly if it's too close to boundaries
+        # Compute the median as a new boundary for splitting
         median_value = np.median(values_in_bin)
-        if median_value <= lower + self.min_bin_width:
-            median_value += self.min_bin_width
-        if median_value >= upper - self.min_bin_width:
-            median_value -= self.min_bin_width
+
+        if median_value <= lower or median_value >= upper:
+            return  # Avoid redundant splits
 
         # Insert new bin boundary and sort
-        new_boundaries = sorted(set(self.bins) | {median_value})
-        self.bins = np.array(new_boundaries)
+        new_boundaries = np.sort(np.append(self.bins, median_value))
+        self.bins = new_boundaries
 
-        # Reset bin counts and redistribute existing values
-        new_bin_counts = defaultdict(int)
-        for value in self.recent_values:
-            reassigned_bin = self._assign_bin(value)  # Ensure values go to new bins
-            new_bin_counts[reassigned_bin] += 1
+        # Update bin densities: Redistribute count from old bin to the new bins
+        old_count = self.bin_counts[bin_index]
+        self.bin_counts[bin_index] = old_count // 2  # Assign half to the first new bin
+        self.bin_counts[bin_index + 1] = old_count - self.bin_counts[
+            bin_index]  # Assign remaining to the second new bin
 
-        self.bin_counts = new_bin_counts  # Update bin count map
-
-        print(f"[DEBUG] Split bin {bin_index}: New boundaries {self.bins}")
+        print(f"[DEBUG] Split bin {bin_index}: New boundaries {self.bins}, Updated bin counts {dict(self.bin_counts)}")
 
     def _is_sparse_region(self, bin_index):
         """
@@ -225,23 +226,26 @@ class EnhancedAdaptiveBinning:
 
     def _merge_sparse_bins(self):
         """
-        Merge adjacent sparse bins to reduce fragmentation.
+        Merge adjacent sparse bins to reduce fragmentation while updating bin densities.
         """
         i = 0
         while i < len(self.bins) - 2:
-            if (self._is_sparse_region(i) and
-                    self.bins[i + 1] - self.bins[i] >= self.min_bin_width):
+            if (self._is_sparse_region(i) and self.bins[i + 1] - self.bins[i] >= self.min_bin_width):
                 # Merge current bin with next bin
                 print(f"[DEBUG] Merging bins {i} and {i + 1} due to sparse region")
-                self.bins = np.concatenate([
-                    self.bins[:i + 1],
-                    self.bins[i + 2:]
-                ])
-                # Update counts
-                self.bin_counts[i] += self.bin_counts[i + 1]
-                del self.bin_counts[i + 1]
+
+                # Sum bin counts
+                merged_count = self.bin_counts[i] + self.bin_counts[i + 1]
+
+                # Remove the boundary
+                self.bins = np.concatenate([self.bins[:i + 1], self.bins[i + 2:]])
+
+                # Update bin counts
+                self.bin_counts[i] = merged_count
+                del self.bin_counts[i + 1]  # Remove the second bin
+
             else:
-                i += 1
+                i += 1  # Move to the next bin
 
 
 def extract_temporal_features(timestamp):

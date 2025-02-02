@@ -1,46 +1,79 @@
-from collections import defaultdict, deque
+from collections import deque
 from river.drift import ADWIN
 from config.config import (
     adaptive_window_min_size, adaptive_window_max_size, initial_window_size,
-    max_top_n_features, temporal_decay_rate, case_id_column
+    max_top_n_features, temporal_decay_rate, case_id_column, lossy_counting_budget, frequency_decay_threshold,
+    decay_after_events, removal_threshold_events
 )
-from sklearn.feature_selection import mutual_info_classif, f_classif
-from sklearn.preprocessing import OneHotEncoder
+from main import global_event_counter
+from src.utils.global_state import directly_follows_graph
+from collections import defaultdict
 import numpy as np
-import pandas as pd
-from src.utils.directly_follows_graph import DirectlyFollowsGraph
 from src.homonym_mend.dynamic_feature_vector_construction import activity_feature_history
 
-# --- GLOBAL VARIABLES ---
-directly_follows_graph = DirectlyFollowsGraph()
 feature_window_sizes = defaultdict(lambda: initial_window_size)
 feature_importance_windows = defaultdict(lambda: deque(maxlen=initial_window_size))
 feature_relevance_tracker = defaultdict(float)
 drift_detector = defaultdict(ADWIN)
+
 # Stores the last event per CaseID
 previous_events = {}
+feature_last_seen_event = {}  # Track last-seen event count for each feature
+# Store feature accumulations per case (for adaptive forgetting)
+feature_accumulations = defaultdict(dict)
+
 def configure_window_sizes():
     """Configures initial sliding window sizes."""
     global feature_window_sizes, feature_importance_windows
     feature_window_sizes = defaultdict(lambda: initial_window_size)
     feature_importance_windows = defaultdict(lambda: deque(maxlen=initial_window_size))
 
-from collections import defaultdict
-import numpy as np
-from src.homonym_mend.dynamic_feature_vector_construction import activity_feature_history
-from src.utils.directly_follows_graph import DirectlyFollowsGraph
 
-def compute_feature_scores(event, activity_column, timestamp_column, resource_column, case_id_column, data_columns):
+def forget_old_cases(activity_column):
+    """
+    Remove inactive cases from `previous_events` and related accumulations based on event count decay.
+    """
+    for case_id in list(previous_events.keys()):
+        events_since_last_seen = global_event_counter - previous_events[case_id]["last_seen_event"]
+
+        # Apply frequency decay
+        previous_events[case_id]["frequency"] *= np.exp(-events_since_last_seen / decay_after_events)
+
+        if previous_events[case_id]["frequency"] < frequency_decay_threshold and events_since_last_seen > removal_threshold_events:
+            # ✅ Deduct transition counts related to this case
+            directly_follows_graph.remove_case_transitions(case_id)
+
+            # ✅ Remove case-specific feature tracking
+            if case_id in feature_accumulations:
+                del feature_accumulations[case_id]  # ✅ Now properly defined
+
+            # ✅ Remove case-specific feature history from activity_feature_history
+            if case_id in previous_events:
+                activity_label = previous_events[case_id][activity_column]
+                if activity_label in activity_feature_history:
+                    activity_feature_history[activity_label] = [
+                        vector for vector in activity_feature_history[activity_label]
+                        if vector[case_id_column] != case_id
+                    ]
+
+            del previous_events[case_id]
+
+
+def compute_feature_scores(event, activity_column, timestamp_column, resource_column, case_id_column, data_columns, global_event_counter):
     """
     Compute dynamic feature scores incorporating:
     - Control-flow tracking (per CaseID)
     - Feature variation across similar activity labels
     - Resource and time-based weighting
+    - Event-driven forgetting
     """
-    global previous_events
+    global previous_events, feature_last_seen_event
     feature_scores = defaultdict(float)
     case_id = event[case_id_column]
     activity_label = event[activity_column]
+
+    # Forget old cases before processing new events
+    forget_old_cases(activity_column)
 
     ## --- 1. Compare Against All Past Events of the Same Activity Label (Homonym Detection) ---
     if activity_label in activity_feature_history and len(activity_feature_history[activity_label]) > 0:
@@ -57,10 +90,19 @@ def compute_feature_scores(event, activity_column, timestamp_column, resource_co
         new_feature_vector = np.array([event[column] for column in data_columns if column in event])
         deviations = np.abs(new_feature_vector - mean_vector) / std_vector
 
-        # Apply weight scaling for high deviation features
+        # Apply weight scaling for high deviation features with event-based decay
         for i, column in enumerate(data_columns):
-            if isinstance(feature_scores[column], (int, float)):  # Ensure it's a valid number
-                feature_scores[column] += deviations[i] * 1.5
+            if column in feature_last_seen_event:
+                events_since_last_seen = global_event_counter - feature_last_seen_event[column]
+            else:
+                events_since_last_seen = 0  # First occurrence, no decay
+
+            # Apply exponential decay to smooth feature importance reduction
+            feature_scores[column] *= np.exp(-events_since_last_seen / (decay_after_events * 2))
+            feature_scores[column] += deviations[i] * 1.5
+
+            # Update last seen event counter
+            feature_last_seen_event[column] = global_event_counter
 
     ## --- 2. Control-Flow Perspective (Highest Weight) ---
     prev_event = previous_events.get(case_id)  # Get previous event within the same CaseID
@@ -71,8 +113,8 @@ def compute_feature_scores(event, activity_column, timestamp_column, resource_co
         if prev_activity != curr_activity:
             feature_scores[activity_column] += 2.5  # Prioritize process control-flow
 
-            # Track transition frequency in Directly Follows Graph (CaseID-specific)
-            directly_follows_graph.add_transition(prev_activity, curr_activity)
+            # Track transition frequency in Directly Follows Graph (Global Tracking)
+            directly_follows_graph.add_transition(case_id, prev_activity, curr_activity, global_event_counter)
 
             # Contextual reinforcement: check frequent transitions
             if directly_follows_graph.get_global_frequency(prev_activity, curr_activity) > 5:
@@ -109,11 +151,10 @@ def compute_feature_scores(event, activity_column, timestamp_column, resource_co
             else:
                 feature_scores[time_feature] += 0.5  # Maintain some relevance even without change
 
-    ## Update previous event tracker for this CaseID
+    ## ✅ Update previous event tracker for this CaseID
     previous_events[case_id] = event
 
     return feature_scores
-
 
 def detect_drift(feature, feature_scores):
     """

@@ -70,6 +70,12 @@ threshold_adjustment_factor = 0.05
 # --- Logging Parameters ---
 log_frequency = 10
 
+# Forgetting Parameters
+decay_after_events = 10
+removal_threshold_events = decay_after_events * 2
+frequency_decay_threshold = 0.5
+lossy_counting_budget = 100
+
 def adaptive_threshold_variability(feature_vectors):
     """
     Compute variability factor based on feature vectors' dispersion.

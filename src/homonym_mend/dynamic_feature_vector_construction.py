@@ -1,8 +1,9 @@
 from collections import defaultdict
-from datetime import datetime
 import numpy as np
 import logging
-from config.config import temporal_decay_rate
+from config.config import temporal_decay_rate, lossy_counting_budget, frequency_decay_threshold, decay_after_events, \
+    removal_threshold_events
+from main import global_event_counter
 from src.utils.custom_label_encoder import CustomLabelEncoder
 from src.utils.logging_utils import log_traceability
 
@@ -64,11 +65,36 @@ def normalize_feature_vector(vector):
     return (vector - mean) / std
 
 
+def forget_old_feature_vectors():
+    """
+    Forget feature vectors that have not been observed recently, based on decayed frequency and event count.
+    """
+    for activity_label in list(activity_feature_metadata.keys()):
+        sorted_vectors = sorted(
+            activity_feature_metadata[activity_label].items(),
+            key=lambda x: (x[1]["frequency"], x[1]["last_seen_event"])
+        )
+
+        for vector_tuple, metadata in sorted_vectors:
+            events_since_last_seen = global_event_counter - metadata["last_seen_event"]
+            metadata["frequency"] *= np.exp(-events_since_last_seen / decay_after_events)
+
+            if metadata["frequency"] < frequency_decay_threshold and events_since_last_seen > removal_threshold_events:
+                del activity_feature_metadata[activity_label][vector_tuple]
+                activity_feature_history[activity_label].remove(list(vector_tuple))
+
+            if len(activity_feature_metadata[activity_label]) <= lossy_counting_budget:
+                break
+
+
 def process_event(event, top_features):
     """
     Process an event to construct and analyze dynamic feature vectors.
     """
     activity_label = event["Activity"]
+
+    # Apply memory management before processing
+    forget_old_feature_vectors()
 
     new_vector = []
     for feature in top_features:
@@ -95,25 +121,31 @@ def process_event(event, top_features):
     # Normalize numerical values
     new_vector = normalize_feature_vector(np.array(new_vector).flatten())
 
+    # ✅ Apply rounding to prevent floating-point precision errors
+    rounded_vector = np.round(new_vector, decimals=5)  # Round to 5 decimal places
+
     # Compare against existing vectors for this activity label
     found_match = False
     for existing_vector in activity_feature_history[activity_label]:
-        if np.array_equal(existing_vector, new_vector):  # Check if the vector is an exact match
+        if np.array_equal(np.round(existing_vector, decimals=5), rounded_vector):  # Round before comparing
             activity_feature_metadata[activity_label][tuple(existing_vector)]["frequency"] += 1
-            activity_feature_metadata[activity_label][tuple(existing_vector)]["recency"] = datetime.now()
+            activity_feature_metadata[activity_label][tuple(existing_vector)]["recency"] = global_event_counter
             found_match = True
             break
 
     if not found_match:
         # Store new unique feature vector
-        activity_feature_history[activity_label].append(new_vector)
-        activity_feature_metadata[activity_label][tuple(new_vector)] = {"frequency": 1, "recency": datetime.now()}
+        activity_feature_history[activity_label].append(rounded_vector)
+        activity_feature_metadata[activity_label][tuple(rounded_vector)] = {
+            "frequency": 1, "recency": global_event_counter
+        }
 
     # Log the event's new vector
     log_traceability("new_vector", activity_label, {
-        "vector": new_vector,
+        "vector": rounded_vector,
         "features": top_features,
         "metadata": activity_feature_metadata[activity_label]
     })
 
-    return {"activity_label": activity_label, "new_vector": new_vector}
+    return {"activity_label": activity_label, "new_vector": rounded_vector}
+
