@@ -6,8 +6,7 @@ from config.config import ( initial_window_size,
     max_top_n_features, temporal_decay_rate, case_id_column, frequency_decay_threshold,
     decay_after_events, removal_threshold_events
 )
-from src.homonym_mend.dynamic_binning_and_categorization import time_distribution, extract_temporal_features, \
-    update_time_distribution
+from src.homonym_mend.dynamic_binning_and_categorization import time_distribution, extract_temporal_features
 from src.utils.custom_label_encoder import CustomLabelEncoder
 from src.utils.global_state import directly_follows_graph
 from collections import defaultdict
