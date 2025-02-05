@@ -1,6 +1,7 @@
-# --- Perspective Column Mapping ---
+from collections import defaultdict, deque
 import numpy as np
 
+# --- Perspective Column Mapping ---
 control_flow_column = 'Activity'
 timestamp_column = 'Timestamp'
 resource_column = 'Resource'
@@ -97,3 +98,13 @@ def adaptive_threshold_variability(feature_vectors):
 
     variability_factor = min(max((mean_distance + std_distance) / 10.0, adaptive_threshold_min_variability), 1.5)
     return variability_factor
+
+# Define window configurations globally
+feature_window_sizes = defaultdict(lambda: initial_window_size)
+feature_importance_windows = defaultdict(lambda: deque(maxlen=initial_window_size))
+
+def configure_window_sizes():
+    """Configures initial sliding window sizes."""
+    global feature_window_sizes, feature_importance_windows
+    feature_window_sizes = defaultdict(lambda: initial_window_size)
+    feature_importance_windows = defaultdict(lambda: deque(maxlen=initial_window_size))

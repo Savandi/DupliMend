@@ -1,6 +1,3 @@
-import logging
-
-from config import config
 from src.homonym_mend.dynamic_feature_vector_construction import activity_feature_metadata
 from src.utils.logging_utils import log_traceability
 from collections import defaultdict
@@ -12,10 +9,8 @@ from config.config import (
     merging_threshold,
     temporal_decay_rate,
     forgetting_threshold,
-    positional_penalty_alpha,
-    dbstream_params,
     grace_period_events,
-    adaptive_threshold_min_variability, similarity_penalty, min_cluster_size, decay_after_events)
+    adaptive_threshold_min_variability, similarity_penalty, decay_after_events)
 from src.utils.similarity_utils import compute_contextual_weighted_similarity
 
 # --- GLOBAL VARIABLES ---
@@ -276,7 +271,7 @@ def normalize_vector(vector):
         return vector
     return (vector - np.mean(vector)) / np.std(vector)
 
-def process_event(event_data):
+def process_event(event_data, global_event_counter):
     """
     Process an incoming event, assign a cluster, and analyze splits or merges.
     """
@@ -298,20 +293,22 @@ def process_event(event_data):
     dbstream_instance = dbstream_clusters[activity_label]
 
     # Process feature vector through DBStream
-    cluster_id = dbstream_instance.partial_fit(normalized_vector)
+    cluster_id = dbstream_instance.partial_fit(normalized_vector,global_event_counter)
 
     # Store and track cluster assignments in activity_feature_metadata
     vector_tuple = tuple(normalized_vector)
     if vector_tuple in activity_feature_metadata[activity_label]:
         activity_feature_metadata[activity_label][vector_tuple]["frequency"] += 1
-        activity_feature_metadata[activity_label][vector_tuple]["recency"] = datetime.now()
+        activity_feature_metadata[activity_label][vector_tuple]["recency"] = global_event_counter
+        activity_feature_metadata[activity_label][vector_tuple]["last_seen_event"] = global_event_counter
         activity_feature_metadata[activity_label][vector_tuple]["cluster"] = cluster_id
+
     else:
         # Store new feature vector with cluster metadata
-        activity_feature_metadata[activity_label][vector_tuple] = {
+        vector_metadata[activity_label][vector_tuple] = {
             "frequency": 1,
             "recency": datetime.now(),
-            "cluster": cluster_id
+            "last_seen_event": global_event_counter  # Ensure it exists
         }
 
     log_traceability("cluster_update", activity_label, {
@@ -330,7 +327,7 @@ def handle_temporal_decay(activity_label):
     """
     Apply temporal decay to clusters for a specific activity.
     """
-    metadata = vector_metadata[activity_label]
+    metadata = vector_metadata.get(activity_label, {})
     current_time = datetime.now()
 
     for vector, data in list(metadata.items()):

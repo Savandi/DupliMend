@@ -1,13 +1,16 @@
 import pandas as pd
 from collections import defaultdict
-from main import input_columns
 from src.homonym_mend.dynamic_feature_vector_construction import activity_feature_metadata
 
 class LabelRefiner:
     def __init__(self, output_file_path, input_columns):
+        """
+        Initialize LabelRefiner with a dynamically provided list of input columns.
+        """
+        print(f"Label Refiner initialized")
         self.output_file_path = output_file_path
         self.cluster_mapping = defaultdict(lambda: defaultdict(int))
-        self.input_columns = input_columns  #Store input columns passed from main.py
+        self.input_columns = input_columns  # ✅ Store input columns
         self.initialize_csv()
 
     def initialize_csv(self):
@@ -55,7 +58,7 @@ class LabelRefiner:
             cluster_suffix[cluster_id] = cluster_suffix[most_frequent_cluster]
             return f"{event_label}_{cluster_suffix[most_frequent_cluster]}"
 
-        # ✅ Assign a new suffix only if multiple clusters exist
+        #  Assign a new suffix only if multiple clusters exist
         cluster_suffix[cluster_id] = len(cluster_suffix)
         return f"{event_label}_{cluster_suffix[cluster_id]}"
 

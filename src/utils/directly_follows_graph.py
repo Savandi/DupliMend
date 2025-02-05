@@ -1,7 +1,6 @@
 from collections import defaultdict
 import numpy as np
 from config.config import lossy_counting_budget, frequency_decay_threshold, decay_after_events, removal_threshold_events
-from main import global_event_counter
 
 
 class DirectlyFollowsGraph:
@@ -9,25 +8,26 @@ class DirectlyFollowsGraph:
         """
         Initialize the directly follows graph with adaptive forgetting.
         """
-        self.graph = defaultdict(lambda: {"count": 0, "last_seen_event": global_event_counter})
+        self.graph = defaultdict(lambda: {"count": 0, "last_seen_event": 0})  # Initialize to 0
         self.case_transitions = defaultdict(list)  # ✅ Track transitions per case
 
-    def add_transition(self, case_id, prev_activity, curr_activity):
+
+    def add_transition(self, case_id, prev_activity, curr_activity, global_event_counter):
         """
         Track transition frequency globally while associating transitions with specific cases.
         """
         key = (prev_activity, curr_activity)
         self.graph[key]["count"] += 1
-        self.graph[key]["last_seen_event"] = global_event_counter
+        self.graph[key]["last_seen_event"] = global_event_counter  # ✅ Use explicit parameter
 
         # ✅ Store the transition in case-specific tracking
         self.case_transitions[case_id].append(key)
 
         # ✅ Apply forgetting every `decay_after_events`
         if global_event_counter % decay_after_events == 0:
-            self.apply_forgetting()
+            self.apply_forgetting(global_event_counter)  # ✅ Pass explicitly
 
-    def apply_forgetting(self):
+    def apply_forgetting(self, global_event_counter):
         """
         Decay transition counts and remove rarely used transitions based on event counts.
         """

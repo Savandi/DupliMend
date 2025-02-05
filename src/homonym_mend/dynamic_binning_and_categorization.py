@@ -1,9 +1,17 @@
 from collections import defaultdict, deque
+
+import pandas as pd
 from tdigest import TDigest
 import numpy as np
 from river.drift import ADWIN
-import time
 
+
+time_distribution = defaultdict(lambda: defaultdict(lambda: defaultdict(lambda: defaultdict(int))))
+
+DAY_MAPPING = {
+    "Monday": 0, "Tuesday": 1, "Wednesday": 2,
+    "Thursday": 3, "Friday": 4, "Saturday": 5, "Sunday": 6
+}
 
 class DecayingTDigest:
     """
@@ -61,6 +69,7 @@ class EnhancedAdaptiveBinning:
         self.quantile_points = quantile_points
         self.window_size = 1000
         self.recent_values = []
+        self.recent_splits = {}
 
     def update_bins(self, new_value):
         """
@@ -173,17 +182,27 @@ class EnhancedAdaptiveBinning:
 
     def _split_bin(self, bin_index):
         """
-        Split a dense bin into two smaller bins while updating bin densities.
+        Split a dense bin into two smaller bins while ensuring stability in binning.
         """
+
         if bin_index >= len(self.bins) - 1:
+            return
+
+        current_time = self.decaying_digest.updates  # Use the update counter as a time reference
+
+        # Cooldown mechanism: Prevent multiple splits in quick succession
+        if bin_index in self.recent_splits and (current_time - self.recent_splits[bin_index] < 500):
+            print(f"[DEBUG] Skipping split for bin {bin_index} (recently split)")
             return
 
         lower = self.bins[bin_index]
         upper = self.bins[bin_index + 1]
         width = upper - lower
 
+        # Prevent splitting very small bins
         if width < self.min_bin_width:
-            return  # Prevent splitting very small bins
+            print(f"[DEBUG] Skipping split for bin {bin_index}: width {width} is too small")
+            return
 
         # Extract values that fall within this bin
         values_in_bin = [v for v in self.recent_values if lower <= v < upper]
@@ -194,8 +213,10 @@ class EnhancedAdaptiveBinning:
         # Compute the median as a new boundary for splitting
         median_value = np.median(values_in_bin)
 
+        # Ensure new boundary does not create a redundant split
         if median_value <= lower or median_value >= upper:
-            return  # Avoid redundant splits
+            print(f"[DEBUG] Skipping split for bin {bin_index}: median {median_value} is not a valid boundary")
+            return
 
         # Insert new bin boundary and sort
         new_boundaries = np.sort(np.append(self.bins, median_value))
@@ -203,9 +224,14 @@ class EnhancedAdaptiveBinning:
 
         # Update bin densities: Redistribute count from old bin to the new bins
         old_count = self.bin_counts[bin_index]
+        new_bin_index = np.where(self.bins == median_value)[0][0]
+
         self.bin_counts[bin_index] = old_count // 2  # Assign half to the first new bin
-        self.bin_counts[bin_index + 1] = old_count - self.bin_counts[
+        self.bin_counts[new_bin_index] = old_count - self.bin_counts[
             bin_index]  # Assign remaining to the second new bin
+
+        # Mark bin as recently split
+        self.recent_splits[bin_index] = current_time
 
         print(f"[DEBUG] Split bin {bin_index}: New boundaries {self.bins}, Updated bin counts {dict(self.bin_counts)}")
 
@@ -250,9 +276,24 @@ class EnhancedAdaptiveBinning:
 
 def extract_temporal_features(timestamp):
     """
-    Extract temporal features with more granular time periods and seasonal information.
+    Extract temporal features while handling missing (NaT) timestamps safely.
     """
+    if pd.isnull(timestamp):  # ✅ Skip NaT timestamps to prevent KeyErrors
+        print(f"[ERROR] Encountered invalid timestamp: {timestamp}")
+        return {
+            "hour_bin": "UNKNOWN",
+            "day_of_week": -1,  # Encode missing as -1
+            "is_weekend": -1,
+            "month": "UNKNOWN"
+        }
+    if isinstance(timestamp, str):
+        timestamp = pd.to_datetime(timestamp, errors='coerce')
+
+    if pd.isna(timestamp):
+        return {}  # Return empty dict if timestamp is invalid
+
     hour = timestamp.hour
+
     hour_bin = (
         "Early_Morning" if 4 <= hour < 8 else
         "Morning" if 8 <= hour < 12 else
@@ -261,41 +302,49 @@ def extract_temporal_features(timestamp):
         "Night"
     )
 
-    month = timestamp.month
-    season = (
-        "Winter" if month in [12, 1, 2] else
-        "Spring" if month in [3, 4, 5] else
-        "Summer" if month in [6, 7, 8] else
-        "Fall"
-    )
-
     return {
-        'hour_bin': hour_bin,
-        'day_period': hour_bin,
-        'day_of_week': timestamp.weekday(),
-        'is_weekend': timestamp.weekday() >= 5,
-        'week_of_month': (timestamp.day - 1) // 7 + 1,
-        'season': season,
-        'month': month
+        "hour_bin": hour_bin,
+        "day_of_week": DAY_MAPPING.get(timestamp.strftime("%A"), -1),  # Convert to numeric
+        "is_weekend": timestamp.weekday() >= 5,
+        "month": timestamp.strftime("%B")
     }
 
 
-def stream_event_log(
-        event_dict,
-        timestamp_column,
-        control_flow_column,
-        resource_column,
-        case_id_column,
-        event_id_column,
-        data_columns,
-        features_to_discretize,
-        binning_models  # <-- Pass pre-initialized binning models
-):
+def update_time_distribution(activity, timestamp):
+    """
+    Update the time distribution incrementally, tracking hours, days, and months.
+    """
+    time_features = extract_temporal_features(timestamp)
+
+    hour_bin = time_features["hour_bin"]
+    day_of_week = time_features["day_of_week"]
+    month = time_features["month"]
+
+    # Incrementally update counts
+    time_distribution[activity][hour_bin][day_of_week][month] += 1
+
+
+
+def stream_event_log(event_dict, timestamp_column, control_flow_column, resource_column, case_id_column, event_id_column, data_columns, features_to_discretize, binning_models):
     """
     Streaming event log processor with binning for numerical features only.
     """
     print(f"[DEBUG] Processing event {event_dict[event_id_column]}")
 
+    if timestamp_column in event_dict:
+        event_dict[timestamp_column] = pd.to_datetime(event_dict[timestamp_column], errors="coerce")
+
+    # Handle temporal feature extraction safely
+    if not pd.isna(event_dict[timestamp_column]):
+        temporal_features = extract_temporal_features(event_dict[timestamp_column])
+        event_dict.update({
+            f"{timestamp_column}_{temp_feature}_bin": temp_value
+            for temp_feature, temp_value in temporal_features.items()
+        })
+    else:
+        print(f"[WARNING] Timestamp is NaT for event {event_dict[event_id_column]}")
+
+    # Process numerical features for binning
     for feature in features_to_discretize:
         if feature not in event_dict:
             continue
@@ -303,20 +352,13 @@ def stream_event_log(
         if feature in [case_id_column, control_flow_column]:
             continue  # Skip non-numeric columns
 
-        if feature == timestamp_column:
-            temporal_features = extract_temporal_features(event_dict[feature])
-            event_dict.update({
-                f"{feature}_{temp_feature}_bin": temp_value
-                for temp_feature, temp_value in temporal_features.items()
-            })
-        else:
-            try:
-                value = float(event_dict[feature])  # Ensure numeric
-                bin_assignment = binning_models[feature].update_bins(value)
-                event_dict[f"{feature}_bin"] = bin_assignment
-                print(f"[DEBUG] Feature {feature}: Value {value} → Bin {bin_assignment}")
-            except (ValueError, TypeError) as e:
-                print(f"[ERROR] Issue processing feature {feature}: {str(e)}")
-                continue
+        try:
+            value = float(event_dict[feature])  # Ensure numeric
+            bin_assignment = binning_models[feature].update_bins(value)
+            event_dict[f"{feature}_bin"] = bin_assignment
+            print(f"[DEBUG] Feature {feature}: Value {value} → Bin {bin_assignment}")
+        except (ValueError, TypeError) as e:
+            print(f"[ERROR] Issue processing feature {feature}: {str(e)}")
+            continue
 
     return event_dict

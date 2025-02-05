@@ -3,12 +3,11 @@ import numpy as np
 import logging
 from config.config import temporal_decay_rate, lossy_counting_budget, frequency_decay_threshold, decay_after_events, \
     removal_threshold_events
-from main import global_event_counter
 from src.utils.custom_label_encoder import CustomLabelEncoder
 from src.utils.logging_utils import log_traceability
 
 # --- GLOBAL VARIABLES ---
-event_counter = defaultdict(int)  # Track events per activity
+
 audit_log = []
 encoders = defaultdict(CustomLabelEncoder)  # Automatically initializes a CustomLabelEncoder for each feature
 activity_feature_history = defaultdict(list)
@@ -49,23 +48,38 @@ def encode_categorical_feature(feature, value):
         return -1  # Fallback for encoding errors
 
 
+def normalize_scores(feature_scores):
+    """
+    Normalize feature scores using min-max normalization.
+    """
+    values = np.array(list(feature_scores.values()))
+    min_val, max_val = values.min(), values.max()
+
+    if max_val - min_val == 0:
+        return feature_scores  # Avoid division by zero
+
+    for key in feature_scores:
+        feature_scores[key] = (feature_scores[key] - min_val) / (max_val - min_val)
+
+    return feature_scores
+
 def normalize_feature_vector(vector):
     """
-    Normalize a numerical feature vector using mean and standard deviation.
+    Normalize a numerical feature vector using min-max scaling.
     """
     if len(vector) == 0:
         return np.array(vector)
 
-    mean = np.mean(vector)
-    std = np.std(vector)
+    min_val = np.min(vector)
+    max_val = np.max(vector)
 
-    if std == 0:
-        return np.zeros_like(vector)
+    if max_val - min_val == 0:
+        return np.zeros_like(vector)  # Avoid division by zero
 
-    return (vector - mean) / std
+    return (vector - min_val) / (max_val - min_val)
 
 
-def forget_old_feature_vectors():
+def forget_old_feature_vectors(global_event_counter):
     """
     Forget feature vectors that have not been observed recently, based on decayed frequency and event count.
     """
@@ -76,7 +90,7 @@ def forget_old_feature_vectors():
         )
 
         for vector_tuple, metadata in sorted_vectors:
-            events_since_last_seen = global_event_counter - metadata["last_seen_event"]
+            events_since_last_seen = global_event_counter - metadata.get("last_seen_event", global_event_counter)
             metadata["frequency"] *= np.exp(-events_since_last_seen / decay_after_events)
 
             if metadata["frequency"] < frequency_decay_threshold and events_since_last_seen > removal_threshold_events:
@@ -87,14 +101,14 @@ def forget_old_feature_vectors():
                 break
 
 
-def process_event(event, top_features):
+def process_event(event, top_features, global_event_counter):
     """
     Process an event to construct and analyze dynamic feature vectors.
     """
     activity_label = event["Activity"]
 
     # Apply memory management before processing
-    forget_old_feature_vectors()
+    forget_old_feature_vectors(global_event_counter)
 
     new_vector = []
     for feature in top_features:
@@ -106,10 +120,12 @@ def process_event(event, top_features):
             value = "MISSING"  # Default missing value for categorical features
 
         # Encode categorical features
-        if isinstance(value, str):  # Categorical feature
-            encoded_value = encoders[feature].transform(value)
-        else:  # Numerical feature
+        if isinstance(value, str) and value != "MISSING":  # Categorical feature
+            encoded_value = encoders[feature].transform([value])[0]  # Ensure encoding returns a valid format
+        elif isinstance(value, (int, float)):
             encoded_value = float(value)  # Ensure it's treated as a float
+        else:
+            encoded_value = 0.0  # Default numerical value for unexpected cases
 
         new_vector.append(encoded_value)
 
@@ -121,8 +137,8 @@ def process_event(event, top_features):
     # Normalize numerical values
     new_vector = normalize_feature_vector(np.array(new_vector).flatten())
 
-    # ✅ Apply rounding to prevent floating-point precision errors
-    rounded_vector = np.round(new_vector, decimals=5)  # Round to 5 decimal places
+    # Apply rounding to prevent floating-point precision errors
+    rounded_vector = np.round(np.array(new_vector), decimals=5)  # Round to 5 decimal places
 
     # Compare against existing vectors for this activity label
     found_match = False
@@ -135,9 +151,13 @@ def process_event(event, top_features):
 
     if not found_match:
         # Store new unique feature vector
+        rounded_vector_tuple = tuple(rounded_vector) if isinstance(rounded_vector, (list, np.ndarray)) else (
+        rounded_vector,)
         activity_feature_history[activity_label].append(rounded_vector)
-        activity_feature_metadata[activity_label][tuple(rounded_vector)] = {
-            "frequency": 1, "recency": global_event_counter
+        activity_feature_metadata[activity_label][rounded_vector_tuple] = {
+            "frequency": 1,
+            "recency": global_event_counter,
+            "last_seen_event": global_event_counter  # ✅ Ensure last_seen_event is stored
         }
 
     # Log the event's new vector

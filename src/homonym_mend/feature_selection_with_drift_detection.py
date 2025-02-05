@@ -1,31 +1,30 @@
 from collections import deque
+
+import pandas as pd
 from river.drift import ADWIN
-from config.config import (
-    adaptive_window_min_size, adaptive_window_max_size, initial_window_size,
-    max_top_n_features, temporal_decay_rate, case_id_column, lossy_counting_budget, frequency_decay_threshold,
+from config.config import ( initial_window_size,
+    max_top_n_features, temporal_decay_rate, case_id_column, frequency_decay_threshold,
     decay_after_events, removal_threshold_events
 )
+from src.homonym_mend.dynamic_binning_and_categorization import time_distribution, extract_temporal_features, \
+    update_time_distribution
+from src.utils.custom_label_encoder import CustomLabelEncoder
 from src.utils.global_state import directly_follows_graph
 from collections import defaultdict
 import numpy as np
-from src.homonym_mend.dynamic_feature_vector_construction import activity_feature_history
+from src.homonym_mend.dynamic_feature_vector_construction import activity_feature_history, activity_feature_metadata
 
+# Initialize feature tracking structures
 feature_window_sizes = defaultdict(lambda: initial_window_size)
 feature_importance_windows = defaultdict(lambda: deque(maxlen=initial_window_size))
 feature_relevance_tracker = defaultdict(float)
 drift_detector = defaultdict(ADWIN)
+day_encoder = CustomLabelEncoder()
 
 # Stores the last event per CaseID
 previous_events = {}
 feature_last_seen_event = {}  # Track last-seen event count for each feature
-# Store feature accumulations per case (for adaptive forgetting)
-feature_accumulations = defaultdict(dict)
-
-def configure_window_sizes():
-    """Configures initial sliding window sizes."""
-    global feature_window_sizes, feature_importance_windows
-    feature_window_sizes = defaultdict(lambda: initial_window_size)
-    feature_importance_windows = defaultdict(lambda: deque(maxlen=initial_window_size))
+feature_accumulations = defaultdict(dict)  # Store feature accumulations per case (for adaptive forgetting)
 
 
 def forget_old_cases(activity_column, global_event_counter):
@@ -33,20 +32,22 @@ def forget_old_cases(activity_column, global_event_counter):
     Remove inactive cases from `previous_events` and related accumulations based on event count decay.
     """
     for case_id in list(previous_events.keys()):
-        events_since_last_seen = global_event_counter - previous_events[case_id]["last_seen_event"]
+        events_since_last_seen = global_event_counter - previous_events[case_id].get("last_seen_event", global_event_counter)
 
-        # Apply frequency decay
-        previous_events[case_id]["frequency"] *= np.exp(-events_since_last_seen / decay_after_events)
+        if "frequency" not in previous_events[case_id]:
+            previous_events[case_id]["frequency"] = 1  # Initialize frequency
+        if "frequency" in previous_events[case_id]:
+            previous_events[case_id]["frequency"] *= np.exp(-events_since_last_seen / decay_after_events)
 
         if previous_events[case_id]["frequency"] < frequency_decay_threshold and events_since_last_seen > removal_threshold_events:
-            # ✅ Deduct transition counts related to this case
+            # Deduct transition counts related to this case
             directly_follows_graph.remove_case_transitions(case_id)
 
-            # ✅ Remove case-specific feature tracking
+            # Remove case-specific feature tracking
             if case_id in feature_accumulations:
-                del feature_accumulations[case_id]  # ✅ Now properly defined
+                del feature_accumulations[case_id]
 
-            # ✅ Remove case-specific feature history from activity_feature_history
+            # Remove case-specific feature history from activity_feature_history
             if case_id in previous_events:
                 activity_label = previous_events[case_id][activity_column]
                 if activity_label in activity_feature_history:
@@ -57,6 +58,21 @@ def forget_old_cases(activity_column, global_event_counter):
 
             del previous_events[case_id]
 
+def compute_time_feature_score(activity, time_features):
+    """
+    Computes the feature score for time attributes based on incremental tracking.
+    """
+    hour_bin = time_features["hour_bin"]
+    day_of_week = time_features["day_of_week"]
+    month = time_features["month"]
+
+    # Retrieve past occurrences for this time configuration
+    past_occurrences = time_distribution[activity][hour_bin][day_of_week].get(month, 0)
+
+    # Apply inverse frequency scoring (rarer occurrences get higher weight)
+    score = 1 / (past_occurrences + 1)
+
+    return score
 
 def compute_feature_scores(event, activity_column, timestamp_column, resource_column, case_id_column, data_columns, global_event_counter):
     """
@@ -86,15 +102,23 @@ def compute_feature_scores(event, activity_column, timestamp_column, resource_co
         std_vector[std_vector == 0] = 1  # Avoid division by zero
 
         # Compute feature importance based on deviation from the mean
-        new_feature_vector = np.array([event[column] for column in data_columns if column in event])
+        new_feature_vector = np.array([
+            float(event[column]) if column in event and isinstance(event[column], (int, float)) else 0.0
+            for column in data_columns
+        ], dtype=np.float64)  # ✅ Ensure numerical consistency before performing NumPy operations
+
         deviations = np.abs(new_feature_vector - mean_vector) / std_vector
 
         # Apply weight scaling for high deviation features with event-based decay
         for i, column in enumerate(data_columns):
-            if column in feature_last_seen_event:
-                events_since_last_seen = global_event_counter - feature_last_seen_event[column]
+            vector_tuple = tuple(new_feature_vector)
+
+            if activity_label in activity_feature_metadata and vector_tuple in activity_feature_metadata[activity_label]:
+                last_seen_event = activity_feature_metadata[activity_label][vector_tuple].get("last_seen_event", global_event_counter)
             else:
-                events_since_last_seen = 0  # First occurrence, no decay
+                last_seen_event = global_event_counter  # Default if new
+
+            events_since_last_seen = global_event_counter - last_seen_event
 
             # Apply exponential decay to smooth feature importance reduction
             feature_scores[column] *= np.exp(-events_since_last_seen / (decay_after_events * 2))
@@ -123,7 +147,23 @@ def compute_feature_scores(event, activity_column, timestamp_column, resource_co
     if resource_column in event:
         feature_scores[resource_column] += 0.8
 
-    ## --- 4. Data Perspective ---
+    ## --- 4. Time Perspective (NEW ADDITION) ---
+    if isinstance(event[timestamp_column], str):
+        event[timestamp_column] = pd.to_datetime(event[timestamp_column], errors='coerce')
+
+    if pd.isna(event[timestamp_column]):
+        return {}  # Skip processing if timestamp is invalid
+
+    time_features = extract_temporal_features(event[timestamp_column])
+
+    # Encode categorical features before using them in calculations
+    if "day_of_week" in time_features:
+        time_features["day_of_week"] = day_encoder.transform(time_features["day_of_week"])  # Encode day as numerical
+
+    # Compute time-based feature score
+    feature_scores["time_score"] = compute_time_feature_score(activity_label, time_features)
+
+    ## --- 5. Data Perspective ---
     if prev_event:
         for column in data_columns:
             if column in event and column in prev_event:
@@ -138,22 +178,11 @@ def compute_feature_scores(event, activity_column, timestamp_column, resource_co
                 except Exception:
                     feature_scores[column] += base_score  # Fallback handling
 
-    ## --- 5. Time Perspective ---
-    time_features = [col for col in event.keys() if col in [
-        "hour_bin", "day_period", "day_of_week", "is_weekend", "week_of_month", "season", "month"
-    ]]
-
-    for time_feature in time_features:
-        if time_feature in event and prev_event and time_feature in prev_event:
-            if event[time_feature] != prev_event[time_feature]:
-                feature_scores[time_feature] += 0.9  # Weight changes in time categories
-            else:
-                feature_scores[time_feature] += 0.5  # Maintain some relevance even without change
-
-    ## ✅ Update previous event tracker for this CaseID
+    ## Update previous event tracker for this CaseID
     previous_events[case_id] = event
 
     return feature_scores
+
 
 def detect_drift(feature, feature_scores):
     """
@@ -165,52 +194,27 @@ def detect_drift(feature, feature_scores):
     avg_score = np.mean(feature_scores) if len(feature_scores) > 0 else 0
     return drift_detector[feature].update(avg_score)
 
-def select_features(event, previous_event, activity_column, timestamp_column, resource_column, data_columns):
+
+def select_features(event, previous_event, activity_column, timestamp_column, resource_column, data_columns, global_event_counter):
     """
     Fast Online Feature Selection with Adaptive Weighting.
     """
     # Compute base feature scores
-    feature_scores = compute_feature_scores(event, previous_event, activity_column, timestamp_column, resource_column, data_columns)
-
-    # Ensemble Scoring (Mutual Information + Process Importance)
-    ensemble_scores = feature_scores.copy()
-    feature_keys = list(feature_scores.keys())
+    feature_scores = compute_feature_scores(
+        event, activity_column, timestamp_column, resource_column, case_id_column, data_columns, global_event_counter
+    )
 
     # Apply decay weighting to prioritize recent context
     current_time = event[timestamp_column]
     for feature in feature_scores:
         feature_scores[feature] *= np.exp(-temporal_decay_rate * (current_time - previous_event[timestamp_column]).total_seconds() if previous_event else 1)
 
-    # Adjust Window Size Based on Drift
-    for feature, score in feature_scores.items():
-        if not feature_importance_windows[feature]:
-            feature_importance_windows[feature].append(0)
-
-        drift_detected = detect_drift(feature, list(feature_importance_windows[feature]))
-        feature_importance_windows[feature] = adjust_window_size(feature, drift_detected)
-        feature_importance_windows[feature].append(score)
-
-    # Aggregate Scores with Contextual Weighting
-    aggregated_scores = {}
-    for feature, window in feature_importance_windows.items():
-        weights = np.exp(-0.1 * np.arange(len(window)))  # More recent scores have higher weight
-        weighted_scores = np.multiply(window, weights[::-1])
-        aggregated_scores[feature] = np.sum(weighted_scores) / np.sum(weights) if np.sum(weights) > 0 else 0
-
     # Dynamic thresholding for selecting top features
     top_n = adaptive_threshold(feature_scores)
-    selected_features = sorted(aggregated_scores.items(), key=lambda x: x[1], reverse=True)[:top_n]
+    selected_features = sorted(feature_scores.items(), key=lambda x: x[1], reverse=True)[:top_n]
 
     return [feature for feature, _ in selected_features]
 
-def adjust_window_size(feature, drift_detected):
-    """
-    Dynamically adjust the sliding window size based on drift detection.
-    """
-    current_size = feature_window_sizes[feature]
-    new_size = max(adaptive_window_min_size, current_size // 2) if drift_detected else min(adaptive_window_max_size, current_size + 10)
-    feature_window_sizes[feature] = new_size
-    return deque(maxlen=new_size)
 
 def adaptive_threshold(feature_scores):
     """

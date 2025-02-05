@@ -1,9 +1,6 @@
-from datetime import datetime
 import numpy as np
 from config.config import dbstream_params, decay_after_events, lossy_counting_budget, \
     removal_threshold_events, frequency_decay_threshold
-from main import global_event_counter
-from src.utils.logging_utils import log_traceability
 from src.utils.similarity_utils import compute_contextual_weighted_similarity
 
 class DBStream:
@@ -30,13 +27,13 @@ class DBStream:
         self.similarity_history = []
         self.max_history_size = 15
 
-    def forget_old_clusters(self):
+    def forget_old_clusters(self,global_event_counter):
         """
         Remove old micro-clusters from this DBStream instance using frequency decay.
         """
         for cluster_id in list(self.micro_clusters.keys()):
             cluster = self.micro_clusters[cluster_id]
-            events_since_last_update = global_event_counter - cluster["last_seen_event"]
+            events_since_last_update = global_event_counter - cluster.get("last_seen_event", global_event_counter)
 
             # Apply exponential frequency decay
             cluster["weight"] *= np.exp(-events_since_last_update / decay_after_events)
@@ -48,11 +45,11 @@ class DBStream:
             if len(self.micro_clusters) <= lossy_counting_budget:
                 break  # Stop once within budget
 
-    def partial_fit(self, vector):
+    def partial_fit(self, vector, global_event_counter):
         """
         Process new vector, detect clusters, and update micro-clusters dynamically.
         """
-        self.forget_old_clusters()
+        self.forget_old_clusters(global_event_counter)
         self.event_count += 1
 
         if not self.micro_clusters:
@@ -80,13 +77,15 @@ class DBStream:
         elif best_sim < self.split_threshold:
             new_cluster_id = len(self.micro_clusters)
             self.micro_clusters[new_cluster_id] = {
-                "centroid": np.array(vector), "weight": 1, "last_seen_event": global_event_counter
+                "centroid": np.array(vector),
+                "weight": 1,
+                "last_seen_event": global_event_counter  # Ensure last_seen_event is stored
             }
             return new_cluster_id
         else:
             return best_cluster_id
 
-    def _update_cluster(self, cluster_id, new_vector):
+    def _update_cluster(self, cluster_id, new_vector,global_event_counter):
         """
         Update an existing micro-cluster with a new data point.
         """
@@ -108,3 +107,9 @@ class DBStream:
 
         for cluster_id in clusters_to_remove:
             del self.micro_clusters[cluster_id]
+
+    def get_micro_clusters(self):
+        """
+        Retrieve a list of all current micro-clusters.
+        """
+        return list(self.micro_clusters.values())  # Ensure method returns micro-clusters correctly
