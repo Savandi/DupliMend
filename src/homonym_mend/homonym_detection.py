@@ -128,22 +128,13 @@ def find_similarity_clusters(similarity_matrix, high_threshold=0.8, low_threshol
     return clusters
 
 
-def compute_similarity(cluster_vectors, feature_weights):
+def compute_similarity(cluster_vectors, feature_weights=None):
     """
     Compute pairwise similarity matrix between all cluster vectors.
-
-    Ensures:
-    - `previousEvents` activities always impact similarity calculations.
-    - Weights for `previousEvents` are dynamically adjusted.
-    - Adaptive weighting approach without hardcoded values.
-
-    Args:
-        cluster_vectors (list): List of feature vectors from clusters.
-        feature_weights (dict): Dictionary of feature importance weights.
-
-    Returns:
-        numpy.ndarray: Matrix of pairwise similarities.
     """
+    if feature_weights is None:
+        feature_weights = defaultdict(lambda: 1.0)  # Initialize default weights if missing
+
     n_clusters = len(cluster_vectors)
     similarity_matrix = np.zeros((n_clusters, n_clusters))
 
@@ -342,6 +333,9 @@ def process_event(event_data, global_event_counter):
 
     # Apply temporal decay after processing the event
     handle_temporal_decay(activity_label, global_event_counter)
+
+    # Remove old clusters based on decay
+    dbstream_instance.forget_old_clusters(global_event_counter)
 
     return result, updated_cluster_id
 

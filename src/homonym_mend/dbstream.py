@@ -83,7 +83,7 @@ class DBStream:
         best_sim, best_cluster_id = similarities[0]
 
         if best_sim > self.merge_threshold:
-            self._update_cluster(best_cluster_id, vector)
+            self._update_cluster(best_cluster_id, vector, global_event_counter)  # ✅ Ensure timestamp is updated
             return best_cluster_id
         elif best_sim < self.split_threshold:
             new_cluster_id = len(self.micro_clusters)
@@ -117,6 +117,9 @@ class DBStream:
             # Apply adaptive decay instead of sudden drop
             decay_factor = np.exp(-time_since_update / self.decay_after_events)
 
+            if "vector_frequencies" not in cluster:
+                cluster["vector_frequencies"] = {}  # Ensure this key exists
+
             # Decay all stored vector frequencies in the cluster
             for vector in list(cluster["vector_frequencies"].keys()):
                 cluster["vector_frequencies"][vector] *= decay_factor  # Gradual decay
@@ -129,13 +132,15 @@ class DBStream:
             if not cluster["vector_frequencies"]:
                 del self.micro_clusters[cluster_id]  # Corrected way to remove cluster
             else:
-                cluster["centroid"] = self._most_frequent_vector(
-                    cluster["vector_frequencies"])  # Ensure centroid updates
+                cluster["centroid"] = self._most_frequent_vector(cluster["vector_frequencies"])
 
     def _most_frequent_vector(self, vector_frequencies):
         """
         Determines the most frequent feature vector in a cluster.
         """
+        if not vector_frequencies:  # Ensure dictionary is not empty
+            return np.zeros_like(self.micro_clusters[0]["centroid"])  # Return a default zero centroid
+
         return max(vector_frequencies, key=vector_frequencies.get)
 
     def get_micro_clusters(self):
