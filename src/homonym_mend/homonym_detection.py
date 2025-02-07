@@ -1,4 +1,5 @@
 from src.homonym_mend.dynamic_feature_vector_construction import activity_feature_metadata
+from src.homonym_mend.feature_selection_with_drift_detection import update_feature_weights
 from src.utils.logging_utils import log_traceability
 from collections import defaultdict
 import numpy as np
@@ -10,13 +11,13 @@ from config.config import (
     temporal_decay_rate,
     forgetting_threshold,
     grace_period_events,
-    adaptive_threshold_min_variability, similarity_penalty, decay_after_events)
+    adaptive_threshold_min_variability, similarity_penalty, decay_after_events, previousEvents)
 from src.utils.similarity_utils import compute_contextual_weighted_similarity
 
 # --- GLOBAL VARIABLES ---
 cluster_grace_period = timedelta(seconds=grace_period_events)
 feature_vectors = defaultdict(list)
-vector_metadata = defaultdict(lambda: defaultdict(lambda: {"frequency": 0, "recency": datetime.now()}))
+vector_metadata = defaultdict(lambda: defaultdict(lambda: {"frequency": 0, "last_seen_event": 0}))
 audit_log = []
 dbstream_clusters = defaultdict(lambda: DBStream())
 event_counter = defaultdict(int)  # Track the number of processed events per activity label
@@ -127,17 +128,37 @@ def find_similarity_clusters(similarity_matrix, high_threshold=0.8, low_threshol
     return clusters
 
 
-
-def compute_similarity_matrix(cluster_vectors):
+def compute_similarity(cluster_vectors, feature_weights):
     """
     Compute pairwise similarity matrix between all cluster vectors.
-    :param cluster_vectors: List of feature vectors from clusters.
-    :return: Matrix of pairwise similarities.
+
+    Ensures:
+    - `previousEvents` activities always impact similarity calculations.
+    - Weights for `previousEvents` are dynamically adjusted.
+    - Adaptive weighting approach without hardcoded values.
+
+    Args:
+        cluster_vectors (list): List of feature vectors from clusters.
+        feature_weights (dict): Dictionary of feature importance weights.
+
+    Returns:
+        numpy.ndarray: Matrix of pairwise similarities.
     """
     n_clusters = len(cluster_vectors)
     similarity_matrix = np.zeros((n_clusters, n_clusters))
-    feature_weights = compute_feature_weights(cluster_vectors)
 
+    # Dynamically extract previousEvents features
+    previous_event_features = [f"prev_activity_{i}" for i in range(1, previousEvents + 1)]
+
+    # Adjust feature weights dynamically for previousEvents
+    for feature in previous_event_features:
+        if feature not in feature_weights:
+            feature_weights[feature] = 1.0  # Initialize with default weight
+
+        # Use adaptive weight update for previousEvents features
+        update_feature_weights(feature, feature_weights[feature])
+
+    # Compute similarity with dynamically weighted previousEvents features
     for i in range(n_clusters):
         for j in range(i, n_clusters):
             similarity = compute_contextual_weighted_similarity(
@@ -148,9 +169,10 @@ def compute_similarity_matrix(cluster_vectors):
                 alpha=similarity_penalty
             )
             similarity_matrix[i][j] = similarity
-            similarity_matrix[j][i] = similarity  # Symmetric matrix
+            similarity_matrix[j][i] = similarity  # Ensure matrix is symmetric
 
     return similarity_matrix
+
 def compute_feature_weights(cluster_vectors):
     """
     Compute feature importance weights based on variance across clusters.
@@ -208,7 +230,7 @@ def analyze_splits_and_merges(activity_label, dbstream_instance):
 
     # Get cluster vectors and compute similarity
     cluster_vectors = [cluster["centroid"] for cluster in micro_clusters]
-    similarity_matrix = compute_similarity_matrix(cluster_vectors)
+    similarity_matrix = compute_similarity(cluster_vectors)
     print(f"[DEBUG] Similarity Matrix for {activity_label}:")
     print(similarity_matrix)
 
@@ -293,22 +315,18 @@ def process_event(event_data, global_event_counter):
     dbstream_instance = dbstream_clusters[activity_label]
 
     # Process feature vector through DBStream
-    cluster_id = dbstream_instance.partial_fit(normalized_vector,global_event_counter)
+    cluster_id = dbstream_instance.partial_fit(normalized_vector, global_event_counter)
 
     # Store and track cluster assignments in activity_feature_metadata
     vector_tuple = tuple(normalized_vector)
     if vector_tuple in activity_feature_metadata[activity_label]:
         activity_feature_metadata[activity_label][vector_tuple]["frequency"] += 1
-        activity_feature_metadata[activity_label][vector_tuple]["recency"] = global_event_counter
         activity_feature_metadata[activity_label][vector_tuple]["last_seen_event"] = global_event_counter
         activity_feature_metadata[activity_label][vector_tuple]["cluster"] = cluster_id
-
     else:
-        # Store new feature vector with cluster metadata
         vector_metadata[activity_label][vector_tuple] = {
             "frequency": 1,
-            "recency": datetime.now(),
-            "last_seen_event": global_event_counter  # Ensure it exists
+            "last_seen_event": global_event_counter  # Keep only last_seen_event
         }
 
     log_traceability("cluster_update", activity_label, {
@@ -321,21 +339,22 @@ def process_event(event_data, global_event_counter):
     result, updated_cluster_id = analyze_splits_and_merges(activity_label, dbstream_instance)
 
     log_traceability("split_merge_result", activity_label, {"result": result, "cluster_id": updated_cluster_id})
+
+    # Apply temporal decay after processing the event
+    handle_temporal_decay(activity_label, global_event_counter)
+
     return result, updated_cluster_id
 
-def handle_temporal_decay(activity_label):
+
+def handle_temporal_decay(activity_label, global_event_counter):
     """
     Apply temporal decay to clusters for a specific activity.
     """
     metadata = vector_metadata.get(activity_label, {})
-    current_time = datetime.now()
 
-    for vector, data in list(metadata.items()):
-        if data["frequency"] < grace_period_events:  # Reference global config
-            continue  # Skip decay for vectors within the grace period
-
-        time_diff = (current_time - data["recency"]).total_seconds()
-        decayed_frequency = apply_temporal_decay(data["frequency"], time_diff)
+    for vector in list(metadata.keys()):
+        time_diff = global_event_counter - metadata[vector]["last_seen_event"]
+        decayed_frequency = apply_temporal_decay(metadata[vector]["frequency"], time_diff)
 
         if decayed_frequency < forgetting_threshold:
             del metadata[vector]

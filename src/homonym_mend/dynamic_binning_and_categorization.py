@@ -5,7 +5,6 @@ from tdigest import TDigest
 import numpy as np
 from river.drift import ADWIN
 
-
 time_distribution = defaultdict(lambda: defaultdict(lambda: defaultdict(lambda: defaultdict(int))))
 
 DAY_MAPPING = {
@@ -336,11 +335,10 @@ def stream_event_log(event_dict, timestamp_column, control_flow_column, resource
 
     # Handle temporal feature extraction safely
     if not pd.isna(event_dict[timestamp_column]):
-        temporal_features = extract_temporal_features(event_dict[timestamp_column])
-        event_dict.update({
-            f"{timestamp_column}_{temp_feature}_bin": temp_value
-            for temp_feature, temp_value in temporal_features.items()
-        })
+        if timestamp_column in event_dict:
+            temporal_features = extract_temporal_features(event_dict[timestamp_column])
+            for temp_feature, temp_value in temporal_features.items():
+                event_dict[f"{temp_feature}_bin"] = temp_value  # Store extracted bins
     else:
         print(f"[WARNING] Timestamp is NaT for event {event_dict[event_id_column]}")
 

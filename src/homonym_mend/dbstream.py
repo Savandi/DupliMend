@@ -21,28 +21,39 @@ class DBStream:
         self.eps = dbstream_params.get("eps", 0.02)
         self.beta = dbstream_params.get("beta", 0.15)
         self.lambda_ = dbstream_params.get("lambda", 0.0001)
+        self.lossy_counting_budget = lossy_counting_budget
+        self.removal_threshold_events = removal_threshold_events
+
+        # Fix missing attributes
+        self.decay_after_events = decay_after_events  # Event-driven decay
+        self.forgetting_threshold = frequency_decay_threshold  # Adaptive removal threshold
 
         self.micro_clusters = {}  # Changed from list to dictionary
         self.event_count = 0
         self.similarity_history = []
         self.max_history_size = 15
 
-    def forget_old_clusters(self,global_event_counter):
+    def forget_old_clusters(self, global_event_counter):
         """
         Remove old micro-clusters from this DBStream instance using frequency decay.
+        Ensures that _apply_decay() is run before final removal to prevent unnecessary drops.
         """
+        # First, apply vector-level decay before removing clusters
+        self._apply_decay(global_event_counter)
+
         for cluster_id in list(self.micro_clusters.keys()):
             cluster = self.micro_clusters[cluster_id]
             events_since_last_update = global_event_counter - cluster.get("last_seen_event", global_event_counter)
 
             # Apply exponential frequency decay
-            cluster["weight"] *= np.exp(-events_since_last_update / decay_after_events)
+            cluster["weight"] *= np.exp(-events_since_last_update / self.decay_after_events)
 
             # Forget cluster if weight (frequency) is too low and hasn't been updated recently
-            if cluster["weight"] < frequency_decay_threshold and events_since_last_update > removal_threshold_events:
-                del self.micro_clusters[cluster_id]
+            if cluster[
+                "weight"] < self.forgetting_threshold and events_since_last_update > self.removal_threshold_events:
+                del self.micro_clusters[cluster_id]  # Only remove cluster after vector decay has been applied
 
-            if len(self.micro_clusters) <= lossy_counting_budget:
+            if len(self.micro_clusters) <= self.lossy_counting_budget:
                 break  # Stop once within budget
 
     def partial_fit(self, vector, global_event_counter):
@@ -94,19 +105,38 @@ class DBStream:
         cluster["centroid"] = (cluster["centroid"] * (cluster["weight"] - 1) + new_vector) / cluster["weight"]
         cluster["last_seen_event"] = global_event_counter
 
-    def apply_decay(self):
+    def _apply_decay(self, global_event_counter):
         """
-        Apply temporal decay to cluster weights and remove outdated ones safely.
+        Apply smooth temporal decay to vector frequencies and dynamically adjust thresholds.
+        Ensures that decayed clusters fade gradually instead of sudden removals.
         """
-        clusters_to_remove = []
-        for cluster_id, cluster in self.micro_clusters.items():
-            cluster["weight"] *= (1 - self.lambda_)
+        for cluster_id in list(self.micro_clusters.keys()):
+            cluster = self.micro_clusters[cluster_id]
+            time_since_update = global_event_counter - cluster["last_seen_event"]
 
-            if cluster["weight"] < 0.1:
-                clusters_to_remove.append(cluster_id)
+            # Apply adaptive decay instead of sudden drop
+            decay_factor = np.exp(-time_since_update / self.decay_after_events)
 
-        for cluster_id in clusters_to_remove:
-            del self.micro_clusters[cluster_id]
+            # Decay all stored vector frequencies in the cluster
+            for vector in list(cluster["vector_frequencies"].keys()):
+                cluster["vector_frequencies"][vector] *= decay_factor  # Gradual decay
+
+                # Remove vector if frequency drops below threshold
+                if cluster["vector_frequencies"][vector] < self.forgetting_threshold:
+                    del cluster["vector_frequencies"][vector]
+
+            # If all feature vectors in the cluster decay, remove the cluster
+            if not cluster["vector_frequencies"]:
+                del self.micro_clusters[cluster_id]  # Corrected way to remove cluster
+            else:
+                cluster["centroid"] = self._most_frequent_vector(
+                    cluster["vector_frequencies"])  # Ensure centroid updates
+
+    def _most_frequent_vector(self, vector_frequencies):
+        """
+        Determines the most frequent feature vector in a cluster.
+        """
+        return max(vector_frequencies, key=vector_frequencies.get)
 
     def get_micro_clusters(self):
         """

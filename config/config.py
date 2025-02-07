@@ -39,6 +39,7 @@ adaptive_window_max_size = 200
 initial_window_size = 100
 lossy_counting_threshold = 0.01
 lossy_counting_error_rate = 0.01
+previousEvents = 3
 
 # --- Clustering and Drift Detection Parameters ---
 dbstream_params = {

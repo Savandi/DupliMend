@@ -34,13 +34,13 @@ def is_valid_timestamp(ts):
     return False  # None of the formats matched
 
 # Lazy Import Functions to Prevent Circular Import Issues
-def get_feature_scores(event, case_id_column, activity_column, timestamp_column, resource_column, data_columns, global_event_counter):
+def get_feature_scores(event, case_id_column, control_flow_column, timestamp_column, resource_column, data_columns, global_event_counter):
     """
     Lazily import compute_feature_scores to avoid circular import issues.
     """
     try:
         from src.homonym_mend.feature_selection_with_drift_detection import compute_feature_scores  # Lazy import
-        return compute_feature_scores(event, case_id_column, activity_column, timestamp_column, resource_column, data_columns, global_event_counter)
+        return compute_feature_scores(event, case_id_column, control_flow_column, timestamp_column, resource_column, data_columns, global_event_counter)
     except ImportError as e:
         print(f"[ERROR] Circular import detected in feature selection: {e}")
         return {}
@@ -136,7 +136,7 @@ def main():
 
             # Compute feature scores
             feature_scores = get_feature_scores(
-                event=processed_event, case_id_column=case_id_column, activity_column=control_flow_column,
+                event=processed_event, case_id_column=case_id_column, control_flow_column=control_flow_column,
                 timestamp_column=timestamp_column, resource_column=resource_column,
                 data_columns=data_columns + list(temporal_features.keys()), global_event_counter=global_event_counter
             )
