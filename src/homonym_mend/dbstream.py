@@ -130,17 +130,13 @@ class DBStream:
 
             # If all feature vectors in the cluster decay, remove the cluster
             if not cluster["vector_frequencies"]:
-                del self.micro_clusters[cluster_id]  # Corrected way to remove cluster
+                del self.micro_clusters[cluster_id]  # Only remove empty clusters
             else:
                 cluster["centroid"] = self._most_frequent_vector(cluster["vector_frequencies"])
 
     def _most_frequent_vector(self, vector_frequencies):
-        """
-        Determines the most frequent feature vector in a cluster.
-        """
-        if not vector_frequencies:  # Ensure dictionary is not empty
-            return np.zeros_like(self.micro_clusters[0]["centroid"])  # Return a default zero centroid
-
+        if not vector_frequencies:
+            return np.zeros_like(self.micro_clusters[0]["centroid"])  # Default zero vector
         return max(vector_frequencies, key=vector_frequencies.get)
 
     def get_micro_clusters(self):

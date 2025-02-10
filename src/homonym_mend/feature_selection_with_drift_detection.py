@@ -1,4 +1,6 @@
 from collections import deque
+
+import pandas as pd
 from river.drift import ADWIN
 from config.config import (initial_window_size,
                            max_top_n_features, temporal_decay_rate, case_id_column, frequency_decay_threshold,
@@ -7,9 +9,10 @@ from config.config import (initial_window_size,
 from src.homonym_mend.dynamic_binning_and_categorization import time_distribution
 from src.utils.custom_label_encoder import CustomLabelEncoder
 from src.utils.global_state import directly_follows_graph, resource_usage_history, activity_feature_history, \
-    feature_weights, activity_feature_metadata
+    feature_weights
 from collections import defaultdict
 import numpy as np
+from src.utils.global_state import previous_events
 
 # Initialize feature tracking structures
 feature_window_sizes = defaultdict(lambda: initial_window_size)
@@ -34,17 +37,35 @@ def forget_old_cases(control_flow_column, global_event_counter):
     - Event data history (past feature vectors)
     """
     for case_id in list(previous_events.keys()):
-        events_since_last_seen = global_event_counter - previous_events[case_id].get("last_seen_event",
-                                                                                     global_event_counter)
+        previous_events_metadata = previous_events.get(case_id, deque(maxlen=previousEvents))
 
-        if "frequency" not in previous_events[case_id]:
-            previous_events[case_id]["frequency"] = 1  # Initialize frequency
+        # Ensure `previous_events_metadata` exists and has data
+        if isinstance(previous_events_metadata, deque) and len(previous_events_metadata) > 0:
+            last_event = previous_events_metadata[-1]
+
+            # Convert last_event to an integer if it's a string
+            if isinstance(last_event, str):
+                try:
+                    last_event = int(last_event)  # Convert string to integer
+                except ValueError:
+                    print(f"[ERROR] Non-numeric last event for case {case_id}: {last_event} - Using fallback.")
+                    last_event = global_event_counter
+
+            # Ensure it's numeric before using it
+            events_since_last_seen = last_event if isinstance(last_event, (int, float)) else global_event_counter
+        else:
+            events_since_last_seen = global_event_counter  # Default fallback
+
+        # Initialize frequency tracking if missing
+        if case_id not in previous_events:
+            previous_events[case_id] = {"frequency": 1}
+
         if "frequency" in previous_events[case_id]:
             previous_events[case_id]["frequency"] *= np.exp(-events_since_last_seen / decay_after_events)
 
-        if previous_events[case_id][
-            "frequency"] < frequency_decay_threshold and events_since_last_seen > removal_threshold_events:
-            activity_label = previous_events[case_id][control_flow_column]
+        # Remove cases based on frequency decay
+        if previous_events[case_id]["frequency"] < frequency_decay_threshold and events_since_last_seen > removal_threshold_events:
+            activity_label = previous_events[case_id].get(control_flow_column, None)
 
             ## --- 1️⃣ Remove Control-Flow Historical Data ---
             if case_id in previous_events:
@@ -54,21 +75,21 @@ def forget_old_cases(control_flow_column, global_event_counter):
                 directly_follows_graph.remove_case_transitions(case_id)  # Remove case transitions
 
             ## --- 2️⃣ Remove Resource Perspective Historical Data ---
-            if activity_label in resource_usage_history:
+            if activity_label and activity_label in resource_usage_history:
                 del resource_usage_history[activity_label]  # Forget resource usage tracking for expired cases
 
             ## --- 3️⃣ Remove Time Perspective Historical Data ---
-            if activity_label in time_distribution:
+            if activity_label and activity_label in time_distribution:
                 del time_distribution[activity_label]  # Forget past time occurrences for expired cases
 
             ## --- 4️⃣ Remove Data Column (Event Attribute) Historical Data ---
-            if activity_label in activity_feature_history:
+            if activity_label and activity_label in activity_feature_history:
                 activity_feature_history[activity_label] = [
                     vector for vector in activity_feature_history[activity_label]
-                    if vector[case_id_column] != case_id
+                    if vector.get(case_id_column) != case_id
                 ]
 
-            if activity_label in feature_last_seen_event:
+            if activity_label and activity_label in feature_last_seen_event:
                 del feature_last_seen_event[activity_label]  # Forget last seen tracking for expired features
 
             # Remove case-specific feature tracking
@@ -124,18 +145,30 @@ def update_feature_weights(feature, new_score):
     # Normalize feature weights between reasonable limits
     feature_weights[feature] = min(max(feature_weights[feature], 0.5), 2.0)
 
-def compute_feature_scores(event, control_flow_column, timestamp_column, resource_column, case_id_column, data_columns, global_event_counter):
+def compute_feature_scores(event, event_id_column, control_flow_column, timestamp_column, resource_column, case_id_column, data_columns, global_event_counter):
     """
-    Compute dynamic feature scores incorporating:
-    - Control-flow tracking (last three activities per CaseID)
-    - Feature variation across similar activity labels
-    - Resource and time-based weighting
-    - Event-driven forgetting
+    Compute feature scores incorporating control-flow, resource, and time-based factors.
     """
-    global previous_events, feature_last_seen_event
+    global feature_last_seen_event
     feature_scores = defaultdict(float)
     case_id = event[case_id_column]
     activity_label = event[control_flow_column]
+
+    # Ensure timestamp is numeric (convert Timestamp to float safely)
+    current_time = event[timestamp_column]
+
+    if isinstance(current_time, pd.Timestamp):
+        current_time = current_time.timestamp()  # Convert to float
+    elif isinstance(current_time, str):
+        try:
+            current_time = pd.to_datetime(current_time, errors='coerce').timestamp()
+        except Exception as e:
+            print(f"[ERROR] Failed to convert timestamp for Event {event[event_id_column]}: {e}")
+            return {}  # Skip processing if timestamp conversion fails
+
+    if pd.isna(current_time) or current_time is None:
+        print(f"[ERROR] Invalid Timestamp detected for Event {event[event_id_column]} - Skipping event.")
+        return {}  # Skip this event if timestamp is still NaT
 
     # Forget old cases before processing new events
     forget_old_cases(control_flow_column, global_event_counter)
@@ -158,22 +191,32 @@ def compute_feature_scores(event, control_flow_column, timestamp_column, resourc
             for column in selected_features
         ], dtype=np.float64)
 
-        deviations = np.abs(new_feature_vector - mean_vector) / std_vector
+        if not isinstance(new_feature_vector, np.ndarray) or new_feature_vector.dtype != np.float64:
+            print(f"[ERROR] Invalid feature vector for Event {event[event_id_column]}: {new_feature_vector}")
+
+        try:
+            deviations = np.abs(new_feature_vector - mean_vector) / std_vector
+        except Exception as e:
+            print(f"[ERROR] Failed to compute deviations for Event {event[event_id_column]}: {e}")
+            deviations = np.zeros_like(new_feature_vector)  # Fallback
 
         features_to_update = {}
-
+        vector_tuple = tuple(new_feature_vector)
         # Apply weight scaling for high deviation features with adaptive weighting
+        previous_events_metadata = previous_events.get(case_id, deque(maxlen=previousEvents))
+
         for i, column in enumerate(selected_features):
-            vector_tuple = tuple(new_feature_vector)
 
-            if activity_label in activity_feature_metadata and vector_tuple in activity_feature_metadata[
-                activity_label]:
-                last_seen_event = activity_feature_metadata[activity_label][vector_tuple].get("last_seen_event",
-                                                                                              global_event_counter)
+            if isinstance(previous_events_metadata, deque) and len(previous_events_metadata) > 0:
+                last_event = previous_events_metadata[-1]
+
+                if isinstance(last_event, (int, float)):  # Ensure it's a valid numeric event counter
+                    events_since_last_seen = last_event
+                else:
+                    print(f"[ERROR] Invalid last event type for case {case_id}: {type(last_event)}")
+                    events_since_last_seen = global_event_counter
             else:
-                last_seen_event = global_event_counter  # Default if new
-
-            events_since_last_seen = global_event_counter - last_seen_event
+                events_since_last_seen = global_event_counter  # Default fallback
 
             # Compute adaptive feature weight
             feature_scores[column] += feature_weights[column] * deviations[i]
@@ -184,7 +227,7 @@ def compute_feature_scores(event, control_flow_column, timestamp_column, resourc
             # Update last seen event counter
             feature_last_seen_event[column] = global_event_counter
 
-        # ✅ Perform batch weight update after scoring all features
+        # Perform batch weight update after scoring all features
         for feature, deviation in features_to_update.items():
             update_feature_weights(feature, deviation)
 
@@ -306,19 +349,34 @@ def detect_drift(feature, feature_scores):
     return drift_detected
 
 
-def select_features(event, previous_event, control_flow_column, timestamp_column, resource_column, data_columns, global_event_counter):
+def select_features(event, event_id_column, control_flow_column, timestamp_column, resource_column, data_columns,
+                    global_event_counter):
     """
     Fast Online Feature Selection with Adaptive Weighting.
     """
     # Compute base feature scores
     feature_scores = compute_feature_scores(
-        event, control_flow_column, timestamp_column, resource_column, case_id_column, data_columns, global_event_counter
+        event, event_id_column, control_flow_column, timestamp_column, resource_column, case_id_column, data_columns,
+        global_event_counter
     )
+
+    # Retrieve the previous event from `previous_events`
+    case_id = event[case_id_column]
+    previous_event = previous_events.get(case_id, None)  # Get last seen event
 
     # Apply decay weighting to prioritize recent context
     current_time = event[timestamp_column]
-    for feature in feature_scores:
-        feature_scores[feature] *= np.exp(-temporal_decay_rate * (current_time - previous_event[timestamp_column]).total_seconds() if previous_event else 1)
+    if isinstance(current_time, pd.Timestamp):
+        current_time = current_time.timestamp()
+
+    if previous_event:
+        prev_time = previous_event[timestamp_column] if timestamp_column in previous_event else None
+        if isinstance(prev_time, pd.Timestamp):
+            prev_time = prev_time.timestamp()
+
+        if prev_time is not None:
+            for feature in feature_scores:
+                feature_scores[feature] *= np.exp(-temporal_decay_rate * (current_time - prev_time))
 
     # Dynamic thresholding for selecting top features
     top_n = adaptive_threshold(feature_scores)

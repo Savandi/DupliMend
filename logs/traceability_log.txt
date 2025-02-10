@@ -598,3 +598,1003 @@
 2025-02-07 18:48:18,284 - INFO - ERROR - Event Processing: {'event_id': 'E_1033', 'error': "name 'previous_events' is not defined"}
 2025-02-07 18:48:18,286 - INFO - ERROR - Event Processing: {'event_id': 'E_832', 'error': "name 'previous_events' is not defined"}
 2025-02-07 18:48:18,286 - INFO - ERROR - Event Processing: {'event_id': 'E_833', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,953 - INFO - ERROR - Event Processing: {'event_id': 'E_38', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,954 - INFO - ERROR - Event Processing: {'event_id': 'E_967', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,955 - INFO - ERROR - Event Processing: {'event_id': 'E_116', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,955 - INFO - ERROR - Event Processing: {'event_id': 'E_318', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,959 - INFO - ERROR - Event Processing: {'event_id': 'E_951', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,959 - INFO - ERROR - Event Processing: {'event_id': 'E_741', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,960 - INFO - ERROR - Event Processing: {'event_id': 'E_163', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,960 - INFO - ERROR - Event Processing: {'event_id': 'E_164', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,961 - INFO - ERROR - Event Processing: {'event_id': 'E_165', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,961 - INFO - ERROR - Event Processing: {'event_id': 'E_952', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,963 - INFO - ERROR - Event Processing: {'event_id': 'E_39', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,963 - INFO - ERROR - Event Processing: {'event_id': 'E_166', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,964 - INFO - ERROR - Event Processing: {'event_id': 'E_117', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,965 - INFO - ERROR - Event Processing: {'event_id': 'E_40', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,966 - INFO - ERROR - Event Processing: {'event_id': 'E_118', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,966 - INFO - ERROR - Event Processing: {'event_id': 'E_968', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,967 - INFO - ERROR - Event Processing: {'event_id': 'E_41', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,967 - INFO - ERROR - Event Processing: {'event_id': 'E_742', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,968 - INFO - ERROR - Event Processing: {'event_id': 'E_319', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,969 - INFO - ERROR - Event Processing: {'event_id': 'E_953', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,969 - INFO - ERROR - Event Processing: {'event_id': 'E_969', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,970 - INFO - ERROR - Event Processing: {'event_id': 'E_119', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,971 - INFO - ERROR - Event Processing: {'event_id': 'E_42', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,972 - INFO - ERROR - Event Processing: {'event_id': 'E_167', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,972 - INFO - ERROR - Event Processing: {'event_id': 'E_970', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,973 - INFO - ERROR - Event Processing: {'event_id': 'E_320', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,973 - INFO - ERROR - Event Processing: {'event_id': 'E_743', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,974 - INFO - ERROR - Event Processing: {'event_id': 'E_954', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,974 - INFO - ERROR - Event Processing: {'event_id': 'E_955', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,976 - INFO - ERROR - Event Processing: {'event_id': 'E_744', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,976 - INFO - ERROR - Event Processing: {'event_id': 'E_43', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,977 - INFO - ERROR - Event Processing: {'event_id': 'E_120', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,978 - INFO - ERROR - Event Processing: {'event_id': 'E_971', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,978 - INFO - ERROR - Event Processing: {'event_id': 'E_321', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,980 - INFO - ERROR - Event Processing: {'event_id': 'E_972', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,980 - INFO - ERROR - Event Processing: {'event_id': 'E_322', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,981 - INFO - ERROR - Event Processing: {'event_id': 'E_745', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,983 - INFO - ERROR - Event Processing: {'event_id': 'E_323', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,983 - INFO - ERROR - Event Processing: {'event_id': 'E_280', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,984 - INFO - ERROR - Event Processing: {'event_id': 'E_190', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,984 - INFO - ERROR - Event Processing: {'event_id': 'E_510', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,985 - INFO - ERROR - Event Processing: {'event_id': 'E_1032', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,985 - INFO - ERROR - Event Processing: {'event_id': 'E_731', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,986 - INFO - ERROR - Event Processing: {'event_id': 'E_831', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,988 - INFO - ERROR - Event Processing: {'event_id': 'E_994', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,988 - INFO - ERROR - Event Processing: {'event_id': 'E_308', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,990 - INFO - ERROR - Event Processing: {'event_id': 'E_732', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,991 - INFO - ERROR - Event Processing: {'event_id': 'E_1033', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,991 - INFO - ERROR - Event Processing: {'event_id': 'E_832', 'error': "name 'previous_events' is not defined"}
+2025-02-08 22:15:50,993 - INFO - ERROR - Event Processing: {'event_id': 'E_833', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,447 - INFO - ERROR - Event Processing: {'event_id': 'E_38', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,448 - INFO - ERROR - Event Processing: {'event_id': 'E_967', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,448 - INFO - ERROR - Event Processing: {'event_id': 'E_116', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,449 - INFO - ERROR - Event Processing: {'event_id': 'E_318', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,449 - INFO - ERROR - Event Processing: {'event_id': 'E_951', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,450 - INFO - ERROR - Event Processing: {'event_id': 'E_741', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,450 - INFO - ERROR - Event Processing: {'event_id': 'E_163', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,451 - INFO - ERROR - Event Processing: {'event_id': 'E_164', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,451 - INFO - ERROR - Event Processing: {'event_id': 'E_165', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,452 - INFO - ERROR - Event Processing: {'event_id': 'E_952', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,453 - INFO - ERROR - Event Processing: {'event_id': 'E_39', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,454 - INFO - ERROR - Event Processing: {'event_id': 'E_166', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,455 - INFO - ERROR - Event Processing: {'event_id': 'E_117', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,455 - INFO - ERROR - Event Processing: {'event_id': 'E_40', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,456 - INFO - ERROR - Event Processing: {'event_id': 'E_118', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,456 - INFO - ERROR - Event Processing: {'event_id': 'E_968', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,457 - INFO - ERROR - Event Processing: {'event_id': 'E_41', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,457 - INFO - ERROR - Event Processing: {'event_id': 'E_742', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,458 - INFO - ERROR - Event Processing: {'event_id': 'E_319', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,459 - INFO - ERROR - Event Processing: {'event_id': 'E_953', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,459 - INFO - ERROR - Event Processing: {'event_id': 'E_969', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,461 - INFO - ERROR - Event Processing: {'event_id': 'E_119', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,461 - INFO - ERROR - Event Processing: {'event_id': 'E_42', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,463 - INFO - ERROR - Event Processing: {'event_id': 'E_167', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,463 - INFO - ERROR - Event Processing: {'event_id': 'E_970', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,465 - INFO - ERROR - Event Processing: {'event_id': 'E_320', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,465 - INFO - ERROR - Event Processing: {'event_id': 'E_743', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,467 - INFO - ERROR - Event Processing: {'event_id': 'E_954', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,467 - INFO - ERROR - Event Processing: {'event_id': 'E_955', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,469 - INFO - ERROR - Event Processing: {'event_id': 'E_744', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,470 - INFO - ERROR - Event Processing: {'event_id': 'E_43', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,471 - INFO - ERROR - Event Processing: {'event_id': 'E_120', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,471 - INFO - ERROR - Event Processing: {'event_id': 'E_971', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,472 - INFO - ERROR - Event Processing: {'event_id': 'E_321', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,474 - INFO - ERROR - Event Processing: {'event_id': 'E_972', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,474 - INFO - ERROR - Event Processing: {'event_id': 'E_322', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,475 - INFO - ERROR - Event Processing: {'event_id': 'E_745', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,477 - INFO - ERROR - Event Processing: {'event_id': 'E_323', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,477 - INFO - ERROR - Event Processing: {'event_id': 'E_280', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,478 - INFO - ERROR - Event Processing: {'event_id': 'E_190', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,480 - INFO - ERROR - Event Processing: {'event_id': 'E_510', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,480 - INFO - ERROR - Event Processing: {'event_id': 'E_1032', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,481 - INFO - ERROR - Event Processing: {'event_id': 'E_731', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,482 - INFO - ERROR - Event Processing: {'event_id': 'E_831', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,482 - INFO - ERROR - Event Processing: {'event_id': 'E_994', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,483 - INFO - ERROR - Event Processing: {'event_id': 'E_308', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,485 - INFO - ERROR - Event Processing: {'event_id': 'E_732', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,485 - INFO - ERROR - Event Processing: {'event_id': 'E_1033', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,486 - INFO - ERROR - Event Processing: {'event_id': 'E_832', 'error': "name 'previous_events' is not defined"}
+2025-02-09 10:50:37,488 - INFO - ERROR - Event Processing: {'event_id': 'E_833', 'error': "name 'previous_events' is not defined"}
+2025-02-09 21:27:55,840 - INFO - ERROR - Event Processing: {'event_id': 'E_701', 'error': "unhashable type: 'list'"}
+2025-02-09 21:27:55,841 - INFO - ERROR - Event Processing: {'event_id': 'E_652', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,842 - INFO - ERROR - Event Processing: {'event_id': 'E_995', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,842 - INFO - ERROR - Event Processing: {'event_id': 'E_582', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,843 - INFO - ERROR - Event Processing: {'event_id': 'E_583', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,843 - INFO - ERROR - Event Processing: {'event_id': 'E_653', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,844 - INFO - ERROR - Event Processing: {'event_id': 'E_996', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,845 - INFO - ERROR - Event Processing: {'event_id': 'E_702', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,845 - INFO - ERROR - Event Processing: {'event_id': 'E_584', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,846 - INFO - ERROR - Event Processing: {'event_id': 'E_654', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,846 - INFO - ERROR - Event Processing: {'event_id': 'E_703', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,846 - INFO - ERROR - Event Processing: {'event_id': 'E_655', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,847 - INFO - ERROR - Event Processing: {'event_id': 'E_997', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,847 - INFO - ERROR - Event Processing: {'event_id': 'E_585', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,848 - INFO - ERROR - Event Processing: {'event_id': 'E_704', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,848 - INFO - ERROR - Event Processing: {'event_id': 'E_705', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,848 - INFO - ERROR - Event Processing: {'event_id': 'E_656', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,849 - INFO - ERROR - Event Processing: {'event_id': 'E_586', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,850 - INFO - ERROR - Event Processing: {'event_id': 'E_706', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,850 - INFO - ERROR - Event Processing: {'event_id': 'E_998', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,851 - INFO - ERROR - Event Processing: {'event_id': 'E_657', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,851 - INFO - ERROR - Event Processing: {'event_id': 'E_707', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,852 - INFO - ERROR - Event Processing: {'event_id': 'E_587', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,852 - INFO - ERROR - Event Processing: {'event_id': 'E_658', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,853 - INFO - ERROR - Event Processing: {'event_id': 'E_999', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,853 - INFO - ERROR - Event Processing: {'event_id': 'E_1000', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,853 - INFO - ERROR - Event Processing: {'event_id': 'E_588', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,853 - INFO - ERROR - Event Processing: {'event_id': 'E_1001', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,854 - INFO - ERROR - Event Processing: {'event_id': 'E_897', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,854 - INFO - ERROR - Event Processing: {'event_id': 'E_470', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,854 - INFO - ERROR - Event Processing: {'event_id': 'E_1177', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,855 - INFO - ERROR - Event Processing: {'event_id': 'E_827', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,855 - INFO - ERROR - Event Processing: {'event_id': 'E_925', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,857 - INFO - ERROR - Event Processing: {'event_id': 'E_471', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,857 - INFO - ERROR - Event Processing: {'event_id': 'E_472', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,857 - INFO - ERROR - Event Processing: {'event_id': 'E_898', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,859 - INFO - ERROR - Event Processing: {'event_id': 'E_1178', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,859 - INFO - ERROR - Event Processing: {'event_id': 'E_926', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,859 - INFO - ERROR - Event Processing: {'event_id': 'E_473', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,860 - INFO - ERROR - Event Processing: {'event_id': 'E_899', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,860 - INFO - ERROR - Event Processing: {'event_id': 'E_828', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,861 - INFO - ERROR - Event Processing: {'event_id': 'E_1179', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,861 - INFO - ERROR - Event Processing: {'event_id': 'E_474', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,862 - INFO - ERROR - Event Processing: {'event_id': 'E_900', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,862 - INFO - ERROR - Event Processing: {'event_id': 'E_475', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,864 - INFO - ERROR - Event Processing: {'event_id': 'E_829', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,864 - INFO - ERROR - Event Processing: {'event_id': 'E_830', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,864 - INFO - ERROR - Event Processing: {'event_id': 'E_927', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,865 - INFO - ERROR - Event Processing: {'event_id': 'E_1180', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-09 21:27:55,865 - INFO - ERROR - Event Processing: {'event_id': 'E_928', 'error': "'collections.deque' object has no attribute 'get'"}
+2025-02-10 10:30:53,296 - INFO - ERROR - Event Processing: {'event_id': 'E_253', 'error': "unhashable type: 'list'"}
+2025-02-10 10:30:53,297 - INFO - ERROR - Event Processing: {'event_id': 'E_162', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,297 - INFO - ERROR - Event Processing: {'event_id': 'E_1072', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,298 - INFO - ERROR - Event Processing: {'event_id': 'E_1079', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,298 - INFO - ERROR - Event Processing: {'event_id': 'E_806', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,298 - INFO - ERROR - Event Processing: {'event_id': 'E_386', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,300 - INFO - ERROR - Event Processing: {'event_id': 'E_1080', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,300 - INFO - ERROR - Event Processing: {'event_id': 'E_1073', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,300 - INFO - ERROR - Event Processing: {'event_id': 'E_387', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,301 - INFO - ERROR - Event Processing: {'event_id': 'E_163', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,301 - INFO - ERROR - Event Processing: {'event_id': 'E_254', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,302 - INFO - ERROR - Event Processing: {'event_id': 'E_1074', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,302 - INFO - ERROR - Event Processing: {'event_id': 'E_807', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,302 - INFO - ERROR - Event Processing: {'event_id': 'E_255', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,303 - INFO - ERROR - Event Processing: {'event_id': 'E_164', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,303 - INFO - ERROR - Event Processing: {'event_id': 'E_388', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,303 - INFO - ERROR - Event Processing: {'event_id': 'E_165', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,304 - INFO - ERROR - Event Processing: {'event_id': 'E_256', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,305 - INFO - ERROR - Event Processing: {'event_id': 'E_808', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,305 - INFO - ERROR - Event Processing: {'event_id': 'E_1075', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,305 - INFO - ERROR - Event Processing: {'event_id': 'E_1081', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,306 - INFO - ERROR - Event Processing: {'event_id': 'E_166', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,307 - INFO - ERROR - Event Processing: {'event_id': 'E_257', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,307 - INFO - ERROR - Event Processing: {'event_id': 'E_258', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,307 - INFO - ERROR - Event Processing: {'event_id': 'E_1076', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,308 - INFO - ERROR - Event Processing: {'event_id': 'E_389', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,309 - INFO - ERROR - Event Processing: {'event_id': 'E_1077', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,309 - INFO - ERROR - Event Processing: {'event_id': 'E_167', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,310 - INFO - ERROR - Event Processing: {'event_id': 'E_1078', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,311 - INFO - ERROR - Event Processing: {'event_id': 'E_809', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,311 - INFO - ERROR - Event Processing: {'event_id': 'E_168', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,312 - INFO - ERROR - Event Processing: {'event_id': 'E_259', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,312 - INFO - ERROR - Event Processing: {'event_id': 'E_1082', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,312 - INFO - ERROR - Event Processing: {'event_id': 'E_810', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,314 - INFO - ERROR - Event Processing: {'event_id': 'E_390', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,314 - INFO - ERROR - Event Processing: {'event_id': 'E_1083', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,314 - INFO - ERROR - Event Processing: {'event_id': 'E_811', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,315 - INFO - ERROR - Event Processing: {'event_id': 'E_1084', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,315 - INFO - ERROR - Event Processing: {'event_id': 'E_812', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,315 - INFO - ERROR - Event Processing: {'event_id': 'E_1085', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,316 - INFO - ERROR - Event Processing: {'event_id': 'E_391', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,316 - INFO - ERROR - Event Processing: {'event_id': 'E_392', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,317 - INFO - ERROR - Event Processing: {'event_id': 'E_302', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,317 - INFO - ERROR - Event Processing: {'event_id': 'E_1198', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,317 - INFO - ERROR - Event Processing: {'event_id': 'E_85', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,319 - INFO - ERROR - Event Processing: {'event_id': 'E_421', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,319 - INFO - ERROR - Event Processing: {'event_id': 'E_890', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,319 - INFO - ERROR - Event Processing: {'event_id': 'E_155', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,321 - INFO - ERROR - Event Processing: {'event_id': 'E_1114', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:30:53,321 - INFO - ERROR - Event Processing: {'event_id': 'E_50', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,117 - INFO - ERROR - Event Processing: {'event_id': 'E_253', 'error': "unhashable type: 'list'"}
+2025-02-10 10:47:32,118 - INFO - ERROR - Event Processing: {'event_id': 'E_162', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,118 - INFO - ERROR - Event Processing: {'event_id': 'E_1072', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,119 - INFO - ERROR - Event Processing: {'event_id': 'E_1079', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,124 - INFO - ERROR - Event Processing: {'event_id': 'E_806', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,124 - INFO - ERROR - Event Processing: {'event_id': 'E_386', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,125 - INFO - ERROR - Event Processing: {'event_id': 'E_1080', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,125 - INFO - ERROR - Event Processing: {'event_id': 'E_1073', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,126 - INFO - ERROR - Event Processing: {'event_id': 'E_387', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,140 - INFO - ERROR - Event Processing: {'event_id': 'E_163', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,141 - INFO - ERROR - Event Processing: {'event_id': 'E_254', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,141 - INFO - ERROR - Event Processing: {'event_id': 'E_1074', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,142 - INFO - ERROR - Event Processing: {'event_id': 'E_807', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,156 - INFO - ERROR - Event Processing: {'event_id': 'E_255', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,156 - INFO - ERROR - Event Processing: {'event_id': 'E_164', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,157 - INFO - ERROR - Event Processing: {'event_id': 'E_388', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,158 - INFO - ERROR - Event Processing: {'event_id': 'E_165', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,171 - INFO - ERROR - Event Processing: {'event_id': 'E_256', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,171 - INFO - ERROR - Event Processing: {'event_id': 'E_808', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,172 - INFO - ERROR - Event Processing: {'event_id': 'E_1075', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,172 - INFO - ERROR - Event Processing: {'event_id': 'E_1081', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,187 - INFO - ERROR - Event Processing: {'event_id': 'E_166', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,188 - INFO - ERROR - Event Processing: {'event_id': 'E_257', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,188 - INFO - ERROR - Event Processing: {'event_id': 'E_258', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,189 - INFO - ERROR - Event Processing: {'event_id': 'E_1076', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,203 - INFO - ERROR - Event Processing: {'event_id': 'E_389', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,203 - INFO - ERROR - Event Processing: {'event_id': 'E_1077', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,204 - INFO - ERROR - Event Processing: {'event_id': 'E_167', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,204 - INFO - ERROR - Event Processing: {'event_id': 'E_1078', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,219 - INFO - ERROR - Event Processing: {'event_id': 'E_809', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,220 - INFO - ERROR - Event Processing: {'event_id': 'E_168', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,221 - INFO - ERROR - Event Processing: {'event_id': 'E_259', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,235 - INFO - ERROR - Event Processing: {'event_id': 'E_1082', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,236 - INFO - ERROR - Event Processing: {'event_id': 'E_810', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,236 - INFO - ERROR - Event Processing: {'event_id': 'E_390', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,250 - INFO - ERROR - Event Processing: {'event_id': 'E_1083', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,251 - INFO - ERROR - Event Processing: {'event_id': 'E_811', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,251 - INFO - ERROR - Event Processing: {'event_id': 'E_1084', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,265 - INFO - ERROR - Event Processing: {'event_id': 'E_812', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,265 - INFO - ERROR - Event Processing: {'event_id': 'E_1085', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,266 - INFO - ERROR - Event Processing: {'event_id': 'E_391', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,280 - INFO - ERROR - Event Processing: {'event_id': 'E_392', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,281 - INFO - ERROR - Event Processing: {'event_id': 'E_302', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,281 - INFO - ERROR - Event Processing: {'event_id': 'E_1198', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,296 - INFO - ERROR - Event Processing: {'event_id': 'E_85', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,296 - INFO - ERROR - Event Processing: {'event_id': 'E_421', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,297 - INFO - ERROR - Event Processing: {'event_id': 'E_890', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,312 - INFO - ERROR - Event Processing: {'event_id': 'E_155', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,312 - INFO - ERROR - Event Processing: {'event_id': 'E_1114', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 10:47:32,313 - INFO - ERROR - Event Processing: {'event_id': 'E_50', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,322 - INFO - ERROR - Event Processing: {'event_id': 'E_253', 'error': "unhashable type: 'list'"}
+2025-02-10 11:45:45,323 - INFO - ERROR - Event Processing: {'event_id': 'E_162', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,323 - INFO - ERROR - Event Processing: {'event_id': 'E_1072', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,324 - INFO - ERROR - Event Processing: {'event_id': 'E_1079', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,324 - INFO - ERROR - Event Processing: {'event_id': 'E_806', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,325 - INFO - ERROR - Event Processing: {'event_id': 'E_386', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,325 - INFO - ERROR - Event Processing: {'event_id': 'E_1080', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,325 - INFO - ERROR - Event Processing: {'event_id': 'E_1073', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,326 - INFO - ERROR - Event Processing: {'event_id': 'E_387', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,326 - INFO - ERROR - Event Processing: {'event_id': 'E_163', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,327 - INFO - ERROR - Event Processing: {'event_id': 'E_254', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,327 - INFO - ERROR - Event Processing: {'event_id': 'E_1074', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,327 - INFO - ERROR - Event Processing: {'event_id': 'E_807', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,328 - INFO - ERROR - Event Processing: {'event_id': 'E_255', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,328 - INFO - ERROR - Event Processing: {'event_id': 'E_164', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,329 - INFO - ERROR - Event Processing: {'event_id': 'E_388', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,329 - INFO - ERROR - Event Processing: {'event_id': 'E_165', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,330 - INFO - ERROR - Event Processing: {'event_id': 'E_256', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,330 - INFO - ERROR - Event Processing: {'event_id': 'E_808', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,330 - INFO - ERROR - Event Processing: {'event_id': 'E_1075', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,331 - INFO - ERROR - Event Processing: {'event_id': 'E_1081', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,332 - INFO - ERROR - Event Processing: {'event_id': 'E_166', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,332 - INFO - ERROR - Event Processing: {'event_id': 'E_257', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,333 - INFO - ERROR - Event Processing: {'event_id': 'E_258', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,333 - INFO - ERROR - Event Processing: {'event_id': 'E_1076', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,334 - INFO - ERROR - Event Processing: {'event_id': 'E_389', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,335 - INFO - ERROR - Event Processing: {'event_id': 'E_1077', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,335 - INFO - ERROR - Event Processing: {'event_id': 'E_167', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,336 - INFO - ERROR - Event Processing: {'event_id': 'E_1078', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,337 - INFO - ERROR - Event Processing: {'event_id': 'E_809', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,338 - INFO - ERROR - Event Processing: {'event_id': 'E_168', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,338 - INFO - ERROR - Event Processing: {'event_id': 'E_259', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,339 - INFO - ERROR - Event Processing: {'event_id': 'E_1082', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,339 - INFO - ERROR - Event Processing: {'event_id': 'E_810', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,339 - INFO - ERROR - Event Processing: {'event_id': 'E_390', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,341 - INFO - ERROR - Event Processing: {'event_id': 'E_1083', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,341 - INFO - ERROR - Event Processing: {'event_id': 'E_811', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,342 - INFO - ERROR - Event Processing: {'event_id': 'E_1084', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,342 - INFO - ERROR - Event Processing: {'event_id': 'E_812', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,343 - INFO - ERROR - Event Processing: {'event_id': 'E_1085', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,344 - INFO - ERROR - Event Processing: {'event_id': 'E_391', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,344 - INFO - ERROR - Event Processing: {'event_id': 'E_392', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,345 - INFO - ERROR - Event Processing: {'event_id': 'E_302', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,346 - INFO - ERROR - Event Processing: {'event_id': 'E_1198', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,346 - INFO - ERROR - Event Processing: {'event_id': 'E_85', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,346 - INFO - ERROR - Event Processing: {'event_id': 'E_421', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,347 - INFO - ERROR - Event Processing: {'event_id': 'E_890', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,347 - INFO - ERROR - Event Processing: {'event_id': 'E_155', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,347 - INFO - ERROR - Event Processing: {'event_id': 'E_1114', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 11:45:45,348 - INFO - ERROR - Event Processing: {'event_id': 'E_50', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,045 - INFO - ERROR - Event Processing: {'event_id': 'E_253', 'error': "unhashable type: 'list'"}
+2025-02-10 12:44:45,046 - INFO - ERROR - Event Processing: {'event_id': 'E_162', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,047 - INFO - ERROR - Event Processing: {'event_id': 'E_1072', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,047 - INFO - ERROR - Event Processing: {'event_id': 'E_1079', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,048 - INFO - ERROR - Event Processing: {'event_id': 'E_806', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,048 - INFO - ERROR - Event Processing: {'event_id': 'E_386', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,049 - INFO - ERROR - Event Processing: {'event_id': 'E_1080', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,049 - INFO - ERROR - Event Processing: {'event_id': 'E_1073', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,050 - INFO - ERROR - Event Processing: {'event_id': 'E_387', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,051 - INFO - ERROR - Event Processing: {'event_id': 'E_163', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,051 - INFO - ERROR - Event Processing: {'event_id': 'E_254', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,052 - INFO - ERROR - Event Processing: {'event_id': 'E_1074', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,052 - INFO - ERROR - Event Processing: {'event_id': 'E_807', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,053 - INFO - ERROR - Event Processing: {'event_id': 'E_255', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,054 - INFO - ERROR - Event Processing: {'event_id': 'E_164', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,055 - INFO - ERROR - Event Processing: {'event_id': 'E_388', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,055 - INFO - ERROR - Event Processing: {'event_id': 'E_165', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,056 - INFO - ERROR - Event Processing: {'event_id': 'E_256', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,056 - INFO - ERROR - Event Processing: {'event_id': 'E_808', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,058 - INFO - ERROR - Event Processing: {'event_id': 'E_1075', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,059 - INFO - ERROR - Event Processing: {'event_id': 'E_1081', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,059 - INFO - ERROR - Event Processing: {'event_id': 'E_166', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,061 - INFO - ERROR - Event Processing: {'event_id': 'E_257', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,062 - INFO - ERROR - Event Processing: {'event_id': 'E_258', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,062 - INFO - ERROR - Event Processing: {'event_id': 'E_1076', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,063 - INFO - ERROR - Event Processing: {'event_id': 'E_389', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,065 - INFO - ERROR - Event Processing: {'event_id': 'E_1077', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,065 - INFO - ERROR - Event Processing: {'event_id': 'E_167', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,067 - INFO - ERROR - Event Processing: {'event_id': 'E_1078', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,068 - INFO - ERROR - Event Processing: {'event_id': 'E_809', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,068 - INFO - ERROR - Event Processing: {'event_id': 'E_168', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,070 - INFO - ERROR - Event Processing: {'event_id': 'E_259', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,071 - INFO - ERROR - Event Processing: {'event_id': 'E_1082', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,071 - INFO - ERROR - Event Processing: {'event_id': 'E_810', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,073 - INFO - ERROR - Event Processing: {'event_id': 'E_390', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,074 - INFO - ERROR - Event Processing: {'event_id': 'E_1083', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,075 - INFO - ERROR - Event Processing: {'event_id': 'E_811', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,075 - INFO - ERROR - Event Processing: {'event_id': 'E_1084', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,077 - INFO - ERROR - Event Processing: {'event_id': 'E_812', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,077 - INFO - ERROR - Event Processing: {'event_id': 'E_1085', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,078 - INFO - ERROR - Event Processing: {'event_id': 'E_391', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,080 - INFO - ERROR - Event Processing: {'event_id': 'E_392', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,081 - INFO - ERROR - Event Processing: {'event_id': 'E_302', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,081 - INFO - ERROR - Event Processing: {'event_id': 'E_1198', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,083 - INFO - ERROR - Event Processing: {'event_id': 'E_85', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,084 - INFO - ERROR - Event Processing: {'event_id': 'E_421', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,085 - INFO - ERROR - Event Processing: {'event_id': 'E_890', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,086 - INFO - ERROR - Event Processing: {'event_id': 'E_155', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,087 - INFO - ERROR - Event Processing: {'event_id': 'E_1114', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 12:44:45,087 - INFO - ERROR - Event Processing: {'event_id': 'E_50', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,609 - INFO - ERROR - Event Processing: {'event_id': 'E_253', 'error': "unhashable type: 'list'"}
+2025-02-10 13:12:18,610 - INFO - ERROR - Event Processing: {'event_id': 'E_162', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,610 - INFO - ERROR - Event Processing: {'event_id': 'E_1072', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,611 - INFO - ERROR - Event Processing: {'event_id': 'E_1079', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,611 - INFO - ERROR - Event Processing: {'event_id': 'E_806', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,612 - INFO - ERROR - Event Processing: {'event_id': 'E_386', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,612 - INFO - ERROR - Event Processing: {'event_id': 'E_1080', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,613 - INFO - ERROR - Event Processing: {'event_id': 'E_1073', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,613 - INFO - ERROR - Event Processing: {'event_id': 'E_387', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,614 - INFO - ERROR - Event Processing: {'event_id': 'E_163', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,615 - INFO - ERROR - Event Processing: {'event_id': 'E_254', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,615 - INFO - ERROR - Event Processing: {'event_id': 'E_1074', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,616 - INFO - ERROR - Event Processing: {'event_id': 'E_807', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,616 - INFO - ERROR - Event Processing: {'event_id': 'E_255', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,617 - INFO - ERROR - Event Processing: {'event_id': 'E_164', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,617 - INFO - ERROR - Event Processing: {'event_id': 'E_388', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,619 - INFO - ERROR - Event Processing: {'event_id': 'E_165', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,620 - INFO - ERROR - Event Processing: {'event_id': 'E_256', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,621 - INFO - ERROR - Event Processing: {'event_id': 'E_808', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,621 - INFO - ERROR - Event Processing: {'event_id': 'E_1075', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,622 - INFO - ERROR - Event Processing: {'event_id': 'E_1081', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,623 - INFO - ERROR - Event Processing: {'event_id': 'E_166', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,624 - INFO - ERROR - Event Processing: {'event_id': 'E_257', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,624 - INFO - ERROR - Event Processing: {'event_id': 'E_258', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,625 - INFO - ERROR - Event Processing: {'event_id': 'E_1076', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,626 - INFO - ERROR - Event Processing: {'event_id': 'E_389', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,626 - INFO - ERROR - Event Processing: {'event_id': 'E_1077', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,627 - INFO - ERROR - Event Processing: {'event_id': 'E_167', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,629 - INFO - ERROR - Event Processing: {'event_id': 'E_1078', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,630 - INFO - ERROR - Event Processing: {'event_id': 'E_809', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,630 - INFO - ERROR - Event Processing: {'event_id': 'E_168', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,632 - INFO - ERROR - Event Processing: {'event_id': 'E_259', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,632 - INFO - ERROR - Event Processing: {'event_id': 'E_1082', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,633 - INFO - ERROR - Event Processing: {'event_id': 'E_810', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,635 - INFO - ERROR - Event Processing: {'event_id': 'E_390', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,636 - INFO - ERROR - Event Processing: {'event_id': 'E_1083', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,636 - INFO - ERROR - Event Processing: {'event_id': 'E_811', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,638 - INFO - ERROR - Event Processing: {'event_id': 'E_1084', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,639 - INFO - ERROR - Event Processing: {'event_id': 'E_812', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,639 - INFO - ERROR - Event Processing: {'event_id': 'E_1085', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,640 - INFO - ERROR - Event Processing: {'event_id': 'E_391', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,642 - INFO - ERROR - Event Processing: {'event_id': 'E_392', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,642 - INFO - ERROR - Event Processing: {'event_id': 'E_302', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,643 - INFO - ERROR - Event Processing: {'event_id': 'E_1198', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,645 - INFO - ERROR - Event Processing: {'event_id': 'E_85', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,645 - INFO - ERROR - Event Processing: {'event_id': 'E_421', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,646 - INFO - ERROR - Event Processing: {'event_id': 'E_890', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,647 - INFO - ERROR - Event Processing: {'event_id': 'E_155', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,648 - INFO - ERROR - Event Processing: {'event_id': 'E_1114', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:12:18,649 - INFO - ERROR - Event Processing: {'event_id': 'E_50', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,302 - INFO - ERROR - Event Processing: {'event_id': 'E_253', 'error': "unhashable type: 'list'"}
+2025-02-10 13:57:48,303 - INFO - ERROR - Event Processing: {'event_id': 'E_162', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,304 - INFO - ERROR - Event Processing: {'event_id': 'E_1072', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,304 - INFO - ERROR - Event Processing: {'event_id': 'E_1079', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,310 - INFO - ERROR - Event Processing: {'event_id': 'E_806', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,310 - INFO - ERROR - Event Processing: {'event_id': 'E_386', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,311 - INFO - ERROR - Event Processing: {'event_id': 'E_1080', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,312 - INFO - ERROR - Event Processing: {'event_id': 'E_1073', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,325 - INFO - ERROR - Event Processing: {'event_id': 'E_387', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,326 - INFO - ERROR - Event Processing: {'event_id': 'E_163', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,327 - INFO - ERROR - Event Processing: {'event_id': 'E_254', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,340 - INFO - ERROR - Event Processing: {'event_id': 'E_1074', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,341 - INFO - ERROR - Event Processing: {'event_id': 'E_807', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,341 - INFO - ERROR - Event Processing: {'event_id': 'E_255', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,355 - INFO - ERROR - Event Processing: {'event_id': 'E_164', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,356 - INFO - ERROR - Event Processing: {'event_id': 'E_388', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,356 - INFO - ERROR - Event Processing: {'event_id': 'E_165', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,370 - INFO - ERROR - Event Processing: {'event_id': 'E_256', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,371 - INFO - ERROR - Event Processing: {'event_id': 'E_808', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,371 - INFO - ERROR - Event Processing: {'event_id': 'E_1075', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,385 - INFO - ERROR - Event Processing: {'event_id': 'E_1081', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,386 - INFO - ERROR - Event Processing: {'event_id': 'E_166', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,401 - INFO - ERROR - Event Processing: {'event_id': 'E_257', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,402 - INFO - ERROR - Event Processing: {'event_id': 'E_258', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,416 - INFO - ERROR - Event Processing: {'event_id': 'E_1076', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,417 - INFO - ERROR - Event Processing: {'event_id': 'E_389', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,431 - INFO - ERROR - Event Processing: {'event_id': 'E_1077', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,432 - INFO - ERROR - Event Processing: {'event_id': 'E_167', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,447 - INFO - ERROR - Event Processing: {'event_id': 'E_1078', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,448 - INFO - ERROR - Event Processing: {'event_id': 'E_809', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,462 - INFO - ERROR - Event Processing: {'event_id': 'E_168', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,463 - INFO - ERROR - Event Processing: {'event_id': 'E_259', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,478 - INFO - ERROR - Event Processing: {'event_id': 'E_1082', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,479 - INFO - ERROR - Event Processing: {'event_id': 'E_810', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,494 - INFO - ERROR - Event Processing: {'event_id': 'E_390', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,495 - INFO - ERROR - Event Processing: {'event_id': 'E_1083', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,510 - INFO - ERROR - Event Processing: {'event_id': 'E_811', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,511 - INFO - ERROR - Event Processing: {'event_id': 'E_1084', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,525 - INFO - ERROR - Event Processing: {'event_id': 'E_812', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,526 - INFO - ERROR - Event Processing: {'event_id': 'E_1085', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,540 - INFO - ERROR - Event Processing: {'event_id': 'E_391', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,541 - INFO - ERROR - Event Processing: {'event_id': 'E_392', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,556 - INFO - ERROR - Event Processing: {'event_id': 'E_302', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,557 - INFO - ERROR - Event Processing: {'event_id': 'E_1198', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,572 - INFO - ERROR - Event Processing: {'event_id': 'E_85', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,573 - INFO - ERROR - Event Processing: {'event_id': 'E_421', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,588 - INFO - ERROR - Event Processing: {'event_id': 'E_890', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,603 - INFO - ERROR - Event Processing: {'event_id': 'E_155', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,604 - INFO - ERROR - Event Processing: {'event_id': 'E_1114', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 13:57:48,618 - INFO - ERROR - Event Processing: {'event_id': 'E_50', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,291 - INFO - ERROR - Event Processing: {'event_id': 'E_253', 'error': "unhashable type: 'list'"}
+2025-02-10 14:00:03,291 - INFO - ERROR - Event Processing: {'event_id': 'E_162', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,292 - INFO - ERROR - Event Processing: {'event_id': 'E_1072', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,292 - INFO - ERROR - Event Processing: {'event_id': 'E_1079', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,293 - INFO - ERROR - Event Processing: {'event_id': 'E_806', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,294 - INFO - ERROR - Event Processing: {'event_id': 'E_386', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,294 - INFO - ERROR - Event Processing: {'event_id': 'E_1080', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,295 - INFO - ERROR - Event Processing: {'event_id': 'E_1073', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,295 - INFO - ERROR - Event Processing: {'event_id': 'E_387', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,295 - INFO - ERROR - Event Processing: {'event_id': 'E_163', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,296 - INFO - ERROR - Event Processing: {'event_id': 'E_254', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,297 - INFO - ERROR - Event Processing: {'event_id': 'E_1074', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,297 - INFO - ERROR - Event Processing: {'event_id': 'E_807', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,298 - INFO - ERROR - Event Processing: {'event_id': 'E_255', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,298 - INFO - ERROR - Event Processing: {'event_id': 'E_164', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,299 - INFO - ERROR - Event Processing: {'event_id': 'E_388', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,300 - INFO - ERROR - Event Processing: {'event_id': 'E_165', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,300 - INFO - ERROR - Event Processing: {'event_id': 'E_256', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,301 - INFO - ERROR - Event Processing: {'event_id': 'E_808', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,301 - INFO - ERROR - Event Processing: {'event_id': 'E_1075', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,302 - INFO - ERROR - Event Processing: {'event_id': 'E_1081', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,303 - INFO - ERROR - Event Processing: {'event_id': 'E_166', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,304 - INFO - ERROR - Event Processing: {'event_id': 'E_257', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,304 - INFO - ERROR - Event Processing: {'event_id': 'E_258', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,306 - INFO - ERROR - Event Processing: {'event_id': 'E_1076', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,307 - INFO - ERROR - Event Processing: {'event_id': 'E_389', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,308 - INFO - ERROR - Event Processing: {'event_id': 'E_1077', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,308 - INFO - ERROR - Event Processing: {'event_id': 'E_167', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,310 - INFO - ERROR - Event Processing: {'event_id': 'E_1078', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,310 - INFO - ERROR - Event Processing: {'event_id': 'E_809', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,311 - INFO - ERROR - Event Processing: {'event_id': 'E_168', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,312 - INFO - ERROR - Event Processing: {'event_id': 'E_259', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,313 - INFO - ERROR - Event Processing: {'event_id': 'E_1082', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,314 - INFO - ERROR - Event Processing: {'event_id': 'E_810', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,315 - INFO - ERROR - Event Processing: {'event_id': 'E_390', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,316 - INFO - ERROR - Event Processing: {'event_id': 'E_1083', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,316 - INFO - ERROR - Event Processing: {'event_id': 'E_811', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,317 - INFO - ERROR - Event Processing: {'event_id': 'E_1084', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,317 - INFO - ERROR - Event Processing: {'event_id': 'E_812', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,319 - INFO - ERROR - Event Processing: {'event_id': 'E_1085', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,319 - INFO - ERROR - Event Processing: {'event_id': 'E_391', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,321 - INFO - ERROR - Event Processing: {'event_id': 'E_392', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,322 - INFO - ERROR - Event Processing: {'event_id': 'E_302', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,322 - INFO - ERROR - Event Processing: {'event_id': 'E_1198', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,324 - INFO - ERROR - Event Processing: {'event_id': 'E_85', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,325 - INFO - ERROR - Event Processing: {'event_id': 'E_421', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,325 - INFO - ERROR - Event Processing: {'event_id': 'E_890', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,327 - INFO - ERROR - Event Processing: {'event_id': 'E_155', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,328 - INFO - ERROR - Event Processing: {'event_id': 'E_1114', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:00:03,329 - INFO - ERROR - Event Processing: {'event_id': 'E_50', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:14,913 - INFO - ERROR - Event Processing: {'event_id': 'E_253', 'error': "unhashable type: 'list'"}
+2025-02-10 14:10:14,914 - INFO - ERROR - Event Processing: {'event_id': 'E_162', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:14,915 - INFO - ERROR - Event Processing: {'event_id': 'E_1072', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:14,921 - INFO - ERROR - Event Processing: {'event_id': 'E_1079', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:14,922 - INFO - ERROR - Event Processing: {'event_id': 'E_806', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:14,923 - INFO - ERROR - Event Processing: {'event_id': 'E_386', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:14,923 - INFO - ERROR - Event Processing: {'event_id': 'E_1080', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:14,936 - INFO - ERROR - Event Processing: {'event_id': 'E_1073', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:14,937 - INFO - ERROR - Event Processing: {'event_id': 'E_387', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:14,937 - INFO - ERROR - Event Processing: {'event_id': 'E_163', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:14,951 - INFO - ERROR - Event Processing: {'event_id': 'E_254', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:14,952 - INFO - ERROR - Event Processing: {'event_id': 'E_1074', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:14,953 - INFO - ERROR - Event Processing: {'event_id': 'E_807', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:14,967 - INFO - ERROR - Event Processing: {'event_id': 'E_255', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:14,969 - INFO - ERROR - Event Processing: {'event_id': 'E_164', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:14,969 - INFO - ERROR - Event Processing: {'event_id': 'E_388', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:14,982 - INFO - ERROR - Event Processing: {'event_id': 'E_165', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:14,983 - INFO - ERROR - Event Processing: {'event_id': 'E_256', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:14,997 - INFO - ERROR - Event Processing: {'event_id': 'E_808', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:14,998 - INFO - ERROR - Event Processing: {'event_id': 'E_1075', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:14,998 - INFO - ERROR - Event Processing: {'event_id': 'E_1081', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:15,013 - INFO - ERROR - Event Processing: {'event_id': 'E_166', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:15,014 - INFO - ERROR - Event Processing: {'event_id': 'E_257', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:15,029 - INFO - ERROR - Event Processing: {'event_id': 'E_258', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:15,030 - INFO - ERROR - Event Processing: {'event_id': 'E_1076', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:15,044 - INFO - ERROR - Event Processing: {'event_id': 'E_389', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:15,045 - INFO - ERROR - Event Processing: {'event_id': 'E_1077', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:15,059 - INFO - ERROR - Event Processing: {'event_id': 'E_167', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:15,060 - INFO - ERROR - Event Processing: {'event_id': 'E_1078', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:15,074 - INFO - ERROR - Event Processing: {'event_id': 'E_809', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:15,075 - INFO - ERROR - Event Processing: {'event_id': 'E_168', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:15,089 - INFO - ERROR - Event Processing: {'event_id': 'E_259', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:15,090 - INFO - ERROR - Event Processing: {'event_id': 'E_1082', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:15,104 - INFO - ERROR - Event Processing: {'event_id': 'E_810', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:15,105 - INFO - ERROR - Event Processing: {'event_id': 'E_390', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:15,119 - INFO - ERROR - Event Processing: {'event_id': 'E_1083', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:15,120 - INFO - ERROR - Event Processing: {'event_id': 'E_811', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:15,135 - INFO - ERROR - Event Processing: {'event_id': 'E_1084', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:15,136 - INFO - ERROR - Event Processing: {'event_id': 'E_812', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:15,151 - INFO - ERROR - Event Processing: {'event_id': 'E_1085', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:15,152 - INFO - ERROR - Event Processing: {'event_id': 'E_391', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:15,166 - INFO - ERROR - Event Processing: {'event_id': 'E_392', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:15,181 - INFO - ERROR - Event Processing: {'event_id': 'E_302', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:15,182 - INFO - ERROR - Event Processing: {'event_id': 'E_1198', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:15,197 - INFO - ERROR - Event Processing: {'event_id': 'E_85', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:15,198 - INFO - ERROR - Event Processing: {'event_id': 'E_421', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:15,214 - INFO - ERROR - Event Processing: {'event_id': 'E_890', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:15,228 - INFO - ERROR - Event Processing: {'event_id': 'E_155', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:15,229 - INFO - ERROR - Event Processing: {'event_id': 'E_1114', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:10:15,244 - INFO - ERROR - Event Processing: {'event_id': 'E_50', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,350 - INFO - ERROR - Event Processing: {'event_id': 'E_253', 'error': "unhashable type: 'list'"}
+2025-02-10 14:38:50,353 - INFO - ERROR - Event Processing: {'event_id': 'E_162', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,355 - INFO - ERROR - Event Processing: {'event_id': 'E_1072', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,357 - INFO - ERROR - Event Processing: {'event_id': 'E_1079', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,359 - INFO - ERROR - Event Processing: {'event_id': 'E_806', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,361 - INFO - ERROR - Event Processing: {'event_id': 'E_386', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,363 - INFO - ERROR - Event Processing: {'event_id': 'E_1080', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,365 - INFO - ERROR - Event Processing: {'event_id': 'E_1073', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,367 - INFO - ERROR - Event Processing: {'event_id': 'E_387', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,369 - INFO - ERROR - Event Processing: {'event_id': 'E_163', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,372 - INFO - ERROR - Event Processing: {'event_id': 'E_254', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,374 - INFO - ERROR - Event Processing: {'event_id': 'E_1074', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,377 - INFO - ERROR - Event Processing: {'event_id': 'E_807', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,379 - INFO - ERROR - Event Processing: {'event_id': 'E_255', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,382 - INFO - ERROR - Event Processing: {'event_id': 'E_164', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,384 - INFO - ERROR - Event Processing: {'event_id': 'E_388', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,386 - INFO - ERROR - Event Processing: {'event_id': 'E_165', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,389 - INFO - ERROR - Event Processing: {'event_id': 'E_256', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,391 - INFO - ERROR - Event Processing: {'event_id': 'E_808', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,393 - INFO - ERROR - Event Processing: {'event_id': 'E_1075', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,395 - INFO - ERROR - Event Processing: {'event_id': 'E_1081', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,398 - INFO - ERROR - Event Processing: {'event_id': 'E_166', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,400 - INFO - ERROR - Event Processing: {'event_id': 'E_257', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,403 - INFO - ERROR - Event Processing: {'event_id': 'E_258', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,406 - INFO - ERROR - Event Processing: {'event_id': 'E_1076', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,409 - INFO - ERROR - Event Processing: {'event_id': 'E_389', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,412 - INFO - ERROR - Event Processing: {'event_id': 'E_1077', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,414 - INFO - ERROR - Event Processing: {'event_id': 'E_167', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,417 - INFO - ERROR - Event Processing: {'event_id': 'E_1078', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,419 - INFO - ERROR - Event Processing: {'event_id': 'E_809', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,421 - INFO - ERROR - Event Processing: {'event_id': 'E_168', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,424 - INFO - ERROR - Event Processing: {'event_id': 'E_259', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,427 - INFO - ERROR - Event Processing: {'event_id': 'E_1082', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,429 - INFO - ERROR - Event Processing: {'event_id': 'E_810', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,432 - INFO - ERROR - Event Processing: {'event_id': 'E_390', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,435 - INFO - ERROR - Event Processing: {'event_id': 'E_1083', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,438 - INFO - ERROR - Event Processing: {'event_id': 'E_811', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,441 - INFO - ERROR - Event Processing: {'event_id': 'E_1084', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,443 - INFO - ERROR - Event Processing: {'event_id': 'E_812', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,446 - INFO - ERROR - Event Processing: {'event_id': 'E_1085', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,449 - INFO - ERROR - Event Processing: {'event_id': 'E_391', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,452 - INFO - ERROR - Event Processing: {'event_id': 'E_392', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,455 - INFO - ERROR - Event Processing: {'event_id': 'E_302', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,458 - INFO - ERROR - Event Processing: {'event_id': 'E_1198', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,461 - INFO - ERROR - Event Processing: {'event_id': 'E_85', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,464 - INFO - ERROR - Event Processing: {'event_id': 'E_421', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,467 - INFO - ERROR - Event Processing: {'event_id': 'E_890', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,470 - INFO - ERROR - Event Processing: {'event_id': 'E_155', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,473 - INFO - ERROR - Event Processing: {'event_id': 'E_1114', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:38:50,475 - INFO - ERROR - Event Processing: {'event_id': 'E_50', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,513 - INFO - ERROR - Event Processing: {'event_id': 'E_253', 'error': "unhashable type: 'list'"}
+2025-02-10 14:42:27,515 - INFO - ERROR - Event Processing: {'event_id': 'E_162', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,518 - INFO - ERROR - Event Processing: {'event_id': 'E_1072', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,520 - INFO - ERROR - Event Processing: {'event_id': 'E_1079', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,523 - INFO - ERROR - Event Processing: {'event_id': 'E_806', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,525 - INFO - ERROR - Event Processing: {'event_id': 'E_386', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,527 - INFO - ERROR - Event Processing: {'event_id': 'E_1080', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,530 - INFO - ERROR - Event Processing: {'event_id': 'E_1073', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,532 - INFO - ERROR - Event Processing: {'event_id': 'E_387', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,535 - INFO - ERROR - Event Processing: {'event_id': 'E_163', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,537 - INFO - ERROR - Event Processing: {'event_id': 'E_254', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,539 - INFO - ERROR - Event Processing: {'event_id': 'E_1074', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,542 - INFO - ERROR - Event Processing: {'event_id': 'E_807', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,545 - INFO - ERROR - Event Processing: {'event_id': 'E_255', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,547 - INFO - ERROR - Event Processing: {'event_id': 'E_164', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,550 - INFO - ERROR - Event Processing: {'event_id': 'E_388', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,553 - INFO - ERROR - Event Processing: {'event_id': 'E_165', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,556 - INFO - ERROR - Event Processing: {'event_id': 'E_256', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,559 - INFO - ERROR - Event Processing: {'event_id': 'E_808', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,562 - INFO - ERROR - Event Processing: {'event_id': 'E_1075', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,565 - INFO - ERROR - Event Processing: {'event_id': 'E_1081', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,568 - INFO - ERROR - Event Processing: {'event_id': 'E_166', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,571 - INFO - ERROR - Event Processing: {'event_id': 'E_257', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,573 - INFO - ERROR - Event Processing: {'event_id': 'E_258', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,575 - INFO - ERROR - Event Processing: {'event_id': 'E_1076', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,578 - INFO - ERROR - Event Processing: {'event_id': 'E_389', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,580 - INFO - ERROR - Event Processing: {'event_id': 'E_1077', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,583 - INFO - ERROR - Event Processing: {'event_id': 'E_167', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,586 - INFO - ERROR - Event Processing: {'event_id': 'E_1078', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,589 - INFO - ERROR - Event Processing: {'event_id': 'E_809', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,592 - INFO - ERROR - Event Processing: {'event_id': 'E_168', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,594 - INFO - ERROR - Event Processing: {'event_id': 'E_259', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,597 - INFO - ERROR - Event Processing: {'event_id': 'E_1082', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,599 - INFO - ERROR - Event Processing: {'event_id': 'E_810', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,602 - INFO - ERROR - Event Processing: {'event_id': 'E_390', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,605 - INFO - ERROR - Event Processing: {'event_id': 'E_1083', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,607 - INFO - ERROR - Event Processing: {'event_id': 'E_811', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,610 - INFO - ERROR - Event Processing: {'event_id': 'E_1084', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,613 - INFO - ERROR - Event Processing: {'event_id': 'E_812', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,616 - INFO - ERROR - Event Processing: {'event_id': 'E_1085', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,618 - INFO - ERROR - Event Processing: {'event_id': 'E_391', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,621 - INFO - ERROR - Event Processing: {'event_id': 'E_392', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,624 - INFO - ERROR - Event Processing: {'event_id': 'E_302', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,627 - INFO - ERROR - Event Processing: {'event_id': 'E_1198', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,630 - INFO - ERROR - Event Processing: {'event_id': 'E_85', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,633 - INFO - ERROR - Event Processing: {'event_id': 'E_421', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,636 - INFO - ERROR - Event Processing: {'event_id': 'E_890', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,638 - INFO - ERROR - Event Processing: {'event_id': 'E_155', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,641 - INFO - ERROR - Event Processing: {'event_id': 'E_1114', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:42:27,644 - INFO - ERROR - Event Processing: {'event_id': 'E_50', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,326 - INFO - ERROR - Event Processing: {'event_id': 'E_253', 'error': "unhashable type: 'list'"}
+2025-02-10 14:46:32,329 - INFO - ERROR - Event Processing: {'event_id': 'E_162', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,331 - INFO - ERROR - Event Processing: {'event_id': 'E_1072', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,333 - INFO - ERROR - Event Processing: {'event_id': 'E_1079', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,335 - INFO - ERROR - Event Processing: {'event_id': 'E_806', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,337 - INFO - ERROR - Event Processing: {'event_id': 'E_386', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,339 - INFO - ERROR - Event Processing: {'event_id': 'E_1080', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,341 - INFO - ERROR - Event Processing: {'event_id': 'E_1073', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,343 - INFO - ERROR - Event Processing: {'event_id': 'E_387', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,345 - INFO - ERROR - Event Processing: {'event_id': 'E_163', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,347 - INFO - ERROR - Event Processing: {'event_id': 'E_254', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,349 - INFO - ERROR - Event Processing: {'event_id': 'E_1074', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,352 - INFO - ERROR - Event Processing: {'event_id': 'E_807', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,354 - INFO - ERROR - Event Processing: {'event_id': 'E_255', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,356 - INFO - ERROR - Event Processing: {'event_id': 'E_164', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,360 - INFO - ERROR - Event Processing: {'event_id': 'E_388', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,363 - INFO - ERROR - Event Processing: {'event_id': 'E_165', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,365 - INFO - ERROR - Event Processing: {'event_id': 'E_256', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,367 - INFO - ERROR - Event Processing: {'event_id': 'E_808', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,370 - INFO - ERROR - Event Processing: {'event_id': 'E_1075', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,372 - INFO - ERROR - Event Processing: {'event_id': 'E_1081', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,375 - INFO - ERROR - Event Processing: {'event_id': 'E_166', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,378 - INFO - ERROR - Event Processing: {'event_id': 'E_257', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,381 - INFO - ERROR - Event Processing: {'event_id': 'E_258', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,383 - INFO - ERROR - Event Processing: {'event_id': 'E_1076', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,386 - INFO - ERROR - Event Processing: {'event_id': 'E_389', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,388 - INFO - ERROR - Event Processing: {'event_id': 'E_1077', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,391 - INFO - ERROR - Event Processing: {'event_id': 'E_167', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,393 - INFO - ERROR - Event Processing: {'event_id': 'E_1078', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,396 - INFO - ERROR - Event Processing: {'event_id': 'E_809', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,399 - INFO - ERROR - Event Processing: {'event_id': 'E_168', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,403 - INFO - ERROR - Event Processing: {'event_id': 'E_259', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,407 - INFO - ERROR - Event Processing: {'event_id': 'E_1082', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,411 - INFO - ERROR - Event Processing: {'event_id': 'E_810', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,414 - INFO - ERROR - Event Processing: {'event_id': 'E_390', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,417 - INFO - ERROR - Event Processing: {'event_id': 'E_1083', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,420 - INFO - ERROR - Event Processing: {'event_id': 'E_811', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,423 - INFO - ERROR - Event Processing: {'event_id': 'E_1084', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,428 - INFO - ERROR - Event Processing: {'event_id': 'E_812', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,432 - INFO - ERROR - Event Processing: {'event_id': 'E_1085', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,435 - INFO - ERROR - Event Processing: {'event_id': 'E_391', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,439 - INFO - ERROR - Event Processing: {'event_id': 'E_392', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,442 - INFO - ERROR - Event Processing: {'event_id': 'E_302', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,445 - INFO - ERROR - Event Processing: {'event_id': 'E_1198', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,449 - INFO - ERROR - Event Processing: {'event_id': 'E_85', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,453 - INFO - ERROR - Event Processing: {'event_id': 'E_421', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,457 - INFO - ERROR - Event Processing: {'event_id': 'E_890', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,460 - INFO - ERROR - Event Processing: {'event_id': 'E_155', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,464 - INFO - ERROR - Event Processing: {'event_id': 'E_1114', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:46:32,469 - INFO - ERROR - Event Processing: {'event_id': 'E_50', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,424 - INFO - ERROR - Event Processing: {'event_id': 'E_253', 'error': "unhashable type: 'list'"}
+2025-02-10 14:51:24,427 - INFO - ERROR - Event Processing: {'event_id': 'E_162', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,429 - INFO - ERROR - Event Processing: {'event_id': 'E_1072', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,432 - INFO - ERROR - Event Processing: {'event_id': 'E_1079', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,434 - INFO - ERROR - Event Processing: {'event_id': 'E_806', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,436 - INFO - ERROR - Event Processing: {'event_id': 'E_386', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,438 - INFO - ERROR - Event Processing: {'event_id': 'E_1080', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,440 - INFO - ERROR - Event Processing: {'event_id': 'E_1073', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,443 - INFO - ERROR - Event Processing: {'event_id': 'E_387', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,445 - INFO - ERROR - Event Processing: {'event_id': 'E_163', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,448 - INFO - ERROR - Event Processing: {'event_id': 'E_254', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,450 - INFO - ERROR - Event Processing: {'event_id': 'E_1074', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,453 - INFO - ERROR - Event Processing: {'event_id': 'E_807', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,455 - INFO - ERROR - Event Processing: {'event_id': 'E_255', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,458 - INFO - ERROR - Event Processing: {'event_id': 'E_164', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,461 - INFO - ERROR - Event Processing: {'event_id': 'E_388', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,464 - INFO - ERROR - Event Processing: {'event_id': 'E_165', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,467 - INFO - ERROR - Event Processing: {'event_id': 'E_256', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,469 - INFO - ERROR - Event Processing: {'event_id': 'E_808', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,472 - INFO - ERROR - Event Processing: {'event_id': 'E_1075', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,476 - INFO - ERROR - Event Processing: {'event_id': 'E_1081', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,479 - INFO - ERROR - Event Processing: {'event_id': 'E_166', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,482 - INFO - ERROR - Event Processing: {'event_id': 'E_257', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,484 - INFO - ERROR - Event Processing: {'event_id': 'E_258', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,487 - INFO - ERROR - Event Processing: {'event_id': 'E_1076', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,489 - INFO - ERROR - Event Processing: {'event_id': 'E_389', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,493 - INFO - ERROR - Event Processing: {'event_id': 'E_1077', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,495 - INFO - ERROR - Event Processing: {'event_id': 'E_167', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,498 - INFO - ERROR - Event Processing: {'event_id': 'E_1078', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,501 - INFO - ERROR - Event Processing: {'event_id': 'E_809', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,504 - INFO - ERROR - Event Processing: {'event_id': 'E_168', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,507 - INFO - ERROR - Event Processing: {'event_id': 'E_259', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,510 - INFO - ERROR - Event Processing: {'event_id': 'E_1082', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,513 - INFO - ERROR - Event Processing: {'event_id': 'E_810', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,516 - INFO - ERROR - Event Processing: {'event_id': 'E_390', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,519 - INFO - ERROR - Event Processing: {'event_id': 'E_1083', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,522 - INFO - ERROR - Event Processing: {'event_id': 'E_811', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,525 - INFO - ERROR - Event Processing: {'event_id': 'E_1084', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,528 - INFO - ERROR - Event Processing: {'event_id': 'E_812', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,531 - INFO - ERROR - Event Processing: {'event_id': 'E_1085', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,534 - INFO - ERROR - Event Processing: {'event_id': 'E_391', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,537 - INFO - ERROR - Event Processing: {'event_id': 'E_392', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,540 - INFO - ERROR - Event Processing: {'event_id': 'E_302', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,544 - INFO - ERROR - Event Processing: {'event_id': 'E_1198', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,547 - INFO - ERROR - Event Processing: {'event_id': 'E_85', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,549 - INFO - ERROR - Event Processing: {'event_id': 'E_421', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,552 - INFO - ERROR - Event Processing: {'event_id': 'E_890', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,555 - INFO - ERROR - Event Processing: {'event_id': 'E_155', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,558 - INFO - ERROR - Event Processing: {'event_id': 'E_1114', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:51:24,562 - INFO - ERROR - Event Processing: {'event_id': 'E_50', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,010 - INFO - ERROR - Event Processing: {'event_id': 'E_253', 'error': "unhashable type: 'list'"}
+2025-02-10 14:52:52,013 - INFO - ERROR - Event Processing: {'event_id': 'E_162', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,015 - INFO - ERROR - Event Processing: {'event_id': 'E_1072', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,017 - INFO - ERROR - Event Processing: {'event_id': 'E_1079', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,019 - INFO - ERROR - Event Processing: {'event_id': 'E_806', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,021 - INFO - ERROR - Event Processing: {'event_id': 'E_386', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,023 - INFO - ERROR - Event Processing: {'event_id': 'E_1080', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,025 - INFO - ERROR - Event Processing: {'event_id': 'E_1073', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,027 - INFO - ERROR - Event Processing: {'event_id': 'E_387', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,029 - INFO - ERROR - Event Processing: {'event_id': 'E_163', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,032 - INFO - ERROR - Event Processing: {'event_id': 'E_254', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,034 - INFO - ERROR - Event Processing: {'event_id': 'E_1074', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,037 - INFO - ERROR - Event Processing: {'event_id': 'E_807', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,040 - INFO - ERROR - Event Processing: {'event_id': 'E_255', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,042 - INFO - ERROR - Event Processing: {'event_id': 'E_164', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,045 - INFO - ERROR - Event Processing: {'event_id': 'E_388', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,047 - INFO - ERROR - Event Processing: {'event_id': 'E_165', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,050 - INFO - ERROR - Event Processing: {'event_id': 'E_256', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,052 - INFO - ERROR - Event Processing: {'event_id': 'E_808', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,055 - INFO - ERROR - Event Processing: {'event_id': 'E_1075', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,057 - INFO - ERROR - Event Processing: {'event_id': 'E_1081', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,060 - INFO - ERROR - Event Processing: {'event_id': 'E_166', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,063 - INFO - ERROR - Event Processing: {'event_id': 'E_257', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,065 - INFO - ERROR - Event Processing: {'event_id': 'E_258', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,068 - INFO - ERROR - Event Processing: {'event_id': 'E_1076', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,071 - INFO - ERROR - Event Processing: {'event_id': 'E_389', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,073 - INFO - ERROR - Event Processing: {'event_id': 'E_1077', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,076 - INFO - ERROR - Event Processing: {'event_id': 'E_167', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,079 - INFO - ERROR - Event Processing: {'event_id': 'E_1078', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,081 - INFO - ERROR - Event Processing: {'event_id': 'E_809', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,084 - INFO - ERROR - Event Processing: {'event_id': 'E_168', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,087 - INFO - ERROR - Event Processing: {'event_id': 'E_259', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,089 - INFO - ERROR - Event Processing: {'event_id': 'E_1082', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,092 - INFO - ERROR - Event Processing: {'event_id': 'E_810', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,094 - INFO - ERROR - Event Processing: {'event_id': 'E_390', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,097 - INFO - ERROR - Event Processing: {'event_id': 'E_1083', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,100 - INFO - ERROR - Event Processing: {'event_id': 'E_811', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,103 - INFO - ERROR - Event Processing: {'event_id': 'E_1084', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,106 - INFO - ERROR - Event Processing: {'event_id': 'E_812', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,109 - INFO - ERROR - Event Processing: {'event_id': 'E_1085', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,112 - INFO - ERROR - Event Processing: {'event_id': 'E_391', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,115 - INFO - ERROR - Event Processing: {'event_id': 'E_392', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,118 - INFO - ERROR - Event Processing: {'event_id': 'E_302', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,121 - INFO - ERROR - Event Processing: {'event_id': 'E_1198', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,123 - INFO - ERROR - Event Processing: {'event_id': 'E_85', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,126 - INFO - ERROR - Event Processing: {'event_id': 'E_421', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,130 - INFO - ERROR - Event Processing: {'event_id': 'E_890', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,133 - INFO - ERROR - Event Processing: {'event_id': 'E_155', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,135 - INFO - ERROR - Event Processing: {'event_id': 'E_1114', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:52:52,140 - INFO - ERROR - Event Processing: {'event_id': 'E_50', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,301 - INFO - ERROR - Event Processing: {'event_id': 'E_253', 'error': "unhashable type: 'list'"}
+2025-02-10 14:55:32,303 - INFO - ERROR - Event Processing: {'event_id': 'E_162', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,307 - INFO - ERROR - Event Processing: {'event_id': 'E_1072', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,309 - INFO - ERROR - Event Processing: {'event_id': 'E_1079', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,311 - INFO - ERROR - Event Processing: {'event_id': 'E_806', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,314 - INFO - ERROR - Event Processing: {'event_id': 'E_386', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,316 - INFO - ERROR - Event Processing: {'event_id': 'E_1080', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,318 - INFO - ERROR - Event Processing: {'event_id': 'E_1073', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,320 - INFO - ERROR - Event Processing: {'event_id': 'E_387', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,322 - INFO - ERROR - Event Processing: {'event_id': 'E_163', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,324 - INFO - ERROR - Event Processing: {'event_id': 'E_254', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,326 - INFO - ERROR - Event Processing: {'event_id': 'E_1074', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,329 - INFO - ERROR - Event Processing: {'event_id': 'E_807', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,331 - INFO - ERROR - Event Processing: {'event_id': 'E_255', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,334 - INFO - ERROR - Event Processing: {'event_id': 'E_164', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,336 - INFO - ERROR - Event Processing: {'event_id': 'E_388', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,339 - INFO - ERROR - Event Processing: {'event_id': 'E_165', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,341 - INFO - ERROR - Event Processing: {'event_id': 'E_256', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,344 - INFO - ERROR - Event Processing: {'event_id': 'E_808', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,347 - INFO - ERROR - Event Processing: {'event_id': 'E_1075', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,349 - INFO - ERROR - Event Processing: {'event_id': 'E_1081', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,351 - INFO - ERROR - Event Processing: {'event_id': 'E_166', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,353 - INFO - ERROR - Event Processing: {'event_id': 'E_257', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,356 - INFO - ERROR - Event Processing: {'event_id': 'E_258', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,358 - INFO - ERROR - Event Processing: {'event_id': 'E_1076', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,361 - INFO - ERROR - Event Processing: {'event_id': 'E_389', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,363 - INFO - ERROR - Event Processing: {'event_id': 'E_1077', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,366 - INFO - ERROR - Event Processing: {'event_id': 'E_167', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,369 - INFO - ERROR - Event Processing: {'event_id': 'E_1078', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,371 - INFO - ERROR - Event Processing: {'event_id': 'E_809', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,376 - INFO - ERROR - Event Processing: {'event_id': 'E_168', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,378 - INFO - ERROR - Event Processing: {'event_id': 'E_259', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,381 - INFO - ERROR - Event Processing: {'event_id': 'E_1082', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,384 - INFO - ERROR - Event Processing: {'event_id': 'E_810', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,386 - INFO - ERROR - Event Processing: {'event_id': 'E_390', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,389 - INFO - ERROR - Event Processing: {'event_id': 'E_1083', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,392 - INFO - ERROR - Event Processing: {'event_id': 'E_811', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,394 - INFO - ERROR - Event Processing: {'event_id': 'E_1084', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,397 - INFO - ERROR - Event Processing: {'event_id': 'E_812', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,400 - INFO - ERROR - Event Processing: {'event_id': 'E_1085', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,404 - INFO - ERROR - Event Processing: {'event_id': 'E_391', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,407 - INFO - ERROR - Event Processing: {'event_id': 'E_392', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,411 - INFO - ERROR - Event Processing: {'event_id': 'E_302', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,414 - INFO - ERROR - Event Processing: {'event_id': 'E_1198', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,417 - INFO - ERROR - Event Processing: {'event_id': 'E_85', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,420 - INFO - ERROR - Event Processing: {'event_id': 'E_421', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,423 - INFO - ERROR - Event Processing: {'event_id': 'E_890', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,427 - INFO - ERROR - Event Processing: {'event_id': 'E_155', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,429 - INFO - ERROR - Event Processing: {'event_id': 'E_1114', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:55:32,432 - INFO - ERROR - Event Processing: {'event_id': 'E_50', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,438 - INFO - ERROR - Event Processing: {'event_id': 'E_253', 'error': "unhashable type: 'list'"}
+2025-02-10 14:56:50,440 - INFO - ERROR - Event Processing: {'event_id': 'E_162', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,442 - INFO - ERROR - Event Processing: {'event_id': 'E_1072', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,444 - INFO - ERROR - Event Processing: {'event_id': 'E_1079', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,446 - INFO - ERROR - Event Processing: {'event_id': 'E_806', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,448 - INFO - ERROR - Event Processing: {'event_id': 'E_386', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,450 - INFO - ERROR - Event Processing: {'event_id': 'E_1080', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,453 - INFO - ERROR - Event Processing: {'event_id': 'E_1073', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,455 - INFO - ERROR - Event Processing: {'event_id': 'E_387', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,457 - INFO - ERROR - Event Processing: {'event_id': 'E_163', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,461 - INFO - ERROR - Event Processing: {'event_id': 'E_254', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,463 - INFO - ERROR - Event Processing: {'event_id': 'E_1074', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,465 - INFO - ERROR - Event Processing: {'event_id': 'E_807', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,467 - INFO - ERROR - Event Processing: {'event_id': 'E_255', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,470 - INFO - ERROR - Event Processing: {'event_id': 'E_164', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,472 - INFO - ERROR - Event Processing: {'event_id': 'E_388', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,475 - INFO - ERROR - Event Processing: {'event_id': 'E_165', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,478 - INFO - ERROR - Event Processing: {'event_id': 'E_256', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,480 - INFO - ERROR - Event Processing: {'event_id': 'E_808', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,483 - INFO - ERROR - Event Processing: {'event_id': 'E_1075', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,485 - INFO - ERROR - Event Processing: {'event_id': 'E_1081', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,489 - INFO - ERROR - Event Processing: {'event_id': 'E_166', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,491 - INFO - ERROR - Event Processing: {'event_id': 'E_257', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,494 - INFO - ERROR - Event Processing: {'event_id': 'E_258', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,496 - INFO - ERROR - Event Processing: {'event_id': 'E_1076', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,500 - INFO - ERROR - Event Processing: {'event_id': 'E_389', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,503 - INFO - ERROR - Event Processing: {'event_id': 'E_1077', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,506 - INFO - ERROR - Event Processing: {'event_id': 'E_167', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,509 - INFO - ERROR - Event Processing: {'event_id': 'E_1078', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,511 - INFO - ERROR - Event Processing: {'event_id': 'E_809', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,514 - INFO - ERROR - Event Processing: {'event_id': 'E_168', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,517 - INFO - ERROR - Event Processing: {'event_id': 'E_259', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,520 - INFO - ERROR - Event Processing: {'event_id': 'E_1082', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,523 - INFO - ERROR - Event Processing: {'event_id': 'E_810', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,526 - INFO - ERROR - Event Processing: {'event_id': 'E_390', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,529 - INFO - ERROR - Event Processing: {'event_id': 'E_1083', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,532 - INFO - ERROR - Event Processing: {'event_id': 'E_811', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,535 - INFO - ERROR - Event Processing: {'event_id': 'E_1084', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,538 - INFO - ERROR - Event Processing: {'event_id': 'E_812', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,540 - INFO - ERROR - Event Processing: {'event_id': 'E_1085', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,544 - INFO - ERROR - Event Processing: {'event_id': 'E_391', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,546 - INFO - ERROR - Event Processing: {'event_id': 'E_392', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,549 - INFO - ERROR - Event Processing: {'event_id': 'E_302', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,552 - INFO - ERROR - Event Processing: {'event_id': 'E_1198', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,557 - INFO - ERROR - Event Processing: {'event_id': 'E_85', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,560 - INFO - ERROR - Event Processing: {'event_id': 'E_421', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,563 - INFO - ERROR - Event Processing: {'event_id': 'E_890', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,566 - INFO - ERROR - Event Processing: {'event_id': 'E_155', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,569 - INFO - ERROR - Event Processing: {'event_id': 'E_1114', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 14:56:50,572 - INFO - ERROR - Event Processing: {'event_id': 'E_50', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,185 - INFO - ERROR - Event Processing: {'event_id': 'E_253', 'error': "unhashable type: 'list'"}
+2025-02-10 15:02:56,188 - INFO - ERROR - Event Processing: {'event_id': 'E_162', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,190 - INFO - ERROR - Event Processing: {'event_id': 'E_1072', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,193 - INFO - ERROR - Event Processing: {'event_id': 'E_1079', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,195 - INFO - ERROR - Event Processing: {'event_id': 'E_806', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,197 - INFO - ERROR - Event Processing: {'event_id': 'E_386', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,198 - INFO - ERROR - Event Processing: {'event_id': 'E_1080', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,201 - INFO - ERROR - Event Processing: {'event_id': 'E_1073', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,203 - INFO - ERROR - Event Processing: {'event_id': 'E_387', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,205 - INFO - ERROR - Event Processing: {'event_id': 'E_163', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,207 - INFO - ERROR - Event Processing: {'event_id': 'E_254', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,209 - INFO - ERROR - Event Processing: {'event_id': 'E_1074', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,212 - INFO - ERROR - Event Processing: {'event_id': 'E_807', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,214 - INFO - ERROR - Event Processing: {'event_id': 'E_255', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,217 - INFO - ERROR - Event Processing: {'event_id': 'E_164', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,220 - INFO - ERROR - Event Processing: {'event_id': 'E_388', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,222 - INFO - ERROR - Event Processing: {'event_id': 'E_165', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,224 - INFO - ERROR - Event Processing: {'event_id': 'E_256', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,227 - INFO - ERROR - Event Processing: {'event_id': 'E_808', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,229 - INFO - ERROR - Event Processing: {'event_id': 'E_1075', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,231 - INFO - ERROR - Event Processing: {'event_id': 'E_1081', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,234 - INFO - ERROR - Event Processing: {'event_id': 'E_166', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,236 - INFO - ERROR - Event Processing: {'event_id': 'E_257', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,238 - INFO - ERROR - Event Processing: {'event_id': 'E_258', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,241 - INFO - ERROR - Event Processing: {'event_id': 'E_1076', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,244 - INFO - ERROR - Event Processing: {'event_id': 'E_389', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,246 - INFO - ERROR - Event Processing: {'event_id': 'E_1077', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,249 - INFO - ERROR - Event Processing: {'event_id': 'E_167', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,251 - INFO - ERROR - Event Processing: {'event_id': 'E_1078', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,254 - INFO - ERROR - Event Processing: {'event_id': 'E_809', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,257 - INFO - ERROR - Event Processing: {'event_id': 'E_168', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,259 - INFO - ERROR - Event Processing: {'event_id': 'E_259', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,262 - INFO - ERROR - Event Processing: {'event_id': 'E_1082', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,265 - INFO - ERROR - Event Processing: {'event_id': 'E_810', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,267 - INFO - ERROR - Event Processing: {'event_id': 'E_390', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,270 - INFO - ERROR - Event Processing: {'event_id': 'E_1083', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,272 - INFO - ERROR - Event Processing: {'event_id': 'E_811', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,275 - INFO - ERROR - Event Processing: {'event_id': 'E_1084', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,277 - INFO - ERROR - Event Processing: {'event_id': 'E_812', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,280 - INFO - ERROR - Event Processing: {'event_id': 'E_1085', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,283 - INFO - ERROR - Event Processing: {'event_id': 'E_391', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,285 - INFO - ERROR - Event Processing: {'event_id': 'E_392', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,288 - INFO - ERROR - Event Processing: {'event_id': 'E_302', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,290 - INFO - ERROR - Event Processing: {'event_id': 'E_1198', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,293 - INFO - ERROR - Event Processing: {'event_id': 'E_85', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,295 - INFO - ERROR - Event Processing: {'event_id': 'E_421', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,298 - INFO - ERROR - Event Processing: {'event_id': 'E_890', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,301 - INFO - ERROR - Event Processing: {'event_id': 'E_155', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,303 - INFO - ERROR - Event Processing: {'event_id': 'E_1114', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:02:56,305 - INFO - ERROR - Event Processing: {'event_id': 'E_50', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,918 - INFO - ERROR - Event Processing: {'event_id': 'E_253', 'error': "unhashable type: 'list'"}
+2025-02-10 15:15:46,918 - INFO - ERROR - Event Processing: {'event_id': 'E_162', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,919 - INFO - ERROR - Event Processing: {'event_id': 'E_1072', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,920 - INFO - ERROR - Event Processing: {'event_id': 'E_1079', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,920 - INFO - ERROR - Event Processing: {'event_id': 'E_806', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,921 - INFO - ERROR - Event Processing: {'event_id': 'E_386', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,921 - INFO - ERROR - Event Processing: {'event_id': 'E_1080', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,922 - INFO - ERROR - Event Processing: {'event_id': 'E_1073', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,922 - INFO - ERROR - Event Processing: {'event_id': 'E_387', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,923 - INFO - ERROR - Event Processing: {'event_id': 'E_163', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,923 - INFO - ERROR - Event Processing: {'event_id': 'E_254', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,924 - INFO - ERROR - Event Processing: {'event_id': 'E_1074', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,924 - INFO - ERROR - Event Processing: {'event_id': 'E_807', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,925 - INFO - ERROR - Event Processing: {'event_id': 'E_255', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,926 - INFO - ERROR - Event Processing: {'event_id': 'E_164', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,926 - INFO - ERROR - Event Processing: {'event_id': 'E_388', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,927 - INFO - ERROR - Event Processing: {'event_id': 'E_165', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,927 - INFO - ERROR - Event Processing: {'event_id': 'E_256', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,928 - INFO - ERROR - Event Processing: {'event_id': 'E_808', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,928 - INFO - ERROR - Event Processing: {'event_id': 'E_1075', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,930 - INFO - ERROR - Event Processing: {'event_id': 'E_1081', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,931 - INFO - ERROR - Event Processing: {'event_id': 'E_166', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,931 - INFO - ERROR - Event Processing: {'event_id': 'E_257', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,932 - INFO - ERROR - Event Processing: {'event_id': 'E_258', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,932 - INFO - ERROR - Event Processing: {'event_id': 'E_1076', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,933 - INFO - ERROR - Event Processing: {'event_id': 'E_389', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,935 - INFO - ERROR - Event Processing: {'event_id': 'E_1077', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,935 - INFO - ERROR - Event Processing: {'event_id': 'E_167', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,937 - INFO - ERROR - Event Processing: {'event_id': 'E_1078', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,937 - INFO - ERROR - Event Processing: {'event_id': 'E_809', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,938 - INFO - ERROR - Event Processing: {'event_id': 'E_168', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,940 - INFO - ERROR - Event Processing: {'event_id': 'E_259', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,940 - INFO - ERROR - Event Processing: {'event_id': 'E_1082', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,942 - INFO - ERROR - Event Processing: {'event_id': 'E_810', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,942 - INFO - ERROR - Event Processing: {'event_id': 'E_390', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,943 - INFO - ERROR - Event Processing: {'event_id': 'E_1083', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,945 - INFO - ERROR - Event Processing: {'event_id': 'E_811', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,945 - INFO - ERROR - Event Processing: {'event_id': 'E_1084', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,947 - INFO - ERROR - Event Processing: {'event_id': 'E_812', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,948 - INFO - ERROR - Event Processing: {'event_id': 'E_1085', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,948 - INFO - ERROR - Event Processing: {'event_id': 'E_391', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,950 - INFO - ERROR - Event Processing: {'event_id': 'E_392', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,950 - INFO - ERROR - Event Processing: {'event_id': 'E_302', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,952 - INFO - ERROR - Event Processing: {'event_id': 'E_1198', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,953 - INFO - ERROR - Event Processing: {'event_id': 'E_85', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,953 - INFO - ERROR - Event Processing: {'event_id': 'E_421', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,954 - INFO - ERROR - Event Processing: {'event_id': 'E_890', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,955 - INFO - ERROR - Event Processing: {'event_id': 'E_155', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,956 - INFO - ERROR - Event Processing: {'event_id': 'E_1114', 'error': "sequence index must be integer, not 'str'"}
+2025-02-10 15:15:46,957 - INFO - ERROR - Event Processing: {'event_id': 'E_50', 'error': "sequence index must be integer, not 'str'"}

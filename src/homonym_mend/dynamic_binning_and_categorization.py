@@ -1,6 +1,4 @@
-from collections import defaultdict, deque
-
-import pandas as pd
+from collections import defaultdict
 from tdigest import TDigest
 import numpy as np
 from river.drift import ADWIN
@@ -273,54 +271,26 @@ class EnhancedAdaptiveBinning:
                 i += 1  # Move to the next bin
 
 
-def extract_temporal_features(timestamp):
+
+
+
+def update_time_distribution(activity, time_features):
     """
-    Extract temporal features while handling missing (NaT) timestamps safely.
+    Update the time distribution incrementally, tracking all relevant time-based features.
+    This function assumes time features have already been extracted.
     """
-    if pd.isnull(timestamp):  # ✅ Skip NaT timestamps to prevent KeyErrors
-        print(f"[ERROR] Encountered invalid timestamp: {timestamp}")
-        return {
-            "hour_bin": "UNKNOWN",
-            "day_of_week": -1,  # Encode missing as -1
-            "is_weekend": -1,
-            "month": "UNKNOWN"
-        }
-    if isinstance(timestamp, str):
-        timestamp = pd.to_datetime(timestamp, errors='coerce')
-
-    if pd.isna(timestamp):
-        return {}  # Return empty dict if timestamp is invalid
-
-    hour = timestamp.hour
-
-    hour_bin = (
-        "Early_Morning" if 4 <= hour < 8 else
-        "Morning" if 8 <= hour < 12 else
-        "Afternoon" if 12 <= hour < 16 else
-        "Late_Afternoon" if 16 <= hour < 20 else
-        "Night"
-    )
-
-    return {
-        "hour_bin": hour_bin,
-        "day_of_week": DAY_MAPPING.get(timestamp.strftime("%A"), -1),  # Convert to numeric
-        "is_weekend": timestamp.weekday() >= 5,
-        "month": timestamp.strftime("%B")
-    }
-
-
-def update_time_distribution(activity, timestamp):
-    """
-    Update the time distribution incrementally, tracking hours, days, and months.
-    """
-    time_features = extract_temporal_features(timestamp)
-
     hour_bin = time_features["hour_bin"]
     day_of_week = time_features["day_of_week"]
+    is_weekend = time_features["is_weekend"]
+    week_of_month = time_features["week_of_month"]
+    season = time_features["season"]
     month = time_features["month"]
 
-    # Incrementally update counts
+    # Incrementally update counts for all time-based features
     time_distribution[activity][hour_bin][day_of_week][month] += 1
+    time_distribution[activity]["is_weekend"][is_weekend] += 1
+    time_distribution[activity]["week_of_month"][week_of_month] += 1
+    time_distribution[activity]["season"][season] += 1
 
 
 
@@ -329,18 +299,6 @@ def stream_event_log(event_dict, timestamp_column, control_flow_column, resource
     Streaming event log processor with binning for numerical features only.
     """
     print(f"[DEBUG] Processing event {event_dict[event_id_column]}")
-
-    if timestamp_column in event_dict:
-        event_dict[timestamp_column] = pd.to_datetime(event_dict[timestamp_column], errors="coerce")
-
-    # Handle temporal feature extraction safely
-    if not pd.isna(event_dict[timestamp_column]):
-        if timestamp_column in event_dict:
-            temporal_features = extract_temporal_features(event_dict[timestamp_column])
-            for temp_feature, temp_value in temporal_features.items():
-                event_dict[f"{temp_feature}_bin"] = temp_value  # Store extracted bins
-    else:
-        print(f"[WARNING] Timestamp is NaT for event {event_dict[event_id_column]}")
 
     # Process numerical features for binning
     for feature in features_to_discretize:

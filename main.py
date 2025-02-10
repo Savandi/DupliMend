@@ -1,9 +1,12 @@
 import sys
+
+from src.utils.global_state import extract_temporal_features
+
 print(f"Start of main, called from: {sys.argv[0]}")
 import time
 import pandas as pd
 from config.config import *
-from src.homonym_mend.dynamic_binning_and_categorization import stream_event_log, extract_temporal_features, \
+from src.homonym_mend.dynamic_binning_and_categorization import stream_event_log, \
     EnhancedAdaptiveBinning
 from src.homonym_mend.dynamic_feature_vector_construction import activity_feature_metadata
 from src.homonym_mend.label_refinement import LabelRefiner
@@ -34,23 +37,20 @@ def is_valid_timestamp(ts):
     return False  # None of the formats matched
 
 # Lazy Import Functions to Prevent Circular Import Issues
-def get_feature_scores(event, case_id_column, control_flow_column, timestamp_column, resource_column, data_columns, global_event_counter):
+def get_feature_scores(event, event_id_column, case_id_column, control_flow_column, timestamp_column, resource_column, data_columns, global_event_counter):
     """
     Lazily import compute_feature_scores to avoid circular import issues.
     """
     try:
         from src.homonym_mend.feature_selection_with_drift_detection import compute_feature_scores  # Lazy import
-        return compute_feature_scores(event, case_id_column, control_flow_column, timestamp_column, resource_column, data_columns, global_event_counter)
+        return compute_feature_scores(event, event_id_column, case_id_column, control_flow_column, timestamp_column, resource_column, data_columns, global_event_counter)
     except ImportError as e:
         print(f"[ERROR] Circular import detected in feature selection: {e}")
         return {}
 
-def get_top_features(event, control_flow_column, timestamp_column, resource_column, data_columns, global_event_counter):
-    """
-    Lazily import select_features to avoid circular import issues.
-    """
+def get_top_features(event, event_id_column, control_flow_column, timestamp_column, resource_column, data_columns, global_event_counter):
     from src.homonym_mend.feature_selection_with_drift_detection import select_features  # ✅ Lazy import
-    return select_features(event, None, control_flow_column, timestamp_column, resource_column, data_columns, global_event_counter)
+    return select_features(event, event_id_column, control_flow_column, timestamp_column, resource_column, data_columns, global_event_counter)
 
 def construct_feature_vector(event, top_features, global_event_counter):
     """
@@ -76,7 +76,15 @@ def main():
     input_log_path = './src/homonym_mend/synthetic_log_with_homonyms.csv'
     # Load and prepare event log
     df_event_log = pd.read_csv(input_log_path, encoding='ISO-8859-1')
-    df_event_log[timestamp_column] = pd.to_datetime(df_event_log[timestamp_column], errors='coerce')
+    df_event_log[timestamp_column] = pd.to_datetime(df_event_log[timestamp_column], format="%Y-%m-%dT%H:%M:%S.%f",
+                                                    errors='coerce', utc=True)
+
+    # Debugging: Check invalid timestamps before dropping them
+    invalid_timestamps = df_event_log[pd.isna(df_event_log[timestamp_column])]
+    if not invalid_timestamps.empty:
+        print(f"[WARNING] Invalid timestamps found: {invalid_timestamps}")
+
+    df_event_log = df_event_log.dropna(subset=[timestamp_column])
     # Auto-detect data_columns
     excluded_columns = {control_flow_column, timestamp_column, resource_column, case_id_column, event_id_column}
     data_columns = [col for col in df_event_log.columns if col not in excluded_columns]
@@ -86,10 +94,10 @@ def main():
     input_columns = list(df_event_log.columns)
     input_columns.append("refined_activity")  # Ensure "refined_activity" is included in output
 
-    # Convert timestamp and sort
-    df_event_log[timestamp_column] = pd.to_datetime(df_event_log[timestamp_column])
+    # sort
     df_event_log = df_event_log.sort_values(by=timestamp_column)
     df_event_log = df_event_log.head(50)
+
 
     # Initialize enhanced binning models
     binning_models = {
@@ -117,31 +125,37 @@ def main():
     for _, event in df_event_log.iterrows():
         try:
             global_event_counter += 1
-            # Extract temporal features with enhanced granularity
-            event[timestamp_column] = pd.to_datetime(event[timestamp_column], errors='coerce')
-            temporal_features = extract_temporal_features(event[timestamp_column])
-            event.update(temporal_features)
 
-            # Convert event to dictionary for processing
-            event_dict = event.to_dict()
+            # Check for invalid timestamps
+            if pd.isna(event[timestamp_column]) or event[timestamp_column] is None:
+                print(f"[ERROR] Invalid Timestamp detected for Event {event[event_id_column]} - Skipping event.")
+                continue  # Skip this event if timestamp is NaT or None
 
-            # Process event with enhanced binning
+            # Ensure timestamp is a float before processing
+            try:
+                if isinstance(event[timestamp_column], pd.Timestamp):
+                    event[timestamp_column] = event[timestamp_column].timestamp()
+                else:
+                    print(
+                        f"[ERROR] Unexpected timestamp type for Event {event[event_id_column]}: {type(event[timestamp_column])}")
+                    continue  # Skip event if timestamp is invalid
+            except Exception as e:
+                print(f"[ERROR] Failed to convert timestamp for Event {event[event_id_column]}: {e}")
+                continue  # Skip this event if timestamp conversion fails
+
+            # Extract temporal features
+            event.update(extract_temporal_features(pd.Timestamp(event[timestamp_column])))
+
+            # Process the event through the binning model
             processed_event = stream_event_log(
-                event_dict=event_dict, timestamp_column=timestamp_column,
-                control_flow_column=control_flow_column, resource_column=resource_column,
-                case_id_column=case_id_column, event_id_column=event_id_column,
-                data_columns=data_columns, features_to_discretize=features_to_discretize,
-                binning_models=binning_models
+                event.to_dict(), timestamp_column, control_flow_column, resource_column,
+                case_id_column, event_id_column, data_columns, features_to_discretize, binning_models
             )
 
-            # Compute feature scores
-            feature_scores = get_feature_scores(
-                event=processed_event, case_id_column=case_id_column, control_flow_column=control_flow_column,
-                timestamp_column=timestamp_column, resource_column=resource_column,
-                data_columns=data_columns + list(temporal_features.keys()), global_event_counter=global_event_counter
-            )
+            feature_scores = get_feature_scores(processed_event, event_id_column, case_id_column, control_flow_column,
+                                                timestamp_column, resource_column, data_columns, global_event_counter)
 
-            print(f"Feature Scores for Event ID {processed_event[event_id_column]}: {feature_scores}")
+            print(f"Feature Scores for Event {event[event_id_column]}: {feature_scores}")
 
             event_id = event.get(event_id_column)
             if event_id in processed_event_ids:
@@ -151,8 +165,8 @@ def main():
             activity_label = event.get(control_flow_column)
             print(f"Processing Event {global_event_counter}, Event ID: {event_id}, Activity: {activity_label}")
 
-            top_features = get_top_features(event, control_flow_column, timestamp_column, resource_column, data_columns,
-                                            global_event_counter)
+            top_features = get_top_features(event, event_id_column, control_flow_column, timestamp_column,
+                                            resource_column, data_columns, global_event_counter)
 
             feature_vector_data = construct_feature_vector(event, top_features, global_event_counter)
             if feature_vector_data is None:
@@ -174,16 +188,17 @@ def main():
 
             label_refiner.append_event_to_csv(event)
 
-            activity_feature_metadata[activity_label][tuple(feature_vector_data["new_vector"])][
-                "refined_label"] = refined_activity
+            # Convert feature vector to an immutable tuple before using as a dictionary key
+            feature_vector_tuple = tuple(feature_vector_data["new_vector"])
+            activity_feature_metadata[activity_label][feature_vector_tuple]["refined_label"] = refined_activity
 
             processed_event_ids.add(event_id)
             print(f"Added Event ID {event_id} to processed_event_ids")
             time.sleep(0.1)
 
         except Exception as e:
-            print(f"Error processing event ID {event.get(event_id_column)}: {e}")
-            log_traceability("error", "Event Processing", {"event_id": event.get(event_id_column), "error": str(e)})
+            print(f"Error processing event {event.get(event_id_column, 'Unknown')}: {e}")
+            log_traceability("error", "Event Processing", {"event_id": event.get(event_id_column, 'Unknown'), "error": str(e)})
 
     print(f"Refined stream has been saved to {refined_log_path}")
 

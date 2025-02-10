@@ -317,7 +317,7 @@ def process_event(event_data, global_event_counter):
     else:
         vector_metadata[activity_label][vector_tuple] = {
             "frequency": 1,
-            "last_seen_event": global_event_counter  # Keep only last_seen_event
+            "last_seen_event": str(global_event_counter)  # Ensure Timestamp is stored as string
         }
 
     log_traceability("cluster_update", activity_label, {
