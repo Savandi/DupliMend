@@ -6,11 +6,6 @@ from river.drift import ADWIN
 
 time_distribution = defaultdict(lambda: defaultdict(lambda: defaultdict(lambda: defaultdict(int))))
 
-DAY_MAPPING = {
-    "Monday": 0, "Tuesday": 1, "Wednesday": 2,
-    "Thursday": 3, "Friday": 4, "Saturday": 5, "Sunday": 6
-}
-
 class DecayingTDigest:
     """
     T-Digest implementation with temporal decay for maintaining streaming quantiles.
@@ -220,20 +215,24 @@ class EnhancedAdaptiveBinning:
             return  # No data points available for splitting
 
         # Compute the median as a new boundary for splitting
-        median_value = np.median(values_in_bin)
+        median_boundary = np.median(values_in_bin)
 
         # Ensure new boundary does not create a redundant split
-        if median_value <= lower or median_value >= upper:
-            print(f"[DEBUG] Skipping split for bin {bin_index}: median {median_value} is not a valid boundary")
+        if median_boundary in self.bins:
+            median_boundary += self.min_bin_width  # Ensure a valid new split
+
+        # Prevent splitting very small bins
+        if median_boundary - lower < self.min_bin_width or upper - median_boundary < self.min_bin_width:
+            print(f"[DEBUG] Skipping split for bin {bin_index}: median {median_boundary} is too close to boundaries")
             return
 
         # Insert new bin boundary and sort
-        new_boundaries = np.sort(np.append(self.bins, median_value))
+        new_boundaries = np.sort(np.append(self.bins, median_boundary ))
         self.bins = new_boundaries
 
         # Update bin densities: Redistribute count from old bin to the new bins
         old_count = self.bin_counts[bin_index]
-        new_bin_index = np.where(self.bins == median_value)[0][0]
+        new_bin_index = np.where(self.bins == median_boundary )[0][0]
 
         self.bin_counts[bin_index] = old_count // 2  # Assign half to the first new bin
         self.bin_counts[new_bin_index] = old_count - self.bin_counts[

@@ -22,11 +22,7 @@ initial_bins = 15           # More initial bins
 drift_threshold = 0.03      # More sensitive to drift
 merge_threshold = 0.5       # Less aggressive bin merging
 # Enhanced temporal binning
-temporal_granularity = {
-    'hour_bins': ['Early_Morning', 'Morning', 'Afternoon', 'Late_Afternoon', 'Night'],
-    'day_periods': ['Weekend', 'Weekday'],
-    'seasons': ['Winter', 'Spring', 'Summer', 'Fall']
-}
+time_feature_columns = ["hour_bin", "day_of_week", "is_weekend", "week_of_month", "season", "month"]
 
 # --- Feature Selection Parameters ---
 max_top_n_features = 7       # Include more features for better discrimination

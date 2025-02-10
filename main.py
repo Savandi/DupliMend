@@ -88,7 +88,10 @@ def main():
     # Auto-detect data_columns
     excluded_columns = {control_flow_column, timestamp_column, 'original_timestamp', 
                        resource_column, case_id_column, event_id_column}
-    data_columns = [col for col in df_event_log.columns if col not in excluded_columns]
+    data_columns = [
+        col for col in df_event_log.columns
+        if col not in excluded_columns
+    ]
     print(f"Data columns used: {data_columns}")
 
     # Extract column names dynamically and store globally
@@ -97,17 +100,17 @@ def main():
 
     # Sort events by timestamp
     df_event_log = df_event_log.sort_values(by=timestamp_column)
-    df_event_log = df_event_log.head(50)
+    # df_event_log = df_event_log.head(50)
 
     # Initialize enhanced binning models
     binning_models = {
         feature: EnhancedAdaptiveBinning(
             initial_bins=20, 
-            bin_density_threshold=10, 
+            bin_density_threshold=5,
             drift_threshold=0.02,
             decay_factor=0.85, 
-            min_bin_width=0.005, 
-            quantile_points=[0.1, 0.3, 0.5, 0.7, 0.9]
+            min_bin_width= 0.001,
+            quantile_points=[0.05, 0.2, 0.4, 0.6, 0.8, 0.95]
         )
         for feature in features_to_discretize
     }
