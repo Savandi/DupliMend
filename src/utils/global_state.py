@@ -46,7 +46,7 @@ def extract_temporal_features(timestamp):
         "Night"
     )
 
-    return {
+    temporal_features = {
         'hour_bin': hour_bin,
         'day_of_week': timestamp.weekday(),
         'is_weekend': timestamp.weekday() >= 5,
@@ -59,3 +59,10 @@ def extract_temporal_features(timestamp):
         ),
         'month': timestamp.month
     }
+
+    # Add debug printing
+    print("[DEBUG] Temporal features extracted:")
+    for key, value in temporal_features.items():
+        print(f"  {key}: {value}")
+
+    return temporal_features

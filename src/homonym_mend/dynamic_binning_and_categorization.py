@@ -1,4 +1,5 @@
 from collections import defaultdict
+import pandas as pd
 from tdigest import TDigest
 import numpy as np
 from river.drift import ADWIN
@@ -73,38 +74,49 @@ class EnhancedAdaptiveBinning:
         Update bins with a new value and adjust for drift or density changes.
         Returns the bin assignment for the new value.
         """
-        # Update decay-aware data structures
-        self.decaying_digest.update(new_value)
-        self.recent_values.append(new_value)
-        if len(self.recent_values) > self.window_size:
-            self.recent_values.pop(0)
+        try:
+            # Handle timestamp values specially
+            if isinstance(new_value, pd.Timestamp):
+                numeric_value = new_value.timestamp()
+            else:
+                try:
+                    numeric_value = float(new_value)
+                except (ValueError, TypeError) as e:
+                    print(f"[ERROR] Could not convert value to numeric: {e}")
+                    return 0
 
-        # Debugging: Print current recent values
-        print(f"[DEBUG] Current recent values ({len(self.recent_values)}): {self.recent_values}")
+            # Update decay-aware data structures
+            self.decaying_digest.update(numeric_value)
+            self.recent_values.append(numeric_value)
+            if len(self.recent_values) > self.window_size:
+                self.recent_values.pop(0)
 
-        # Check for drift using ADWIN
-        if self.drift_detector.update(new_value):
-            print(f"[DRIFT DETECTED] Recalculating bins due to change in distribution!")
-            self._recalculate_bins()
+            # Check for drift using ADWIN
+            if self.drift_detector.update(numeric_value):
+                print(f"[DRIFT DETECTED] Recalculating bins due to change in distribution!")
+                self._recalculate_bins()
 
-        # Assign to bin and update density
-        assigned_bin = self._assign_bin(new_value)
-        self.bin_counts[assigned_bin] += 1
+            # Assign to bin and update density
+            assigned_bin = self._assign_bin(numeric_value)
+            assigned_bin = int(round(assigned_bin))  # Ensure integer bin assignment
+            self.bin_counts[assigned_bin] += 1
 
-        # Debugging: Print bin update information
-        print(f"[DEBUG] Value: {new_value} -> Assigned bin: {assigned_bin}")
-        print(f"[DEBUG] Bin counts: {dict(self.bin_counts)}")
+            print(f"[DEBUG] Value: {new_value} -> Assigned bin: {assigned_bin}")
+            print(f"[DEBUG] Bin counts: {dict(self.bin_counts)}")
 
-        assigned_bin = int(round(assigned_bin))  # Ensure it matches bin index format
-        if self.bin_counts[assigned_bin] > self.bin_density_threshold:
-            print(f"[DEBUG] Splitting bin {assigned_bin} due to high density")
-            self._split_bin(assigned_bin)
-        elif self._is_sparse_region(assigned_bin):
-            print(f"[DEBUG] Merging bins due to sparse region at bin {assigned_bin}")
-            self._merge_sparse_bins()
+            if self.bin_counts[assigned_bin] > self.bin_density_threshold:
+                print(f"[DEBUG] Splitting bin {assigned_bin} due to high density")
+                self._split_bin(assigned_bin)
+            elif self._is_sparse_region(assigned_bin):
+                print(f"[DEBUG] Merging bins due to sparse region at bin {assigned_bin}")
+                self._merge_sparse_bins()
 
-        return assigned_bin
+            return assigned_bin
 
+        except Exception as e:
+            print(f"[ERROR] Failed to update bins: {str(e)}")
+            return 0  # Return default bin on error
+    
     def _recalculate_bins(self):
         """
         Recalculate bins using both quantile and density information.
@@ -271,9 +283,6 @@ class EnhancedAdaptiveBinning:
                 i += 1  # Move to the next bin
 
 
-
-
-
 def update_time_distribution(activity, time_features):
     """
     Update the time distribution incrementally, tracking all relevant time-based features.
@@ -298,23 +307,51 @@ def stream_event_log(event_dict, timestamp_column, control_flow_column, resource
     """
     Streaming event log processor with binning for numerical features only.
     """
-    print(f"[DEBUG] Processing event {event_dict[event_id_column]}")
+    try:
+        print(f"[DEBUG] Processing event {event_dict.get(event_id_column, 'Unknown')}")
+        processed_event = event_dict.copy()  # Create a copy to avoid modifying original
 
-    # Process numerical features for binning
-    for feature in features_to_discretize:
-        if feature not in event_dict:
-            continue
+        # Process numerical features for binning
+        for feature in features_to_discretize:
+            if feature not in processed_event:
+                print(f"[DEBUG] Feature {feature} not found in event dictionary")
+                continue
 
-        if feature in [case_id_column, control_flow_column]:
-            continue  # Skip non-numeric columns
+            if feature in [case_id_column, control_flow_column]:
+                print(f"[DEBUG] Skipping non-numeric column {feature}")
+                continue
 
-        try:
-            value = float(event_dict[feature])  # Ensure numeric
-            bin_assignment = binning_models[feature].update_bins(value)
-            event_dict[f"{feature}_bin"] = bin_assignment
-            print(f"[DEBUG] Feature {feature}: Value {value} → Bin {bin_assignment}")
-        except (ValueError, TypeError) as e:
-            print(f"[ERROR] Issue processing feature {feature}: {str(e)}")
-            continue
+            try:
+                # Get value and handle potential None or empty values
+                value = processed_event.get(feature)
+                if value is None or value == '':
+                    print(f"[DEBUG] Empty or None value for feature {feature}")
+                    processed_event[f"{feature}_bin"] = 0  # Default bin
+                    continue
 
-    return event_dict
+                # Special handling for timestamp
+                if feature == timestamp_column:
+                    if isinstance(value, pd.Timestamp):
+                        # Use timestamp directly without converting to float
+                        bin_assignment = int(binning_models[feature].update_bins(value))
+                    else:
+                        print(f"[DEBUG] Skipping timestamp binning for non-Timestamp value: {value}")
+                        continue
+                else:
+                    # For non-timestamp numeric features
+                    value = float(value)
+                    bin_assignment = int(binning_models[feature].update_bins(value))
+
+                processed_event[f"{feature}_bin"] = bin_assignment
+                print(f"[DEBUG] Feature {feature}: Value {value} → Bin {bin_assignment}")
+
+            except (ValueError, TypeError) as e:
+                print(f"[ERROR] Issue processing feature {feature}: {str(e)}")
+                processed_event[f"{feature}_bin"] = 0  # Default bin for errors
+                continue
+
+        return processed_event
+
+    except Exception as e:
+        print(f"[ERROR] Failed to process event: {str(e)}")
+        return event_dict  # Return original if processing fails

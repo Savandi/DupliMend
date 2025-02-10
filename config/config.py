@@ -9,7 +9,7 @@ case_id_column = 'CaseID'
 event_id_column = 'EventID'
 
 # --- Enhanced Discretization and Binning Parameters ---
-features_to_discretize = ['Timestamp', 'ProcessingTime', 'PriorityLevel', 'FileSize', 'hour', 'day_of_week']
+features_to_discretize = ['ProcessingTime', 'PriorityLevel', 'FileSize']
 quantiles = [0.25, 0.5, 0.75]  # Base quantile points
 sliding_window_size = 2000
 bin_density_threshold = 10

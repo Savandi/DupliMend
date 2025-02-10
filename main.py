@@ -66,7 +66,6 @@ def get_homonym_analysis():
     from src.homonym_mend.homonym_detection import analyze_splits_and_merges, dbstream_clusters  # ✅ Lazy import
     return analyze_splits_and_merges, dbstream_clusters
 
-
 def main():
     global_event_counter = 0
 
@@ -74,89 +73,106 @@ def main():
     configure_window_sizes()
 
     input_log_path = './src/homonym_mend/synthetic_log_with_homonyms.csv'
-    # Load and prepare event log
+    
+# Load and prepare event log
     df_event_log = pd.read_csv(input_log_path, encoding='ISO-8859-1')
-    df_event_log[timestamp_column] = pd.to_datetime(df_event_log[timestamp_column], format="%Y-%m-%dT%H:%M:%S.%f",
-                                                    errors='coerce', utc=True)
-
-    # Debugging: Check invalid timestamps before dropping them
-    invalid_timestamps = df_event_log[pd.isna(df_event_log[timestamp_column])]
-    if not invalid_timestamps.empty:
-        print(f"[WARNING] Invalid timestamps found: {invalid_timestamps}")
-
-    df_event_log = df_event_log.dropna(subset=[timestamp_column])
+    
+    # Convert timestamps only for sorting
+    df_event_log[timestamp_column] = pd.to_datetime(
+        df_event_log[timestamp_column], 
+        format="%Y-%m-%dT%H:%M:%S.%f",
+        errors='coerce', 
+        utc=True
+    )
+    
     # Auto-detect data_columns
-    excluded_columns = {control_flow_column, timestamp_column, resource_column, case_id_column, event_id_column}
+    excluded_columns = {control_flow_column, timestamp_column, 'original_timestamp', 
+                       resource_column, case_id_column, event_id_column}
     data_columns = [col for col in df_event_log.columns if col not in excluded_columns]
     print(f"Data columns used: {data_columns}")
 
     # Extract column names dynamically and store globally
     input_columns = list(df_event_log.columns)
-    input_columns.append("refined_activity")  # Ensure "refined_activity" is included in output
+    input_columns.append("refined_activity")
 
-    # sort
+    # Sort events by timestamp
     df_event_log = df_event_log.sort_values(by=timestamp_column)
     df_event_log = df_event_log.head(50)
-
 
     # Initialize enhanced binning models
     binning_models = {
         feature: EnhancedAdaptiveBinning(
-            initial_bins=20, bin_density_threshold=10, drift_threshold=0.02,
-            decay_factor=0.85, min_bin_width=0.005, quantile_points=[0.1, 0.3, 0.5, 0.7, 0.9]
+            initial_bins=20, 
+            bin_density_threshold=10, 
+            drift_threshold=0.02,
+            decay_factor=0.85, 
+            min_bin_width=0.005, 
+            quantile_points=[0.1, 0.3, 0.5, 0.7, 0.9]
         )
         for feature in features_to_discretize
     }
 
     # Initialize LabelRefiner
-    refined_log_path = f"./refined_log.csv"
+    refined_log_path = "./refined_log.csv"
     label_refiner = LabelRefiner(refined_log_path, input_columns)
 
-    # Streaming and processing events
+    # Print initial log statistics
     print("\n=== Initial Log Statistics ===")
     print(f"Total events: {len(df_event_log)}")
     print(f"Total unique Event IDs: {len(df_event_log['EventID'].unique())}")
     print(f"Unique activities: {df_event_log['Activity'].unique()}")
-    activity_counts = df_event_log['Activity'].value_counts()
-    print(f"Activity frequencies:\n{activity_counts}")
+    print(f"Activity frequencies:\n{df_event_log['Activity'].value_counts()}")
 
     processed_event_ids = set()
 
+    # Process events one by one
     for _, event in df_event_log.iterrows():
         try:
             global_event_counter += 1
+            print(f"\nStart Processing Event {global_event_counter}")
+            
+            # Extract temporal features directly from timestamp
+            temporal_features = extract_temporal_features(event[timestamp_column])
+            if not temporal_features:
+                print(f"[ERROR] Failed to extract temporal features for Event {event[event_id_column]}")
+                continue
 
-            # Check for invalid timestamps
-            if pd.isna(event[timestamp_column]) or event[timestamp_column] is None:
-                print(f"[ERROR] Invalid Timestamp detected for Event {event[event_id_column]} - Skipping event.")
-                continue  # Skip this event if timestamp is NaT or None
+            # Update event with temporal features
+            event_dict = event.to_dict()
+            event_dict.update(temporal_features)
 
-            # Ensure timestamp is a float before processing
-            try:
-                if isinstance(event[timestamp_column], pd.Timestamp):
-                    event[timestamp_column] = event[timestamp_column].timestamp()
-                else:
-                    print(
-                        f"[ERROR] Unexpected timestamp type for Event {event[event_id_column]}: {type(event[timestamp_column])}")
-                    continue  # Skip event if timestamp is invalid
-            except Exception as e:
-                print(f"[ERROR] Failed to convert timestamp for Event {event[event_id_column]}: {e}")
-                continue  # Skip this event if timestamp conversion fails
-
-            # Extract temporal features
-            event.update(extract_temporal_features(pd.Timestamp(event[timestamp_column])))
-
-            # Process the event through the binning model
+            print(f"[DEBUG] Event with temporal features: {event_dict}")
+            
+            # Process the event through binning model
+            print(f"Start Dynamic Binning and Discretization for {global_event_counter}")
             processed_event = stream_event_log(
-                event.to_dict(), timestamp_column, control_flow_column, resource_column,
-                case_id_column, event_id_column, data_columns, features_to_discretize, binning_models
+                event_dict, 
+                timestamp_column, 
+                control_flow_column, 
+                resource_column,
+                case_id_column, 
+                event_id_column, 
+                data_columns, 
+                features_to_discretize, 
+                binning_models
             )
 
-            feature_scores = get_feature_scores(processed_event, event_id_column, case_id_column, control_flow_column,
-                                                timestamp_column, resource_column, data_columns, global_event_counter)
+            processed_event_copy = processed_event.copy() 
 
+            print(f"Start Feature Selection and Importance Analysis for {global_event_counter}")
+            feature_scores = get_feature_scores(
+                processed_event_copy, 
+                event_id_column, 
+                case_id_column, 
+                control_flow_column,
+                timestamp_column, 
+                resource_column, 
+                data_columns, 
+                global_event_counter
+            )
             print(f"Feature Scores for Event {event[event_id_column]}: {feature_scores}")
 
+            # Check if event was already processed
             event_id = event.get(event_id_column)
             if event_id in processed_event_ids:
                 print(f"Skipping already processed event ID: {event_id}")
@@ -165,13 +181,25 @@ def main():
             activity_label = event.get(control_flow_column)
             print(f"Processing Event {global_event_counter}, Event ID: {event_id}, Activity: {activity_label}")
 
-            top_features = get_top_features(event, event_id_column, control_flow_column, timestamp_column,
-                                            resource_column, data_columns, global_event_counter)
+            print(f"Start Getting Top Features for {global_event_counter}")
+            # Get top features and construct feature vector
+            top_features = get_top_features(
+                processed_event_copy, 
+                event_id_column, 
+                control_flow_column, 
+                timestamp_column,
+                resource_column, 
+                data_columns, 
+                global_event_counter
+            )
 
-            feature_vector_data = construct_feature_vector(event, top_features, global_event_counter)
+            print(f"Start Dynamic Feature Vector Construction for {global_event_counter}")
+            feature_vector_data = construct_feature_vector(event_dict, top_features, global_event_counter)
             if feature_vector_data is None:
                 continue
 
+            # Perform homonym detection
+            print(f"Start Homonym Detection and Online Clustering with Dbstream for {global_event_counter}")
             analyze_splits_and_merges, dbstream_clusters = get_homonym_analysis()
             dbstream_instance = dbstream_clusters.get(activity_label, None)
 
@@ -182,13 +210,14 @@ def main():
 
             print(f"Split/Merge Result for Event ID {event_id}: {split_merge_result}")
 
-            # Refine the activity label based on clustering
+            # Refine activity label
+            print(f"Start Label Refinement for {global_event_counter}")
             refined_activity = label_refiner.refine_label(activity_label, cluster_id)
-            event["refined_activity"] = refined_activity
+            event_dict["refined_activity"] = refined_activity
+            label_refiner.append_event_to_csv(event_dict)
 
-            label_refiner.append_event_to_csv(event)
-
-            # Convert feature vector to an immutable tuple before using as a dictionary key
+            # Update feature metadata
+            print(f"Converting feature vector to immutable tuple")
             feature_vector_tuple = tuple(feature_vector_data["new_vector"])
             activity_feature_metadata[activity_label][feature_vector_tuple]["refined_label"] = refined_activity
 
@@ -198,7 +227,10 @@ def main():
 
         except Exception as e:
             print(f"Error processing event {event.get(event_id_column, 'Unknown')}: {e}")
-            log_traceability("error", "Event Processing", {"event_id": event.get(event_id_column, 'Unknown'), "error": str(e)})
+            log_traceability("error", "Event Processing", {
+                "event_id": event.get(event_id_column, 'Unknown'), 
+                "error": str(e)
+            })
 
     print(f"Refined stream has been saved to {refined_log_path}")
 
