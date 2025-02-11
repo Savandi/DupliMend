@@ -4,6 +4,7 @@ import numpy as np
 import logging
 from config.config import temporal_decay_rate, lossy_counting_budget, frequency_decay_threshold, decay_after_events, \
     removal_threshold_events, case_id_column, previousEvents
+from src.utils.global_state import dbstream_clusters  # ✅ Import from global state
 from src.utils.custom_label_encoder import CustomLabelEncoder
 from src.utils.global_state import activity_feature_metadata, activity_feature_history, previous_events
 from src.utils.logging_utils import log_traceability
@@ -80,46 +81,38 @@ def normalize_feature_vector(vector):
     return (vector - min_val) / (max_val - min_val)
 
 
-def forget_old_feature_vectors(global_event_counter):
+def forget_old_feature_vectors(activity_label):
     """
     Forget feature vectors that have not been observed recently, based on decayed frequency and event count.
     """
     try:
-        for activity_label in list(activity_feature_metadata.keys()):
-            # Sort vectors based on frequency and last seen event, with safe access
-            sorted_vectors = sorted(
-                activity_feature_metadata[activity_label].items(),
-                key=lambda x: (
-                    x[1].get("frequency", 0),
-                    x[1].get("last_seen_event", 0)
-                )
-            )
+        if activity_label not in activity_feature_metadata:
+            return  # No features to forget
 
-            for vector_tuple, metadata in sorted_vectors:
-                # Safe access to last_seen_event with default to current counter
-                last_seen = metadata.get("last_seen_event", global_event_counter)
-                events_since_last_seen = global_event_counter - last_seen
+        sorted_vectors = sorted(
+            activity_feature_metadata[activity_label].items(),
+            key=lambda x: (x[1]["frequency"], x[1]["last_seen_event"])
+        )
 
-                # Update frequency with decay
-                current_frequency = metadata.get("frequency", 0)
-                new_frequency = current_frequency * np.exp(-events_since_last_seen / decay_after_events)
-                metadata["frequency"] = new_frequency
-                
-                # Update last_seen_event
-                metadata["last_seen_event"] = global_event_counter
+        for vector_tuple, metadata in sorted_vectors:
+            last_seen = metadata["last_seen_event"]
+            activity_event_count = dbstream_clusters[activity_label].activity_event_counters[
+                activity_label]  # Per-activity counter
 
-                # Remove if frequency drops below threshold
-                if new_frequency < frequency_decay_threshold and events_since_last_seen > removal_threshold_events:
-                    try:
-                        del activity_feature_metadata[activity_label][vector_tuple]
-                        if vector_tuple in activity_feature_history[activity_label]:
-                            activity_feature_history[activity_label].remove(list(vector_tuple))
-                    except (KeyError, ValueError) as e:
-                        print(f"[WARNING] Error removing vector: {e}")
+            events_since_last_seen = activity_event_count - last_seen  # Per-activity based event count
+            metadata["frequency"] *= np.exp(-events_since_last_seen / decay_after_events)  # Adaptive forgetting
 
-                # Stop if we're within budget
-                if len(activity_feature_metadata[activity_label]) <= lossy_counting_budget:
-                    break
+            # Remove if frequency drops below threshold
+            if metadata["frequency"] < frequency_decay_threshold and events_since_last_seen > removal_threshold_events:
+                try:
+                    del activity_feature_metadata[activity_label][vector_tuple]
+                    activity_feature_history[activity_label].remove(list(vector_tuple))
+                except (KeyError, ValueError) as e:
+                    print(f"[WARNING] Error removing vector: {e}")
+
+            # Stop if we're within budget
+            if len(activity_feature_metadata[activity_label]) <= lossy_counting_budget:
+                break
 
     except Exception as e:
         print(f"[ERROR] Error in forget_old_feature_vectors: {e}")

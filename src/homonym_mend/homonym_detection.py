@@ -3,20 +3,19 @@ from src.utils.logging_utils import log_traceability
 from collections import defaultdict
 import numpy as np
 from datetime import datetime, timedelta
-from src.homonym_mend.dbstream import DBStream
 from config.config import (
     splitting_threshold,
     merging_threshold,
     grace_period_events,
     adaptive_threshold_min_variability, similarity_penalty, decay_after_events, previousEvents)
 from src.utils.similarity_utils import compute_contextual_weighted_similarity
+from src.utils.global_state import dbstream_clusters  # ✅ Import from global state
 
 # --- GLOBAL VARIABLES ---
 cluster_grace_period = timedelta(seconds=grace_period_events)
 feature_vectors = defaultdict(list)
 vector_metadata = defaultdict(lambda: defaultdict(lambda: {"frequency": 0, "last_seen_event": 0}))
 audit_log = []
-dbstream_clusters = defaultdict(lambda: DBStream())
 event_counter = defaultdict(int)  # Track the number of processed events per activity label
 adaptive_split_threshold = splitting_threshold
 adaptive_merge_threshold = merging_threshold
@@ -73,7 +72,7 @@ def adjust_thresholds(recent_variability):
         adaptive_merge_threshold = min(0.9, adaptive_merge_threshold + 0.05)
 
 
-def compute_similarity(cluster_vectors, feature_weights=None):
+def compute_similarity(cluster_vectors, activity_label, feature_weights=None):
     """
     Compute pairwise similarity matrix between all cluster vectors.
     """
@@ -92,7 +91,7 @@ def compute_similarity(cluster_vectors, feature_weights=None):
             feature_weights[feature] = 1.0  # Initialize with default weight
 
         # Use adaptive weight update for previousEvents features
-        update_feature_weights(feature, feature_weights[feature])
+        update_feature_weights(activity_label, feature, feature_weights.get(feature, 1.0))
 
     # Compute similarity with dynamically weighted previousEvents features
     for i in range(n_clusters):
@@ -150,7 +149,7 @@ def analyze_splits_and_merges(activity_label, dbstream_instance):
         "dynamic_merging_threshold": adaptive_merge_threshold,
     })
 
-    similarity_matrix = compute_similarity(cluster_feature_vectors)
+    similarity_matrix = compute_similarity(cluster_feature_vectors,activity_label)
     print(f"[DEBUG] Similarity Matrix for {activity_label}:")
     print(similarity_matrix)
 

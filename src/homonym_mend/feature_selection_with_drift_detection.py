@@ -7,6 +7,7 @@ from config.config import (initial_window_size,
                            decay_after_events, removal_threshold_events, previousEvents
                            )
 from src.homonym_mend.dynamic_binning_and_categorization import time_distribution
+from src.utils.global_state import dbstream_clusters
 from src.utils.custom_label_encoder import CustomLabelEncoder
 from src.utils.global_state import directly_follows_graph, resource_usage_history, activity_feature_history, \
     feature_weights
@@ -119,23 +120,25 @@ def compute_time_feature_score(activity, time_features):
 
     return score
 
-def update_feature_weights(feature, new_score):
+def update_feature_weights(activity_label, feature, new_score):
     """
     Updates feature weights dynamically based on detected drift and historical frequency.
+    Adjusts per-activity event counts instead of using a global event counter.
     """
-    if feature not in drift_detector:
-        drift_detector[feature] = ADWIN()
+    if feature not in feature_weights:
+        feature_weights[feature] = 1.0  # Initialize with default weight
 
-    drift_detected = drift_detector[feature].update(new_score)
+    activity_event_count = dbstream_clusters[activity_label].activity_event_counters[activity_label]  # ✅ Per-activity event count
+    last_seen_event = feature_last_seen_event.get(feature, activity_event_count)  # ✅ Per-activity last seen
 
-    # Increase weight if drift is detected (resource importance is changing)
-    if drift_detected:
-        feature_weights[feature] *= 1.1
-    else:
-        feature_weights[feature] *= 0.99
+    events_since_last_seen = activity_event_count - last_seen_event  # ✅ Activity-based event count tracking
+    decay_factor = np.exp(-events_since_last_seen / decay_after_events)  # ✅ Adaptive weight decay
 
-    # Normalize feature weights between reasonable limits
-    feature_weights[feature] = min(max(feature_weights[feature], 0.5), 2.0)
+    # Apply adaptive weight update
+    feature_weights[feature] = (feature_weights[feature] * decay_factor) + (new_score * (1 - decay_factor))
+
+    # Update last seen event counter
+    feature_last_seen_event[feature] = activity_event_count
 
 def compute_feature_scores(event, event_id_column, case_id_column, control_flow_column, timestamp_column, resource_column, data_columns, global_event_counter):
     feature_scores = defaultdict(float)
@@ -149,7 +152,6 @@ def compute_feature_scores(event, event_id_column, case_id_column, control_flow_
     # Get previous event data safely
     prev_events_data = previous_events.get(case_id, deque(maxlen=previousEvents))
     if isinstance(prev_events_data, deque) and len(prev_events_data) > 0:
-        # Extract activities from previous events
         for prev_event in prev_events_data:
             if isinstance(prev_event, dict) and control_flow_column in prev_event:
                 previous_activities.append(prev_event[control_flow_column])
@@ -159,7 +161,7 @@ def compute_feature_scores(event, event_id_column, case_id_column, control_flow_
     # Ensure we always have three previous activities
     while len(previous_activities) < previousEvents:
         previous_activities.insert(0, "UNKNOWN")
-    previous_activities = previous_activities[-previousEvents:]  # Take only last N activities
+    previous_activities = previous_activities[-previousEvents:]
 
     # Process timestamp
     current_time = event[timestamp_column]
@@ -182,15 +184,8 @@ def compute_feature_scores(event, event_id_column, case_id_column, control_flow_
         except Exception as e:
             print(f"[WARNING] Failed to apply temporal decay: {e}")
 
-    # Ensure we always have three previous activities, filling with "UNKNOWN"
-    while len(previous_activities) < previousEvents:
-        previous_activities.insert(0, "UNKNOWN")
-
-    # Take only the last previousEvents activities
-    previous_activities = previous_activities[-previousEvents:]
-
     # Forget old cases before processing new events
-    forget_old_cases(global_event_counter,activity_label)
+    forget_old_cases(global_event_counter, activity_label)
 
     ## --- 1. Compare Against All Past Events of the Same Activity Label (Homonym Detection) ---
     if activity_label in activity_feature_history and len(activity_feature_history[activity_label]) > 0:
@@ -201,10 +196,8 @@ def compute_feature_scores(event, event_id_column, case_id_column, control_flow_
         std_vector = np.std(previous_vectors, axis=0)
         std_vector[std_vector == 0] = 1  # Avoid division by zero
 
-        # Get selected features for this event
         selected_features = [column for column in data_columns if column != control_flow_column]
 
-        # Compute feature deviations only for selected features
         new_feature_vector = np.array([
             float(event[column]) if column in event and isinstance(event[column], (int, float)) else 0.0
             for column in selected_features
@@ -217,102 +210,50 @@ def compute_feature_scores(event, event_id_column, case_id_column, control_flow_
             deviations = np.abs(new_feature_vector - mean_vector) / std_vector
         except Exception as e:
             print(f"[ERROR] Failed to compute deviations for Event {event[event_id_column]}: {e}")
-            deviations = np.zeros_like(new_feature_vector)  # Fallback
+            deviations = np.zeros_like(new_feature_vector)
 
         features_to_update = {}
-        # Apply weight scaling for high deviation features with adaptive weighting
-        previous_events_metadata = previous_events.get(case_id, deque(maxlen=previousEvents))
 
         for i, column in enumerate(selected_features):
-
-            if isinstance(previous_events_metadata, deque) and len(previous_events_metadata) > 0:
-                last_event = previous_events_metadata[-1]
-
-                if isinstance(last_event, (int, float)):  # Ensure it's a valid numeric event counter
-                    events_since_last_seen = last_event
-                else:
-                    print(f"[ERROR] Invalid last event type for case {case_id}: {type(last_event)}")
-                    events_since_last_seen = global_event_counter
-            else:
-                events_since_last_seen = global_event_counter  # Default fallback
-
-            # Compute adaptive feature weight
-            feature_scores[column] += feature_weights[column] * deviations[i]
-
-            # Store for batch updating later
+            feature_scores[column] += feature_weights.get(column, 1.0) * deviations[i]
             features_to_update[column] = deviations[i]
-
-            # Update last seen event counter
             feature_last_seen_event[column] = global_event_counter
 
-        # Perform batch weight update after scoring all features
+        # Batch update feature weights
         for feature, deviation in features_to_update.items():
-            update_feature_weights(feature, deviation)
+            update_feature_weights(activity_label, feature, deviation)  # ✅ Pass activity_label
 
-        ## --- 2. Control-Flow Perspective: Track Last Three Activities ---
-        # Get previous activities safely
-    prev_events_data = previous_events.get(case_id, deque(maxlen=previousEvents))
-    
-    if isinstance(prev_events_data, deque):
-        # Extract activities from previous events
-        for prev_event in prev_events_data:
-            if isinstance(prev_event, dict) and control_flow_column in prev_event:
-                previous_activities.append(prev_event[control_flow_column])
-            elif isinstance(prev_event, str):
-                previous_activities.append(prev_event)
-
-    # Get current activity
+    ## --- 2. Control-Flow Perspective ---
     curr_activity = event[control_flow_column]
 
-    # Handle previous activities list safely
-    while len(previous_activities) < previousEvents:
-        previous_activities.insert(0, "UNKNOWN")
-    previous_activities = previous_activities[-previousEvents:]  # Take only last N activities
-
-    # Assign scores for previous activities safely
     for i in range(previousEvents):
         feature_name = f"prev_activity_{i+1}"
-        try:
-            feature_scores[feature_name] = previous_activities[i]
-        except IndexError:
-            feature_scores[feature_name] = "UNKNOWN"
+        feature_scores[feature_name] = previous_activities[i] if i < len(previous_activities) else "UNKNOWN"
 
-    # Update directly follows graph
     try:
-        # Convert previous_activities to tuple for hashing
         prev_activities_tuple = tuple(previous_activities)
         directly_follows_graph.add_transition(case_id, prev_activities_tuple, curr_activity, global_event_counter)
     except Exception as e:
         print(f"[WARNING] Failed to update directly follows graph: {e}")
-    # Store current event
+
     if case_id not in previous_events:
         previous_events[case_id] = deque(maxlen=previousEvents)
-    previous_events[case_id].append(event)  # Store full event dictionary
+    previous_events[case_id].append(event)
 
-    ## --- 3. Resource Perspective: Score role/resource-based context ---
+    ## --- 3. Resource Perspective ---
     if resource_column in event:
         resource = event[resource_column]
-
-        # Retrieve historical usage count for this resource in the given activity
-        past_usage = resource_usage_history[activity_label][resource]
-
-        # Compute inverse frequency score (rarer resources get higher weight)
+        past_usage = resource_usage_history[activity_label].get(resource, 0)
         frequency_score = 1 / (past_usage + 1)
 
-        # Assign score dynamically based on adaptive feature weight and past occurrence frequency
-        feature_scores[resource_column] += feature_weights[resource_column] * frequency_score
-
-        # Update resource usage count incrementally
+        feature_scores[resource_column] += feature_weights.get(resource_column, 1.0) * frequency_score
         resource_usage_history[activity_label][resource] += 1
 
-        # Update resource feature weight dynamically
-        update_feature_weights(resource_column, frequency_score)
+        update_feature_weights(activity_label, resource_column, frequency_score)  # ✅ Fixed
 
-    print(event)
     ## --- 4. Time Perspective ---
     time_features = {}
-    
-    # Get time-related features with safe fallbacks
+
     if "hour_bin" in event:
         try:
             time_features["hour_bin"] = hour_bin_encoder.transform([event["hour_bin"]])[0]
@@ -336,7 +277,6 @@ def compute_feature_scores(event, event_id_column, case_id_column, control_flow_
 
     time_features["is_weekend"] = 1 if event.get("is_weekend", False) else 0
 
-    # Compute time-based feature score with adaptive weights and safe access
     feature_scores["time_score"] = (
         feature_weights.get("hour_bin", 1.0) * time_features.get("hour_bin", 0) +
         feature_weights.get("day_of_week", 1.0) * time_features.get("day_of_week", 0) +
@@ -344,20 +284,19 @@ def compute_feature_scores(event, event_id_column, case_id_column, control_flow_
         feature_weights.get("is_weekend", 1.0) * time_features.get("is_weekend", 0)
     )
 
-    # Update time-related feature weights safely
     for feature_name in ["hour_bin", "day_of_week", "month", "is_weekend"]:
         if feature_name in time_features:
-            update_feature_weights(feature_name, time_features[feature_name])
+            update_feature_weights(activity_label, feature_name, time_features[feature_name])  # ✅ Fixed
 
     ## --- 5. Data Perspective ---
     prev_event = previous_events.get(case_id)
     if prev_event:
         for column in data_columns:
             if column == control_flow_column:
-                continue  # Ensure control_flow_column is NOT used as a feature
+                continue
 
             if column in event and column in prev_event:
-                base_score = feature_weights[column] * 0.6
+                base_score = feature_weights.get(column, 1.0) * 0.6
                 try:
                     if isinstance(event[column], (int, float)):
                         feature_scores[column] += base_score * (
@@ -368,17 +307,15 @@ def compute_feature_scores(event, event_id_column, case_id_column, control_flow_
                             1.15 if prev_event[column] != event[column] else 1.0
                         )
                 except Exception:
-                    feature_scores[column] += base_score  # Fallback handling
+                    feature_scores[column] += base_score  # Fallback
 
-                # Update feature weights
-                update_feature_weights(column, feature_scores[column])
+                update_feature_weights(activity_label, column, feature_scores[column])  # ✅ Fixed
 
-  
-
-    for i in range(1, previousEvents + 1):
-        feature_scores[f"prev_activity_{i}"] = 0  # Assign 0 to prevent impact on feature importance
+    feature_scores = {key: float(value) if isinstance(value, (int, float)) else 0.0 for key, value in
+                      feature_scores.items()}
 
     return feature_scores
+
 
 def detect_drift(feature, feature_scores):
     """
@@ -421,11 +358,11 @@ def select_features(event, event_id_column, control_flow_column, timestamp_colum
         print(f"End computing feature scores inside select_features for top features for Event {event[event_id_column]}")
 
         # Dynamic thresholding for selecting top features
-        top_n = adaptive_threshold(feature_scores)
-        
+        top_n = int(min(adaptive_threshold(feature_scores), max_top_n_features))  # ✅ Ensure it never exceeds max_top_n_features
+
         # Ensure we're working with valid scores
         valid_scores = {k: v for k, v in feature_scores.items() if isinstance(v, (int, float))}
-        selected_features = sorted(valid_scores.items(), key=lambda x: x[1], reverse=True)[:top_n]
+        selected_features = sorted(valid_scores.items(), key=lambda x: x[1], reverse=True)[:top_n]  # ✅ Now slicing works
 
         return [feature for feature, _ in selected_features]
 
@@ -437,11 +374,17 @@ def select_features(event, event_id_column, control_flow_column, timestamp_colum
 
 def adaptive_threshold(feature_scores):
     """
-    Dynamically adjust top feature count based on variability.
+    Compute an adaptive threshold for feature selection based on the variability in feature scores.
     """
-    scores = np.array(list(feature_scores.values()))
-    if len(scores) == 0:
-        return max_top_n_features
+    # ✅ Convert scores to a numeric array, ignoring non-numeric values
+    numeric_scores = [score for score in feature_scores.values() if isinstance(score, (int, float))]
 
-    variability = np.std(scores)
-    return max(max_top_n_features, int(variability / 0.1))  # Adjust dynamically based on variance
+    if not numeric_scores:  # ✅ Avoid empty lists
+        return 1.0  # Default threshold if no valid scores exist
+
+    variability = np.std(numeric_scores)  # ✅ Now only operates on numeric values
+
+    # Compute the adaptive threshold using variability
+    adaptive_threshold = min(max(variability / 10.0, 0.1), 1.5)
+
+    return adaptive_threshold

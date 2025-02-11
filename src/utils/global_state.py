@@ -3,6 +3,7 @@ from collections import defaultdict, deque
 
 import pandas as pd
 
+from src.homonym_mend.dbstream import DBStream
 from src.utils.directly_follows_graph import DirectlyFollowsGraph
 
 # Move Directly Follows Graph initialization here to prevent circular import
@@ -20,6 +21,7 @@ feature_weights = defaultdict(lambda: 1.0)
 # Historical tracking for resources
 resource_usage_history = defaultdict(lambda: defaultdict(int))
 
+dbstream_clusters = defaultdict(lambda: DBStream())
 
 def extract_temporal_features(timestamp):
     if not isinstance(timestamp, pd.Timestamp):
