@@ -109,32 +109,31 @@ def compute_similarity(cluster_vectors, activity_label, feature_weights=None):
     return similarity_matrix
 
 
-def analyze_splits_and_merges(activity_label, dbstream_instance):
+def analyze_splits_and_merges(activity_label, dbstream_instance, feature_vector):
     """
     Enhanced split/merge analysis with improved sensitivity to contextual differences.
-    Dynamically adjusts splitting and merging thresholds based on recent variability.
-
     :param activity_label: The activity label being analyzed.
     :param dbstream_instance: The DBStream instance managing clusters for the activity.
+    :param feature_vector: The feature vector to be clustered.
     :return: Tuple containing the split/merge result and a representative cluster_id.
     """
+    # ✅ Ensure the feature vector is clustered before analysis
+    cluster_id = dbstream_instance.partial_fit(feature_vector, activity_label)
+
     micro_clusters = dbstream_instance.get_micro_clusters()
     print(f"[DEBUG] Micro-Clusters Found for {activity_label}: {len(micro_clusters)}")
 
-    for idx, cluster in enumerate(micro_clusters):
-        print(f"[DEBUG] Cluster {idx}: Centroid = {cluster.get('centroid')}, Weight = {cluster.get('weight')}")
-
     if len(micro_clusters) <= 1:
         log_traceability("no_change", activity_label, "No clusters available.")
-        return "no_change", 0
+        return "no_change", cluster_id  # ✅ Return assigned cluster
 
     # ✅ Compute variability and adjust thresholds dynamically
     cluster_feature_vectors = [cluster["centroid"] for cluster in micro_clusters]
     variability = adaptive_threshold_variability(cluster_feature_vectors)
 
-    global adaptive_split_threshold, adaptive_merge_threshold  # Ensure modification of global variables
+    global adaptive_split_threshold, adaptive_merge_threshold
 
-    min_variability = adaptive_threshold_min_variability  # Use the configured lower bound
+    min_variability = adaptive_threshold_min_variability
 
     if variability > min_variability:
         adaptive_split_threshold = min(1.0, adaptive_split_threshold + 0.05)
@@ -149,7 +148,7 @@ def analyze_splits_and_merges(activity_label, dbstream_instance):
         "dynamic_merging_threshold": adaptive_merge_threshold,
     })
 
-    similarity_matrix = compute_similarity(cluster_feature_vectors,activity_label)
+    similarity_matrix = compute_similarity(cluster_feature_vectors, activity_label)
     print(f"[DEBUG] Similarity Matrix for {activity_label}:")
     print(similarity_matrix)
 
@@ -168,7 +167,7 @@ def analyze_splits_and_merges(activity_label, dbstream_instance):
             "pairs": dissimilar_pairs,
             "unique_clusters": list(unique_clusters)
         })
-        return "split", list(unique_clusters)[0]
+        return "split", cluster_id  # ✅ Return updated cluster ID
 
     # Check for merges if no splits
     potential_merges = []
@@ -185,10 +184,10 @@ def analyze_splits_and_merges(activity_label, dbstream_instance):
                 "clusters": potential_merges,
                 "similarity": similarity_matrix[potential_merges[0]][potential_merges[1]]
             })
-            return "merge", potential_merges[0]
+            return "merge", cluster_id  # ✅ Return merged cluster ID
 
     print(f"[DEBUG] No split/merge detected for {activity_label}")
-    return "no_change", 0
+    return "no_change", cluster_id  # ✅ Return default cluster ID
 
 
 def compute_feature_weights(cluster_vectors):

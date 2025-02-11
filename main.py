@@ -8,7 +8,7 @@ import pandas as pd
 from config.config import *
 from src.homonym_mend.dynamic_binning_and_categorization import stream_event_log, \
     EnhancedAdaptiveBinning
-from src.homonym_mend.dynamic_feature_vector_construction import activity_feature_metadata
+from src.homonym_mend.dynamic_feature_vector_construction import activity_feature_metadata, process_event
 from src.homonym_mend.label_refinement import LabelRefiner
 from src.utils.logging_utils import log_traceability
 
@@ -197,7 +197,7 @@ def main():
             )
 
             print(f"Start Dynamic Feature Vector Construction for {global_event_counter}")
-            feature_vector_data = construct_feature_vector(event_dict, top_features, global_event_counter)
+            feature_vector_data = process_event(event_dict, top_features, global_event_counter)
             if feature_vector_data is None:
                 continue
 
@@ -207,11 +207,18 @@ def main():
             dbstream_instance = dbstream_clusters.get(activity_label, None)
 
             if dbstream_instance:
-                split_merge_result, cluster_id = analyze_splits_and_merges(activity_label, dbstream_instance)
+                # ✅ First, assign the feature vector to a cluster
+                assigned_cluster_id = dbstream_instance.partial_fit(feature_vector_data["new_vector"],
+                                                                    activity_label)  # ✅ Store cluster ID
+
+                # ✅ Then, check for homonym detection (split/merge analysis)
+                split_merge_result, refined_cluster_id = analyze_splits_and_merges(activity_label, dbstream_instance,
+                                                                                   feature_vector_data["new_vector"])
+
+                # ✅ Use the assigned cluster ID if no merge/split occurs
+                cluster_id = refined_cluster_id if split_merge_result != "no_change" else assigned_cluster_id
             else:
                 split_merge_result, cluster_id = "no_change", 0
-
-            print(f"Split/Merge Result for Event ID {event_id}: {split_merge_result}")
 
             # Refine activity label
             print(f"Start Label Refinement for {global_event_counter}")
