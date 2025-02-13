@@ -30,13 +30,14 @@ class LabelRefiner:
     def refine_label(self, event_label, cluster_id):
         """
         Generate a refined label but return existing mappings before assigning new ones.
+        Ensures '_0', '_1' is only appended if multiple clusters exist.
         """
         cluster_suffix = self.cluster_mapping[event_label]
 
         # Retrieve existing cluster assignments for this activity label
         existing_clusters = activity_feature_metadata.get(event_label, {})
 
-        # If only one cluster exists, return the base event label (no suffix)
+        # ✅ Fix: If only one cluster exists, return the base event label (no suffix)
         if len(existing_clusters) <= 1:
             return event_label  # No suffix needed
 
@@ -48,7 +49,7 @@ class LabelRefiner:
         active_clusters = [cid for cid in existing_clusters if existing_clusters[cid]["frequency"] > 0]
 
         if len(active_clusters) == 1:
-            return event_label  # Revert to base label
+            return event_label  # ✅ Revert to base label when only one cluster remains
 
         # Use the most frequently seen cluster's suffix
         most_frequent_cluster = max(existing_clusters, key=lambda cid: existing_clusters[cid]["frequency"],
@@ -58,7 +59,7 @@ class LabelRefiner:
             cluster_suffix[cluster_id] = cluster_suffix[most_frequent_cluster]
             return f"{event_label}_{cluster_suffix[most_frequent_cluster]}"
 
-        #  Assign a new suffix only if multiple clusters exist
+        # ✅ Fix: Assign a new suffix **only if multiple clusters exist**
         cluster_suffix[cluster_id] = len(cluster_suffix)
         return f"{event_label}_{cluster_suffix[cluster_id]}"
 

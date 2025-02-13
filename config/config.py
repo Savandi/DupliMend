@@ -39,11 +39,11 @@ previousEvents = 3
 
 # --- Clustering and Drift Detection Parameters ---
 dbstream_params = {
-    "clustering_threshold": 0.35,  # Lower it further to allow more cluster formation
+    "clustering_threshold": 0.2,  # Lower it further to allow more cluster formation
     "fading_factor": 0.05,         # Reduce fading to retain old clusters longer
     "cleanup_interval": 2,         # Increase cleanup interval slightly
     "intersection_factor": 0.1,    # Reduce it so that more splits occur
-    "lambda": 0.0001,              # Reduce decay rate (keeps clusters stable)
+    "lambda": 0.001,              # Reduce decay rate (keeps clusters stable)
     "beta": 0.15,                  # Make it easier for new clusters to form
     "cm": 1.3,                     # Reduce merging strength
     "eps": 0.02,                   # Reduce distance threshold for merging
@@ -54,12 +54,12 @@ similarity_threshold_high = 0.8  # High similarity (e.g., for almost identical e
 similarity_threshold_low = 0.4   # Low similarity (e.g., for loose grouping)
 
 # --- Splitting and Merging Parameters ---
-splitting_threshold = 0.0005  # Extremely aggressive splitting threshold
-merging_threshold = 0.98   # Extremely conservative merging threshold
+splitting_threshold = 0.8  # Increase to allow meaningful splits
+merging_threshold = 0.80  # Reduce to permit more merges
+adaptive_threshold_min_variability = 0.2  # Increase for better variability tracking
 min_cluster_size = 1         # Allow any size clusters
 grace_period_events = 1      # Minimal grace period
 similarity_penalty = 0.05    # Maximum penalty for dissimilarity
-adaptive_threshold_min_variability = 0.1  # Extremely low minimum variability
 
 dynamic_threshold_enabled = True
 default_similarity_threshold = 0.5
@@ -72,7 +72,7 @@ log_frequency = 10
 decay_after_events = 10
 removal_threshold_events = decay_after_events * 2
 frequency_decay_threshold = 0.5
-lossy_counting_budget = 100
+lossy_counting_budget = 500
 
 def adaptive_threshold_variability(feature_vectors):
     """

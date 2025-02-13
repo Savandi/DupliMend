@@ -18,11 +18,11 @@ class DBStream:
         self.clustering_threshold = dbstream_params.get("clustering_threshold", 0.35)
         self.fading_factor = dbstream_params.get("fading_factor", 0.05)
         self.cleanup_interval = dbstream_params.get("cleanup_interval", 2)
-        self.split_threshold = dbstream_params.get("split_threshold", 0.4)
-        self.merge_threshold = dbstream_params.get("merge_threshold", 0.8)
+        self.split_threshold = dbstream_params.get("split_threshold", 0.15)
+        self.merge_threshold = dbstream_params.get("merge_threshold", 0.6)
         self.eps = dbstream_params.get("eps", 0.02)
         self.beta = dbstream_params.get("beta", 0.15)
-        self.lambda_ = dbstream_params.get("lambda", 0.0001)
+        self.lambda_ = dbstream_params.get("lambda", 0.001)
         self.lossy_counting_budget = lossy_counting_budget
         self.removal_threshold_events = removal_threshold_events
         self.activity_event_counters = defaultdict(int)  # Tracks event count per activity label
