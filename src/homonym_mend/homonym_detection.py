@@ -125,7 +125,7 @@ def analyze_splits_and_merges(activity_label, dbstream_instance, feature_vector)
 
     if len(micro_clusters) <= 1:
         log_traceability("no_change", activity_label, "No clusters available.")
-        return "no_change", cluster_id  # ✅ Return assigned cluster
+        return "no_change", activity_label # ✅ Return assigned cluster
 
     # ✅ Compute variability and adjust thresholds dynamically
     cluster_feature_vectors = [cluster["centroid"] for cluster in micro_clusters]

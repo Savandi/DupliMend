@@ -27,7 +27,7 @@ class LabelRefiner:
         except Exception as e:
             print(f"[ERROR] Failed to initialize output CSV: {str(e)}")
 
-    def refine_label(self, event_label, cluster_id):
+    def refine_label(self, event_label, cluster_id, dbstream_instance):
         """
         Generate a refined label but return existing mappings before assigning new ones.
         Ensures '_0', '_1' is only appended if multiple clusters exist.
@@ -37,9 +37,9 @@ class LabelRefiner:
         # Retrieve existing cluster assignments for this activity label
         existing_clusters = activity_feature_metadata.get(event_label, {})
 
-        # ✅ Fix: If only one cluster exists, return the base event label (no suffix)
-        if len(existing_clusters) <= 1:
-            return event_label  # No suffix needed
+        active_clusters = dbstream_instance.get_micro_clusters()  # ✅ Fetch actual active clusters
+        if len(active_clusters) <= 1:
+            return event_label  # ✅ Do not append "_0" if only one cluster exist
 
         # Check if this cluster ID already has an assigned refined label
         if cluster_id in cluster_suffix:

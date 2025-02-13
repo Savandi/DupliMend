@@ -158,4 +158,5 @@ class DBStream:
         """
         Retrieve a list of all current micro-clusters.
         """
-        return list(self.micro_clusters.values())  # Ensure method returns micro-clusters correctly
+        return [cluster for cluster in self.micro_clusters.values() if
+                cluster["weight"] > 0.01]  # ✅ Ensure only active clusters are returned
