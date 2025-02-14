@@ -222,7 +222,7 @@ def main():
 
             # Refine activity label
             print(f"Start Label Refinement for {global_event_counter}")
-            refined_activity = label_refiner.refine_label(activity_label, cluster_id)
+            refined_activity = label_refiner.refine_label(activity_label, cluster_id,dbstream_instance)
             event_dict["refined_activity"] = refined_activity
             label_refiner.append_event_to_csv(event_dict)
 

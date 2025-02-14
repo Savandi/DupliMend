@@ -184,10 +184,10 @@ def analyze_splits_and_merges(activity_label, dbstream_instance, feature_vector)
                 "clusters": potential_merges,
                 "similarity": similarity_matrix[potential_merges[0]][potential_merges[1]]
             })
-            return "merge", cluster_id  # ✅ Return merged cluster ID
+            return "merge", cluster_id  # Return merged cluster ID
 
     print(f"[DEBUG] No split/merge detected for {activity_label}")
-    return "no_change", cluster_id  # ✅ Return default cluster ID
+    return "no_change", cluster_id  # Return default cluster ID
 
 
 def compute_feature_weights(cluster_vectors):
