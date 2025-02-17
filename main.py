@@ -1,5 +1,7 @@
 import sys
 
+from src.homonym_mend.dbstream import DBStream
+from src.homonym_mend.homonym_detection import analyze_splits_and_merges
 from src.utils.global_state import extract_temporal_features
 
 print(f"Start of main, called from: {sys.argv[0]}")
@@ -18,23 +20,18 @@ def is_valid_timestamp(ts):
     Returns True if the timestamp is valid, otherwise False.
     """
     timestamp_formats = [
-        "%Y-%m-%d %H:%M:%S",  # 2024-06-15 14:30:00
-        "%d/%m/%Y %I:%M %p",  # 15/06/2024 02:30 PM
-        "%Y/%m/%d %H:%M:%S",  # 2024/06/15 14:30:00
-        "%m-%d-%Y %H:%M:%S",  # 06-15-2024 14:30:00
-        "%Y-%m-%dT%H:%M:%SZ",  # ISO 8601 format: 2024-06-15T14:30:00Z
-        "%a %b %d %H:%M:%S %Y"  # Sat Jun 15 14:30:00 2024
+        "%Y-%m-%d %H:%M:%S", "%d/%m/%Y %I:%M %p", "%Y/%m/%d %H:%M:%S",
+        "%m-%d-%Y %H:%M:%S", "%Y-%m-%dT%H:%M:%SZ", "%a %b %d %H:%M:%S %Y"
     ]
 
     if isinstance(ts, str):
         for fmt in timestamp_formats:
             try:
                 pd.to_datetime(ts, format=fmt)
-                return True  # Valid timestamp format found
+                return True
             except ValueError:
-                continue  # Try next format
-
-    return False  # None of the formats matched
+                continue
+    return False
 
 # Lazy Import Functions to Prevent Circular Import Issues
 def get_feature_scores(event, event_id_column, case_id_column, control_flow_column, timestamp_column, resource_column, data_columns, global_event_counter):
@@ -59,58 +56,51 @@ def construct_feature_vector(event, top_features, global_event_counter):
     from src.homonym_mend.dynamic_feature_vector_construction import process_event  # ✅ Lazy import
     return process_event(event, top_features, global_event_counter)
 
-def get_homonym_analysis():
-    """
-    Lazily import analyze_splits_and_merges to avoid circular import issues.
-    """
-    from src.homonym_mend.homonym_detection import analyze_splits_and_merges, dbstream_clusters  # ✅ Lazy import
-    return analyze_splits_and_merges, dbstream_clusters
+# def get_homonym_analysis():
+#     """
+#     Lazily import analyze_splits_and_merges to avoid circular import issues.
+#     """
+#     from src.homonym_mend.homonym_detection import analyze_splits_and_merges  # ✅ Lazy import
+#     return analyze_splits_and_merges  # ✅ Remove dbstream_clusters
+
+
+dbstream_instances = {}
+
 
 def main():
     global_event_counter = 0
 
-    # Call configure_window_sizes() to initialize window settings
+    # Initialize window sizes
     configure_window_sizes()
 
     input_log_path = './src/homonym_mend/synthetic_log_with_homonyms.csv'
-    
-# Load and prepare event log
+
+    # Load and prepare event log
     df_event_log = pd.read_csv(input_log_path, encoding='ISO-8859-1')
-    
-    # Convert timestamps only for sorting
+
+    # Convert timestamps for sorting
     df_event_log[timestamp_column] = pd.to_datetime(
-        df_event_log[timestamp_column], 
-        format="%Y-%m-%dT%H:%M:%S.%f",
-        errors='coerce', 
-        utc=True
+        df_event_log[timestamp_column], format="%Y-%m-%dT%H:%M:%S.%f", errors='coerce', utc=True
     )
-    
-    # Auto-detect data_columns
-    excluded_columns = {control_flow_column, timestamp_column, 'original_timestamp', 
-                       resource_column, case_id_column, event_id_column}
-    data_columns = [
-        col for col in df_event_log.columns
-        if col not in excluded_columns
-    ]
+
+    # Auto-detect data columns
+    excluded_columns = {control_flow_column, timestamp_column, 'original_timestamp',
+                        resource_column, case_id_column, event_id_column}
+    data_columns = [col for col in df_event_log.columns if col not in excluded_columns]
+
     print(f"Data columns used: {data_columns}")
 
-    # Extract column names dynamically and store globally
-    input_columns = list(df_event_log.columns)
-    input_columns.append("refined_activity")
+    # Extract column names dynamically
+    input_columns = list(df_event_log.columns) + ["refined_activity"]
 
     # Sort events by timestamp
     df_event_log = df_event_log.sort_values(by=timestamp_column)
-    # df_event_log = df_event_log.head(50)
 
-    # Initialize enhanced binning models
+    # Initialize binning models
     binning_models = {
         feature: EnhancedAdaptiveBinning(
-            initial_bins=20, 
-            bin_density_threshold=5,
-            drift_threshold=0.02,
-            decay_factor=0.85, 
-            min_bin_width= 0.001,
-            quantile_points=[0.05, 0.2, 0.4, 0.6, 0.8, 0.95]
+            initial_bins=20, bin_density_threshold=5, drift_threshold=0.02,
+            decay_factor=0.85, min_bin_width=0.001, quantile_points=[0.05, 0.2, 0.4, 0.6, 0.8, 0.95]
         )
         for feature in features_to_discretize
     }
@@ -133,8 +123,8 @@ def main():
         try:
             global_event_counter += 1
             print(f"\nStart Processing Event {global_event_counter}")
-            
-            # Extract temporal features directly from timestamp
+
+            # Extract temporal features
             temporal_features = extract_temporal_features(event[timestamp_column])
             if not temporal_features:
                 print(f"[ERROR] Failed to extract temporal features for Event {event[event_id_column]}")
@@ -145,33 +135,19 @@ def main():
             event_dict.update(temporal_features)
 
             print(f"[DEBUG] Event with temporal features: {event_dict}")
-            
+
             # Process the event through binning model
-            print(f"Start Dynamic Binning and Discretization for {global_event_counter}")
             processed_event = stream_event_log(
-                event_dict, 
-                timestamp_column, 
-                control_flow_column, 
-                resource_column,
-                case_id_column, 
-                event_id_column, 
-                data_columns, 
-                features_to_discretize, 
-                binning_models
+                event_dict, timestamp_column, control_flow_column, resource_column,
+                case_id_column, event_id_column, data_columns, features_to_discretize, binning_models
             )
 
-            processed_event_copy = processed_event.copy() 
+            processed_event_copy = processed_event.copy()
 
             print(f"Start Feature Selection and Importance Analysis for {global_event_counter}")
             feature_scores = get_feature_scores(
-                processed_event_copy, 
-                event_id_column, 
-                case_id_column, 
-                control_flow_column,
-                timestamp_column, 
-                resource_column, 
-                data_columns, 
-                global_event_counter
+                processed_event_copy, event_id_column, case_id_column, control_flow_column,
+                timestamp_column, resource_column, data_columns, global_event_counter
             )
             print(f"Feature Scores for Event {event[event_id_column]}: {feature_scores}")
 
@@ -185,15 +161,9 @@ def main():
             print(f"Processing Event {global_event_counter}, Event ID: {event_id}, Activity: {activity_label}")
 
             print(f"Start Getting Top Features for {global_event_counter}")
-            # Get top features and construct feature vector
             top_features = get_top_features(
-                processed_event_copy, 
-                event_id_column, 
-                control_flow_column, 
-                timestamp_column,
-                resource_column, 
-                data_columns, 
-                global_event_counter
+                processed_event_copy, event_id_column, control_flow_column, timestamp_column,
+                resource_column, data_columns, global_event_counter
             )
 
             print(f"Start Dynamic Feature Vector Construction for {global_event_counter}")
@@ -203,26 +173,23 @@ def main():
 
             # Perform homonym detection
             print(f"Start Homonym Detection and Online Clustering with Dbstream for {global_event_counter}")
-            analyze_splits_and_merges, dbstream_clusters = get_homonym_analysis()
-            dbstream_instance = dbstream_clusters.get(activity_label, None)
 
-            if dbstream_instance:
-                # ✅ First, assign the feature vector to a cluster
-                assigned_cluster_id = dbstream_instance.partial_fit(feature_vector_data["new_vector"],
-                                                                    activity_label)  # ✅ Store cluster ID
+            # Retrieve or create DBStream instance
+            if activity_label not in dbstream_instances:
+                dbstream_instances[activity_label] = DBStream()
+            dbstream_instance = dbstream_instances[activity_label]
 
-                # ✅ Then, check for homonym detection (split/merge analysis)
-                split_merge_result, refined_cluster_id = analyze_splits_and_merges(activity_label, dbstream_instance,
-                                                                                   feature_vector_data["new_vector"])
+            # Assign cluster ID for the feature vector
+            assigned_cluster_id = dbstream_instance.partial_fit(feature_vector_data["new_vector"], activity_label)
 
-                # ✅ Use the assigned cluster ID if no merge/split occurs
-                cluster_id = refined_cluster_id if split_merge_result != "no_change" else assigned_cluster_id
-            else:
-                split_merge_result, cluster_id = "no_change", 0
+            # Analyze splits and merges
+            split_merge_result, cluster_id = analyze_splits_and_merges(
+                activity_label, dbstream_instance, feature_vector_data["new_vector"], assigned_cluster_id
+            )
 
             # Refine activity label
             print(f"Start Label Refinement for {global_event_counter}")
-            refined_activity = label_refiner.refine_label(activity_label, cluster_id,dbstream_instance)
+            refined_activity = label_refiner.refine_label(activity_label, cluster_id, dbstream_instance)
             event_dict["refined_activity"] = refined_activity
             label_refiner.append_event_to_csv(event_dict)
 
@@ -238,11 +205,12 @@ def main():
         except Exception as e:
             print(f"Error processing event {event.get(event_id_column, 'Unknown')}: {e}")
             log_traceability("error", "Event Processing", {
-                "event_id": event.get(event_id_column, 'Unknown'), 
+                "event_id": event.get(event_id_column, 'Unknown'),
                 "error": str(e)
             })
 
     print(f"Refined stream has been saved to {refined_log_path}")
+
 
 if __name__ == "__main__":
     main()

@@ -63,7 +63,7 @@ class LabelRefiner:
         cluster_suffix[cluster_id] = len(cluster_suffix)
         return f"{event_label}_{cluster_suffix[cluster_id]}"
 
-    def process_event(self, event, cluster_id):
+    def process_event(self, event, cluster_id, dbstream_instance):
         """
         Refine the label of a single event, applying suffixes only if a split has occurred.
         """
@@ -71,7 +71,7 @@ class LabelRefiner:
         if not event_label:
             raise ValueError("Activity label is missing in the event.")
 
-        refined_label = self.refine_label(event_label, cluster_id)
+        refined_label = self.refine_label(event_label, cluster_id, dbstream_instance)
         event["refined_activity"] = refined_label
         return event
 
@@ -83,9 +83,9 @@ class LabelRefiner:
         df = pd.DataFrame([event])
         df.to_csv(self.output_file_path, mode="a", header=False, index=False)
 
-    def process_and_save_event(self, event, cluster_id):
+    def process_and_save_event(self, event, cluster_id, dbstream_instance):
         """
         Refine the event label and append it to the CSV file.
         """
-        refined_event = self.process_event(event, cluster_id)
+        refined_event = self.process_event(event, cluster_id, dbstream_instance)  # ✅ Pass dbstream_instance
         self.append_event_to_csv(refined_event)

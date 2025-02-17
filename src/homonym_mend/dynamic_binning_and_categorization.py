@@ -28,8 +28,17 @@ class DecayingTDigest:
 
     def _apply_decay(self):
         """Apply decay to all centroids in the T-Digest."""
-        for centroid in self.tdigest.C:
-            centroid.w *= self.decay_factor  # Apply weight decay
+        self.tdigest.compress()  # ✅ Ensure centroids are updated
+        updated_centroids = []
+
+        for mean, weight in self.tdigest.centroids_to_list():
+            updated_centroids.append(
+                (float(mean), float(weight) * float(self.decay_factor)))  # ✅ Ensure float multiplication
+
+        # ✅ Rebuild the T-Digest with decayed centroids
+        self.tdigest = TDigest()
+        for mean, weight in updated_centroids:
+            self.tdigest.update(mean, weight)
 
         self.last_decay = self.updates
         print(f"[DEBUG] Applied decay: New centroid weights after {self.decay_factor} decay factor.")
@@ -70,48 +79,56 @@ class EnhancedAdaptiveBinning:
         Returns the bin assignment for the new value.
         """
         try:
-            # Handle timestamp values specially
-            if isinstance(new_value, pd.Timestamp):
-                numeric_value = new_value.timestamp()
-            else:
-                try:
-                    numeric_value = float(new_value)
-                except (ValueError, TypeError) as e:
-                    print(f"[ERROR] Could not convert value to numeric: {e}")
+            print(f"[DEBUG] Entering update_bins() with new_value: {new_value} (Type: {type(new_value)})")
+
+            if isinstance(new_value, str) and 'm' in new_value:
+                print(f"[ERROR] 'm' detected in new_value BEFORE conversion: {new_value}")
+
+            # Ensure numeric conversion and handle non-numeric values
+            if isinstance(new_value, str):
+                # Remove whitespace and convert to lowercase
+                print(f"[DEBUG] Before any modification - new_value: {new_value}")
+                new_value = new_value.strip().lower() if isinstance(new_value, str) else new_value
+                print(f"[DEBUG] After stripping and lowering - new_value: {new_value}")
+
+                # Check if the value is invalid
+                if new_value in ['nan', 'null', '', 'm']:
+                    print(f"[ERROR] Invalid numeric conversion detected: {new_value}, assigning to bin 0")
                     return 0
 
-            # Update decay-aware data structures
-            self.decaying_digest.update(numeric_value)
-            self.recent_values.append(numeric_value)
+                # Attempt conversion
+                try:
+                    new_value = float(new_value)
+                    print(f"[DEBUG] Successfully converted string to float: {new_value}")
+                except ValueError:
+                    print(f"[ERROR] Cannot convert {new_value} to float, defaulting to bin 0")
+                    return 0
+
+            print(f"[DEBUG] Proceeding with binning. Final new_value: {new_value} (Type: {type(new_value)})")
+
+            # Continue binning process
+            self.decaying_digest.update(new_value)
+            self.recent_values.append(new_value)
+
             if len(self.recent_values) > self.window_size:
                 self.recent_values.pop(0)
 
             # Check for drift using ADWIN
-            if self.drift_detector.update(numeric_value):
+            if self.drift_detector.update(new_value):
                 print(f"[DRIFT DETECTED] Recalculating bins due to change in distribution!")
                 self._recalculate_bins()
 
-            # Assign to bin and update density
-            assigned_bin = self._assign_bin(numeric_value)
+            assigned_bin = self._assign_bin(new_value)
             assigned_bin = int(round(assigned_bin))  # Ensure integer bin assignment
             self.bin_counts[assigned_bin] += 1
 
             print(f"[DEBUG] Value: {new_value} -> Assigned bin: {assigned_bin}")
-            print(f"[DEBUG] Bin counts: {dict(self.bin_counts)}")
-
-            if self.bin_counts[assigned_bin] > self.bin_density_threshold:
-                print(f"[DEBUG] Splitting bin {assigned_bin} due to high density")
-                self._split_bin(assigned_bin)
-            elif self._is_sparse_region(assigned_bin):
-                print(f"[DEBUG] Merging bins due to sparse region at bin {assigned_bin}")
-                self._merge_sparse_bins()
-
             return assigned_bin
 
         except Exception as e:
             print(f"[ERROR] Failed to update bins: {str(e)}")
             return 0  # Return default bin on error
-    
+
     def _recalculate_bins(self):
         """
         Recalculate bins using both quantile and density information.
@@ -312,6 +329,7 @@ def stream_event_log(event_dict, timestamp_column, control_flow_column, resource
 
         # Process numerical features for binning
         for feature in features_to_discretize:
+            print(f"[DEBUG] Processing feature {feature} with value: {processed_event.get(feature)}")
             if feature not in processed_event:
                 print(f"[DEBUG] Feature {feature} not found in event dictionary")
                 continue
@@ -328,17 +346,24 @@ def stream_event_log(event_dict, timestamp_column, control_flow_column, resource
                     processed_event[f"{feature}_bin"] = 0  # Default bin
                     continue
 
-                # Special handling for timestamp
-                if feature == timestamp_column:
-                    if isinstance(value, pd.Timestamp):
-                        # Use timestamp directly without converting to float
-                        bin_assignment = int(binning_models[feature].update_bins(value))
-                    else:
-                        print(f"[DEBUG] Skipping timestamp binning for non-Timestamp value: {value}")
+                # Ensure numeric conversion
+                if isinstance(value, str):
+                    try:
+                        value = float(value)
+                    except ValueError:
+                        print(f"[ERROR] Cannot convert value to float: {value}")
+                        processed_event[f"{feature}_bin"] = 0  # Assign default bin
                         continue
+
+                for key, val in event_dict.items():
+                    print(f"[DEBUG] Event Feature: {key} = {val} (Type: {type(val)})")
+
+                if isinstance(value, str) and 'm' in value:
+                    print(f"[ERROR] 'm' detected in {feature} BEFORE calling update_bins(): {value}")
+
+                if feature == timestamp_column and isinstance(value, pd.Timestamp):
+                    bin_assignment = int(binning_models[feature].update_bins(value))
                 else:
-                    # For non-timestamp numeric features
-                    value = float(value)
                     bin_assignment = int(binning_models[feature].update_bins(value))
 
                 processed_event[f"{feature}_bin"] = bin_assignment

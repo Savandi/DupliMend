@@ -7,7 +7,6 @@ from config.config import temporal_decay_rate, lossy_counting_budget, frequency_
 from src.utils.global_state import dbstream_clusters  # ✅ Import from global state
 from src.utils.custom_label_encoder import CustomLabelEncoder
 from src.utils.global_state import activity_feature_metadata, activity_feature_history, previous_events
-from src.utils.logging_utils import log_traceability
 
 # --- GLOBAL VARIABLES ---
 

@@ -7,10 +7,8 @@ from config.config import (
     splitting_threshold,
     merging_threshold,
     grace_period_events,
-    adaptive_threshold_min_variability, similarity_penalty, decay_after_events, previousEvents)
+    adaptive_threshold_min_variability, similarity_penalty, previousEvents)
 from src.utils.similarity_utils import compute_contextual_weighted_similarity
-from src.utils.global_state import dbstream_clusters  # ✅ Import from global state
-
 # --- GLOBAL VARIABLES ---
 cluster_grace_period = timedelta(seconds=grace_period_events)
 feature_vectors = defaultdict(list)
@@ -80,20 +78,20 @@ def compute_similarity(cluster_vectors, activity_label, feature_weights=None):
         feature_weights = compute_feature_weights(cluster_vectors)  # Use computed feature weights
 
     n_clusters = len(cluster_vectors)
-    similarity_matrix = np.zeros((n_clusters, n_clusters))
+    similarity_matrix = np.zeros((n_clusters, n_clusters))  # ✅ Ensure proper NumPy array
 
-    # Dynamically extract previousEvents features
+    # ✅ Include previous event features
     previous_event_features = [f"prev_activity_{i}" for i in range(1, previousEvents + 1)]
 
-    # Adjust feature weights dynamically for previousEvents
+    # ✅ Adjust feature weights dynamically for previousEvents
     for feature in previous_event_features:
         if feature not in feature_weights:
-            feature_weights[feature] = 1.0  # Initialize with default weight
+            feature_weights[feature] = 1.0  # ✅ Initialize with default weight
 
-        # Use adaptive weight update for previousEvents features
+        # ✅ Use adaptive weight update for previousEvents features
         update_feature_weights(activity_label, feature, feature_weights.get(feature, 1.0))
 
-    # Compute similarity with dynamically weighted previousEvents features
+    # ✅ Compute similarity matrix with updated feature weights
     for i in range(n_clusters):
         for j in range(i, n_clusters):
             similarity = compute_contextual_weighted_similarity(
@@ -103,91 +101,91 @@ def compute_similarity(cluster_vectors, activity_label, feature_weights=None):
                 feature_weights,
                 alpha=similarity_penalty
             )
-            similarity_matrix[i][j] = similarity
-            similarity_matrix[j][i] = similarity  # Ensure matrix is symmetric
+            similarity_matrix[i, j] = similarity  # ✅ Correct NumPy indexing
+            similarity_matrix[j, i] = similarity  # ✅ Ensure symmetry
 
+    print(f"[DEBUG] Verifying similarity matrix: Shape = {similarity_matrix.shape}")
+    if similarity_matrix.shape[0] != similarity_matrix.shape[1]:
+        print("[ERROR] Similarity matrix is not square! Check compute_similarity()")
+    similarity_matrix = np.array(similarity_matrix, dtype=np.float64)
     return similarity_matrix
 
 
-def analyze_splits_and_merges(activity_label, dbstream_instance, feature_vector):
+def analyze_splits_and_merges(activity_label, dbstream_instance, feature_vector, assigned_cluster_id):
     """
-    Enhanced split/merge analysis with improved sensitivity to contextual differences.
-    :param activity_label: The activity label being analyzed.
-    :param dbstream_instance: The DBStream instance managing clusters for the activity.
-    :param feature_vector: The feature vector to be clustered.
-    :return: Tuple containing the split/merge result and a representative cluster_id.
+    Improved split/merge analysis for better debugging and error handling.
     """
-    # ✅ Ensure the feature vector is clustered before analysis
-    cluster_id = dbstream_instance.partial_fit(feature_vector, activity_label)
+    cluster_id = assigned_cluster_id  # ✅ Use assigned cluster ID from main.py
 
-    micro_clusters = dbstream_instance.get_micro_clusters()
-    print(f"[DEBUG] Micro-Clusters Found for {activity_label}: {len(micro_clusters)}")
+    # ✅ Retrieve active micro-clusters
+    micro_clusters = [c for c in dbstream_instance.get_micro_clusters() if c["weight"] > 0.01]
 
-    if len(micro_clusters) <= 1:
-        log_traceability("no_change", activity_label, "No clusters available.")
-        return "no_change", activity_label # ✅ Return assigned cluster
+    # ✅ Include the new feature vector in similarity calculations
+    cluster_feature_vectors = [cluster["centroid"] for cluster in micro_clusters] + [feature_vector]
 
-    # ✅ Compute variability and adjust thresholds dynamically
-    cluster_feature_vectors = [cluster["centroid"] for cluster in micro_clusters]
-    variability = adaptive_threshold_variability(cluster_feature_vectors)
+    print(f"[DEBUG] Active micro-clusters: {len(micro_clusters)}")
+    print(f"[DEBUG] Number of distinct feature vectors considered: {len(cluster_feature_vectors)} (includes current event)")
+    print(f"[DEBUG] Feature vectors before similarity computation: {cluster_feature_vectors}")
 
-    global adaptive_split_threshold, adaptive_merge_threshold
-
-    min_variability = adaptive_threshold_min_variability
-
-    if variability > min_variability:
-        adaptive_split_threshold = min(1.0, adaptive_split_threshold + 0.05)
-        adaptive_merge_threshold = max(0.5, adaptive_merge_threshold - 0.05)
-    else:
-        adaptive_split_threshold = max(0.6, adaptive_split_threshold - 0.05)
-        adaptive_merge_threshold = min(0.9, adaptive_merge_threshold + 0.05)
-
-    log_traceability("variability_and_thresholds", activity_label, {
-        "variability_factor": variability,
-        "dynamic_splitting_threshold": adaptive_split_threshold,
-        "dynamic_merging_threshold": adaptive_merge_threshold,
-    })
-
+    # ✅ Compute similarity matrix
     similarity_matrix = compute_similarity(cluster_feature_vectors, activity_label)
-    print(f"[DEBUG] Similarity Matrix for {activity_label}:")
-    print(similarity_matrix)
+    similarity_matrix = np.array(similarity_matrix, dtype=np.float64)  # ✅ Ensure NumPy array
+    print(f"[DEBUG] Similarity Matrix shape: {similarity_matrix.shape}")
 
-    # Analyze similarity distribution
+    # ✅ Verify the similarity matrix structure
+    print(f"[DEBUG] Verifying similarity matrix: Shape = {similarity_matrix.shape}")
+    if similarity_matrix.shape[0] != similarity_matrix.shape[1]:
+        print("[ERROR] Similarity matrix is not square! Check compute_similarity()")
+
+    # ✅ Skip analysis if only 1 feature vector
+    if similarity_matrix.shape[0] == 1:
+        print(f"[DEBUG] Only one cluster detected, skipping split/merge checks.")
+        return "no_change", cluster_id
+
+        # ✅ Analyze similarity for split detection
     dissimilar_pairs = []
     for i in range(len(cluster_feature_vectors)):
         for j in range(i + 1, len(cluster_feature_vectors)):
-            sim_score = similarity_matrix[i][j]
+            if not (0 <= i < similarity_matrix.shape[0] and 0 <= j < similarity_matrix.shape[1]):
+                print(
+                    f"[ERROR] Index ({i},{j}) out of bounds for similarity matrix with shape {similarity_matrix.shape}")
+                continue  # ✅ Skip invalid accesses
+
+            sim_score = similarity_matrix[i, j]
             if sim_score < adaptive_split_threshold:
                 dissimilar_pairs.append((i, j))
 
     if dissimilar_pairs:
-        unique_clusters = set([x for pair in dissimilar_pairs for x in pair])
+        unique_clusters = set(x for pair in dissimilar_pairs for x in pair)
         log_traceability("split_decision", activity_label, {
             "reason": "Found dissimilar clusters",
             "pairs": dissimilar_pairs,
             "unique_clusters": list(unique_clusters)
         })
-        return "split", cluster_id  # ✅ Return updated cluster ID
+        return "split", cluster_id
 
-    # Check for merges if no splits
+        # ✅ Check for merge candidates
     potential_merges = []
     for i in range(len(cluster_feature_vectors)):
-        similar_neighbors = sum(1 for j in range(len(cluster_feature_vectors))
-                                if i != j and similarity_matrix[i][j] > adaptive_merge_threshold)
+        similar_neighbors = sum(
+            1 for j in range(len(cluster_feature_vectors))
+            if (0 <= i < similarity_matrix.shape[0] and 0 <= j < similarity_matrix.shape[1] and
+                i != j and similarity_matrix[i, j] > adaptive_merge_threshold)
+        )
         if similar_neighbors == 1:
             potential_merges.append(i)
 
-    if len(potential_merges) == 2:
-        if similarity_matrix[potential_merges[0]][potential_merges[1]] > adaptive_merge_threshold:
-            log_traceability("merge_decision", activity_label, {
-                "reason": "Found very similar pair",
-                "clusters": potential_merges,
-                "similarity": similarity_matrix[potential_merges[0]][potential_merges[1]]
-            })
-            return "merge", cluster_id  # Return merged cluster ID
+    if len(potential_merges) == 2 and similarity_matrix[
+        potential_merges[0], potential_merges[1]] > adaptive_merge_threshold:
+        log_traceability("merge_decision", activity_label, {
+            "reason": "Found very similar pair",
+            "clusters": potential_merges,
+            "similarity": similarity_matrix[potential_merges[0], potential_merges[1]]
+        })
+        return "merge", cluster_id
 
     print(f"[DEBUG] No split/merge detected for {activity_label}")
-    return "no_change", cluster_id  # Return default cluster ID
+    return "no_change", cluster_id
 
 
 def compute_feature_weights(cluster_vectors):
