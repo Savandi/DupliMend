@@ -3,6 +3,7 @@ import numpy as np
 import logging
 from config.config import dbstream_params, decay_after_events, lossy_counting_budget, \
     removal_threshold_events, frequency_decay_threshold
+from src.utils.logging_utils import log_traceability
 from src.utils.similarity_utils import compute_contextual_weighted_similarity
 
 # Configure logging
@@ -46,36 +47,28 @@ class DBStream:
         Remove old micro-clusters using frequency decay, but only based on
         the event count for this specific DBStream instance's activity label.
         """
-        current_activity_event_count = self.activity_event_counters[activity_label]  # Per-activity event count
+        current_activity_event_count = self.activity_event_counters[activity_label]
         self._apply_decay(current_activity_event_count)
 
         for cluster_id in list(self.micro_clusters.keys()):
             cluster = self.micro_clusters[cluster_id]
             last_seen_activity_event = cluster.get("last_seen_activity_event", current_activity_event_count)
+            events_since_last_seen = current_activity_event_count - last_seen_activity_event
 
-            events_since_last_seen = current_activity_event_count - last_seen_activity_event  # Uses only relevant events
-
-            # Apply exponential frequency decay
+            # Apply decay
             cluster["weight"] *= np.exp(-events_since_last_seen / self.decay_after_events)
 
-            # **DEBUG LOGGING: BEFORE REMOVAL CHECK**
-            print(f"[DEBUG] Cluster {cluster_id} - Weight: {cluster['weight']}, "
-                  f"Events since last seen: {events_since_last_seen}, "
-                  f"Thresholds: Decay={self.forgetting_threshold}, Removal={self.removal_threshold_events}")
-
-            # Forget cluster if weight (frequency) is too low and hasn't been updated in `removal_threshold_events`
+            # Log before deletion
             if cluster["weight"] < self.forgetting_threshold and events_since_last_seen > self.removal_threshold_events:
-                print(f"[INFO] Removing cluster {cluster_id} - Reason: Weight below threshold "
-                      f"({cluster['weight']} < {self.forgetting_threshold}) "
-                      f"and inactive for {events_since_last_seen} events (> {self.removal_threshold_events})")
+                log_traceability(
+                    "CLUSTER_REMOVAL", activity_label,
+                    f"Cluster {cluster_id} removed: Weight={cluster['weight']}, Inactive for {events_since_last_seen} events"
+                )
                 del self.micro_clusters[cluster_id]
 
-            # Stop removing clusters once within the lossy counting budget
+            # Stop removing if within budget
             if len(self.micro_clusters) <= self.lossy_counting_budget:
-                break  # Prevent unnecessary deletions
-
-        # **DEBUG LOGGING: REMAINING CLUSTERS**
-        print(f"[DEBUG] Remaining Clusters after cleanup: {len(self.micro_clusters)}")
+                break
 
     def partial_fit(self, vector, activity_label):
         """
