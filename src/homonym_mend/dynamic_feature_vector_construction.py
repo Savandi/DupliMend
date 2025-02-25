@@ -117,6 +117,45 @@ def forget_old_feature_vectors(activity_label):
         print(f"[ERROR] Error in forget_old_feature_vectors: {e}")
         traceback.print_exc()
 
+def infer_feature_types(event_sample):
+    """
+    Infer feature types (categorical/numeric) dynamically from a sample event.
+    :param event_sample: A dictionary of sample event attributes.
+    :return: A dictionary mapping feature names to their types.
+    """
+    feature_types = {}
+
+    for feature, value in event_sample.items():
+        if isinstance(value, (int, float)):  # Numeric features
+            feature_types[feature] = "numeric"
+        else:  # Categorical features (default)
+            feature_types[feature] = "categorical"
+
+    logging.debug(f"Inferred Feature Types: {feature_types}")
+    return feature_types
+
+def construct_feature_vector(event, feature_metadata):
+    """
+    Construct a dynamic feature vector from an event based on feature metadata.
+    :param event: The event dictionary containing attributes.
+    :param feature_metadata: A dictionary containing feature types (categorical, numeric, etc.).
+    :return: A list representing the feature vector.
+    """
+    feature_vector = []
+
+    for feature, feature_type in feature_metadata.items():
+        if feature in event:
+            value = event[feature]
+
+            if feature_type == "categorical":
+                feature_vector.append(value)  # Directly use categorical value
+
+            elif feature_type == "numeric":
+                feature_vector.append(value)  # ✅ No re-binning, assume value is already categorized
+
+    logging.debug(f"Constructed Feature Vector: {feature_vector}")
+    return feature_vector
+
 
 def process_event(event, top_features, global_event_counter):
     """Process an event to construct and analyze dynamic feature vectors."""
@@ -195,7 +234,8 @@ def process_event(event, top_features, global_event_counter):
         
         # Normalize the vector
         normalized_vector = normalize_feature_vector(np.array(new_vector))
-        
+        normalized_vector = np.array(normalized_vector, dtype=np.float64)
+
         # After creating normalized_vector, update metadata
         vector_tuple = tuple(normalized_vector.tolist())
         if activity_label not in activity_feature_metadata:
@@ -213,7 +253,8 @@ def process_event(event, top_features, global_event_counter):
 
         return {
             "activity_label": activity_label,
-            "new_vector": normalized_vector.tolist()
+            "new_vector": normalized_vector,  # ✅ Ensure consistent NumPy format
+            "top_features": top_features
         }
 
     except Exception as e:

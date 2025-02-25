@@ -20,14 +20,14 @@ min_bin_width = 0.005       # Finer-grained binning
 decay_factor = 0.9          # Slightly faster decay
 initial_bins = 15           # More initial bins
 drift_threshold = 0.03      # More sensitive to drift
-merge_threshold = 0.5       # Less aggressive bin merging
+merge_threshold = 0.6    # Less aggressive bin merging
 # Enhanced temporal binning
 time_feature_columns = ["hour_bin", "day_of_week", "is_weekend", "week_of_month", "season", "month"]
 
 # --- Feature Selection Parameters ---
 max_top_n_features = 7       # Include more features for better discrimination
 forgetting_factor = 0.8      # Forget old patterns faster
-temporal_decay_rate = 0.005  # Faster temporal decay
+temporal_decay_rate = 0.05  # Faster temporal decay
 forgetting_threshold = 0.0005  # Lower threshold to maintain more information
 positional_penalty_alpha = 0.3  # Stronger positional penalty
 adaptive_window_min_size = 50
@@ -39,22 +39,31 @@ previousEvents = 3
 
 # --- Clustering and Drift Detection Parameters ---
 dbstream_params = {
-    "clustering_threshold": 0.2,  # Lower it further to allow more cluster formation
-    "fading_factor": 0.05,         # Reduce fading to retain old clusters longer
-    "cleanup_interval": 2,         # Increase cleanup interval slightly
-    "intersection_factor": 0.1,    # Reduce it so that more splits occur
-    "lambda": 0.001,              # Reduce decay rate (keeps clusters stable)
-    "beta": 0.15,                  # Make it easier for new clusters to form
-    "cm": 1.3,                     # Reduce merging strength
-    "eps": 0.02,                   # Reduce distance threshold for merging
+    "clustering_threshold": 0.35,
+    "fading_factor": 0.05,
+    "cleanup_interval": 2,
+    "split_threshold": 0.15,
+    "merge_threshold": 0.6,
+    "eps": 0.02,
+    "beta": 0.15,
+    "lambda": 0.001
 }
+lossy_counting_budget = 500  # Maximum number of stored feature vectors before forgetting kicks in
+frequency_decay_threshold = 0.0001  # Minimum frequency for retaining old clusters
+decay_after_events = 200  # Number of events before applying decay
+removal_threshold_events = decay_after_events * 2
+
+
+# Homonym Handling
+enable_homonym_debugging = True  # Enable detailed logging for homonym detection
+
 
 # Add or update thresholds for similarity
 similarity_threshold_high = 0.8  # High similarity (e.g., for almost identical events)
 similarity_threshold_low = 0.4   # Low similarity (e.g., for loose grouping)
 
 # --- Splitting and Merging Parameters ---
-splitting_threshold = 0.8  # Increase to allow meaningful splits
+splitting_threshold = 0.15  # Increase to allow meaningful splits
 merging_threshold = 0.80  # Reduce to permit more merges
 adaptive_threshold_min_variability = 0.2  # Increase for better variability tracking
 min_cluster_size = 1         # Allow any size clusters
@@ -70,8 +79,6 @@ log_frequency = 10
 
 # Forgetting Parameters
 decay_after_events = 10
-removal_threshold_events = decay_after_events * 2
-frequency_decay_threshold = 0.5
 lossy_counting_budget = 500
 
 def adaptive_threshold_variability(feature_vectors):

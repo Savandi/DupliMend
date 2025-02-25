@@ -20,28 +20,63 @@ class DecayingTDigest:
 
     def update(self, value, weight=1.0):
         """Update the T-Digest with a new value and optional weight."""
-        self.tdigest.update(value, weight)
-        self.updates += 1
+        try:
+            print(f"[DEBUG] Entering DecayingTDigest.update() with value: {value} (Type: {type(value)}), weight: {weight}")
 
-        if self.updates - self.last_decay >= self.decay_interval:
-            self._apply_decay()
+            # Ensure value is numeric
+            if not isinstance(value, (int, float)):
+                print(f"[ERROR] Non-numeric value detected in DecayingTDigest.update(): {value} (Type: {type(value)})")
+                raise ValueError(f"Invalid value type: {value}")
+
+            if not isinstance(weight, (int, float)):
+                print(f"[ERROR] Non-numeric weight detected: {weight} (Type: {type(weight)})")
+                raise ValueError(f"Invalid weight type: {weight}")
+
+            self.tdigest.update(value, weight)
+            self.updates += 1
+            print(f"[DEBUG] Successfully updated TDigest with value: {value}")
+
+            if self.updates - self.last_decay >= self.decay_interval:
+                self._apply_decay()
+
+        except Exception as e:
+            print(f"[ERROR] Exception in DecayingTDigest.update(): {e}")
 
     def _apply_decay(self):
         """Apply decay to all centroids in the T-Digest."""
-        self.tdigest.compress()  # ✅ Ensure centroids are updated
-        updated_centroids = []
+        try:
+            centroids = self.tdigest.centroids_to_list()  # ✅ Get centroids
 
-        for mean, weight in self.tdigest.centroids_to_list():
-            updated_centroids.append(
-                (float(mean), float(weight) * float(self.decay_factor)))  # ✅ Ensure float multiplication
+            print(f"[DEBUG] Applying decay: Current centroids before decay: {centroids}")
 
-        # ✅ Rebuild the T-Digest with decayed centroids
-        self.tdigest = TDigest()
-        for mean, weight in updated_centroids:
-            self.tdigest.update(mean, weight)
+            updated_centroids = []
 
-        self.last_decay = self.updates
-        print(f"[DEBUG] Applied decay: New centroid weights after {self.decay_factor} decay factor.")
+            for entry in centroids:
+                # ✅ Handle both tuple and dictionary formats
+                if isinstance(entry, dict):
+                    if 'm' in entry and 'c' in entry:
+                        mean, weight = float(entry['m']), float(entry['c'])
+                    else:
+                        print(f"[ERROR] Unexpected centroid format: {entry}")
+                        continue
+                elif isinstance(entry, tuple):
+                    mean, weight = float(entry[0]), float(entry[1])
+                else:
+                    print(f"[ERROR] Invalid centroid type: {type(entry)}, value: {entry}")
+                    continue
+
+                updated_centroids.append((mean, weight * self.decay_factor))
+
+            # ✅ Rebuild the T-Digest with corrected centroids
+            self.tdigest = TDigest()
+            for mean, weight in updated_centroids:
+                self.tdigest.update(mean, weight)
+
+            print(f"[DEBUG] Applied decay: New centroid weights after {self.decay_factor} decay factor.")
+            print(f"[DEBUG] Current centroids after decay: {self.tdigest.centroids_to_list()}")
+
+        except Exception as e:
+            print(f"[ERROR] Exception in _apply_decay(): {e}")
 
     def percentile(self, p):
         """Get the specified percentile from the digest."""
@@ -81,44 +116,60 @@ class EnhancedAdaptiveBinning:
         try:
             print(f"[DEBUG] Entering update_bins() with new_value: {new_value} (Type: {type(new_value)})")
 
-            if isinstance(new_value, str) and 'm' in new_value:
-                print(f"[ERROR] 'm' detected in new_value BEFORE conversion: {new_value}")
+            # Ensure value remains numeric before processing
+            if not isinstance(new_value, (int, float, str)):
+                print(f"[ERROR] Unexpected type detected in update_bins: {new_value} (Type: {type(new_value)})")
+                return 0
 
-            # Ensure numeric conversion and handle non-numeric values
+            # Check if new_value turns into a string unexpectedly
             if isinstance(new_value, str):
-                # Remove whitespace and convert to lowercase
-                print(f"[DEBUG] Before any modification - new_value: {new_value}")
-                new_value = new_value.strip().lower() if isinstance(new_value, str) else new_value
-                print(f"[DEBUG] After stripping and lowering - new_value: {new_value}")
+                print(f"[DEBUG] String detected inside update_bins(): {new_value}")
+                new_value = new_value.strip().lower()
 
-                # Check if the value is invalid
+                # Detect when 'm' appears
+                if new_value == 'm':
+                    print(f"[ERROR] 'm' string detected inside update_bins()! Investigating source...")
+
                 if new_value in ['nan', 'null', '', 'm']:
-                    print(f"[ERROR] Invalid numeric conversion detected: {new_value}, assigning to bin 0")
+                    print(f"[ERROR] Invalid numeric conversion for {new_value}, assigning to bin 0")
                     return 0
 
-                # Attempt conversion
                 try:
                     new_value = float(new_value)
-                    print(f"[DEBUG] Successfully converted string to float: {new_value}")
+                    print(f"[DEBUG] Converted feature value: {new_value}")
                 except ValueError:
-                    print(f"[ERROR] Cannot convert {new_value} to float, defaulting to bin 0")
+                    print(f"[ERROR] Cannot convert {new_value} to float. Returning bin 0.")
                     return 0
 
-            print(f"[DEBUG] Proceeding with binning. Final new_value: {new_value} (Type: {type(new_value)})")
+            print(f"[DEBUG] Final new_value before binning: {new_value} (Type: {type(new_value)})")
 
-            # Continue binning process
+            # ✅ Check if new_value changes after calling decaying_digest.update()
+            print(f"[DEBUG] Before decaying_digest.update(new_value): {new_value}")
             self.decaying_digest.update(new_value)
+            print(f"[DEBUG] After decaying_digest.update(new_value): {new_value}")
+
+            # ✅ Check if new_value changes after appending to recent_values
+            print(f"[DEBUG] Before appending to recent_values: {new_value}")
             self.recent_values.append(new_value)
+            print(f"[DEBUG] After appending to recent_values: {self.recent_values[-1]}")
 
             if len(self.recent_values) > self.window_size:
                 self.recent_values.pop(0)
 
-            # Check for drift using ADWIN
-            if self.drift_detector.update(new_value):
+            # ✅ Check if new_value changes after calling drift_detector.update()
+            print(f"[DEBUG] Before drift_detector.update(new_value): {new_value}")
+            drift_detected = self.drift_detector.update(new_value)
+            print(f"[DEBUG] After drift_detector.update(new_value): {new_value}, Drift detected: {drift_detected}")
+
+            if drift_detected:
                 print(f"[DRIFT DETECTED] Recalculating bins due to change in distribution!")
                 self._recalculate_bins()
 
+            # ✅ Check if new_value changes after calling _assign_bin()
+            print(f"[DEBUG] Before _assign_bin(new_value): {new_value}")
             assigned_bin = self._assign_bin(new_value)
+            print(f"[DEBUG] After _assign_bin(new_value): {assigned_bin}")
+
             assigned_bin = int(round(assigned_bin))  # Ensure integer bin assignment
             self.bin_counts[assigned_bin] += 1
 

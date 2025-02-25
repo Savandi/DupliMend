@@ -1,14 +1,18 @@
-from src.homonym_mend.feature_selection_with_drift_detection import update_feature_weights
 from src.utils.logging_utils import log_traceability
 from collections import defaultdict
 import numpy as np
 from datetime import datetime, timedelta
+import logging
 from config.config import (
     splitting_threshold,
     merging_threshold,
     grace_period_events,
-    adaptive_threshold_min_variability, similarity_penalty, previousEvents)
+    adaptive_threshold_min_variability,
+    similarity_penalty,
+    previousEvents
+)
 from src.utils.similarity_utils import compute_contextual_weighted_similarity
+
 # --- GLOBAL VARIABLES ---
 cluster_grace_period = timedelta(seconds=grace_period_events)
 feature_vectors = defaultdict(list)
@@ -20,13 +24,6 @@ adaptive_merge_threshold = merging_threshold
 cluster_last_updated = defaultdict(lambda: datetime.min)
 
 
-# # Configure logging
-# logging.basicConfig(
-#     filename="../../traceability_log.txt",
-#     level=logging.INFO,
-#     format="%(asctime)s - %(levelname)s - %(message)s",
-# )
-
 # --- FUNCTION DEFINITIONS ---
 def adaptive_threshold_variability(cluster_feature_vectors):
     """
@@ -36,12 +33,12 @@ def adaptive_threshold_variability(cluster_feature_vectors):
     if len(cluster_feature_vectors) <= 1:
         return adaptive_threshold_min_variability  # Use stricter lower bound
 
-    # Compute pairwise distances between feature vectors
     distances = []
     for i in range(len(cluster_feature_vectors)):
         for j in range(i + 1, len(cluster_feature_vectors)):
             distances.append(
-                np.linalg.norm(np.array(cluster_feature_vectors[i]) - np.array(cluster_feature_vectors[j])))
+                np.linalg.norm(np.array(cluster_feature_vectors[i]) - np.array(cluster_feature_vectors[j]))
+            )
 
     if not distances:
         return adaptive_threshold_min_variability  # Use stricter lower bound
@@ -49,8 +46,11 @@ def adaptive_threshold_variability(cluster_feature_vectors):
     mean_distance = np.mean(distances)
     std_distance = np.std(distances)
 
-    # Normalize the variability (mean +/- std range)
-    variability_factor = min(max((mean_distance + std_distance) / 10.0, adaptive_threshold_min_variability), 1.5)
+    # Normalize variability factor
+    variability_factor = min(
+        max((mean_distance + std_distance) / 10.0, adaptive_threshold_min_variability),
+        1.5
+    )
     return variability_factor
 
 
@@ -75,39 +75,24 @@ def compute_similarity(cluster_vectors, activity_label, feature_weights=None):
     Compute pairwise similarity matrix between all cluster vectors.
     """
     if feature_weights is None:
-        feature_weights = compute_feature_weights(cluster_vectors)  # Use computed feature weights
+        feature_weights = compute_feature_weights(cluster_vectors)
+
+    cluster_vectors = [np.array(v, dtype=np.float64) for v in cluster_vectors]  # Ensure NumPy format
 
     n_clusters = len(cluster_vectors)
-    similarity_matrix = np.zeros((n_clusters, n_clusters))  # ✅ Ensure proper NumPy array
+    if n_clusters == 0:
+        return np.array([])  # Avoid empty matrix error
 
-    # ✅ Include previous event features
-    previous_event_features = [f"prev_activity_{i}" for i in range(1, previousEvents + 1)]
+    similarity_matrix = np.zeros((n_clusters, n_clusters), dtype=np.float64)
 
-    # ✅ Adjust feature weights dynamically for previousEvents
-    for feature in previous_event_features:
-        if feature not in feature_weights:
-            feature_weights[feature] = 1.0  # ✅ Initialize with default weight
-
-        # ✅ Use adaptive weight update for previousEvents features
-        update_feature_weights(activity_label, feature, feature_weights.get(feature, 1.0))
-
-    # ✅ Compute similarity matrix with updated feature weights
     for i in range(n_clusters):
         for j in range(i, n_clusters):
             similarity = compute_contextual_weighted_similarity(
-                cluster_vectors[i],
-                cluster_vectors[j],
-                feature_weights,
-                feature_weights,
-                alpha=similarity_penalty
+                cluster_vectors[i], cluster_vectors[j], feature_weights, feature_weights, alpha=similarity_penalty
             )
-            similarity_matrix[i, j] = similarity  # ✅ Correct NumPy indexing
-            similarity_matrix[j, i] = similarity  # ✅ Ensure symmetry
+            similarity_matrix[i, j] = similarity
+            similarity_matrix[j, i] = similarity  # Ensure symmetry
 
-    print(f"[DEBUG] Verifying similarity matrix: Shape = {similarity_matrix.shape}")
-    if similarity_matrix.shape[0] != similarity_matrix.shape[1]:
-        print("[ERROR] Similarity matrix is not square! Check compute_similarity()")
-    similarity_matrix = np.array(similarity_matrix, dtype=np.float64)
     return similarity_matrix
 
 
@@ -115,44 +100,35 @@ def analyze_splits_and_merges(activity_label, dbstream_instance, feature_vector,
     """
     Improved split/merge analysis for better debugging and error handling.
     """
-    cluster_id = assigned_cluster_id  # ✅ Use assigned cluster ID from main.py
+    cluster_id = assigned_cluster_id  # Use assigned cluster ID from main.py
 
-    # ✅ Retrieve active micro-clusters
+    # Retrieve active micro-clusters
     micro_clusters = [c for c in dbstream_instance.get_micro_clusters() if c["weight"] > 0.01]
 
-    # ✅ Include the new feature vector in similarity calculations
+    # Include the new feature vector in similarity calculations
     cluster_feature_vectors = [cluster["centroid"] for cluster in micro_clusters] + [feature_vector]
 
-    print(f"[DEBUG] Active micro-clusters: {len(micro_clusters)}")
-    print(f"[DEBUG] Number of distinct feature vectors considered: {len(cluster_feature_vectors)} (includes current event)")
-    print(f"[DEBUG] Feature vectors before similarity computation: {cluster_feature_vectors}")
+    logging.debug(f"[DEBUG] Active micro-clusters: {len(micro_clusters)}")
+    logging.debug(f"[DEBUG] Number of distinct feature vectors considered: {len(cluster_feature_vectors)}")
+    logging.debug(f"[DEBUG] Feature vectors before similarity computation: {cluster_feature_vectors}")
 
-    # ✅ Compute similarity matrix
-    similarity_matrix = compute_similarity(cluster_feature_vectors, activity_label)
-    similarity_matrix = np.array(similarity_matrix, dtype=np.float64)  # ✅ Ensure NumPy array
-    print(f"[DEBUG] Similarity Matrix shape: {similarity_matrix.shape}")
-
-    # ✅ Verify the similarity matrix structure
-    print(f"[DEBUG] Verifying similarity matrix: Shape = {similarity_matrix.shape}")
-    if similarity_matrix.shape[0] != similarity_matrix.shape[1]:
-        print("[ERROR] Similarity matrix is not square! Check compute_similarity()")
-
-    # ✅ Skip analysis if only 1 feature vector
-    if similarity_matrix.shape[0] == 1:
-        print(f"[DEBUG] Only one cluster detected, skipping split/merge checks.")
+    if len(cluster_feature_vectors) == 1:
+        logging.debug(f"[DEBUG] Only one cluster detected, skipping split/merge checks.")
         return "no_change", cluster_id
 
-        # ✅ Analyze similarity for split detection
+    # Compute similarity matrix
+    similarity_matrix = compute_similarity(cluster_feature_vectors, activity_label)
+    logging.debug(f"[DEBUG] Similarity Matrix shape: {similarity_matrix.shape}")
+
+    if similarity_matrix.shape[0] != similarity_matrix.shape[1]:
+        logging.error("[ERROR] Similarity matrix is not square! Check compute_similarity()")
+        return "no_change", cluster_id
+
+    # Analyze similarity for split detection
     dissimilar_pairs = []
     for i in range(len(cluster_feature_vectors)):
         for j in range(i + 1, len(cluster_feature_vectors)):
-            if not (0 <= i < similarity_matrix.shape[0] and 0 <= j < similarity_matrix.shape[1]):
-                print(
-                    f"[ERROR] Index ({i},{j}) out of bounds for similarity matrix with shape {similarity_matrix.shape}")
-                continue  # ✅ Skip invalid accesses
-
-            sim_score = similarity_matrix[i, j]
-            if sim_score < adaptive_split_threshold:
+            if similarity_matrix[i, j] < adaptive_split_threshold:
                 dissimilar_pairs.append((i, j))
 
     if dissimilar_pairs:
@@ -164,13 +140,12 @@ def analyze_splits_and_merges(activity_label, dbstream_instance, feature_vector,
         })
         return "split", cluster_id
 
-        # ✅ Check for merge candidates
+    # Check for merge candidates
     potential_merges = []
     for i in range(len(cluster_feature_vectors)):
         similar_neighbors = sum(
             1 for j in range(len(cluster_feature_vectors))
-            if (0 <= i < similarity_matrix.shape[0] and 0 <= j < similarity_matrix.shape[1] and
-                i != j and similarity_matrix[i, j] > adaptive_merge_threshold)
+            if i != j and similarity_matrix[i, j] > adaptive_merge_threshold
         )
         if similar_neighbors == 1:
             potential_merges.append(i)
@@ -184,15 +159,13 @@ def analyze_splits_and_merges(activity_label, dbstream_instance, feature_vector,
         })
         return "merge", cluster_id
 
-    print(f"[DEBUG] No split/merge detected for {activity_label}")
+    logging.debug(f"[DEBUG] No split/merge detected for {activity_label}")
     return "no_change", cluster_id
 
 
 def compute_feature_weights(cluster_vectors):
     """
     Compute feature importance weights based on variance across clusters.
-    :param cluster_vectors: List of feature vectors from clusters.
-    :return: Normalized feature weights.
     """
     if not cluster_vectors or len(cluster_vectors[0]) == 0:
         return np.ones(1)
@@ -200,15 +173,11 @@ def compute_feature_weights(cluster_vectors):
     vectors_array = np.array(cluster_vectors)
     variances = np.var(vectors_array, axis=0)
 
-    # Normalize variances to get weights
     weights = variances / np.sum(variances) if np.sum(variances) > 0 else np.ones_like(variances)
-
-    # Ensure weights don't get too small
     weights = np.maximum(weights, 0.1)
     weights = weights / np.sum(weights)
 
     return weights
-
 
 # def aggregate_vectors(cluster_vectors):
 #     """
