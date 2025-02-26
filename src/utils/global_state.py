@@ -1,16 +1,18 @@
 # global_state.py
 from collections import defaultdict, deque
-
 import pandas as pd
-
-from src.homonym_mend.dbstream import DBStream
 from src.utils.directly_follows_graph import DirectlyFollowsGraph
 
 # Move Directly Follows Graph initialization here to prevent circular import
 directly_follows_graph = DirectlyFollowsGraph()
-
+# Tracks historical feature vectors per activity
 activity_feature_history = defaultdict(list)
+# Tracks feature metadata: frequency & recency
 activity_feature_metadata = defaultdict(lambda: defaultdict(lambda: {"frequency": 0, "recency": None}))
+# Track per-activity event counts
+activity_event_counters = defaultdict(int)
+# Tracks feature importance dynamically
+feature_relevance_tracker = defaultdict(float)
 
 # Track previous activities per case (for control-flow)
 previous_events = defaultdict(lambda: deque(maxlen=3))
@@ -21,7 +23,7 @@ feature_weights = defaultdict(lambda: 1.0)
 # Historical tracking for resources
 resource_usage_history = defaultdict(lambda: defaultdict(int))
 
-dbstream_clusters = defaultdict(lambda: DBStream())
+dbstream_clusters = {}
 
 def extract_temporal_features(timestamp):
     if not isinstance(timestamp, pd.Timestamp):

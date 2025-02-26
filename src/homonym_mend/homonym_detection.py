@@ -2,16 +2,16 @@ from src.utils.logging_utils import log_traceability
 from collections import defaultdict
 import numpy as np
 from datetime import datetime, timedelta
-import logging
 from config.config import (
     splitting_threshold,
     merging_threshold,
     grace_period_events,
     adaptive_threshold_min_variability,
-    similarity_penalty,
-    previousEvents
+    similarity_penalty
 )
 from src.utils.similarity_utils import compute_contextual_weighted_similarity
+from src.utils.global_state import dbstream_clusters
+
 
 # --- GLOBAL VARIABLES ---
 cluster_grace_period = timedelta(seconds=grace_period_events)
@@ -100,36 +100,38 @@ def analyze_splits_and_merges(activity_label, dbstream_instance, feature_vector,
     """
     Improved split/merge analysis for better debugging and error handling.
     """
+    global adaptive_split_threshold, adaptive_merge_threshold  # Ensure they are globally referenced
+
     cluster_id = assigned_cluster_id  # Use assigned cluster ID from main.py
-
-    # Retrieve active micro-clusters
     micro_clusters = [c for c in dbstream_instance.get_micro_clusters() if c["weight"] > 0.01]
-
-    # Include the new feature vector in similarity calculations
     cluster_feature_vectors = [cluster["centroid"] for cluster in micro_clusters] + [feature_vector]
 
-    logging.debug(f"[DEBUG] Active micro-clusters: {len(micro_clusters)}")
-    logging.debug(f"[DEBUG] Number of distinct feature vectors considered: {len(cluster_feature_vectors)}")
-    logging.debug(f"[DEBUG] Feature vectors before similarity computation: {cluster_feature_vectors}")
+    log_traceability("cluster_analysis", activity_label, {
+        "active_micro_clusters": len(micro_clusters),
+        "distinct_feature_vectors": len(cluster_feature_vectors),
+        "feature_vectors": cluster_feature_vectors
+    })
 
     if len(cluster_feature_vectors) == 1:
-        logging.debug(f"[DEBUG] Only one cluster detected, skipping split/merge checks.")
+        log_traceability("no_split_merge", activity_label, {"reason": "Only one cluster detected"})
         return "no_change", cluster_id
 
     # Compute similarity matrix
     similarity_matrix = compute_similarity(cluster_feature_vectors, activity_label)
-    logging.debug(f"[DEBUG] Similarity Matrix shape: {similarity_matrix.shape}")
 
     if similarity_matrix.shape[0] != similarity_matrix.shape[1]:
-        logging.error("[ERROR] Similarity matrix is not square! Check compute_similarity()")
+        log_traceability("error", activity_label, {"message": "Similarity matrix is not square"})
         return "no_change", cluster_id
 
+    log_traceability("similarity_analysis", activity_label, {
+        "similarity_matrix_shape": similarity_matrix.shape,
+        "similarity_matrix": similarity_matrix.tolist()
+    })
+
     # Analyze similarity for split detection
-    dissimilar_pairs = []
-    for i in range(len(cluster_feature_vectors)):
-        for j in range(i + 1, len(cluster_feature_vectors)):
-            if similarity_matrix[i, j] < adaptive_split_threshold:
-                dissimilar_pairs.append((i, j))
+    dissimilar_pairs = [(i, j) for i in range(len(cluster_feature_vectors))
+                        for j in range(i + 1, len(cluster_feature_vectors))
+                        if similarity_matrix[i, j] < adaptive_split_threshold]
 
     if dissimilar_pairs:
         unique_clusters = set(x for pair in dissimilar_pairs for x in pair)
@@ -141,14 +143,9 @@ def analyze_splits_and_merges(activity_label, dbstream_instance, feature_vector,
         return "split", cluster_id
 
     # Check for merge candidates
-    potential_merges = []
-    for i in range(len(cluster_feature_vectors)):
-        similar_neighbors = sum(
-            1 for j in range(len(cluster_feature_vectors))
-            if i != j and similarity_matrix[i, j] > adaptive_merge_threshold
-        )
-        if similar_neighbors == 1:
-            potential_merges.append(i)
+    potential_merges = [i for i in range(len(cluster_feature_vectors))
+                        if sum(1 for j in range(len(cluster_feature_vectors))
+                               if i != j and similarity_matrix[i, j] > adaptive_merge_threshold) == 1]
 
     if len(potential_merges) == 2 and similarity_matrix[
         potential_merges[0], potential_merges[1]] > adaptive_merge_threshold:
@@ -159,7 +156,7 @@ def analyze_splits_and_merges(activity_label, dbstream_instance, feature_vector,
         })
         return "merge", cluster_id
 
-    logging.debug(f"[DEBUG] No split/merge detected for {activity_label}")
+    log_traceability("no_split_merge", activity_label, {"reason": "No significant similarity changes detected"})
     return "no_change", cluster_id
 
 

@@ -27,6 +27,7 @@ class DirectlyFollowsGraph:
         #  Apply forgetting every `decay_after_events`
         if global_event_counter % decay_after_events == 0:
             self.apply_forgetting(global_event_counter)  #  Pass explicitly
+        print(f"[DEBUG] End Add transitions with specific case")
 
     def apply_forgetting(self, global_event_counter):
         """

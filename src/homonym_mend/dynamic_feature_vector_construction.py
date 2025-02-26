@@ -86,7 +86,8 @@ def forget_old_feature_vectors(activity_label):
     """
     try:
         if activity_label not in activity_feature_metadata:
-            return  # No features to forget
+            logging.error(f"[ERROR] Activity label {activity_label} not found in activity_feature_metadata!")
+            return None # No features to forget
 
         sorted_vectors = sorted(
             activity_feature_metadata[activity_label].items(),

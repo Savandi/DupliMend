@@ -1,9 +1,8 @@
 import sys
-
 from src.homonym_mend.dbstream import DBStream
+from src.utils.global_state import dbstream_clusters
 from src.homonym_mend.homonym_detection import analyze_splits_and_merges
 from src.utils.global_state import extract_temporal_features
-
 print(f"Start of main, called from: {sys.argv[0]}")
 import time
 import pandas as pd
@@ -63,8 +62,18 @@ def construct_feature_vector(event, top_features, global_event_counter):
 #     from src.homonym_mend.homonym_detection import analyze_splits_and_merges  # ✅ Lazy import
 #     return analyze_splits_and_merges  # ✅ Remove dbstream_clusters
 
+def get_or_create_dbstream(activity_label):
+    """
+    Retrieve existing DBStream instance or create a new one.
+    """
+    if activity_label not in dbstream_clusters:
+        from src.homonym_mend.dbstream import DBStream  # Lazy import to prevent circular import issues
+        dbstream_clusters[activity_label] = DBStream()
+        log_traceability("dbstream_create", activity_label, "Created new DBStream instance")
 
-dbstream_instances = {}
+    return dbstream_clusters[activity_label]
+
+
 
 
 def main():
@@ -169,19 +178,25 @@ def main():
             print(f"Start Dynamic Feature Vector Construction for {global_event_counter}")
             feature_vector_data = process_event(event_dict, top_features, global_event_counter)
             if feature_vector_data is None:
+                print(f"[ERROR] Feature vector missing for activity: {activity_label}")
                 continue
+
+            print(f"[DEBUG] Feature vector for {activity_label}: {feature_vector_data['new_vector']}")
 
             # Perform homonym detection
             print(f"Start Homonym Detection and Online Clustering with Dbstream for {global_event_counter}")
 
             # Retrieve or create DBStream instance
-            if activity_label not in dbstream_instances:
-                dbstream_instances[activity_label] = DBStream()
-            dbstream_instance = dbstream_instances[activity_label]
+            if activity_label not in dbstream_clusters:
+                dbstream_clusters[activity_label] = DBStream()  # Initialize only once
+
+            print(f"[DEBUG] Current DBStream instances: {list(dbstream_clusters.keys())}")
+
+            dbstream_instance = get_or_create_dbstream(activity_label)
 
             # Assign cluster ID for the feature vector
             assigned_cluster_id = dbstream_instance.partial_fit(feature_vector_data["new_vector"], activity_label)
-
+            print(f"[DEBUG] Assigned Cluster ID for {activity_label}: {assigned_cluster_id}")
             # Analyze splits and merges
             split_merge_result, cluster_id = analyze_splits_and_merges(
                 activity_label, dbstream_instance, feature_vector_data["new_vector"], assigned_cluster_id

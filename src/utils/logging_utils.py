@@ -9,13 +9,13 @@ log_file_path = os.path.join(log_dir, "traceability_log.txt")
 
 logging.basicConfig(
     filename=log_file_path,
-    level=logging.DEBUG,  # ✅ Change INFO to DEBUG for full logs
+    level=logging.DEBUG,
     format="%(asctime)s - %(levelname)s - %(message)s",
-    filemode='w'  # ✅ Overwrites log file each run (change to 'a' to append)
+    filemode='w'  #  Overwrites log file each run (change to 'a' to append)
 )
 
 def log_traceability(action, label, details):
     """
     Logs traceability and auditability details.
     """
-    logging.debug(f"{action.upper()} - {label}: {details}")  # ✅ Ensure using debug level
+    logging.debug(f"{action.upper()} - {label}: {details}")  #  Ensure using debug level
