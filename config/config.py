@@ -30,9 +30,9 @@ forgetting_factor = 0.8      # Forget old patterns faster
 temporal_decay_rate = 0.05  # Faster temporal decay
 forgetting_threshold = 0.0005  # Lower threshold to maintain more information
 positional_penalty_alpha = 0.3  # Stronger positional penalty
-adaptive_window_min_size = 50
-adaptive_window_max_size = 200
-initial_window_size = 100
+adaptive_window_min_size = 100
+adaptive_window_max_size = 100000
+initial_window_size = 500
 lossy_counting_threshold = 0.01
 lossy_counting_error_rate = 0.01
 previousEvents = 3
@@ -77,9 +77,6 @@ threshold_adjustment_factor = 0.05
 # --- Logging Parameters ---
 log_frequency = 10
 
-# Forgetting Parameters
-decay_after_events = 10
-lossy_counting_budget = 500
 
 def adaptive_threshold_variability(feature_vectors):
     """
