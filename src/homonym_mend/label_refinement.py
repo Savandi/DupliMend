@@ -33,9 +33,13 @@ class LabelRefiner:
         Ensures '_0', '_1' is only appended if multiple clusters exist.
         """
         cluster_suffix = self.cluster_mapping[event_label]
+        print(f"[DEBUG] Before updating: {event_label} metadata: {activity_feature_metadata.get(event_label, 'Not Found')}")
 
         # Retrieve existing cluster assignments for this activity label
-        existing_clusters = activity_feature_metadata.get(event_label, {})
+        if event_label not in activity_feature_metadata:
+            print(f"[WARNING] Activity label {event_label} was not found, initializing it now in label_refinement")
+            activity_feature_metadata[event_label] = {}
+        existing_clusters = activity_feature_metadata[event_label]
 
         active_clusters = dbstream_instance.get_micro_clusters()  # ✅ Fetch actual active clusters
         if len(active_clusters) <= 1:

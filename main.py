@@ -9,10 +9,9 @@ import pandas as pd
 from config.config import *
 from src.homonym_mend.dynamic_binning_and_categorization import stream_event_log, \
     EnhancedAdaptiveBinning
-from src.homonym_mend.dynamic_feature_vector_construction import activity_feature_metadata, process_event
 from src.homonym_mend.label_refinement import LabelRefiner
 from src.utils.logging_utils import log_traceability
-
+from src.homonym_mend.dynamic_feature_vector_construction import activity_feature_metadata, process_event
 def is_valid_timestamp(ts):
     """
     Attempts to parse the timestamp using multiple formats to handle variations.
@@ -211,6 +210,9 @@ def main():
             # Update feature metadata
             print(f"Converting feature vector to immutable tuple")
             feature_vector_tuple = tuple(feature_vector_data["new_vector"])
+            if activity_label not in activity_feature_metadata:
+                print(
+                    f"[ERROR] Activity label {activity_label} unexpectedly missing in feature metadata before refinement!")
             activity_feature_metadata[activity_label][feature_vector_tuple]["refined_label"] = refined_activity
 
             processed_event_ids.add(event_id)

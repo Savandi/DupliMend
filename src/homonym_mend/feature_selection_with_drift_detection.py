@@ -251,6 +251,64 @@ def compute_feature_scores(event, event_id_column, case_id_column, control_flow_
 
     return feature_scores
 
+
+def detect_drift(feature, feature_scores):
+    """
+    Uses ADWIN to detect drift in feature scores and dynamically adjust feature weights.
+    """
+    if feature not in drift_detector:
+        drift_detector[feature] = ADWIN()
+
+    avg_score = np.mean(list(feature_scores.values())) if feature_scores else 0
+    drift_detected = drift_detector[feature].update(avg_score)
+
+    if drift_detected:
+        feature_weights[feature] = min(2.0, feature_weights[feature] * 1.1)
+    else:
+        feature_weights[feature] = max(0.5, feature_weights[feature] * 0.9)
+
+    return drift_detected
+
+
+
+def select_features(event, event_id_column, control_flow_column, timestamp_column, resource_column, data_columns, global_event_counter):
+    """
+    Selects the most relevant features dynamically, ensuring adaptive forgetting is applied.
+    """
+    try:
+        feature_scores = compute_feature_scores(event, event_id_column, case_id_column, control_flow_column,
+                                                timestamp_column, resource_column, data_columns, global_event_counter)
+        top_n = int(min(adaptive_threshold(feature_scores), max_top_n_features))
+
+        valid_scores = {k: v for k, v in feature_scores.items() if isinstance(v, (int, float))}
+        selected_features = sorted(valid_scores.items(), key=lambda x: x[1], reverse=True)[:top_n]
+
+        return [feature for feature, _ in selected_features]
+
+    except Exception as e:
+        print(f"[ERROR] Failed to select features: {str(e)}")
+        traceback.print_exc()
+        return []
+
+
+
+def adaptive_threshold(feature_scores):
+    """
+    Compute an adaptive threshold for feature selection based on the variability in feature scores.
+    """
+    # ✅ Convert scores to a numeric array, ignoring non-numeric values
+    numeric_scores = [score for score in feature_scores.values() if isinstance(score, (int, float))]
+
+    if not numeric_scores:  # ✅ Avoid empty lists
+        return 1.0  # Default threshold if no valid scores exist
+
+    variability = np.std(numeric_scores)  # ✅ Now only operates on numeric values
+
+    # Compute the adaptive threshold using variability
+    adaptive_threshold = min(max(variability / 10.0, 0.1), 1.5)
+
+    return adaptive_threshold
+
 # def compute_feature_scores(event, event_id_column, case_id_column, control_flow_column, timestamp_column, resource_column, data_columns, global_event_counter):
 #     feature_scores = defaultdict(float)
 #     case_id = event[case_id_column]
@@ -433,61 +491,3 @@ def compute_feature_scores(event, event_id_column, case_id_column, control_flow_
 #
 #     print(f"Out of Feature Scores")
 #     return feature_scores
-
-
-def detect_drift(feature, feature_scores):
-    """
-    Uses ADWIN to detect drift in feature scores and dynamically adjust feature weights.
-    """
-    if feature not in drift_detector:
-        drift_detector[feature] = ADWIN()
-
-    avg_score = np.mean(list(feature_scores.values())) if feature_scores else 0
-    drift_detected = drift_detector[feature].update(avg_score)
-
-    if drift_detected:
-        feature_weights[feature] = min(2.0, feature_weights[feature] * 1.1)
-    else:
-        feature_weights[feature] = max(0.5, feature_weights[feature] * 0.9)
-
-    return drift_detected
-
-
-
-def select_features(event, event_id_column, control_flow_column, timestamp_column, resource_column, data_columns, global_event_counter):
-    """
-    Selects the most relevant features dynamically, ensuring adaptive forgetting is applied.
-    """
-    try:
-        feature_scores = compute_feature_scores(event, event_id_column, case_id_column, control_flow_column,
-                                                timestamp_column, resource_column, data_columns, global_event_counter)
-        top_n = int(min(adaptive_threshold(feature_scores), max_top_n_features))
-
-        valid_scores = {k: v for k, v in feature_scores.items() if isinstance(v, (int, float))}
-        selected_features = sorted(valid_scores.items(), key=lambda x: x[1], reverse=True)[:top_n]
-
-        return [feature for feature, _ in selected_features]
-
-    except Exception as e:
-        print(f"[ERROR] Failed to select features: {str(e)}")
-        traceback.print_exc()
-        return []
-
-
-
-def adaptive_threshold(feature_scores):
-    """
-    Compute an adaptive threshold for feature selection based on the variability in feature scores.
-    """
-    # ✅ Convert scores to a numeric array, ignoring non-numeric values
-    numeric_scores = [score for score in feature_scores.values() if isinstance(score, (int, float))]
-
-    if not numeric_scores:  # ✅ Avoid empty lists
-        return 1.0  # Default threshold if no valid scores exist
-
-    variability = np.std(numeric_scores)  # ✅ Now only operates on numeric values
-
-    # Compute the adaptive threshold using variability
-    adaptive_threshold = min(max(variability / 10.0, 0.1), 1.5)
-
-    return adaptive_threshold
