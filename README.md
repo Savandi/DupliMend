@@ -5,7 +5,7 @@
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0.1+-red.svg)](https://pytorch.org/)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 
-Code and additional resources for the paper **"DupliMend: Online Detection and Refinement of Imprecise Activity Labels"** by Savandi Kalukapuge, Andrzej Janusz, and Moe Thandar Wynn (CAiSE 2026).
+Source code (re-initialised from a legacy repository for this new release) and additional resources for the paper **"DupliMend: Online Detection and Refinement of Imprecise Activity Labels"** by Savandi Kalukapuge, Andrzej Janusz, and Moe Thandar Wynn (CAiSE 2026).
 
 ## ⭐ Key Novel Contributions
 
