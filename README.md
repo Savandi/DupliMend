@@ -7,15 +7,17 @@
 
 Code and additional resources for the paper **"DupliMend: Online Detection and Refinement of Imprecise Activity Labels"** by Savandi Kalukapuge, Andrzej Janusz, and Moe Thandar Wynn (CAiSE 2026).
 
-## Abstract
+## ⭐ Key Novel Contributions
 
-The effectiveness of streaming process mining (PM) largely depends on the quality of its input, process event streams (PESs), continuously emitted by interconnected IT systems. A critical quality issue in real-life PESs is the occurrence of imprecise activity labels that syntactically hide contextually distinct process steps executed, i.e., **homonymous activity labels**. If unresolved, this issue distorts true process reality and negatively impacts the reliability and accuracy of streaming PM analyses, particularly in volatile environments. To address this challenge, we introduce **DupliMend**, an adaptive framework for detecting and refining homonymous activity labels within PESs by combining multi-perspective deep representation learning with online clustering to dynamically split and merge label variants as new events arrive. A hybrid drift detector monitors distributional shifts, triggering selective fine-tuning of activity-specific sparse denoising autoencoders to maintain accuracy as the PES evolves. Our continual learning mechanism reduces catastrophic forgetting and supports model adaptation while preserving learned knowledge. Extensive experiments on synthetic and real-life event logs demonstrate the effectiveness and feasibility of DupliMend, which improves cluster accuracy and precision of discovered process models with minimal latency and achieves the **best average rank** amongst competitor methods.
+1. **A fully unsupervised, near–real-time framework for homonymous label detection and refinement**  
+   DupliMend is the *first* streaming process mining approach that treats **all activity labels as potential homonym candidates**, without requiring prior specification, complete traces, or full-log analysis to enable **automatic, on-the-fly detection and refinement** of imprecise labels as events arrive.
 
-## Key Contributions
+2. **Multi-perspective deep representation learning using activity-specific sparse denoising autoencoders (SDAEs)**  
+   DupliMend introduces activity-specific SDAEs that encode **control-flow context**, **categorical attributes**, and **numerical attributes** into compact latent representations. Coupled with online clustering, this allows the system to **dynamically split and merge label variants** as behavioural patterns evolve in the process event stream.
 
-1. **Near-real-time pipeline** that treats all activity labels as potential homonym candidates without requiring a priori specification in PESs to detect and refine homonymous labels more efficiently.
-2. **Multi-perspective deep representation learning** using activity-specific sparse denoising autoencoders (SDAE) that encode both control-flow context and data attributes, coupled with online machine learning to dynamically split and merge label variants.
-3. **Hybrid drift-aware continual learning mechanism** that integrates statistical drift detection with cluster-aware regularisation and centroid memory to maintain stable refinement under evolving process behaviour while avoiding catastrophic forgetting.
+3. **A hybrid drift-aware continual learning mechanism for stable refinement under evolving PESs**  
+   DupliMend integrates **statistical drift detection (ADWIN)** with **cluster-aware regularisation** and **centroid memory replay**, enabling the model to adapt to changing execution behaviour while **mitigating catastrophic forgetting**, ensuring stable label refinement even under volatility, long-running cases, and concept drift.
+
 
 ## Approach High-Level Overview
 ![DupliMend High-Level Overview](DupliMend_Approach_New.png)
@@ -381,6 +383,7 @@ DupliMend is compared against two established offline methods:
 The complete experimental results (CSV files with all metrics across all parameter configurations) are available at:
 
 **[(Dropbox Link)](https://www.dropbox.com/scl/fo/qfxvyagrczl68hiq1xd17/ANasY83Ti-5otlTkbnrYmW8?rlkey=yocrf8hy63euj8hwodfq2kids&st=e2ng9b3v&dl=0)**
+
 If the link expires or you cannot access the files, please get in touch with me at [**savandi.kalukapuge@hdr.qut.edu.com**](mailto:savandi.kalukapuge@hdr.qut.edu.com) to receive the full results.
 
 Optimised hyperparameter values from Bayesian optimisation are available in [`src/evaluation_results/bayesian_optimization/`](src/evaluation_results/bayesian_optimization/).
