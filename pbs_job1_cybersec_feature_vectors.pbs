@@ -1,0 +1,290 @@
+#!/bin/bash -l
+#PBS -N duplimend_job1_cybersec
+#PBS -l select=1:ncpus=32:ngpus=1:mem=512gb:gpu_id=H100
+#PBS -l walltime=48:00:00
+#PBS -j oe
+#PBS -m abe
+#PBS -M savandi.kalukapuge@hdr.qut.edu.au
+#PBS -V
+
+# Removed 'set -e' to allow loop to continue through all combinations
+# Keep -u for undefined variable checking and -o pipefail for pipeline errors
+set -uo pipefail
+
+cd "$PBS_O_WORKDIR"
+
+echo "===== JOB 1: CYBERSECURITY FEATURE GENERATION (32 COMBINATIONS) ====="
+echo "JobID : ${PBS_JOBID:-N/A}"
+echo "Host  : $(hostname)"
+echo "Work  : $(pwd)"
+echo "Date  : $(date)"
+echo "CUDA_VISIBLE_DEVICES: ${CUDA_VISIBLE_DEVICES:-unset}"
+echo "====================================================================="
+
+# Modules
+module load GCC/12.3.0
+module load Python/3.11.3
+
+# Environment setup
+PROJECT_ROOT="$PBS_O_WORKDIR"
+SRC_DIR="$PROJECT_ROOT/src"
+VENV_DIR="$PROJECT_ROOT/venv"
+VENV_ACT="$VENV_DIR/bin/activate"
+REQS="$PROJECT_ROOT/requirements.txt"
+
+# Performance settings
+export OMP_NUM_THREADS=32
+export MKL_NUM_THREADS=32
+export NUMBA_NUM_THREADS=32
+export OPENBLAS_NUM_THREADS=32
+export NUMEXPR_MAX_THREADS=32
+export PYTHONPATH="$SRC_DIR:${PYTHONPATH:-}"
+
+# Setup virtualenv
+[[ -d "$SRC_DIR" ]] || { echo "ERROR: Missing src at $SRC_DIR"; exit 1; }
+if [[ ! -d "$VENV_DIR" ]]; then
+  python -m venv "$VENV_DIR"
+fi
+source "$VENV_ACT"
+python -m pip install --upgrade pip
+[[ -f "$REQS" ]] && python -m pip install -r "$REQS"
+
+# Create progress tracking
+mkdir -p "Z:/cybersecurity_iotdata/checkpoints"
+PROGRESS_FILE="Z:/cybersecurity_iotdata/checkpoints/job1_progress.log"
+SUMMARY_FILE="Z:/cybersecurity_iotdata/checkpoints/job1_summary.txt"
+
+echo "$(date): Starting Job 1 - Feature Generation Loop (32 combinations)" >> "$PROGRESS_FILE"
+
+# Initialize summary
+cat > "$SUMMARY_FILE" << EOF
+Feature Generation Loop Summary
+==============================
+Started: $(date)
+Host: $(hostname)
+Total Combinations: 32
+
+Progress:
+EOF
+
+# Fixed parameters (removed from sensitivity analysis)
+export TRAINING_APPROACH="offline"
+
+# Statistics tracking
+COMPLETED_COUNT=0
+SKIPPED_COUNT=0
+FAILED_COUNT=0
+
+# Loop through all 32 combinations
+for PBS_ARRAY_INDEX in {1..32}; do
+    echo ""
+    echo "================================================================="
+    echo "PROCESSING COMBINATION ${PBS_ARRAY_INDEX} of 32"
+    echo "================================================================="
+
+    # Calculate parameter combination indices for this iteration
+    CONTROL_FLOW_INDEX=$(( (PBS_ARRAY_INDEX - 1) / 16 + 1 ))
+    CONTEXT_INDEX=$(( ((PBS_ARRAY_INDEX - 1) % 16) / 4 + 1 ))
+    BOOST_INDEX=$(( (PBS_ARRAY_INDEX - 1) % 4 + 1 ))
+
+    echo "Parameter Mapping: Combination ${PBS_ARRAY_INDEX} -> CF:${CONTROL_FLOW_INDEX}, CTX:${CONTEXT_INDEX}, BOOST:${BOOST_INDEX}"
+
+    # Set use_control_flow parameter (2 values)
+    case ${CONTROL_FLOW_INDEX} in
+        1) export USE_CONTROL_FLOW="True" ;;
+        2) export USE_CONTROL_FLOW="False" ;;
+        *) echo "ERROR: Invalid CONTROL_FLOW_INDEX: ${CONTROL_FLOW_INDEX}"; continue ;;
+    esac
+
+    # Set context_window parameter (4 values)
+    case ${CONTEXT_INDEX} in
+        1) export CONTROL_FLOW_CONTEXT_WINDOW=2 ;;
+        2) export CONTROL_FLOW_CONTEXT_WINDOW=4 ;;
+        3) export CONTROL_FLOW_CONTEXT_WINDOW=7 ;;
+        4) export CONTROL_FLOW_CONTEXT_WINDOW=10 ;;
+        *) echo "ERROR: Invalid CONTEXT_INDEX: ${CONTEXT_INDEX}"; continue ;;
+    esac
+
+    # Set feature_boost parameter (4 values)
+    case ${BOOST_INDEX} in
+        1) export CONTROL_FLOW_FEATURE_BOOST=1 ;;
+        2) export CONTROL_FLOW_FEATURE_BOOST=50 ;;
+        3) export CONTROL_FLOW_FEATURE_BOOST=100 ;;
+        4) export CONTROL_FLOW_FEATURE_BOOST=200 ;;
+        *) echo "ERROR: Invalid BOOST_INDEX: ${BOOST_INDEX}"; continue ;;
+    esac
+
+    # Create config name
+    export CONFIG_NAME="cf${USE_CONTROL_FLOW:0:1}_ctx${CONTROL_FLOW_CONTEXT_WINDOW}_boost${CONTROL_FLOW_FEATURE_BOOST}"
+
+    # Create structured output directory
+    FEATURE_OUTPUT_DIR="Z:/cybersecurity_iotdata/output_${PBS_ARRAY_INDEX}/feature_vectors_processed_train_data"
+    RUN_OUTPUT_DIR="Z:/cybersecurity_iotdata/run_output_${PBS_ARRAY_INDEX}"
+
+    mkdir -p "$FEATURE_OUTPUT_DIR"
+    mkdir -p "$RUN_OUTPUT_DIR"
+
+    # === OUTPUT FILE VERIFICATION ===
+    echo "---------- CHECKING EXISTING OUTPUTS ----------"
+
+    # Define expected output files from feature vector generation (based on your actual output)
+    EXPECTED_FILES=(
+        "$FEATURE_OUTPUT_DIR/activity_embeddings.pkl"
+        "$FEATURE_OUTPUT_DIR/generation_metadata.json"
+    )
+
+    # Check if all expected files exist and are non-empty
+    ALL_COMPLETE=true
+    for file in "${EXPECTED_FILES[@]}"; do
+        if [[ ! -f "$file" ]] || [[ ! -s "$file" ]]; then
+            echo "❌ Missing or empty: $file"
+            ALL_COMPLETE=false
+        else
+            echo "✅ Found: $file ($(du -h "$file" | cut -f1))"
+        fi
+    done
+
+    # Additional verification: Check if activity embeddings contain actual data
+    if [[ -f "$FEATURE_OUTPUT_DIR/activity_embeddings.pkl" ]]; then
+        if python -c "
+import pickle
+import sys
+try:
+    with open('$FEATURE_OUTPUT_DIR/activity_embeddings.pkl', 'rb') as f:
+        data = pickle.load(f)
+    if data is None or (hasattr(data, '__len__') and len(data) == 0):
+        print('Empty data')
+        sys.exit(1)
+    else:
+        print(f'Valid data: {type(data).__name__}')
+        sys.exit(0)
+except Exception as e:
+    print(f'Corrupt data: {e}')
+    sys.exit(1)
+" 2>/dev/null; then
+            echo "✅ Activity embeddings contain valid data"
+        else
+            echo "❌ Activity embeddings are corrupt or empty"
+            ALL_COMPLETE=false
+        fi
+    fi
+
+    # If all outputs are complete, skip this combination
+    if [[ "$ALL_COMPLETE" == true ]]; then
+        echo "✅ RESUME: Combination ${PBS_ARRAY_INDEX} already completed - SKIPPING"
+        echo "$(date): SKIPPED combination ${PBS_ARRAY_INDEX} - $CONFIG_NAME (already completed)" >> "$PROGRESS_FILE"
+        ((SKIPPED_COUNT++))
+        continue
+    fi
+
+    echo "⚠️  INCOMPLETE OUTPUTS - Running combination ${PBS_ARRAY_INDEX}"
+
+    # Set environment variables for Python scripts (config.py expects uppercase)
+    export EXPERIMENT_OUTPUT_DIR="Z:/cybersecurity_iotdata/output_${PBS_ARRAY_INDEX}"
+    export EXPERIMENT_CONFIG_NAME="$CONFIG_NAME"
+
+    echo "---------- FEATURE CONFIG: $CONFIG_NAME ----------"
+    echo "Parameters:"
+    echo "  use_control_flow: $USE_CONTROL_FLOW"
+    echo "  context_window: $CONTROL_FLOW_CONTEXT_WINDOW"
+    echo "  feature_boost: $CONTROL_FLOW_FEATURE_BOOST"
+    echo "--------------------------------------------------------"
+
+    # Run feature vector generation
+    echo "---------- RUNNING FEATURE GENERATION ----------"
+    START_TIME=$(date +%s)
+
+    cd "$PROJECT_ROOT"
+    # Run Python with environment variables set for this specific combination
+    if env EXPERIMENT_OUTPUT_DIR="Z:/cybersecurity_iotdata/output_${PBS_ARRAY_INDEX}" \
+           EXPERIMENT_CONFIG_NAME="$CONFIG_NAME" \
+           USE_CONTROL_FLOW="$USE_CONTROL_FLOW" \
+           CONTROL_FLOW_CONTEXT_WINDOW="$CONTROL_FLOW_CONTEXT_WINDOW" \
+           CONTROL_FLOW_FEATURE_BOOST="$CONTROL_FLOW_FEATURE_BOOST" \
+           TRAINING_APPROACH="offline" \
+           python -m feature_vector_file_generation; then
+        END_TIME=$(date +%s)
+        DURATION=$((END_TIME - START_TIME))
+        echo "✓ Feature vector generation completed in ${DURATION}s"
+
+        # Verify outputs were created successfully
+        echo "---------- VERIFYING OUTPUTS ----------"
+        OUTPUT_VERIFICATION=true
+        for file in "${EXPECTED_FILES[@]}"; do
+            if [[ ! -f "$file" ]] || [[ ! -s "$file" ]]; then
+                echo "❌ VERIFICATION FAILED: $file"
+                OUTPUT_VERIFICATION=false
+            else
+                echo "✅ VERIFIED: $file"
+            fi
+        done
+
+        if [[ "$OUTPUT_VERIFICATION" == true ]]; then
+            echo "✅ All outputs verified successfully"
+
+            # Save configuration for Job 2
+            cat > "Z:/cybersecurity_iotdata/output_${PBS_ARRAY_INDEX}/job1_config.env" << EOF
+# Job 1 Configuration - Source this in Job 2
+export CONFIG_NAME="$CONFIG_NAME"
+export PBS_ARRAY_INDEX=${PBS_ARRAY_INDEX}
+export USE_CONTROL_FLOW="$USE_CONTROL_FLOW"
+export CONTROL_FLOW_CONTEXT_WINDOW=$CONTROL_FLOW_CONTEXT_WINDOW
+export CONTROL_FLOW_FEATURE_BOOST=$CONTROL_FLOW_FEATURE_BOOST
+export FEATURE_OUTPUT_DIR="$FEATURE_OUTPUT_DIR"
+export TRAINING_APPROACH="offline"
+export COMPLETION_TIME="$(date)"
+export DURATION_SECONDS=${DURATION}
+export CONTROL_FLOW_INDEX=${CONTROL_FLOW_INDEX}
+export CONTEXT_INDEX=${CONTEXT_INDEX}
+export BOOST_INDEX=${BOOST_INDEX}
+EOF
+
+            echo "$(date): COMPLETED combination ${PBS_ARRAY_INDEX} - $CONFIG_NAME (${DURATION}s)" >> "$PROGRESS_FILE"
+            ((COMPLETED_COUNT++))
+
+            echo "✓ Configuration saved for Job 2: Z:/cybersecurity_iotdata/output_${PBS_ARRAY_INDEX}/job1_config.env"
+        else
+            echo "❌ OUTPUT VERIFICATION FAILED"
+            echo "$(date): FAILED combination ${PBS_ARRAY_INDEX} - $CONFIG_NAME (verification failed)" >> "$PROGRESS_FILE"
+            ((FAILED_COUNT++))
+        fi
+
+    else
+        echo "✗ ERROR: Feature vector generation failed for combination ${PBS_ARRAY_INDEX}"
+        echo "$(date): FAILED combination ${PBS_ARRAY_INDEX} - $CONFIG_NAME (execution failed)" >> "$PROGRESS_FILE"
+        ((FAILED_COUNT++))
+    fi
+
+    echo "Progress: Completed=${COMPLETED_COUNT}, Skipped=${SKIPPED_COUNT}, Failed=${FAILED_COUNT}"
+
+done
+
+# Final summary
+echo ""
+echo "========== JOB 1 LOOP COMPLETED =========="
+echo "✓ Processed all 32 feature generation combinations"
+echo "✓ Completed: $COMPLETED_COUNT"
+echo "✓ Skipped: $SKIPPED_COUNT"
+echo "✓ Failed: $FAILED_COUNT"
+echo "✓ All outputs saved to Z:/cybersecurity_iotdata/output_X/ directories"
+echo "✓ Ready for Job 2 autoencoder training"
+echo "✓ Finished on: $(date)"
+
+# Update summary file
+cat >> "$SUMMARY_FILE" << EOF
+
+==============================
+Completed: $(date)
+Host: $(hostname)
+Results:
+- Completed: $COMPLETED_COUNT
+- Skipped: $SKIPPED_COUNT
+- Failed: $FAILED_COUNT
+- Total: 32
+
+Ready for Job 2!
+==============================
+EOF
+
+echo "✓ Final summary saved to: $SUMMARY_FILE"
+echo "=========================================="

@@ -1,0 +1,1001 @@
+Case,Activity,Timestamp,Resource,Injection,org,EventID
+0,Check for completeness,2023-09-29 09:00:00.000,Clerk-000001,,Check for completeness,1
+0,New online application received,2023-09-29 09:00:00.000,,,New online application received,2
+1,Check for completeness,2023-09-29 09:05:24.364,Clerk-000002,,Check for completeness,3
+1,receive information,2023-09-29 09:05:24.364,,homonymous Label(Activity:'New online application received'),New online application received,4
+0,Perform checks,2023-09-29 09:08:36.418,Clerk-000003,,Perform checks,5
+0,Make decision,2023-09-29 09:09:43.339,Manager-000001,,Make decision,6
+1,Perform checks,2023-09-29 09:10:28.617,Clerk-000004,,Perform checks,7
+1,Make decision,2023-09-29 09:13:51.492,Manager-000002,,Make decision,8
+0,send notification,2023-09-29 09:16:37.243,Manager-000003,homonymous Label(Activity:'Notify accept'),Notify accept,9
+2,Check for completeness,2023-09-29 09:24:45.487,Clerk-000005,,Check for completeness,10
+2,New online application received,2023-09-29 09:24:45.487,,,New online application received,11
+2,application check,2023-09-29 09:25:09.241,Clerk-000006,homonymous Label(Activity:'Perform checks'),Perform checks,12
+2,Make decision,2023-09-29 09:33:00.179,Manager-000004,,Make decision,13
+1,send notification,2023-09-29 09:35:56.908,Manager-000005,homonymous Label(Activity:'Notify accept'),Notify accept,14
+2,Notify accept,2023-09-29 09:37:36.568,Manager-000006,,Notify accept,15
+2,Deliver card,2023-09-29 09:38:25.275,Manager-000001,,Deliver card,16
+0,Deliver card,2023-09-29 09:39:19.386,Manager-000002,,Deliver card,17
+2,EVENT 13 END,2023-09-29 09:43:20.919,,,EVENT 13 END,18
+0,EVENT 13 END,2023-09-29 09:49:41.170,,,EVENT 13 END,19
+1,Deliver card,2023-09-29 09:54:59.797,Manager-000004,,Deliver card,20
+1,EVENT 13 END,2023-09-29 10:09:32.104,,,EVENT 13 END,21
+3,Check for completeness,2023-09-29 11:04:02.737,Clerk-000001,,Check for completeness,22
+3,New online application received,2023-09-29 11:04:02.737,,,New online application received,23
+3,Request info,2023-09-29 11:14:01.072,Manager-000006,,Request info,24
+3,request information,2023-09-29 11:22:56.200,,homonymous Label(Activity:'info received'),info received,25
+3,Check for completeness,2023-09-29 11:23:06.200,Clerk-000003,,Check for completeness,26
+3,Perform checks,2023-09-29 11:26:10.630,Clerk-000002,,Perform checks,27
+4,New online application received,2023-09-29 11:34:38.887,,,New online application received,28
+4,Check for completeness,2023-09-29 11:34:38.887,Clerk-000004,,Check for completeness,29
+3,Make decision,2023-09-29 11:39:44.558,Manager-000003,,Make decision,30
+4,Request info,2023-09-29 11:42:14.147,Manager-000001,,Request info,31
+3,send notification,2023-09-29 11:44:04.637,Manager-000002,homonymous Label(Activity:'notify reject'),notify reject,32
+3,time out,2023-09-29 11:55:24.525,,,time out,33
+3,EVENT 13 END,2023-09-29 11:55:34.525,,,EVENT 13 END,34
+5,Check for completeness,2023-09-29 11:58:51.818,Clerk-000005,,Check for completeness,36
+5,New online application received,2023-09-29 11:58:51.818,,,New online application received,35
+5,application check,2023-09-29 11:59:56.433,Clerk-000006,homonymous Label(Activity:'Perform checks'),Perform checks,37
+5,Make decision,2023-09-29 12:06:54.570,Manager-000005,,Make decision,38
+5,Notify accept,2023-09-29 12:13:00.166,Manager-000004,,Notify accept,39
+5,Deliver card,2023-09-29 12:15:13.449,Manager-000006,,Deliver card,40
+5,EVENT 13 END,2023-09-29 12:16:48.900,,,EVENT 13 END,41
+4,info received,2023-09-29 12:28:45.322,,,info received,42
+4,Check for completeness,2023-09-29 12:28:55.322,Clerk-000001,,Check for completeness,43
+4,Perform checks,2023-09-29 12:54:48.341,Clerk-000003,,Perform checks,44
+4,Make decision,2023-09-29 13:08:52.312,Manager-000003,,Make decision,45
+6,Check for completeness,2023-09-29 13:17:49.926,Clerk-000002,,Check for completeness,47
+6,New online application received,2023-09-29 13:17:49.926,,,New online application received,46
+4,send notification,2023-09-29 13:20:24.260,Manager-000002,homonymous Label(Activity:'Notify accept'),Notify accept,48
+7,New online application received,2023-09-29 13:24:12.521,,,New online application received,50
+7,Check for completeness,2023-09-29 13:24:12.521,Clerk-000004,,Check for completeness,49
+7,application check,2023-09-29 13:24:18.373,Clerk-000005,homonymous Label(Activity:'Perform checks'),Perform checks,51
+7,Make decision,2023-09-29 13:29:26.239,Manager-000005,,Make decision,52
+4,Deliver card,2023-09-29 13:31:16.944,Manager-000004,,Deliver card,53
+4,EVENT 13 END,2023-09-29 13:33:29.765,,,EVENT 13 END,54
+8,New online application received,2023-09-29 13:38:17.743,,,New online application received,55
+8,Check for completeness,2023-09-29 13:38:17.743,Clerk-000006,,Check for completeness,56
+7,send notification,2023-09-29 13:39:56.417,Manager-000006,homonymous Label(Activity:'Notify accept'),Notify accept,57
+9,Check for completeness,2023-09-29 13:41:21.583,Clerk-000001,,Check for completeness,58
+9,New online application received,2023-09-29 13:41:21.583,,,New online application received,59
+6,Perform checks,2023-09-29 13:41:22.452,Clerk-000003,,Perform checks,60
+7,Deliver card,2023-09-29 13:43:55.173,Manager-000001,,Deliver card,61
+8,Request info,2023-09-29 13:43:58.067,Manager-000003,,Request info,62
+8,request information,2023-09-29 13:45:28.311,,homonymous Label(Activity:'info received'),info received,63
+8,Check for completeness,2023-09-29 13:45:38.311,Clerk-000004,,Check for completeness,64
+6,Make decision,2023-09-29 13:45:49.138,Manager-000002,,Make decision,65
+6,Notify accept,2023-09-29 13:46:40.377,Manager-000004,,Notify accept,66
+7,EVENT 13 END,2023-09-29 13:58:02.645,,,EVENT 13 END,67
+8,application check,2023-09-29 13:59:58.042,Clerk-000005,homonymous Label(Activity:'Perform checks'),Perform checks,68
+8,Make decision,2023-09-29 14:00:04.900,Manager-000005,,Make decision,69
+9,request information,2023-09-29 14:01:14.504,Manager-000006,homonymous Label(Activity:'Request info'),Request info,70
+6,Deliver card,2023-09-29 14:12:17.370,Manager-000003,,Deliver card,71
+8,send notification,2023-09-29 14:15:21.082,Manager-000002,homonymous Label(Activity:'notify reject'),notify reject,72
+9,request information,2023-09-29 14:19:00.830,,homonymous Label(Activity:'info received'),info received,73
+9,Check for completeness,2023-09-29 14:19:10.830,Clerk-000002,,Check for completeness,74
+8,review request received,2023-09-29 14:19:47.442,,,review request received,75
+8,Check for completeness,2023-09-29 14:19:57.442,Clerk-000006,,Check for completeness,76
+6,EVENT 13 END,2023-09-29 14:25:51.968,,,EVENT 13 END,77
+9,Request info,2023-09-29 14:27:41.671,Manager-000001,,Request info,78
+8,Perform checks,2023-09-29 14:28:22.925,Clerk-000003,,Perform checks,79
+9,request information,2023-09-29 14:33:09.099,,homonymous Label(Activity:'info received'),info received,80
+9,Check for completeness,2023-09-29 14:33:19.099,Clerk-000004,,Check for completeness,81
+8,Make decision,2023-09-29 14:34:51.646,Manager-000004,,Make decision,82
+8,send notification,2023-09-29 14:36:15.619,Manager-000005,homonymous Label(Activity:'Notify accept'),Notify accept,83
+8,Deliver card,2023-09-29 14:37:47.189,Manager-000006,,Deliver card,84
+10,New online application received,2023-09-29 14:47:37.938,,,New online application received,86
+10,Check for completeness,2023-09-29 14:47:37.938,Clerk-000005,,Check for completeness,85
+10,request information,2023-09-29 14:48:51.317,Manager-000002,homonymous Label(Activity:'Request info'),Request info,87
+8,EVENT 13 END,2023-09-29 14:52:19.738,,,EVENT 13 END,88
+10,info received,2023-09-29 14:54:01.063,,,info received,89
+10,Check for completeness,2023-09-29 14:54:11.063,Clerk-000001,,Check for completeness,90
+9,Request info,2023-09-29 15:08:59.285,Manager-000003,,Request info,91
+10,Perform checks,2023-09-29 15:12:40.802,Clerk-000002,,Perform checks,92
+10,Make decision,2023-09-29 15:21:56.123,Manager-000001,,Make decision,93
+10,send notification,2023-09-29 15:22:31.725,Manager-000004,homonymous Label(Activity:'Notify accept'),Notify accept,94
+9,request information,2023-09-29 15:23:23.408,,homonymous Label(Activity:'info received'),info received,95
+9,Check for completeness,2023-09-29 15:23:33.408,Clerk-000006,,Check for completeness,96
+10,Deliver card,2023-09-29 15:23:49.967,Manager-000005,,Deliver card,97
+9,application check,2023-09-29 15:33:37.833,Clerk-000003,homonymous Label(Activity:'Perform checks'),Perform checks,98
+9,Make decision,2023-09-29 15:34:38.869,Manager-000006,,Make decision,99
+10,EVENT 13 END,2023-09-29 15:36:59.534,,,EVENT 13 END,100
+9,send notification,2023-09-29 15:54:24.867,Manager-000002,homonymous Label(Activity:'notify reject'),notify reject,101
+11,New online application received,2023-09-29 16:06:37.359,,,New online application received,102
+11,Check for completeness,2023-09-29 16:06:37.359,Clerk-000005,,Check for completeness,103
+12,New online application received,2023-09-29 16:07:28.415,,,New online application received,104
+12,Check for completeness,2023-09-29 16:07:28.415,Clerk-000004,,Check for completeness,105
+11,Perform checks,2023-09-29 16:11:54.846,Clerk-000001,,Perform checks,106
+9,time out,2023-09-29 16:12:43.247,,,time out,107
+9,EVENT 13 END,2023-09-29 16:12:53.247,,,EVENT 13 END,108
+13,New online application received,2023-09-29 16:14:30.309,,,New online application received,109
+13,Check for completeness,2023-09-29 16:14:30.309,Clerk-000002,,Check for completeness,110
+11,Make decision,2023-09-29 16:25:06.284,Manager-000001,,Make decision,111
+11,notify reject,2023-09-29 16:26:23.405,Manager-000003,,notify reject,112
+13,application check,2023-09-29 16:27:34.755,Clerk-000006,homonymous Label(Activity:'Perform checks'),Perform checks,113
+13,Make decision,2023-09-29 16:28:03.056,Manager-000004,,Make decision,114
+12,Request info,2023-09-29 16:28:15.647,Manager-000005,,Request info,115
+11,time out,2023-09-29 16:29:27.938,,,time out,116
+11,EVENT 13 END,2023-09-29 16:29:37.938,,,EVENT 13 END,117
+12,request information,2023-09-29 16:33:32.086,,homonymous Label(Activity:'info received'),info received,118
+12,Check for completeness,2023-09-29 16:33:42.086,Clerk-000003,,Check for completeness,119
+13,send notification,2023-09-29 16:34:55.454,Manager-000006,homonymous Label(Activity:'notify reject'),notify reject,120
+12,request information,2023-09-29 16:36:40.604,Manager-000002,homonymous Label(Activity:'Request info'),Request info,121
+12,request information,2023-09-29 16:45:28.106,,homonymous Label(Activity:'info received'),info received,122
+12,Check for completeness,2023-09-29 16:45:38.106,Clerk-000005,,Check for completeness,123
+13,receive information,2023-09-29 16:46:57.319,,homonymous Label(Activity:'review request received'),review request received,124
+13,Check for completeness,2023-09-29 16:47:07.319,Clerk-000001,,Check for completeness,125
+14,New online application received,2023-09-29 16:51:09.691,,,New online application received,126
+14,Check for completeness,2023-09-29 16:51:09.691,Clerk-000002,,Check for completeness,127
+14,application check,2023-09-29 16:54:07.012,Clerk-000006,homonymous Label(Activity:'Perform checks'),Perform checks,128
+13,Perform checks,2023-09-29 16:54:38.964,Clerk-000004,,Perform checks,129
+12,application check,2023-09-29 17:02:39.723,Clerk-000002,homonymous Label(Activity:'Perform checks'),Perform checks,130
+14,Make decision,2023-09-29 17:08:43.888,Manager-000001,,Make decision,131
+12,Make decision,2023-09-29 17:13:16.697,Manager-000003,,Make decision,132
+12,Notify accept,2023-09-29 17:13:45.470,Manager-000005,,Notify accept,133
+13,Make decision,2023-09-29 17:22:15.988,Manager-000002,,Make decision,134
+14,send notification,2023-09-29 17:40:01.342,Manager-000003,homonymous Label(Activity:'notify reject'),notify reject,135
+16,Check for completeness,2023-09-29 17:45:26.578,Clerk-000005,,Check for completeness,137
+16,New online application received,2023-09-29 17:45:26.578,,,New online application received,136
+12,Deliver card,2023-09-29 17:46:09.886,Manager-000004,,Deliver card,138
+12,EVENT 13 END,2023-09-29 17:47:16.773,,,EVENT 13 END,139
+13,notify reject,2023-09-29 17:51:15.597,Manager-000006,,notify reject,140
+16,Request info,2023-09-29 17:53:49.426,Manager-000001,,Request info,141
+17,receive information,2023-09-29 17:57:31.716,,homonymous Label(Activity:'New online application received'),New online application received,142
+17,Check for completeness,2023-09-29 17:57:31.716,Clerk-000006,,Check for completeness,143
+16,request information,2023-09-29 17:58:04.022,,homonymous Label(Activity:'info received'),info received,144
+16,Check for completeness,2023-09-29 17:58:14.022,Clerk-000002,,Check for completeness,145
+13,review request received,2023-09-29 18:02:09.808,,,review request received,146
+13,Check for completeness,2023-09-29 18:02:19.808,Clerk-000003,,Check for completeness,147
+14,time out,2023-09-29 18:03:59.442,,,time out,148
+14,EVENT 13 END,2023-09-29 18:04:09.442,,,EVENT 13 END,149
+17,application check,2023-09-29 18:05:01.489,Clerk-000001,homonymous Label(Activity:'Perform checks'),Perform checks,150
+18,Check for completeness,2023-09-29 18:06:16.258,Clerk-000004,,Check for completeness,151
+18,New online application received,2023-09-29 18:06:16.258,,,New online application received,152
+17,Make decision,2023-09-29 18:09:25.830,Manager-000005,,Make decision,153
+13,Request info,2023-09-29 18:09:51.649,Manager-000004,,Request info,154
+18,Perform checks,2023-09-29 18:13:12.412,Clerk-000005,,Perform checks,155
+13,info received,2023-09-29 18:14:41.199,,,info received,156
+13,Check for completeness,2023-09-29 18:14:51.199,Clerk-000006,,Check for completeness,157
+16,Request info,2023-09-29 18:17:55.674,Manager-000002,,Request info,158
+18,Make decision,2023-09-29 18:20:12.699,Manager-000001,,Make decision,159
+13,Request info,2023-09-29 18:26:33.083,Manager-000003,,Request info,160
+17,send notification,2023-09-29 18:27:15.122,Manager-000004,homonymous Label(Activity:'notify reject'),notify reject,161
+13,request information,2023-09-29 18:37:59.483,,homonymous Label(Activity:'info received'),info received,162
+13,Check for completeness,2023-09-29 18:38:09.483,Clerk-000004,,Check for completeness,163
+16,request information,2023-09-29 18:38:16.236,,homonymous Label(Activity:'info received'),info received,164
+18,Notify accept,2023-09-29 18:38:19.445,Manager-000005,,Notify accept,165
+16,Check for completeness,2023-09-29 18:38:26.236,Clerk-000002,,Check for completeness,166
+18,Deliver card,2023-09-29 18:39:58.666,Manager-000006,,Deliver card,167
+16,application check,2023-09-29 18:40:28.271,Clerk-000005,homonymous Label(Activity:'Perform checks'),Perform checks,168
+16,Make decision,2023-09-29 18:41:20.445,Manager-000003,,Make decision,169
+16,send notification,2023-09-29 18:49:29.967,Manager-000002,homonymous Label(Activity:'Notify accept'),Notify accept,170
+17,time out,2023-09-29 18:50:25.809,,,time out,171
+17,EVENT 13 END,2023-09-29 18:50:35.809,,,EVENT 13 END,172
+18,EVENT 13 END,2023-09-29 18:51:28.231,,,EVENT 13 END,173
+13,Perform checks,2023-09-29 19:01:11.416,Clerk-000006,,Perform checks,174
+13,Make decision,2023-09-29 19:08:51.860,Manager-000001,,Make decision,175
+20,New online application received,2023-09-29 19:19:25.291,,,New online application received,176
+20,Check for completeness,2023-09-29 19:19:25.291,Clerk-000002,,Check for completeness,177
+13,notify reject,2023-09-29 19:22:36.736,Manager-000004,,notify reject,178
+20,Request info,2023-09-29 19:23:40.250,Manager-000006,,Request info,179
+16,Deliver card,2023-09-29 19:25:53.029,Manager-000005,,Deliver card,180
+20,request information,2023-09-29 19:27:24.092,,homonymous Label(Activity:'info received'),info received,181
+20,Check for completeness,2023-09-29 19:27:34.092,Clerk-000005,,Check for completeness,182
+16,EVENT 13 END,2023-09-29 19:31:06.291,,,EVENT 13 END,183
+13,review request received,2023-09-29 19:35:39.940,,,review request received,184
+13,Check for completeness,2023-09-29 19:35:49.940,Clerk-000003,,Check for completeness,185
+20,Request info,2023-09-29 19:39:11.217,Manager-000001,,Request info,186
+13,request information,2023-09-29 19:39:16.010,Manager-000002,homonymous Label(Activity:'Request info'),Request info,187
+20,info received,2023-09-29 19:45:50.472,,,info received,188
+20,Check for completeness,2023-09-29 19:46:00.472,Clerk-000006,,Check for completeness,189
+20,Request info,2023-09-29 19:46:31.227,Manager-000006,,Request info,190
+20,info received,2023-09-29 19:48:39.020,,,info received,191
+20,Check for completeness,2023-09-29 19:48:49.020,Clerk-000001,,Check for completeness,192
+13,info received,2023-09-29 20:04:20.804,,,info received,193
+13,Check for completeness,2023-09-29 20:04:30.804,Clerk-000002,,Check for completeness,194
+20,Perform checks,2023-09-29 20:11:57.183,Clerk-000005,,Perform checks,195
+20,Make decision,2023-09-29 20:13:50.754,Manager-000004,,Make decision,196
+13,request information,2023-09-29 20:19:37.681,Manager-000003,homonymous Label(Activity:'Request info'),Request info,197
+13,request information,2023-09-29 20:28:28.849,,homonymous Label(Activity:'info received'),info received,198
+13,Check for completeness,2023-09-29 20:28:38.849,Clerk-000006,,Check for completeness,199
+13,application check,2023-09-29 20:38:40.292,Clerk-000004,homonymous Label(Activity:'Perform checks'),Perform checks,200
+20,send notification,2023-09-29 20:41:11.134,Manager-000001,homonymous Label(Activity:'Notify accept'),Notify accept,201
+20,Deliver card,2023-09-29 20:41:45.634,Manager-000006,,Deliver card,202
+21,receive information,2023-09-29 20:41:51.439,,homonymous Label(Activity:'New online application received'),New online application received,203
+21,Check for completeness,2023-09-29 20:41:51.439,Clerk-000001,,Check for completeness,204
+20,EVENT 13 END,2023-09-29 20:41:54.646,,,EVENT 13 END,205
+13,Make decision,2023-09-29 20:43:33.832,Manager-000002,,Make decision,206
+13,notify reject,2023-09-29 20:53:08.449,Manager-000005,,notify reject,207
+21,Perform checks,2023-09-29 21:00:54.004,Clerk-000002,,Perform checks,208
+13,receive information,2023-09-29 21:03:06.372,,homonymous Label(Activity:'review request received'),review request received,209
+13,Check for completeness,2023-09-29 21:03:16.372,Clerk-000006,,Check for completeness,210
+21,Make decision,2023-09-29 21:06:42.607,Manager-000006,,Make decision,211
+21,notify reject,2023-09-29 21:07:22.401,Manager-000002,,notify reject,212
+13,application check,2023-09-29 21:20:39.128,Clerk-000003,homonymous Label(Activity:'Perform checks'),Perform checks,213
+13,Make decision,2023-09-29 21:22:46.639,Manager-000003,,Make decision,214
+13,notify reject,2023-09-29 21:23:32.611,Manager-000004,,notify reject,215
+13,time out,2023-09-29 21:33:15.823,,,time out,216
+13,EVENT 13 END,2023-09-29 21:33:25.823,,,EVENT 13 END,217
+21,review request received,2023-09-29 21:42:51.560,,,review request received,218
+21,Check for completeness,2023-09-29 21:43:01.560,Clerk-000005,,Check for completeness,219
+21,request information,2023-09-29 21:51:47.651,Manager-000005,homonymous Label(Activity:'Request info'),Request info,220
+21,request information,2023-09-29 21:52:47.742,,homonymous Label(Activity:'info received'),info received,221
+21,Check for completeness,2023-09-29 21:52:57.742,Clerk-000001,,Check for completeness,222
+21,request information,2023-09-29 21:56:52.475,Manager-000001,homonymous Label(Activity:'Request info'),Request info,223
+21,info received,2023-09-29 22:13:45.867,,,info received,224
+21,Check for completeness,2023-09-29 22:13:55.867,Clerk-000006,,Check for completeness,225
+21,application check,2023-09-29 22:15:28.052,Clerk-000003,homonymous Label(Activity:'Perform checks'),Perform checks,226
+21,Make decision,2023-09-29 22:17:11.249,Manager-000004,,Make decision,227
+21,send notification,2023-09-29 22:18:43.086,Manager-000002,homonymous Label(Activity:'notify reject'),notify reject,228
+21,time out,2023-09-29 22:23:17.465,,,time out,229
+21,EVENT 13 END,2023-09-29 22:23:27.465,,,EVENT 13 END,230
+27,receive information,2023-10-02 02:35:38.612,,homonymous Label(Activity:'New online application received'),New online application received,231
+27,Check for completeness,2023-10-02 02:35:38.612,Clerk-000001,,Check for completeness,232
+27,request information,2023-10-02 02:47:52.422,Manager-000004,homonymous Label(Activity:'Request info'),Request info,233
+27,request information,2023-10-02 03:03:20.832,,homonymous Label(Activity:'info received'),info received,234
+27,Check for completeness,2023-10-02 03:03:30.832,Clerk-000002,,Check for completeness,235
+27,Request info,2023-10-02 03:15:57.436,Manager-000001,,Request info,236
+27,info received,2023-10-02 03:21:38.352,,,info received,237
+27,Check for completeness,2023-10-02 03:21:48.352,Clerk-000005,,Check for completeness,238
+27,application check,2023-10-02 03:25:16.538,Clerk-000001,homonymous Label(Activity:'Perform checks'),Perform checks,239
+28,New online application received,2023-10-02 03:49:49.031,,,New online application received,240
+28,Check for completeness,2023-10-02 03:49:49.031,Clerk-000006,,Check for completeness,241
+28,Perform checks,2023-10-02 03:55:14.876,Clerk-000002,,Perform checks,242
+28,Make decision,2023-10-02 04:02:53.440,Manager-000003,,Make decision,243
+28,notify reject,2023-10-02 04:04:38.433,Manager-000002,,notify reject,244
+27,Make decision,2023-10-02 04:05:20.438,Manager-000006,,Make decision,245
+27,Notify accept,2023-10-02 04:09:21.023,Manager-000001,,Notify accept,246
+27,Deliver card,2023-10-02 04:10:02.043,Manager-000005,,Deliver card,247
+28,receive information,2023-10-02 04:12:29.466,,homonymous Label(Activity:'review request received'),review request received,248
+28,Check for completeness,2023-10-02 04:12:39.466,Clerk-000005,,Check for completeness,249
+27,EVENT 13 END,2023-10-02 04:13:19.372,,,EVENT 13 END,250
+28,application check,2023-10-02 04:13:22.011,Clerk-000003,homonymous Label(Activity:'Perform checks'),Perform checks,251
+28,Make decision,2023-10-02 04:16:26.207,Manager-000003,,Make decision,252
+28,Notify accept,2023-10-02 04:21:12.631,Manager-000001,,Notify accept,253
+28,Deliver card,2023-10-02 04:31:16.152,Manager-000002,,Deliver card,254
+28,EVENT 13 END,2023-10-02 04:54:08.875,,,EVENT 13 END,255
+29,Check for completeness,2023-10-02 05:24:14.094,Clerk-000005,,Check for completeness,256
+29,receive information,2023-10-02 05:24:14.094,,homonymous Label(Activity:'New online application received'),New online application received,257
+29,Perform checks,2023-10-02 05:34:29.426,Clerk-000003,,Perform checks,258
+29,Make decision,2023-10-02 05:41:14.108,Manager-000001,,Make decision,259
+30,Check for completeness,2023-10-02 05:42:19.668,Clerk-000004,,Check for completeness,260
+30,receive information,2023-10-02 05:42:19.668,,homonymous Label(Activity:'New online application received'),New online application received,261
+31,receive information,2023-10-02 05:48:39.561,,homonymous Label(Activity:'New online application received'),New online application received,263
+31,Check for completeness,2023-10-02 05:48:39.561,Clerk-000006,,Check for completeness,262
+29,Notify accept,2023-10-02 05:51:12.013,Manager-000006,,Notify accept,264
+30,Request info,2023-10-02 05:52:35.453,Manager-000005,,Request info,265
+31,Perform checks,2023-10-02 05:56:02.659,Clerk-000002,,Perform checks,266
+30,info received,2023-10-02 05:57:42.363,,,info received,267
+30,Check for completeness,2023-10-02 05:57:52.363,Clerk-000001,,Check for completeness,268
+30,application check,2023-10-02 05:58:43.926,Clerk-000005,homonymous Label(Activity:'Perform checks'),Perform checks,269
+30,Make decision,2023-10-02 06:07:16.031,Manager-000002,,Make decision,270
+29,Deliver card,2023-10-02 06:10:59.128,Manager-000004,,Deliver card,271
+31,Make decision,2023-10-02 06:11:53.392,Manager-000003,,Make decision,272
+31,notify reject,2023-10-02 06:14:01.523,Manager-000001,,notify reject,273
+29,EVENT 13 END,2023-10-02 06:15:00.259,,,EVENT 13 END,274
+30,send notification,2023-10-02 06:33:37.019,Manager-000005,homonymous Label(Activity:'notify reject'),notify reject,275
+30,review request received,2023-10-02 06:38:09.262,,,review request received,276
+30,Check for completeness,2023-10-02 06:38:19.262,Clerk-000003,,Check for completeness,277
+30,request information,2023-10-02 06:39:34.425,Manager-000006,homonymous Label(Activity:'Request info'),Request info,278
+30,request information,2023-10-02 06:42:00.757,,homonymous Label(Activity:'info received'),info received,279
+30,Check for completeness,2023-10-02 06:42:10.757,Clerk-000004,,Check for completeness,280
+31,time out,2023-10-02 06:42:24.600,,,time out,281
+31,EVENT 13 END,2023-10-02 06:42:34.600,,,EVENT 13 END,282
+30,application check,2023-10-02 06:48:51.594,Clerk-000006,homonymous Label(Activity:'Perform checks'),Perform checks,283
+32,receive information,2023-10-02 06:52:06.060,,homonymous Label(Activity:'New online application received'),New online application received,284
+32,Check for completeness,2023-10-02 06:52:06.060,Clerk-000001,,Check for completeness,285
+30,Make decision,2023-10-02 06:53:19.364,Manager-000003,,Make decision,286
+30,send notification,2023-10-02 06:59:31.135,Manager-000004,homonymous Label(Activity:'notify reject'),notify reject,287
+32,Perform checks,2023-10-02 07:03:28.738,Clerk-000005,,Perform checks,288
+32,Make decision,2023-10-02 07:04:09.558,Manager-000002,,Make decision,289
+30,review request received,2023-10-02 07:05:03.394,,,review request received,290
+30,Check for completeness,2023-10-02 07:05:13.394,Clerk-000002,,Check for completeness,291
+30,Perform checks,2023-10-02 07:08:21.739,Clerk-000003,,Perform checks,292
+32,send notification,2023-10-02 07:18:17.428,Manager-000005,homonymous Label(Activity:'Notify accept'),Notify accept,293
+30,Make decision,2023-10-02 07:26:14.396,Manager-000006,,Make decision,294
+30,Notify accept,2023-10-02 07:28:17.295,Manager-000001,,Notify accept,295
+30,Deliver card,2023-10-02 07:29:48.995,Manager-000003,,Deliver card,296
+30,EVENT 13 END,2023-10-02 07:48:23.876,,,EVENT 13 END,297
+33,Check for completeness,2023-10-02 07:48:55.859,Clerk-000004,,Check for completeness,298
+33,receive information,2023-10-02 07:48:55.859,,homonymous Label(Activity:'New online application received'),New online application received,299
+32,Deliver card,2023-10-02 07:57:29.408,Manager-000004,,Deliver card,300
+33,Perform checks,2023-10-02 08:01:31.352,Clerk-000006,,Perform checks,301
+33,Make decision,2023-10-02 08:06:22.173,Manager-000002,,Make decision,302
+32,EVENT 13 END,2023-10-02 08:10:54.897,,,EVENT 13 END,303
+33,send notification,2023-10-02 08:17:10.626,Manager-000006,homonymous Label(Activity:'Notify accept'),Notify accept,304
+33,Deliver card,2023-10-02 08:19:25.321,Manager-000001,,Deliver card,305
+33,EVENT 13 END,2023-10-02 08:19:37.157,,,EVENT 13 END,306
+34,receive information,2023-10-02 11:18:14.023,,homonymous Label(Activity:'New online application received'),New online application received,307
+34,Check for completeness,2023-10-02 11:18:14.023,Clerk-000001,,Check for completeness,308
+34,application check,2023-10-02 11:18:27.536,Clerk-000005,homonymous Label(Activity:'Perform checks'),Perform checks,309
+34,Make decision,2023-10-02 11:41:33.904,Manager-000003,,Make decision,310
+34,Notify accept,2023-10-02 11:51:27.177,Manager-000005,,Notify accept,311
+34,Deliver card,2023-10-02 11:52:37.583,Manager-000004,,Deliver card,312
+34,EVENT 13 END,2023-10-02 11:57:25.412,,,EVENT 13 END,313
+35,Check for completeness,2023-10-02 12:27:24.477,Clerk-000002,,Check for completeness,314
+35,New online application received,2023-10-02 12:27:24.477,,,New online application received,315
+35,application check,2023-10-02 12:31:02.687,Clerk-000003,homonymous Label(Activity:'Perform checks'),Perform checks,316
+35,Make decision,2023-10-02 12:43:29.450,Manager-000002,,Make decision,317
+35,notify reject,2023-10-02 12:48:13.381,Manager-000006,,notify reject,318
+35,time out,2023-10-02 12:50:31.833,,,time out,319
+35,EVENT 13 END,2023-10-02 12:50:41.833,,,EVENT 13 END,320
+36,receive information,2023-10-02 12:58:27.972,,homonymous Label(Activity:'New online application received'),New online application received,321
+36,Check for completeness,2023-10-02 12:58:27.972,Clerk-000004,,Check for completeness,322
+36,Request info,2023-10-02 13:07:43.351,Manager-000001,,Request info,323
+36,request information,2023-10-02 13:14:11.813,,homonymous Label(Activity:'info received'),info received,324
+36,Check for completeness,2023-10-02 13:14:21.813,Clerk-000006,,Check for completeness,325
+36,application check,2023-10-02 13:19:25.821,Clerk-000001,homonymous Label(Activity:'Perform checks'),Perform checks,326
+36,Make decision,2023-10-02 13:23:39.609,Manager-000003,,Make decision,327
+36,notify reject,2023-10-02 13:32:34.595,Manager-000005,,notify reject,328
+37,New online application received,2023-10-02 13:35:00.778,,,New online application received,329
+37,Check for completeness,2023-10-02 13:35:00.778,Clerk-000005,,Check for completeness,330
+36,receive information,2023-10-02 13:38:06.806,,homonymous Label(Activity:'review request received'),review request received,331
+36,Check for completeness,2023-10-02 13:38:16.806,Clerk-000002,,Check for completeness,332
+36,Request info,2023-10-02 13:38:32.361,Manager-000004,,Request info,333
+37,request information,2023-10-02 13:39:43.208,Manager-000002,homonymous Label(Activity:'Request info'),Request info,334
+37,info received,2023-10-02 13:39:56.760,,,info received,335
+37,Check for completeness,2023-10-02 13:40:06.760,Clerk-000003,,Check for completeness,336
+37,Perform checks,2023-10-02 13:43:29.856,Clerk-000004,,Perform checks,337
+36,info received,2023-10-02 13:46:49.078,,,info received,338
+36,Check for completeness,2023-10-02 13:46:59.078,Clerk-000006,,Check for completeness,339
+37,Make decision,2023-10-02 13:50:11.398,Manager-000006,,Make decision,340
+37,Notify accept,2023-10-02 14:13:21.042,Manager-000001,,Notify accept,341
+37,Deliver card,2023-10-02 14:17:07.689,Manager-000003,,Deliver card,342
+36,request information,2023-10-02 14:17:55.617,Manager-000005,homonymous Label(Activity:'Request info'),Request info,343
+36,request information,2023-10-02 14:20:11.132,,homonymous Label(Activity:'info received'),info received,344
+36,Check for completeness,2023-10-02 14:20:21.132,Clerk-000001,,Check for completeness,345
+36,application check,2023-10-02 14:24:45.103,Clerk-000002,homonymous Label(Activity:'Perform checks'),Perform checks,346
+37,EVENT 13 END,2023-10-02 14:25:53.407,,,EVENT 13 END,347
+36,Make decision,2023-10-02 14:37:24.013,Manager-000002,,Make decision,348
+36,Notify accept,2023-10-02 14:39:44.970,Manager-000004,,Notify accept,349
+38,New online application received,2023-10-02 14:52:34.683,,,New online application received,351
+38,Check for completeness,2023-10-02 14:52:34.683,Clerk-000005,,Check for completeness,350
+38,application check,2023-10-02 14:56:25.790,Clerk-000003,homonymous Label(Activity:'Perform checks'),Perform checks,352
+38,Make decision,2023-10-02 15:07:39.216,Manager-000006,,Make decision,353
+38,Notify accept,2023-10-02 15:11:47.688,Manager-000001,,Notify accept,354
+38,Deliver card,2023-10-02 15:22:28.602,Manager-000005,,Deliver card,355
+36,Deliver card,2023-10-02 15:22:47.009,Manager-000003,,Deliver card,356
+38,EVENT 13 END,2023-10-02 15:28:07.560,,,EVENT 13 END,357
+36,EVENT 13 END,2023-10-02 15:31:43.408,,,EVENT 13 END,358
+40,receive information,2023-10-02 16:19:34.365,,homonymous Label(Activity:'New online application received'),New online application received,359
+40,Check for completeness,2023-10-02 16:19:34.365,Clerk-000002,,Check for completeness,360
+40,application check,2023-10-02 17:03:21.648,Clerk-000005,homonymous Label(Activity:'Perform checks'),Perform checks,361
+40,Make decision,2023-10-02 17:05:09.452,Manager-000005,,Make decision,362
+40,notify reject,2023-10-02 17:21:50.595,Manager-000003,,notify reject,363
+40,time out,2023-10-02 17:23:13.173,,,time out,364
+40,EVENT 13 END,2023-10-02 17:23:23.173,,,EVENT 13 END,365
+42,Check for completeness,2023-10-02 18:47:53.063,Clerk-000002,,Check for completeness,366
+42,receive information,2023-10-02 18:47:53.063,,homonymous Label(Activity:'New online application received'),New online application received,367
+42,Perform checks,2023-10-02 19:00:41.890,Clerk-000005,,Perform checks,368
+43,Check for completeness,2023-10-02 19:09:50.801,Clerk-000003,,Check for completeness,369
+43,receive information,2023-10-02 19:09:50.801,,homonymous Label(Activity:'New online application received'),New online application received,370
+43,application check,2023-10-02 19:31:51.551,Clerk-000004,homonymous Label(Activity:'Perform checks'),Perform checks,371
+43,Make decision,2023-10-02 19:38:31.583,Manager-000003,,Make decision,372
+43,notify reject,2023-10-02 19:55:30.861,Manager-000002,,notify reject,373
+44,receive information,2023-10-02 19:56:45.012,,homonymous Label(Activity:'New online application received'),New online application received,374
+44,Check for completeness,2023-10-02 19:56:45.012,Clerk-000006,,Check for completeness,375
+42,Make decision,2023-10-02 19:56:45.515,Manager-000006,,Make decision,376
+42,send notification,2023-10-02 19:57:11.601,Manager-000001,homonymous Label(Activity:'Notify accept'),Notify accept,377
+42,Deliver card,2023-10-02 20:03:30.555,Manager-000004,,Deliver card,378
+42,EVENT 13 END,2023-10-02 20:06:12.137,,,EVENT 13 END,379
+43,receive information,2023-10-02 20:17:24.999,,homonymous Label(Activity:'review request received'),review request received,380
+43,Check for completeness,2023-10-02 20:17:34.999,Clerk-000001,,Check for completeness,381
+43,request information,2023-10-02 20:26:22.569,Manager-000005,homonymous Label(Activity:'Request info'),Request info,382
+44,application check,2023-10-02 20:33:25.408,Clerk-000004,homonymous Label(Activity:'Perform checks'),Perform checks,383
+43,request information,2023-10-02 20:34:58.931,,homonymous Label(Activity:'info received'),info received,384
+43,Check for completeness,2023-10-02 20:35:08.931,Clerk-000002,,Check for completeness,385
+46,receive information,2023-10-02 20:36:30.685,,homonymous Label(Activity:'New online application received'),New online application received,386
+46,Check for completeness,2023-10-02 20:36:30.685,Clerk-000001,,Check for completeness,387
+43,Perform checks,2023-10-02 20:42:37.015,Clerk-000003,,Perform checks,388
+43,Make decision,2023-10-02 20:42:47.958,Manager-000001,,Make decision,389
+44,Make decision,2023-10-02 20:46:27.168,Manager-000002,,Make decision,390
+46,application check,2023-10-02 20:50:21.127,Clerk-000006,homonymous Label(Activity:'Perform checks'),Perform checks,391
+44,Notify accept,2023-10-02 20:51:44.686,Manager-000003,,Notify accept,392
+43,send notification,2023-10-02 20:55:45.022,Manager-000006,homonymous Label(Activity:'notify reject'),notify reject,393
+46,Make decision,2023-10-02 20:56:50.576,Manager-000005,,Make decision,394
+43,time out,2023-10-02 20:59:02.157,,,time out,395
+43,EVENT 13 END,2023-10-02 20:59:12.157,,,EVENT 13 END,396
+46,send notification,2023-10-02 21:04:00.031,Manager-000002,homonymous Label(Activity:'Notify accept'),Notify accept,397
+44,Deliver card,2023-10-02 21:08:58.879,Manager-000001,,Deliver card,398
+44,EVENT 13 END,2023-10-02 21:12:29.436,,,EVENT 13 END,399
+46,Deliver card,2023-10-02 21:16:56.456,Manager-000004,,Deliver card,400
+47,New online application received,2023-10-02 21:24:00.837,,,New online application received,402
+47,Check for completeness,2023-10-02 21:24:00.837,Clerk-000003,,Check for completeness,401
+47,request information,2023-10-02 21:25:04.834,Manager-000006,homonymous Label(Activity:'Request info'),Request info,403
+47,request information,2023-10-02 21:30:03.737,,homonymous Label(Activity:'info received'),info received,404
+47,Check for completeness,2023-10-02 21:30:13.737,Clerk-000004,,Check for completeness,405
+46,EVENT 13 END,2023-10-02 21:31:35.866,,,EVENT 13 END,406
+47,Request info,2023-10-02 21:38:14.733,Manager-000001,,Request info,407
+47,request information,2023-10-02 21:40:59.029,,homonymous Label(Activity:'info received'),info received,408
+47,Check for completeness,2023-10-02 21:41:09.029,Clerk-000001,,Check for completeness,409
+47,application check,2023-10-02 21:41:51.370,Clerk-000006,homonymous Label(Activity:'Perform checks'),Perform checks,410
+47,Make decision,2023-10-02 21:49:00.707,Manager-000006,,Make decision,411
+47,send notification,2023-10-02 21:58:57.576,Manager-000004,homonymous Label(Activity:'notify reject'),notify reject,412
+47,receive information,2023-10-02 22:00:27.932,,homonymous Label(Activity:'review request received'),review request received,413
+47,Check for completeness,2023-10-02 22:00:37.932,Clerk-000002,,Check for completeness,414
+47,application check,2023-10-02 22:01:54.433,Clerk-000003,homonymous Label(Activity:'Perform checks'),Perform checks,415
+47,Make decision,2023-10-02 22:05:31.709,Manager-000005,,Make decision,416
+48,receive information,2023-10-02 22:12:43.742,,homonymous Label(Activity:'New online application received'),New online application received,417
+48,Check for completeness,2023-10-02 22:12:43.742,Clerk-000005,,Check for completeness,418
+47,send notification,2023-10-02 22:16:59.274,Manager-000001,homonymous Label(Activity:'notify reject'),notify reject,419
+47,time out,2023-10-02 22:25:09.045,,,time out,420
+47,EVENT 13 END,2023-10-02 22:25:19.045,,,EVENT 13 END,421
+48,Request info,2023-10-02 22:28:02.111,Manager-000003,,Request info,422
+49,receive information,2023-10-02 22:39:55.747,,homonymous Label(Activity:'New online application received'),New online application received,423
+49,Check for completeness,2023-10-02 22:39:55.747,Clerk-000004,,Check for completeness,424
+48,request information,2023-10-02 22:48:35.633,,homonymous Label(Activity:'info received'),info received,425
+48,Check for completeness,2023-10-02 22:48:45.633,Clerk-000001,,Check for completeness,426
+50,Check for completeness,2023-10-02 22:55:08.564,Clerk-000006,,Check for completeness,428
+50,New online application received,2023-10-02 22:55:08.564,,,New online application received,427
+48,Request info,2023-10-02 22:56:18.538,Manager-000006,,Request info,429
+50,Request info,2023-10-02 22:57:49.865,Manager-000004,,Request info,430
+50,request information,2023-10-02 23:08:59.836,,homonymous Label(Activity:'info received'),info received,431
+50,Check for completeness,2023-10-02 23:09:09.836,Clerk-000002,,Check for completeness,432
+50,Perform checks,2023-10-02 23:16:04.693,Clerk-000003,,Perform checks,433
+49,Request info,2023-10-02 23:20:25.298,Manager-000002,,Request info,434
+48,request information,2023-10-02 23:21:20.906,,homonymous Label(Activity:'info received'),info received,435
+48,Check for completeness,2023-10-02 23:21:30.906,Clerk-000005,,Check for completeness,436
+50,Make decision,2023-10-02 23:22:15.982,Manager-000005,,Make decision,437
+49,info received,2023-10-02 23:23:54.056,,,info received,438
+49,Check for completeness,2023-10-02 23:24:04.056,Clerk-000001,,Check for completeness,439
+51,Check for completeness,2023-10-02 23:25:21.967,Clerk-000006,,Check for completeness,441
+51,New online application received,2023-10-02 23:25:21.967,,,New online application received,440
+49,request information,2023-10-02 23:28:06.868,Manager-000001,homonymous Label(Activity:'Request info'),Request info,442
+50,Notify accept,2023-10-02 23:28:14.793,Manager-000003,,Notify accept,443
+50,Deliver card,2023-10-02 23:31:07.834,Manager-000004,,Deliver card,444
+49,request information,2023-10-02 23:37:13.914,,homonymous Label(Activity:'info received'),info received,445
+49,Check for completeness,2023-10-02 23:37:23.914,Clerk-000002,,Check for completeness,446
+51,request information,2023-10-02 23:40:21.224,Manager-000006,homonymous Label(Activity:'Request info'),Request info,447
+52,New online application received,2023-10-02 23:41:02.832,,,New online application received,448
+52,Check for completeness,2023-10-02 23:41:02.832,Clerk-000004,,Check for completeness,449
+51,info received,2023-10-02 23:41:12.565,,,info received,450
+51,Check for completeness,2023-10-02 23:41:22.565,Clerk-000003,,Check for completeness,451
+48,request information,2023-10-02 23:45:49.340,Manager-000002,homonymous Label(Activity:'Request info'),Request info,452
+52,application check,2023-10-02 23:47:20.295,Clerk-000001,homonymous Label(Activity:'Perform checks'),Perform checks,453
+50,EVENT 13 END,2023-10-02 23:48:02.653,,,EVENT 13 END,454
+52,Make decision,2023-10-02 23:56:30.737,Manager-000005,,Make decision,455
+48,info received,2023-10-02 23:57:31.733,,,info received,456
+48,Check for completeness,2023-10-02 23:57:41.733,Clerk-000006,,Check for completeness,457
+48,request information,2023-10-03 00:01:13.483,Manager-000003,homonymous Label(Activity:'Request info'),Request info,458
+49,application check,2023-10-03 00:02:08.923,Clerk-000005,homonymous Label(Activity:'Perform checks'),Perform checks,459
+49,Make decision,2023-10-03 00:02:10.455,Manager-000001,,Make decision,460
+52,notify reject,2023-10-03 00:05:47.427,Manager-000006,,notify reject,461
+52,review request received,2023-10-03 00:06:09.346,,,review request received,462
+52,Check for completeness,2023-10-03 00:06:19.346,Clerk-000004,,Check for completeness,463
+52,request information,2023-10-03 00:11:32.171,Manager-000004,homonymous Label(Activity:'Request info'),Request info,464
+52,info received,2023-10-03 00:15:06.851,,,info received,465
+52,Check for completeness,2023-10-03 00:15:16.851,Clerk-000001,,Check for completeness,466
+52,application check,2023-10-03 00:16:17.664,Clerk-000006,homonymous Label(Activity:'Perform checks'),Perform checks,467
+48,request information,2023-10-03 00:17:06.375,,homonymous Label(Activity:'info received'),info received,468
+48,Check for completeness,2023-10-03 00:17:16.375,Clerk-000002,,Check for completeness,469
+48,request information,2023-10-03 00:20:13.886,Manager-000002,homonymous Label(Activity:'Request info'),Request info,470
+48,request information,2023-10-03 00:24:27.163,,homonymous Label(Activity:'info received'),info received,471
+48,Check for completeness,2023-10-03 00:24:37.163,Clerk-000005,,Check for completeness,472
+49,notify reject,2023-10-03 00:27:48.580,Manager-000005,,notify reject,473
+48,Request info,2023-10-03 00:28:59.821,Manager-000006,,Request info,474
+52,Make decision,2023-10-03 00:29:02.660,Manager-000004,,Make decision,475
+48,info received,2023-10-03 00:32:11.728,,,info received,476
+48,Check for completeness,2023-10-03 00:32:21.728,Clerk-000004,,Check for completeness,477
+52,notify reject,2023-10-03 00:37:54.583,Manager-000003,,notify reject,478
+48,Perform checks,2023-10-03 00:39:07.892,Clerk-000001,,Perform checks,479
+51,Request info,2023-10-03 00:39:17.379,Manager-000002,,Request info,480
+49,time out,2023-10-03 00:41:24.175,,,time out,481
+49,EVENT 13 END,2023-10-03 00:41:34.175,,,EVENT 13 END,482
+51,info received,2023-10-03 00:46:26.071,,,info received,483
+51,Check for completeness,2023-10-03 00:46:36.071,Clerk-000002,,Check for completeness,484
+51,application check,2023-10-03 00:50:24.923,Clerk-000006,homonymous Label(Activity:'Perform checks'),Perform checks,485
+52,review request received,2023-10-03 00:50:58.980,,,review request received,486
+52,Check for completeness,2023-10-03 00:51:08.980,Clerk-000004,,Check for completeness,487
+48,Make decision,2023-10-03 00:59:40.041,Manager-000004,,Make decision,488
+52,Request info,2023-10-03 00:59:50.984,Manager-000005,,Request info,489
+52,info received,2023-10-03 01:09:23.893,,,info received,490
+52,Check for completeness,2023-10-03 01:09:33.893,Clerk-000005,,Check for completeness,491
+48,notify reject,2023-10-03 01:10:49.811,Manager-000003,,notify reject,492
+51,Make decision,2023-10-03 01:14:15.715,Manager-000001,,Make decision,493
+52,application check,2023-10-03 01:14:55.841,Clerk-000002,homonymous Label(Activity:'Perform checks'),Perform checks,494
+52,Make decision,2023-10-03 01:19:41.229,Manager-000006,,Make decision,495
+52,notify reject,2023-10-03 01:19:46.103,Manager-000002,,notify reject,496
+55,Check for completeness,2023-10-03 01:23:31.507,Clerk-000001,,Check for completeness,497
+55,New online application received,2023-10-03 01:23:31.507,,,New online application received,498
+51,notify reject,2023-10-03 01:25:02.864,Manager-000005,,notify reject,499
+51,time out,2023-10-03 01:26:55.001,,,time out,500
+51,EVENT 13 END,2023-10-03 01:27:05.001,,,EVENT 13 END,501
+55,request information,2023-10-03 01:28:49.137,Manager-000004,homonymous Label(Activity:'Request info'),Request info,502
+52,review request received,2023-10-03 01:29:17.796,,,review request received,503
+52,Check for completeness,2023-10-03 01:29:27.796,Clerk-000004,,Check for completeness,504
+56,New online application received,2023-10-03 01:34:01.981,,,New online application received,505
+56,Check for completeness,2023-10-03 01:34:01.981,Clerk-000006,,Check for completeness,506
+56,Request info,2023-10-03 01:37:31.243,Manager-000006,,Request info,507
+48,time out,2023-10-03 01:42:58.246,,,time out,508
+48,EVENT 13 END,2023-10-03 01:43:08.246,,,EVENT 13 END,509
+52,application check,2023-10-03 01:50:22.056,Clerk-000005,homonymous Label(Activity:'Perform checks'),Perform checks,510
+55,info received,2023-10-03 01:53:07.253,,,info received,511
+55,Check for completeness,2023-10-03 01:53:17.253,Clerk-000001,,Check for completeness,512
+56,request information,2023-10-03 01:54:31.717,,homonymous Label(Activity:'info received'),info received,513
+56,Check for completeness,2023-10-03 01:54:41.717,Clerk-000006,,Check for completeness,514
+52,Make decision,2023-10-03 01:55:11.563,Manager-000001,,Make decision,515
+55,Perform checks,2023-10-03 02:03:56.832,Clerk-000004,,Perform checks,516
+55,Make decision,2023-10-03 02:04:12.179,Manager-000003,,Make decision,517
+55,Notify accept,2023-10-03 02:05:17.376,Manager-000004,,Notify accept,518
+56,application check,2023-10-03 02:05:43.652,Clerk-000003,homonymous Label(Activity:'Perform checks'),Perform checks,519
+56,Make decision,2023-10-03 02:10:22.771,Manager-000005,,Make decision,520
+55,Deliver card,2023-10-03 02:19:52.697,Manager-000003,,Deliver card,521
+56,Notify accept,2023-10-03 02:21:47.151,Manager-000002,,Notify accept,522
+56,Deliver card,2023-10-03 02:24:38.182,Manager-000006,,Deliver card,523
+52,send notification,2023-10-03 02:34:04.951,Manager-000004,homonymous Label(Activity:'notify reject'),notify reject,524
+56,EVENT 13 END,2023-10-03 02:38:06.681,,,EVENT 13 END,525
+52,time out,2023-10-03 02:46:08.697,,,time out,526
+52,EVENT 13 END,2023-10-03 02:46:18.697,,,EVENT 13 END,527
+57,Check for completeness,2023-10-03 03:00:56.688,Clerk-000005,,Check for completeness,528
+57,receive information,2023-10-03 03:00:56.688,,homonymous Label(Activity:'New online application received'),New online application received,529
+55,EVENT 13 END,2023-10-03 03:21:30.286,,,EVENT 13 END,530
+57,Perform checks,2023-10-03 03:22:35.316,Clerk-000002,,Perform checks,531
+57,Make decision,2023-10-03 03:23:29.906,Manager-000005,,Make decision,532
+57,Notify accept,2023-10-03 03:25:59.935,Manager-000002,,Notify accept,533
+57,Deliver card,2023-10-03 03:29:10.392,Manager-000001,,Deliver card,534
+57,EVENT 13 END,2023-10-03 03:30:23.233,,,EVENT 13 END,535
+59,Check for completeness,2023-10-03 06:14:45.227,Clerk-000004,,Check for completeness,536
+59,New online application received,2023-10-03 06:14:45.227,,,New online application received,537
+59,Request info,2023-10-03 06:23:11.527,Manager-000006,,Request info,538
+59,info received,2023-10-03 06:28:04.547,,,info received,539
+59,Check for completeness,2023-10-03 06:28:14.547,Clerk-000006,,Check for completeness,540
+59,request information,2023-10-03 07:08:40.037,Manager-000002,homonymous Label(Activity:'Request info'),Request info,541
+59,info received,2023-10-03 07:09:17.436,,,info received,542
+59,Check for completeness,2023-10-03 07:09:27.436,Clerk-000003,,Check for completeness,543
+59,Request info,2023-10-03 07:12:21.342,Manager-000006,,Request info,544
+59,info received,2023-10-03 07:17:23.658,,,info received,545
+59,Check for completeness,2023-10-03 07:17:33.658,Clerk-000005,,Check for completeness,546
+59,Request info,2023-10-03 07:18:57.662,Manager-000004,,Request info,547
+59,request information,2023-10-03 07:38:42.874,,homonymous Label(Activity:'info received'),info received,548
+59,Check for completeness,2023-10-03 07:38:52.874,Clerk-000002,,Check for completeness,549
+59,Perform checks,2023-10-03 07:44:35.910,Clerk-000005,,Perform checks,550
+59,Make decision,2023-10-03 07:52:05.931,Manager-000004,,Make decision,551
+62,New online application received,2023-10-03 07:55:44.576,,,New online application received,553
+62,Check for completeness,2023-10-03 07:55:44.576,Clerk-000003,,Check for completeness,552
+62,Request info,2023-10-03 08:02:43.350,Manager-000001,,Request info,554
+59,send notification,2023-10-03 08:04:24.800,Manager-000002,homonymous Label(Activity:'Notify accept'),Notify accept,555
+59,Deliver card,2023-10-03 08:10:11.580,Manager-000003,,Deliver card,556
+62,request information,2023-10-03 08:10:15.876,,homonymous Label(Activity:'info received'),info received,557
+62,Check for completeness,2023-10-03 08:10:25.876,Clerk-000006,,Check for completeness,558
+59,EVENT 13 END,2023-10-03 08:19:05.210,,,EVENT 13 END,559
+62,request information,2023-10-03 08:24:46.399,Manager-000001,homonymous Label(Activity:'Request info'),Request info,560
+62,info received,2023-10-03 08:25:37.452,,,info received,561
+62,Check for completeness,2023-10-03 08:25:47.452,Clerk-000002,,Check for completeness,562
+62,request information,2023-10-03 08:36:25.620,Manager-000005,homonymous Label(Activity:'Request info'),Request info,563
+62,info received,2023-10-03 09:01:51.356,,,info received,564
+62,Check for completeness,2023-10-03 09:02:01.356,Clerk-000005,,Check for completeness,565
+62,request information,2023-10-03 09:05:16.244,Manager-000002,homonymous Label(Activity:'Request info'),Request info,566
+62,info received,2023-10-03 09:05:29.985,,,info received,567
+62,Check for completeness,2023-10-03 09:05:39.985,Clerk-000004,,Check for completeness,568
+62,Perform checks,2023-10-03 09:06:11.469,Clerk-000003,,Perform checks,569
+62,Make decision,2023-10-03 09:17:26.618,Manager-000003,,Make decision,570
+62,send notification,2023-10-03 09:27:27.673,Manager-000004,homonymous Label(Activity:'notify reject'),notify reject,571
+63,Check for completeness,2023-10-03 09:28:25.273,Clerk-000001,,Check for completeness,572
+63,New online application received,2023-10-03 09:28:25.273,,,New online application received,573
+62,time out,2023-10-03 09:43:31.885,,,time out,574
+62,EVENT 13 END,2023-10-03 09:43:41.885,,,EVENT 13 END,575
+63,application check,2023-10-03 09:52:33.333,Clerk-000006,homonymous Label(Activity:'Perform checks'),Perform checks,576
+63,Make decision,2023-10-03 09:58:12.870,Manager-000001,,Make decision,577
+63,Notify accept,2023-10-03 10:11:30.263,Manager-000006,,Notify accept,578
+63,Deliver card,2023-10-03 10:13:16.690,Manager-000005,,Deliver card,579
+63,EVENT 13 END,2023-10-03 10:15:37.217,,,EVENT 13 END,580
+65,Check for completeness,2023-10-03 13:09:28.125,Clerk-000004,,Check for completeness,581
+65,receive information,2023-10-03 13:09:28.125,,homonymous Label(Activity:'New online application received'),New online application received,582
+65,Request info,2023-10-03 13:12:03.709,Manager-000004,,Request info,583
+65,info received,2023-10-03 13:21:31.790,,,info received,584
+65,Check for completeness,2023-10-03 13:21:41.790,Clerk-000003,,Check for completeness,585
+65,Perform checks,2023-10-03 13:23:47.539,Clerk-000001,,Perform checks,586
+66,receive information,2023-10-03 13:31:57.918,,homonymous Label(Activity:'New online application received'),New online application received,587
+66,Check for completeness,2023-10-03 13:31:57.918,Clerk-000006,,Check for completeness,588
+65,Make decision,2023-10-03 13:40:13.120,Manager-000001,,Make decision,589
+65,Notify accept,2023-10-03 13:41:50.466,Manager-000006,,Notify accept,590
+65,Deliver card,2023-10-03 13:47:40.518,Manager-000005,,Deliver card,591
+65,EVENT 13 END,2023-10-03 13:48:33.358,,,EVENT 13 END,592
+66,Perform checks,2023-10-03 14:06:38.829,Clerk-000002,,Perform checks,593
+66,Make decision,2023-10-03 14:17:09.116,Manager-000002,,Make decision,594
+66,send notification,2023-10-03 14:17:53.447,Manager-000003,homonymous Label(Activity:'notify reject'),notify reject,595
+66,time out,2023-10-03 14:29:01.331,,,time out,596
+66,EVENT 13 END,2023-10-03 14:29:11.331,,,EVENT 13 END,597
+67,Check for completeness,2023-10-03 15:42:18.428,Clerk-000005,,Check for completeness,598
+67,receive information,2023-10-03 15:42:18.428,,homonymous Label(Activity:'New online application received'),New online application received,599
+67,Perform checks,2023-10-03 16:00:10.254,Clerk-000004,,Perform checks,600
+67,Make decision,2023-10-03 16:00:20.132,Manager-000004,,Make decision,601
+67,notify reject,2023-10-03 16:32:46.454,Manager-000001,,notify reject,602
+67,time out,2023-10-03 16:38:43.646,,,time out,603
+67,EVENT 13 END,2023-10-03 16:38:53.646,,,EVENT 13 END,604
+69,receive information,2023-10-03 18:08:59.269,,homonymous Label(Activity:'New online application received'),New online application received,605
+69,Check for completeness,2023-10-03 18:08:59.269,Clerk-000005,,Check for completeness,606
+69,application check,2023-10-03 18:20:22.854,Clerk-000004,homonymous Label(Activity:'Perform checks'),Perform checks,607
+69,Make decision,2023-10-03 18:26:56.984,Manager-000001,,Make decision,608
+69,Notify accept,2023-10-03 18:30:17.155,Manager-000006,,Notify accept,609
+69,Deliver card,2023-10-03 18:52:52.283,Manager-000005,,Deliver card,610
+69,EVENT 13 END,2023-10-03 18:59:24.110,,,EVENT 13 END,611
+70,Check for completeness,2023-10-03 18:59:43.619,Clerk-000003,,Check for completeness,612
+70,receive information,2023-10-03 18:59:43.619,,homonymous Label(Activity:'New online application received'),New online application received,613
+70,Perform checks,2023-10-03 19:03:42.387,Clerk-000001,,Perform checks,614
+70,Make decision,2023-10-03 19:21:26.015,Manager-000002,,Make decision,615
+70,notify reject,2023-10-03 19:24:17.989,Manager-000003,,notify reject,616
+71,receive information,2023-10-03 19:51:33.709,,homonymous Label(Activity:'New online application received'),New online application received,617
+71,Check for completeness,2023-10-03 19:51:33.709,Clerk-000006,,Check for completeness,618
+71,request information,2023-10-03 19:52:01.092,Manager-000001,homonymous Label(Activity:'Request info'),Request info,619
+70,review request received,2023-10-03 19:55:39.365,,,review request received,620
+70,Check for completeness,2023-10-03 19:55:49.365,Clerk-000002,,Check for completeness,621
+70,Perform checks,2023-10-03 20:02:14.266,Clerk-000005,,Perform checks,622
+71,request information,2023-10-03 20:05:59.251,,homonymous Label(Activity:'info received'),info received,623
+71,Check for completeness,2023-10-03 20:06:09.251,Clerk-000004,,Check for completeness,624
+71,Request info,2023-10-03 20:06:56.430,Manager-000004,,Request info,625
+70,Make decision,2023-10-03 20:14:49.624,Manager-000006,,Make decision,626
+70,notify reject,2023-10-03 20:16:11.465,Manager-000005,,notify reject,627
+70,time out,2023-10-03 20:25:18.848,,,time out,628
+70,EVENT 13 END,2023-10-03 20:25:28.848,,,EVENT 13 END,629
+71,info received,2023-10-03 20:27:27.066,,,info received,630
+71,Check for completeness,2023-10-03 20:27:37.066,Clerk-000003,,Check for completeness,631
+71,Request info,2023-10-03 21:00:17.604,Manager-000002,,Request info,632
+71,request information,2023-10-03 21:05:43.578,,homonymous Label(Activity:'info received'),info received,633
+71,Check for completeness,2023-10-03 21:05:53.578,Clerk-000001,,Check for completeness,634
+71,Perform checks,2023-10-03 21:08:23.079,Clerk-000006,,Perform checks,635
+71,Make decision,2023-10-03 21:14:16.007,Manager-000003,,Make decision,636
+71,send notification,2023-10-03 21:25:29.309,Manager-000001,homonymous Label(Activity:'notify reject'),notify reject,637
+71,time out,2023-10-03 21:31:49.833,,,time out,638
+71,EVENT 13 END,2023-10-03 21:31:59.833,,,EVENT 13 END,639
+72,New online application received,2023-10-03 21:46:46.157,,,New online application received,641
+72,Check for completeness,2023-10-03 21:46:46.157,Clerk-000002,,Check for completeness,640
+72,Perform checks,2023-10-03 22:09:39.262,Clerk-000004,,Perform checks,642
+72,Make decision,2023-10-03 22:16:45.438,Manager-000006,,Make decision,643
+72,send notification,2023-10-03 22:21:17.835,Manager-000005,homonymous Label(Activity:'notify reject'),notify reject,644
+72,review request received,2023-10-03 22:25:44.700,,,review request received,645
+72,Check for completeness,2023-10-03 22:25:54.700,Clerk-000005,,Check for completeness,646
+72,Request info,2023-10-03 22:40:28.831,Manager-000004,,Request info,647
+72,request information,2023-10-03 22:51:36.637,,homonymous Label(Activity:'info received'),info received,648
+72,Check for completeness,2023-10-03 22:51:46.637,Clerk-000001,,Check for completeness,649
+72,Perform checks,2023-10-03 23:03:04.962,Clerk-000006,,Perform checks,650
+72,Make decision,2023-10-03 23:03:24.076,Manager-000003,,Make decision,651
+74,New online application received,2023-10-03 23:04:29.496,,,New online application received,653
+74,Check for completeness,2023-10-03 23:04:29.496,Clerk-000002,,Check for completeness,652
+74,Request info,2023-10-03 23:18:08.391,Manager-000006,,Request info,654
+72,send notification,2023-10-03 23:20:10.855,Manager-000004,homonymous Label(Activity:'Notify accept'),Notify accept,655
+74,info received,2023-10-03 23:30:50.919,,,info received,656
+74,Check for completeness,2023-10-03 23:31:00.919,Clerk-000001,,Check for completeness,657
+72,Deliver card,2023-10-03 23:31:12.399,Manager-000002,,Deliver card,658
+74,request information,2023-10-03 23:32:14.200,Manager-000001,homonymous Label(Activity:'Request info'),Request info,659
+75,New online application received,2023-10-03 23:33:12.127,,,New online application received,660
+75,Check for completeness,2023-10-03 23:33:12.127,Clerk-000006,,Check for completeness,661
+72,EVENT 13 END,2023-10-03 23:37:06.199,,,EVENT 13 END,662
+75,application check,2023-10-03 23:45:01.195,Clerk-000004,homonymous Label(Activity:'Perform checks'),Perform checks,663
+75,Make decision,2023-10-03 23:50:51.070,Manager-000003,,Make decision,664
+74,request information,2023-10-03 23:55:57.076,,homonymous Label(Activity:'info received'),info received,665
+74,Check for completeness,2023-10-03 23:56:07.076,Clerk-000005,,Check for completeness,666
+75,send notification,2023-10-03 23:58:39.761,Manager-000006,homonymous Label(Activity:'notify reject'),notify reject,667
+75,time out,2023-10-04 00:11:22.358,,,time out,668
+75,EVENT 13 END,2023-10-04 00:11:32.358,,,EVENT 13 END,669
+74,request information,2023-10-04 00:15:14.697,Manager-000004,homonymous Label(Activity:'Request info'),Request info,670
+76,receive information,2023-10-04 00:23:30.377,,homonymous Label(Activity:'New online application received'),New online application received,671
+76,Check for completeness,2023-10-04 00:23:30.377,Clerk-000001,,Check for completeness,672
+76,request information,2023-10-04 00:24:41.510,Manager-000002,homonymous Label(Activity:'Request info'),Request info,673
+74,request information,2023-10-04 00:30:19.921,,homonymous Label(Activity:'info received'),info received,674
+76,request information,2023-10-04 00:30:28.851,,homonymous Label(Activity:'info received'),info received,675
+74,Check for completeness,2023-10-04 00:30:29.921,Clerk-000006,,Check for completeness,676
+76,Check for completeness,2023-10-04 00:30:38.851,Clerk-000004,,Check for completeness,677
+76,application check,2023-10-04 00:35:14.786,Clerk-000003,homonymous Label(Activity:'Perform checks'),Perform checks,678
+77,Check for completeness,2023-10-04 00:41:36.729,Clerk-000001,,Check for completeness,679
+77,New online application received,2023-10-04 00:41:36.729,,,New online application received,680
+77,Request info,2023-10-04 00:41:53.676,Manager-000001,,Request info,681
+74,Perform checks,2023-10-04 00:43:24.251,Clerk-000004,,Perform checks,682
+74,Make decision,2023-10-04 00:54:39.830,Manager-000005,,Make decision,683
+77,info received,2023-10-04 00:58:27.660,,,info received,684
+77,Check for completeness,2023-10-04 00:58:37.660,Clerk-000002,,Check for completeness,685
+76,Make decision,2023-10-04 01:00:29.140,Manager-000004,,Make decision,686
+74,Notify accept,2023-10-04 01:02:27.486,Manager-000002,,Notify accept,687
+76,notify reject,2023-10-04 01:09:33.675,Manager-000003,,notify reject,688
+78,receive information,2023-10-04 01:15:42.521,,homonymous Label(Activity:'New online application received'),New online application received,690
+78,Check for completeness,2023-10-04 01:15:42.521,Clerk-000001,,Check for completeness,689
+74,Deliver card,2023-10-04 01:16:27.433,Manager-000006,,Deliver card,691
+78,request information,2023-10-04 01:22:16.252,Manager-000001,homonymous Label(Activity:'Request info'),Request info,692
+76,receive information,2023-10-04 01:22:23.047,,homonymous Label(Activity:'review request received'),review request received,693
+76,Check for completeness,2023-10-04 01:22:33.047,Clerk-000006,,Check for completeness,694
+76,request information,2023-10-04 01:23:28.437,Manager-000005,homonymous Label(Activity:'Request info'),Request info,695
+77,application check,2023-10-04 01:25:51.337,Clerk-000005,homonymous Label(Activity:'Perform checks'),Perform checks,696
+77,Make decision,2023-10-04 01:27:27.336,Manager-000004,,Make decision,697
+76,request information,2023-10-04 01:29:12.110,,homonymous Label(Activity:'info received'),info received,698
+76,Check for completeness,2023-10-04 01:29:22.110,Clerk-000004,,Check for completeness,699
+78,request information,2023-10-04 01:30:35.837,,homonymous Label(Activity:'info received'),info received,700
+78,Check for completeness,2023-10-04 01:30:45.837,Clerk-000003,,Check for completeness,701
+78,Perform checks,2023-10-04 01:31:24.291,Clerk-000001,,Perform checks,702
+78,Make decision,2023-10-04 01:31:46.167,Manager-000002,,Make decision,703
+76,Request info,2023-10-04 01:31:54.735,Manager-000003,,Request info,704
+78,send notification,2023-10-04 01:32:12.562,Manager-000005,homonymous Label(Activity:'Notify accept'),Notify accept,705
+76,info received,2023-10-04 01:32:55.636,,,info received,706
+76,Check for completeness,2023-10-04 01:33:05.636,Clerk-000006,,Check for completeness,707
+77,send notification,2023-10-04 01:36:08.881,Manager-000001,homonymous Label(Activity:'Notify accept'),Notify accept,708
+79,Check for completeness,2023-10-04 01:36:34.384,Clerk-000002,,Check for completeness,709
+79,New online application received,2023-10-04 01:36:34.384,,,New online application received,710
+78,Deliver card,2023-10-04 01:42:13.653,Manager-000002,,Deliver card,711
+74,EVENT 13 END,2023-10-04 01:45:13.282,,,EVENT 13 END,712
+79,application check,2023-10-04 01:51:02.510,Clerk-000005,homonymous Label(Activity:'Perform checks'),Perform checks,713
+76,Request info,2023-10-04 02:02:18.245,Manager-000003,,Request info,714
+77,Deliver card,2023-10-04 02:02:43.585,Manager-000004,,Deliver card,715
+78,EVENT 13 END,2023-10-04 02:12:43.736,,,EVENT 13 END,716
+77,EVENT 13 END,2023-10-04 02:13:24.358,,,EVENT 13 END,717
+79,Make decision,2023-10-04 02:17:07.955,Manager-000005,,Make decision,718
+79,send notification,2023-10-04 02:17:50.807,Manager-000006,homonymous Label(Activity:'Notify accept'),Notify accept,719
+79,Deliver card,2023-10-04 02:18:56.416,Manager-000001,,Deliver card,720
+76,info received,2023-10-04 02:28:42.343,,,info received,721
+76,Check for completeness,2023-10-04 02:28:52.343,Clerk-000003,,Check for completeness,722
+79,EVENT 13 END,2023-10-04 02:49:52.430,,,EVENT 13 END,723
+80,New online application received,2023-10-04 02:58:46.148,,,New online application received,724
+80,Check for completeness,2023-10-04 02:58:46.148,Clerk-000001,,Check for completeness,725
+80,application check,2023-10-04 03:04:43.730,Clerk-000004,homonymous Label(Activity:'Perform checks'),Perform checks,726
+80,Make decision,2023-10-04 03:16:47.675,Manager-000002,,Make decision,727
+76,Request info,2023-10-04 03:26:58.070,Manager-000004,,Request info,728
+80,send notification,2023-10-04 03:27:24.833,Manager-000005,homonymous Label(Activity:'notify reject'),notify reject,729
+80,time out,2023-10-04 03:27:29.027,,,time out,730
+80,EVENT 13 END,2023-10-04 03:27:39.027,,,EVENT 13 END,731
+76,info received,2023-10-04 03:29:28.603,,,info received,732
+76,Check for completeness,2023-10-04 03:29:38.603,Clerk-000002,,Check for completeness,733
+81,Check for completeness,2023-10-04 03:30:24.276,Clerk-000006,,Check for completeness,734
+81,New online application received,2023-10-04 03:30:24.276,,,New online application received,735
+81,application check,2023-10-04 03:34:54.252,Clerk-000005,homonymous Label(Activity:'Perform checks'),Perform checks,736
+81,Make decision,2023-10-04 03:38:28.356,Manager-000006,,Make decision,737
+76,request information,2023-10-04 03:38:45.341,Manager-000003,homonymous Label(Activity:'Request info'),Request info,738
+82,Check for completeness,2023-10-04 03:45:44.767,Clerk-000001,,Check for completeness,740
+82,receive information,2023-10-04 03:45:44.767,,homonymous Label(Activity:'New online application received'),New online application received,739
+82,request information,2023-10-04 03:48:15.163,Manager-000001,homonymous Label(Activity:'Request info'),Request info,741
+82,info received,2023-10-04 03:54:33.366,,,info received,742
+82,Check for completeness,2023-10-04 03:54:43.366,Clerk-000004,,Check for completeness,743
+76,info received,2023-10-04 03:55:06.795,,,info received,744
+76,Check for completeness,2023-10-04 03:55:16.795,Clerk-000003,,Check for completeness,745
+76,Request info,2023-10-04 03:55:18.652,Manager-000002,,Request info,746
+83,Check for completeness,2023-10-04 04:04:50.273,Clerk-000006,,Check for completeness,747
+83,receive information,2023-10-04 04:04:50.273,,homonymous Label(Activity:'New online application received'),New online application received,748
+76,info received,2023-10-04 04:05:56.229,,,info received,749
+76,Check for completeness,2023-10-04 04:06:06.229,Clerk-000005,,Check for completeness,750
+82,request information,2023-10-04 04:08:18.367,Manager-000005,homonymous Label(Activity:'Request info'),Request info,751
+81,notify reject,2023-10-04 04:14:02.777,Manager-000004,,notify reject,752
+81,time out,2023-10-04 04:16:42.144,,,time out,753
+81,EVENT 13 END,2023-10-04 04:16:52.144,,,EVENT 13 END,754
+83,request information,2023-10-04 04:27:08.872,Manager-000001,homonymous Label(Activity:'Request info'),Request info,755
+82,request information,2023-10-04 04:30:14.133,,homonymous Label(Activity:'info received'),info received,756
+82,Check for completeness,2023-10-04 04:30:24.133,Clerk-000002,,Check for completeness,757
+82,application check,2023-10-04 04:44:30.588,Clerk-000001,homonymous Label(Activity:'Perform checks'),Perform checks,758
+83,info received,2023-10-04 04:48:51.609,,,info received,759
+83,Check for completeness,2023-10-04 04:49:01.609,Clerk-000003,,Check for completeness,760
+83,Perform checks,2023-10-04 04:50:02.340,Clerk-000004,,Perform checks,761
+76,application check,2023-10-04 04:50:15.248,Clerk-000006,homonymous Label(Activity:'Perform checks'),Perform checks,762
+82,Make decision,2023-10-04 04:50:41.344,Manager-000003,,Make decision,763
+84,Check for completeness,2023-10-04 04:52:17.556,Clerk-000002,,Check for completeness,765
+84,New online application received,2023-10-04 04:52:17.556,,,New online application received,764
+76,Make decision,2023-10-04 04:57:32.135,Manager-000002,,Make decision,766
+82,send notification,2023-10-04 05:03:57.035,Manager-000006,homonymous Label(Activity:'Notify accept'),Notify accept,767
+84,Perform checks,2023-10-04 05:09:02.736,Clerk-000003,,Perform checks,768
+76,notify reject,2023-10-04 05:10:01.731,Manager-000004,,notify reject,769
+83,Make decision,2023-10-04 05:15:58.661,Manager-000001,,Make decision,770
+84,Make decision,2023-10-04 05:20:48.012,Manager-000003,,Make decision,771
+83,Notify accept,2023-10-04 05:21:07.409,Manager-000002,,Notify accept,772
+84,notify reject,2023-10-04 05:24:05.711,Manager-000001,,notify reject,773
+84,time out,2023-10-04 05:27:11.072,,,time out,774
+84,EVENT 13 END,2023-10-04 05:27:21.072,,,EVENT 13 END,775
+83,Deliver card,2023-10-04 05:30:23.543,Manager-000003,,Deliver card,776
+76,time out,2023-10-04 05:34:51.424,,,time out,777
+76,EVENT 13 END,2023-10-04 05:35:01.424,,,EVENT 13 END,778
+82,Deliver card,2023-10-04 05:41:34.911,Manager-000001,,Deliver card,779
+82,EVENT 13 END,2023-10-04 05:42:43.662,,,EVENT 13 END,780
+86,Check for completeness,2023-10-04 05:48:19.071,Clerk-000006,,Check for completeness,781
+86,receive information,2023-10-04 05:48:19.071,,homonymous Label(Activity:'New online application received'),New online application received,782
+87,New online application received,2023-10-04 05:49:09.751,,,New online application received,783
+87,Check for completeness,2023-10-04 05:49:09.751,Clerk-000002,,Check for completeness,784
+83,EVENT 13 END,2023-10-04 05:52:28.820,,,EVENT 13 END,785
+86,application check,2023-10-04 05:52:38.496,Clerk-000005,homonymous Label(Activity:'Perform checks'),Perform checks,786
+88,receive information,2023-10-04 05:54:38.179,,homonymous Label(Activity:'New online application received'),New online application received,787
+88,Check for completeness,2023-10-04 05:54:38.179,Clerk-000004,,Check for completeness,788
+87,Perform checks,2023-10-04 05:57:09.822,Clerk-000003,,Perform checks,789
+88,application check,2023-10-04 05:57:32.529,Clerk-000006,homonymous Label(Activity:'Perform checks'),Perform checks,790
+86,Make decision,2023-10-04 06:07:10.878,Manager-000002,,Make decision,791
+87,Make decision,2023-10-04 06:07:37.192,Manager-000006,,Make decision,792
+87,send notification,2023-10-04 06:12:15.461,Manager-000001,homonymous Label(Activity:'Notify accept'),Notify accept,793
+90,Check for completeness,2023-10-04 06:15:32.028,Clerk-000002,,Check for completeness,794
+90,New online application received,2023-10-04 06:15:32.028,,,New online application received,795
+88,Make decision,2023-10-04 06:21:28.926,Manager-000003,,Make decision,796
+88,send notification,2023-10-04 06:22:06.535,Manager-000004,homonymous Label(Activity:'notify reject'),notify reject,797
+90,application check,2023-10-04 06:25:59.058,Clerk-000001,homonymous Label(Activity:'Perform checks'),Perform checks,798
+88,receive information,2023-10-04 06:26:20.333,,homonymous Label(Activity:'review request received'),review request received,799
+88,Check for completeness,2023-10-04 06:26:30.333,Clerk-000003,,Check for completeness,800
+87,Deliver card,2023-10-04 06:28:43.919,Manager-000003,,Deliver card,801
+87,EVENT 13 END,2023-10-04 06:29:31.612,,,EVENT 13 END,802
+91,receive information,2023-10-04 06:31:11.643,,homonymous Label(Activity:'New online application received'),New online application received,803
+91,Check for completeness,2023-10-04 06:31:11.643,Clerk-000006,,Check for completeness,804
+90,Make decision,2023-10-04 06:31:20.120,Manager-000004,,Make decision,805
+86,send notification,2023-10-04 06:32:40.370,Manager-000001,homonymous Label(Activity:'Notify accept'),Notify accept,806
+88,application check,2023-10-04 06:38:35.875,Clerk-000005,homonymous Label(Activity:'Perform checks'),Perform checks,807
+90,send notification,2023-10-04 06:39:35.206,Manager-000002,homonymous Label(Activity:'notify reject'),notify reject,808
+91,Request info,2023-10-04 06:42:29.739,Manager-000004,,Request info,809
+90,review request received,2023-10-04 06:45:46.771,,,review request received,810
+90,Check for completeness,2023-10-04 06:45:56.771,Clerk-000002,,Check for completeness,811
+86,Deliver card,2023-10-04 06:47:43.293,Manager-000005,,Deliver card,812
+91,request information,2023-10-04 06:52:42.535,,homonymous Label(Activity:'info received'),info received,813
+91,Check for completeness,2023-10-04 06:52:52.535,Clerk-000004,,Check for completeness,814
+88,Make decision,2023-10-04 06:54:11.798,Manager-000002,,Make decision,815
+91,request information,2023-10-04 06:55:29.611,Manager-000001,homonymous Label(Activity:'Request info'),Request info,816
+90,Request info,2023-10-04 06:56:26.752,Manager-000006,,Request info,817
+90,info received,2023-10-04 07:03:13.735,,,info received,818
+90,Check for completeness,2023-10-04 07:03:23.735,Clerk-000001,,Check for completeness,819
+88,send notification,2023-10-04 07:05:33.287,Manager-000004,homonymous Label(Activity:'notify reject'),notify reject,820
+90,application check,2023-10-04 07:05:50.969,Clerk-000003,homonymous Label(Activity:'Perform checks'),Perform checks,821
+91,info received,2023-10-04 07:07:00.680,,,info received,822
+91,Check for completeness,2023-10-04 07:07:10.680,Clerk-000006,,Check for completeness,823
+90,Make decision,2023-10-04 07:16:09.220,Manager-000003,,Make decision,824
+90,Notify accept,2023-10-04 07:17:39.985,Manager-000006,,Notify accept,825
+91,Perform checks,2023-10-04 07:17:57.281,Clerk-000005,,Perform checks,826
+86,EVENT 13 END,2023-10-04 07:18:55.008,,,EVENT 13 END,827
+92,receive information,2023-10-04 07:21:11.490,,homonymous Label(Activity:'New online application received'),New online application received,828
+92,Check for completeness,2023-10-04 07:21:11.490,Clerk-000004,,Check for completeness,829
+92,request information,2023-10-04 07:31:50.321,Manager-000002,homonymous Label(Activity:'Request info'),Request info,830
+92,info received,2023-10-04 07:32:45.684,,,info received,831
+92,Check for completeness,2023-10-04 07:32:55.684,Clerk-000002,,Check for completeness,832
+91,Make decision,2023-10-04 07:33:28.377,Manager-000001,,Make decision,833
+90,Deliver card,2023-10-04 07:40:18.406,Manager-000003,,Deliver card,834
+91,Notify accept,2023-10-04 07:49:34.785,Manager-000005,,Notify accept,835
+90,EVENT 13 END,2023-10-04 07:49:40.417,,,EVENT 13 END,836
+91,Deliver card,2023-10-04 07:49:49.823,Manager-000002,,Deliver card,837
+92,request information,2023-10-04 07:53:15.624,Manager-000006,homonymous Label(Activity:'Request info'),Request info,838
+88,review request received,2023-10-04 07:53:27.356,,,review request received,839
+88,Check for completeness,2023-10-04 07:53:37.356,Clerk-000001,,Check for completeness,840
+92,request information,2023-10-04 07:56:14.526,,homonymous Label(Activity:'info received'),info received,841
+92,Check for completeness,2023-10-04 07:56:24.526,Clerk-000003,,Check for completeness,842
+88,Request info,2023-10-04 07:59:07.017,Manager-000001,,Request info,843
+91,EVENT 13 END,2023-10-04 08:01:49.226,,,EVENT 13 END,844
+88,info received,2023-10-04 08:03:52.189,,,info received,845
+88,Check for completeness,2023-10-04 08:04:02.189,Clerk-000006,,Check for completeness,846
+88,Perform checks,2023-10-04 08:06:04.760,Clerk-000004,,Perform checks,847
+92,Request info,2023-10-04 08:16:38.787,Manager-000003,,Request info,848
+88,Make decision,2023-10-04 08:17:36.703,Manager-000005,,Make decision,849
+92,info received,2023-10-04 08:20:57.153,,,info received,850
+92,Check for completeness,2023-10-04 08:21:07.153,Clerk-000005,,Check for completeness,851
+88,notify reject,2023-10-04 08:28:01.766,Manager-000004,,notify reject,852
+92,Perform checks,2023-10-04 08:29:47.446,Clerk-000002,,Perform checks,853
+88,time out,2023-10-04 08:30:32.040,,,time out,854
+88,EVENT 13 END,2023-10-04 08:30:42.040,,,EVENT 13 END,855
+92,Make decision,2023-10-04 08:37:17.163,Manager-000006,,Make decision,856
+92,Notify accept,2023-10-04 08:47:22.589,Manager-000002,,Notify accept,857
+92,Deliver card,2023-10-04 08:49:04.928,Manager-000001,,Deliver card,858
+92,EVENT 13 END,2023-10-04 08:51:30.290,,,EVENT 13 END,859
+93,Check for completeness,2023-10-04 09:31:32.464,Clerk-000001,,Check for completeness,860
+93,receive information,2023-10-04 09:31:32.464,,homonymous Label(Activity:'New online application received'),New online application received,861
+94,New online application received,2023-10-04 09:37:51.366,,,New online application received,862
+94,Check for completeness,2023-10-04 09:37:51.366,Clerk-000006,,Check for completeness,863
+94,request information,2023-10-04 09:45:11.557,Manager-000003,homonymous Label(Activity:'Request info'),Request info,864
+94,request information,2023-10-04 09:52:31.336,,homonymous Label(Activity:'info received'),info received,865
+94,Check for completeness,2023-10-04 09:52:41.336,Clerk-000003,,Check for completeness,866
+93,request information,2023-10-04 09:54:49.364,Manager-000005,homonymous Label(Activity:'Request info'),Request info,867
+93,request information,2023-10-04 09:56:53.891,,homonymous Label(Activity:'info received'),info received,868
+93,Check for completeness,2023-10-04 09:57:03.891,Clerk-000004,,Check for completeness,869
+93,request information,2023-10-04 09:58:30.099,Manager-000004,homonymous Label(Activity:'Request info'),Request info,870
+94,Request info,2023-10-04 10:01:30.442,Manager-000006,,Request info,871
+94,request information,2023-10-04 10:02:54.874,,homonymous Label(Activity:'info received'),info received,872
+94,Check for completeness,2023-10-04 10:03:04.874,Clerk-000005,,Check for completeness,873
+93,info received,2023-10-04 10:05:56.129,,,info received,874
+93,Check for completeness,2023-10-04 10:06:06.129,Clerk-000002,,Check for completeness,875
+94,request information,2023-10-04 10:06:48.884,Manager-000002,homonymous Label(Activity:'Request info'),Request info,876
+93,Perform checks,2023-10-04 10:20:56.974,Clerk-000006,,Perform checks,877
+93,Make decision,2023-10-04 10:33:47.521,Manager-000001,,Make decision,878
+94,request information,2023-10-04 10:52:44.585,,homonymous Label(Activity:'info received'),info received,879
+94,Check for completeness,2023-10-04 10:52:54.585,Clerk-000001,,Check for completeness,880
+94,Request info,2023-10-04 10:56:40.954,Manager-000003,,Request info,881
+93,send notification,2023-10-04 11:00:56.248,Manager-000005,homonymous Label(Activity:'notify reject'),notify reject,882
+94,info received,2023-10-04 11:03:06.904,,,info received,883
+94,Check for completeness,2023-10-04 11:03:16.904,Clerk-000004,,Check for completeness,884
+94,Perform checks,2023-10-04 11:04:13.126,Clerk-000003,,Perform checks,885
+94,Make decision,2023-10-04 11:10:52.585,Manager-000006,,Make decision,886
+93,review request received,2023-10-04 11:12:09.845,,,review request received,887
+93,Check for completeness,2023-10-04 11:12:19.845,Clerk-000005,,Check for completeness,888
+93,request information,2023-10-04 11:20:22.103,Manager-000004,homonymous Label(Activity:'Request info'),Request info,889
+94,send notification,2023-10-04 11:27:53.346,Manager-000002,homonymous Label(Activity:'Notify accept'),Notify accept,890
+94,Deliver card,2023-10-04 11:31:47.957,Manager-000001,,Deliver card,891
+93,info received,2023-10-04 11:32:58.497,,,info received,892
+93,Check for completeness,2023-10-04 11:33:08.497,Clerk-000002,,Check for completeness,893
+93,Request info,2023-10-04 11:44:28.220,Manager-000003,,Request info,894
+95,Check for completeness,2023-10-04 11:44:34.245,Clerk-000006,,Check for completeness,895
+95,New online application received,2023-10-04 11:44:34.245,,,New online application received,896
+94,EVENT 13 END,2023-10-04 11:45:34.031,,,EVENT 13 END,897
+95,Request info,2023-10-04 11:48:17.078,Manager-000005,,Request info,898
+93,info received,2023-10-04 11:57:02.958,,,info received,899
+93,Check for completeness,2023-10-04 11:57:12.958,Clerk-000001,,Check for completeness,900
+93,application check,2023-10-04 11:59:09.463,Clerk-000004,homonymous Label(Activity:'Perform checks'),Perform checks,901
+95,info received,2023-10-04 12:05:09.289,,,info received,902
+95,Check for completeness,2023-10-04 12:05:19.289,Clerk-000003,,Check for completeness,903
+95,Request info,2023-10-04 12:06:08.389,Manager-000006,,Request info,904
+95,request information,2023-10-04 12:08:11.119,,homonymous Label(Activity:'info received'),info received,905
+95,Check for completeness,2023-10-04 12:08:21.119,Clerk-000005,,Check for completeness,906
+95,Request info,2023-10-04 12:16:47.126,Manager-000002,,Request info,907
+93,Make decision,2023-10-04 12:28:46.407,Manager-000004,,Make decision,908
+95,info received,2023-10-04 12:29:46.361,,,info received,909
+95,Check for completeness,2023-10-04 12:29:56.361,Clerk-000002,,Check for completeness,910
+93,notify reject,2023-10-04 12:32:01.431,Manager-000001,,notify reject,911
+93,review request received,2023-10-04 12:33:35.003,,,review request received,912
+93,Check for completeness,2023-10-04 12:33:45.003,Clerk-000006,,Check for completeness,913
+93,Perform checks,2023-10-04 12:35:33.045,Clerk-000001,,Perform checks,914
+93,Make decision,2023-10-04 12:36:57.294,Manager-000003,,Make decision,915
+93,notify reject,2023-10-04 12:38:07.236,Manager-000005,,notify reject,916
+93,time out,2023-10-04 12:39:35.025,,,time out,917
+93,EVENT 13 END,2023-10-04 12:39:45.025,,,EVENT 13 END,918
+95,Perform checks,2023-10-04 12:40:28.733,Clerk-000003,,Perform checks,919
+95,Make decision,2023-10-04 12:43:01.684,Manager-000006,,Make decision,920
+95,Notify accept,2023-10-04 12:47:40.526,Manager-000002,,Notify accept,921
+95,Deliver card,2023-10-04 12:50:58.870,Manager-000004,,Deliver card,922
+96,Check for completeness,2023-10-04 13:15:27.194,Clerk-000005,,Check for completeness,923
+96,receive information,2023-10-04 13:15:27.194,,homonymous Label(Activity:'New online application received'),New online application received,924
+96,request information,2023-10-04 13:15:40.136,Manager-000001,homonymous Label(Activity:'Request info'),Request info,925
+95,EVENT 13 END,2023-10-04 13:18:26.743,,,EVENT 13 END,926
+96,info received,2023-10-04 13:19:51.256,,,info received,927
+96,Check for completeness,2023-10-04 13:20:01.256,Clerk-000004,,Check for completeness,928
+96,Request info,2023-10-04 13:26:23.786,Manager-000003,,Request info,929
+96,request information,2023-10-04 13:28:35.016,,homonymous Label(Activity:'info received'),info received,930
+96,Check for completeness,2023-10-04 13:28:45.016,Clerk-000006,,Check for completeness,931
+96,request information,2023-10-04 13:44:56.635,Manager-000005,homonymous Label(Activity:'Request info'),Request info,932
+96,info received,2023-10-04 13:49:56.286,,,info received,933
+96,Check for completeness,2023-10-04 13:50:06.286,Clerk-000001,,Check for completeness,934
+96,Perform checks,2023-10-04 13:54:13.924,Clerk-000002,,Perform checks,935
+96,Make decision,2023-10-04 14:10:14.260,Manager-000006,,Make decision,936
+96,Notify accept,2023-10-04 14:32:55.284,Manager-000002,,Notify accept,937
+96,Deliver card,2023-10-04 14:46:45.960,Manager-000004,,Deliver card,938
+96,EVENT 13 END,2023-10-04 15:14:08.533,,,EVENT 13 END,939
+98,Check for completeness,2023-10-04 18:26:47.685,Clerk-000004,,Check for completeness,940
+98,New online application received,2023-10-04 18:26:47.685,,,New online application received,941
+98,request information,2023-10-04 18:38:13.167,Manager-000006,homonymous Label(Activity:'Request info'),Request info,942
+98,info received,2023-10-04 19:12:12.827,,,info received,943
+98,Check for completeness,2023-10-04 19:12:22.827,Clerk-000006,,Check for completeness,944
+98,Perform checks,2023-10-04 19:13:12.922,Clerk-000001,,Perform checks,945
+98,Make decision,2023-10-04 19:15:14.703,Manager-000002,,Make decision,946
+98,Notify accept,2023-10-04 19:18:25.525,Manager-000001,,Notify accept,947
+98,Deliver card,2023-10-04 19:27:44.966,Manager-000005,,Deliver card,948
+98,EVENT 13 END,2023-10-04 19:31:26.112,,,EVENT 13 END,949
+102,Check for completeness,2023-10-04 21:14:24.966,Clerk-000005,,Check for completeness,950
+102,receive information,2023-10-04 21:14:24.966,,homonymous Label(Activity:'New online application received'),New online application received,951
+102,Request info,2023-10-04 21:23:37.532,Manager-000002,,Request info,952
+102,request information,2023-10-04 21:37:17.505,,homonymous Label(Activity:'info received'),info received,953
+102,Check for completeness,2023-10-04 21:37:27.505,Clerk-000004,,Check for completeness,954
+102,request information,2023-10-04 21:43:38.344,Manager-000001,homonymous Label(Activity:'Request info'),Request info,955
+102,request information,2023-10-04 21:45:32.692,,homonymous Label(Activity:'info received'),info received,956
+102,Check for completeness,2023-10-04 21:45:42.692,Clerk-000001,,Check for completeness,957
+102,Request info,2023-10-04 22:16:46.744,Manager-000003,,Request info,958
+102,info received,2023-10-04 22:18:42.305,,,info received,959
+102,Check for completeness,2023-10-04 22:18:52.305,Clerk-000002,,Check for completeness,960
+102,request information,2023-10-04 22:19:09.528,Manager-000005,homonymous Label(Activity:'Request info'),Request info,961
+102,request information,2023-10-04 22:21:33.420,,homonymous Label(Activity:'info received'),info received,962
+102,Check for completeness,2023-10-04 22:21:43.420,Clerk-000003,,Check for completeness,963
+102,request information,2023-10-04 22:28:01.143,Manager-000004,homonymous Label(Activity:'Request info'),Request info,964
+102,request information,2023-10-04 22:55:04.164,,homonymous Label(Activity:'info received'),info received,965
+102,Check for completeness,2023-10-04 22:55:14.164,Clerk-000006,,Check for completeness,966
+102,request information,2023-10-04 22:56:15.724,Manager-000006,homonymous Label(Activity:'Request info'),Request info,967
+103,New online application received,2023-10-04 22:59:58.906,,,New online application received,968
+103,Check for completeness,2023-10-04 22:59:58.906,Clerk-000005,,Check for completeness,969
+104,New online application received,2023-10-04 23:05:03.426,,,New online application received,970
+104,Check for completeness,2023-10-04 23:05:03.426,Clerk-000004,,Check for completeness,971
+102,request information,2023-10-04 23:06:16.110,,homonymous Label(Activity:'info received'),info received,972
+102,Check for completeness,2023-10-04 23:06:26.110,Clerk-000001,,Check for completeness,973
+102,application check,2023-10-04 23:08:29.591,Clerk-000002,homonymous Label(Activity:'Perform checks'),Perform checks,974
+105,New online application received,2023-10-04 23:12:10.570,,,New online application received,975
+105,Check for completeness,2023-10-04 23:12:10.570,Clerk-000003,,Check for completeness,976
+102,Make decision,2023-10-04 23:14:23.877,Manager-000002,,Make decision,977
+102,notify reject,2023-10-04 23:15:26.056,Manager-000001,,notify reject,978
+104,request information,2023-10-04 23:16:08.407,Manager-000003,homonymous Label(Activity:'Request info'),Request info,979
+105,request information,2023-10-04 23:18:25.602,Manager-000005,homonymous Label(Activity:'Request info'),Request info,980
+104,info received,2023-10-04 23:20:57.214,,,info received,981
+104,Check for completeness,2023-10-04 23:21:07.214,Clerk-000006,,Check for completeness,982
+105,request information,2023-10-04 23:23:34.112,,homonymous Label(Activity:'info received'),info received,983
+105,Check for completeness,2023-10-04 23:23:44.112,Clerk-000001,,Check for completeness,984
+103,Perform checks,2023-10-04 23:26:52.439,Clerk-000002,,Perform checks,985
+102,time out,2023-10-04 23:31:04.936,,,time out,986
+102,EVENT 13 END,2023-10-04 23:31:14.936,,,EVENT 13 END,987
+103,Make decision,2023-10-04 23:33:11.752,Manager-000004,,Make decision,988
+103,send notification,2023-10-04 23:34:37.127,Manager-000006,homonymous Label(Activity:'notify reject'),notify reject,989
+107,receive information,2023-10-04 23:37:09.280,,homonymous Label(Activity:'New online application received'),New online application received,991
+107,Check for completeness,2023-10-04 23:37:09.280,Clerk-000003,,Check for completeness,990
+107,application check,2023-10-04 23:37:42.578,Clerk-000005,homonymous Label(Activity:'Perform checks'),Perform checks,992
+103,time out,2023-10-04 23:40:14.658,,,time out,993
+103,EVENT 13 END,2023-10-04 23:40:24.658,,,EVENT 13 END,994
+105,request information,2023-10-04 23:42:04.423,Manager-000002,homonymous Label(Activity:'Request info'),Request info,995
+107,Make decision,2023-10-04 23:45:10.179,Manager-000003,,Make decision,996
+104,request information,2023-10-04 23:47:27.306,Manager-000005,homonymous Label(Activity:'Request info'),Request info,997
+107,Notify accept,2023-10-04 23:51:09.136,Manager-000004,,Notify accept,998
+109,Check for completeness,2023-10-04 23:51:10.575,Clerk-000003,,Check for completeness,999
+109,receive information,2023-10-04 23:51:10.575,,homonymous Label(Activity:'New online application received'),New online application received,1000

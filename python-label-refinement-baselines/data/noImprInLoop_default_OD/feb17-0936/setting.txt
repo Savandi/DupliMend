@@ -1,0 +1,7 @@
+A;Sequence;R,N,M;B
+B;Sequence;Q,M,I;R
+D;Sequence;M,I,G;Q
+E;Sequence;S,J,I;A
+F;Sequence;A,I,F;B
+G;Sequence;T,J,I;A
+H;Sequence;S,R,N;D

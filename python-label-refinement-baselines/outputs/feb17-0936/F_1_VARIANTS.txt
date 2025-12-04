@@ -1,0 +1,56 @@
+
+ Performance of golden standard model:
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+0.9932722226894289
+0.7142857142857143
+generalization
+0.8654546778800843
+
+ Xixi split labels:
+['B_X_1']
+
+ Xixi refined log results:
+
+ IM without noise threshold:
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+0.925046992481203
+0.7272727272727273
+generalization
+0.9243849691022599
+
+ Xixi clustering:
+Clustering with 60 elements and 2 clusters
+
+[1] 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+    21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38,
+    39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56,
+    57, 58, 59
+
+ Data from log without imprecise labels
+
+ IM without noise threshold:
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+0.9925851270606868
+0.7142857142857143
+generalization
+0.9176063922851567
+
+ Original Labels:
+['A', 'I', 'F', 'B']
+
+ Ground truth clustering clustering:
+Clustering with 60 elements and 4 clusters
+[0] 3, 6, 7, 9, 12, 17, 20, 22, 24, 32, 33, 34, 39, 46, 49, 50, 53, 56
+[1] 0, 1, 5, 11, 16, 18, 19, 21, 23, 25, 26, 28, 29, 30, 31, 35, 36, 38, 40,
+    41, 42, 43, 44, 45, 47, 48, 52, 55, 57, 58
+[2] 2, 4, 15, 27, 37, 59
+[3] 8, 10, 13, 14, 51, 54
+
+ Xixi Adjusted Rand Index:
+1.7058114180438602e-16

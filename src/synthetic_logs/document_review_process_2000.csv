@@ -1,0 +1,2001 @@
+EventID,CaseID,Timestamp,Activity,PriorityLevel,FileSize,ProcessingTime,Resource
+1,C00003_r0,2025-01-01 08:04:00,Start process,5,10,10.0,System
+2,C00003_r1,2025-01-01 08:04:01,Start process,5,10,10.0,System
+3,C00003_r2,2025-01-01 08:04:02,Start process,5,10,10.0,System
+4,C00003_r0,2025-01-01 08:05:00,Check document,2,120,30.0,Clerk
+5,C00003_r1,2025-01-01 08:05:01,Check document,2,120,30.0,Clerk
+6,C00003_r2,2025-01-01 08:05:02,Check document,2,120,30.0,Clerk
+7,C00003_r0,2025-01-01 08:06:00,Submit application,3,125,50.0,Clerk
+8,C00003_r0,2025-01-01 08:06:01,Review submission,8,850,100.0,Reviewer
+9,C00003_r1,2025-01-01 08:06:01,Submit application,3,125,50.0,Clerk
+10,C00003_r2,2025-01-01 08:06:02,Submit application,3,125,50.0,Clerk
+11,C00003_r1,2025-01-01 08:06:02,Review submission,8,850,100.0,Reviewer
+12,C00003_r2,2025-01-01 08:06:03,Review submission,8,850,100.0,Reviewer
+13,C00003_r0,2025-01-01 08:07:00,Disapprove application,2,130,20.0,review_board
+14,C00003_r0,2025-01-01 08:07:01,Revise document,8,932,182.0,Supervisor
+15,C00003_r1,2025-01-01 08:07:01,Approve application,2,130,20.0,Manager
+16,C00003_r2,2025-01-01 08:07:02,Approve application,2,130,20.0,Manager
+17,C00003_r1,2025-01-01 08:07:02,Complete process,0,0,0.0,System
+18,C00003_r0,2025-01-01 08:07:02,Submit application,8,3710,249.6,Supervisor
+19,C00003_r0,2025-01-01 08:07:03,Accept submission,1,922,145.6,Head Manager Assistant
+20,C00003_r2,2025-01-01 08:07:03,Complete process,0,0,0.0,System
+21,C00003_r0,2025-01-01 08:07:04,Complete process,0,0,0.0,System
+22,C00007_r0,2025-01-01 08:12:00,Start process,5,10,10.0,System
+23,C00007_r1,2025-01-01 08:12:01,Start process,5,10,10.0,System
+24,C00007_r2,2025-01-01 08:12:02,Start process,5,10,10.0,System
+25,C00007_r0,2025-01-01 08:13:00,Check document,2,120,30.0,Clerk
+26,C00007_r1,2025-01-01 08:13:01,Check document,2,120,30.0,Clerk
+27,C00007_r2,2025-01-01 08:13:02,Check document,2,120,30.0,Clerk
+28,C00007_r0,2025-01-01 08:14:00,Submit application,1,150,32.0,Clerk
+29,C00008_r0,2025-01-01 08:14:00,Start process,5,10,10.0,System
+30,C00007_r1,2025-01-01 08:14:01,Submit application,1,150,32.0,Clerk
+31,C00007_r0,2025-01-01 08:14:01,Review submission,8,850,100.0,Reviewer
+32,C00008_r1,2025-01-01 08:14:01,Start process,5,10,10.0,System
+33,C00008_r2,2025-01-01 08:14:02,Start process,5,10,10.0,System
+34,C00007_r1,2025-01-01 08:14:02,Review submission,8,850,100.0,Reviewer
+35,C00007_r2,2025-01-01 08:14:02,Submit application,1,150,32.0,Clerk
+36,C00007_r2,2025-01-01 08:14:03,Review submission,8,850,100.0,Reviewer
+38,C00008_r0,2025-01-01 08:15:00,Check document,2,120,30.0,Clerk
+37,C00007_r0,2025-01-01 08:15:00,Disapprove application,2,130,20.0,review_board
+39,C00008_r1,2025-01-01 08:15:01,Check document,2,120,30.0,Clerk
+40,C00007_r1,2025-01-01 08:15:01,Approve application,2,130,20.0,Manager
+41,C00007_r0,2025-01-01 08:15:01,Revise document,8,932,182.0,Supervisor
+42,C00008_r2,2025-01-01 08:15:02,Check document,2,120,30.0,Clerk
+43,C00007_r2,2025-01-01 08:15:02,Approve application,2,130,20.0,Manager
+44,C00007_r1,2025-01-01 08:15:02,Complete process,0,0,0.0,System
+45,C00007_r0,2025-01-01 08:15:02,Submit application,11,8916,227.3,Senior Analyst
+47,C00007_r0,2025-01-01 08:15:03,Reject submission,1,922,145.6,Head Manager Assistant
+46,C00007_r2,2025-01-01 08:15:03,Complete process,0,0,0.0,System
+48,C00007_r0,2025-01-01 08:15:04,Complete process,0,0,0.0,System
+49,C00008_r0,2025-01-01 08:16:00,Submit application,2,82,38.0,Junior Staff
+50,C00008_r1,2025-01-01 08:16:01,Submit application,2,82,38.0,Junior Staff
+51,C00008_r0,2025-01-01 08:16:01,Review submission,8,850,100.0,Reviewer
+52,C00008_r1,2025-01-01 08:16:02,Review submission,8,850,100.0,Reviewer
+53,C00008_r2,2025-01-01 08:16:02,Submit application,2,82,38.0,Junior Staff
+54,C00008_r2,2025-01-01 08:16:03,Review submission,8,850,100.0,Reviewer
+55,C00008_r0,2025-01-01 08:17:00,Approve application,2,130,20.0,Manager
+57,C00008_r0,2025-01-01 08:17:01,Complete process,0,0,0.0,System
+56,C00008_r1,2025-01-01 08:17:01,Approve application,2,130,20.0,Manager
+58,C00008_r1,2025-01-01 08:17:02,Complete process,0,0,0.0,System
+59,C00008_r2,2025-01-01 08:17:02,Disapprove application,2,130,20.0,review_board
+60,C00008_r2,2025-01-01 08:17:03,Revise document,8,932,182.0,Supervisor
+61,C00008_r2,2025-01-01 08:17:04,Submit application,8,3081,182.1,Senior Analyst
+62,C00008_r2,2025-01-01 08:17:05,Reject submission,1,922,145.6,Head Manager Assistant
+63,C00008_r2,2025-01-01 08:17:06,Complete process,0,0,0.0,System
+64,C00014_r0,2025-01-01 08:26:00,Start process,5,10,10.0,System
+65,C00014_r1,2025-01-01 08:26:01,Start process,5,10,10.0,System
+66,C00014_r2,2025-01-01 08:26:02,Start process,5,10,10.0,System
+67,C00014_r0,2025-01-01 08:27:00,Check document,2,120,30.0,Clerk
+68,C00014_r1,2025-01-01 08:27:01,Check document,2,120,30.0,Clerk
+69,C00014_r2,2025-01-01 08:27:02,Check document,2,120,30.0,Clerk
+70,C00015_r0,2025-01-01 08:28:00,Start process,5,10,10.0,System
+71,C00014_r0,2025-01-01 08:28:00,Submit application,3,143,30.0,Clerk
+72,C00015_r1,2025-01-01 08:28:01,Start process,5,10,10.0,System
+73,C00014_r0,2025-01-01 08:28:01,Review submission,8,850,100.0,Reviewer
+74,C00014_r1,2025-01-01 08:28:01,Submit application,3,143,30.0,Clerk
+75,C00014_r1,2025-01-01 08:28:02,Review submission,8,850,100.0,Reviewer
+76,C00015_r2,2025-01-01 08:28:02,Start process,5,10,10.0,System
+77,C00014_r2,2025-01-01 08:28:02,Submit application,3,143,30.0,Clerk
+78,C00014_r2,2025-01-01 08:28:03,Review submission,8,850,100.0,Reviewer
+79,C00014_r0,2025-01-01 08:29:00,Approve application,2,130,20.0,Manager
+80,C00015_r0,2025-01-01 08:29:00,Check document,2,120,30.0,Clerk
+81,C00015_r1,2025-01-01 08:29:01,Check document,2,120,30.0,Clerk
+82,C00014_r1,2025-01-01 08:29:01,Disapprove application,2,130,20.0,review_board
+83,C00014_r0,2025-01-01 08:29:01,Complete process,0,0,0.0,System
+86,C00015_r2,2025-01-01 08:29:02,Check document,2,120,30.0,Clerk
+85,C00014_r1,2025-01-01 08:29:02,Revise document,8,932,182.0,Supervisor
+84,C00014_r2,2025-01-01 08:29:02,Approve application,2,130,20.0,Manager
+87,C00014_r1,2025-01-01 08:29:03,Submit application,8,7218,211.8,Supervisor
+88,C00014_r2,2025-01-01 08:29:03,Complete process,0,0,0.0,System
+89,C00014_r1,2025-01-01 08:29:04,Reject submission,1,922,145.6,Head Manager Assistant
+90,C00014_r1,2025-01-01 08:29:05,Complete process,0,0,0.0,System
+91,C00015_r0,2025-01-01 08:30:00,Submit application,3,84,43.0,Junior Staff
+92,C00015_r1,2025-01-01 08:30:01,Submit application,3,84,43.0,Junior Staff
+93,C00015_r0,2025-01-01 08:30:01,Review submission,8,850,100.0,Reviewer
+95,C00015_r1,2025-01-01 08:30:02,Review submission,8,850,100.0,Reviewer
+94,C00015_r2,2025-01-01 08:30:02,Submit application,3,84,43.0,Junior Staff
+96,C00015_r2,2025-01-01 08:30:03,Review submission,8,850,100.0,Reviewer
+97,C00015_r0,2025-01-01 08:31:00,Disapprove application,2,130,20.0,review_board
+98,C00015_r0,2025-01-01 08:31:01,Revise document,8,932,182.0,Supervisor
+99,C00015_r1,2025-01-01 08:31:01,Approve application,2,130,20.0,Manager
+100,C00015_r0,2025-01-01 08:31:02,Submit application,10,4495,219.5,Supervisor
+101,C00015_r1,2025-01-01 08:31:02,Complete process,0,0,0.0,System
+102,C00015_r2,2025-01-01 08:31:02,Disapprove application,2,130,20.0,review_board
+104,C00015_r2,2025-01-01 08:31:03,Revise document,8,932,182.0,Supervisor
+103,C00015_r0,2025-01-01 08:31:03,Accept submission,1,922,145.6,Head Manager Assistant
+105,C00015_r2,2025-01-01 08:31:04,Submit application,9,1092,204.7,Senior Analyst
+106,C00015_r0,2025-01-01 08:31:04,Complete process,0,0,0.0,System
+107,C00015_r2,2025-01-01 08:31:05,Accept submission,1,922,145.6,Head Manager Assistant
+108,C00015_r2,2025-01-01 08:31:06,Complete process,0,0,0.0,System
+109,C00017_r0,2025-01-01 08:32:00,Start process,5,10,10.0,System
+110,C00017_r1,2025-01-01 08:32:01,Start process,5,10,10.0,System
+111,C00017_r2,2025-01-01 08:32:02,Start process,5,10,10.0,System
+112,C00017_r0,2025-01-01 08:33:00,Check document,2,120,30.0,Clerk
+113,C00017_r1,2025-01-01 08:33:01,Check document,2,120,30.0,Clerk
+114,C00017_r2,2025-01-01 08:33:02,Check document,2,120,30.0,Clerk
+115,C00017_r0,2025-01-01 08:34:00,Submit application,2,143,56.0,Clerk
+116,C00018_r0,2025-01-01 08:34:00,Start process,5,10,10.0,System
+117,C00017_r1,2025-01-01 08:34:01,Submit application,2,143,56.0,Clerk
+118,C00018_r1,2025-01-01 08:34:01,Start process,5,10,10.0,System
+119,C00017_r0,2025-01-01 08:34:01,Review submission,8,850,100.0,Reviewer
+120,C00017_r1,2025-01-01 08:34:02,Review submission,8,850,100.0,Reviewer
+121,C00018_r2,2025-01-01 08:34:02,Start process,5,10,10.0,System
+122,C00017_r2,2025-01-01 08:34:02,Submit application,2,143,56.0,Clerk
+123,C00017_r2,2025-01-01 08:34:03,Review submission,8,850,100.0,Reviewer
+124,C00017_r0,2025-01-01 08:35:00,Approve application,2,130,20.0,Manager
+125,C00018_r0,2025-01-01 08:35:00,Check document,2,120,30.0,Clerk
+126,C00017_r0,2025-01-01 08:35:01,Complete process,0,0,0.0,System
+127,C00017_r1,2025-01-01 08:35:01,Approve application,2,130,20.0,Manager
+128,C00018_r1,2025-01-01 08:35:01,Check document,2,120,30.0,Clerk
+129,C00017_r1,2025-01-01 08:35:02,Complete process,0,0,0.0,System
+130,C00018_r2,2025-01-01 08:35:02,Check document,2,120,30.0,Clerk
+131,C00017_r2,2025-01-01 08:35:02,Disapprove application,2,130,20.0,review_board
+132,C00017_r2,2025-01-01 08:35:03,Revise document,8,932,182.0,Supervisor
+133,C00017_r2,2025-01-01 08:35:04,Submit application,8,5041,199.5,Supervisor
+134,C00017_r2,2025-01-01 08:35:05,Reject submission,1,922,145.6,Head Manager Assistant
+135,C00017_r2,2025-01-01 08:35:06,Complete process,0,0,0.0,System
+136,C00018_r0,2025-01-01 08:36:00,Submit application,3,146,49.0,Clerk
+137,C00018_r1,2025-01-01 08:36:01,Submit application,3,146,49.0,Clerk
+138,C00018_r0,2025-01-01 08:36:01,Review submission,8,850,100.0,Reviewer
+139,C00018_r1,2025-01-01 08:36:02,Review submission,8,850,100.0,Reviewer
+140,C00018_r2,2025-01-01 08:36:02,Submit application,3,146,49.0,Clerk
+141,C00018_r2,2025-01-01 08:36:03,Review submission,8,850,100.0,Reviewer
+142,C00018_r0,2025-01-01 08:37:00,Approve application,2,130,20.0,Manager
+143,C00018_r1,2025-01-01 08:37:01,Disapprove application,2,130,20.0,review_board
+144,C00018_r0,2025-01-01 08:37:01,Complete process,0,0,0.0,System
+145,C00018_r1,2025-01-01 08:37:02,Revise document,8,932,182.0,Supervisor
+146,C00018_r2,2025-01-01 08:37:02,Disapprove application,2,130,20.0,review_board
+147,C00018_r2,2025-01-01 08:37:03,Revise document,8,932,182.0,Supervisor
+148,C00018_r1,2025-01-01 08:37:03,Submit application,10,2448,214.6,Senior Analyst
+149,C00018_r1,2025-01-01 08:37:04,Reject submission,1,922,145.6,Head Manager Assistant
+150,C00018_r2,2025-01-01 08:37:04,Submit application,11,3411,221.4,Supervisor
+152,C00018_r2,2025-01-01 08:37:05,Reject submission,1,922,145.6,Head Manager Assistant
+151,C00018_r1,2025-01-01 08:37:05,Complete process,0,0,0.0,System
+153,C00018_r2,2025-01-01 08:37:06,Complete process,0,0,0.0,System
+154,C00020_r0,2025-01-01 08:38:00,Start process,5,10,10.0,System
+155,C00020_r1,2025-01-01 08:38:01,Start process,5,10,10.0,System
+156,C00020_r2,2025-01-01 08:38:02,Start process,5,10,10.0,System
+157,C00020_r0,2025-01-01 08:39:00,Check document,2,120,30.0,Clerk
+158,C00020_r1,2025-01-01 08:39:01,Check document,2,120,30.0,Clerk
+159,C00020_r2,2025-01-01 08:39:02,Check document,2,120,30.0,Clerk
+161,C00021_r0,2025-01-01 08:40:00,Start process,5,10,10.0,System
+160,C00020_r0,2025-01-01 08:40:00,Submit application,3,130,30.0,Clerk
+162,C00020_r0,2025-01-01 08:40:01,Review submission,8,850,100.0,Reviewer
+163,C00020_r1,2025-01-01 08:40:01,Submit application,3,130,30.0,Clerk
+164,C00021_r1,2025-01-01 08:40:01,Start process,5,10,10.0,System
+165,C00020_r1,2025-01-01 08:40:02,Review submission,8,850,100.0,Reviewer
+166,C00021_r2,2025-01-01 08:40:02,Start process,5,10,10.0,System
+167,C00020_r2,2025-01-01 08:40:02,Submit application,3,130,30.0,Clerk
+168,C00020_r2,2025-01-01 08:40:03,Review submission,8,850,100.0,Reviewer
+170,C00020_r0,2025-01-01 08:41:00,Approve application,2,130,20.0,Manager
+169,C00021_r0,2025-01-01 08:41:00,Check document,2,120,30.0,Clerk
+171,C00020_r0,2025-01-01 08:41:01,Complete process,0,0,0.0,System
+172,C00020_r1,2025-01-01 08:41:01,Approve application,2,130,20.0,Manager
+173,C00021_r1,2025-01-01 08:41:01,Check document,2,120,30.0,Clerk
+174,C00021_r2,2025-01-01 08:41:02,Check document,2,120,30.0,Clerk
+175,C00020_r2,2025-01-01 08:41:02,Disapprove application,2,130,20.0,review_board
+176,C00020_r1,2025-01-01 08:41:02,Complete process,0,0,0.0,System
+177,C00020_r2,2025-01-01 08:41:03,Revise document,8,932,182.0,Supervisor
+178,C00020_r2,2025-01-01 08:41:04,Submit application,8,2278,202.8,Senior Analyst
+179,C00020_r2,2025-01-01 08:41:05,Reject submission,1,922,145.6,Head Manager Assistant
+180,C00020_r2,2025-01-01 08:41:06,Complete process,0,0,0.0,System
+181,C00021_r0,2025-01-01 08:42:00,Submit application,3,127,50.0,Clerk
+182,C00021_r0,2025-01-01 08:42:01,Review submission,8,850,100.0,Reviewer
+183,C00021_r1,2025-01-01 08:42:01,Submit application,3,127,50.0,Clerk
+184,C00021_r1,2025-01-01 08:42:02,Review submission,8,850,100.0,Reviewer
+185,C00021_r2,2025-01-01 08:42:02,Submit application,3,127,50.0,Clerk
+186,C00021_r2,2025-01-01 08:42:03,Review submission,8,850,100.0,Reviewer
+187,C00021_r0,2025-01-01 08:43:00,Approve application,2,130,20.0,Manager
+189,C00021_r1,2025-01-01 08:43:01,Approve application,2,130,20.0,Manager
+188,C00021_r0,2025-01-01 08:43:01,Complete process,0,0,0.0,System
+191,C00021_r2,2025-01-01 08:43:02,Disapprove application,2,130,20.0,review_board
+190,C00021_r1,2025-01-01 08:43:02,Complete process,0,0,0.0,System
+192,C00021_r2,2025-01-01 08:43:03,Revise document,8,932,182.0,Supervisor
+193,C00021_r2,2025-01-01 08:43:04,Submit application,8,3237,222.2,Supervisor
+194,C00021_r2,2025-01-01 08:43:05,Reject submission,1,922,145.6,Head Manager Assistant
+195,C00021_r2,2025-01-01 08:43:06,Complete process,0,0,0.0,System
+196,C00023_r0,2025-01-01 08:44:00,Start process,5,10,10.0,System
+197,C00023_r1,2025-01-01 08:44:01,Start process,5,10,10.0,System
+198,C00023_r2,2025-01-01 08:44:02,Start process,5,10,10.0,System
+199,C00023_r0,2025-01-01 08:45:00,Check document,2,120,30.0,Clerk
+200,C00023_r1,2025-01-01 08:45:01,Check document,2,120,30.0,Clerk
+201,C00023_r2,2025-01-01 08:45:02,Check document,2,120,30.0,Clerk
+202,C00023_r0,2025-01-01 08:46:00,Submit application,3,86,52.0,Junior Staff
+203,C00023_r0,2025-01-01 08:46:01,Review submission,8,850,100.0,Reviewer
+204,C00023_r1,2025-01-01 08:46:01,Submit application,3,86,52.0,Junior Staff
+205,C00023_r2,2025-01-01 08:46:02,Submit application,3,86,52.0,Junior Staff
+206,C00023_r1,2025-01-01 08:46:02,Review submission,8,850,100.0,Reviewer
+207,C00023_r2,2025-01-01 08:46:03,Review submission,8,850,100.0,Reviewer
+208,C00023_r0,2025-01-01 08:47:00,Approve application,2,130,20.0,Manager
+210,C00023_r1,2025-01-01 08:47:01,Approve application,2,130,20.0,Manager
+209,C00023_r0,2025-01-01 08:47:01,Complete process,0,0,0.0,System
+211,C00023_r2,2025-01-01 08:47:02,Disapprove application,2,130,20.0,review_board
+212,C00023_r1,2025-01-01 08:47:02,Complete process,0,0,0.0,System
+213,C00023_r2,2025-01-01 08:47:03,Revise document,8,932,182.0,Supervisor
+214,C00023_r2,2025-01-01 08:47:04,Submit application,11,2698,184.3,Supervisor
+215,C00023_r2,2025-01-01 08:47:05,Reject submission,1,922,145.6,Head Manager Assistant
+216,C00023_r2,2025-01-01 08:47:06,Complete process,0,0,0.0,System
+217,C00025_r0,2025-01-01 08:48:00,Start process,5,10,10.0,System
+218,C00025_r1,2025-01-01 08:48:01,Start process,5,10,10.0,System
+219,C00025_r2,2025-01-01 08:48:02,Start process,5,10,10.0,System
+220,C00025_r0,2025-01-01 08:49:00,Check document,2,120,30.0,Clerk
+221,C00025_r1,2025-01-01 08:49:01,Check document,2,120,30.0,Clerk
+222,C00025_r2,2025-01-01 08:49:02,Check document,2,120,30.0,Clerk
+223,C00026_r0,2025-01-01 08:50:00,Start process,5,10,10.0,System
+224,C00025_r0,2025-01-01 08:50:00,Submit application,1,134,60.0,Clerk
+225,C00025_r0,2025-01-01 08:50:01,Review submission,8,850,100.0,Reviewer
+226,C00025_r1,2025-01-01 08:50:01,Submit application,1,134,60.0,Clerk
+227,C00026_r1,2025-01-01 08:50:01,Start process,5,10,10.0,System
+228,C00026_r2,2025-01-01 08:50:02,Start process,5,10,10.0,System
+229,C00025_r1,2025-01-01 08:50:02,Review submission,8,850,100.0,Reviewer
+230,C00025_r2,2025-01-01 08:50:02,Submit application,1,134,60.0,Clerk
+231,C00025_r2,2025-01-01 08:50:03,Review submission,8,850,100.0,Reviewer
+232,C00026_r0,2025-01-01 08:51:00,Check document,2,120,30.0,Clerk
+233,C00025_r0,2025-01-01 08:51:00,Disapprove application,2,130,20.0,review_board
+234,C00025_r1,2025-01-01 08:51:01,Disapprove application,2,130,20.0,review_board
+235,C00026_r1,2025-01-01 08:51:01,Check document,2,120,30.0,Clerk
+236,C00025_r0,2025-01-01 08:51:01,Revise document,8,932,182.0,Supervisor
+240,C00025_r1,2025-01-01 08:51:02,Revise document,8,932,182.0,Supervisor
+239,C00025_r0,2025-01-01 08:51:02,Submit application,9,2194,236.3,Senior Analyst
+238,C00025_r2,2025-01-01 08:51:02,Disapprove application,2,130,20.0,review_board
+237,C00026_r2,2025-01-01 08:51:02,Check document,2,120,30.0,Clerk
+241,C00025_r2,2025-01-01 08:51:03,Revise document,8,932,182.0,Supervisor
+242,C00025_r0,2025-01-01 08:51:03,Accept submission,1,922,145.6,Head Manager Assistant
+243,C00025_r1,2025-01-01 08:51:03,Submit application,8,4402,213.3,Senior Analyst
+244,C00025_r2,2025-01-01 08:51:04,Submit application,8,5461,205.3,Senior Analyst
+245,C00025_r0,2025-01-01 08:51:04,Complete process,0,0,0.0,System
+246,C00025_r1,2025-01-01 08:51:04,Reject submission,1,922,145.6,Head Manager Assistant
+248,C00025_r2,2025-01-01 08:51:05,Accept submission,1,922,145.6,Head Manager Assistant
+247,C00025_r1,2025-01-01 08:51:05,Complete process,0,0,0.0,System
+249,C00025_r2,2025-01-01 08:51:06,Complete process,0,0,0.0,System
+250,C00027_r0,2025-01-01 08:52:00,Start process,5,10,10.0,System
+251,C00026_r0,2025-01-01 08:52:00,Submit application,1,118,47.0,Junior Staff
+252,C00026_r0,2025-01-01 08:52:01,Review submission,8,850,100.0,Reviewer
+253,C00026_r1,2025-01-01 08:52:01,Submit application,1,118,47.0,Junior Staff
+254,C00027_r1,2025-01-01 08:52:01,Start process,5,10,10.0,System
+255,C00026_r1,2025-01-01 08:52:02,Review submission,8,850,100.0,Reviewer
+256,C00026_r2,2025-01-01 08:52:02,Submit application,1,118,47.0,Junior Staff
+257,C00027_r2,2025-01-01 08:52:02,Start process,5,10,10.0,System
+258,C00026_r2,2025-01-01 08:52:03,Review submission,8,850,100.0,Reviewer
+259,C00026_r0,2025-01-01 08:53:00,Disapprove application,2,130,20.0,review_board
+260,C00027_r0,2025-01-01 08:53:00,Check document,2,120,30.0,Clerk
+261,C00026_r1,2025-01-01 08:53:01,Approve application,2,130,20.0,Manager
+262,C00027_r1,2025-01-01 08:53:01,Check document,2,120,30.0,Clerk
+263,C00026_r0,2025-01-01 08:53:01,Revise document,8,932,182.0,Supervisor
+267,C00027_r2,2025-01-01 08:53:02,Check document,2,120,30.0,Clerk
+266,C00026_r2,2025-01-01 08:53:02,Disapprove application,2,130,20.0,review_board
+265,C00026_r0,2025-01-01 08:53:02,Submit application,11,9898,195.0,Supervisor
+264,C00026_r1,2025-01-01 08:53:02,Complete process,0,0,0.0,System
+268,C00026_r0,2025-01-01 08:53:03,Reject submission,1,922,145.6,Head Manager Assistant
+269,C00026_r2,2025-01-01 08:53:03,Revise document,8,932,182.0,Supervisor
+270,C00026_r2,2025-01-01 08:53:04,Submit application,9,4228,211.9,Supervisor
+271,C00026_r0,2025-01-01 08:53:04,Complete process,0,0,0.0,System
+272,C00026_r2,2025-01-01 08:53:05,Reject submission,1,922,145.6,Head Manager Assistant
+273,C00026_r2,2025-01-01 08:53:06,Complete process,0,0,0.0,System
+275,C00028_r0,2025-01-01 08:54:00,Start process,5,10,10.0,System
+274,C00027_r0,2025-01-01 08:54:00,Submit application,2,149,44.0,Clerk
+276,C00027_r0,2025-01-01 08:54:01,Review submission,8,850,100.0,Reviewer
+277,C00028_r1,2025-01-01 08:54:01,Start process,5,10,10.0,System
+278,C00027_r1,2025-01-01 08:54:01,Submit application,2,149,44.0,Clerk
+279,C00028_r2,2025-01-01 08:54:02,Start process,5,10,10.0,System
+280,C00027_r2,2025-01-01 08:54:02,Submit application,2,149,44.0,Clerk
+281,C00027_r1,2025-01-01 08:54:02,Review submission,8,850,100.0,Reviewer
+282,C00027_r2,2025-01-01 08:54:03,Review submission,8,850,100.0,Reviewer
+284,C00028_r0,2025-01-01 08:55:00,Check document,2,120,30.0,Clerk
+283,C00027_r0,2025-01-01 08:55:00,Disapprove application,2,130,20.0,review_board
+285,C00027_r1,2025-01-01 08:55:01,Disapprove application,2,130,20.0,review_board
+286,C00028_r1,2025-01-01 08:55:01,Check document,2,120,30.0,Clerk
+287,C00027_r0,2025-01-01 08:55:01,Revise document,8,932,182.0,Supervisor
+288,C00027_r0,2025-01-01 08:55:02,Submit application,10,8348,188.4,Supervisor
+289,C00027_r2,2025-01-01 08:55:02,Approve application,2,130,20.0,Manager
+290,C00028_r2,2025-01-01 08:55:02,Check document,2,120,30.0,Clerk
+291,C00027_r1,2025-01-01 08:55:02,Revise document,8,932,182.0,Supervisor
+292,C00027_r2,2025-01-01 08:55:03,Complete process,0,0,0.0,System
+293,C00027_r0,2025-01-01 08:55:03,Accept submission,1,922,145.6,Head Manager Assistant
+294,C00027_r1,2025-01-01 08:55:03,Submit application,11,1591,231.0,Supervisor
+295,C00027_r0,2025-01-01 08:55:04,Complete process,0,0,0.0,System
+296,C00027_r1,2025-01-01 08:55:04,Reject submission,1,922,145.6,Head Manager Assistant
+297,C00027_r1,2025-01-01 08:55:05,Complete process,0,0,0.0,System
+298,C00028_r0,2025-01-01 08:56:00,Submit application,1,130,30.0,Clerk
+299,C00028_r0,2025-01-01 08:56:01,Review submission,8,850,100.0,Reviewer
+300,C00028_r1,2025-01-01 08:56:01,Submit application,1,130,30.0,Clerk
+301,C00028_r1,2025-01-01 08:56:02,Review submission,8,850,100.0,Reviewer
+302,C00028_r2,2025-01-01 08:56:02,Submit application,1,130,30.0,Clerk
+303,C00028_r2,2025-01-01 08:56:03,Review submission,8,850,100.0,Reviewer
+304,C00028_r0,2025-01-01 08:57:00,Disapprove application,2,130,20.0,review_board
+306,C00028_r0,2025-01-01 08:57:01,Revise document,8,932,182.0,Supervisor
+305,C00028_r1,2025-01-01 08:57:01,Approve application,2,130,20.0,Manager
+307,C00028_r0,2025-01-01 08:57:02,Submit application,10,2185,206.2,Supervisor
+308,C00028_r1,2025-01-01 08:57:02,Complete process,0,0,0.0,System
+309,C00028_r2,2025-01-01 08:57:02,Disapprove application,2,130,20.0,review_board
+310,C00028_r0,2025-01-01 08:57:03,Reject submission,1,922,145.6,Head Manager Assistant
+311,C00028_r2,2025-01-01 08:57:03,Revise document,8,932,182.0,Supervisor
+312,C00028_r2,2025-01-01 08:57:04,Submit application,8,3008,232.1,Senior Analyst
+313,C00028_r0,2025-01-01 08:57:04,Complete process,0,0,0.0,System
+314,C00028_r2,2025-01-01 08:57:05,Reject submission,1,922,145.6,Head Manager Assistant
+315,C00028_r2,2025-01-01 08:57:06,Complete process,0,0,0.0,System
+316,C00031_r0,2025-01-01 09:00:00,Start process,5,10,10.0,System
+317,C00031_r1,2025-01-01 09:00:01,Start process,5,10,10.0,System
+318,C00031_r2,2025-01-01 09:00:02,Start process,5,10,10.0,System
+319,C00031_r0,2025-01-01 09:01:00,Check document,2,120,30.0,Clerk
+320,C00031_r1,2025-01-01 09:01:01,Check document,2,120,30.0,Clerk
+321,C00031_r2,2025-01-01 09:01:02,Check document,2,120,30.0,Clerk
+322,C00031_r0,2025-01-01 09:02:00,Submit application,2,117,53.0,Junior Staff
+324,C00031_r1,2025-01-01 09:02:01,Submit application,2,117,53.0,Junior Staff
+323,C00031_r0,2025-01-01 09:02:01,Review submission,8,850,100.0,Reviewer
+325,C00031_r1,2025-01-01 09:02:02,Review submission,8,850,100.0,Reviewer
+326,C00031_r2,2025-01-01 09:02:02,Submit application,2,117,53.0,Junior Staff
+327,C00031_r2,2025-01-01 09:02:03,Review submission,8,850,100.0,Reviewer
+328,C00031_r0,2025-01-01 09:03:00,Disapprove application,2,130,20.0,review_board
+329,C00031_r1,2025-01-01 09:03:01,Disapprove application,2,130,20.0,review_board
+330,C00031_r0,2025-01-01 09:03:01,Revise document,8,932,182.0,Supervisor
+333,C00031_r0,2025-01-01 09:03:02,Submit application,9,9048,195.8,Supervisor
+332,C00031_r1,2025-01-01 09:03:02,Revise document,8,932,182.0,Supervisor
+331,C00031_r2,2025-01-01 09:03:02,Approve application,2,130,20.0,Manager
+334,C00031_r0,2025-01-01 09:03:03,Accept submission,1,922,145.6,Head Manager Assistant
+335,C00031_r1,2025-01-01 09:03:03,Submit application,11,1578,224.4,Senior Analyst
+336,C00031_r2,2025-01-01 09:03:03,Complete process,0,0,0.0,System
+337,C00031_r1,2025-01-01 09:03:04,Accept submission,1,922,145.6,Head Manager Assistant
+338,C00031_r0,2025-01-01 09:03:04,Complete process,0,0,0.0,System
+339,C00031_r1,2025-01-01 09:03:05,Complete process,0,0,0.0,System
+340,C00036_r0,2025-01-01 09:10:00,Start process,5,10,10.0,System
+341,C00036_r1,2025-01-01 09:10:01,Start process,5,10,10.0,System
+342,C00036_r2,2025-01-01 09:10:02,Start process,5,10,10.0,System
+343,C00036_r0,2025-01-01 09:11:00,Check document,2,120,30.0,Clerk
+344,C00036_r1,2025-01-01 09:11:01,Check document,2,120,30.0,Clerk
+345,C00036_r2,2025-01-01 09:11:02,Check document,2,120,30.0,Clerk
+346,C00036_r0,2025-01-01 09:12:00,Submit application,3,129,45.0,Junior Staff
+347,C00037_r0,2025-01-01 09:12:00,Start process,5,10,10.0,System
+348,C00036_r0,2025-01-01 09:12:01,Review submission,8,850,100.0,Reviewer
+349,C00037_r1,2025-01-01 09:12:01,Start process,5,10,10.0,System
+350,C00036_r1,2025-01-01 09:12:01,Submit application,3,129,45.0,Junior Staff
+353,C00036_r1,2025-01-01 09:12:02,Review submission,8,850,100.0,Reviewer
+352,C00036_r2,2025-01-01 09:12:02,Submit application,3,129,45.0,Junior Staff
+351,C00037_r2,2025-01-01 09:12:02,Start process,5,10,10.0,System
+354,C00036_r2,2025-01-01 09:12:03,Review submission,8,850,100.0,Reviewer
+355,C00036_r0,2025-01-01 09:13:00,Disapprove application,2,130,20.0,review_board
+356,C00037_r0,2025-01-01 09:13:00,Check document,2,120,30.0,Clerk
+357,C00036_r1,2025-01-01 09:13:01,Disapprove application,2,130,20.0,review_board
+358,C00036_r0,2025-01-01 09:13:01,Revise document,8,932,182.0,Supervisor
+359,C00037_r1,2025-01-01 09:13:01,Check document,2,120,30.0,Clerk
+362,C00036_r0,2025-01-01 09:13:02,Submit application,8,7334,243.1,Senior Analyst
+363,C00036_r2,2025-01-01 09:13:02,Disapprove application,2,130,20.0,review_board
+361,C00036_r1,2025-01-01 09:13:02,Revise document,8,932,182.0,Supervisor
+360,C00037_r2,2025-01-01 09:13:02,Check document,2,120,30.0,Clerk
+364,C00036_r1,2025-01-01 09:13:03,Submit application,9,1269,215.2,Senior Analyst
+365,C00036_r0,2025-01-01 09:13:03,Accept submission,1,922,145.6,Head Manager Assistant
+366,C00036_r2,2025-01-01 09:13:03,Revise document,8,932,182.0,Supervisor
+367,C00036_r0,2025-01-01 09:13:04,Complete process,0,0,0.0,System
+368,C00036_r1,2025-01-01 09:13:04,Accept submission,1,922,145.6,Head Manager Assistant
+369,C00036_r2,2025-01-01 09:13:04,Submit application,10,1625,197.4,Senior Analyst
+371,C00036_r1,2025-01-01 09:13:05,Complete process,0,0,0.0,System
+370,C00036_r2,2025-01-01 09:13:05,Reject submission,1,922,145.6,Head Manager Assistant
+372,C00036_r2,2025-01-01 09:13:06,Complete process,0,0,0.0,System
+373,C00038_r0,2025-01-01 09:14:00,Start process,5,10,10.0,System
+374,C00037_r0,2025-01-01 09:14:00,Submit application,2,83,55.0,Clerk
+375,C00037_r1,2025-01-01 09:14:01,Submit application,2,83,55.0,Clerk
+376,C00037_r0,2025-01-01 09:14:01,Review submission,8,850,100.0,Reviewer
+377,C00038_r1,2025-01-01 09:14:01,Start process,5,10,10.0,System
+379,C00037_r1,2025-01-01 09:14:02,Review submission,8,850,100.0,Reviewer
+378,C00038_r2,2025-01-01 09:14:02,Start process,5,10,10.0,System
+380,C00037_r2,2025-01-01 09:14:02,Submit application,2,83,55.0,Clerk
+381,C00037_r2,2025-01-01 09:14:03,Review submission,8,850,100.0,Reviewer
+382,C00038_r0,2025-01-01 09:15:00,Check document,2,120,30.0,Clerk
+383,C00037_r0,2025-01-01 09:15:00,Disapprove application,2,130,20.0,review_board
+384,C00038_r1,2025-01-01 09:15:01,Check document,2,120,30.0,Clerk
+385,C00037_r0,2025-01-01 09:15:01,Revise document,8,932,182.0,Supervisor
+386,C00037_r1,2025-01-01 09:15:01,Approve application,2,130,20.0,Manager
+389,C00038_r2,2025-01-01 09:15:02,Check document,2,120,30.0,Clerk
+390,C00037_r1,2025-01-01 09:15:02,Complete process,0,0,0.0,System
+387,C00037_r2,2025-01-01 09:15:02,Disapprove application,2,130,20.0,review_board
+388,C00037_r0,2025-01-01 09:15:02,Submit application,12,5489,233.6,Supervisor
+391,C00037_r0,2025-01-01 09:15:03,Accept submission,1,922,145.6,Head Manager Assistant
+392,C00037_r2,2025-01-01 09:15:03,Revise document,8,932,182.0,Supervisor
+393,C00037_r0,2025-01-01 09:15:04,Complete process,0,0,0.0,System
+394,C00037_r2,2025-01-01 09:15:04,Submit application,9,4424,187.2,Senior Analyst
+395,C00037_r2,2025-01-01 09:15:05,Accept submission,1,922,145.6,Head Manager Assistant
+396,C00037_r2,2025-01-01 09:15:06,Complete process,0,0,0.0,System
+398,C00039_r0,2025-01-01 09:16:00,Start process,5,10,10.0,System
+397,C00038_r0,2025-01-01 09:16:00,Submit application,2,121,43.0,Junior Staff
+401,C00038_r0,2025-01-01 09:16:01,Review submission,8,850,100.0,Reviewer
+400,C00039_r1,2025-01-01 09:16:01,Start process,5,10,10.0,System
+399,C00038_r1,2025-01-01 09:16:01,Submit application,2,121,43.0,Junior Staff
+402,C00039_r2,2025-01-01 09:16:02,Start process,5,10,10.0,System
+403,C00038_r2,2025-01-01 09:16:02,Submit application,2,121,43.0,Junior Staff
+404,C00038_r1,2025-01-01 09:16:02,Review submission,8,850,100.0,Reviewer
+405,C00038_r2,2025-01-01 09:16:03,Review submission,8,850,100.0,Reviewer
+406,C00039_r0,2025-01-01 09:17:00,Check document,2,120,30.0,Clerk
+407,C00038_r0,2025-01-01 09:17:00,Disapprove application,2,130,20.0,review_board
+408,C00039_r1,2025-01-01 09:17:01,Check document,2,120,30.0,Clerk
+409,C00038_r0,2025-01-01 09:17:01,Revise document,8,932,182.0,Supervisor
+410,C00038_r1,2025-01-01 09:17:01,Approve application,2,130,20.0,Manager
+411,C00038_r1,2025-01-01 09:17:02,Complete process,0,0,0.0,System
+412,C00038_r2,2025-01-01 09:17:02,Approve application,2,130,20.0,Manager
+413,C00038_r0,2025-01-01 09:17:02,Submit application,10,733,228.5,Supervisor
+414,C00039_r2,2025-01-01 09:17:02,Check document,2,120,30.0,Clerk
+415,C00038_r0,2025-01-01 09:17:03,Reject submission,1,922,145.6,Head Manager Assistant
+416,C00038_r2,2025-01-01 09:17:03,Complete process,0,0,0.0,System
+417,C00038_r0,2025-01-01 09:17:04,Complete process,0,0,0.0,System
+418,C00039_r0,2025-01-01 09:18:00,Submit application,3,108,30.0,Junior Staff
+420,C00039_r1,2025-01-01 09:18:01,Submit application,3,108,30.0,Junior Staff
+419,C00039_r0,2025-01-01 09:18:01,Review submission,8,850,100.0,Reviewer
+421,C00039_r2,2025-01-01 09:18:02,Submit application,3,108,30.0,Junior Staff
+422,C00039_r1,2025-01-01 09:18:02,Review submission,8,850,100.0,Reviewer
+423,C00039_r2,2025-01-01 09:18:03,Review submission,8,850,100.0,Reviewer
+424,C00039_r0,2025-01-01 09:19:00,Approve application,2,130,20.0,Manager
+425,C00039_r1,2025-01-01 09:19:01,Approve application,2,130,20.0,Manager
+426,C00039_r0,2025-01-01 09:19:01,Complete process,0,0,0.0,System
+427,C00039_r1,2025-01-01 09:19:02,Complete process,0,0,0.0,System
+428,C00039_r2,2025-01-01 09:19:02,Disapprove application,2,130,20.0,review_board
+429,C00039_r2,2025-01-01 09:19:03,Revise document,8,932,182.0,Supervisor
+430,C00039_r2,2025-01-01 09:19:04,Submit application,11,9758,194.9,Supervisor
+431,C00039_r2,2025-01-01 09:19:05,Accept submission,1,922,145.6,Head Manager Assistant
+432,C00039_r2,2025-01-01 09:19:06,Complete process,0,0,0.0,System
+433,C00050_r0,2025-01-01 09:38:00,Start process,5,10,10.0,System
+434,C00050_r1,2025-01-01 09:38:01,Start process,5,10,10.0,System
+435,C00050_r2,2025-01-01 09:38:02,Start process,5,10,10.0,System
+436,C00050_r0,2025-01-01 09:39:00,Check document,2,120,30.0,Clerk
+437,C00050_r1,2025-01-01 09:39:01,Check document,2,120,30.0,Clerk
+438,C00050_r2,2025-01-01 09:39:02,Check document,2,120,30.0,Clerk
+440,C00051_r0,2025-01-01 09:40:00,Start process,5,10,10.0,System
+439,C00050_r0,2025-01-01 09:40:00,Submit application,2,125,53.0,Junior Staff
+441,C00050_r1,2025-01-01 09:40:01,Submit application,2,125,53.0,Junior Staff
+442,C00051_r1,2025-01-01 09:40:01,Start process,5,10,10.0,System
+443,C00050_r0,2025-01-01 09:40:01,Review submission,8,850,100.0,Reviewer
+444,C00051_r2,2025-01-01 09:40:02,Start process,5,10,10.0,System
+445,C00050_r2,2025-01-01 09:40:02,Submit application,2,125,53.0,Junior Staff
+446,C00050_r1,2025-01-01 09:40:02,Review submission,8,850,100.0,Reviewer
+447,C00050_r2,2025-01-01 09:40:03,Review submission,8,850,100.0,Reviewer
+449,C00051_r0,2025-01-01 09:41:00,Check document,2,120,30.0,Clerk
+448,C00050_r0,2025-01-01 09:41:00,Disapprove application,2,130,20.0,review_board
+450,C00050_r1,2025-01-01 09:41:01,Disapprove application,2,130,20.0,review_board
+451,C00050_r0,2025-01-01 09:41:01,Revise document,8,932,182.0,Supervisor
+452,C00051_r1,2025-01-01 09:41:01,Check document,2,120,30.0,Clerk
+454,C00051_r2,2025-01-01 09:41:02,Check document,2,120,30.0,Clerk
+455,C00050_r2,2025-01-01 09:41:02,Disapprove application,2,130,20.0,review_board
+456,C00050_r1,2025-01-01 09:41:02,Revise document,8,932,182.0,Supervisor
+453,C00050_r0,2025-01-01 09:41:02,Submit application,8,3799,210.8,Senior Analyst
+457,C00050_r1,2025-01-01 09:41:03,Submit application,9,8417,183.5,Senior Analyst
+458,C00050_r0,2025-01-01 09:41:03,Accept submission,1,922,145.6,Head Manager Assistant
+459,C00050_r2,2025-01-01 09:41:03,Revise document,8,932,182.0,Supervisor
+460,C00050_r0,2025-01-01 09:41:04,Complete process,0,0,0.0,System
+461,C00050_r1,2025-01-01 09:41:04,Reject submission,1,922,145.6,Head Manager Assistant
+462,C00050_r2,2025-01-01 09:41:04,Submit application,12,5377,245.0,Senior Analyst
+463,C00050_r1,2025-01-01 09:41:05,Complete process,0,0,0.0,System
+464,C00050_r2,2025-01-01 09:41:05,Accept submission,1,922,145.6,Head Manager Assistant
+465,C00050_r2,2025-01-01 09:41:06,Complete process,0,0,0.0,System
+466,C00051_r0,2025-01-01 09:42:00,Submit application,1,139,39.0,Clerk
+467,C00051_r1,2025-01-01 09:42:01,Submit application,1,139,39.0,Clerk
+468,C00051_r0,2025-01-01 09:42:01,Review submission,8,850,100.0,Reviewer
+469,C00051_r1,2025-01-01 09:42:02,Review submission,8,850,100.0,Reviewer
+470,C00051_r2,2025-01-01 09:42:02,Submit application,1,139,39.0,Clerk
+471,C00051_r2,2025-01-01 09:42:03,Review submission,8,850,100.0,Reviewer
+472,C00051_r0,2025-01-01 09:43:00,Approve application,2,130,20.0,Manager
+473,C00051_r1,2025-01-01 09:43:01,Disapprove application,2,130,20.0,review_board
+474,C00051_r0,2025-01-01 09:43:01,Complete process,0,0,0.0,System
+476,C00051_r2,2025-01-01 09:43:02,Approve application,2,130,20.0,Manager
+475,C00051_r1,2025-01-01 09:43:02,Revise document,8,932,182.0,Supervisor
+477,C00051_r2,2025-01-01 09:43:03,Complete process,0,0,0.0,System
+478,C00051_r1,2025-01-01 09:43:03,Submit application,9,5836,232.8,Supervisor
+479,C00051_r1,2025-01-01 09:43:04,Accept submission,1,922,145.6,Head Manager Assistant
+480,C00051_r1,2025-01-01 09:43:05,Complete process,0,0,0.0,System
+481,C00053_r0,2025-01-01 09:44:00,Start process,5,10,10.0,System
+482,C00053_r1,2025-01-01 09:44:01,Start process,5,10,10.0,System
+483,C00053_r2,2025-01-01 09:44:02,Start process,5,10,10.0,System
+484,C00053_r0,2025-01-01 09:45:00,Check document,2,120,30.0,Clerk
+485,C00053_r1,2025-01-01 09:45:01,Check document,2,120,30.0,Clerk
+486,C00053_r2,2025-01-01 09:45:02,Check document,2,120,30.0,Clerk
+487,C00053_r0,2025-01-01 09:46:00,Submit application,3,118,55.0,Clerk
+488,C00053_r0,2025-01-01 09:46:01,Review submission,8,850,100.0,Reviewer
+489,C00053_r1,2025-01-01 09:46:01,Submit application,3,118,55.0,Clerk
+490,C00053_r2,2025-01-01 09:46:02,Submit application,3,118,55.0,Clerk
+491,C00053_r1,2025-01-01 09:46:02,Review submission,8,850,100.0,Reviewer
+492,C00053_r2,2025-01-01 09:46:03,Review submission,8,850,100.0,Reviewer
+493,C00053_r0,2025-01-01 09:47:00,Disapprove application,2,130,20.0,review_board
+495,C00053_r0,2025-01-01 09:47:01,Revise document,8,932,182.0,Supervisor
+494,C00053_r1,2025-01-01 09:47:01,Approve application,2,130,20.0,Manager
+496,C00053_r1,2025-01-01 09:47:02,Complete process,0,0,0.0,System
+497,C00053_r0,2025-01-01 09:47:02,Submit application,12,4088,211.0,Senior Analyst
+498,C00053_r2,2025-01-01 09:47:02,Disapprove application,2,130,20.0,review_board
+499,C00053_r0,2025-01-01 09:47:03,Accept submission,1,922,145.6,Head Manager Assistant
+500,C00053_r2,2025-01-01 09:47:03,Revise document,8,932,182.0,Supervisor
+501,C00053_r0,2025-01-01 09:47:04,Complete process,0,0,0.0,System
+502,C00053_r2,2025-01-01 09:47:04,Submit application,11,2182,181.3,Senior Analyst
+503,C00053_r2,2025-01-01 09:47:05,Reject submission,1,922,145.6,Head Manager Assistant
+504,C00053_r2,2025-01-01 09:47:06,Complete process,0,0,0.0,System
+505,C00057_r0,2025-01-01 09:52:00,Start process,5,10,10.0,System
+506,C00057_r1,2025-01-01 09:52:01,Start process,5,10,10.0,System
+507,C00057_r2,2025-01-01 09:52:02,Start process,5,10,10.0,System
+508,C00057_r0,2025-01-01 09:53:00,Check document,2,120,30.0,Clerk
+509,C00057_r1,2025-01-01 09:53:01,Check document,2,120,30.0,Clerk
+510,C00057_r2,2025-01-01 09:53:02,Check document,2,120,30.0,Clerk
+511,C00057_r0,2025-01-01 09:54:00,Submit application,2,130,51.0,Junior Staff
+512,C00058_r0,2025-01-01 09:54:00,Start process,5,10,10.0,System
+513,C00057_r0,2025-01-01 09:54:01,Review submission,8,850,100.0,Reviewer
+514,C00058_r1,2025-01-01 09:54:01,Start process,5,10,10.0,System
+515,C00057_r1,2025-01-01 09:54:01,Submit application,2,130,51.0,Junior Staff
+516,C00057_r1,2025-01-01 09:54:02,Review submission,8,850,100.0,Reviewer
+517,C00058_r2,2025-01-01 09:54:02,Start process,5,10,10.0,System
+518,C00057_r2,2025-01-01 09:54:02,Submit application,2,130,51.0,Junior Staff
+519,C00057_r2,2025-01-01 09:54:03,Review submission,8,850,100.0,Reviewer
+520,C00058_r0,2025-01-01 09:55:00,Check document,2,120,30.0,Clerk
+521,C00057_r0,2025-01-01 09:55:00,Approve application,2,130,20.0,Manager
+522,C00057_r0,2025-01-01 09:55:01,Complete process,0,0,0.0,System
+523,C00058_r1,2025-01-01 09:55:01,Check document,2,120,30.0,Clerk
+524,C00057_r1,2025-01-01 09:55:01,Approve application,2,130,20.0,Manager
+525,C00058_r2,2025-01-01 09:55:02,Check document,2,120,30.0,Clerk
+526,C00057_r2,2025-01-01 09:55:02,Disapprove application,2,130,20.0,review_board
+527,C00057_r1,2025-01-01 09:55:02,Complete process,0,0,0.0,System
+528,C00057_r2,2025-01-01 09:55:03,Revise document,8,932,182.0,Supervisor
+529,C00057_r2,2025-01-01 09:55:04,Submit application,9,959,248.0,Senior Analyst
+530,C00057_r2,2025-01-01 09:55:05,Accept submission,1,922,145.6,Head Manager Assistant
+531,C00057_r2,2025-01-01 09:55:06,Complete process,0,0,0.0,System
+532,C00058_r0,2025-01-01 09:56:00,Submit application,1,117,52.0,Junior Staff
+534,C00058_r1,2025-01-01 09:56:01,Submit application,1,117,52.0,Junior Staff
+533,C00058_r0,2025-01-01 09:56:01,Review submission,8,850,100.0,Reviewer
+535,C00058_r2,2025-01-01 09:56:02,Submit application,1,117,52.0,Junior Staff
+536,C00058_r1,2025-01-01 09:56:02,Review submission,8,850,100.0,Reviewer
+537,C00058_r2,2025-01-01 09:56:03,Review submission,8,850,100.0,Reviewer
+538,C00058_r0,2025-01-01 09:57:00,Disapprove application,2,130,20.0,review_board
+539,C00058_r1,2025-01-01 09:57:01,Disapprove application,2,130,20.0,review_board
+540,C00058_r0,2025-01-01 09:57:01,Revise document,8,932,182.0,Supervisor
+543,C00058_r0,2025-01-01 09:57:02,Submit application,12,8972,196.3,Supervisor
+542,C00058_r2,2025-01-01 09:57:02,Approve application,2,130,20.0,Manager
+541,C00058_r1,2025-01-01 09:57:02,Revise document,8,932,182.0,Supervisor
+544,C00058_r1,2025-01-01 09:57:03,Submit application,12,1177,248.3,Senior Analyst
+545,C00058_r0,2025-01-01 09:57:03,Accept submission,1,922,145.6,Head Manager Assistant
+546,C00058_r2,2025-01-01 09:57:03,Complete process,0,0,0.0,System
+547,C00058_r1,2025-01-01 09:57:04,Reject submission,1,922,145.6,Head Manager Assistant
+548,C00058_r0,2025-01-01 09:57:04,Complete process,0,0,0.0,System
+549,C00058_r1,2025-01-01 09:57:05,Complete process,0,0,0.0,System
+550,C00065_r0,2025-01-01 10:08:00,Start process,5,10,10.0,System
+551,C00065_r1,2025-01-01 10:08:01,Start process,5,10,10.0,System
+552,C00065_r2,2025-01-01 10:08:02,Start process,5,10,10.0,System
+553,C00065_r0,2025-01-01 10:09:00,Check document,2,120,30.0,Clerk
+554,C00065_r1,2025-01-01 10:09:01,Check document,2,120,30.0,Clerk
+555,C00065_r2,2025-01-01 10:09:02,Check document,2,120,30.0,Clerk
+556,C00065_r0,2025-01-01 10:10:00,Submit application,1,147,52.0,Clerk
+557,C00065_r0,2025-01-01 10:10:01,Review submission,8,850,100.0,Reviewer
+558,C00065_r1,2025-01-01 10:10:01,Submit application,1,147,52.0,Clerk
+559,C00065_r1,2025-01-01 10:10:02,Review submission,8,850,100.0,Reviewer
+560,C00065_r2,2025-01-01 10:10:02,Submit application,1,147,52.0,Clerk
+561,C00065_r2,2025-01-01 10:10:03,Review submission,8,850,100.0,Reviewer
+562,C00065_r0,2025-01-01 10:11:00,Approve application,2,130,20.0,Manager
+563,C00065_r0,2025-01-01 10:11:01,Complete process,0,0,0.0,System
+564,C00065_r1,2025-01-01 10:11:01,Disapprove application,2,130,20.0,review_board
+565,C00065_r1,2025-01-01 10:11:02,Revise document,8,932,182.0,Supervisor
+566,C00065_r2,2025-01-01 10:11:02,Approve application,2,130,20.0,Manager
+568,C00065_r2,2025-01-01 10:11:03,Complete process,0,0,0.0,System
+567,C00065_r1,2025-01-01 10:11:03,Submit application,10,2490,247.9,Senior Analyst
+569,C00065_r1,2025-01-01 10:11:04,Reject submission,1,922,145.6,Head Manager Assistant
+570,C00065_r1,2025-01-01 10:11:05,Complete process,0,0,0.0,System
+571,C00071_r0,2025-01-01 10:20:00,Start process,5,10,10.0,System
+572,C00071_r1,2025-01-01 10:20:01,Start process,5,10,10.0,System
+573,C00071_r2,2025-01-01 10:20:02,Start process,5,10,10.0,System
+574,C00071_r0,2025-01-01 10:21:00,Check document,2,120,30.0,Clerk
+575,C00071_r1,2025-01-01 10:21:01,Check document,2,120,30.0,Clerk
+576,C00071_r2,2025-01-01 10:21:02,Check document,2,120,30.0,Clerk
+577,C00071_r0,2025-01-01 10:22:00,Submit application,1,107,37.0,Clerk
+578,C00071_r0,2025-01-01 10:22:01,Review submission,8,850,100.0,Reviewer
+579,C00071_r1,2025-01-01 10:22:01,Submit application,1,107,37.0,Clerk
+580,C00071_r2,2025-01-01 10:22:02,Submit application,1,107,37.0,Clerk
+581,C00071_r1,2025-01-01 10:22:02,Review submission,8,850,100.0,Reviewer
+582,C00071_r2,2025-01-01 10:22:03,Review submission,8,850,100.0,Reviewer
+583,C00071_r0,2025-01-01 10:23:00,Approve application,2,130,20.0,Manager
+584,C00071_r1,2025-01-01 10:23:01,Disapprove application,2,130,20.0,review_board
+585,C00071_r0,2025-01-01 10:23:01,Complete process,0,0,0.0,System
+587,C00071_r2,2025-01-01 10:23:02,Approve application,2,130,20.0,Manager
+586,C00071_r1,2025-01-01 10:23:02,Revise document,8,932,182.0,Supervisor
+588,C00071_r2,2025-01-01 10:23:03,Complete process,0,0,0.0,System
+589,C00071_r1,2025-01-01 10:23:03,Submit application,10,8507,214.2,Supervisor
+590,C00071_r1,2025-01-01 10:23:04,Accept submission,1,922,145.6,Head Manager Assistant
+591,C00071_r1,2025-01-01 10:23:05,Complete process,0,0,0.0,System
+592,C00077_r0,2025-01-01 10:32:00,Start process,5,10,10.0,System
+593,C00077_r1,2025-01-01 10:32:01,Start process,5,10,10.0,System
+594,C00077_r2,2025-01-01 10:32:02,Start process,5,10,10.0,System
+595,C00077_r0,2025-01-01 10:33:00,Check document,2,120,30.0,Clerk
+596,C00077_r1,2025-01-01 10:33:01,Check document,2,120,30.0,Clerk
+597,C00077_r2,2025-01-01 10:33:02,Check document,2,120,30.0,Clerk
+598,C00077_r0,2025-01-01 10:34:00,Submit application,1,116,49.0,Clerk
+599,C00078_r0,2025-01-01 10:34:00,Start process,5,10,10.0,System
+600,C00078_r1,2025-01-01 10:34:01,Start process,5,10,10.0,System
+601,C00077_r0,2025-01-01 10:34:01,Review submission,8,850,100.0,Reviewer
+602,C00077_r1,2025-01-01 10:34:01,Submit application,1,116,49.0,Clerk
+603,C00077_r1,2025-01-01 10:34:02,Review submission,8,850,100.0,Reviewer
+604,C00078_r2,2025-01-01 10:34:02,Start process,5,10,10.0,System
+605,C00077_r2,2025-01-01 10:34:02,Submit application,1,116,49.0,Clerk
+606,C00077_r2,2025-01-01 10:34:03,Review submission,8,850,100.0,Reviewer
+608,C00078_r0,2025-01-01 10:35:00,Check document,2,120,30.0,Clerk
+607,C00077_r0,2025-01-01 10:35:00,Approve application,2,130,20.0,Manager
+609,C00077_r0,2025-01-01 10:35:01,Complete process,0,0,0.0,System
+610,C00078_r1,2025-01-01 10:35:01,Check document,2,120,30.0,Clerk
+611,C00077_r1,2025-01-01 10:35:01,Disapprove application,2,130,20.0,review_board
+612,C00078_r2,2025-01-01 10:35:02,Check document,2,120,30.0,Clerk
+613,C00077_r2,2025-01-01 10:35:02,Disapprove application,2,130,20.0,review_board
+614,C00077_r1,2025-01-01 10:35:02,Revise document,8,932,182.0,Supervisor
+615,C00077_r1,2025-01-01 10:35:03,Submit application,12,6566,200.8,Senior Analyst
+616,C00077_r2,2025-01-01 10:35:03,Revise document,8,932,182.0,Supervisor
+617,C00077_r2,2025-01-01 10:35:04,Submit application,8,3020,197.8,Supervisor
+618,C00077_r1,2025-01-01 10:35:04,Reject submission,1,922,145.6,Head Manager Assistant
+619,C00077_r1,2025-01-01 10:35:05,Complete process,0,0,0.0,System
+620,C00077_r2,2025-01-01 10:35:05,Accept submission,1,922,145.6,Head Manager Assistant
+621,C00077_r2,2025-01-01 10:35:06,Complete process,0,0,0.0,System
+622,C00078_r0,2025-01-01 10:36:00,Submit application,3,147,33.0,Junior Staff
+623,C00078_r0,2025-01-01 10:36:01,Review submission,8,850,100.0,Reviewer
+624,C00078_r1,2025-01-01 10:36:01,Submit application,3,147,33.0,Junior Staff
+625,C00078_r2,2025-01-01 10:36:02,Submit application,3,147,33.0,Junior Staff
+626,C00078_r1,2025-01-01 10:36:02,Review submission,8,850,100.0,Reviewer
+627,C00078_r2,2025-01-01 10:36:03,Review submission,8,850,100.0,Reviewer
+628,C00078_r0,2025-01-01 10:37:00,Disapprove application,2,130,20.0,review_board
+629,C00078_r1,2025-01-01 10:37:01,Approve application,2,130,20.0,Manager
+630,C00078_r0,2025-01-01 10:37:01,Revise document,8,932,182.0,Supervisor
+633,C00078_r2,2025-01-01 10:37:02,Disapprove application,2,130,20.0,review_board
+632,C00078_r0,2025-01-01 10:37:02,Submit application,12,1622,185.2,Supervisor
+631,C00078_r1,2025-01-01 10:37:02,Complete process,0,0,0.0,System
+634,C00078_r0,2025-01-01 10:37:03,Reject submission,1,922,145.6,Head Manager Assistant
+635,C00078_r2,2025-01-01 10:37:03,Revise document,8,932,182.0,Supervisor
+636,C00078_r0,2025-01-01 10:37:04,Complete process,0,0,0.0,System
+637,C00078_r2,2025-01-01 10:37:04,Submit application,12,5660,197.4,Supervisor
+638,C00078_r2,2025-01-01 10:37:05,Reject submission,1,922,145.6,Head Manager Assistant
+639,C00078_r2,2025-01-01 10:37:06,Complete process,0,0,0.0,System
+640,C00081_r0,2025-01-01 10:40:00,Start process,5,10,10.0,System
+641,C00081_r1,2025-01-01 10:40:01,Start process,5,10,10.0,System
+642,C00081_r2,2025-01-01 10:40:02,Start process,5,10,10.0,System
+643,C00081_r0,2025-01-01 10:41:00,Check document,2,120,30.0,Clerk
+644,C00081_r1,2025-01-01 10:41:01,Check document,2,120,30.0,Clerk
+645,C00081_r2,2025-01-01 10:41:02,Check document,2,120,30.0,Clerk
+646,C00081_r0,2025-01-01 10:42:00,Submit application,2,109,57.0,Junior Staff
+647,C00081_r0,2025-01-01 10:42:01,Review submission,8,850,100.0,Reviewer
+648,C00081_r1,2025-01-01 10:42:01,Submit application,2,109,57.0,Junior Staff
+649,C00081_r1,2025-01-01 10:42:02,Review submission,8,850,100.0,Reviewer
+650,C00081_r2,2025-01-01 10:42:02,Submit application,2,109,57.0,Junior Staff
+651,C00081_r2,2025-01-01 10:42:03,Review submission,8,850,100.0,Reviewer
+652,C00081_r0,2025-01-01 10:43:00,Disapprove application,2,130,20.0,review_board
+653,C00081_r0,2025-01-01 10:43:01,Revise document,8,932,182.0,Supervisor
+654,C00081_r1,2025-01-01 10:43:01,Disapprove application,2,130,20.0,review_board
+655,C00081_r0,2025-01-01 10:43:02,Submit application,10,6590,212.8,Senior Analyst
+656,C00081_r1,2025-01-01 10:43:02,Revise document,8,932,182.0,Supervisor
+657,C00081_r2,2025-01-01 10:43:02,Approve application,2,130,20.0,Manager
+658,C00081_r0,2025-01-01 10:43:03,Reject submission,1,922,145.6,Head Manager Assistant
+659,C00081_r2,2025-01-01 10:43:03,Complete process,0,0,0.0,System
+660,C00081_r1,2025-01-01 10:43:03,Submit application,10,5770,188.4,Supervisor
+662,C00081_r1,2025-01-01 10:43:04,Reject submission,1,922,145.6,Head Manager Assistant
+661,C00081_r0,2025-01-01 10:43:04,Complete process,0,0,0.0,System
+663,C00081_r1,2025-01-01 10:43:05,Complete process,0,0,0.0,System
+664,C00084_r0,2025-01-01 10:46:00,Start process,5,10,10.0,System
+665,C00084_r1,2025-01-01 10:46:01,Start process,5,10,10.0,System
+666,C00084_r2,2025-01-01 10:46:02,Start process,5,10,10.0,System
+667,C00084_r0,2025-01-01 10:47:00,Check document,2,120,30.0,Clerk
+668,C00084_r1,2025-01-01 10:47:01,Check document,2,120,30.0,Clerk
+669,C00084_r2,2025-01-01 10:47:02,Check document,2,120,30.0,Clerk
+671,C00085_r0,2025-01-01 10:48:00,Start process,5,10,10.0,System
+670,C00084_r0,2025-01-01 10:48:00,Submit application,2,118,31.0,Junior Staff
+672,C00084_r0,2025-01-01 10:48:01,Review submission,8,850,100.0,Reviewer
+673,C00085_r1,2025-01-01 10:48:01,Start process,5,10,10.0,System
+674,C00084_r1,2025-01-01 10:48:01,Submit application,2,118,31.0,Junior Staff
+675,C00084_r2,2025-01-01 10:48:02,Submit application,2,118,31.0,Junior Staff
+676,C00085_r2,2025-01-01 10:48:02,Start process,5,10,10.0,System
+677,C00084_r1,2025-01-01 10:48:02,Review submission,8,850,100.0,Reviewer
+678,C00084_r2,2025-01-01 10:48:03,Review submission,8,850,100.0,Reviewer
+680,C00085_r0,2025-01-01 10:49:00,Check document,2,120,30.0,Clerk
+679,C00084_r0,2025-01-01 10:49:00,Disapprove application,2,130,20.0,review_board
+681,C00085_r1,2025-01-01 10:49:01,Check document,2,120,30.0,Clerk
+682,C00084_r1,2025-01-01 10:49:01,Disapprove application,2,130,20.0,review_board
+683,C00084_r0,2025-01-01 10:49:01,Revise document,8,932,182.0,Supervisor
+685,C00084_r1,2025-01-01 10:49:02,Revise document,8,932,182.0,Supervisor
+686,C00084_r2,2025-01-01 10:49:02,Approve application,2,130,20.0,Manager
+687,C00085_r2,2025-01-01 10:49:02,Check document,2,120,30.0,Clerk
+684,C00084_r0,2025-01-01 10:49:02,Submit application,12,7869,217.4,Senior Analyst
+688,C00084_r1,2025-01-01 10:49:03,Submit application,10,6557,206.0,Senior Analyst
+689,C00084_r0,2025-01-01 10:49:03,Accept submission,1,922,145.6,Head Manager Assistant
+690,C00084_r2,2025-01-01 10:49:03,Complete process,0,0,0.0,System
+691,C00084_r0,2025-01-01 10:49:04,Complete process,0,0,0.0,System
+692,C00084_r1,2025-01-01 10:49:04,Reject submission,1,922,145.6,Head Manager Assistant
+693,C00084_r1,2025-01-01 10:49:05,Complete process,0,0,0.0,System
+694,C00085_r0,2025-01-01 10:50:00,Submit application,2,145,59.0,Junior Staff
+695,C00085_r1,2025-01-01 10:50:01,Submit application,2,145,59.0,Junior Staff
+696,C00085_r0,2025-01-01 10:50:01,Review submission,8,850,100.0,Reviewer
+698,C00085_r1,2025-01-01 10:50:02,Review submission,8,850,100.0,Reviewer
+697,C00085_r2,2025-01-01 10:50:02,Submit application,2,145,59.0,Junior Staff
+699,C00085_r2,2025-01-01 10:50:03,Review submission,8,850,100.0,Reviewer
+700,C00085_r0,2025-01-01 10:51:00,Approve application,2,130,20.0,Manager
+701,C00085_r1,2025-01-01 10:51:01,Disapprove application,2,130,20.0,review_board
+702,C00085_r0,2025-01-01 10:51:01,Complete process,0,0,0.0,System
+703,C00085_r1,2025-01-01 10:51:02,Revise document,8,932,182.0,Supervisor
+704,C00085_r2,2025-01-01 10:51:02,Disapprove application,2,130,20.0,review_board
+705,C00085_r1,2025-01-01 10:51:03,Submit application,11,3853,211.3,Senior Analyst
+706,C00085_r2,2025-01-01 10:51:03,Revise document,8,932,182.0,Supervisor
+708,C00085_r2,2025-01-01 10:51:04,Submit application,12,5999,234.4,Supervisor
+707,C00085_r1,2025-01-01 10:51:04,Accept submission,1,922,145.6,Head Manager Assistant
+709,C00085_r2,2025-01-01 10:51:05,Accept submission,1,922,145.6,Head Manager Assistant
+710,C00085_r1,2025-01-01 10:51:05,Complete process,0,0,0.0,System
+711,C00085_r2,2025-01-01 10:51:06,Complete process,0,0,0.0,System
+712,C00091_r0,2025-01-01 11:00:00,Start process,5,10,10.0,System
+713,C00091_r1,2025-01-01 11:00:01,Start process,5,10,10.0,System
+714,C00091_r2,2025-01-01 11:00:02,Start process,5,10,10.0,System
+715,C00091_r0,2025-01-01 11:01:00,Check document,2,120,30.0,Clerk
+716,C00091_r1,2025-01-01 11:01:01,Check document,2,120,30.0,Clerk
+717,C00091_r2,2025-01-01 11:01:02,Check document,2,120,30.0,Clerk
+718,C00091_r0,2025-01-01 11:02:00,Submit application,3,81,31.0,Clerk
+719,C00091_r0,2025-01-01 11:02:01,Review submission,8,850,100.0,Reviewer
+720,C00091_r1,2025-01-01 11:02:01,Submit application,3,81,31.0,Clerk
+721,C00091_r1,2025-01-01 11:02:02,Review submission,8,850,100.0,Reviewer
+722,C00091_r2,2025-01-01 11:02:02,Submit application,3,81,31.0,Clerk
+723,C00091_r2,2025-01-01 11:02:03,Review submission,8,850,100.0,Reviewer
+724,C00091_r0,2025-01-01 11:03:00,Disapprove application,2,130,20.0,review_board
+726,C00091_r0,2025-01-01 11:03:01,Revise document,8,932,182.0,Supervisor
+725,C00091_r1,2025-01-01 11:03:01,Approve application,2,130,20.0,Manager
+729,C00091_r2,2025-01-01 11:03:02,Disapprove application,2,130,20.0,review_board
+728,C00091_r1,2025-01-01 11:03:02,Complete process,0,0,0.0,System
+727,C00091_r0,2025-01-01 11:03:02,Submit application,11,3082,237.8,Supervisor
+730,C00091_r0,2025-01-01 11:03:03,Reject submission,1,922,145.6,Head Manager Assistant
+731,C00091_r2,2025-01-01 11:03:03,Revise document,8,932,182.0,Supervisor
+732,C00091_r0,2025-01-01 11:03:04,Complete process,0,0,0.0,System
+733,C00091_r2,2025-01-01 11:03:04,Submit application,12,5650,203.4,Supervisor
+734,C00091_r2,2025-01-01 11:03:05,Accept submission,1,922,145.6,Head Manager Assistant
+735,C00091_r2,2025-01-01 11:03:06,Complete process,0,0,0.0,System
+736,C00093_r0,2025-01-01 11:04:00,Start process,5,10,10.0,System
+737,C00093_r1,2025-01-01 11:04:01,Start process,5,10,10.0,System
+738,C00093_r2,2025-01-01 11:04:02,Start process,5,10,10.0,System
+739,C00093_r0,2025-01-01 11:05:00,Check document,2,120,30.0,Clerk
+740,C00093_r1,2025-01-01 11:05:01,Check document,2,120,30.0,Clerk
+741,C00093_r2,2025-01-01 11:05:02,Check document,2,120,30.0,Clerk
+742,C00093_r0,2025-01-01 11:06:00,Submit application,3,116,36.0,Junior Staff
+743,C00094_r0,2025-01-01 11:06:00,Start process,5,10,10.0,System
+746,C00093_r0,2025-01-01 11:06:01,Review submission,8,850,100.0,Reviewer
+745,C00094_r1,2025-01-01 11:06:01,Start process,5,10,10.0,System
+744,C00093_r1,2025-01-01 11:06:01,Submit application,3,116,36.0,Junior Staff
+747,C00094_r2,2025-01-01 11:06:02,Start process,5,10,10.0,System
+748,C00093_r1,2025-01-01 11:06:02,Review submission,8,850,100.0,Reviewer
+749,C00093_r2,2025-01-01 11:06:02,Submit application,3,116,36.0,Junior Staff
+750,C00093_r2,2025-01-01 11:06:03,Review submission,8,850,100.0,Reviewer
+751,C00093_r0,2025-01-01 11:07:00,Disapprove application,2,130,20.0,review_board
+752,C00094_r0,2025-01-01 11:07:00,Check document,2,120,30.0,Clerk
+753,C00093_r1,2025-01-01 11:07:01,Approve application,2,130,20.0,Manager
+754,C00093_r0,2025-01-01 11:07:01,Revise document,8,932,182.0,Supervisor
+755,C00094_r1,2025-01-01 11:07:01,Check document,2,120,30.0,Clerk
+756,C00093_r0,2025-01-01 11:07:02,Submit application,12,8659,187.4,Supervisor
+757,C00093_r1,2025-01-01 11:07:02,Complete process,0,0,0.0,System
+758,C00093_r2,2025-01-01 11:07:02,Approve application,2,130,20.0,Manager
+759,C00094_r2,2025-01-01 11:07:02,Check document,2,120,30.0,Clerk
+760,C00093_r0,2025-01-01 11:07:03,Reject submission,1,922,145.6,Head Manager Assistant
+761,C00093_r2,2025-01-01 11:07:03,Complete process,0,0,0.0,System
+762,C00093_r0,2025-01-01 11:07:04,Complete process,0,0,0.0,System
+763,C00094_r0,2025-01-01 11:08:00,Submit application,1,100,59.0,Junior Staff
+765,C00094_r0,2025-01-01 11:08:01,Review submission,8,850,100.0,Reviewer
+764,C00094_r1,2025-01-01 11:08:01,Submit application,1,100,59.0,Junior Staff
+767,C00094_r1,2025-01-01 11:08:02,Review submission,8,850,100.0,Reviewer
+766,C00094_r2,2025-01-01 11:08:02,Submit application,1,100,59.0,Junior Staff
+768,C00094_r2,2025-01-01 11:08:03,Review submission,8,850,100.0,Reviewer
+769,C00094_r0,2025-01-01 11:09:00,Disapprove application,2,130,20.0,review_board
+770,C00094_r0,2025-01-01 11:09:01,Revise document,8,932,182.0,Supervisor
+771,C00094_r1,2025-01-01 11:09:01,Disapprove application,2,130,20.0,review_board
+772,C00094_r2,2025-01-01 11:09:02,Disapprove application,2,130,20.0,review_board
+773,C00094_r1,2025-01-01 11:09:02,Revise document,8,932,182.0,Supervisor
+774,C00094_r0,2025-01-01 11:09:02,Submit application,9,1859,216.5,Senior Analyst
+777,C00094_r2,2025-01-01 11:09:03,Revise document,8,932,182.0,Supervisor
+776,C00094_r0,2025-01-01 11:09:03,Accept submission,1,922,145.6,Head Manager Assistant
+775,C00094_r1,2025-01-01 11:09:03,Submit application,11,4224,243.8,Supervisor
+778,C00094_r2,2025-01-01 11:09:04,Submit application,10,6797,224.1,Supervisor
+779,C00094_r0,2025-01-01 11:09:04,Complete process,0,0,0.0,System
+780,C00094_r1,2025-01-01 11:09:04,Accept submission,1,922,145.6,Head Manager Assistant
+781,C00094_r1,2025-01-01 11:09:05,Complete process,0,0,0.0,System
+782,C00094_r2,2025-01-01 11:09:05,Accept submission,1,922,145.6,Head Manager Assistant
+783,C00094_r2,2025-01-01 11:09:06,Complete process,0,0,0.0,System
+784,C00104_r0,2025-01-01 11:26:00,Start process,5,10,10.0,System
+785,C00104_r1,2025-01-01 11:26:01,Start process,5,10,10.0,System
+786,C00104_r2,2025-01-01 11:26:02,Start process,5,10,10.0,System
+787,C00104_r0,2025-01-01 11:27:00,Check document,2,120,30.0,Clerk
+788,C00104_r1,2025-01-01 11:27:01,Check document,2,120,30.0,Clerk
+789,C00104_r2,2025-01-01 11:27:02,Check document,2,120,30.0,Clerk
+790,C00104_r0,2025-01-01 11:28:00,Submit application,2,120,60.0,Junior Staff
+791,C00105_r0,2025-01-01 11:28:00,Start process,5,10,10.0,System
+792,C00104_r0,2025-01-01 11:28:01,Review submission,8,850,100.0,Reviewer
+793,C00104_r1,2025-01-01 11:28:01,Submit application,2,120,60.0,Junior Staff
+794,C00105_r1,2025-01-01 11:28:01,Start process,5,10,10.0,System
+797,C00104_r1,2025-01-01 11:28:02,Review submission,8,850,100.0,Reviewer
+796,C00104_r2,2025-01-01 11:28:02,Submit application,2,120,60.0,Junior Staff
+795,C00105_r2,2025-01-01 11:28:02,Start process,5,10,10.0,System
+798,C00104_r2,2025-01-01 11:28:03,Review submission,8,850,100.0,Reviewer
+799,C00104_r0,2025-01-01 11:29:00,Disapprove application,2,130,20.0,review_board
+800,C00105_r0,2025-01-01 11:29:00,Check document,2,120,30.0,Clerk
+801,C00104_r0,2025-01-01 11:29:01,Revise document,8,932,182.0,Supervisor
+802,C00105_r1,2025-01-01 11:29:01,Check document,2,120,30.0,Clerk
+803,C00104_r1,2025-01-01 11:29:01,Disapprove application,2,130,20.0,review_board
+806,C00104_r1,2025-01-01 11:29:02,Revise document,8,932,182.0,Supervisor
+807,C00104_r0,2025-01-01 11:29:02,Submit application,9,1631,209.6,Senior Analyst
+805,C00104_r2,2025-01-01 11:29:02,Disapprove application,2,130,20.0,review_board
+804,C00105_r2,2025-01-01 11:29:02,Check document,2,120,30.0,Clerk
+808,C00104_r2,2025-01-01 11:29:03,Revise document,8,932,182.0,Supervisor
+809,C00104_r1,2025-01-01 11:29:03,Submit application,9,2266,194.3,Senior Analyst
+810,C00104_r0,2025-01-01 11:29:03,Reject submission,1,922,145.6,Head Manager Assistant
+811,C00104_r2,2025-01-01 11:29:04,Submit application,10,1300,209.6,Senior Analyst
+812,C00104_r1,2025-01-01 11:29:04,Accept submission,1,922,145.6,Head Manager Assistant
+813,C00104_r0,2025-01-01 11:29:04,Complete process,0,0,0.0,System
+815,C00104_r1,2025-01-01 11:29:05,Complete process,0,0,0.0,System
+814,C00104_r2,2025-01-01 11:29:05,Accept submission,1,922,145.6,Head Manager Assistant
+816,C00104_r2,2025-01-01 11:29:06,Complete process,0,0,0.0,System
+817,C00105_r0,2025-01-01 11:30:00,Submit application,2,81,48.0,Junior Staff
+818,C00105_r0,2025-01-01 11:30:01,Review submission,8,850,100.0,Reviewer
+819,C00105_r1,2025-01-01 11:30:01,Submit application,2,81,48.0,Junior Staff
+820,C00105_r2,2025-01-01 11:30:02,Submit application,2,81,48.0,Junior Staff
+821,C00105_r1,2025-01-01 11:30:02,Review submission,8,850,100.0,Reviewer
+822,C00105_r2,2025-01-01 11:30:03,Review submission,8,850,100.0,Reviewer
+823,C00105_r0,2025-01-01 11:31:00,Approve application,2,130,20.0,Manager
+825,C00105_r0,2025-01-01 11:31:01,Complete process,0,0,0.0,System
+824,C00105_r1,2025-01-01 11:31:01,Disapprove application,2,130,20.0,review_board
+826,C00105_r1,2025-01-01 11:31:02,Revise document,8,932,182.0,Supervisor
+827,C00105_r2,2025-01-01 11:31:02,Disapprove application,2,130,20.0,review_board
+828,C00105_r1,2025-01-01 11:31:03,Submit application,9,7830,191.2,Supervisor
+829,C00105_r2,2025-01-01 11:31:03,Revise document,8,932,182.0,Supervisor
+830,C00105_r1,2025-01-01 11:31:04,Reject submission,1,922,145.6,Head Manager Assistant
+831,C00105_r2,2025-01-01 11:31:04,Submit application,10,5869,200.4,Supervisor
+832,C00105_r1,2025-01-01 11:31:05,Complete process,0,0,0.0,System
+833,C00105_r2,2025-01-01 11:31:05,Reject submission,1,922,145.6,Head Manager Assistant
+834,C00105_r2,2025-01-01 11:31:06,Complete process,0,0,0.0,System
+835,C00107_r0,2025-01-01 11:32:00,Start process,5,10,10.0,System
+836,C00107_r1,2025-01-01 11:32:01,Start process,5,10,10.0,System
+837,C00107_r2,2025-01-01 11:32:02,Start process,5,10,10.0,System
+838,C00107_r0,2025-01-01 11:33:00,Check document,2,120,30.0,Clerk
+839,C00107_r1,2025-01-01 11:33:01,Check document,2,120,30.0,Clerk
+840,C00107_r2,2025-01-01 11:33:02,Check document,2,120,30.0,Clerk
+841,C00107_r0,2025-01-01 11:34:00,Submit application,3,137,54.0,Clerk
+843,C00107_r1,2025-01-01 11:34:01,Submit application,3,137,54.0,Clerk
+842,C00107_r0,2025-01-01 11:34:01,Review submission,8,850,100.0,Reviewer
+844,C00107_r2,2025-01-01 11:34:02,Submit application,3,137,54.0,Clerk
+845,C00107_r1,2025-01-01 11:34:02,Review submission,8,850,100.0,Reviewer
+846,C00107_r2,2025-01-01 11:34:03,Review submission,8,850,100.0,Reviewer
+847,C00107_r0,2025-01-01 11:35:00,Disapprove application,2,130,20.0,review_board
+848,C00107_r0,2025-01-01 11:35:01,Revise document,8,932,182.0,Supervisor
+849,C00107_r1,2025-01-01 11:35:01,Disapprove application,2,130,20.0,review_board
+852,C00107_r0,2025-01-01 11:35:02,Submit application,9,4795,231.6,Senior Analyst
+851,C00107_r1,2025-01-01 11:35:02,Revise document,8,932,182.0,Supervisor
+850,C00107_r2,2025-01-01 11:35:02,Approve application,2,130,20.0,Manager
+853,C00107_r1,2025-01-01 11:35:03,Submit application,8,847,204.9,Senior Analyst
+854,C00107_r0,2025-01-01 11:35:03,Reject submission,1,922,145.6,Head Manager Assistant
+855,C00107_r2,2025-01-01 11:35:03,Complete process,0,0,0.0,System
+856,C00107_r1,2025-01-01 11:35:04,Reject submission,1,922,145.6,Head Manager Assistant
+857,C00107_r0,2025-01-01 11:35:04,Complete process,0,0,0.0,System
+858,C00107_r1,2025-01-01 11:35:05,Complete process,0,0,0.0,System
+859,C00109_r0,2025-01-01 11:36:00,Start process,5,10,10.0,System
+860,C00109_r1,2025-01-01 11:36:01,Start process,5,10,10.0,System
+861,C00109_r2,2025-01-01 11:36:02,Start process,5,10,10.0,System
+862,C00109_r0,2025-01-01 11:37:00,Check document,2,120,30.0,Clerk
+863,C00109_r1,2025-01-01 11:37:01,Check document,2,120,30.0,Clerk
+864,C00109_r2,2025-01-01 11:37:02,Check document,2,120,30.0,Clerk
+865,C00109_r0,2025-01-01 11:38:00,Submit application,1,106,36.0,Clerk
+866,C00109_r1,2025-01-01 11:38:01,Submit application,1,106,36.0,Clerk
+867,C00109_r0,2025-01-01 11:38:01,Review submission,8,850,100.0,Reviewer
+868,C00109_r2,2025-01-01 11:38:02,Submit application,1,106,36.0,Clerk
+869,C00109_r1,2025-01-01 11:38:02,Review submission,8,850,100.0,Reviewer
+870,C00109_r2,2025-01-01 11:38:03,Review submission,8,850,100.0,Reviewer
+871,C00109_r0,2025-01-01 11:39:00,Disapprove application,2,130,20.0,review_board
+872,C00109_r1,2025-01-01 11:39:01,Approve application,2,130,20.0,Manager
+873,C00109_r0,2025-01-01 11:39:01,Revise document,8,932,182.0,Supervisor
+874,C00109_r1,2025-01-01 11:39:02,Complete process,0,0,0.0,System
+875,C00109_r0,2025-01-01 11:39:02,Submit application,11,5449,249.2,Supervisor
+876,C00109_r2,2025-01-01 11:39:02,Disapprove application,2,130,20.0,review_board
+877,C00109_r0,2025-01-01 11:39:03,Reject submission,1,922,145.6,Head Manager Assistant
+878,C00109_r2,2025-01-01 11:39:03,Revise document,8,932,182.0,Supervisor
+879,C00109_r0,2025-01-01 11:39:04,Complete process,0,0,0.0,System
+880,C00109_r2,2025-01-01 11:39:04,Submit application,11,3031,217.9,Supervisor
+881,C00109_r2,2025-01-01 11:39:05,Reject submission,1,922,145.6,Head Manager Assistant
+882,C00109_r2,2025-01-01 11:39:06,Complete process,0,0,0.0,System
+883,C00113_r0,2025-01-01 11:44:00,Start process,5,10,10.0,System
+884,C00113_r1,2025-01-01 11:44:01,Start process,5,10,10.0,System
+885,C00113_r2,2025-01-01 11:44:02,Start process,5,10,10.0,System
+886,C00113_r0,2025-01-01 11:45:00,Check document,2,120,30.0,Clerk
+887,C00113_r1,2025-01-01 11:45:01,Check document,2,120,30.0,Clerk
+888,C00113_r2,2025-01-01 11:45:02,Check document,2,120,30.0,Clerk
+889,C00114_r0,2025-01-01 11:46:00,Start process,5,10,10.0,System
+890,C00113_r0,2025-01-01 11:46:00,Submit application,1,136,40.0,Junior Staff
+891,C00114_r1,2025-01-01 11:46:01,Start process,5,10,10.0,System
+892,C00113_r0,2025-01-01 11:46:01,Review submission,8,850,100.0,Reviewer
+893,C00113_r1,2025-01-01 11:46:01,Submit application,1,136,40.0,Junior Staff
+894,C00113_r1,2025-01-01 11:46:02,Review submission,8,850,100.0,Reviewer
+895,C00113_r2,2025-01-01 11:46:02,Submit application,1,136,40.0,Junior Staff
+896,C00114_r2,2025-01-01 11:46:02,Start process,5,10,10.0,System
+897,C00113_r2,2025-01-01 11:46:03,Review submission,8,850,100.0,Reviewer
+899,C00113_r0,2025-01-01 11:47:00,Disapprove application,2,130,20.0,review_board
+898,C00114_r0,2025-01-01 11:47:00,Check document,2,120,30.0,Clerk
+900,C00114_r1,2025-01-01 11:47:01,Check document,2,120,30.0,Clerk
+901,C00113_r0,2025-01-01 11:47:01,Revise document,8,932,182.0,Supervisor
+902,C00113_r1,2025-01-01 11:47:01,Approve application,2,130,20.0,Manager
+903,C00114_r2,2025-01-01 11:47:02,Check document,2,120,30.0,Clerk
+904,C00113_r2,2025-01-01 11:47:02,Approve application,2,130,20.0,Manager
+905,C00113_r1,2025-01-01 11:47:02,Complete process,0,0,0.0,System
+906,C00113_r0,2025-01-01 11:47:02,Submit application,8,1810,192.2,Supervisor
+907,C00113_r2,2025-01-01 11:47:03,Complete process,0,0,0.0,System
+908,C00113_r0,2025-01-01 11:47:03,Reject submission,1,922,145.6,Head Manager Assistant
+909,C00113_r0,2025-01-01 11:47:04,Complete process,0,0,0.0,System
+910,C00114_r0,2025-01-01 11:48:00,Submit application,1,89,46.0,Junior Staff
+911,C00114_r0,2025-01-01 11:48:01,Review submission,8,850,100.0,Reviewer
+912,C00114_r1,2025-01-01 11:48:01,Submit application,1,89,46.0,Junior Staff
+913,C00114_r1,2025-01-01 11:48:02,Review submission,8,850,100.0,Reviewer
+914,C00114_r2,2025-01-01 11:48:02,Submit application,1,89,46.0,Junior Staff
+915,C00114_r2,2025-01-01 11:48:03,Review submission,8,850,100.0,Reviewer
+916,C00114_r0,2025-01-01 11:49:00,Approve application,2,130,20.0,Manager
+918,C00114_r0,2025-01-01 11:49:01,Complete process,0,0,0.0,System
+917,C00114_r1,2025-01-01 11:49:01,Disapprove application,2,130,20.0,review_board
+920,C00114_r2,2025-01-01 11:49:02,Disapprove application,2,130,20.0,review_board
+919,C00114_r1,2025-01-01 11:49:02,Revise document,8,932,182.0,Supervisor
+921,C00114_r2,2025-01-01 11:49:03,Revise document,8,932,182.0,Supervisor
+922,C00114_r1,2025-01-01 11:49:03,Submit application,8,4288,241.1,Senior Analyst
+923,C00114_r1,2025-01-01 11:49:04,Reject submission,1,922,145.6,Head Manager Assistant
+924,C00114_r2,2025-01-01 11:49:04,Submit application,10,5936,203.1,Supervisor
+925,C00114_r2,2025-01-01 11:49:05,Accept submission,1,922,145.6,Head Manager Assistant
+926,C00114_r1,2025-01-01 11:49:05,Complete process,0,0,0.0,System
+927,C00114_r2,2025-01-01 11:49:06,Complete process,0,0,0.0,System
+928,C00122_r0,2025-01-01 12:02:00,Start process,5,10,10.0,System
+929,C00122_r1,2025-01-01 12:02:01,Start process,5,10,10.0,System
+930,C00122_r2,2025-01-01 12:02:02,Start process,5,10,10.0,System
+931,C00122_r0,2025-01-01 12:03:00,Check document,2,120,30.0,Clerk
+932,C00122_r1,2025-01-01 12:03:01,Check document,2,120,30.0,Clerk
+933,C00122_r2,2025-01-01 12:03:02,Check document,2,120,30.0,Clerk
+934,C00122_r0,2025-01-01 12:04:00,Submit application,1,120,49.0,Junior Staff
+935,C00122_r0,2025-01-01 12:04:01,Review submission,8,850,100.0,Reviewer
+936,C00122_r1,2025-01-01 12:04:01,Submit application,1,120,49.0,Junior Staff
+938,C00122_r1,2025-01-01 12:04:02,Review submission,8,850,100.0,Reviewer
+937,C00122_r2,2025-01-01 12:04:02,Submit application,1,120,49.0,Junior Staff
+939,C00122_r2,2025-01-01 12:04:03,Review submission,8,850,100.0,Reviewer
+940,C00122_r0,2025-01-01 12:05:00,Disapprove application,2,130,20.0,review_board
+941,C00122_r1,2025-01-01 12:05:01,Disapprove application,2,130,20.0,review_board
+942,C00122_r0,2025-01-01 12:05:01,Revise document,8,932,182.0,Supervisor
+943,C00122_r1,2025-01-01 12:05:02,Revise document,8,932,182.0,Supervisor
+944,C00122_r0,2025-01-01 12:05:02,Submit application,8,4225,244.0,Supervisor
+945,C00122_r2,2025-01-01 12:05:02,Disapprove application,2,130,20.0,review_board
+946,C00122_r0,2025-01-01 12:05:03,Reject submission,1,922,145.6,Head Manager Assistant
+947,C00122_r2,2025-01-01 12:05:03,Revise document,8,932,182.0,Supervisor
+948,C00122_r1,2025-01-01 12:05:03,Submit application,10,8113,187.6,Supervisor
+949,C00122_r1,2025-01-01 12:05:04,Reject submission,1,922,145.6,Head Manager Assistant
+950,C00122_r0,2025-01-01 12:05:04,Complete process,0,0,0.0,System
+951,C00122_r2,2025-01-01 12:05:04,Submit application,8,9149,224.5,Senior Analyst
+952,C00122_r2,2025-01-01 12:05:05,Accept submission,1,922,145.6,Head Manager Assistant
+953,C00122_r1,2025-01-01 12:05:05,Complete process,0,0,0.0,System
+954,C00122_r2,2025-01-01 12:05:06,Complete process,0,0,0.0,System
+955,C00127_r0,2025-01-01 12:12:00,Start process,5,10,10.0,System
+956,C00127_r1,2025-01-01 12:12:01,Start process,5,10,10.0,System
+957,C00127_r2,2025-01-01 12:12:02,Start process,5,10,10.0,System
+958,C00127_r0,2025-01-01 12:13:00,Check document,2,120,30.0,Clerk
+959,C00127_r1,2025-01-01 12:13:01,Check document,2,120,30.0,Clerk
+960,C00127_r2,2025-01-01 12:13:02,Check document,2,120,30.0,Clerk
+961,C00127_r0,2025-01-01 12:14:00,Submit application,1,91,53.0,Junior Staff
+962,C00128_r0,2025-01-01 12:14:00,Start process,5,10,10.0,System
+963,C00128_r1,2025-01-01 12:14:01,Start process,5,10,10.0,System
+964,C00127_r0,2025-01-01 12:14:01,Review submission,8,850,100.0,Reviewer
+965,C00127_r1,2025-01-01 12:14:01,Submit application,1,91,53.0,Junior Staff
+968,C00127_r2,2025-01-01 12:14:02,Submit application,1,91,53.0,Junior Staff
+967,C00127_r1,2025-01-01 12:14:02,Review submission,8,850,100.0,Reviewer
+966,C00128_r2,2025-01-01 12:14:02,Start process,5,10,10.0,System
+969,C00127_r2,2025-01-01 12:14:03,Review submission,8,850,100.0,Reviewer
+970,C00127_r0,2025-01-01 12:15:00,Disapprove application,2,130,20.0,review_board
+971,C00128_r0,2025-01-01 12:15:00,Check document,2,120,30.0,Clerk
+972,C00128_r1,2025-01-01 12:15:01,Check document,2,120,30.0,Clerk
+973,C00127_r1,2025-01-01 12:15:01,Approve application,2,130,20.0,Manager
+974,C00127_r0,2025-01-01 12:15:01,Revise document,8,932,182.0,Supervisor
+978,C00127_r2,2025-01-01 12:15:02,Approve application,2,130,20.0,Manager
+977,C00127_r1,2025-01-01 12:15:02,Complete process,0,0,0.0,System
+976,C00128_r2,2025-01-01 12:15:02,Check document,2,120,30.0,Clerk
+975,C00127_r0,2025-01-01 12:15:02,Submit application,11,8983,196.4,Senior Analyst
+979,C00127_r0,2025-01-01 12:15:03,Accept submission,1,922,145.6,Head Manager Assistant
+980,C00127_r2,2025-01-01 12:15:03,Complete process,0,0,0.0,System
+981,C00127_r0,2025-01-01 12:15:04,Complete process,0,0,0.0,System
+982,C00128_r0,2025-01-01 12:16:00,Submit application,3,98,49.0,Junior Staff
+983,C00128_r0,2025-01-01 12:16:01,Review submission,8,850,100.0,Reviewer
+984,C00128_r1,2025-01-01 12:16:01,Submit application,3,98,49.0,Junior Staff
+986,C00128_r2,2025-01-01 12:16:02,Submit application,3,98,49.0,Junior Staff
+985,C00128_r1,2025-01-01 12:16:02,Review submission,8,850,100.0,Reviewer
+987,C00128_r2,2025-01-01 12:16:03,Review submission,8,850,100.0,Reviewer
+988,C00128_r0,2025-01-01 12:17:00,Approve application,2,130,20.0,Manager
+989,C00128_r0,2025-01-01 12:17:01,Complete process,0,0,0.0,System
+990,C00128_r1,2025-01-01 12:17:01,Disapprove application,2,130,20.0,review_board
+991,C00128_r1,2025-01-01 12:17:02,Revise document,8,932,182.0,Supervisor
+992,C00128_r2,2025-01-01 12:17:02,Approve application,2,130,20.0,Manager
+993,C00128_r1,2025-01-01 12:17:03,Submit application,12,4760,245.8,Senior Analyst
+994,C00128_r2,2025-01-01 12:17:03,Complete process,0,0,0.0,System
+995,C00128_r1,2025-01-01 12:17:04,Accept submission,1,922,145.6,Head Manager Assistant
+996,C00128_r1,2025-01-01 12:17:05,Complete process,0,0,0.0,System
+997,C00134_r0,2025-01-01 12:26:00,Start process,5,10,10.0,System
+998,C00134_r1,2025-01-01 12:26:01,Start process,5,10,10.0,System
+999,C00134_r2,2025-01-01 12:26:02,Start process,5,10,10.0,System
+1000,C00134_r0,2025-01-01 12:27:00,Check document,2,120,30.0,Clerk
+1001,C00134_r1,2025-01-01 12:27:01,Check document,2,120,30.0,Clerk
+1002,C00134_r2,2025-01-01 12:27:02,Check document,2,120,30.0,Clerk
+1003,C00134_r0,2025-01-01 12:28:00,Submit application,2,142,45.0,Junior Staff
+1004,C00134_r0,2025-01-01 12:28:01,Review submission,8,850,100.0,Reviewer
+1005,C00134_r1,2025-01-01 12:28:01,Submit application,2,142,45.0,Junior Staff
+1006,C00134_r1,2025-01-01 12:28:02,Review submission,8,850,100.0,Reviewer
+1007,C00134_r2,2025-01-01 12:28:02,Submit application,2,142,45.0,Junior Staff
+1008,C00134_r2,2025-01-01 12:28:03,Review submission,8,850,100.0,Reviewer
+1009,C00134_r0,2025-01-01 12:29:00,Approve application,2,130,20.0,Manager
+1010,C00134_r1,2025-01-01 12:29:01,Approve application,2,130,20.0,Manager
+1011,C00134_r0,2025-01-01 12:29:01,Complete process,0,0,0.0,System
+1013,C00134_r1,2025-01-01 12:29:02,Complete process,0,0,0.0,System
+1012,C00134_r2,2025-01-01 12:29:02,Disapprove application,2,130,20.0,review_board
+1014,C00134_r2,2025-01-01 12:29:03,Revise document,8,932,182.0,Supervisor
+1015,C00134_r2,2025-01-01 12:29:04,Submit application,9,8020,220.7,Supervisor
+1016,C00134_r2,2025-01-01 12:29:05,Reject submission,1,922,145.6,Head Manager Assistant
+1017,C00134_r2,2025-01-01 12:29:06,Complete process,0,0,0.0,System
+1018,C00136_r0,2025-01-01 12:30:00,Start process,5,10,10.0,System
+1019,C00136_r1,2025-01-01 12:30:01,Start process,5,10,10.0,System
+1020,C00136_r2,2025-01-01 12:30:02,Start process,5,10,10.0,System
+1021,C00136_r0,2025-01-01 12:31:00,Check document,2,120,30.0,Clerk
+1022,C00136_r1,2025-01-01 12:31:01,Check document,2,120,30.0,Clerk
+1023,C00136_r2,2025-01-01 12:31:02,Check document,2,120,30.0,Clerk
+1024,C00136_r0,2025-01-01 12:32:00,Submit application,2,92,44.0,Junior Staff
+1025,C00136_r1,2025-01-01 12:32:01,Submit application,2,92,44.0,Junior Staff
+1026,C00136_r0,2025-01-01 12:32:01,Review submission,8,850,100.0,Reviewer
+1027,C00136_r2,2025-01-01 12:32:02,Submit application,2,92,44.0,Junior Staff
+1028,C00136_r1,2025-01-01 12:32:02,Review submission,8,850,100.0,Reviewer
+1029,C00136_r2,2025-01-01 12:32:03,Review submission,8,850,100.0,Reviewer
+1030,C00136_r0,2025-01-01 12:33:00,Disapprove application,2,130,20.0,review_board
+1032,C00136_r0,2025-01-01 12:33:01,Revise document,8,932,182.0,Supervisor
+1031,C00136_r1,2025-01-01 12:33:01,Approve application,2,130,20.0,Manager
+1033,C00136_r1,2025-01-01 12:33:02,Complete process,0,0,0.0,System
+1034,C00136_r0,2025-01-01 12:33:02,Submit application,11,3783,236.9,Supervisor
+1035,C00136_r2,2025-01-01 12:33:02,Disapprove application,2,130,20.0,review_board
+1036,C00136_r0,2025-01-01 12:33:03,Accept submission,1,922,145.6,Head Manager Assistant
+1037,C00136_r2,2025-01-01 12:33:03,Revise document,8,932,182.0,Supervisor
+1038,C00136_r0,2025-01-01 12:33:04,Complete process,0,0,0.0,System
+1039,C00136_r2,2025-01-01 12:33:04,Submit application,10,4981,243.7,Supervisor
+1040,C00136_r2,2025-01-01 12:33:05,Reject submission,1,922,145.6,Head Manager Assistant
+1041,C00136_r2,2025-01-01 12:33:06,Complete process,0,0,0.0,System
+1042,C00139_r0,2025-01-01 12:36:00,Start process,5,10,10.0,System
+1043,C00139_r1,2025-01-01 12:36:01,Start process,5,10,10.0,System
+1044,C00139_r2,2025-01-01 12:36:02,Start process,5,10,10.0,System
+1045,C00139_r0,2025-01-01 12:37:00,Check document,2,120,30.0,Clerk
+1046,C00139_r1,2025-01-01 12:37:01,Check document,2,120,30.0,Clerk
+1047,C00139_r2,2025-01-01 12:37:02,Check document,2,120,30.0,Clerk
+1048,C00139_r0,2025-01-01 12:38:00,Submit application,3,124,44.0,Junior Staff
+1050,C00139_r1,2025-01-01 12:38:01,Submit application,3,124,44.0,Junior Staff
+1049,C00139_r0,2025-01-01 12:38:01,Review submission,8,850,100.0,Reviewer
+1051,C00139_r1,2025-01-01 12:38:02,Review submission,8,850,100.0,Reviewer
+1052,C00139_r2,2025-01-01 12:38:02,Submit application,3,124,44.0,Junior Staff
+1053,C00139_r2,2025-01-01 12:38:03,Review submission,8,850,100.0,Reviewer
+1054,C00139_r0,2025-01-01 12:39:00,Disapprove application,2,130,20.0,review_board
+1055,C00139_r1,2025-01-01 12:39:01,Approve application,2,130,20.0,Manager
+1056,C00139_r0,2025-01-01 12:39:01,Revise document,8,932,182.0,Supervisor
+1057,C00139_r0,2025-01-01 12:39:02,Submit application,12,1988,190.8,Senior Analyst
+1058,C00139_r1,2025-01-01 12:39:02,Complete process,0,0,0.0,System
+1059,C00139_r2,2025-01-01 12:39:02,Approve application,2,130,20.0,Manager
+1060,C00139_r2,2025-01-01 12:39:03,Complete process,0,0,0.0,System
+1061,C00139_r0,2025-01-01 12:39:03,Reject submission,1,922,145.6,Head Manager Assistant
+1062,C00139_r0,2025-01-01 12:39:04,Complete process,0,0,0.0,System
+1063,C00142_r0,2025-01-01 12:42:00,Start process,5,10,10.0,System
+1064,C00142_r1,2025-01-01 12:42:01,Start process,5,10,10.0,System
+1065,C00142_r2,2025-01-01 12:42:02,Start process,5,10,10.0,System
+1066,C00142_r0,2025-01-01 12:43:00,Check document,2,120,30.0,Clerk
+1067,C00142_r1,2025-01-01 12:43:01,Check document,2,120,30.0,Clerk
+1068,C00142_r2,2025-01-01 12:43:02,Check document,2,120,30.0,Clerk
+1069,C00142_r0,2025-01-01 12:44:00,Submit application,2,136,42.0,Junior Staff
+1071,C00142_r0,2025-01-01 12:44:01,Review submission,8,850,100.0,Reviewer
+1070,C00142_r1,2025-01-01 12:44:01,Submit application,2,136,42.0,Junior Staff
+1072,C00142_r2,2025-01-01 12:44:02,Submit application,2,136,42.0,Junior Staff
+1073,C00142_r1,2025-01-01 12:44:02,Review submission,8,850,100.0,Reviewer
+1074,C00142_r2,2025-01-01 12:44:03,Review submission,8,850,100.0,Reviewer
+1075,C00142_r0,2025-01-01 12:45:00,Approve application,2,130,20.0,Manager
+1076,C00142_r1,2025-01-01 12:45:01,Approve application,2,130,20.0,Manager
+1077,C00142_r0,2025-01-01 12:45:01,Complete process,0,0,0.0,System
+1078,C00142_r2,2025-01-01 12:45:02,Approve application,2,130,20.0,Manager
+1079,C00142_r1,2025-01-01 12:45:02,Complete process,0,0,0.0,System
+1080,C00142_r2,2025-01-01 12:45:03,Complete process,0,0,0.0,System
+1081,C00146_r0,2025-01-01 12:50:00,Start process,5,10,10.0,System
+1082,C00146_r1,2025-01-01 12:50:01,Start process,5,10,10.0,System
+1083,C00146_r2,2025-01-01 12:50:02,Start process,5,10,10.0,System
+1084,C00146_r0,2025-01-01 12:51:00,Check document,2,120,30.0,Clerk
+1085,C00146_r1,2025-01-01 12:51:01,Check document,2,120,30.0,Clerk
+1086,C00146_r2,2025-01-01 12:51:02,Check document,2,120,30.0,Clerk
+1087,C00146_r0,2025-01-01 12:52:00,Submit application,2,128,42.0,Junior Staff
+1088,C00147_r0,2025-01-01 12:52:00,Start process,5,10,10.0,System
+1089,C00147_r1,2025-01-01 12:52:01,Start process,5,10,10.0,System
+1090,C00146_r1,2025-01-01 12:52:01,Submit application,2,128,42.0,Junior Staff
+1091,C00146_r0,2025-01-01 12:52:01,Review submission,8,850,100.0,Reviewer
+1092,C00147_r2,2025-01-01 12:52:02,Start process,5,10,10.0,System
+1093,C00146_r1,2025-01-01 12:52:02,Review submission,8,850,100.0,Reviewer
+1094,C00146_r2,2025-01-01 12:52:02,Submit application,2,128,42.0,Junior Staff
+1095,C00146_r2,2025-01-01 12:52:03,Review submission,8,850,100.0,Reviewer
+1096,C00146_r0,2025-01-01 12:53:00,Approve application,2,130,20.0,Manager
+1097,C00147_r0,2025-01-01 12:53:00,Check document,2,120,30.0,Clerk
+1099,C00146_r0,2025-01-01 12:53:01,Complete process,0,0,0.0,System
+1098,C00147_r1,2025-01-01 12:53:01,Check document,2,120,30.0,Clerk
+1100,C00146_r1,2025-01-01 12:53:01,Approve application,2,130,20.0,Manager
+1101,C00147_r2,2025-01-01 12:53:02,Check document,2,120,30.0,Clerk
+1102,C00146_r2,2025-01-01 12:53:02,Approve application,2,130,20.0,Manager
+1103,C00146_r1,2025-01-01 12:53:02,Complete process,0,0,0.0,System
+1104,C00146_r2,2025-01-01 12:53:03,Complete process,0,0,0.0,System
+1106,C00148_r0,2025-01-01 12:54:00,Start process,5,10,10.0,System
+1105,C00147_r0,2025-01-01 12:54:00,Submit application,3,98,47.0,Clerk
+1109,C00147_r0,2025-01-01 12:54:01,Review submission,8,850,100.0,Reviewer
+1108,C00147_r1,2025-01-01 12:54:01,Submit application,3,98,47.0,Clerk
+1107,C00148_r1,2025-01-01 12:54:01,Start process,5,10,10.0,System
+1110,C00148_r2,2025-01-01 12:54:02,Start process,5,10,10.0,System
+1111,C00147_r1,2025-01-01 12:54:02,Review submission,8,850,100.0,Reviewer
+1112,C00147_r2,2025-01-01 12:54:02,Submit application,3,98,47.0,Clerk
+1113,C00147_r2,2025-01-01 12:54:03,Review submission,8,850,100.0,Reviewer
+1114,C00148_r0,2025-01-01 12:55:00,Check document,2,120,30.0,Clerk
+1115,C00147_r0,2025-01-01 12:55:00,Disapprove application,2,130,20.0,review_board
+1118,C00148_r1,2025-01-01 12:55:01,Check document,2,120,30.0,Clerk
+1117,C00147_r0,2025-01-01 12:55:01,Revise document,8,932,182.0,Supervisor
+1116,C00147_r1,2025-01-01 12:55:01,Approve application,2,130,20.0,Manager
+1119,C00147_r2,2025-01-01 12:55:02,Approve application,2,130,20.0,Manager
+1120,C00147_r0,2025-01-01 12:55:02,Submit application,11,9292,192.8,Senior Analyst
+1121,C00148_r2,2025-01-01 12:55:02,Check document,2,120,30.0,Clerk
+1122,C00147_r1,2025-01-01 12:55:02,Complete process,0,0,0.0,System
+1123,C00147_r2,2025-01-01 12:55:03,Complete process,0,0,0.0,System
+1124,C00147_r0,2025-01-01 12:55:03,Accept submission,1,922,145.6,Head Manager Assistant
+1125,C00147_r0,2025-01-01 12:55:04,Complete process,0,0,0.0,System
+1127,C00149_r0,2025-01-01 12:56:00,Start process,5,10,10.0,System
+1126,C00148_r0,2025-01-01 12:56:00,Submit application,3,82,48.0,Clerk
+1128,C00149_r1,2025-01-01 12:56:01,Start process,5,10,10.0,System
+1129,C00148_r0,2025-01-01 12:56:01,Review submission,8,850,100.0,Reviewer
+1130,C00148_r1,2025-01-01 12:56:01,Submit application,3,82,48.0,Clerk
+1131,C00148_r1,2025-01-01 12:56:02,Review submission,8,850,100.0,Reviewer
+1132,C00148_r2,2025-01-01 12:56:02,Submit application,3,82,48.0,Clerk
+1133,C00149_r2,2025-01-01 12:56:02,Start process,5,10,10.0,System
+1134,C00148_r2,2025-01-01 12:56:03,Review submission,8,850,100.0,Reviewer
+1136,C00149_r0,2025-01-01 12:57:00,Check document,2,120,30.0,Clerk
+1135,C00148_r0,2025-01-01 12:57:00,Approve application,2,130,20.0,Manager
+1137,C00148_r1,2025-01-01 12:57:01,Approve application,2,130,20.0,Manager
+1138,C00148_r0,2025-01-01 12:57:01,Complete process,0,0,0.0,System
+1139,C00149_r1,2025-01-01 12:57:01,Check document,2,120,30.0,Clerk
+1140,C00148_r1,2025-01-01 12:57:02,Complete process,0,0,0.0,System
+1141,C00148_r2,2025-01-01 12:57:02,Disapprove application,2,130,20.0,review_board
+1142,C00149_r2,2025-01-01 12:57:02,Check document,2,120,30.0,Clerk
+1143,C00148_r2,2025-01-01 12:57:03,Revise document,8,932,182.0,Supervisor
+1144,C00148_r2,2025-01-01 12:57:04,Submit application,9,769,207.4,Senior Analyst
+1145,C00148_r2,2025-01-01 12:57:05,Accept submission,1,922,145.6,Head Manager Assistant
+1146,C00148_r2,2025-01-01 12:57:06,Complete process,0,0,0.0,System
+1147,C00149_r0,2025-01-01 12:58:00,Submit application,2,140,44.0,Clerk
+1148,C00149_r0,2025-01-01 12:58:01,Review submission,8,850,100.0,Reviewer
+1149,C00149_r1,2025-01-01 12:58:01,Submit application,2,140,44.0,Clerk
+1150,C00149_r2,2025-01-01 12:58:02,Submit application,2,140,44.0,Clerk
+1151,C00149_r1,2025-01-01 12:58:02,Review submission,8,850,100.0,Reviewer
+1152,C00149_r2,2025-01-01 12:58:03,Review submission,8,850,100.0,Reviewer
+1153,C00149_r0,2025-01-01 12:59:00,Disapprove application,2,130,20.0,review_board
+1155,C00149_r1,2025-01-01 12:59:01,Disapprove application,2,130,20.0,review_board
+1154,C00149_r0,2025-01-01 12:59:01,Revise document,8,932,182.0,Supervisor
+1156,C00149_r1,2025-01-01 12:59:02,Revise document,8,932,182.0,Supervisor
+1157,C00149_r0,2025-01-01 12:59:02,Submit application,10,6229,185.0,Senior Analyst
+1158,C00149_r2,2025-01-01 12:59:02,Approve application,2,130,20.0,Manager
+1159,C00149_r1,2025-01-01 12:59:03,Submit application,11,5068,226.7,Senior Analyst
+1160,C00149_r0,2025-01-01 12:59:03,Accept submission,1,922,145.6,Head Manager Assistant
+1161,C00149_r2,2025-01-01 12:59:03,Complete process,0,0,0.0,System
+1162,C00149_r1,2025-01-01 12:59:04,Accept submission,1,922,145.6,Head Manager Assistant
+1163,C00149_r0,2025-01-01 12:59:04,Complete process,0,0,0.0,System
+1164,C00149_r1,2025-01-01 12:59:05,Complete process,0,0,0.0,System
+1165,C00151_r0,2025-01-01 13:00:00,Start process,5,10,10.0,System
+1166,C00151_r1,2025-01-01 13:00:01,Start process,5,10,10.0,System
+1167,C00151_r2,2025-01-01 13:00:02,Start process,5,10,10.0,System
+1168,C00151_r0,2025-01-01 13:01:00,Check document,2,120,30.0,Clerk
+1169,C00151_r1,2025-01-01 13:01:01,Check document,2,120,30.0,Clerk
+1170,C00151_r2,2025-01-01 13:01:02,Check document,2,120,30.0,Clerk
+1171,C00151_r0,2025-01-01 13:02:00,Submit application,1,102,54.0,Clerk
+1173,C00151_r1,2025-01-01 13:02:01,Submit application,1,102,54.0,Clerk
+1172,C00151_r0,2025-01-01 13:02:01,Review submission,8,850,100.0,Reviewer
+1174,C00151_r1,2025-01-01 13:02:02,Review submission,8,850,100.0,Reviewer
+1175,C00151_r2,2025-01-01 13:02:02,Submit application,1,102,54.0,Clerk
+1176,C00151_r2,2025-01-01 13:02:03,Review submission,8,850,100.0,Reviewer
+1177,C00151_r0,2025-01-01 13:03:00,Approve application,2,130,20.0,Manager
+1178,C00151_r0,2025-01-01 13:03:01,Complete process,0,0,0.0,System
+1179,C00151_r1,2025-01-01 13:03:01,Approve application,2,130,20.0,Manager
+1181,C00151_r1,2025-01-01 13:03:02,Complete process,0,0,0.0,System
+1180,C00151_r2,2025-01-01 13:03:02,Approve application,2,130,20.0,Manager
+1182,C00151_r2,2025-01-01 13:03:03,Complete process,0,0,0.0,System
+1183,C00155_r0,2025-01-01 13:08:00,Start process,5,10,10.0,System
+1184,C00155_r1,2025-01-01 13:08:01,Start process,5,10,10.0,System
+1185,C00155_r2,2025-01-01 13:08:02,Start process,5,10,10.0,System
+1186,C00155_r0,2025-01-01 13:09:00,Check document,2,120,30.0,Clerk
+1187,C00155_r1,2025-01-01 13:09:01,Check document,2,120,30.0,Clerk
+1188,C00155_r2,2025-01-01 13:09:02,Check document,2,120,30.0,Clerk
+1189,C00155_r0,2025-01-01 13:10:00,Submit application,3,96,40.0,Junior Staff
+1190,C00155_r1,2025-01-01 13:10:01,Submit application,3,96,40.0,Junior Staff
+1191,C00155_r0,2025-01-01 13:10:01,Review submission,8,850,100.0,Reviewer
+1193,C00155_r2,2025-01-01 13:10:02,Submit application,3,96,40.0,Junior Staff
+1192,C00155_r1,2025-01-01 13:10:02,Review submission,8,850,100.0,Reviewer
+1194,C00155_r2,2025-01-01 13:10:03,Review submission,8,850,100.0,Reviewer
+1195,C00155_r0,2025-01-01 13:11:00,Disapprove application,2,130,20.0,review_board
+1196,C00155_r1,2025-01-01 13:11:01,Disapprove application,2,130,20.0,review_board
+1197,C00155_r0,2025-01-01 13:11:01,Revise document,8,932,182.0,Supervisor
+1198,C00155_r1,2025-01-01 13:11:02,Revise document,8,932,182.0,Supervisor
+1199,C00155_r0,2025-01-01 13:11:02,Submit application,10,2862,187.0,Supervisor
+1200,C00155_r2,2025-01-01 13:11:02,Approve application,2,130,20.0,Manager
+1201,C00155_r1,2025-01-01 13:11:03,Submit application,10,6089,197.5,Senior Analyst
+1202,C00155_r0,2025-01-01 13:11:03,Reject submission,1,922,145.6,Head Manager Assistant
+1203,C00155_r2,2025-01-01 13:11:03,Complete process,0,0,0.0,System
+1204,C00155_r1,2025-01-01 13:11:04,Reject submission,1,922,145.6,Head Manager Assistant
+1205,C00155_r0,2025-01-01 13:11:04,Complete process,0,0,0.0,System
+1206,C00155_r1,2025-01-01 13:11:05,Complete process,0,0,0.0,System
+1207,C00157_r0,2025-01-01 13:12:00,Start process,5,10,10.0,System
+1208,C00157_r1,2025-01-01 13:12:01,Start process,5,10,10.0,System
+1209,C00157_r2,2025-01-01 13:12:02,Start process,5,10,10.0,System
+1210,C00157_r0,2025-01-01 13:13:00,Check document,2,120,30.0,Clerk
+1211,C00157_r1,2025-01-01 13:13:01,Check document,2,120,30.0,Clerk
+1212,C00157_r2,2025-01-01 13:13:02,Check document,2,120,30.0,Clerk
+1213,C00157_r0,2025-01-01 13:14:00,Submit application,3,123,59.0,Junior Staff
+1214,C00157_r0,2025-01-01 13:14:01,Review submission,8,850,100.0,Reviewer
+1215,C00157_r1,2025-01-01 13:14:01,Submit application,3,123,59.0,Junior Staff
+1216,C00157_r2,2025-01-01 13:14:02,Submit application,3,123,59.0,Junior Staff
+1217,C00157_r1,2025-01-01 13:14:02,Review submission,8,850,100.0,Reviewer
+1218,C00157_r2,2025-01-01 13:14:03,Review submission,8,850,100.0,Reviewer
+1219,C00157_r0,2025-01-01 13:15:00,Approve application,2,130,20.0,Manager
+1220,C00157_r1,2025-01-01 13:15:01,Approve application,2,130,20.0,Manager
+1221,C00157_r0,2025-01-01 13:15:01,Complete process,0,0,0.0,System
+1223,C00157_r1,2025-01-01 13:15:02,Complete process,0,0,0.0,System
+1222,C00157_r2,2025-01-01 13:15:02,Approve application,2,130,20.0,Manager
+1224,C00157_r2,2025-01-01 13:15:03,Complete process,0,0,0.0,System
+1225,C00159_r0,2025-01-01 13:16:00,Start process,5,10,10.0,System
+1226,C00159_r1,2025-01-01 13:16:01,Start process,5,10,10.0,System
+1227,C00159_r2,2025-01-01 13:16:02,Start process,5,10,10.0,System
+1228,C00159_r0,2025-01-01 13:17:00,Check document,2,120,30.0,Clerk
+1229,C00159_r1,2025-01-01 13:17:01,Check document,2,120,30.0,Clerk
+1230,C00159_r2,2025-01-01 13:17:02,Check document,2,120,30.0,Clerk
+1231,C00160_r0,2025-01-01 13:18:00,Start process,5,10,10.0,System
+1232,C00159_r0,2025-01-01 13:18:00,Submit application,2,82,30.0,Junior Staff
+1235,C00159_r0,2025-01-01 13:18:01,Review submission,8,850,100.0,Reviewer
+1234,C00159_r1,2025-01-01 13:18:01,Submit application,2,82,30.0,Junior Staff
+1233,C00160_r1,2025-01-01 13:18:01,Start process,5,10,10.0,System
+1236,C00159_r2,2025-01-01 13:18:02,Submit application,2,82,30.0,Junior Staff
+1237,C00160_r2,2025-01-01 13:18:02,Start process,5,10,10.0,System
+1238,C00159_r1,2025-01-01 13:18:02,Review submission,8,850,100.0,Reviewer
+1239,C00159_r2,2025-01-01 13:18:03,Review submission,8,850,100.0,Reviewer
+1240,C00159_r0,2025-01-01 13:19:00,Approve application,2,130,20.0,Manager
+1241,C00160_r0,2025-01-01 13:19:00,Check document,2,120,30.0,Clerk
+1242,C00159_r1,2025-01-01 13:19:01,Approve application,2,130,20.0,Manager
+1243,C00159_r0,2025-01-01 13:19:01,Complete process,0,0,0.0,System
+1244,C00160_r1,2025-01-01 13:19:01,Check document,2,120,30.0,Clerk
+1245,C00159_r1,2025-01-01 13:19:02,Complete process,0,0,0.0,System
+1246,C00159_r2,2025-01-01 13:19:02,Disapprove application,2,130,20.0,review_board
+1247,C00160_r2,2025-01-01 13:19:02,Check document,2,120,30.0,Clerk
+1248,C00159_r2,2025-01-01 13:19:03,Revise document,8,932,182.0,Supervisor
+1249,C00159_r2,2025-01-01 13:19:04,Submit application,12,2832,245.7,Senior Analyst
+1250,C00159_r2,2025-01-01 13:19:05,Accept submission,1,922,145.6,Head Manager Assistant
+1251,C00159_r2,2025-01-01 13:19:06,Complete process,0,0,0.0,System
+1252,C00160_r0,2025-01-01 13:20:00,Submit application,1,114,40.0,Clerk
+1254,C00160_r1,2025-01-01 13:20:01,Submit application,1,114,40.0,Clerk
+1253,C00160_r0,2025-01-01 13:20:01,Review submission,8,850,100.0,Reviewer
+1255,C00160_r1,2025-01-01 13:20:02,Review submission,8,850,100.0,Reviewer
+1256,C00160_r2,2025-01-01 13:20:02,Submit application,1,114,40.0,Clerk
+1257,C00160_r2,2025-01-01 13:20:03,Review submission,8,850,100.0,Reviewer
+1258,C00160_r0,2025-01-01 13:21:00,Approve application,2,130,20.0,Manager
+1259,C00160_r0,2025-01-01 13:21:01,Complete process,0,0,0.0,System
+1260,C00160_r1,2025-01-01 13:21:01,Approve application,2,130,20.0,Manager
+1261,C00160_r1,2025-01-01 13:21:02,Complete process,0,0,0.0,System
+1262,C00160_r2,2025-01-01 13:21:02,Disapprove application,2,130,20.0,review_board
+1263,C00160_r2,2025-01-01 13:21:03,Revise document,8,932,182.0,Supervisor
+1264,C00160_r2,2025-01-01 13:21:04,Submit application,8,9646,224.0,Supervisor
+1265,C00160_r2,2025-01-01 13:21:05,Accept submission,1,922,145.6,Head Manager Assistant
+1266,C00160_r2,2025-01-01 13:21:06,Complete process,0,0,0.0,System
+1267,C00162_r0,2025-01-01 13:22:00,Start process,5,10,10.0,System
+1268,C00162_r1,2025-01-01 13:22:01,Start process,5,10,10.0,System
+1269,C00162_r2,2025-01-01 13:22:02,Start process,5,10,10.0,System
+1270,C00162_r0,2025-01-01 13:23:00,Check document,2,120,30.0,Clerk
+1271,C00162_r1,2025-01-01 13:23:01,Check document,2,120,30.0,Clerk
+1272,C00162_r2,2025-01-01 13:23:02,Check document,2,120,30.0,Clerk
+1273,C00162_r0,2025-01-01 13:24:00,Submit application,2,100,54.0,Junior Staff
+1274,C00162_r0,2025-01-01 13:24:01,Review submission,8,850,100.0,Reviewer
+1275,C00162_r1,2025-01-01 13:24:01,Submit application,2,100,54.0,Junior Staff
+1276,C00162_r2,2025-01-01 13:24:02,Submit application,2,100,54.0,Junior Staff
+1277,C00162_r1,2025-01-01 13:24:02,Review submission,8,850,100.0,Reviewer
+1278,C00162_r2,2025-01-01 13:24:03,Review submission,8,850,100.0,Reviewer
+1279,C00162_r0,2025-01-01 13:25:00,Disapprove application,2,130,20.0,review_board
+1280,C00162_r0,2025-01-01 13:25:01,Revise document,8,932,182.0,Supervisor
+1281,C00162_r1,2025-01-01 13:25:01,Disapprove application,2,130,20.0,review_board
+1282,C00162_r1,2025-01-01 13:25:02,Revise document,8,932,182.0,Supervisor
+1283,C00162_r0,2025-01-01 13:25:02,Submit application,12,801,180.2,Senior Analyst
+1284,C00162_r2,2025-01-01 13:25:02,Approve application,2,130,20.0,Manager
+1285,C00162_r1,2025-01-01 13:25:03,Submit application,10,9904,208.1,Senior Analyst
+1286,C00162_r0,2025-01-01 13:25:03,Accept submission,1,922,145.6,Head Manager Assistant
+1287,C00162_r2,2025-01-01 13:25:03,Complete process,0,0,0.0,System
+1288,C00162_r1,2025-01-01 13:25:04,Accept submission,1,922,145.6,Head Manager Assistant
+1289,C00162_r0,2025-01-01 13:25:04,Complete process,0,0,0.0,System
+1290,C00162_r1,2025-01-01 13:25:05,Complete process,0,0,0.0,System
+1291,C00167_r0,2025-01-01 13:32:00,Start process,5,10,10.0,System
+1292,C00167_r1,2025-01-01 13:32:01,Start process,5,10,10.0,System
+1293,C00167_r2,2025-01-01 13:32:02,Start process,5,10,10.0,System
+1294,C00167_r0,2025-01-01 13:33:00,Check document,2,120,30.0,Clerk
+1295,C00167_r1,2025-01-01 13:33:01,Check document,2,120,30.0,Clerk
+1296,C00167_r2,2025-01-01 13:33:02,Check document,2,120,30.0,Clerk
+1297,C00167_r0,2025-01-01 13:34:00,Submit application,3,127,51.0,Clerk
+1298,C00167_r1,2025-01-01 13:34:01,Submit application,3,127,51.0,Clerk
+1299,C00167_r0,2025-01-01 13:34:01,Review submission,8,850,100.0,Reviewer
+1300,C00167_r1,2025-01-01 13:34:02,Review submission,8,850,100.0,Reviewer
+1301,C00167_r2,2025-01-01 13:34:02,Submit application,3,127,51.0,Clerk
+1302,C00167_r2,2025-01-01 13:34:03,Review submission,8,850,100.0,Reviewer
+1303,C00167_r0,2025-01-01 13:35:00,Approve application,2,130,20.0,Manager
+1304,C00167_r1,2025-01-01 13:35:01,Disapprove application,2,130,20.0,review_board
+1305,C00167_r0,2025-01-01 13:35:01,Complete process,0,0,0.0,System
+1306,C00167_r2,2025-01-01 13:35:02,Disapprove application,2,130,20.0,review_board
+1307,C00167_r1,2025-01-01 13:35:02,Revise document,8,932,182.0,Supervisor
+1308,C00167_r1,2025-01-01 13:35:03,Submit application,8,4476,210.4,Senior Analyst
+1309,C00167_r2,2025-01-01 13:35:03,Revise document,8,932,182.0,Supervisor
+1311,C00167_r2,2025-01-01 13:35:04,Submit application,11,5976,187.9,Supervisor
+1310,C00167_r1,2025-01-01 13:35:04,Accept submission,1,922,145.6,Head Manager Assistant
+1312,C00167_r2,2025-01-01 13:35:05,Accept submission,1,922,145.6,Head Manager Assistant
+1313,C00167_r1,2025-01-01 13:35:05,Complete process,0,0,0.0,System
+1314,C00167_r2,2025-01-01 13:35:06,Complete process,0,0,0.0,System
+1315,C00169_r0,2025-01-01 13:36:00,Start process,5,10,10.0,System
+1316,C00169_r1,2025-01-01 13:36:01,Start process,5,10,10.0,System
+1317,C00169_r2,2025-01-01 13:36:02,Start process,5,10,10.0,System
+1318,C00169_r0,2025-01-01 13:37:00,Check document,2,120,30.0,Clerk
+1319,C00169_r1,2025-01-01 13:37:01,Check document,2,120,30.0,Clerk
+1320,C00169_r2,2025-01-01 13:37:02,Check document,2,120,30.0,Clerk
+1321,C00169_r0,2025-01-01 13:38:00,Submit application,3,99,31.0,Junior Staff
+1322,C00169_r1,2025-01-01 13:38:01,Submit application,3,99,31.0,Junior Staff
+1323,C00169_r0,2025-01-01 13:38:01,Review submission,8,850,100.0,Reviewer
+1324,C00169_r1,2025-01-01 13:38:02,Review submission,8,850,100.0,Reviewer
+1325,C00169_r2,2025-01-01 13:38:02,Submit application,3,99,31.0,Junior Staff
+1326,C00169_r2,2025-01-01 13:38:03,Review submission,8,850,100.0,Reviewer
+1327,C00169_r0,2025-01-01 13:39:00,Approve application,2,130,20.0,Manager
+1328,C00169_r1,2025-01-01 13:39:01,Disapprove application,2,130,20.0,review_board
+1329,C00169_r0,2025-01-01 13:39:01,Complete process,0,0,0.0,System
+1331,C00169_r2,2025-01-01 13:39:02,Disapprove application,2,130,20.0,review_board
+1330,C00169_r1,2025-01-01 13:39:02,Revise document,8,932,182.0,Supervisor
+1332,C00169_r1,2025-01-01 13:39:03,Submit application,12,3337,214.7,Supervisor
+1333,C00169_r2,2025-01-01 13:39:03,Revise document,8,932,182.0,Supervisor
+1334,C00169_r1,2025-01-01 13:39:04,Reject submission,1,922,145.6,Head Manager Assistant
+1335,C00169_r2,2025-01-01 13:39:04,Submit application,8,8330,193.8,Senior Analyst
+1336,C00169_r1,2025-01-01 13:39:05,Complete process,0,0,0.0,System
+1337,C00169_r2,2025-01-01 13:39:05,Reject submission,1,922,145.6,Head Manager Assistant
+1338,C00169_r2,2025-01-01 13:39:06,Complete process,0,0,0.0,System
+1339,C00174_r0,2025-01-01 13:46:00,Start process,5,10,10.0,System
+1340,C00174_r1,2025-01-01 13:46:01,Start process,5,10,10.0,System
+1341,C00174_r2,2025-01-01 13:46:02,Start process,5,10,10.0,System
+1342,C00174_r0,2025-01-01 13:47:00,Check document,2,120,30.0,Clerk
+1343,C00174_r1,2025-01-01 13:47:01,Check document,2,120,30.0,Clerk
+1344,C00174_r2,2025-01-01 13:47:02,Check document,2,120,30.0,Clerk
+1345,C00174_r0,2025-01-01 13:48:00,Submit application,1,85,37.0,Clerk
+1346,C00174_r0,2025-01-01 13:48:01,Review submission,8,850,100.0,Reviewer
+1347,C00174_r1,2025-01-01 13:48:01,Submit application,1,85,37.0,Clerk
+1348,C00174_r2,2025-01-01 13:48:02,Submit application,1,85,37.0,Clerk
+1349,C00174_r1,2025-01-01 13:48:02,Review submission,8,850,100.0,Reviewer
+1350,C00174_r2,2025-01-01 13:48:03,Review submission,8,850,100.0,Reviewer
+1351,C00174_r0,2025-01-01 13:49:00,Disapprove application,2,130,20.0,review_board
+1352,C00174_r0,2025-01-01 13:49:01,Revise document,8,932,182.0,Supervisor
+1353,C00174_r1,2025-01-01 13:49:01,Approve application,2,130,20.0,Manager
+1354,C00174_r2,2025-01-01 13:49:02,Disapprove application,2,130,20.0,review_board
+1355,C00174_r1,2025-01-01 13:49:02,Complete process,0,0,0.0,System
+1356,C00174_r0,2025-01-01 13:49:02,Submit application,8,3318,219.4,Supervisor
+1357,C00174_r0,2025-01-01 13:49:03,Accept submission,1,922,145.6,Head Manager Assistant
+1358,C00174_r2,2025-01-01 13:49:03,Revise document,8,932,182.0,Supervisor
+1360,C00174_r2,2025-01-01 13:49:04,Submit application,12,3943,220.7,Senior Analyst
+1359,C00174_r0,2025-01-01 13:49:04,Complete process,0,0,0.0,System
+1361,C00174_r2,2025-01-01 13:49:05,Accept submission,1,922,145.6,Head Manager Assistant
+1362,C00174_r2,2025-01-01 13:49:06,Complete process,0,0,0.0,System
+1363,C00176_r0,2025-01-01 13:50:00,Start process,5,10,10.0,System
+1364,C00176_r1,2025-01-01 13:50:01,Start process,5,10,10.0,System
+1365,C00176_r2,2025-01-01 13:50:02,Start process,5,10,10.0,System
+1366,C00176_r0,2025-01-01 13:51:00,Check document,2,120,30.0,Clerk
+1367,C00176_r1,2025-01-01 13:51:01,Check document,2,120,30.0,Clerk
+1368,C00176_r2,2025-01-01 13:51:02,Check document,2,120,30.0,Clerk
+1369,C00176_r0,2025-01-01 13:52:00,Submit application,2,110,31.0,Junior Staff
+1370,C00176_r0,2025-01-01 13:52:01,Review submission,8,850,100.0,Reviewer
+1371,C00176_r1,2025-01-01 13:52:01,Submit application,2,110,31.0,Junior Staff
+1372,C00176_r1,2025-01-01 13:52:02,Review submission,8,850,100.0,Reviewer
+1373,C00176_r2,2025-01-01 13:52:02,Submit application,2,110,31.0,Junior Staff
+1374,C00176_r2,2025-01-01 13:52:03,Review submission,8,850,100.0,Reviewer
+1375,C00176_r0,2025-01-01 13:53:00,Disapprove application,2,130,20.0,review_board
+1376,C00176_r0,2025-01-01 13:53:01,Revise document,8,932,182.0,Supervisor
+1377,C00176_r1,2025-01-01 13:53:01,Disapprove application,2,130,20.0,review_board
+1378,C00176_r2,2025-01-01 13:53:02,Approve application,2,130,20.0,Manager
+1379,C00176_r0,2025-01-01 13:53:02,Submit application,10,3775,219.2,Senior Analyst
+1380,C00176_r1,2025-01-01 13:53:02,Revise document,8,932,182.0,Supervisor
+1381,C00176_r1,2025-01-01 13:53:03,Submit application,11,5467,237.6,Supervisor
+1382,C00176_r0,2025-01-01 13:53:03,Accept submission,1,922,145.6,Head Manager Assistant
+1383,C00176_r2,2025-01-01 13:53:03,Complete process,0,0,0.0,System
+1384,C00176_r0,2025-01-01 13:53:04,Complete process,0,0,0.0,System
+1385,C00176_r1,2025-01-01 13:53:04,Accept submission,1,922,145.6,Head Manager Assistant
+1386,C00176_r1,2025-01-01 13:53:05,Complete process,0,0,0.0,System
+1387,C00184_r0,2025-01-01 14:06:00,Start process,5,10,10.0,System
+1388,C00184_r1,2025-01-01 14:06:01,Start process,5,10,10.0,System
+1389,C00184_r2,2025-01-01 14:06:02,Start process,5,10,10.0,System
+1390,C00184_r0,2025-01-01 14:07:00,Check document,2,120,30.0,Clerk
+1391,C00184_r1,2025-01-01 14:07:01,Check document,2,120,30.0,Clerk
+1392,C00184_r2,2025-01-01 14:07:02,Check document,2,120,30.0,Clerk
+1393,C00185_r0,2025-01-01 14:08:00,Start process,5,10,10.0,System
+1394,C00184_r0,2025-01-01 14:08:00,Submit application,3,100,52.0,Clerk
+1395,C00184_r0,2025-01-01 14:08:01,Review submission,8,850,100.0,Reviewer
+1396,C00185_r1,2025-01-01 14:08:01,Start process,5,10,10.0,System
+1397,C00184_r1,2025-01-01 14:08:01,Submit application,3,100,52.0,Clerk
+1398,C00185_r2,2025-01-01 14:08:02,Start process,5,10,10.0,System
+1399,C00184_r2,2025-01-01 14:08:02,Submit application,3,100,52.0,Clerk
+1400,C00184_r1,2025-01-01 14:08:02,Review submission,8,850,100.0,Reviewer
+1401,C00184_r2,2025-01-01 14:08:03,Review submission,8,850,100.0,Reviewer
+1402,C00185_r0,2025-01-01 14:09:00,Check document,2,120,30.0,Clerk
+1403,C00184_r0,2025-01-01 14:09:00,Approve application,2,130,20.0,Manager
+1404,C00184_r1,2025-01-01 14:09:01,Approve application,2,130,20.0,Manager
+1405,C00184_r0,2025-01-01 14:09:01,Complete process,0,0,0.0,System
+1406,C00185_r1,2025-01-01 14:09:01,Check document,2,120,30.0,Clerk
+1408,C00185_r2,2025-01-01 14:09:02,Check document,2,120,30.0,Clerk
+1407,C00184_r2,2025-01-01 14:09:02,Disapprove application,2,130,20.0,review_board
+1409,C00184_r1,2025-01-01 14:09:02,Complete process,0,0,0.0,System
+1410,C00184_r2,2025-01-01 14:09:03,Revise document,8,932,182.0,Supervisor
+1411,C00184_r2,2025-01-01 14:09:04,Submit application,8,6061,227.2,Senior Analyst
+1412,C00184_r2,2025-01-01 14:09:05,Reject submission,1,922,145.6,Head Manager Assistant
+1413,C00184_r2,2025-01-01 14:09:06,Complete process,0,0,0.0,System
+1415,C00185_r0,2025-01-01 14:10:00,Submit application,2,123,36.0,Clerk
+1414,C00186_r0,2025-01-01 14:10:00,Start process,5,10,10.0,System
+1418,C00186_r1,2025-01-01 14:10:01,Start process,5,10,10.0,System
+1417,C00185_r1,2025-01-01 14:10:01,Submit application,2,123,36.0,Clerk
+1416,C00185_r0,2025-01-01 14:10:01,Review submission,8,850,100.0,Reviewer
+1419,C00185_r1,2025-01-01 14:10:02,Review submission,8,850,100.0,Reviewer
+1420,C00185_r2,2025-01-01 14:10:02,Submit application,2,123,36.0,Clerk
+1421,C00186_r2,2025-01-01 14:10:02,Start process,5,10,10.0,System
+1422,C00185_r2,2025-01-01 14:10:03,Review submission,8,850,100.0,Reviewer
+1423,C00186_r0,2025-01-01 14:11:00,Check document,2,120,30.0,Clerk
+1424,C00185_r0,2025-01-01 14:11:00,Approve application,2,130,20.0,Manager
+1425,C00186_r1,2025-01-01 14:11:01,Check document,2,120,30.0,Clerk
+1426,C00185_r1,2025-01-01 14:11:01,Approve application,2,130,20.0,Manager
+1427,C00185_r0,2025-01-01 14:11:01,Complete process,0,0,0.0,System
+1428,C00185_r2,2025-01-01 14:11:02,Disapprove application,2,130,20.0,review_board
+1429,C00185_r1,2025-01-01 14:11:02,Complete process,0,0,0.0,System
+1430,C00186_r2,2025-01-01 14:11:02,Check document,2,120,30.0,Clerk
+1431,C00185_r2,2025-01-01 14:11:03,Revise document,8,932,182.0,Supervisor
+1432,C00185_r2,2025-01-01 14:11:04,Submit application,9,8899,224.4,Senior Analyst
+1433,C00185_r2,2025-01-01 14:11:05,Reject submission,1,922,145.6,Head Manager Assistant
+1434,C00185_r2,2025-01-01 14:11:06,Complete process,0,0,0.0,System
+1435,C00186_r0,2025-01-01 14:12:00,Submit application,2,124,56.0,Clerk
+1437,C00186_r1,2025-01-01 14:12:01,Submit application,2,124,56.0,Clerk
+1436,C00186_r0,2025-01-01 14:12:01,Review submission,8,850,100.0,Reviewer
+1438,C00186_r1,2025-01-01 14:12:02,Review submission,8,850,100.0,Reviewer
+1439,C00186_r2,2025-01-01 14:12:02,Submit application,2,124,56.0,Clerk
+1440,C00186_r2,2025-01-01 14:12:03,Review submission,8,850,100.0,Reviewer
+1441,C00186_r0,2025-01-01 14:13:00,Approve application,2,130,20.0,Manager
+1442,C00186_r1,2025-01-01 14:13:01,Approve application,2,130,20.0,Manager
+1443,C00186_r0,2025-01-01 14:13:01,Complete process,0,0,0.0,System
+1444,C00186_r2,2025-01-01 14:13:02,Approve application,2,130,20.0,Manager
+1445,C00186_r1,2025-01-01 14:13:02,Complete process,0,0,0.0,System
+1446,C00186_r2,2025-01-01 14:13:03,Complete process,0,0,0.0,System
+1447,C00188_r0,2025-01-01 14:14:00,Start process,5,10,10.0,System
+1448,C00188_r1,2025-01-01 14:14:01,Start process,5,10,10.0,System
+1449,C00188_r2,2025-01-01 14:14:02,Start process,5,10,10.0,System
+1450,C00188_r0,2025-01-01 14:15:00,Check document,2,120,30.0,Clerk
+1451,C00188_r1,2025-01-01 14:15:01,Check document,2,120,30.0,Clerk
+1452,C00188_r2,2025-01-01 14:15:02,Check document,2,120,30.0,Clerk
+1453,C00188_r0,2025-01-01 14:16:00,Submit application,3,139,47.0,Junior Staff
+1455,C00188_r0,2025-01-01 14:16:01,Review submission,8,850,100.0,Reviewer
+1454,C00188_r1,2025-01-01 14:16:01,Submit application,3,139,47.0,Junior Staff
+1456,C00188_r1,2025-01-01 14:16:02,Review submission,8,850,100.0,Reviewer
+1457,C00188_r2,2025-01-01 14:16:02,Submit application,3,139,47.0,Junior Staff
+1458,C00188_r2,2025-01-01 14:16:03,Review submission,8,850,100.0,Reviewer
+1459,C00188_r0,2025-01-01 14:17:00,Approve application,2,130,20.0,Manager
+1460,C00188_r1,2025-01-01 14:17:01,Approve application,2,130,20.0,Manager
+1461,C00188_r0,2025-01-01 14:17:01,Complete process,0,0,0.0,System
+1462,C00188_r1,2025-01-01 14:17:02,Complete process,0,0,0.0,System
+1463,C00188_r2,2025-01-01 14:17:02,Approve application,2,130,20.0,Manager
+1464,C00188_r2,2025-01-01 14:17:03,Complete process,0,0,0.0,System
+1465,C00191_r0,2025-01-01 14:20:00,Start process,5,10,10.0,System
+1466,C00191_r1,2025-01-01 14:20:01,Start process,5,10,10.0,System
+1467,C00191_r2,2025-01-01 14:20:02,Start process,5,10,10.0,System
+1468,C00191_r0,2025-01-01 14:21:00,Check document,2,120,30.0,Clerk
+1469,C00191_r1,2025-01-01 14:21:01,Check document,2,120,30.0,Clerk
+1470,C00191_r2,2025-01-01 14:21:02,Check document,2,120,30.0,Clerk
+1471,C00191_r0,2025-01-01 14:22:00,Submit application,1,90,41.0,Junior Staff
+1472,C00191_r0,2025-01-01 14:22:01,Review submission,8,850,100.0,Reviewer
+1473,C00191_r1,2025-01-01 14:22:01,Submit application,1,90,41.0,Junior Staff
+1475,C00191_r1,2025-01-01 14:22:02,Review submission,8,850,100.0,Reviewer
+1474,C00191_r2,2025-01-01 14:22:02,Submit application,1,90,41.0,Junior Staff
+1476,C00191_r2,2025-01-01 14:22:03,Review submission,8,850,100.0,Reviewer
+1477,C00191_r0,2025-01-01 14:23:00,Approve application,2,130,20.0,Manager
+1478,C00191_r1,2025-01-01 14:23:01,Disapprove application,2,130,20.0,review_board
+1479,C00191_r0,2025-01-01 14:23:01,Complete process,0,0,0.0,System
+1480,C00191_r1,2025-01-01 14:23:02,Revise document,8,932,182.0,Supervisor
+1481,C00191_r2,2025-01-01 14:23:02,Approve application,2,130,20.0,Manager
+1482,C00191_r2,2025-01-01 14:23:03,Complete process,0,0,0.0,System
+1483,C00191_r1,2025-01-01 14:23:03,Submit application,11,2124,191.1,Supervisor
+1484,C00191_r1,2025-01-01 14:23:04,Reject submission,1,922,145.6,Head Manager Assistant
+1485,C00191_r1,2025-01-01 14:23:05,Complete process,0,0,0.0,System
+1486,C00194_r0,2025-01-01 14:26:00,Start process,5,10,10.0,System
+1487,C00194_r1,2025-01-01 14:26:01,Start process,5,10,10.0,System
+1488,C00194_r2,2025-01-01 14:26:02,Start process,5,10,10.0,System
+1489,C00194_r0,2025-01-01 14:27:00,Check document,2,120,30.0,Clerk
+1490,C00194_r1,2025-01-01 14:27:01,Check document,2,120,30.0,Clerk
+1491,C00194_r2,2025-01-01 14:27:02,Check document,2,120,30.0,Clerk
+1493,C00195_r0,2025-01-01 14:28:00,Start process,5,10,10.0,System
+1492,C00194_r0,2025-01-01 14:28:00,Submit application,2,104,39.0,Junior Staff
+1494,C00195_r1,2025-01-01 14:28:01,Start process,5,10,10.0,System
+1495,C00194_r0,2025-01-01 14:28:01,Review submission,8,850,100.0,Reviewer
+1496,C00194_r1,2025-01-01 14:28:01,Submit application,2,104,39.0,Junior Staff
+1497,C00194_r1,2025-01-01 14:28:02,Review submission,8,850,100.0,Reviewer
+1498,C00195_r2,2025-01-01 14:28:02,Start process,5,10,10.0,System
+1499,C00194_r2,2025-01-01 14:28:02,Submit application,2,104,39.0,Junior Staff
+1500,C00194_r2,2025-01-01 14:28:03,Review submission,8,850,100.0,Reviewer
+1502,C00195_r0,2025-01-01 14:29:00,Check document,2,120,30.0,Clerk
+1501,C00194_r0,2025-01-01 14:29:00,Approve application,2,130,20.0,Manager
+1503,C00194_r0,2025-01-01 14:29:01,Complete process,0,0,0.0,System
+1504,C00194_r1,2025-01-01 14:29:01,Disapprove application,2,130,20.0,review_board
+1505,C00195_r1,2025-01-01 14:29:01,Check document,2,120,30.0,Clerk
+1506,C00194_r2,2025-01-01 14:29:02,Disapprove application,2,130,20.0,review_board
+1507,C00195_r2,2025-01-01 14:29:02,Check document,2,120,30.0,Clerk
+1508,C00194_r1,2025-01-01 14:29:02,Revise document,8,932,182.0,Supervisor
+1510,C00194_r2,2025-01-01 14:29:03,Revise document,8,932,182.0,Supervisor
+1509,C00194_r1,2025-01-01 14:29:03,Submit application,12,9148,196.6,Supervisor
+1512,C00194_r2,2025-01-01 14:29:04,Submit application,11,8687,192.1,Supervisor
+1511,C00194_r1,2025-01-01 14:29:04,Accept submission,1,922,145.6,Head Manager Assistant
+1513,C00194_r2,2025-01-01 14:29:05,Reject submission,1,922,145.6,Head Manager Assistant
+1514,C00194_r1,2025-01-01 14:29:05,Complete process,0,0,0.0,System
+1515,C00194_r2,2025-01-01 14:29:06,Complete process,0,0,0.0,System
+1516,C00195_r0,2025-01-01 14:30:00,Submit application,2,102,37.0,Junior Staff
+1517,C00195_r0,2025-01-01 14:30:01,Review submission,8,850,100.0,Reviewer
+1518,C00195_r1,2025-01-01 14:30:01,Submit application,2,102,37.0,Junior Staff
+1519,C00195_r2,2025-01-01 14:30:02,Submit application,2,102,37.0,Junior Staff
+1520,C00195_r1,2025-01-01 14:30:02,Review submission,8,850,100.0,Reviewer
+1521,C00195_r2,2025-01-01 14:30:03,Review submission,8,850,100.0,Reviewer
+1522,C00195_r0,2025-01-01 14:31:00,Approve application,2,130,20.0,Manager
+1523,C00195_r0,2025-01-01 14:31:01,Complete process,0,0,0.0,System
+1524,C00195_r1,2025-01-01 14:31:01,Approve application,2,130,20.0,Manager
+1525,C00195_r2,2025-01-01 14:31:02,Approve application,2,130,20.0,Manager
+1526,C00195_r1,2025-01-01 14:31:02,Complete process,0,0,0.0,System
+1527,C00195_r2,2025-01-01 14:31:03,Complete process,0,0,0.0,System
+1528,C00208_r0,2025-01-01 14:54:00,Start process,5,10,10.0,System
+1529,C00208_r1,2025-01-01 14:54:01,Start process,5,10,10.0,System
+1530,C00208_r2,2025-01-01 14:54:02,Start process,5,10,10.0,System
+1531,C00208_r0,2025-01-01 14:55:00,Check document,2,120,30.0,Clerk
+1532,C00208_r1,2025-01-01 14:55:01,Check document,2,120,30.0,Clerk
+1533,C00208_r2,2025-01-01 14:55:02,Check document,2,120,30.0,Clerk
+1534,C00208_r0,2025-01-01 14:56:00,Submit application,3,87,37.0,Clerk
+1535,C00208_r0,2025-01-01 14:56:01,Review submission,8,850,100.0,Reviewer
+1536,C00208_r1,2025-01-01 14:56:01,Submit application,3,87,37.0,Clerk
+1537,C00208_r2,2025-01-01 14:56:02,Submit application,3,87,37.0,Clerk
+1538,C00208_r1,2025-01-01 14:56:02,Review submission,8,850,100.0,Reviewer
+1539,C00208_r2,2025-01-01 14:56:03,Review submission,8,850,100.0,Reviewer
+1540,C00208_r0,2025-01-01 14:57:00,Approve application,2,130,20.0,Manager
+1541,C00208_r0,2025-01-01 14:57:01,Complete process,0,0,0.0,System
+1542,C00208_r1,2025-01-01 14:57:01,Approve application,2,130,20.0,Manager
+1543,C00208_r2,2025-01-01 14:57:02,Approve application,2,130,20.0,Manager
+1544,C00208_r1,2025-01-01 14:57:02,Complete process,0,0,0.0,System
+1545,C00208_r2,2025-01-01 14:57:03,Complete process,0,0,0.0,System
+1546,C00211_r0,2025-01-01 15:00:00,Start process,5,10,10.0,System
+1547,C00211_r1,2025-01-01 15:00:01,Start process,5,10,10.0,System
+1548,C00211_r2,2025-01-01 15:00:02,Start process,5,10,10.0,System
+1549,C00211_r0,2025-01-01 15:01:00,Check document,2,120,30.0,Clerk
+1550,C00211_r1,2025-01-01 15:01:01,Check document,2,120,30.0,Clerk
+1551,C00211_r2,2025-01-01 15:01:02,Check document,2,120,30.0,Clerk
+1552,C00211_r0,2025-01-01 15:02:00,Submit application,2,80,55.0,Junior Staff
+1553,C00211_r0,2025-01-01 15:02:01,Review submission,8,850,100.0,Reviewer
+1554,C00211_r1,2025-01-01 15:02:01,Submit application,2,80,55.0,Junior Staff
+1555,C00211_r1,2025-01-01 15:02:02,Review submission,8,850,100.0,Reviewer
+1556,C00211_r2,2025-01-01 15:02:02,Submit application,2,80,55.0,Junior Staff
+1557,C00211_r2,2025-01-01 15:02:03,Review submission,8,850,100.0,Reviewer
+1558,C00211_r0,2025-01-01 15:03:00,Approve application,2,130,20.0,Manager
+1560,C00211_r1,2025-01-01 15:03:01,Disapprove application,2,130,20.0,review_board
+1559,C00211_r0,2025-01-01 15:03:01,Complete process,0,0,0.0,System
+1561,C00211_r1,2025-01-01 15:03:02,Revise document,8,932,182.0,Supervisor
+1562,C00211_r2,2025-01-01 15:03:02,Disapprove application,2,130,20.0,review_board
+1563,C00211_r2,2025-01-01 15:03:03,Revise document,8,932,182.0,Supervisor
+1564,C00211_r1,2025-01-01 15:03:03,Submit application,10,8515,227.4,Supervisor
+1565,C00211_r1,2025-01-01 15:03:04,Accept submission,1,922,145.6,Head Manager Assistant
+1566,C00211_r2,2025-01-01 15:03:04,Submit application,10,8833,213.8,Senior Analyst
+1567,C00211_r1,2025-01-01 15:03:05,Complete process,0,0,0.0,System
+1568,C00211_r2,2025-01-01 15:03:05,Reject submission,1,922,145.6,Head Manager Assistant
+1569,C00211_r2,2025-01-01 15:03:06,Complete process,0,0,0.0,System
+1570,C00214_r0,2025-01-01 15:06:00,Start process,5,10,10.0,System
+1571,C00214_r1,2025-01-01 15:06:01,Start process,5,10,10.0,System
+1572,C00214_r2,2025-01-01 15:06:02,Start process,5,10,10.0,System
+1573,C00214_r0,2025-01-01 15:07:00,Check document,2,120,30.0,Clerk
+1574,C00214_r1,2025-01-01 15:07:01,Check document,2,120,30.0,Clerk
+1575,C00214_r2,2025-01-01 15:07:02,Check document,2,120,30.0,Clerk
+1576,C00214_r0,2025-01-01 15:08:00,Submit application,1,106,50.0,Clerk
+1577,C00214_r0,2025-01-01 15:08:01,Review submission,8,850,100.0,Reviewer
+1578,C00214_r1,2025-01-01 15:08:01,Submit application,1,106,50.0,Clerk
+1580,C00214_r2,2025-01-01 15:08:02,Submit application,1,106,50.0,Clerk
+1579,C00214_r1,2025-01-01 15:08:02,Review submission,8,850,100.0,Reviewer
+1581,C00214_r2,2025-01-01 15:08:03,Review submission,8,850,100.0,Reviewer
+1582,C00214_r0,2025-01-01 15:09:00,Disapprove application,2,130,20.0,review_board
+1583,C00214_r1,2025-01-01 15:09:01,Disapprove application,2,130,20.0,review_board
+1584,C00214_r0,2025-01-01 15:09:01,Revise document,8,932,182.0,Supervisor
+1585,C00214_r1,2025-01-01 15:09:02,Revise document,8,932,182.0,Supervisor
+1586,C00214_r2,2025-01-01 15:09:02,Disapprove application,2,130,20.0,review_board
+1587,C00214_r0,2025-01-01 15:09:02,Submit application,11,5892,224.1,Senior Analyst
+1588,C00214_r0,2025-01-01 15:09:03,Reject submission,1,922,145.6,Head Manager Assistant
+1589,C00214_r1,2025-01-01 15:09:03,Submit application,12,873,236.3,Senior Analyst
+1590,C00214_r2,2025-01-01 15:09:03,Revise document,8,932,182.0,Supervisor
+1591,C00214_r2,2025-01-01 15:09:04,Submit application,8,1804,194.0,Supervisor
+1592,C00214_r1,2025-01-01 15:09:04,Accept submission,1,922,145.6,Head Manager Assistant
+1593,C00214_r0,2025-01-01 15:09:04,Complete process,0,0,0.0,System
+1594,C00214_r2,2025-01-01 15:09:05,Reject submission,1,922,145.6,Head Manager Assistant
+1595,C00214_r1,2025-01-01 15:09:05,Complete process,0,0,0.0,System
+1596,C00214_r2,2025-01-01 15:09:06,Complete process,0,0,0.0,System
+1597,C00220_r0,2025-01-01 15:18:00,Start process,5,10,10.0,System
+1598,C00220_r1,2025-01-01 15:18:01,Start process,5,10,10.0,System
+1599,C00220_r2,2025-01-01 15:18:02,Start process,5,10,10.0,System
+1600,C00220_r0,2025-01-01 15:19:00,Check document,2,120,30.0,Clerk
+1601,C00220_r1,2025-01-01 15:19:01,Check document,2,120,30.0,Clerk
+1602,C00220_r2,2025-01-01 15:19:02,Check document,2,120,30.0,Clerk
+1603,C00220_r0,2025-01-01 15:20:00,Submit application,2,88,41.0,Junior Staff
+1604,C00220_r0,2025-01-01 15:20:01,Review submission,8,850,100.0,Reviewer
+1605,C00220_r1,2025-01-01 15:20:01,Submit application,2,88,41.0,Junior Staff
+1606,C00220_r2,2025-01-01 15:20:02,Submit application,2,88,41.0,Junior Staff
+1607,C00220_r1,2025-01-01 15:20:02,Review submission,8,850,100.0,Reviewer
+1608,C00220_r2,2025-01-01 15:20:03,Review submission,8,850,100.0,Reviewer
+1609,C00220_r0,2025-01-01 15:21:00,Approve application,2,130,20.0,Manager
+1610,C00220_r1,2025-01-01 15:21:01,Disapprove application,2,130,20.0,review_board
+1611,C00220_r0,2025-01-01 15:21:01,Complete process,0,0,0.0,System
+1612,C00220_r1,2025-01-01 15:21:02,Revise document,8,932,182.0,Supervisor
+1613,C00220_r2,2025-01-01 15:21:02,Approve application,2,130,20.0,Manager
+1614,C00220_r1,2025-01-01 15:21:03,Submit application,12,3642,208.4,Senior Analyst
+1615,C00220_r2,2025-01-01 15:21:03,Complete process,0,0,0.0,System
+1616,C00220_r1,2025-01-01 15:21:04,Accept submission,1,922,145.6,Head Manager Assistant
+1617,C00220_r1,2025-01-01 15:21:05,Complete process,0,0,0.0,System
+1618,C00223_r0,2025-01-01 15:24:00,Start process,5,10,10.0,System
+1619,C00223_r1,2025-01-01 15:24:01,Start process,5,10,10.0,System
+1620,C00223_r2,2025-01-01 15:24:02,Start process,5,10,10.0,System
+1621,C00223_r0,2025-01-01 15:25:00,Check document,2,120,30.0,Clerk
+1622,C00223_r1,2025-01-01 15:25:01,Check document,2,120,30.0,Clerk
+1623,C00223_r2,2025-01-01 15:25:02,Check document,2,120,30.0,Clerk
+1624,C00223_r0,2025-01-01 15:26:00,Submit application,1,80,31.0,Clerk
+1625,C00223_r0,2025-01-01 15:26:01,Review submission,8,850,100.0,Reviewer
+1626,C00223_r1,2025-01-01 15:26:01,Submit application,1,80,31.0,Clerk
+1628,C00223_r2,2025-01-01 15:26:02,Submit application,1,80,31.0,Clerk
+1627,C00223_r1,2025-01-01 15:26:02,Review submission,8,850,100.0,Reviewer
+1629,C00223_r2,2025-01-01 15:26:03,Review submission,8,850,100.0,Reviewer
+1630,C00223_r0,2025-01-01 15:27:00,Disapprove application,2,130,20.0,review_board
+1631,C00223_r1,2025-01-01 15:27:01,Disapprove application,2,130,20.0,review_board
+1632,C00223_r0,2025-01-01 15:27:01,Revise document,8,932,182.0,Supervisor
+1633,C00223_r0,2025-01-01 15:27:02,Submit application,9,4432,182.6,Senior Analyst
+1634,C00223_r1,2025-01-01 15:27:02,Revise document,8,932,182.0,Supervisor
+1635,C00223_r2,2025-01-01 15:27:02,Disapprove application,2,130,20.0,review_board
+1638,C00223_r2,2025-01-01 15:27:03,Revise document,8,932,182.0,Supervisor
+1637,C00223_r1,2025-01-01 15:27:03,Submit application,11,2905,219.0,Senior Analyst
+1636,C00223_r0,2025-01-01 15:27:03,Accept submission,1,922,145.6,Head Manager Assistant
+1639,C00223_r2,2025-01-01 15:27:04,Submit application,10,1780,237.6,Senior Analyst
+1640,C00223_r0,2025-01-01 15:27:04,Complete process,0,0,0.0,System
+1641,C00223_r1,2025-01-01 15:27:04,Accept submission,1,922,145.6,Head Manager Assistant
+1642,C00223_r2,2025-01-01 15:27:05,Accept submission,1,922,145.6,Head Manager Assistant
+1643,C00223_r1,2025-01-01 15:27:05,Complete process,0,0,0.0,System
+1644,C00223_r2,2025-01-01 15:27:06,Complete process,0,0,0.0,System
+1645,C00225_r0,2025-01-01 15:28:00,Start process,5,10,10.0,System
+1646,C00225_r1,2025-01-01 15:28:01,Start process,5,10,10.0,System
+1647,C00225_r2,2025-01-01 15:28:02,Start process,5,10,10.0,System
+1648,C00225_r0,2025-01-01 15:29:00,Check document,2,120,30.0,Clerk
+1649,C00225_r1,2025-01-01 15:29:01,Check document,2,120,30.0,Clerk
+1650,C00225_r2,2025-01-01 15:29:02,Check document,2,120,30.0,Clerk
+1651,C00225_r0,2025-01-01 15:30:00,Submit application,1,149,57.0,Junior Staff
+1652,C00226_r0,2025-01-01 15:30:00,Start process,5,10,10.0,System
+1653,C00226_r1,2025-01-01 15:30:01,Start process,5,10,10.0,System
+1654,C00225_r0,2025-01-01 15:30:01,Review submission,8,850,100.0,Reviewer
+1655,C00225_r1,2025-01-01 15:30:01,Submit application,1,149,57.0,Junior Staff
+1656,C00226_r2,2025-01-01 15:30:02,Start process,5,10,10.0,System
+1657,C00225_r2,2025-01-01 15:30:02,Submit application,1,149,57.0,Junior Staff
+1658,C00225_r1,2025-01-01 15:30:02,Review submission,8,850,100.0,Reviewer
+1659,C00225_r2,2025-01-01 15:30:03,Review submission,8,850,100.0,Reviewer
+1660,C00226_r0,2025-01-01 15:31:00,Check document,2,120,30.0,Clerk
+1661,C00225_r0,2025-01-01 15:31:00,Approve application,2,130,20.0,Manager
+1662,C00225_r1,2025-01-01 15:31:01,Approve application,2,130,20.0,Manager
+1663,C00226_r1,2025-01-01 15:31:01,Check document,2,120,30.0,Clerk
+1664,C00225_r0,2025-01-01 15:31:01,Complete process,0,0,0.0,System
+1665,C00225_r2,2025-01-01 15:31:02,Disapprove application,2,130,20.0,review_board
+1666,C00225_r1,2025-01-01 15:31:02,Complete process,0,0,0.0,System
+1667,C00226_r2,2025-01-01 15:31:02,Check document,2,120,30.0,Clerk
+1668,C00225_r2,2025-01-01 15:31:03,Revise document,8,932,182.0,Supervisor
+1669,C00225_r2,2025-01-01 15:31:04,Submit application,9,8997,244.1,Senior Analyst
+1670,C00225_r2,2025-01-01 15:31:05,Reject submission,1,922,145.6,Head Manager Assistant
+1671,C00225_r2,2025-01-01 15:31:06,Complete process,0,0,0.0,System
+1672,C00226_r0,2025-01-01 15:32:00,Submit application,1,118,54.0,Clerk
+1673,C00226_r0,2025-01-01 15:32:01,Review submission,8,850,100.0,Reviewer
+1674,C00226_r1,2025-01-01 15:32:01,Submit application,1,118,54.0,Clerk
+1675,C00226_r2,2025-01-01 15:32:02,Submit application,1,118,54.0,Clerk
+1676,C00226_r1,2025-01-01 15:32:02,Review submission,8,850,100.0,Reviewer
+1677,C00226_r2,2025-01-01 15:32:03,Review submission,8,850,100.0,Reviewer
+1678,C00226_r0,2025-01-01 15:33:00,Disapprove application,2,130,20.0,review_board
+1679,C00226_r1,2025-01-01 15:33:01,Approve application,2,130,20.0,Manager
+1680,C00226_r0,2025-01-01 15:33:01,Revise document,8,932,182.0,Supervisor
+1681,C00226_r1,2025-01-01 15:33:02,Complete process,0,0,0.0,System
+1682,C00226_r0,2025-01-01 15:33:02,Submit application,9,7957,210.0,Supervisor
+1683,C00226_r2,2025-01-01 15:33:02,Approve application,2,130,20.0,Manager
+1685,C00226_r2,2025-01-01 15:33:03,Complete process,0,0,0.0,System
+1684,C00226_r0,2025-01-01 15:33:03,Accept submission,1,922,145.6,Head Manager Assistant
+1686,C00226_r0,2025-01-01 15:33:04,Complete process,0,0,0.0,System
+1687,C00237_r0,2025-01-01 15:52:00,Start process,5,10,10.0,System
+1688,C00237_r1,2025-01-01 15:52:01,Start process,5,10,10.0,System
+1689,C00237_r2,2025-01-01 15:52:02,Start process,5,10,10.0,System
+1690,C00237_r0,2025-01-01 15:53:00,Check document,2,120,30.0,Clerk
+1691,C00237_r1,2025-01-01 15:53:01,Check document,2,120,30.0,Clerk
+1692,C00237_r2,2025-01-01 15:53:02,Check document,2,120,30.0,Clerk
+1693,C00237_r0,2025-01-01 15:54:00,Submit application,3,101,59.0,Clerk
+1695,C00237_r1,2025-01-01 15:54:01,Submit application,3,101,59.0,Clerk
+1694,C00237_r0,2025-01-01 15:54:01,Review submission,8,850,100.0,Reviewer
+1696,C00237_r1,2025-01-01 15:54:02,Review submission,8,850,100.0,Reviewer
+1697,C00237_r2,2025-01-01 15:54:02,Submit application,3,101,59.0,Clerk
+1698,C00237_r2,2025-01-01 15:54:03,Review submission,8,850,100.0,Reviewer
+1699,C00237_r0,2025-01-01 15:55:00,Approve application,2,130,20.0,Manager
+1700,C00237_r0,2025-01-01 15:55:01,Complete process,0,0,0.0,System
+1701,C00237_r1,2025-01-01 15:55:01,Approve application,2,130,20.0,Manager
+1702,C00237_r1,2025-01-01 15:55:02,Complete process,0,0,0.0,System
+1703,C00237_r2,2025-01-01 15:55:02,Disapprove application,2,130,20.0,review_board
+1704,C00237_r2,2025-01-01 15:55:03,Revise document,8,932,182.0,Supervisor
+1705,C00237_r2,2025-01-01 15:55:04,Submit application,9,2305,247.9,Senior Analyst
+1706,C00237_r2,2025-01-01 15:55:05,Accept submission,1,922,145.6,Head Manager Assistant
+1707,C00237_r2,2025-01-01 15:55:06,Complete process,0,0,0.0,System
+1708,C00239_r0,2025-01-01 15:56:00,Start process,5,10,10.0,System
+1709,C00239_r1,2025-01-01 15:56:01,Start process,5,10,10.0,System
+1710,C00239_r2,2025-01-01 15:56:02,Start process,5,10,10.0,System
+1711,C00239_r0,2025-01-01 15:57:00,Check document,2,120,30.0,Clerk
+1712,C00239_r1,2025-01-01 15:57:01,Check document,2,120,30.0,Clerk
+1713,C00239_r2,2025-01-01 15:57:02,Check document,2,120,30.0,Clerk
+1714,C00239_r0,2025-01-01 15:58:00,Submit application,2,148,49.0,Junior Staff
+1715,C00239_r0,2025-01-01 15:58:01,Review submission,8,850,100.0,Reviewer
+1716,C00239_r1,2025-01-01 15:58:01,Submit application,2,148,49.0,Junior Staff
+1717,C00239_r2,2025-01-01 15:58:02,Submit application,2,148,49.0,Junior Staff
+1718,C00239_r1,2025-01-01 15:58:02,Review submission,8,850,100.0,Reviewer
+1719,C00239_r2,2025-01-01 15:58:03,Review submission,8,850,100.0,Reviewer
+1720,C00239_r0,2025-01-01 15:59:00,Disapprove application,2,130,20.0,review_board
+1721,C00239_r1,2025-01-01 15:59:01,Disapprove application,2,130,20.0,review_board
+1722,C00239_r0,2025-01-01 15:59:01,Revise document,8,932,182.0,Supervisor
+1723,C00239_r2,2025-01-01 15:59:02,Disapprove application,2,130,20.0,review_board
+1724,C00239_r1,2025-01-01 15:59:02,Revise document,8,932,182.0,Supervisor
+1725,C00239_r0,2025-01-01 15:59:02,Submit application,11,6145,222.5,Supervisor
+1726,C00239_r2,2025-01-01 15:59:03,Revise document,8,932,182.0,Supervisor
+1727,C00239_r0,2025-01-01 15:59:03,Reject submission,1,922,145.6,Head Manager Assistant
+1728,C00239_r1,2025-01-01 15:59:03,Submit application,10,9477,220.5,Supervisor
+1729,C00239_r1,2025-01-01 15:59:04,Accept submission,1,922,145.6,Head Manager Assistant
+1730,C00239_r0,2025-01-01 15:59:04,Complete process,0,0,0.0,System
+1731,C00239_r2,2025-01-01 15:59:04,Submit application,9,5122,206.5,Supervisor
+1733,C00239_r1,2025-01-01 15:59:05,Complete process,0,0,0.0,System
+1732,C00239_r2,2025-01-01 15:59:05,Accept submission,1,922,145.6,Head Manager Assistant
+1734,C00239_r2,2025-01-01 15:59:06,Complete process,0,0,0.0,System
+1735,C00241_r0,2025-01-01 16:00:00,Start process,5,10,10.0,System
+1736,C00241_r1,2025-01-01 16:00:01,Start process,5,10,10.0,System
+1737,C00241_r2,2025-01-01 16:00:02,Start process,5,10,10.0,System
+1738,C00241_r0,2025-01-01 16:01:00,Check document,2,120,30.0,Clerk
+1739,C00241_r1,2025-01-01 16:01:01,Check document,2,120,30.0,Clerk
+1740,C00241_r2,2025-01-01 16:01:02,Check document,2,120,30.0,Clerk
+1741,C00241_r0,2025-01-01 16:02:00,Submit application,2,99,58.0,Clerk
+1743,C00241_r0,2025-01-01 16:02:01,Review submission,8,850,100.0,Reviewer
+1742,C00241_r1,2025-01-01 16:02:01,Submit application,2,99,58.0,Clerk
+1744,C00241_r1,2025-01-01 16:02:02,Review submission,8,850,100.0,Reviewer
+1745,C00241_r2,2025-01-01 16:02:02,Submit application,2,99,58.0,Clerk
+1746,C00241_r2,2025-01-01 16:02:03,Review submission,8,850,100.0,Reviewer
+1747,C00241_r0,2025-01-01 16:03:00,Disapprove application,2,130,20.0,review_board
+1748,C00241_r0,2025-01-01 16:03:01,Revise document,8,932,182.0,Supervisor
+1749,C00241_r1,2025-01-01 16:03:01,Approve application,2,130,20.0,Manager
+1750,C00241_r1,2025-01-01 16:03:02,Complete process,0,0,0.0,System
+1751,C00241_r2,2025-01-01 16:03:02,Disapprove application,2,130,20.0,review_board
+1752,C00241_r0,2025-01-01 16:03:02,Submit application,9,6053,246.9,Senior Analyst
+1753,C00241_r0,2025-01-01 16:03:03,Accept submission,1,922,145.6,Head Manager Assistant
+1754,C00241_r2,2025-01-01 16:03:03,Revise document,8,932,182.0,Supervisor
+1755,C00241_r2,2025-01-01 16:03:04,Submit application,10,8152,201.1,Senior Analyst
+1756,C00241_r0,2025-01-01 16:03:04,Complete process,0,0,0.0,System
+1757,C00241_r2,2025-01-01 16:03:05,Accept submission,1,922,145.6,Head Manager Assistant
+1758,C00241_r2,2025-01-01 16:03:06,Complete process,0,0,0.0,System
+1759,C00243_r0,2025-01-01 16:04:00,Start process,5,10,10.0,System
+1760,C00243_r1,2025-01-01 16:04:01,Start process,5,10,10.0,System
+1761,C00243_r2,2025-01-01 16:04:02,Start process,5,10,10.0,System
+1762,C00243_r0,2025-01-01 16:05:00,Check document,2,120,30.0,Clerk
+1763,C00243_r1,2025-01-01 16:05:01,Check document,2,120,30.0,Clerk
+1764,C00243_r2,2025-01-01 16:05:02,Check document,2,120,30.0,Clerk
+1765,C00243_r0,2025-01-01 16:06:00,Submit application,2,150,50.0,Junior Staff
+1766,C00243_r0,2025-01-01 16:06:01,Review submission,8,850,100.0,Reviewer
+1767,C00243_r1,2025-01-01 16:06:01,Submit application,2,150,50.0,Junior Staff
+1768,C00243_r2,2025-01-01 16:06:02,Submit application,2,150,50.0,Junior Staff
+1769,C00243_r1,2025-01-01 16:06:02,Review submission,8,850,100.0,Reviewer
+1770,C00243_r2,2025-01-01 16:06:03,Review submission,8,850,100.0,Reviewer
+1771,C00243_r0,2025-01-01 16:07:00,Approve application,2,130,20.0,Manager
+1772,C00243_r1,2025-01-01 16:07:01,Approve application,2,130,20.0,Manager
+1773,C00243_r0,2025-01-01 16:07:01,Complete process,0,0,0.0,System
+1774,C00243_r1,2025-01-01 16:07:02,Complete process,0,0,0.0,System
+1775,C00243_r2,2025-01-01 16:07:02,Approve application,2,130,20.0,Manager
+1776,C00243_r2,2025-01-01 16:07:03,Complete process,0,0,0.0,System
+1777,C00247_r0,2025-01-01 16:12:00,Start process,5,10,10.0,System
+1778,C00247_r1,2025-01-01 16:12:01,Start process,5,10,10.0,System
+1779,C00247_r2,2025-01-01 16:12:02,Start process,5,10,10.0,System
+1780,C00247_r0,2025-01-01 16:13:00,Check document,2,120,30.0,Clerk
+1781,C00247_r1,2025-01-01 16:13:01,Check document,2,120,30.0,Clerk
+1782,C00247_r2,2025-01-01 16:13:02,Check document,2,120,30.0,Clerk
+1783,C00247_r0,2025-01-01 16:14:00,Submit application,2,94,44.0,Junior Staff
+1784,C00247_r0,2025-01-01 16:14:01,Review submission,8,850,100.0,Reviewer
+1785,C00247_r1,2025-01-01 16:14:01,Submit application,2,94,44.0,Junior Staff
+1786,C00247_r2,2025-01-01 16:14:02,Submit application,2,94,44.0,Junior Staff
+1787,C00247_r1,2025-01-01 16:14:02,Review submission,8,850,100.0,Reviewer
+1788,C00247_r2,2025-01-01 16:14:03,Review submission,8,850,100.0,Reviewer
+1789,C00247_r0,2025-01-01 16:15:00,Disapprove application,2,130,20.0,review_board
+1790,C00247_r0,2025-01-01 16:15:01,Revise document,8,932,182.0,Supervisor
+1791,C00247_r1,2025-01-01 16:15:01,Approve application,2,130,20.0,Manager
+1792,C00247_r1,2025-01-01 16:15:02,Complete process,0,0,0.0,System
+1793,C00247_r0,2025-01-01 16:15:02,Submit application,9,1443,217.9,Senior Analyst
+1794,C00247_r2,2025-01-01 16:15:02,Disapprove application,2,130,20.0,review_board
+1795,C00247_r2,2025-01-01 16:15:03,Revise document,8,932,182.0,Supervisor
+1796,C00247_r0,2025-01-01 16:15:03,Reject submission,1,922,145.6,Head Manager Assistant
+1797,C00247_r2,2025-01-01 16:15:04,Submit application,12,8631,244.1,Supervisor
+1798,C00247_r0,2025-01-01 16:15:04,Complete process,0,0,0.0,System
+1799,C00247_r2,2025-01-01 16:15:05,Accept submission,1,922,145.6,Head Manager Assistant
+1800,C00247_r2,2025-01-01 16:15:06,Complete process,0,0,0.0,System
+1801,C00249_r0,2025-01-01 16:16:00,Start process,5,10,10.0,System
+1802,C00249_r1,2025-01-01 16:16:01,Start process,5,10,10.0,System
+1803,C00249_r2,2025-01-01 16:16:02,Start process,5,10,10.0,System
+1804,C00249_r0,2025-01-01 16:17:00,Check document,2,120,30.0,Clerk
+1805,C00249_r1,2025-01-01 16:17:01,Check document,2,120,30.0,Clerk
+1806,C00249_r2,2025-01-01 16:17:02,Check document,2,120,30.0,Clerk
+1807,C00249_r0,2025-01-01 16:18:00,Submit application,2,104,58.0,Junior Staff
+1809,C00249_r0,2025-01-01 16:18:01,Review submission,8,850,100.0,Reviewer
+1808,C00249_r1,2025-01-01 16:18:01,Submit application,2,104,58.0,Junior Staff
+1810,C00249_r1,2025-01-01 16:18:02,Review submission,8,850,100.0,Reviewer
+1811,C00249_r2,2025-01-01 16:18:02,Submit application,2,104,58.0,Junior Staff
+1812,C00249_r2,2025-01-01 16:18:03,Review submission,8,850,100.0,Reviewer
+1813,C00249_r0,2025-01-01 16:19:00,Approve application,2,130,20.0,Manager
+1814,C00249_r1,2025-01-01 16:19:01,Approve application,2,130,20.0,Manager
+1815,C00249_r0,2025-01-01 16:19:01,Complete process,0,0,0.0,System
+1816,C00249_r2,2025-01-01 16:19:02,Approve application,2,130,20.0,Manager
+1817,C00249_r1,2025-01-01 16:19:02,Complete process,0,0,0.0,System
+1818,C00249_r2,2025-01-01 16:19:03,Complete process,0,0,0.0,System
+1819,C00254_r0,2025-01-01 16:26:00,Start process,5,10,10.0,System
+1820,C00254_r1,2025-01-01 16:26:01,Start process,5,10,10.0,System
+1821,C00254_r2,2025-01-01 16:26:02,Start process,5,10,10.0,System
+1822,C00254_r0,2025-01-01 16:27:00,Check document,2,120,30.0,Clerk
+1823,C00254_r1,2025-01-01 16:27:01,Check document,2,120,30.0,Clerk
+1824,C00254_r2,2025-01-01 16:27:02,Check document,2,120,30.0,Clerk
+1825,C00255_r0,2025-01-01 16:28:00,Start process,5,10,10.0,System
+1826,C00254_r0,2025-01-01 16:28:00,Submit application,3,89,43.0,Junior Staff
+1827,C00255_r1,2025-01-01 16:28:01,Start process,5,10,10.0,System
+1828,C00254_r0,2025-01-01 16:28:01,Review submission,8,850,100.0,Reviewer
+1829,C00254_r1,2025-01-01 16:28:01,Submit application,3,89,43.0,Junior Staff
+1830,C00254_r1,2025-01-01 16:28:02,Review submission,8,850,100.0,Reviewer
+1831,C00255_r2,2025-01-01 16:28:02,Start process,5,10,10.0,System
+1832,C00254_r2,2025-01-01 16:28:02,Submit application,3,89,43.0,Junior Staff
+1833,C00254_r2,2025-01-01 16:28:03,Review submission,8,850,100.0,Reviewer
+1835,C00254_r0,2025-01-01 16:29:00,Approve application,2,130,20.0,Manager
+1834,C00255_r0,2025-01-01 16:29:00,Check document,2,120,30.0,Clerk
+1836,C00255_r1,2025-01-01 16:29:01,Check document,2,120,30.0,Clerk
+1837,C00254_r1,2025-01-01 16:29:01,Approve application,2,130,20.0,Manager
+1838,C00254_r0,2025-01-01 16:29:01,Complete process,0,0,0.0,System
+1839,C00254_r2,2025-01-01 16:29:02,Disapprove application,2,130,20.0,review_board
+1840,C00255_r2,2025-01-01 16:29:02,Check document,2,120,30.0,Clerk
+1841,C00254_r1,2025-01-01 16:29:02,Complete process,0,0,0.0,System
+1842,C00254_r2,2025-01-01 16:29:03,Revise document,8,932,182.0,Supervisor
+1843,C00254_r2,2025-01-01 16:29:04,Submit application,8,9126,219.3,Supervisor
+1844,C00254_r2,2025-01-01 16:29:05,Accept submission,1,922,145.6,Head Manager Assistant
+1845,C00254_r2,2025-01-01 16:29:06,Complete process,0,0,0.0,System
+1846,C00255_r0,2025-01-01 16:30:00,Submit application,1,119,56.0,Clerk
+1847,C00255_r0,2025-01-01 16:30:01,Review submission,8,850,100.0,Reviewer
+1848,C00255_r1,2025-01-01 16:30:01,Submit application,1,119,56.0,Clerk
+1849,C00255_r2,2025-01-01 16:30:02,Submit application,1,119,56.0,Clerk
+1850,C00255_r1,2025-01-01 16:30:02,Review submission,8,850,100.0,Reviewer
+1851,C00255_r2,2025-01-01 16:30:03,Review submission,8,850,100.0,Reviewer
+1852,C00255_r0,2025-01-01 16:31:00,Disapprove application,2,130,20.0,review_board
+1853,C00255_r1,2025-01-01 16:31:01,Disapprove application,2,130,20.0,review_board
+1854,C00255_r0,2025-01-01 16:31:01,Revise document,8,932,182.0,Supervisor
+1855,C00255_r1,2025-01-01 16:31:02,Revise document,8,932,182.0,Supervisor
+1856,C00255_r2,2025-01-01 16:31:02,Disapprove application,2,130,20.0,review_board
+1857,C00255_r0,2025-01-01 16:31:02,Submit application,11,6735,220.6,Senior Analyst
+1858,C00255_r2,2025-01-01 16:31:03,Revise document,8,932,182.0,Supervisor
+1859,C00255_r1,2025-01-01 16:31:03,Submit application,8,1727,228.2,Supervisor
+1860,C00255_r0,2025-01-01 16:31:03,Reject submission,1,922,145.6,Head Manager Assistant
+1861,C00255_r2,2025-01-01 16:31:04,Submit application,10,7499,202.2,Senior Analyst
+1862,C00255_r0,2025-01-01 16:31:04,Complete process,0,0,0.0,System
+1863,C00255_r1,2025-01-01 16:31:04,Accept submission,1,922,145.6,Head Manager Assistant
+1865,C00255_r1,2025-01-01 16:31:05,Complete process,0,0,0.0,System
+1864,C00255_r2,2025-01-01 16:31:05,Reject submission,1,922,145.6,Head Manager Assistant
+1866,C00255_r2,2025-01-01 16:31:06,Complete process,0,0,0.0,System
+1867,C00258_r0,2025-01-01 16:34:00,Start process,5,10,10.0,System
+1868,C00258_r1,2025-01-01 16:34:01,Start process,5,10,10.0,System
+1869,C00258_r2,2025-01-01 16:34:02,Start process,5,10,10.0,System
+1870,C00258_r0,2025-01-01 16:35:00,Check document,2,120,30.0,Clerk
+1871,C00258_r1,2025-01-01 16:35:01,Check document,2,120,30.0,Clerk
+1872,C00258_r2,2025-01-01 16:35:02,Check document,2,120,30.0,Clerk
+1873,C00258_r0,2025-01-01 16:36:00,Submit application,2,94,43.0,Junior Staff
+1875,C00258_r0,2025-01-01 16:36:01,Review submission,8,850,100.0,Reviewer
+1874,C00258_r1,2025-01-01 16:36:01,Submit application,2,94,43.0,Junior Staff
+1876,C00258_r2,2025-01-01 16:36:02,Submit application,2,94,43.0,Junior Staff
+1877,C00258_r1,2025-01-01 16:36:02,Review submission,8,850,100.0,Reviewer
+1878,C00258_r2,2025-01-01 16:36:03,Review submission,8,850,100.0,Reviewer
+1879,C00258_r0,2025-01-01 16:37:00,Approve application,2,130,20.0,Manager
+1880,C00258_r1,2025-01-01 16:37:01,Disapprove application,2,130,20.0,review_board
+1881,C00258_r0,2025-01-01 16:37:01,Complete process,0,0,0.0,System
+1883,C00258_r2,2025-01-01 16:37:02,Disapprove application,2,130,20.0,review_board
+1882,C00258_r1,2025-01-01 16:37:02,Revise document,8,932,182.0,Supervisor
+1884,C00258_r1,2025-01-01 16:37:03,Submit application,12,5168,186.9,Supervisor
+1885,C00258_r2,2025-01-01 16:37:03,Revise document,8,932,182.0,Supervisor
+1886,C00258_r1,2025-01-01 16:37:04,Reject submission,1,922,145.6,Head Manager Assistant
+1887,C00258_r2,2025-01-01 16:37:04,Submit application,11,2604,227.7,Supervisor
+1888,C00258_r2,2025-01-01 16:37:05,Accept submission,1,922,145.6,Head Manager Assistant
+1889,C00258_r1,2025-01-01 16:37:05,Complete process,0,0,0.0,System
+1890,C00258_r2,2025-01-01 16:37:06,Complete process,0,0,0.0,System
+1891,C00261_r0,2025-01-01 16:40:00,Start process,5,10,10.0,System
+1892,C00261_r1,2025-01-01 16:40:01,Start process,5,10,10.0,System
+1893,C00261_r2,2025-01-01 16:40:02,Start process,5,10,10.0,System
+1894,C00261_r0,2025-01-01 16:41:00,Check document,2,120,30.0,Clerk
+1895,C00261_r1,2025-01-01 16:41:01,Check document,2,120,30.0,Clerk
+1896,C00261_r2,2025-01-01 16:41:02,Check document,2,120,30.0,Clerk
+1897,C00261_r0,2025-01-01 16:42:00,Submit application,2,116,46.0,Junior Staff
+1898,C00261_r0,2025-01-01 16:42:01,Review submission,8,850,100.0,Reviewer
+1899,C00261_r1,2025-01-01 16:42:01,Submit application,2,116,46.0,Junior Staff
+1900,C00261_r2,2025-01-01 16:42:02,Submit application,2,116,46.0,Junior Staff
+1901,C00261_r1,2025-01-01 16:42:02,Review submission,8,850,100.0,Reviewer
+1902,C00261_r2,2025-01-01 16:42:03,Review submission,8,850,100.0,Reviewer
+1903,C00261_r0,2025-01-01 16:43:00,Disapprove application,2,130,20.0,review_board
+1904,C00261_r0,2025-01-01 16:43:01,Revise document,8,932,182.0,Supervisor
+1905,C00261_r1,2025-01-01 16:43:01,Disapprove application,2,130,20.0,review_board
+1906,C00261_r1,2025-01-01 16:43:02,Revise document,8,932,182.0,Supervisor
+1907,C00261_r2,2025-01-01 16:43:02,Disapprove application,2,130,20.0,review_board
+1908,C00261_r0,2025-01-01 16:43:02,Submit application,8,1177,236.7,Supervisor
+1909,C00261_r0,2025-01-01 16:43:03,Accept submission,1,922,145.6,Head Manager Assistant
+1910,C00261_r2,2025-01-01 16:43:03,Revise document,8,932,182.0,Supervisor
+1911,C00261_r1,2025-01-01 16:43:03,Submit application,12,5215,184.3,Supervisor
+1912,C00261_r1,2025-01-01 16:43:04,Reject submission,1,922,145.6,Head Manager Assistant
+1913,C00261_r2,2025-01-01 16:43:04,Submit application,8,8591,214.7,Senior Analyst
+1914,C00261_r0,2025-01-01 16:43:04,Complete process,0,0,0.0,System
+1915,C00261_r1,2025-01-01 16:43:05,Complete process,0,0,0.0,System
+1916,C00261_r2,2025-01-01 16:43:05,Reject submission,1,922,145.6,Head Manager Assistant
+1917,C00261_r2,2025-01-01 16:43:06,Complete process,0,0,0.0,System
+1918,C00263_r0,2025-01-01 16:44:00,Start process,5,10,10.0,System
+1919,C00263_r1,2025-01-01 16:44:01,Start process,5,10,10.0,System
+1920,C00263_r2,2025-01-01 16:44:02,Start process,5,10,10.0,System
+1921,C00263_r0,2025-01-01 16:45:00,Check document,2,120,30.0,Clerk
+1922,C00263_r1,2025-01-01 16:45:01,Check document,2,120,30.0,Clerk
+1923,C00263_r2,2025-01-01 16:45:02,Check document,2,120,30.0,Clerk
+1924,C00264_r0,2025-01-01 16:46:00,Start process,5,10,10.0,System
+1925,C00263_r0,2025-01-01 16:46:00,Submit application,2,148,40.0,Junior Staff
+1926,C00263_r1,2025-01-01 16:46:01,Submit application,2,148,40.0,Junior Staff
+1927,C00263_r0,2025-01-01 16:46:01,Review submission,8,850,100.0,Reviewer
+1928,C00264_r1,2025-01-01 16:46:01,Start process,5,10,10.0,System
+1929,C00263_r1,2025-01-01 16:46:02,Review submission,8,850,100.0,Reviewer
+1930,C00264_r2,2025-01-01 16:46:02,Start process,5,10,10.0,System
+1931,C00263_r2,2025-01-01 16:46:02,Submit application,2,148,40.0,Junior Staff
+1932,C00263_r2,2025-01-01 16:46:03,Review submission,8,850,100.0,Reviewer
+1933,C00263_r0,2025-01-01 16:47:00,Approve application,2,130,20.0,Manager
+1934,C00264_r0,2025-01-01 16:47:00,Check document,2,120,30.0,Clerk
+1935,C00264_r1,2025-01-01 16:47:01,Check document,2,120,30.0,Clerk
+1936,C00263_r0,2025-01-01 16:47:01,Complete process,0,0,0.0,System
+1937,C00263_r1,2025-01-01 16:47:01,Approve application,2,130,20.0,Manager
+1938,C00264_r2,2025-01-01 16:47:02,Check document,2,120,30.0,Clerk
+1939,C00263_r1,2025-01-01 16:47:02,Complete process,0,0,0.0,System
+1940,C00263_r2,2025-01-01 16:47:02,Disapprove application,2,130,20.0,review_board
+1941,C00263_r2,2025-01-01 16:47:03,Revise document,8,932,182.0,Supervisor
+1942,C00263_r2,2025-01-01 16:47:04,Submit application,10,7407,186.8,Senior Analyst
+1943,C00263_r2,2025-01-01 16:47:05,Accept submission,1,922,145.6,Head Manager Assistant
+1944,C00263_r2,2025-01-01 16:47:06,Complete process,0,0,0.0,System
+1945,C00264_r0,2025-01-01 16:48:00,Submit application,2,149,55.0,Clerk
+1946,C00265_r0,2025-01-01 16:48:00,Start process,5,10,10.0,System
+1947,C00264_r0,2025-01-01 16:48:01,Review submission,8,850,100.0,Reviewer
+1948,C00264_r1,2025-01-01 16:48:01,Submit application,2,149,55.0,Clerk
+1949,C00265_r1,2025-01-01 16:48:01,Start process,5,10,10.0,System
+1952,C00264_r2,2025-01-01 16:48:02,Submit application,2,149,55.0,Clerk
+1951,C00265_r2,2025-01-01 16:48:02,Start process,5,10,10.0,System
+1950,C00264_r1,2025-01-01 16:48:02,Review submission,8,850,100.0,Reviewer
+1953,C00264_r2,2025-01-01 16:48:03,Review submission,8,850,100.0,Reviewer
+1954,C00265_r0,2025-01-01 16:49:00,Check document,2,120,30.0,Clerk
+1955,C00264_r0,2025-01-01 16:49:00,Approve application,2,130,20.0,Manager
+1956,C00264_r0,2025-01-01 16:49:01,Complete process,0,0,0.0,System
+1957,C00264_r1,2025-01-01 16:49:01,Disapprove application,2,130,20.0,review_board
+1958,C00265_r1,2025-01-01 16:49:01,Check document,2,120,30.0,Clerk
+1961,C00264_r1,2025-01-01 16:49:02,Revise document,8,932,182.0,Supervisor
+1960,C00265_r2,2025-01-01 16:49:02,Check document,2,120,30.0,Clerk
+1959,C00264_r2,2025-01-01 16:49:02,Approve application,2,130,20.0,Manager
+1962,C00264_r2,2025-01-01 16:49:03,Complete process,0,0,0.0,System
+1963,C00264_r1,2025-01-01 16:49:03,Submit application,8,1174,226.7,Supervisor
+1964,C00264_r1,2025-01-01 16:49:04,Reject submission,1,922,145.6,Head Manager Assistant
+1965,C00264_r1,2025-01-01 16:49:05,Complete process,0,0,0.0,System
+1966,C00265_r0,2025-01-01 16:50:00,Submit application,3,146,31.0,Clerk
+1967,C00266_r0,2025-01-01 16:50:00,Start process,5,10,10.0,System
+1968,C00265_r0,2025-01-01 16:50:01,Review submission,8,850,100.0,Reviewer
+1969,C00266_r1,2025-01-01 16:50:01,Start process,5,10,10.0,System
+1970,C00265_r1,2025-01-01 16:50:01,Submit application,3,146,31.0,Clerk
+1971,C00266_r2,2025-01-01 16:50:02,Start process,5,10,10.0,System
+1972,C00265_r2,2025-01-01 16:50:02,Submit application,3,146,31.0,Clerk
+1973,C00265_r1,2025-01-01 16:50:02,Review submission,8,850,100.0,Reviewer
+1974,C00265_r2,2025-01-01 16:50:03,Review submission,8,850,100.0,Reviewer
+1975,C00265_r0,2025-01-01 16:51:00,Disapprove application,2,130,20.0,review_board
+1976,C00266_r0,2025-01-01 16:51:00,Check document,2,120,30.0,Clerk
+1977,C00265_r1,2025-01-01 16:51:01,Approve application,2,130,20.0,Manager
+1978,C00266_r1,2025-01-01 16:51:01,Check document,2,120,30.0,Clerk
+1979,C00265_r0,2025-01-01 16:51:01,Revise document,8,932,182.0,Supervisor
+1980,C00265_r0,2025-01-01 16:51:02,Submit application,9,9719,194.3,Supervisor
+1981,C00266_r2,2025-01-01 16:51:02,Check document,2,120,30.0,Clerk
+1982,C00265_r1,2025-01-01 16:51:02,Complete process,0,0,0.0,System
+1983,C00265_r2,2025-01-01 16:51:02,Disapprove application,2,130,20.0,review_board
+1984,C00265_r2,2025-01-01 16:51:03,Revise document,8,932,182.0,Supervisor
+1985,C00265_r0,2025-01-01 16:51:03,Reject submission,1,922,145.6,Head Manager Assistant
+1987,C00265_r2,2025-01-01 16:51:04,Submit application,8,4809,216.3,Supervisor
+1986,C00265_r0,2025-01-01 16:51:04,Complete process,0,0,0.0,System
+1988,C00265_r2,2025-01-01 16:51:05,Reject submission,1,922,145.6,Head Manager Assistant
+1989,C00265_r2,2025-01-01 16:51:06,Complete process,0,0,0.0,System
+1991,C00266_r0,2025-01-01 16:52:00,Submit application,1,146,33.0,Junior Staff
+1990,C00267_r0,2025-01-01 16:52:00,Start process,5,10,10.0,System
+1992,C00266_r0,2025-01-01 16:52:01,Review submission,8,850,100.0,Reviewer
+1993,C00267_r1,2025-01-01 16:52:01,Start process,5,10,10.0,System
+1994,C00266_r1,2025-01-01 16:52:01,Submit application,1,146,33.0,Junior Staff
+1995,C00267_r2,2025-01-01 16:52:02,Start process,5,10,10.0,System
+1996,C00266_r1,2025-01-01 16:52:02,Review submission,8,850,100.0,Reviewer
+1997,C00266_r2,2025-01-01 16:52:02,Submit application,1,146,33.0,Junior Staff
+1998,C00266_r2,2025-01-01 16:52:03,Review submission,8,850,100.0,Reviewer
+2000,C00266_r0,2025-01-01 16:53:00,Approve application,2,130,20.0,Manager
+1999,C00267_r0,2025-01-01 16:53:00,Check document,2,120,30.0,Clerk

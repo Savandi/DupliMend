@@ -1,0 +1,5 @@
+{
+    "python.analysis.extraPaths": [
+        "./pm-label-splitting"
+    ]
+}

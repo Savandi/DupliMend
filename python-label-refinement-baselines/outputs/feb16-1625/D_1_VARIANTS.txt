@@ -1,0 +1,8132 @@
+
+ Performance of golden standard model:
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+1.0
+0.7647058823529413
+generalization
+0.9464158551044931
+
+ Xixi split labels:
+['J_X_1', 'J_X_5', 'J_X_2', 'J_X_3', 'J_X_4']
+
+ Xixi refined log results:
+
+ IM without noise threshold:
+token_fitness
+{"perc_fit_traces": 75.1, "average_trace_fitness": 0.968875, "log_fitness": 0.968875, "percentage_of_fitting_traces": 75.1}
+precision
+1.0
+0.7777777777777779
+generalization
+0.8872648641604622
+
+ Xixi clustering:
+Clustering with 10 elements and 6 clusters
+
+[1] 0, 8
+[2] 2, 5
+[3] 3, 6
+[4] 4, 7
+[5] 1, 9
+
+ Data from log without imprecise labels
+
+ IM without noise threshold:
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+1.0
+0.7647058823529413
+generalization
+0.9464158551044931
+
+ Original Labels:
+['F', 'H', 'G', 'J']
+
+ Ground truth clustering clustering:
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 4, 7
+[2] 3, 6
+[3] 1, 9
+
+ Xixi Adjusted Rand Index:
+0.6666666666666671
+
+
+
+
+----------------------------------------------------------------------------------------------
+Output from 2025-07-08 17:57:32.511150
+----------------------------------------------------------------------------------------------
+
+
+                
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+
+Runtime: 0.010999917984008789
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+0.7949319213313162
+0.7560975609756097
+generalization
+0.953518249764227
+token_fitness
+{"perc_fit_traces": 75.1, "average_trace_fitness": 0.906625, "log_fitness": 0.906625, "percentage_of_fitting_traces": 75.1}
+precision
+1.0
+0.7435897435897437
+generalization
+0.7256655232279705
+
+Adjusted Rand Index:
+0.7619047619047622
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0.25
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+
+Runtime: 0.011003255844116211
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+0.93363539445629
+0.7435897435897437
+generalization
+0.9463561370600074
+
+Adjusted Rand Index:
+0.7619047619047622
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0.5
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+
+Runtime: 0.01199960708618164
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 75.1, "average_trace_fitness": 0.906625, "log_fitness": 0.906625, "percentage_of_fitting_traces": 75.1}
+precision
+1.0
+0.7435897435897437
+generalization
+0.7256655232279705
+
+Adjusted Rand Index:
+0.7619047619047622
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0.75
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+
+Runtime: 0.010999679565429688
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+0.93363539445629
+0.7435897435897437
+generalization
+0.9463561370600074
+
+Adjusted Rand Index:
+0.7619047619047622
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 1
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+
+Runtime: 0.014001607894897461
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+0.93363539445629
+0.7435897435897437
+generalization
+0.9463561370600074
+
+Adjusted Rand Index:
+0.7619047619047622
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+
+Runtime: 0.010999679565429688
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 75.1, "average_trace_fitness": 0.93775, "log_fitness": 0.93775, "percentage_of_fitting_traces": 75.1}
+precision
+1.0
+0.7435897435897437
+generalization
+0.7265002576600543
+
+Adjusted Rand Index:
+0.7619047619047622
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0.25
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+
+Runtime: 0.010999917984008789
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+0.93363539445629
+0.7435897435897437
+generalization
+0.9463561370600074
+
+Adjusted Rand Index:
+0.7619047619047622
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0.5
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+
+Runtime: 0.010999917984008789
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 75.1, "average_trace_fitness": 0.93775, "log_fitness": 0.93775, "percentage_of_fitting_traces": 75.1}
+precision
+1.0
+0.7435897435897437
+generalization
+0.7265002576600543
+
+Adjusted Rand Index:
+0.7619047619047622
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0.75
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+
+Runtime: 0.010999917984008789
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+0.93363539445629
+0.7435897435897437
+generalization
+0.9463561370600074
+
+Adjusted Rand Index:
+0.7619047619047622
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 1
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+
+Runtime: 0.009000062942504883
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 75.1, "average_trace_fitness": 0.906625, "log_fitness": 0.906625, "percentage_of_fitting_traces": 75.1}
+precision
+1.0
+0.7435897435897437
+generalization
+0.7256655232279705
+
+Adjusted Rand Index:
+0.7619047619047622
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+
+Runtime: 0.011999845504760742
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+0.93363539445629
+0.7435897435897437
+generalization
+0.9463561370600074
+
+Adjusted Rand Index:
+0.7619047619047622
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0.25
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+
+Runtime: 0.009999990463256836
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 75.1, "average_trace_fitness": 0.906625, "log_fitness": 0.906625, "percentage_of_fitting_traces": 75.1}
+precision
+1.0
+0.7435897435897437
+generalization
+0.7256655232279705
+
+Adjusted Rand Index:
+0.7619047619047622
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0.5
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+
+Runtime: 0.01199960708618164
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 75.1, "average_trace_fitness": 0.93775, "log_fitness": 0.93775, "percentage_of_fitting_traces": 75.1}
+precision
+1.0
+0.7435897435897437
+generalization
+0.7265002576600543
+
+Adjusted Rand Index:
+0.7619047619047622
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0.75
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+
+Runtime: 0.008999824523925781
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 75.1, "average_trace_fitness": 0.906625, "log_fitness": 0.906625, "percentage_of_fitting_traces": 75.1}
+precision
+1.0
+0.7435897435897437
+generalization
+0.7256655232279705
+
+Adjusted Rand Index:
+0.7619047619047622
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 1
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+
+Runtime: 0.010000228881835938
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 75.1, "average_trace_fitness": 0.93775, "log_fitness": 0.93775, "percentage_of_fitting_traces": 75.1}
+precision
+1.0
+0.7435897435897437
+generalization
+0.7265002576600543
+
+Adjusted Rand Index:
+0.7619047619047622
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3, 6
+
+Reassigned labels
+
+Runtime: 0.010999917984008789
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+1.0
+0.7499999999999999
+generalization
+0.9484830941451795
+
+Adjusted Rand Index:
+0.7619047619047622
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0.25
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3, 6
+
+Reassigned labels
+
+Runtime: 0.009000301361083984
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+1.0
+0.7499999999999999
+generalization
+0.9484830941451795
+
+Adjusted Rand Index:
+0.7619047619047622
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0.5
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+
+Runtime: 0.010999679565429688
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+1.0
+0.7499999999999999
+generalization
+0.9484830941451795
+
+Adjusted Rand Index:
+0.7619047619047622
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0.75
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 1, 4, 7, 9
+[1] 0, 2, 5, 8
+[2] 3, 6
+
+Reassigned labels
+
+Runtime: 0.01099848747253418
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+1.0
+0.7499999999999999
+generalization
+0.9484830941451795
+
+Adjusted Rand Index:
+0.7619047619047622
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 1
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 10 elements and 8 clusters
+[0] 0, 8
+[1] 2, 5
+[2] 1
+[3] 3
+[4] 4
+[5] 6
+[6] 7
+[7] 9
+
+Reassigned labels
+
+Runtime: 0.02099895477294922
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J", "J_7": "J"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+0.7949319213313162
+0.7560975609756097
+generalization
+0.953518249764227
+
+Adjusted Rand Index:
+1.7347234759768073e-16
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+
+Runtime: 0.01199960708618164
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+1.0
+0.7499999999999999
+generalization
+0.9484830941451795
+
+Adjusted Rand Index:
+0.7619047619047622
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0.25
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+
+Runtime: 0.012000560760498047
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+1.0
+0.7499999999999999
+generalization
+0.9484830941451795
+
+Adjusted Rand Index:
+0.7619047619047622
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0.5
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+
+Runtime: 0.013999700546264648
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+1.0
+0.7499999999999999
+generalization
+0.9484830941451795
+
+Adjusted Rand Index:
+0.7619047619047622
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0.75
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 1, 4, 7, 9
+[1] 0, 2, 5, 8
+[2] 3, 6
+
+Reassigned labels
+
+Runtime: 0.009999990463256836
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+1.0
+0.7499999999999999
+generalization
+0.9484830941451795
+
+Adjusted Rand Index:
+0.7619047619047622
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 1
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 10 elements and 8 clusters
+[0] 0, 8
+[1] 2, 5
+[2] 1
+[3] 3
+[4] 4
+[5] 6
+[6] 7
+[7] 9
+
+Reassigned labels
+
+Runtime: 0.020999670028686523
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J", "J_7": "J"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+0.7949319213313162
+0.7560975609756097
+generalization
+0.953518249764227
+
+Adjusted Rand Index:
+1.7347234759768073e-16
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+
+Runtime: 0.011999368667602539
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+1.0
+0.7499999999999999
+generalization
+0.9484830941451795
+
+Adjusted Rand Index:
+0.7619047619047622
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0.25
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+
+Runtime: 0.014999151229858398
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+1.0
+0.7499999999999999
+generalization
+0.9484830941451795
+
+Adjusted Rand Index:
+0.7619047619047622
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0.5
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+
+Runtime: 0.012001276016235352
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+1.0
+0.7499999999999999
+generalization
+0.9484830941451795
+
+Adjusted Rand Index:
+0.7619047619047622
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0.75
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 1, 4, 7, 9
+[1] 0, 2, 5, 8
+[2] 3, 6
+
+Reassigned labels
+
+Runtime: 0.009000301361083984
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+1.0
+0.7499999999999999
+generalization
+0.9484830941451795
+
+Adjusted Rand Index:
+0.7619047619047622
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 1
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 10 elements and 8 clusters
+[0] 0, 8
+[1] 2, 5
+[2] 1
+[3] 3
+[4] 4
+[5] 6
+[6] 7
+[7] 9
+
+Reassigned labels
+
+Runtime: 0.026000261306762695
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J", "J_7": "J"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+0.7949319213313162
+0.7560975609756097
+generalization
+0.953518249764227
+
+Adjusted Rand Index:
+1.7347234759768073e-16
+
+
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 0
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+
+Runtime: 0.014999866485595703
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+1.0
+0.7499999999999999
+generalization
+0.9484830941451795
+
+Adjusted Rand Index:
+0.7619047619047622
+
+
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 0.25
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+
+Runtime: 0.011999368667602539
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+1.0
+0.7499999999999999
+generalization
+0.9484830941451795
+
+Adjusted Rand Index:
+0.7619047619047622
+
+
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 0.5
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+
+Runtime: 0.01299905776977539
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+1.0
+0.7499999999999999
+generalization
+0.9484830941451795
+
+Adjusted Rand Index:
+0.7619047619047622
+
+
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 0.75
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 6, 7, 9
+[2] 1, 3, 4
+
+Reassigned labels
+
+Runtime: 0.01799750328063965
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+0.7949319213313162
+0.7560975609756097
+generalization
+0.953518249764227
+
+Adjusted Rand Index:
+1.7347234759768073e-16
+
+
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 1
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 10 elements and 10 clusters
+[ 0] 0
+[ 1] 1
+[ 2] 2
+[ 3] 3
+[ 4] 4
+[ 5] 5
+[ 6] 6
+[ 7] 7
+[ 8] 8
+[ 9] 9
+
+Reassigned labels
+
+Runtime: 0.022999286651611328
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J", "J_7": "J", "J_8": "J", "J_9": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.9345767857142866, "log_fitness": 0.9335840440534551, "percentage_of_fitting_traces": 50.9}
+precision
+0.5201138070022919
+0.7058823529411765
+generalization
+0.6711430577782292
+
+Adjusted Rand Index:
+0.0
+
+
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 0
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 10 elements and 7 clusters
+[0] 0, 8
+[1] 2, 5
+[2] 1, 9
+[3] 3
+[4] 4
+[5] 6
+[6] 7
+
+Reassigned labels
+
+Runtime: 0.021999597549438477
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+0.7949319213313162
+0.7560975609756097
+generalization
+0.953518249764227
+
+Adjusted Rand Index:
+1.7347234759768073e-16
+
+
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 0.25
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 10 elements and 7 clusters
+[0] 0, 8
+[1] 2, 5
+[2] 1, 9
+[3] 3
+[4] 4
+[5] 6
+[6] 7
+
+Reassigned labels
+
+Runtime: 0.01999807357788086
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+0.7949319213313162
+0.7560975609756097
+generalization
+0.953518249764227
+
+Adjusted Rand Index:
+1.7347234759768073e-16
+
+
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 0.5
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 10 elements and 7 clusters
+[0] 0, 8
+[1] 2, 5
+[2] 1, 9
+[3] 3
+[4] 4
+[5] 6
+[6] 7
+
+Reassigned labels
+
+Runtime: 0.017999887466430664
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+0.7949319213313162
+0.7560975609756097
+generalization
+0.953518249764227
+
+Adjusted Rand Index:
+1.7347234759768073e-16
+
+
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 0.75
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3, 6
+
+Reassigned labels
+
+Runtime: 0.008998870849609375
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+1.0
+0.7499999999999999
+generalization
+0.9484830941451795
+
+Adjusted Rand Index:
+0.7619047619047622
+
+
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 1
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 10 elements and 10 clusters
+[ 0] 0
+[ 1] 1
+[ 2] 2
+[ 3] 3
+[ 4] 4
+[ 5] 5
+[ 6] 6
+[ 7] 7
+[ 8] 8
+[ 9] 9
+
+Reassigned labels
+
+Runtime: 0.027001380920410156
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J", "J_7": "J", "J_8": "J", "J_9": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.9345767857142866, "log_fitness": 0.9335840440534551, "percentage_of_fitting_traces": 50.9}
+precision
+0.5201138070022919
+0.7058823529411765
+generalization
+0.6711430577782292
+
+Adjusted Rand Index:
+0.0
+
+
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 0
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+
+Runtime: 0.012999534606933594
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+1.0
+0.7499999999999999
+generalization
+0.9484830941451795
+
+Adjusted Rand Index:
+0.7619047619047622
+
+
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 0.25
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+
+Runtime: 0.012999296188354492
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+1.0
+0.7499999999999999
+generalization
+0.9484830941451795
+
+Adjusted Rand Index:
+0.7619047619047622
+
+
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 0.5
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+
+Runtime: 0.010999917984008789
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+1.0
+0.7499999999999999
+generalization
+0.9484830941451795
+
+Adjusted Rand Index:
+0.7619047619047622
+
+
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 0.75
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3, 6
+
+Reassigned labels
+
+Runtime: 0.009506702423095703
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+1.0
+0.7499999999999999
+generalization
+0.9484830941451795
+
+Adjusted Rand Index:
+0.7619047619047622
+
+
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 1
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 10 elements and 10 clusters
+[ 0] 0
+[ 1] 1
+[ 2] 2
+[ 3] 3
+[ 4] 4
+[ 5] 5
+[ 6] 6
+[ 7] 7
+[ 8] 8
+[ 9] 9
+
+Reassigned labels
+
+Runtime: 0.02299809455871582
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J", "J_7": "J", "J_8": "J", "J_9": "J"}
+token_fitness
+{"perc_fit_traces": 75.1, "average_trace_fitness": 0.9833999999999947, "log_fitness": 0.9831277950941862, "percentage_of_fitting_traces": 75.1}
+precision
+0.5210982658959538
+0.7058823529411765
+generalization
+0.6714751179784245
+
+Adjusted Rand Index:
+0.0
+
+Best precision found:
+1.0
+ Performance of golden standard model:
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+1.0
+0.7647058823529413
+generalization
+0.9464158551044931
+
+ Xixi split labels:
+['J_X_1', 'J_X_5', 'J_X_2', 'J_X_3', 'J_X_4']
+
+ Xixi refined log results:
+
+ IM without noise threshold:
+token_fitness
+{"perc_fit_traces": 75.8, "average_trace_fitness": 0.96975, "log_fitness": 0.96975, "percentage_of_fitting_traces": 75.8}
+precision
+1.0
+0.7777777777777779
+generalization
+0.8872648641604622
+
+ Xixi clustering:
+Clustering with 10 elements and 6 clusters
+
+[1] 0, 8
+[2] 2, 5
+[3] 3, 6
+[4] 4, 7
+[5] 1, 9
+
+ Data from log without imprecise labels
+
+ IM without noise threshold:
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+1.0
+0.7647058823529413
+generalization
+0.9464158551044931
+
+ Original Labels:
+['H', 'G', 'J', 'F']
+
+ Ground truth clustering clustering:
+Clustering with 10 elements and 4 clusters
+[0] 4, 7
+[1] 3, 6
+[2] 1, 9
+[3] 0, 2, 5, 8
+
+ Xixi Adjusted Rand Index:
+0.6666666666666671
+
+
+
+
+----------------------------------------------------------------------------------------------
+Output from 2025-08-11 16:29:54.538742
+----------------------------------------------------------------------------------------------
+
+
+                
+
+###### Starting pipeline for 0, Distance.EDIT_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+0.7949319213313162
+0.7560975609756097
+generalization
+0.953518249764227
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.EDIT_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.EDIT_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.EDIT_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.EDIT_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.SET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.SET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.SET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.SET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.SET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.MULTISET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.MULTISET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.MULTISET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.MULTISET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.MULTISET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.EDIT_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3, 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.EDIT_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3, 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.EDIT_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.EDIT_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 1, 4, 7, 9
+[1] 0, 2, 5, 8
+[2] 3, 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.EDIT_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 8 clusters
+[0] 0, 8
+[1] 2, 5
+[2] 1
+[3] 3
+[4] 4
+[5] 6
+[6] 7
+[7] 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J", "J_7": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.SET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.SET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.SET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.SET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 1, 4, 7, 9
+[1] 0, 2, 5, 8
+[2] 3, 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.SET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 8 clusters
+[0] 0, 8
+[1] 2, 5
+[2] 1
+[3] 3
+[4] 4
+[5] 6
+[6] 7
+[7] 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J", "J_7": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.MULTISET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.MULTISET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.MULTISET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.MULTISET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 1, 4, 7, 9
+[1] 0, 2, 5, 8
+[2] 3, 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.MULTISET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 8 clusters
+[0] 0, 8
+[1] 2, 5
+[2] 1
+[3] 3
+[4] 4
+[5] 6
+[6] 7
+[7] 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J", "J_7": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.EDIT_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.EDIT_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.EDIT_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.EDIT_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 6, 7, 9
+[2] 1, 3, 4
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.EDIT_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 10 clusters
+[ 0] 0
+[ 1] 1
+[ 2] 2
+[ 3] 3
+[ 4] 4
+[ 5] 5
+[ 6] 6
+[ 7] 7
+[ 8] 8
+[ 9] 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J", "J_7": "J", "J_8": "J", "J_9": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.SET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 7 clusters
+[0] 0, 8
+[1] 2, 5
+[2] 1, 9
+[3] 3
+[4] 4
+[5] 6
+[6] 7
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.SET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 7 clusters
+[0] 0, 8
+[1] 2, 5
+[2] 1, 9
+[3] 3
+[4] 4
+[5] 6
+[6] 7
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.SET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 7 clusters
+[0] 0, 8
+[1] 2, 5
+[2] 1, 9
+[3] 3
+[4] 4
+[5] 6
+[6] 7
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.SET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3, 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.SET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 10 clusters
+[ 0] 0
+[ 1] 1
+[ 2] 2
+[ 3] 3
+[ 4] 4
+[ 5] 5
+[ 6] 6
+[ 7] 7
+[ 8] 8
+[ 9] 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J", "J_7": "J", "J_8": "J", "J_9": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.MULTISET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.MULTISET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.MULTISET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.MULTISET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3, 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.MULTISET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 10 clusters
+[ 0] 0
+[ 1] 1
+[ 2] 2
+[ 3] 3
+[ 4] 4
+[ 5] 5
+[ 6] 6
+[ 7] 7
+[ 8] 8
+[ 9] 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J", "J_7": "J", "J_8": "J", "J_9": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+ Performance of golden standard model:
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+1.0
+0.7647058823529413
+generalization
+0.9464158551044931
+
+ Xixi split labels:
+['J_X_1', 'J_X_5', 'J_X_2', 'J_X_3', 'J_X_4']
+
+ Xixi refined log results:
+
+ IM without noise threshold:
+token_fitness
+{"perc_fit_traces": 75.8, "average_trace_fitness": 0.9395, "log_fitness": 0.9395, "percentage_of_fitting_traces": 75.8}
+precision
+1.0
+0.7777777777777779
+generalization
+0.8299227073770321
+
+ Xixi clustering:
+Clustering with 10 elements and 6 clusters
+
+[1] 0, 8
+[2] 2, 5
+[3] 3, 6
+[4] 4, 7
+[5] 1, 9
+
+ Data from log without imprecise labels
+
+ IM without noise threshold:
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+1.0
+0.7647058823529413
+generalization
+0.9464158551044931
+
+ Original Labels:
+['F', 'G', 'H', 'J']
+
+ Ground truth clustering clustering:
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 3, 6
+[2] 4, 7
+[3] 1, 9
+
+ Xixi Adjusted Rand Index:
+0.6666666666666671
+
+
+
+
+----------------------------------------------------------------------------------------------
+Output from 2025-08-11 16:32:44.470872
+----------------------------------------------------------------------------------------------
+
+
+                
+
+###### Starting pipeline for 0, Distance.EDIT_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+0.7949319213313162
+0.7560975609756097
+generalization
+0.953518249764227
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.EDIT_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.EDIT_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.EDIT_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.EDIT_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.SET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.SET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.SET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.SET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.SET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.MULTISET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.MULTISET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.MULTISET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.MULTISET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.MULTISET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.EDIT_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3, 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.EDIT_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3, 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.EDIT_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.EDIT_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 1, 4, 7, 9
+[1] 0, 2, 5, 8
+[2] 3, 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.EDIT_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 8 clusters
+[0] 0, 8
+[1] 2, 5
+[2] 1
+[3] 3
+[4] 4
+[5] 6
+[6] 7
+[7] 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J", "J_7": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.SET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.SET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.SET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.SET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 1, 4, 7, 9
+[1] 0, 2, 5, 8
+[2] 3, 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.SET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 8 clusters
+[0] 0, 8
+[1] 2, 5
+[2] 1
+[3] 3
+[4] 4
+[5] 6
+[6] 7
+[7] 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J", "J_7": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.MULTISET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.MULTISET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.MULTISET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.MULTISET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 1, 4, 7, 9
+[1] 0, 2, 5, 8
+[2] 3, 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.MULTISET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 8 clusters
+[0] 0, 8
+[1] 2, 5
+[2] 1
+[3] 3
+[4] 4
+[5] 6
+[6] 7
+[7] 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J", "J_7": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.EDIT_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.EDIT_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.EDIT_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.EDIT_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 6, 7, 9
+[2] 1, 3, 4
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.EDIT_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 10 clusters
+[ 0] 0
+[ 1] 1
+[ 2] 2
+[ 3] 3
+[ 4] 4
+[ 5] 5
+[ 6] 6
+[ 7] 7
+[ 8] 8
+[ 9] 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J", "J_7": "J", "J_8": "J", "J_9": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.SET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 7 clusters
+[0] 0, 8
+[1] 2, 5
+[2] 1, 9
+[3] 3
+[4] 4
+[5] 6
+[6] 7
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.SET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 7 clusters
+[0] 0, 8
+[1] 2, 5
+[2] 1, 9
+[3] 3
+[4] 4
+[5] 6
+[6] 7
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.SET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 7 clusters
+[0] 0, 8
+[1] 2, 5
+[2] 1, 9
+[3] 3
+[4] 4
+[5] 6
+[6] 7
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.SET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3, 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.SET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 10 clusters
+[ 0] 0
+[ 1] 1
+[ 2] 2
+[ 3] 3
+[ 4] 4
+[ 5] 5
+[ 6] 6
+[ 7] 7
+[ 8] 8
+[ 9] 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J", "J_7": "J", "J_8": "J", "J_9": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.MULTISET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.MULTISET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.MULTISET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.MULTISET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3, 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.MULTISET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 10 clusters
+[ 0] 0
+[ 1] 1
+[ 2] 2
+[ 3] 3
+[ 4] 4
+[ 5] 5
+[ 6] 6
+[ 7] 7
+[ 8] 8
+[ 9] 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J", "J_7": "J", "J_8": "J", "J_9": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+ Performance of golden standard model:
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+1.0
+0.7647058823529413
+generalization
+0.9464158551044931
+
+ Xixi split labels:
+['J_X_1', 'J_X_5', 'J_X_2', 'J_X_3', 'J_X_4']
+
+ Xixi refined log results:
+
+ IM without noise threshold:
+token_fitness
+{"perc_fit_traces": 75.1, "average_trace_fitness": 0.93775, "log_fitness": 0.93775, "percentage_of_fitting_traces": 75.1}
+precision
+1.0
+0.7777777777777779
+generalization
+0.8298857253235918
+
+ Xixi clustering:
+Clustering with 10 elements and 6 clusters
+
+[1] 0, 8
+[2] 2, 5
+[3] 3, 6
+[4] 4, 7
+[5] 1, 9
+
+ Data from log without imprecise labels
+
+ IM without noise threshold:
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+1.0
+0.7647058823529413
+generalization
+0.9464158551044931
+
+ Original Labels:
+['H', 'F', 'J', 'G']
+
+ Ground truth clustering clustering:
+Clustering with 10 elements and 4 clusters
+[0] 4, 7
+[1] 0, 2, 5, 8
+[2] 1, 9
+[3] 3, 6
+
+ Xixi Adjusted Rand Index:
+0.6666666666666671
+
+
+
+
+----------------------------------------------------------------------------------------------
+Output from 2025-08-11 16:37:56.849825
+----------------------------------------------------------------------------------------------
+
+
+                
+
+###### Starting pipeline for 0, Distance.EDIT_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+0.7949319213313162
+0.7560975609756097
+generalization
+0.953518249764227
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.EDIT_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.EDIT_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.EDIT_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.EDIT_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.SET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.SET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.SET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.SET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.SET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.MULTISET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.MULTISET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.MULTISET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.MULTISET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.MULTISET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.EDIT_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3, 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.EDIT_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3, 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.EDIT_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.EDIT_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 1, 4, 7, 9
+[1] 0, 2, 5, 8
+[2] 3, 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.EDIT_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 8 clusters
+[0] 0, 8
+[1] 2, 5
+[2] 1
+[3] 3
+[4] 4
+[5] 6
+[6] 7
+[7] 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J", "J_7": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.SET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.SET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.SET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.SET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 1, 4, 7, 9
+[1] 0, 2, 5, 8
+[2] 3, 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.SET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 8 clusters
+[0] 0, 8
+[1] 2, 5
+[2] 1
+[3] 3
+[4] 4
+[5] 6
+[6] 7
+[7] 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J", "J_7": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.MULTISET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.MULTISET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.MULTISET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.MULTISET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 1, 4, 7, 9
+[1] 0, 2, 5, 8
+[2] 3, 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.MULTISET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 8 clusters
+[0] 0, 8
+[1] 2, 5
+[2] 1
+[3] 3
+[4] 4
+[5] 6
+[6] 7
+[7] 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J", "J_7": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.EDIT_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.EDIT_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.EDIT_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.EDIT_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 6, 7, 9
+[2] 1, 3, 4
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.EDIT_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 10 clusters
+[ 0] 0
+[ 1] 1
+[ 2] 2
+[ 3] 3
+[ 4] 4
+[ 5] 5
+[ 6] 6
+[ 7] 7
+[ 8] 8
+[ 9] 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J", "J_7": "J", "J_8": "J", "J_9": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.SET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 7 clusters
+[0] 0, 8
+[1] 2, 5
+[2] 1, 9
+[3] 3
+[4] 4
+[5] 6
+[6] 7
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.SET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 7 clusters
+[0] 0, 8
+[1] 2, 5
+[2] 1, 9
+[3] 3
+[4] 4
+[5] 6
+[6] 7
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.SET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 7 clusters
+[0] 0, 8
+[1] 2, 5
+[2] 1, 9
+[3] 3
+[4] 4
+[5] 6
+[6] 7
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.SET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3, 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.SET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 10 clusters
+[ 0] 0
+[ 1] 1
+[ 2] 2
+[ 3] 3
+[ 4] 4
+[ 5] 5
+[ 6] 6
+[ 7] 7
+[ 8] 8
+[ 9] 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J", "J_7": "J", "J_8": "J", "J_9": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.MULTISET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.MULTISET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.MULTISET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.MULTISET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3, 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.MULTISET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 10 clusters
+[ 0] 0
+[ 1] 1
+[ 2] 2
+[ 3] 3
+[ 4] 4
+[ 5] 5
+[ 6] 6
+[ 7] 7
+[ 8] 8
+[ 9] 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J", "J_7": "J", "J_8": "J", "J_9": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+ Performance of golden standard model:
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+1.0
+0.7647058823529413
+generalization
+0.9464158551044931
+
+ Xixi split labels:
+['J_X_1', 'J_X_5', 'J_X_2', 'J_X_3', 'J_X_4']
+
+ Xixi refined log results:
+
+ IM without noise threshold:
+token_fitness
+{"perc_fit_traces": 75.8, "average_trace_fitness": 0.96975, "log_fitness": 0.96975, "percentage_of_fitting_traces": 75.8}
+precision
+1.0
+0.7777777777777779
+generalization
+0.8872648641604622
+
+ Xixi clustering:
+Clustering with 10 elements and 6 clusters
+
+[1] 0, 8
+[2] 2, 5
+[3] 3, 6
+[4] 4, 7
+[5] 1, 9
+
+ Data from log without imprecise labels
+
+ IM without noise threshold:
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+1.0
+0.7647058823529413
+generalization
+0.9464158551044931
+
+ Original Labels:
+['H', 'J', 'F', 'G']
+
+ Ground truth clustering clustering:
+Clustering with 10 elements and 4 clusters
+[0] 4, 7
+[1] 1, 9
+[2] 0, 2, 5, 8
+[3] 3, 6
+
+ Xixi Adjusted Rand Index:
+0.6666666666666671
+
+
+
+
+----------------------------------------------------------------------------------------------
+Output from 2025-08-11 17:03:49.575299
+----------------------------------------------------------------------------------------------
+
+
+                
+
+###### Starting pipeline for 0, Distance.EDIT_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+0.7949319213313162
+0.7560975609756097
+generalization
+0.953518249764227
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.EDIT_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.EDIT_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.EDIT_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.EDIT_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.SET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.SET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.SET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.SET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.SET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.MULTISET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.MULTISET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.MULTISET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.MULTISET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.MULTISET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.EDIT_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3, 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.EDIT_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3, 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.EDIT_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.EDIT_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 1, 4, 7, 9
+[1] 0, 2, 5, 8
+[2] 3, 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.EDIT_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 8 clusters
+[0] 0, 8
+[1] 2, 5
+[2] 1
+[3] 3
+[4] 4
+[5] 6
+[6] 7
+[7] 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J", "J_7": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.SET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.SET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.SET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.SET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 1, 4, 7, 9
+[1] 0, 2, 5, 8
+[2] 3, 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.SET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 8 clusters
+[0] 0, 8
+[1] 2, 5
+[2] 1
+[3] 3
+[4] 4
+[5] 6
+[6] 7
+[7] 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J", "J_7": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.MULTISET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.MULTISET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.MULTISET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.MULTISET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 1, 4, 7, 9
+[1] 0, 2, 5, 8
+[2] 3, 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.MULTISET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 8 clusters
+[0] 0, 8
+[1] 2, 5
+[2] 1
+[3] 3
+[4] 4
+[5] 6
+[6] 7
+[7] 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J", "J_7": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.EDIT_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.EDIT_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.EDIT_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.EDIT_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 6, 7, 9
+[2] 1, 3, 4
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.EDIT_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 10 clusters
+[ 0] 0
+[ 1] 1
+[ 2] 2
+[ 3] 3
+[ 4] 4
+[ 5] 5
+[ 6] 6
+[ 7] 7
+[ 8] 8
+[ 9] 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J", "J_7": "J", "J_8": "J", "J_9": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.SET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 7 clusters
+[0] 0, 8
+[1] 2, 5
+[2] 1, 9
+[3] 3
+[4] 4
+[5] 6
+[6] 7
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.SET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 7 clusters
+[0] 0, 8
+[1] 2, 5
+[2] 1, 9
+[3] 3
+[4] 4
+[5] 6
+[6] 7
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.SET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 7 clusters
+[0] 0, 8
+[1] 2, 5
+[2] 1, 9
+[3] 3
+[4] 4
+[5] 6
+[6] 7
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.SET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3, 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.SET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 10 clusters
+[ 0] 0
+[ 1] 1
+[ 2] 2
+[ 3] 3
+[ 4] 4
+[ 5] 5
+[ 6] 6
+[ 7] 7
+[ 8] 8
+[ 9] 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J", "J_7": "J", "J_8": "J", "J_9": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.MULTISET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.MULTISET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.MULTISET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.MULTISET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3, 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.MULTISET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 10 clusters
+[ 0] 0
+[ 1] 1
+[ 2] 2
+[ 3] 3
+[ 4] 4
+[ 5] 5
+[ 6] 6
+[ 7] 7
+[ 8] 8
+[ 9] 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J", "J_7": "J", "J_8": "J", "J_9": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+ Performance of golden standard model:
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+1.0
+0.7647058823529413
+generalization
+0.9464158551044931
+
+ Xixi split labels:
+['J_X_1', 'J_X_5', 'J_X_2', 'J_X_3', 'J_X_4']
+
+ Xixi refined log results:
+
+ IM without noise threshold:
+token_fitness
+{"perc_fit_traces": 75.8, "average_trace_fitness": 0.96975, "log_fitness": 0.96975, "percentage_of_fitting_traces": 75.8}
+precision
+1.0
+0.7777777777777779
+generalization
+0.8872648641604622
+
+ Xixi clustering:
+Clustering with 10 elements and 6 clusters
+
+[1] 0, 8
+[2] 2, 5
+[3] 3, 6
+[4] 4, 7
+[5] 1, 9
+
+ Data from log without imprecise labels
+
+ IM without noise threshold:
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+1.0
+0.7647058823529413
+generalization
+0.9464158551044931
+
+ Original Labels:
+['F', 'H', 'G', 'J']
+
+ Ground truth clustering clustering:
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 4, 7
+[2] 3, 6
+[3] 1, 9
+
+ Xixi Adjusted Rand Index:
+0.6666666666666671
+
+
+
+
+----------------------------------------------------------------------------------------------
+Output from 2025-08-11 18:36:19.562935
+----------------------------------------------------------------------------------------------
+
+
+                
+
+###### Starting pipeline for 0, Distance.EDIT_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+0.7949319213313162
+0.7560975609756097
+generalization
+0.953518249764227
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.EDIT_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.EDIT_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.EDIT_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.EDIT_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.SET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.SET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.SET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.SET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.SET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.MULTISET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.MULTISET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.MULTISET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.MULTISET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.MULTISET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.EDIT_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3, 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.EDIT_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3, 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.EDIT_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.EDIT_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 1, 4, 7, 9
+[1] 0, 2, 5, 8
+[2] 3, 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.EDIT_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 8 clusters
+[0] 0, 8
+[1] 2, 5
+[2] 1
+[3] 3
+[4] 4
+[5] 6
+[6] 7
+[7] 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J", "J_7": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.SET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.SET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.SET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.SET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 1, 4, 7, 9
+[1] 0, 2, 5, 8
+[2] 3, 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.SET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 8 clusters
+[0] 0, 8
+[1] 2, 5
+[2] 1
+[3] 3
+[4] 4
+[5] 6
+[6] 7
+[7] 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J", "J_7": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.MULTISET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.MULTISET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.MULTISET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.MULTISET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 1, 4, 7, 9
+[1] 0, 2, 5, 8
+[2] 3, 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.MULTISET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 8 clusters
+[0] 0, 8
+[1] 2, 5
+[2] 1
+[3] 3
+[4] 4
+[5] 6
+[6] 7
+[7] 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J", "J_7": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.EDIT_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.EDIT_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.EDIT_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.EDIT_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 6, 7, 9
+[2] 1, 3, 4
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.EDIT_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 10 clusters
+[ 0] 0
+[ 1] 1
+[ 2] 2
+[ 3] 3
+[ 4] 4
+[ 5] 5
+[ 6] 6
+[ 7] 7
+[ 8] 8
+[ 9] 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J", "J_7": "J", "J_8": "J", "J_9": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.SET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 7 clusters
+[0] 0, 8
+[1] 2, 5
+[2] 1, 9
+[3] 3
+[4] 4
+[5] 6
+[6] 7
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.SET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 7 clusters
+[0] 0, 8
+[1] 2, 5
+[2] 1, 9
+[3] 3
+[4] 4
+[5] 6
+[6] 7
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.SET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 7 clusters
+[0] 0, 8
+[1] 2, 5
+[2] 1, 9
+[3] 3
+[4] 4
+[5] 6
+[6] 7
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.SET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3, 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.SET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 10 clusters
+[ 0] 0
+[ 1] 1
+[ 2] 2
+[ 3] 3
+[ 4] 4
+[ 5] 5
+[ 6] 6
+[ 7] 7
+[ 8] 8
+[ 9] 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J", "J_7": "J", "J_8": "J", "J_9": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.MULTISET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.MULTISET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.MULTISET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.MULTISET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3, 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.MULTISET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 10 clusters
+[ 0] 0
+[ 1] 1
+[ 2] 2
+[ 3] 3
+[ 4] 4
+[ 5] 5
+[ 6] 6
+[ 7] 7
+[ 8] 8
+[ 9] 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J", "J_7": "J", "J_8": "J", "J_9": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+ Performance of golden standard model:
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+1.0
+0.7647058823529413
+generalization
+0.9464158551044931
+
+ Xixi split labels:
+['J_X_1', 'J_X_5', 'J_X_2', 'J_X_3', 'J_X_4']
+
+ Xixi refined log results:
+
+ IM without noise threshold:
+token_fitness
+{"perc_fit_traces": 75.8, "average_trace_fitness": 0.9395, "log_fitness": 0.9395, "percentage_of_fitting_traces": 75.8}
+precision
+1.0
+0.7777777777777779
+generalization
+0.8299227073770321
+
+ Xixi clustering:
+Clustering with 10 elements and 6 clusters
+
+[1] 0, 8
+[2] 2, 5
+[3] 3, 6
+[4] 4, 7
+[5] 1, 9
+
+ Data from log without imprecise labels
+
+ IM without noise threshold:
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+1.0
+0.7647058823529413
+generalization
+0.9464158551044931
+
+ Original Labels:
+['H', 'G', 'F', 'J']
+
+ Ground truth clustering clustering:
+Clustering with 10 elements and 4 clusters
+[0] 4, 7
+[1] 3, 6
+[2] 0, 2, 5, 8
+[3] 1, 9
+
+ Xixi Adjusted Rand Index:
+0.6666666666666671
+
+
+
+
+----------------------------------------------------------------------------------------------
+Output from 2025-08-11 18:48:19.919977
+----------------------------------------------------------------------------------------------
+
+
+                
+
+###### Starting pipeline for 0, Distance.EDIT_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+0.7949319213313162
+0.7560975609756097
+generalization
+0.953518249764227
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.EDIT_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.EDIT_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.EDIT_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.EDIT_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.SET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.SET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.SET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.SET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.SET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.MULTISET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.MULTISET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.MULTISET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.MULTISET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.MULTISET_DISTANCE, 1######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 3, 4, 6, 7
+[2] 1, 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.EDIT_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3, 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.EDIT_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3, 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.EDIT_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.EDIT_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 1, 4, 7, 9
+[1] 0, 2, 5, 8
+[2] 3, 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.EDIT_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 8 clusters
+[0] 0, 8
+[1] 2, 5
+[2] 1
+[3] 3
+[4] 4
+[5] 6
+[6] 7
+[7] 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J", "J_7": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.SET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.SET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.SET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.SET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 1, 4, 7, 9
+[1] 0, 2, 5, 8
+[2] 3, 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.SET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 8 clusters
+[0] 0, 8
+[1] 2, 5
+[2] 1
+[3] 3
+[4] 4
+[5] 6
+[6] 7
+[7] 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J", "J_7": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.MULTISET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.MULTISET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.MULTISET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.MULTISET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 1, 4, 7, 9
+[1] 0, 2, 5, 8
+[2] 3, 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.MULTISET_DISTANCE, 3######
+Found communities: 
+
+Clustering with 10 elements and 8 clusters
+[0] 0, 8
+[1] 2, 5
+[2] 1
+[3] 3
+[4] 4
+[5] 6
+[6] 7
+[7] 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J", "J_7": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.EDIT_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.EDIT_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.EDIT_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.EDIT_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 6, 7, 9
+[2] 1, 3, 4
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.EDIT_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 10 clusters
+[ 0] 0
+[ 1] 1
+[ 2] 2
+[ 3] 3
+[ 4] 4
+[ 5] 5
+[ 6] 6
+[ 7] 7
+[ 8] 8
+[ 9] 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J", "J_7": "J", "J_8": "J", "J_9": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.SET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 7 clusters
+[0] 0, 8
+[1] 2, 5
+[2] 1, 9
+[3] 3
+[4] 4
+[5] 6
+[6] 7
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.SET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 7 clusters
+[0] 0, 8
+[1] 2, 5
+[2] 1, 9
+[3] 3
+[4] 4
+[5] 6
+[6] 7
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.SET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 7 clusters
+[0] 0, 8
+[1] 2, 5
+[2] 1, 9
+[3] 3
+[4] 4
+[5] 6
+[6] 7
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.SET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3, 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.SET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 10 clusters
+[ 0] 0
+[ 1] 1
+[ 2] 2
+[ 3] 3
+[ 4] 4
+[ 5] 5
+[ 6] 6
+[ 7] 7
+[ 8] 8
+[ 9] 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J", "J_7": "J", "J_8": "J", "J_9": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0, Distance.MULTISET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.25, Distance.MULTISET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.5, Distance.MULTISET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 4 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3
+[3] 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 0.75, Distance.MULTISET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 3 clusters
+[0] 0, 2, 5, 8
+[1] 1, 4, 7, 9
+[2] 3, 6
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262
+
+
+###### Starting pipeline for 1, Distance.MULTISET_DISTANCE, 5######
+Found communities: 
+
+Clustering with 10 elements and 10 clusters
+[ 0] 0
+[ 1] 1
+[ 2] 2
+[ 3] 3
+[ 4] 4
+[ 5] 5
+[ 6] 6
+[ 7] 7
+[ 8] 8
+[ 9] 9
+
+Reassigned labels
+Map:
+{"J_0": "J", "J_1": "J", "J_2": "J", "J_3": "J", "J_4": "J", "J_5": "J", "J_6": "J", "J_7": "J", "J_8": "J", "J_9": "J"}
+token_fitness
+{"perc_fit_traces": 50.9, "average_trace_fitness": 0.8695333333333269, "log_fitness": 0.8992855179994504, "percentage_of_fitting_traces": 50.9}
+precision
+0.6520621567940179
+0.7560975609756097
+generalization
+0.6326705699360262

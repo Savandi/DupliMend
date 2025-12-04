@@ -1,0 +1,62 @@
+{
+  "trained_activities": [
+    "Start process",
+    "Check document",
+    "Submit application",
+    "Review submission",
+    "Disapprove application",
+    "Revise document",
+    "Approve application",
+    "Complete process",
+    "Accept submission",
+    "Reject submission"
+  ],
+  "autoencoder_config": {
+    "latent_dim": 32,
+    "hidden_dims": [
+      128,
+      64
+    ],
+    "sparsity_lambda": 0.001,
+    "noise_std": 0.1,
+    "learning_rate": 0.001,
+    "max_epochs": 150,
+    "batch_size": 32,
+    "min_events_for_training": 1,
+    "early_stopping_patience": 15,
+    "min_delta": 1e-06,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-08,
+    "weight_decay": 1e-05,
+    "amsgrad": false,
+    "lr_decay_factor": 0.7,
+    "lr_patience": 5,
+    "min_lr": 1e-07,
+    "grad_clip": 1.0,
+    "enable_tensorboard": true,
+    "incremental_learning_rate": 0.0005,
+    "incremental_train_epochs": 2,
+    "buffer_retention_size": 100,
+    "cluster_regularization": {
+      "cluster_reg_weight": 0.1,
+      "separation_weight": 1.0,
+      "compactness_weight": 0.5,
+      "consistency_weight": 0.3,
+      "min_separation_distance": 0.1,
+      "max_intra_cluster_variance": 0.05
+    },
+    "memory_regularization": {
+      "enable_memory_regularization": true,
+      "memory_regularization_weight": 0.1,
+      "max_centroids_per_activity": 50,
+      "centroid_stability_threshold": 10,
+      "memory_decay_factor": 0.95,
+      "exemplar_count": 3,
+      "similarity_threshold": 0.7
+    }
+  },
+  "training_timestamp": "2025-07-15T01:27:23.549065"
+}

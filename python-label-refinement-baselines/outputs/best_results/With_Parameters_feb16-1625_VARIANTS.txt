@@ -1,0 +1,1440 @@
+
+
+-------------------------------------------------------
+Results for feb16-1625/A_1 from 2025-07-08 17:57:20.285674
+-------------------------------------------------------
+
+
+Best found configs for feb16-1625/A_1:
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 0
+Split candidates: D
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\A_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 0
+Split candidates: D
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\A_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 0.25
+Split candidates: D
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\A_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 0.5
+Split candidates: D
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\A_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 0
+Split candidates: D
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\A_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 0.75
+Split candidates: D
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\A_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Score:
+0.3431521813927885
+Precision of best_score model :
+0.8714459564111074
+
+-------------------------------------------------------
+Results for feb16-1625/D_1 from 2025-07-08 17:57:44.370913
+-------------------------------------------------------
+
+
+Best found configs for feb16-1625/D_1:
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0.25
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0.5
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0.75
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 1
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0.25
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0.5
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0.75
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 1
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0.25
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0.5
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0.75
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 1
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0.25
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0.5
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0.75
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0.25
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0.5
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0.75
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0.25
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0.5
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0.75
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 0
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 0.25
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 0.5
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 0.75
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 0
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 0.25
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 0.5
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 0.75
+Split candidates: J
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\D_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Score:
+0.7619047619047622
+Precision of best_score model :
+1.0
+
+-------------------------------------------------------
+Results for feb16-1625/E_1 from 2025-07-08 18:32:54.842749
+-------------------------------------------------------
+
+
+Best found configs for feb16-1625/E_1:
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0
+Split candidates: C
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\E_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0.25
+Split candidates: C
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\E_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0.5
+Split candidates: C
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\E_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0
+Split candidates: C
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\E_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0.25
+Split candidates: C
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\E_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0.5
+Split candidates: C
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\E_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0
+Split candidates: C
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\E_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0.25
+Split candidates: C
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\E_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0.5
+Split candidates: C
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\E_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0
+Split candidates: C
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\E_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0.25
+Split candidates: C
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\E_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0.5
+Split candidates: C
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\E_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0.75
+Split candidates: C
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\E_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0
+Split candidates: C
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\E_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0.25
+Split candidates: C
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\E_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0.5
+Split candidates: C
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\E_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0
+Split candidates: C
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\E_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0.25
+Split candidates: C
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\E_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0.5
+Split candidates: C
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\E_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 0
+Split candidates: C
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\E_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 0.25
+Split candidates: C
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\E_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Score:
+0.7141303559776696
+Precision of best_score model :
+0.7425296156872754
+
+-------------------------------------------------------
+Results for feb16-1625/H_1 from 2025-07-08 18:33:33.999180
+-------------------------------------------------------
+
+
+Best found configs for feb16-1625/H_1:
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0.75
+Split candidates: N
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\H_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Score:
+0.15074857839306244
+Precision of best_score model :
+0.980941380306093
+
+-------------------------------------------------------
+Results for feb16-1625/I_1 from 2025-07-08 18:36:46.977199
+-------------------------------------------------------
+
+
+Best found configs for feb16-1625/I_1:
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0.75
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\I_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Score:
+0.7138461538461539
+Precision of best_score model :
+0.6478780748077817
+
+-------------------------------------------------------
+Results for feb16-1625/J_1 from 2025-07-08 18:37:52.144734
+-------------------------------------------------------
+
+
+Best found configs for feb16-1625/J_1:
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\J_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0.25
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\J_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0.5
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\J_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0.75
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\J_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 1
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\J_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\J_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0.25
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\J_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0.5
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\J_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0.75
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\J_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 1
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\J_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\J_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0.25
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\J_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0.5
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\J_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0.75
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\J_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 1
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\J_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\J_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0.25
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\J_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0.5
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\J_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0.75
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\J_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 1
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\J_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 1
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\J_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 1
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\J_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 0.75
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\J_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Score:
+0.016552699720124894
+Precision of best_score model :
+0.9470829068577278
+
+-------------------------------------------------------
+Results for feb16-1625/L_1 from 2025-07-08 18:38:20.985153
+-------------------------------------------------------
+
+
+Best found configs for feb16-1625/L_1:
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 1
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\L_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 1
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\L_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Score:
+0.351582757779846
+Precision of best_score model :
+0.991133254517818
+
+-------------------------------------------------------
+Results for feb16-1625/O_1 from 2025-07-08 18:41:21.176510
+-------------------------------------------------------
+
+
+Best found configs for feb16-1625/O_1:
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 0
+Split candidates: D
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\O_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 0.25
+Split candidates: D
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\O_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Score:
+0.47784803388748015
+Precision of best_score model :
+0.9067502238137869
+
+-------------------------------------------------------
+Results for feb16-1625/P_1 from 2025-07-08 18:44:04.623256
+-------------------------------------------------------
+
+
+Best found configs for feb16-1625/P_1:
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0
+Split candidates: L
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\P_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0.5
+Split candidates: L
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\P_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Score:
+0.5429333627791374
+Precision of best_score model :
+1.0
+
+-------------------------------------------------------
+Results for feb16-1625/A_1 from 2025-08-11 16:29:40.660138
+-------------------------------------------------------
+
+
+Best found configs for feb16-1625/A_1:Score:
+0
+Precision of best_score model :
+0
+
+-------------------------------------------------------
+Results for feb16-1625/D_1 from 2025-08-11 16:29:57.593076
+-------------------------------------------------------
+
+
+Best found configs for feb16-1625/D_1:Score:
+0
+Precision of best_score model :
+0
+
+-------------------------------------------------------
+Results for feb16-1625/A_1 from 2025-08-11 16:32:31.608599
+-------------------------------------------------------
+
+
+Best found configs for feb16-1625/A_1:Score:
+0
+Precision of best_score model :
+0
+
+-------------------------------------------------------
+Results for feb16-1625/D_1 from 2025-08-11 16:32:47.677456
+-------------------------------------------------------
+
+
+Best found configs for feb16-1625/D_1:Score:
+0
+Precision of best_score model :
+0
+
+-------------------------------------------------------
+Results for feb16-1625/A_1 from 2025-08-11 16:37:43.883186
+-------------------------------------------------------
+
+
+Best found configs for feb16-1625/A_1:Score:
+0
+Precision of best_score model :
+0
+
+-------------------------------------------------------
+Results for feb16-1625/D_1 from 2025-08-11 16:38:00.075700
+-------------------------------------------------------
+
+
+Best found configs for feb16-1625/D_1:Score:
+0
+Precision of best_score model :
+0
+
+-------------------------------------------------------
+Results for feb16-1625/A_1 from 2025-08-11 17:03:36.504917
+-------------------------------------------------------
+
+
+Best found configs for feb16-1625/A_1:Score:
+0
+Precision of best_score model :
+0
+
+-------------------------------------------------------
+Results for feb16-1625/D_1 from 2025-08-11 17:03:52.708070
+-------------------------------------------------------
+
+
+Best found configs for feb16-1625/D_1:Score:
+0
+Precision of best_score model :
+0
+
+-------------------------------------------------------
+Results for feb16-1625/E_1 from 2025-08-11 17:25:30.570038
+-------------------------------------------------------
+
+
+Best found configs for feb16-1625/E_1:Score:
+0
+Precision of best_score model :
+0
+
+-------------------------------------------------------
+Results for feb16-1625/H_1 from 2025-08-11 17:25:57.657291
+-------------------------------------------------------
+
+
+Best found configs for feb16-1625/H_1:Score:
+0
+Precision of best_score model :
+0
+
+-------------------------------------------------------
+Results for feb16-1625/A_1 from 2025-08-11 18:36:02.509225
+-------------------------------------------------------
+
+
+Best found configs for feb16-1625/A_1:Score:
+0
+Precision of best_score model :
+0
+
+-------------------------------------------------------
+Results for feb16-1625/D_1 from 2025-08-11 18:36:22.606504
+-------------------------------------------------------
+
+
+Best found configs for feb16-1625/D_1:Score:
+0
+Precision of best_score model :
+0
+
+-------------------------------------------------------
+Results for feb16-1625/A_1 from 2025-08-11 18:48:06.651915
+-------------------------------------------------------
+
+
+Best found configs for feb16-1625/A_1:Score:
+0
+Precision of best_score model :
+0
+
+-------------------------------------------------------
+Results for feb16-1625/D_1 from 2025-08-11 18:48:22.971930
+-------------------------------------------------------
+
+
+Best found configs for feb16-1625/D_1:Score:
+0
+Precision of best_score model :
+0

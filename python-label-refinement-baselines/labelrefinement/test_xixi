@@ -1,0 +1,383 @@
+import egraph_label_refinement
+from time import time
+from pm4py.objects.log.importer.xes import importer as xes_import_factory
+from pm4py.algo.discovery.inductive import algorithm as inductive_miner
+from pm4py.visualization.petrinet import visualizer as pn_visualizer
+from pm4py.algo.discovery.alpha import algorithm as alpha_miner
+import os
+import copy as c
+import psutil
+import pm4py
+import pandas as pd
+from pm4py.objects.conversion.log import converter as log_converter
+from pm4py.objects.log.util import dataframe_utils
+process = psutil.Process(os.getpid())
+from pm4py.evaluation.precision import evaluator as precision_evaluator
+
+'''
+log_csv = pd.read_csv("logs/postprocessing.csv", sep=',')
+log_csv = dataframe_utils.convert_timestamp_columns_in_df(log_csv)
+log_csv = log_csv.sort_values('<timestamp_column>')
+log = log_converter.apply(log_csv)
+print(log)
+net, initial_marking, final_marking = inductive_miner.apply(log, parameters={
+    inductive_miner.Variants.IMf.value.Parameters.ACTIVITY_KEY: "concept:name"})
+pm4py.view_petri_net(net, initial_marking, final_marking, format="svg")
+'''
+
+
+log_csv2 = pd.read_csv("logs/example_petri_net.csv", sep=',')
+log_csv2 = dataframe_utils.convert_timestamp_columns_in_df(log_csv2)
+#log_csv2 = log_csv2.sort_values(by=['CaseID', 'time:timestamp'], ascending=[True, True])
+#print(log_csv2)
+parameters = {log_converter.Variants.TO_EVENT_LOG.value.Parameters.CASE_ID_KEY: 'CaseID'}
+event_log2 = log_converter.apply(log_csv2, parameters=parameters, variant=log_converter.Variants.TO_EVENT_LOG)
+print(event_log2)
+net, initial_marking, final_marking = inductive_miner.apply(event_log2, parameters={
+    inductive_miner.Variants.IM.value.Parameters.ACTIVITY_KEY: "concept:name"})
+pm4py.view_petri_net(net, initial_marking, final_marking, format="svg")
+
+process_tree = inductive_miner.apply_tree(event_log2, parameters={
+    inductive_miner.Variants.IM.value.Parameters.ACTIVITY_KEY: "concept:name"})
+pm4py.view_process_tree(process_tree, format="svg")
+
+
+
+
+
+
+
+def test_run(imp_log, new_imp_log, ref_log_xixi_method,
+             cluster_method="COMMUNITY_DETECTION",
+             use_trace_folding=False,
+             use_local_cost=False,
+             mapping_search_mode="GREEDY",
+             detection_mode="EXPERIMENT",
+             mapping_evaluation_mode=False,
+             show_models=False,
+             use_mapping_and_label_neighbors=False,
+             detection_mode_imp_in_loop="postprocessing",
+             log_size=1000,use_adaptive_parameters=False, imprecise_labels=[],
+             weight_matched=1, weight_not_matched=10, weight_structure=1,
+                          k=1, variant_threshold=0.9, basic_cost=1, speedup_mode=True, labeling_function=egraph_label_refinement.default_labeling_function, unfolding_threshold=0.6
+             ):
+
+
+    #log_size = log_size
+    #imp_log = imp_log[:log_size]
+    #new_imp_log = new_imp_log[:log_size]
+    #ref_log_xixi_method = ref_log_xixi_method[:log_size]
+
+    graph_parameters = {"TIMESTAMP_KEY": "no_timestamp", "ACTIVITY_KEY": "concept:name",
+                        "EVENT_IDENTIFICATION": "Activity", "CASE_ID_KEY": 0, "LIFECYCLE_KEY": "lifecycle:transition",
+                        "LIFECYCLE_MODE": "atomic", "k": k}
+
+    ref_log_my_method, imprecise_labels, original_labels, _ = egraph_label_refinement.get_refined_event_log(imp_log, parameters={"TIMESTAMP_KEY": "no_timestamp", "ACTIVITY_KEY": "concept:name",
+        "EVENT_IDENTIFICATION": "Activity", "CASE_ID_KEY": 0, "LIFECYCLE_KEY": "lifecycle:transition",
+                    "LIFECYCLE_MODE": "atomic", "k": "do_not_use_this_k"}, weight_matched=weight_matched, weight_not_matched=weight_not_matched, weight_structure=weight_structure,
+                          k=k, variant_threshold=variant_threshold, basic_cost=basic_cost, labeling_function=egraph_label_refinement.default_labeling_function, unfolding_threshold=0.6,
+                                                                                        cluster_method=cluster_method,
+                                                                                        use_trace_folding=use_trace_folding,
+                                                                                        use_local_cost=use_local_cost,
+                                                                                        mapping_search_mode=mapping_search_mode,
+                                                                                        detection_mode=detection_mode,
+                                                                                        mapping_evaluation_mode=mapping_evaluation_mode,
+                                                                                        use_mapping_and_label_neighbors=use_mapping_and_label_neighbors,
+                                                                                        original_labels=[], imprecise_labels=imprecise_labels, detection_mode_imp_in_loop=detection_mode_imp_in_loop,
+                                                                                        speedup_mode=speedup_mode,
+                                                                                        use_adaptive_parameters=use_adaptive_parameters) # ), graph_parameters, weight_matched, weight_not_matched, weight_structure, k, variant_threshold, basic_cost,#labeling_function, unfolding_threshold)
+
+
+    net_xixi, initial_marking_xixi, final_marking_xixi = inductive_miner.apply(ref_log_xixi_method, parameters={
+        inductive_miner.Variants.IMf.value.Parameters.ACTIVITY_KEY: graph_parameters["ACTIVITY_KEY"]})
+
+    net, initial_marking, final_marking = inductive_miner.apply(ref_log_my_method, parameters={
+        inductive_miner.Variants.IMf.value.Parameters.ACTIVITY_KEY: graph_parameters["ACTIVITY_KEY"]})
+
+    imp_net, imp_initial_marking, imp_final_marking = inductive_miner.apply(new_imp_log, parameters={
+        inductive_miner.Variants.IMf.value.Parameters.ACTIVITY_KEY: graph_parameters["ACTIVITY_KEY"]})
+
+
+    alpha_net_xixi, alpha_initial_marking_xixi, alpha_final_marking_xixi = alpha_miner.apply(ref_log_xixi_method)
+    alpha_net, alpha_initial_marking, alpha_final_marking = alpha_miner.apply(ref_log_my_method)
+    alpha_imp_net, alpha_imp_initial_marking, alpha_imp_final_marking = alpha_miner.apply(new_imp_log)
+
+    #TODO fix imprecise_labels[0], e.g. allow multiple imp_labels
+
+    for transition in net.transitions:
+        if transition.label != None and transition.label.split("_X_", 1)[0] in imprecise_labels:
+            transition.label = imprecise_labels[0]
+
+    for transition in net_xixi.transitions:
+        if transition.label != None and transition.label.split("_X_", 1)[0] in imprecise_labels:
+            transition.label = imprecise_labels[0]
+    '''
+
+
+    for transition in net.transitions:
+        if transition.label != None and transition.label[0] == imprecise_labels[0]:
+            transition.label = imprecise_labels[0]
+
+    for transition in net_xixi.transitions:
+        if transition.label != None and transition.label[0] == imprecise_labels[0]:
+            transition.label = imprecise_labels[0]
+
+
+    for transition in alpha_net.transitions:
+        if transition.label != None and transition.label[0] == imprecise_labels[0]:
+            transition.label = imprecise_labels[0]
+
+    for transition in alpha_net_xixi.transitions:
+        if transition.label != None and transition.label[0] == imprecise_labels[0]:
+            transition.label = imprecise_labels[0]
+    '''
+
+    if show_models:
+        time4 = time()
+        #print("change model time: ", time4 - time3)
+        gviz = pn_visualizer.apply(imp_net, imp_initial_marking, imp_final_marking)
+        #pn_visualizer.view(gviz)
+
+        gviz = pn_visualizer.apply(net_xixi, initial_marking_xixi, final_marking_xixi)
+        #pn_visualizer.view(gviz)
+
+        gviz = pn_visualizer.apply(net, initial_marking, final_marking)
+        pn_visualizer.view(gviz)
+
+
+        #########################################################################
+
+
+    #######################################################################
+
+    # imp = imprecise
+    imp_prec = precision_evaluator.apply(new_imp_log, imp_net, imp_initial_marking, imp_final_marking,
+                                         variant=precision_evaluator.Variants.ALIGN_ETCONFORMANCE)
+    print("imp  prec: ", imp_prec)
+
+    ref_prec = precision_evaluator.apply(new_imp_log, net, initial_marking, final_marking,
+                                         variant=precision_evaluator.Variants.ALIGN_ETCONFORMANCE)
+    print("new  prec: ", ref_prec)
+
+    xixi_prec = precision_evaluator.apply(new_imp_log, net_xixi, initial_marking_xixi, final_marking_xixi,
+                                          variant=precision_evaluator.Variants.ALIGN_ETCONFORMANCE)
+    print("xixi prec: ", xixi_prec)
+    time5 = time()
+    #print("evaluation time: ", time5 - time4)
+
+    print("-----")
+
+    from pm4py.evaluation.replay_fitness import evaluator as replay_fitness_evaluator
+
+    # imp_fitness = replay_fitness_evaluator.apply(new_imp_log, imp_net, imp_initial_marking, imp_final_marking, variant=replay_fitness_evaluator.Variants.ALIGNMENT_BASED)
+    # print("imp  fitness: ", imp_fitness)
+
+    # ref_fitness = replay_fitness_evaluator.apply(new_imp_log, net, initial_marking, final_marking, variant=replay_fitness_evaluator.Variants.ALIGNMENT_BASED)
+    # print("ref  fitness: ", ref_fitness)
+
+    # xixi_fitness = replay_fitness_evaluator.apply(new_imp_log, net_xixi, initial_marking_xixi, final_marking_xixi, variant=replay_fitness_evaluator.Variants.ALIGNMENT_BASED)
+    # print("xixi fitness: ", xixi_fitness)
+    '''
+    from pm4py.evaluation.soundness.woflan import algorithm as woflan
+
+    imp_is_sound = woflan.apply(alpha_imp_net, alpha_imp_initial_marking, alpha_imp_final_marking, parameters={woflan.Parameters.RETURN_ASAP_WHEN_NOT_SOUND: True,
+                                                     woflan.Parameters.PRINT_DIAGNOSTICS: False,
+                                                     woflan.Parameters.RETURN_DIAGNOSTICS: False})
+
+    print("imp  is sound: ", imp_is_sound)
+
+    ref_is_sound = woflan.apply(alpha_net, alpha_initial_marking, alpha_final_marking,
+                                parameters={woflan.Parameters.RETURN_ASAP_WHEN_NOT_SOUND: True,
+                                            woflan.Parameters.PRINT_DIAGNOSTICS: False,
+                                            woflan.Parameters.RETURN_DIAGNOSTICS: False})
+
+    print("new  is sound: ", ref_is_sound)
+
+    xixi_is_sound = woflan.apply(alpha_net_xixi, alpha_initial_marking_xixi, alpha_final_marking_xixi,
+                                parameters={woflan.Parameters.RETURN_ASAP_WHEN_NOT_SOUND: True,
+                                            woflan.Parameters.PRINT_DIAGNOSTICS: False,
+                                            woflan.Parameters.RETURN_DIAGNOSTICS: False})
+
+    print("xixi_is_sound: ", xixi_is_sound)
+    '''
+    return imp_prec, ref_prec, xixi_prec
+
+
+
+'''
+test_run(event_log2, event_log2, event_log2,
+             cluster_method="COMMUNITY_DETECTION",
+             use_trace_folding=False,
+             use_local_cost=True,
+             mapping_search_mode="SEMI-GREEDY",
+             detection_mode="EXPERIMENT",
+             mapping_evaluation_mode=True,
+             show_models=True,
+             use_mapping_and_label_neighbors=False,
+             detection_mode_imp_in_loop="postprocessing",
+             log_size=1000,use_adaptive_parameters=False, imprecise_labels=["A"],
+             weight_matched=1, weight_not_matched=10, weight_structure=5,
+                          k=1, variant_threshold=0.9, basic_cost=1, speedup_mode=True, labeling_function=egraph_label_refinement.default_labeling_function, unfolding_threshold=0.6
+             )
+'''
+
+#directory = "../xixi_files/noImprInLoop_adaptive_OD"
+directory = "xixi_files/noImprInLoop_default_OD"
+
+
+#problematic folding:
+# ../xixi_files/noImprInLoop_default_OD/mrt03-1655/BO_1_LogD_Sequence_mrt03-1655.xes.gz different mappuing quality, not fault of folding
+# ../xixi_files/noImprInLoop_default_OD/mrt03-1655/BT_1_LogD_Sequence_mrt03-1655.xes.gz sometimes equal, sometimes bad
+# ../xixi_files/noImprInLoop_default_OD/feb29-1654/R_1_LogD_Sequence_feb29-1654.xes.gz folding bad! Complicated parallelity
+# ../xixi_files/noImprInLoop_default_OD/feb29-1614/P_1_LogD_Sequence_feb29-1614.xes.gz noise
+# ../xixi_files/noImprInLoop_default_OD/feb29-1548/O_1_LogD_Sequence_feb29-1548.xes.gz
+# ../xixi_files/noImprInLoop_default_OD/feb29-1548/B_1_LogD_Sequence_feb29-1548.xes.gz
+#../xixi_files/noImprInLoop_default_OD/feb17-1236/T_1_LogD_Sequence_feb17-1236.xes.gz
+log_size = 50
+if False: #b17  0936
+    folder_name = "feb17-0936"
+    file_name = "A_1_LogD_Sequence_feb17-0936.xes.gz"
+
+    print("Path name: ", os.path.join(directory, folder_name, file_name))
+    imp_log     = xes_import_factory.apply(os.path.join(directory, folder_name, "logs", file_name),
+                                           parameters={xes_import_factory.Variants.ITERPARSE.value.Parameters.MAX_TRACES: log_size})
+    new_imp_log = c.deepcopy(imp_log)#xes_import_factory.apply(os.path.join(directory, folder_name, "logs", file_name),
+                                           #parameters={xes_import_factory.Variants.ITERPARSE.value.Parameters.MAX_TRACES: log_size})
+    ref_log_xixi_method = xes_import_factory.apply(os.path.join(directory, folder_name, "logs", file_name.replace("LogD", "LogR", 1)),
+                                           parameters={xes_import_factory.Variants.ITERPARSE.value.Parameters.MAX_TRACES: log_size})
+
+    imp_log2 = c.deepcopy(imp_log)
+    new_imp_log2 = c.deepcopy(new_imp_log)
+    ref_log_xixi_method = c.deepcopy(ref_log_xixi_method)
+    test_run(imp_log, new_imp_log, ref_log_xixi_method,
+             cluster_method="COMMUNITY_DETECTION",
+             use_trace_folding=True,
+             use_local_cost=False,
+             mapping_search_mode="SEMI-GREEDY",
+             detection_mode="EXPERIMENT",
+             mapping_evaluation_mode=True,
+             show_models=True,
+             use_mapping_and_label_neighbors=False,
+             detection_mode_imp_in_loop="postprocessing", #"none", #
+             speedup_mode=True, #todo: fix slow mode
+             use_adaptive_parameters=False,
+             variant_threshold=0.0)
+
+
+
+else:
+    imp_best_counter1 = 0
+    ref_best_counter1 = 0
+    xixi_best_counter1 = 0
+    xixi_better_ten_ref1 = 0
+    ref_better_ten_xixi1 = 0
+
+    imp_best_counter2 = 0
+    ref_best_counter2 = 0
+    xixi_best_counter2 = 0
+    xixi_better_ten_ref2 = 0
+    ref_better_ten_xixi2 = 0
+    overall_counter = 0
+    better_1 = 0
+    better_2 = 0
+    for folder_name in sorted(os.listdir(directory), reverse=False):
+        folder_list = os.listdir(os.path.join(directory, folder_name, "logs"))
+        for file_name in sorted(folder_list, reverse=False):
+
+
+
+
+
+
+            if "LogD" in file_name and file_name.replace("LogD", "LogR", 1) in folder_list:
+                print("Path name: ", os.path.join(directory, folder_name, file_name))
+                imp_log = xes_import_factory.apply(os.path.join(directory, folder_name, "logs", file_name),
+                                                   parameters={xes_import_factory.Variants.ITERPARSE.value.Parameters.MAX_TRACES: log_size})
+                new_imp_log = c.deepcopy(imp_log)  # xes_import_factory.apply(os.path.join(directory, folder_name, "logs", file_name),
+                # parameters={xes_import_factory.Variants.ITERPARSE.value.Parameters.MAX_TRACES: log_size})
+                ref_log_xixi_method = xes_import_factory.apply(
+                    os.path.join(directory, folder_name, "logs", file_name.replace("LogD", "LogR", 1)),
+                    parameters={xes_import_factory.Variants.ITERPARSE.value.Parameters.MAX_TRACES: log_size})
+
+                imp_log2 = c.deepcopy(imp_log)
+                new_imp_log2 = c.deepcopy(new_imp_log)
+                ref_log_xixi_method2 = c.deepcopy(ref_log_xixi_method)
+
+                time1 = time()
+
+                imp_prec1, ref_prec1, xixi_prec1 = test_run(imp_log, new_imp_log, ref_log_xixi_method,
+                         cluster_method="COMMUNITY_DETECTION",
+                         use_trace_folding=True,
+                         use_local_cost=False,
+                         mapping_search_mode="SEMI-GREEDY",
+                         detection_mode="EXPERIMENT",
+                         mapping_evaluation_mode=False,
+                         show_models=False,
+                         use_mapping_and_label_neighbors=False,
+                         detection_mode_imp_in_loop="postprocessing",
+                         speedup_mode=True,
+                         use_adaptive_parameters=False,
+                         variant_threshold=0.9)
+                
+                time2 = time()
+
+
+
+
+                imp_prec2, ref_prec2, xixi_prec2 = test_run(imp_log2, new_imp_log2, ref_log_xixi_method2,
+                         cluster_method="COMMUNITY_DETECTION",
+                         use_trace_folding=False,
+                         use_local_cost=False,
+                         mapping_search_mode="SEMI-GREEDY",
+                         detection_mode="EXPERIMENT",
+                         mapping_evaluation_mode=False,
+                         show_models=False,
+                         use_mapping_and_label_neighbors=False,
+                         detection_mode_imp_in_loop="postprocessing",
+                         speedup_mode=True,
+                         use_adaptive_parameters=False,
+                         variant_threshold=0.8)
+
+                time3 = time()
+
+
+                if imp_prec1 > ref_prec1 and imp_prec1 > xixi_prec1:
+                    imp_best_counter1 += 1
+                if ref_prec1 > imp_prec1 and ref_prec1 > xixi_prec1:
+                    ref_best_counter1 += 1
+                if xixi_prec1 > ref_prec1 and xixi_prec1 > imp_prec1:
+                    xixi_best_counter1 += 1
+                if xixi_prec1 > imp_prec1 and xixi_prec1 > ref_prec1:
+                    xixi_better_ten_ref1 += 1
+                if ref_prec1 > imp_prec1 and xixi_prec1 < ref_prec1:
+                    ref_better_ten_xixi1 += 1
+                overall_counter += 1
+                #print("1.: ", imp_best_counter1, ref_best_counter1, xixi_best_counter1, xixi_better_ten_ref1, ref_better_ten_xixi1, overall_counter)
+                print("1.: ", "imp best:", imp_best_counter1, " ref best:", ref_best_counter1,
+                      " xixi best:", xixi_best_counter1, " xixi better:", xixi_better_ten_ref1, " ref better:",
+                      ref_better_ten_xixi1, " c:", overall_counter, " t:", time2-time1)
+
+
+                if imp_prec2 > ref_prec2 and imp_prec2 > xixi_prec2:
+                    imp_best_counter2 += 1
+                if ref_prec2 > imp_prec2 and ref_prec2 > xixi_prec2:
+                    ref_best_counter2 += 1
+                if xixi_prec2 > ref_prec2 and xixi_prec2 > imp_prec2:
+                    xixi_best_counter2 += 1
+                if xixi_prec2 > imp_prec2 and xixi_prec2 > ref_prec2:
+                    xixi_better_ten_ref2 += 1
+                if ref_prec2 > imp_prec2 and  xixi_prec2 < ref_prec2:
+                    ref_better_ten_xixi2 += 1
+                    
+                if ref_prec1 > ref_prec2:
+                    better_1 += 1
+                if ref_prec2 > ref_prec1:
+                    better_2 += 1
+                print("2.: ", "imp best:", imp_best_counter2, " ref best:", ref_best_counter2,
+                      " xixi best:", xixi_best_counter2, " xixi better:", xixi_better_ten_ref2, " ref better:",
+                      ref_better_ten_xixi2, " c:" ,overall_counter, " t:", time3-time2)
+                print("better_1: ", better_1, "better_2: ", better_2)
+
+                print(process.memory_info().rss)
+                print("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+

@@ -1,0 +1,26 @@
+Log,Variant Threshold,Unfolding Threshold,Refined Log Precision,Refined Log Fitness,Runtime
+enviornmental_permit,1,1,0.13078674,1,1.825496435
+enviornmental_permit,1,0.75,0.13078674,1,1.73220849
+enviornmental_permit,1,0.5,0.13078674,1,1.688447475
+enviornmental_permit,1,0.25,0.13078674,1,1.563975096
+enviornmental_permit,1,0,0.13078674,1,1.485889912
+enviornmental_permit,0.75,1,0.15581117,1,1.266508579
+enviornmental_permit,0.75,0.75,0.15581117,1,1.50257206
+enviornmental_permit,0.75,0.5,0.15581117,1,1.302174807
+enviornmental_permit,0.75,0.25,0.137896547,0.972951434,1.454134226
+enviornmental_permit,0.75,0,0.164907366,0.999473386,1.274110794
+enviornmental_permit,0.5,1,0.15581117,1,1.760544777
+enviornmental_permit,0.5,0.75,0.15581117,1,1.660302162
+enviornmental_permit,0.5,0.5,0.15581117,1,1.404152393
+enviornmental_permit,0.5,0.25,0.15581117,1,1.692418337
+enviornmental_permit,0.5,0,0.158806223,0.990095598,1.546471357
+enviornmental_permit,0.25,1,0.15798245,0.992423805,1.444143057
+enviornmental_permit,0.25,0.75,0.15581117,1,1.234517813
+enviornmental_permit,0.25,0.5,0.15581117,1,1.384868145
+enviornmental_permit,0.25,0.25,0.15798245,0.990777995,1.413763762
+enviornmental_permit,0.25,0,0.15798245,0.990777995,1.48738265
+enviornmental_permit,0,1,0.13078674,1,1.672866106
+enviornmental_permit,0,0.75,0.13078674,1,1.318796158
+enviornmental_permit,0,0.5,0.11653004,0.968455892,1.530718803
+enviornmental_permit,0,0.25,0.13078674,1,1.214616537
+enviornmental_permit,0,0,0.13078674,1,1.186875343

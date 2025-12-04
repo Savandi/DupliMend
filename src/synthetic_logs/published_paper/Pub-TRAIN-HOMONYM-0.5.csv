@@ -1,0 +1,1001 @@
+Case,Activity,Timestamp,Resource,Injection,org,EventID
+0,Take order,2024-05-06 18:00:00.000,Waiter-000001,,Take order,1
+0,start,2024-05-06 18:00:00.000,,,start,2
+0,Review order,2024-05-06 18:00:26.397,Waiter-000002,,Review order,3
+0,Prepare main course,2024-05-06 18:01:27.727,Cook-000001,,Prepare main course,4
+0,prepare drinks,2024-05-06 18:01:27.727,Barman-000001,,prepare drinks,5
+0,Signal food complete,2024-05-06 18:08:55.574,Cook-000002,,Signal food complete,6
+0,bring order,2024-05-06 18:10:35.746,Barman-000002,homonymous Label(Activity:'Bring drinks'),Bring drinks,7
+0,review,2024-05-06 18:13:26.601,Waiter-000003,homonymous Label(Activity:'Review drinks'),Review drinks,8
+1,Take order,2024-05-06 18:15:00.000,Waiter-000004,,Take order,9
+1,start,2024-05-06 18:15:00.000,,,start,10
+0,bring order,2024-05-06 18:17:06.274,Cook helper-000001,homonymous Label(Activity:'Bring food'),Bring food,11
+1,Review order,2024-05-06 18:21:16.885,Waiter-000005,,Review order,12
+1,prepare order,2024-05-06 18:21:19.290,Barman-000003,homonymous Label(Activity:'prepare drinks'),prepare drinks,13
+1,Prepare main course,2024-05-06 18:21:19.290,Cook-000003,,Prepare main course,14
+0,Deliver to customer,2024-05-06 18:28:15.901,Waiter-000001,,Deliver to customer,15
+1,Signal food complete,2024-05-06 18:28:22.423,Cook-000001,,Signal food complete,16
+0,EVENT 8 END,2024-05-06 18:28:36.374,,,EVENT 8 END,17
+2,Take order,2024-05-06 18:30:00.000,Waiter-000002,,Take order,18
+2,start,2024-05-06 18:30:00.000,,,start,19
+2,Review order,2024-05-06 18:31:43.657,Waiter-000003,,Review order,20
+1,Bring food,2024-05-06 18:32:39.040,Cook helper-000002,,Bring food,21
+2,prepare order,2024-05-06 18:32:39.248,Barman-000001,homonymous Label(Activity:'prepare drinks'),prepare drinks,22
+2,prepare order,2024-05-06 18:32:39.248,Cook-000002,homonymous Label(Activity:'Prepare main course'),Prepare main course,23
+2,Prepare starter,2024-05-06 18:32:39.248,Cook helper-000003,,Prepare starter,24
+2,Bring drinks,2024-05-06 18:33:35.761,Barman-000002,,Bring drinks,25
+1,Bring drinks,2024-05-06 18:37:42.138,Barman-000001,,Bring drinks,26
+1,review,2024-05-06 18:38:19.504,Waiter-000004,homonymous Label(Activity:'Review drinks'),Review drinks,27
+2,Review drinks,2024-05-06 18:41:33.110,Waiter-000005,,Review drinks,28
+1,Deliver to customer,2024-05-06 18:41:38.777,Waiter-000001,,Deliver to customer,29
+2,Signal food complete,2024-05-06 18:42:38.623,Cook-000003,,Signal food complete,30
+3,Take order,2024-05-06 18:45:00.000,Waiter-000002,,Take order,31
+3,start,2024-05-06 18:45:00.000,,,start,32
+3,review,2024-05-06 18:45:42.434,Waiter-000003,homonymous Label(Activity:'Review order'),Review order,33
+3,prepare order,2024-05-06 18:46:01.187,Cook-000001,homonymous Label(Activity:'Prepare main course'),Prepare main course,34
+3,prepare drinks,2024-05-06 18:46:01.187,Barman-000003,,prepare drinks,35
+3,bring order,2024-05-06 18:46:25.135,Barman-000001,homonymous Label(Activity:'Bring drinks'),Bring drinks,36
+1,EVENT 8 END,2024-05-06 18:48:07.685,,,EVENT 8 END,37
+3,Review drinks,2024-05-06 18:49:49.033,Waiter-000004,,Review drinks,38
+2,bring order,2024-05-06 18:52:02.985,Cook helper-000001,homonymous Label(Activity:'Bring food'),Bring food,39
+2,Deliver to customer,2024-05-06 18:52:55.482,Waiter-000005,,Deliver to customer,40
+3,prepare drinks,2024-05-06 18:53:13.575,Barman-000002,,prepare drinks,41
+2,EVENT 8 END,2024-05-06 18:56:24.810,,,EVENT 8 END,42
+4,start,2024-05-06 19:00:00.000,,,start,43
+4,Take order,2024-05-06 19:00:00.000,Waiter-000002,,Take order,44
+4,Review order,2024-05-06 19:01:14.635,Waiter-000003,,Review order,45
+4,prepare order,2024-05-06 19:01:40.513,Barman-000003,homonymous Label(Activity:'prepare drinks'),prepare drinks,46
+4,Prepare starter,2024-05-06 19:01:40.513,Cook helper-000003,,Prepare starter,47
+4,Signal food complete,2024-05-06 19:01:41.077,Cook-000002,,Signal food complete,48
+3,Bring drinks,2024-05-06 19:02:51.779,Barman-000001,,Bring drinks,49
+3,review,2024-05-06 19:05:53.390,Waiter-000001,homonymous Label(Activity:'Review drinks'),Review drinks,50
+4,bring order,2024-05-06 19:11:57.561,Barman-000002,homonymous Label(Activity:'Bring drinks'),Bring drinks,51
+5,Take order,2024-05-06 19:15:00.000,Waiter-000004,,Take order,52
+5,start,2024-05-06 19:15:00.000,,,start,53
+5,Review order,2024-05-06 19:16:14.700,Waiter-000005,,Review order,54
+5,prepare drinks,2024-05-06 19:16:25.545,Barman-000001,,prepare drinks,55
+5,prepare order,2024-05-06 19:16:25.545,Cook-000003,homonymous Label(Activity:'Prepare main course'),Prepare main course,56
+4,review,2024-05-06 19:16:42.082,Waiter-000002,homonymous Label(Activity:'Review drinks'),Review drinks,57
+4,Bring food,2024-05-06 19:29:56.764,Cook helper-000002,,Bring food,58
+6,start,2024-05-06 19:30:00.000,,,start,59
+6,Take order,2024-05-06 19:30:00.000,Waiter-000003,,Take order,60
+6,Review order,2024-05-06 19:30:01.617,Waiter-000001,,Review order,61
+6,prepare order,2024-05-06 19:31:15.792,Barman-000003,homonymous Label(Activity:'prepare drinks'),prepare drinks,62
+6,Prepare main course,2024-05-06 19:31:15.792,Cook-000002,,Prepare main course,63
+6,bring order,2024-05-06 19:31:50.421,Barman-000002,homonymous Label(Activity:'Bring drinks'),Bring drinks,64
+4,Deliver to customer,2024-05-06 19:32:28.195,Waiter-000004,,Deliver to customer,65
+6,review,2024-05-06 19:34:50.443,Waiter-000005,homonymous Label(Activity:'Review drinks'),Review drinks,66
+4,EVENT 8 END,2024-05-06 19:37:12.080,,,EVENT 8 END,67
+6,Signal food complete,2024-05-06 19:37:16.849,Cook-000002,,Signal food complete,68
+3,Signal food complete,2024-05-06 19:38:29.090,Cook-000001,,Signal food complete,69
+5,bring order,2024-05-06 19:39:00.219,Barman-000003,homonymous Label(Activity:'Bring drinks'),Bring drinks,70
+5,review,2024-05-06 19:41:06.362,Waiter-000002,homonymous Label(Activity:'Review drinks'),Review drinks,71
+7,start,2024-05-06 19:45:00.000,,,start,72
+7,Take order,2024-05-06 19:45:00.000,Waiter-000003,,Take order,73
+7,Review order,2024-05-06 19:51:43.119,Waiter-000001,,Review order,74
+7,prepare drinks,2024-05-06 19:52:56.552,Barman-000002,,prepare drinks,75
+7,bring order,2024-05-06 19:54:05.837,Barman-000001,homonymous Label(Activity:'Bring drinks'),Bring drinks,76
+7,review,2024-05-06 19:54:29.273,Waiter-000005,homonymous Label(Activity:'Review drinks'),Review drinks,77
+7,Prepare main course,2024-05-06 19:56:37.626,Cook-000001,,Prepare main course,78
+3,Bring food,2024-05-06 19:56:37.626,Cook helper-000001,,Bring food,79
+5,Signal food complete,2024-05-06 19:57:21.743,Cook-000003,,Signal food complete,80
+3,Deliver to customer,2024-05-06 19:59:50.671,Waiter-000004,,Deliver to customer,81
+8,Take order,2024-05-06 20:00:00.000,Waiter-000002,,Take order,82
+8,start,2024-05-06 20:00:00.000,,,start,83
+8,Review order,2024-05-06 20:00:01.138,Waiter-000003,,Review order,84
+8,Prepare starter,2024-05-06 20:00:04.147,Cook helper-000003,,Prepare starter,85
+8,prepare order,2024-05-06 20:00:04.147,Barman-000003,homonymous Label(Activity:'prepare drinks'),prepare drinks,86
+3,EVENT 8 END,2024-05-06 20:00:52.004,,,EVENT 8 END,87
+8,bring order,2024-05-06 20:00:54.944,Barman-000002,homonymous Label(Activity:'Bring drinks'),Bring drinks,88
+8,review,2024-05-06 20:04:36.073,Waiter-000001,homonymous Label(Activity:'Review drinks'),Review drinks,89
+5,Bring food,2024-05-06 20:07:38.081,Cook helper-000002,,Bring food,91
+8,prepare order,2024-05-06 20:07:38.081,Cook-000003,homonymous Label(Activity:'Prepare main course'),Prepare main course,90
+5,Deliver to customer,2024-05-06 20:09:58.152,Waiter-000005,,Deliver to customer,92
+5,EVENT 8 END,2024-05-06 20:10:29.307,,,EVENT 8 END,93
+9,start,2024-05-06 20:15:00.000,,,start,94
+9,Take order,2024-05-06 20:15:00.000,Waiter-000002,,Take order,95
+8,Signal food complete,2024-05-06 20:16:46.824,Cook-000003,,Signal food complete,96
+9,Review order,2024-05-06 20:17:11.153,Waiter-000003,,Review order,97
+9,prepare drinks,2024-05-06 20:18:02.923,Barman-000001,,prepare drinks,98
+9,bring order,2024-05-06 20:23:37.474,Barman-000003,homonymous Label(Activity:'Bring drinks'),Bring drinks,99
+10,start,2024-05-06 20:30:00.000,,,start,100
+10,Take order,2024-05-06 20:30:00.000,Waiter-000004,,Take order,101
+9,review,2024-05-06 20:31:01.146,Waiter-000001,homonymous Label(Activity:'Review drinks'),Review drinks,102
+10,Review order,2024-05-06 20:31:21.530,Waiter-000005,,Review order,103
+10,prepare drinks,2024-05-06 20:32:09.910,Barman-000002,,prepare drinks,104
+10,Bring drinks,2024-05-06 20:33:38.935,Barman-000001,,Bring drinks,105
+9,prepare order,2024-05-06 20:34:05.125,Cook-000002,homonymous Label(Activity:'Prepare main course'),Prepare main course,106
+6,Bring food,2024-05-06 20:34:05.125,Cook helper-000001,,Bring food,107
+6,Deliver to customer,2024-05-06 20:34:19.232,Waiter-000002,,Deliver to customer,108
+6,EVENT 8 END,2024-05-06 20:34:54.999,,,EVENT 8 END,109
+10,Review drinks,2024-05-06 20:38:13.994,Waiter-000003,,Review drinks,110
+10,prepare drinks,2024-05-06 20:40:22.120,Barman-000003,,prepare drinks,111
+11,start,2024-05-06 20:45:00.000,,,start,112
+11,Take order,2024-05-06 20:45:00.000,Waiter-000004,,Take order,113
+11,review,2024-05-06 20:48:48.648,Waiter-000001,homonymous Label(Activity:'Review order'),Review order,114
+11,prepare drinks,2024-05-06 20:48:56.785,Barman-000002,,prepare drinks,115
+10,bring order,2024-05-06 20:53:19.368,Barman-000001,homonymous Label(Activity:'Bring drinks'),Bring drinks,116
+10,Prepare main course,2024-05-06 20:54:46.925,Cook-000002,,Prepare main course,117
+11,prepare order,2024-05-06 20:55:46.162,Cook-000003,homonymous Label(Activity:'Prepare main course'),Prepare main course,118
+8,bring order,2024-05-06 20:55:46.162,Cook helper-000003,homonymous Label(Activity:'Bring food'),Bring food,119
+12,Take order,2024-05-06 21:00:00.000,Waiter-000005,,Take order,120
+12,start,2024-05-06 21:00:00.000,,,start,121
+9,Signal food complete,2024-05-06 21:00:06.516,Cook-000002,,Signal food complete,122
+8,Deliver to customer,2024-05-06 21:00:10.774,Waiter-000002,,Deliver to customer,123
+12,review,2024-05-06 21:00:54.933,Waiter-000003,homonymous Label(Activity:'Review order'),Review order,124
+12,prepare order,2024-05-06 21:01:31.654,Barman-000003,homonymous Label(Activity:'prepare drinks'),prepare drinks,125
+8,EVENT 8 END,2024-05-06 21:01:36.429,,,EVENT 8 END,126
+10,Review drinks,2024-05-06 21:02:35.065,Waiter-000004,,Review drinks,127
+10,Signal food complete,2024-05-06 21:04:57.209,Cook-000003,,Signal food complete,128
+11,bring order,2024-05-06 21:06:31.469,Barman-000001,homonymous Label(Activity:'Bring drinks'),Bring drinks,129
+12,Prepare main course,2024-05-06 21:07:06.622,Cook-000002,,Prepare main course,130
+9,Bring food,2024-05-06 21:07:06.622,Cook helper-000002,,Bring food,131
+11,Review drinks,2024-05-06 21:07:36.392,Waiter-000001,,Review drinks,132
+10,Bring food,2024-05-06 21:08:26.519,Cook helper-000001,,Bring food,133
+11,Signal food complete,2024-05-06 21:08:26.519,Cook-000003,,Signal food complete,134
+12,Bring drinks,2024-05-06 21:14:58.877,Barman-000002,,Bring drinks,135
+13,start,2024-05-06 21:15:00.000,,,start,136
+13,Take order,2024-05-06 21:15:00.000,Waiter-000005,,Take order,137
+13,Review order,2024-05-06 21:15:07.729,Waiter-000003,,Review order,138
+10,Deliver to customer,2024-05-06 21:15:44.921,Waiter-000002,,Deliver to customer,139
+10,EVENT 8 END,2024-05-06 21:17:36.624,,,EVENT 8 END,140
+13,prepare drinks,2024-05-06 21:17:42.504,Barman-000001,,prepare drinks,141
+12,review,2024-05-06 21:17:57.534,Waiter-000004,homonymous Label(Activity:'Review drinks'),Review drinks,142
+12,prepare order,2024-05-06 21:18:33.791,Barman-000003,homonymous Label(Activity:'prepare drinks'),prepare drinks,143
+13,prepare order,2024-05-06 21:18:58.486,Cook-000002,homonymous Label(Activity:'Prepare main course'),Prepare main course,144
+12,Signal food complete,2024-05-06 21:19:39.650,Cook-000002,,Signal food complete,145
+9,Deliver to customer,2024-05-06 21:20:25.348,Waiter-000001,,Deliver to customer,146
+13,bring order,2024-05-06 21:21:46.446,Barman-000002,homonymous Label(Activity:'Bring drinks'),Bring drinks,147
+9,EVENT 8 END,2024-05-06 21:22:47.491,,,EVENT 8 END,148
+12,bring order,2024-05-06 21:23:01.198,Barman-000001,homonymous Label(Activity:'Bring drinks'),Bring drinks,149
+12,Bring food,2024-05-06 21:23:02.711,Cook helper-000003,,Bring food,150
+13,Signal food complete,2024-05-06 21:23:02.711,Cook-000002,,Signal food complete,151
+7,Signal food complete,2024-05-06 21:28:27.029,Cook-000001,,Signal food complete,152
+14,Take order,2024-05-06 21:30:00.000,Waiter-000005,,Take order,153
+14,start,2024-05-06 21:30:00.000,,,start,154
+13,review,2024-05-06 21:32:28.342,Waiter-000002,homonymous Label(Activity:'Review drinks'),Review drinks,155
+14,review,2024-05-06 21:32:44.152,Waiter-000003,homonymous Label(Activity:'Review order'),Review order,156
+14,Prepare starter,2024-05-06 21:33:36.566,Cook helper-000001,,Prepare starter,157
+14,prepare drinks,2024-05-06 21:33:36.566,Barman-000003,,prepare drinks,158
+14,Bring drinks,2024-05-06 21:36:01.242,Barman-000002,,Bring drinks,159
+12,review,2024-05-06 21:38:19.096,Waiter-000004,homonymous Label(Activity:'Review drinks'),Review drinks,160
+14,Review drinks,2024-05-06 21:38:23.082,Waiter-000001,,Review drinks,161
+12,Deliver to customer,2024-05-06 21:39:34.892,Waiter-000005,,Deliver to customer,162
+12,EVENT 8 END,2024-05-06 21:40:05.182,,,EVENT 8 END,163
+11,Bring food,2024-05-06 21:50:38.153,Cook helper-000002,,Bring food,164
+14,Signal food complete,2024-05-06 21:50:38.153,Cook-000003,,Signal food complete,165
+11,Deliver to customer,2024-05-06 21:52:27.104,Waiter-000005,,Deliver to customer,166
+11,EVENT 8 END,2024-05-06 21:52:55.967,,,EVENT 8 END,167
+7,Bring food,2024-05-06 21:54:49.690,Cook helper-000003,,Bring food,168
+7,Deliver to customer,2024-05-06 21:56:07.680,Waiter-000001,,Deliver to customer,169
+7,EVENT 8 END,2024-05-06 21:56:23.319,,,EVENT 8 END,170
+16,start,2024-05-06 22:00:00.000,,,start,171
+16,Take order,2024-05-06 22:00:00.000,Waiter-000002,,Take order,172
+16,review,2024-05-06 22:01:39.892,Waiter-000003,homonymous Label(Activity:'Review order'),Review order,173
+16,prepare order,2024-05-06 22:01:52.609,Barman-000002,homonymous Label(Activity:'prepare drinks'),prepare drinks,174
+16,Prepare main course,2024-05-06 22:04:41.356,Cook-000003,,Prepare main course,175
+14,Bring food,2024-05-06 22:04:41.356,Cook helper-000001,,Bring food,176
+16,Bring drinks,2024-05-06 22:07:06.853,Barman-000003,,Bring drinks,177
+14,Deliver to customer,2024-05-06 22:11:26.879,Waiter-000004,,Deliver to customer,178
+14,EVENT 8 END,2024-05-06 22:11:30.901,,,EVENT 8 END,179
+16,Review drinks,2024-05-06 22:13:15.226,Waiter-000005,,Review drinks,180
+16,prepare drinks,2024-05-06 22:13:28.618,Barman-000001,,prepare drinks,181
+17,Take order,2024-05-06 22:15:00.000,Waiter-000001,,Take order,182
+17,start,2024-05-06 22:15:00.000,,,start,183
+17,Review order,2024-05-06 22:18:17.816,Waiter-000002,,Review order,184
+17,prepare order,2024-05-06 22:18:27.728,Barman-000002,homonymous Label(Activity:'prepare drinks'),prepare drinks,185
+17,Prepare starter,2024-05-06 22:18:27.728,Cook helper-000002,,Prepare starter,186
+16,bring order,2024-05-06 22:19:26.861,Barman-000003,homonymous Label(Activity:'Bring drinks'),Bring drinks,187
+17,Bring drinks,2024-05-06 22:20:05.368,Barman-000001,,Bring drinks,188
+17,prepare order,2024-05-06 22:21:02.434,Cook-000002,homonymous Label(Activity:'Prepare main course'),Prepare main course,189
+13,bring order,2024-05-06 22:21:02.434,Cook helper-000003,homonymous Label(Activity:'Bring food'),Bring food,190
+17,Review drinks,2024-05-06 22:23:30.646,Waiter-000003,,Review drinks,191
+17,Signal food complete,2024-05-06 22:24:00.774,Cook-000002,,Signal food complete,192
+17,prepare order,2024-05-06 22:24:10.802,Barman-000002,homonymous Label(Activity:'prepare drinks'),prepare drinks,193
+17,bring order,2024-05-06 22:27:53.879,Barman-000001,homonymous Label(Activity:'Bring drinks'),Bring drinks,194
+16,Signal food complete,2024-05-06 22:27:58.644,Cook-000001,,Signal food complete,195
+18,Take order,2024-05-06 22:30:00.000,Waiter-000005,,Take order,196
+18,start,2024-05-06 22:30:00.000,,,start,197
+18,review,2024-05-06 22:31:25.044,Waiter-000001,homonymous Label(Activity:'Review order'),Review order,198
+13,Deliver to customer,2024-05-06 22:32:42.832,Waiter-000002,,Deliver to customer,199
+13,EVENT 8 END,2024-05-06 22:33:01.508,,,EVENT 8 END,200
+18,prepare order,2024-05-06 22:35:16.569,Barman-000002,homonymous Label(Activity:'prepare drinks'),prepare drinks,201
+18,prepare order,2024-05-06 22:35:16.569,Cook-000003,homonymous Label(Activity:'Prepare main course'),Prepare main course,202
+18,Signal food complete,2024-05-06 22:37:13.341,Cook-000003,,Signal food complete,203
+17,bring order,2024-05-06 22:38:55.367,Cook helper-000002,homonymous Label(Activity:'Bring food'),Bring food,204
+18,bring order,2024-05-06 22:43:24.354,Barman-000002,homonymous Label(Activity:'Bring drinks'),Bring drinks,205
+17,Review drinks,2024-05-06 22:43:38.259,Waiter-000003,,Review drinks,206
+17,prepare order,2024-05-06 22:44:19.303,Barman-000001,homonymous Label(Activity:'prepare drinks'),prepare drinks,207
+17,Bring drinks,2024-05-06 22:44:19.516,Barman-000001,,Bring drinks,208
+17,review,2024-05-06 22:45:06.174,Waiter-000005,homonymous Label(Activity:'Review drinks'),Review drinks,209
+18,review,2024-05-06 22:45:51.776,Waiter-000002,homonymous Label(Activity:'Review drinks'),Review drinks,210
+17,Deliver to customer,2024-05-06 22:48:22.455,Waiter-000003,,Deliver to customer,211
+17,EVENT 8 END,2024-05-06 22:49:12.192,,,EVENT 8 END,212
+18,prepare order,2024-05-06 22:49:21.605,Barman-000002,homonymous Label(Activity:'prepare drinks'),prepare drinks,213
+18,Bring drinks,2024-05-06 22:49:37.255,Barman-000002,,Bring drinks,214
+16,review,2024-05-06 22:50:01.585,Waiter-000005,homonymous Label(Activity:'Review drinks'),Review drinks,215
+18,Review drinks,2024-05-06 22:53:49.108,Waiter-000004,,Review drinks,216
+18,prepare order,2024-05-06 22:53:52.637,Barman-000003,homonymous Label(Activity:'prepare drinks'),prepare drinks,217
+20,start,2024-05-06 23:00:00.000,,,start,219
+20,Take order,2024-05-06 23:00:00.000,Waiter-000003,,Take order,218
+18,Bring drinks,2024-05-06 23:01:16.851,Barman-000001,,Bring drinks,220
+18,Review drinks,2024-05-06 23:02:20.635,Waiter-000002,,Review drinks,221
+20,Review order,2024-05-06 23:03:47.094,Waiter-000005,,Review order,222
+16,Bring food,2024-05-06 23:04:03.859,Cook helper-000003,,Bring food,223
+16,Deliver to customer,2024-05-06 23:04:05.187,Waiter-000004,,Deliver to customer,224
+16,EVENT 8 END,2024-05-06 23:05:18.408,,,EVENT 8 END,225
+20,prepare order,2024-05-06 23:06:23.195,Cook helper-000002,homonymous Label(Activity:'Prepare starter'),Prepare starter,226
+20,prepare order,2024-05-06 23:06:23.195,Barman-000003,homonymous Label(Activity:'prepare drinks'),prepare drinks,227
+20,Prepare main course,2024-05-06 23:06:23.195,Cook-000001,,Prepare main course,228
+20,Bring drinks,2024-05-06 23:09:15.304,Barman-000001,,Bring drinks,229
+20,review,2024-05-06 23:14:46.763,Waiter-000002,homonymous Label(Activity:'Review drinks'),Review drinks,230
+21,start,2024-05-06 23:15:00.000,,,start,232
+21,Take order,2024-05-06 23:15:00.000,Waiter-000003,,Take order,231
+20,prepare order,2024-05-06 23:15:22.781,Barman-000002,homonymous Label(Activity:'prepare drinks'),prepare drinks,233
+20,bring order,2024-05-06 23:19:45.326,Barman-000003,homonymous Label(Activity:'Bring drinks'),Bring drinks,234
+20,review,2024-05-06 23:22:43.189,Waiter-000004,homonymous Label(Activity:'Review drinks'),Review drinks,235
+20,prepare drinks,2024-05-06 23:23:48.832,Barman-000001,,prepare drinks,236
+21,Review order,2024-05-06 23:23:54.205,Waiter-000001,,Review order,237
+21,prepare order,2024-05-06 23:24:28.828,Barman-000002,homonymous Label(Activity:'prepare drinks'),prepare drinks,238
+21,Prepare starter,2024-05-06 23:24:28.828,Cook helper-000001,,Prepare starter,239
+21,prepare order,2024-05-06 23:28:10.639,Cook-000001,homonymous Label(Activity:'Prepare main course'),Prepare main course,240
+20,Bring drinks,2024-05-06 23:31:48.660,Barman-000003,,Bring drinks,241
+20,Review drinks,2024-05-06 23:32:22.831,Waiter-000002,,Review drinks,242
+21,bring order,2024-05-06 23:35:41.397,Barman-000003,homonymous Label(Activity:'Bring drinks'),Bring drinks,243
+21,review,2024-05-06 23:37:39.341,Waiter-000003,homonymous Label(Activity:'Review drinks'),Review drinks,244
+20,Signal food complete,2024-05-06 23:50:55.024,Cook-000001,,Signal food complete,245
+20,bring order,2024-05-06 23:53:21.674,Cook helper-000003,homonymous Label(Activity:'Bring food'),Bring food,246
+20,Deliver to customer,2024-05-06 23:56:29.231,Waiter-000003,,Deliver to customer,247
+20,EVENT 8 END,2024-05-06 23:56:57.902,,,EVENT 8 END,248
+21,Signal food complete,2024-05-07 00:05:51.169,Cook-000002,,Signal food complete,249
+21,Bring food,2024-05-07 00:11:39.543,Cook helper-000001,,Bring food,250
+21,Deliver to customer,2024-05-07 00:18:09.360,Waiter-000002,,Deliver to customer,251
+21,EVENT 8 END,2024-05-07 00:19:02.441,,,EVENT 8 END,252
+27,Take order,2024-05-07 00:45:00.000,Waiter-000002,,Take order,253
+27,start,2024-05-07 00:45:00.000,,,start,254
+27,review,2024-05-07 00:49:21.662,Waiter-000005,homonymous Label(Activity:'Review order'),Review order,255
+18,bring order,2024-05-07 00:49:26.658,Cook helper-000002,homonymous Label(Activity:'Bring food'),Bring food,256
+27,prepare order,2024-05-07 00:50:05.575,Cook helper-000001,homonymous Label(Activity:'Prepare starter'),Prepare starter,258
+27,prepare order,2024-05-07 00:50:05.575,Barman-000002,homonymous Label(Activity:'prepare drinks'),prepare drinks,257
+18,Deliver to customer,2024-05-07 00:50:22.590,Waiter-000003,,Deliver to customer,259
+27,Bring drinks,2024-05-07 00:50:33.504,Barman-000001,,Bring drinks,260
+27,Review drinks,2024-05-07 00:52:47.015,Waiter-000001,,Review drinks,261
+18,EVENT 8 END,2024-05-07 00:52:51.532,,,EVENT 8 END,262
+27,prepare order,2024-05-07 00:56:56.744,Barman-000003,homonymous Label(Activity:'prepare drinks'),prepare drinks,263
+27,prepare order,2024-05-07 00:57:15.158,Cook-000002,homonymous Label(Activity:'Prepare main course'),Prepare main course,264
+28,start,2024-05-07 01:00:00.000,,,start,265
+28,Take order,2024-05-07 01:00:00.000,Waiter-000005,,Take order,266
+28,review,2024-05-07 01:00:31.077,Waiter-000004,homonymous Label(Activity:'Review order'),Review order,267
+28,prepare drinks,2024-05-07 01:01:52.659,Barman-000002,,prepare drinks,268
+28,Bring drinks,2024-05-07 01:03:06.308,Barman-000001,,Bring drinks,269
+28,review,2024-05-07 01:04:25.658,Waiter-000003,homonymous Label(Activity:'Review drinks'),Review drinks,270
+27,bring order,2024-05-07 01:08:03.120,Barman-000002,homonymous Label(Activity:'Bring drinks'),Bring drinks,271
+27,review,2024-05-07 01:10:01.184,Waiter-000001,homonymous Label(Activity:'Review drinks'),Review drinks,272
+29,start,2024-05-07 01:15:00.000,,,start,273
+29,Take order,2024-05-07 01:15:00.000,Waiter-000002,,Take order,274
+29,review,2024-05-07 01:15:32.092,Waiter-000005,homonymous Label(Activity:'Review order'),Review order,275
+29,prepare order,2024-05-07 01:15:52.340,Barman-000001,homonymous Label(Activity:'prepare drinks'),prepare drinks,276
+28,Prepare main course,2024-05-07 01:19:12.352,Cook-000001,,Prepare main course,277
+29,Prepare main course,2024-05-07 01:20:36.257,Cook-000001,,Prepare main course,278
+27,Signal food complete,2024-05-07 01:23:38.710,Cook-000003,,Signal food complete,279
+27,bring order,2024-05-07 01:24:49.463,Cook helper-000001,homonymous Label(Activity:'Bring food'),Bring food,280
+27,Deliver to customer,2024-05-07 01:25:13.870,Waiter-000004,,Deliver to customer,281
+30,Take order,2024-05-07 01:30:00.000,Waiter-000001,,Take order,283
+30,start,2024-05-07 01:30:00.000,,,start,282
+30,Review order,2024-05-07 01:30:27.482,Waiter-000002,,Review order,284
+29,Bring drinks,2024-05-07 01:31:50.553,Barman-000003,,Bring drinks,285
+27,EVENT 8 END,2024-05-07 01:32:04.645,,,EVENT 8 END,286
+28,Signal food complete,2024-05-07 01:32:09.144,Cook-000002,,Signal food complete,287
+30,prepare drinks,2024-05-07 01:32:11.366,Barman-000002,,prepare drinks,288
+29,Review drinks,2024-05-07 01:32:37.932,Waiter-000005,,Review drinks,289
+30,Bring drinks,2024-05-07 01:34:54.751,Barman-000001,,Bring drinks,290
+30,review,2024-05-07 01:37:02.549,Waiter-000003,homonymous Label(Activity:'Review drinks'),Review drinks,291
+31,start,2024-05-07 01:45:00.000,,,start,292
+31,Take order,2024-05-07 01:45:00.000,Waiter-000004,,Take order,293
+31,review,2024-05-07 01:45:18.174,Waiter-000002,homonymous Label(Activity:'Review order'),Review order,294
+31,Prepare starter,2024-05-07 01:45:35.382,Cook helper-000001,,Prepare starter,296
+31,prepare order,2024-05-07 01:45:35.382,Barman-000003,homonymous Label(Activity:'prepare drinks'),prepare drinks,295
+31,Bring drinks,2024-05-07 01:47:23.177,Barman-000002,,Bring drinks,297
+31,Review drinks,2024-05-07 01:48:40.031,Waiter-000001,,Review drinks,298
+30,Prepare main course,2024-05-07 01:49:12.895,Cook-000002,,Prepare main course,299
+28,bring order,2024-05-07 01:49:12.895,Cook helper-000002,homonymous Label(Activity:'Bring food'),Bring food,300
+31,prepare order,2024-05-07 01:50:36.923,Cook-000003,homonymous Label(Activity:'Prepare main course'),Prepare main course,301
+28,Deliver to customer,2024-05-07 01:51:28.624,Waiter-000005,,Deliver to customer,302
+28,EVENT 8 END,2024-05-07 01:53:44.678,,,EVENT 8 END,303
+32,start,2024-05-07 02:00:00.000,,,start,304
+32,Take order,2024-05-07 18:00:00.000,Waiter-000004,,Take order,305
+31,Signal food complete,2024-05-07 18:00:30.873,Cook-000003,,Signal food complete,306
+32,Review order,2024-05-07 18:00:49.456,Waiter-000002,,Review order,307
+32,prepare drinks,2024-05-07 18:02:00.345,Barman-000001,,prepare drinks,308
+32,bring order,2024-05-07 18:03:52.959,Barman-000003,homonymous Label(Activity:'Bring drinks'),Bring drinks,309
+32,review,2024-05-07 18:04:19.242,Waiter-000001,homonymous Label(Activity:'Review drinks'),Review drinks,310
+32,Prepare main course,2024-05-07 18:07:28.679,Cook-000002,,Prepare main course,311
+31,bring order,2024-05-07 18:07:54.748,Cook helper-000001,homonymous Label(Activity:'Bring food'),Bring food,312
+30,Signal food complete,2024-05-07 18:07:54.748,Cook-000003,,Signal food complete,313
+31,Deliver to customer,2024-05-07 18:10:42.292,Waiter-000005,,Deliver to customer,314
+31,EVENT 8 END,2024-05-07 18:11:51.763,,,EVENT 8 END,315
+33,start,2024-05-07 18:15:00.000,,,start,316
+33,Take order,2024-05-07 18:15:00.000,Waiter-000003,,Take order,317
+33,review,2024-05-07 18:15:38.272,Waiter-000004,homonymous Label(Activity:'Review order'),Review order,318
+32,Signal food complete,2024-05-07 18:16:33.254,Cook-000002,,Signal food complete,319
+30,Bring food,2024-05-07 18:17:07.543,Cook helper-000002,,Bring food,320
+33,prepare drinks,2024-05-07 18:17:56.526,Barman-000002,,prepare drinks,321
+33,prepare order,2024-05-07 18:17:56.526,Cook-000003,homonymous Label(Activity:'Prepare main course'),Prepare main course,322
+30,Deliver to customer,2024-05-07 18:20:28.927,Waiter-000002,,Deliver to customer,323
+33,bring order,2024-05-07 18:21:22.273,Barman-000001,homonymous Label(Activity:'Bring drinks'),Bring drinks,324
+29,Signal food complete,2024-05-07 18:21:45.630,Cook-000001,,Signal food complete,325
+33,Signal food complete,2024-05-07 18:22:48.632,Cook-000003,,Signal food complete,326
+30,EVENT 8 END,2024-05-07 18:25:08.823,,,EVENT 8 END,327
+33,review,2024-05-07 18:29:43.574,Waiter-000001,homonymous Label(Activity:'Review drinks'),Review drinks,328
+34,start,2024-05-07 18:30:00.000,,,start,329
+34,Take order,2024-05-07 18:30:00.000,Waiter-000005,,Take order,330
+32,Bring food,2024-05-07 18:34:29.798,Cook helper-000003,,Bring food,331
+34,Review order,2024-05-07 18:35:56.170,Waiter-000003,,Review order,332
+34,prepare order,2024-05-07 18:36:20.314,Barman-000003,homonymous Label(Activity:'prepare drinks'),prepare drinks,333
+34,prepare order,2024-05-07 18:36:20.314,Cook-000002,homonymous Label(Activity:'Prepare main course'),Prepare main course,334
+29,Bring food,2024-05-07 18:40:37.461,Cook helper-000001,,Bring food,335
+34,Signal food complete,2024-05-07 18:44:45.959,Cook-000001,,Signal food complete,336
+35,start,2024-05-07 18:45:00.000,,,start,337
+35,Take order,2024-05-07 18:45:00.000,Waiter-000004,,Take order,338
+32,Deliver to customer,2024-05-07 18:45:42.527,Waiter-000002,,Deliver to customer,339
+35,review,2024-05-07 18:46:56.495,Waiter-000001,homonymous Label(Activity:'Review order'),Review order,340
+35,prepare order,2024-05-07 18:47:51.586,Barman-000002,homonymous Label(Activity:'prepare drinks'),prepare drinks,341
+35,prepare order,2024-05-07 18:47:51.586,Cook helper-000002,homonymous Label(Activity:'Prepare starter'),Prepare starter,342
+35,prepare order,2024-05-07 18:47:51.586,Cook-000002,homonymous Label(Activity:'Prepare main course'),Prepare main course,343
+32,EVENT 8 END,2024-05-07 18:48:00.946,,,EVENT 8 END,344
+35,Bring drinks,2024-05-07 18:49:02.905,Barman-000001,,Bring drinks,345
+35,Signal food complete,2024-05-07 18:49:50.930,Cook-000002,,Signal food complete,346
+35,review,2024-05-07 18:50:00.157,Waiter-000005,homonymous Label(Activity:'Review drinks'),Review drinks,347
+29,Deliver to customer,2024-05-07 18:54:14.217,Waiter-000003,,Deliver to customer,348
+34,bring order,2024-05-07 18:55:47.328,Cook helper-000003,homonymous Label(Activity:'Bring food'),Bring food,349
+29,EVENT 8 END,2024-05-07 18:58:35.264,,,EVENT 8 END,350
+36,Take order,2024-05-07 19:00:00.000,Waiter-000004,,Take order,351
+36,start,2024-05-07 19:00:00.000,,,start,352
+34,bring order,2024-05-07 19:00:02.900,Barman-000002,homonymous Label(Activity:'Bring drinks'),Bring drinks,353
+36,Review order,2024-05-07 19:00:10.624,Waiter-000001,,Review order,354
+36,prepare order,2024-05-07 19:02:05.026,Cook-000001,homonymous Label(Activity:'Prepare main course'),Prepare main course,355
+36,prepare drinks,2024-05-07 19:02:05.026,Barman-000001,,prepare drinks,356
+33,bring order,2024-05-07 19:03:29.344,Cook helper-000002,homonymous Label(Activity:'Bring food'),Bring food,357
+34,review,2024-05-07 19:05:19.235,Waiter-000002,homonymous Label(Activity:'Review drinks'),Review drinks,358
+34,Deliver to customer,2024-05-07 19:05:23.021,Waiter-000005,,Deliver to customer,359
+33,Deliver to customer,2024-05-07 19:07:38.867,Waiter-000003,,Deliver to customer,360
+34,EVENT 8 END,2024-05-07 19:07:57.788,,,EVENT 8 END,361
+33,EVENT 8 END,2024-05-07 19:08:48.121,,,EVENT 8 END,362
+36,Bring drinks,2024-05-07 19:09:35.384,Barman-000003,,Bring drinks,363
+37,start,2024-05-07 19:15:00.000,,,start,364
+37,Take order,2024-05-07 19:15:00.000,Waiter-000004,,Take order,365
+37,review,2024-05-07 19:15:30.919,Waiter-000001,homonymous Label(Activity:'Review order'),Review order,366
+37,prepare drinks,2024-05-07 19:16:39.325,Barman-000002,,prepare drinks,367
+37,Prepare main course,2024-05-07 19:16:39.325,Cook-000003,,Prepare main course,368
+36,review,2024-05-07 19:18:15.401,Waiter-000002,homonymous Label(Activity:'Review drinks'),Review drinks,369
+36,Signal food complete,2024-05-07 19:19:00.179,Cook-000001,,Signal food complete,370
+37,Bring drinks,2024-05-07 19:20:46.823,Barman-000001,,Bring drinks,371
+36,Bring food,2024-05-07 19:24:23.962,Cook helper-000001,,Bring food,372
+38,Take order,2024-05-07 19:30:00.000,Waiter-000005,,Take order,373
+38,start,2024-05-07 19:30:00.000,,,start,374
+38,review,2024-05-07 19:30:00.900,Waiter-000003,homonymous Label(Activity:'Review order'),Review order,375
+38,prepare order,2024-05-07 19:31:10.392,Barman-000003,homonymous Label(Activity:'prepare drinks'),prepare drinks,376
+38,prepare order,2024-05-07 19:31:10.392,Cook-000001,homonymous Label(Activity:'Prepare main course'),Prepare main course,377
+36,Deliver to customer,2024-05-07 19:32:49.593,Waiter-000004,,Deliver to customer,378
+36,EVENT 8 END,2024-05-07 19:33:45.919,,,EVENT 8 END,379
+38,Bring drinks,2024-05-07 19:41:06.288,Barman-000002,,Bring drinks,380
+37,Signal food complete,2024-05-07 19:41:42.479,Cook-000003,,Signal food complete,381
+37,Bring food,2024-05-07 19:42:33.343,Cook helper-000003,,Bring food,382
+38,Review drinks,2024-05-07 19:43:25.758,Waiter-000001,,Review drinks,383
+37,review,2024-05-07 19:46:20.821,Waiter-000003,homonymous Label(Activity:'Review drinks'),Review drinks,384
+37,prepare order,2024-05-07 19:46:24.535,Barman-000002,homonymous Label(Activity:'prepare drinks'),prepare drinks,385
+37,Bring drinks,2024-05-07 19:49:18.043,Barman-000001,,Bring drinks,386
+37,review,2024-05-07 19:51:39.396,Waiter-000004,homonymous Label(Activity:'Review drinks'),Review drinks,387
+37,Deliver to customer,2024-05-07 19:51:55.052,Waiter-000001,,Deliver to customer,388
+38,Signal food complete,2024-05-07 19:52:24.593,Cook-000001,,Signal food complete,389
+37,EVENT 8 END,2024-05-07 19:53:08.138,,,EVENT 8 END,390
+40,start,2024-05-07 20:00:00.000,,,start,391
+40,Take order,2024-05-07 20:00:00.000,Waiter-000002,,Take order,392
+35,Bring food,2024-05-07 20:05:05.234,Cook helper-000001,,Bring food,393
+40,review,2024-05-07 20:05:53.148,Waiter-000003,homonymous Label(Activity:'Review order'),Review order,394
+40,prepare order,2024-05-07 20:07:28.839,Barman-000001,homonymous Label(Activity:'prepare drinks'),prepare drinks,395
+40,Prepare starter,2024-05-07 20:07:28.839,Cook helper-000002,,Prepare starter,396
+40,Bring drinks,2024-05-07 20:09:16.941,Barman-000003,,Bring drinks,397
+40,Signal food complete,2024-05-07 20:09:54.860,Cook-000002,,Signal food complete,398
+35,Deliver to customer,2024-05-07 20:10:32.380,Waiter-000004,,Deliver to customer,399
+35,EVENT 8 END,2024-05-07 20:11:11.160,,,EVENT 8 END,400
+40,bring order,2024-05-07 20:14:23.101,Cook helper-000002,homonymous Label(Activity:'Bring food'),Bring food,401
+42,Take order,2024-05-07 20:30:00.000,Waiter-000004,,Take order,402
+42,start,2024-05-07 20:30:00.000,,,start,403
+42,Review order,2024-05-07 20:30:02.317,Waiter-000001,,Review order,404
+42,prepare order,2024-05-07 20:30:20.883,Barman-000002,homonymous Label(Activity:'prepare drinks'),prepare drinks,405
+42,Prepare main course,2024-05-07 20:30:20.883,Cook-000002,,Prepare main course,406
+40,Review drinks,2024-05-07 20:31:38.339,Waiter-000005,,Review drinks,407
+42,bring order,2024-05-07 20:31:43.668,Barman-000001,homonymous Label(Activity:'Bring drinks'),Bring drinks,408
+42,Review drinks,2024-05-07 20:32:08.687,Waiter-000002,,Review drinks,409
+40,prepare drinks,2024-05-07 20:33:59.247,Barman-000003,,prepare drinks,410
+42,Signal food complete,2024-05-07 20:36:05.279,Cook-000002,,Signal food complete,411
+40,Bring drinks,2024-05-07 20:37:48.724,Barman-000002,,Bring drinks,412
+40,review,2024-05-07 20:39:03.441,Waiter-000003,homonymous Label(Activity:'Review drinks'),Review drinks,413
+40,Deliver to customer,2024-05-07 20:40:44.292,Waiter-000004,,Deliver to customer,414
+40,EVENT 8 END,2024-05-07 20:41:52.657,,,EVENT 8 END,415
+43,Take order,2024-05-07 20:45:00.000,Waiter-000001,,Take order,416
+43,start,2024-05-07 20:45:00.000,,,start,417
+43,Review order,2024-05-07 20:46:24.465,Waiter-000002,,Review order,418
+43,prepare drinks,2024-05-07 20:46:54.682,Barman-000001,,prepare drinks,419
+43,Prepare main course,2024-05-07 20:49:11.531,Cook-000002,,Prepare main course,420
+42,bring order,2024-05-07 20:49:11.531,Cook helper-000001,homonymous Label(Activity:'Bring food'),Bring food,421
+42,Deliver to customer,2024-05-07 20:52:38.281,Waiter-000005,,Deliver to customer,422
+38,Bring food,2024-05-07 20:54:28.530,Cook helper-000003,,Bring food,423
+38,Deliver to customer,2024-05-07 20:55:39.567,Waiter-000003,,Deliver to customer,424
+42,EVENT 8 END,2024-05-07 20:55:42.452,,,EVENT 8 END,425
+38,EVENT 8 END,2024-05-07 20:58:21.392,,,EVENT 8 END,426
+44,Take order,2024-05-07 21:00:00.000,Waiter-000004,,Take order,427
+44,start,2024-05-07 21:00:00.000,,,start,428
+44,Review order,2024-05-07 21:00:38.284,Waiter-000001,,Review order,429
+44,prepare drinks,2024-05-07 21:01:37.145,Barman-000003,,prepare drinks,430
+44,Prepare starter,2024-05-07 21:01:37.145,Cook helper-000002,,Prepare starter,431
+44,Prepare main course,2024-05-07 21:01:37.145,Cook-000001,,Prepare main course,432
+43,Bring drinks,2024-05-07 21:10:01.213,Barman-000002,,Bring drinks,433
+43,Review drinks,2024-05-07 21:11:18.960,Waiter-000002,,Review drinks,434
+43,prepare drinks,2024-05-07 21:11:21.898,Barman-000001,,prepare drinks,435
+44,Bring drinks,2024-05-07 21:13:08.407,Barman-000002,,Bring drinks,436
+43,bring order,2024-05-07 21:13:47.037,Barman-000003,homonymous Label(Activity:'Bring drinks'),Bring drinks,437
+43,review,2024-05-07 21:16:31.588,Waiter-000004,homonymous Label(Activity:'Review drinks'),Review drinks,438
+43,prepare drinks,2024-05-07 21:18:20.495,Barman-000001,,prepare drinks,439
+44,review,2024-05-07 21:23:02.234,Waiter-000002,homonymous Label(Activity:'Review drinks'),Review drinks,440
+43,bring order,2024-05-07 21:23:13.438,Barman-000003,homonymous Label(Activity:'Bring drinks'),Bring drinks,441
+44,prepare drinks,2024-05-07 21:24:49.786,Barman-000002,,prepare drinks,442
+44,bring order,2024-05-07 21:26:51.808,Barman-000001,homonymous Label(Activity:'Bring drinks'),Bring drinks,443
+44,Review drinks,2024-05-07 21:27:00.479,Waiter-000005,,Review drinks,444
+44,Signal food complete,2024-05-07 21:27:51.415,Cook-000002,,Signal food complete,445
+44,prepare order,2024-05-07 21:29:20.904,Barman-000002,homonymous Label(Activity:'prepare drinks'),prepare drinks,446
+44,Bring drinks,2024-05-07 21:29:31.321,Barman-000001,,Bring drinks,447
+43,Review drinks,2024-05-07 21:29:41.375,Waiter-000003,,Review drinks,448
+46,Take order,2024-05-07 21:30:00.000,Waiter-000001,,Take order,449
+46,start,2024-05-07 21:30:00.000,,,start,450
+43,Signal food complete,2024-05-07 21:30:32.953,Cook-000001,,Signal food complete,451
+46,review,2024-05-07 21:32:04.273,Waiter-000004,homonymous Label(Activity:'Review order'),Review order,452
+44,review,2024-05-07 21:32:13.116,Waiter-000002,homonymous Label(Activity:'Review drinks'),Review drinks,453
+46,prepare drinks,2024-05-07 21:32:23.620,Barman-000002,,prepare drinks,454
+46,Prepare starter,2024-05-07 21:32:23.620,Cook helper-000001,,Prepare starter,455
+44,prepare drinks,2024-05-07 21:32:39.430,Barman-000003,,prepare drinks,456
+44,Bring food,2024-05-07 21:33:44.526,Cook helper-000003,,Bring food,457
+44,bring order,2024-05-07 21:44:00.209,Barman-000001,homonymous Label(Activity:'Bring drinks'),Bring drinks,458
+46,Signal food complete,2024-05-07 21:44:22.936,Cook-000003,,Signal food complete,459
+47,start,2024-05-07 21:45:00.000,,,start,460
+47,Take order,2024-05-07 21:45:00.000,Waiter-000003,,Take order,461
+47,review,2024-05-07 21:45:46.889,Waiter-000001,homonymous Label(Activity:'Review order'),Review order,462
+47,prepare order,2024-05-07 21:46:38.647,Barman-000003,homonymous Label(Activity:'prepare drinks'),prepare drinks,463
+47,prepare order,2024-05-07 21:46:38.647,Cook helper-000002,homonymous Label(Activity:'Prepare starter'),Prepare starter,464
+47,bring order,2024-05-07 21:46:49.457,Barman-000003,homonymous Label(Activity:'Bring drinks'),Bring drinks,465
+44,review,2024-05-07 21:47:02.622,Waiter-000004,homonymous Label(Activity:'Review drinks'),Review drinks,466
+44,Deliver to customer,2024-05-07 21:47:06.829,Waiter-000002,,Deliver to customer,467
+44,EVENT 8 END,2024-05-07 21:48:48.729,,,EVENT 8 END,468
+46,Bring drinks,2024-05-07 21:49:50.734,Barman-000001,,Bring drinks,469
+47,review,2024-05-07 21:50:27.958,Waiter-000005,homonymous Label(Activity:'Review drinks'),Review drinks,470
+47,prepare drinks,2024-05-07 21:50:32.263,Barman-000002,,prepare drinks,471
+46,review,2024-05-07 21:51:10.438,Waiter-000003,homonymous Label(Activity:'Review drinks'),Review drinks,472
+47,Signal food complete,2024-05-07 21:51:21.311,Cook-000001,,Signal food complete,473
+43,Bring food,2024-05-07 21:51:21.311,Cook helper-000003,,Bring food,474
+47,bring order,2024-05-07 21:55:04.803,Barman-000003,homonymous Label(Activity:'Bring drinks'),Bring drinks,475
+48,Take order,2024-05-07 22:00:00.000,Waiter-000001,,Take order,476
+48,start,2024-05-07 22:00:00.000,,,start,477
+47,Review drinks,2024-05-07 22:02:34.237,Waiter-000004,,Review drinks,478
+47,prepare order,2024-05-07 22:03:24.067,Barman-000001,homonymous Label(Activity:'prepare drinks'),prepare drinks,479
+48,Review order,2024-05-07 22:04:26.452,Waiter-000002,,Review order,480
+47,Bring drinks,2024-05-07 22:04:55.351,Barman-000002,,Bring drinks,481
+48,prepare order,2024-05-07 22:05:26.815,Cook-000002,homonymous Label(Activity:'Prepare main course'),Prepare main course,482
+48,Prepare starter,2024-05-07 22:05:26.815,Cook helper-000002,,Prepare starter,483
+48,prepare drinks,2024-05-07 22:05:26.815,Barman-000003,,prepare drinks,484
+47,Review drinks,2024-05-07 22:05:32.877,Waiter-000003,,Review drinks,485
+43,Deliver to customer,2024-05-07 22:07:45.789,Waiter-000004,,Deliver to customer,486
+43,EVENT 8 END,2024-05-07 22:09:41.507,,,EVENT 8 END,487
+47,bring order,2024-05-07 22:11:30.576,Cook helper-000001,homonymous Label(Activity:'Bring food'),Bring food,488
+48,Bring drinks,2024-05-07 22:12:30.759,Barman-000001,,Bring drinks,489
+47,Deliver to customer,2024-05-07 22:13:54.783,Waiter-000001,,Deliver to customer,490
+46,Bring food,2024-05-07 22:14:18.790,Cook helper-000002,,Bring food,491
+48,Review drinks,2024-05-07 22:14:50.245,Waiter-000002,,Review drinks,492
+49,start,2024-05-07 22:15:00.000,,,start,493
+49,Take order,2024-05-07 22:15:00.000,Waiter-000005,,Take order,494
+46,Deliver to customer,2024-05-07 22:15:16.349,Waiter-000003,,Deliver to customer,495
+49,review,2024-05-07 22:15:31.707,Waiter-000004,homonymous Label(Activity:'Review order'),Review order,496
+46,EVENT 8 END,2024-05-07 22:15:35.203,,,EVENT 8 END,497
+47,EVENT 8 END,2024-05-07 22:18:08.494,,,EVENT 8 END,498
+49,prepare order,2024-05-07 22:20:03.516,Cook-000001,homonymous Label(Activity:'Prepare main course'),Prepare main course,499
+49,prepare drinks,2024-05-07 22:20:03.516,Barman-000002,,prepare drinks,500
+50,start,2024-05-07 22:30:00.000,,,start,501
+50,Take order,2024-05-07 22:30:00.000,Waiter-000002,,Take order,502
+50,Review order,2024-05-07 22:30:34.570,Waiter-000005,,Review order,503
+50,prepare order,2024-05-07 22:31:13.342,Barman-000003,homonymous Label(Activity:'prepare drinks'),prepare drinks,505
+50,prepare order,2024-05-07 22:31:13.342,Cook-000003,homonymous Label(Activity:'Prepare main course'),Prepare main course,504
+50,Signal food complete,2024-05-07 22:32:37.021,Cook-000003,,Signal food complete,506
+50,Bring drinks,2024-05-07 22:34:31.337,Barman-000001,,Bring drinks,507
+49,bring order,2024-05-07 22:39:21.725,Barman-000003,homonymous Label(Activity:'Bring drinks'),Bring drinks,508
+49,Signal food complete,2024-05-07 22:39:28.045,Cook-000001,,Signal food complete,509
+50,bring order,2024-05-07 22:39:55.230,Cook helper-000003,homonymous Label(Activity:'Bring food'),Bring food,510
+49,review,2024-05-07 22:40:01.039,Waiter-000003,homonymous Label(Activity:'Review drinks'),Review drinks,511
+48,Signal food complete,2024-05-07 22:40:42.660,Cook-000003,,Signal food complete,512
+50,Review drinks,2024-05-07 22:41:46.198,Waiter-000001,,Review drinks,513
+50,prepare drinks,2024-05-07 22:42:08.864,Barman-000002,,prepare drinks,514
+51,Take order,2024-05-07 22:45:00.000,Waiter-000004,,Take order,515
+51,start,2024-05-07 22:45:00.000,,,start,516
+48,Bring food,2024-05-07 22:47:22.568,Cook helper-000001,,Bring food,517
+51,review,2024-05-07 22:47:34.500,Waiter-000002,homonymous Label(Activity:'Review order'),Review order,518
+51,prepare order,2024-05-07 22:47:34.715,Barman-000003,homonymous Label(Activity:'prepare drinks'),prepare drinks,519
+51,Prepare main course,2024-05-07 22:47:34.715,Cook-000002,,Prepare main course,520
+51,Bring drinks,2024-05-07 22:47:43.286,Barman-000001,,Bring drinks,521
+50,Bring drinks,2024-05-07 22:49:57.078,Barman-000003,,Bring drinks,522
+48,Deliver to customer,2024-05-07 22:50:03.798,Waiter-000005,,Deliver to customer,523
+48,EVENT 8 END,2024-05-07 22:50:09.105,,,EVENT 8 END,524
+50,Review drinks,2024-05-07 22:51:31.451,Waiter-000003,,Review drinks,525
+51,review,2024-05-07 22:51:32.069,Waiter-000001,homonymous Label(Activity:'Review drinks'),Review drinks,526
+50,prepare drinks,2024-05-07 22:52:05.085,Barman-000002,,prepare drinks,527
+49,Bring food,2024-05-07 22:52:06.734,Cook helper-000002,,Bring food,528
+50,bring order,2024-05-07 22:55:54.770,Barman-000003,homonymous Label(Activity:'Bring drinks'),Bring drinks,529
+50,review,2024-05-07 22:56:39.645,Waiter-000004,homonymous Label(Activity:'Review drinks'),Review drinks,530
+50,Deliver to customer,2024-05-07 22:57:18.464,Waiter-000002,,Deliver to customer,531
+50,EVENT 8 END,2024-05-07 22:58:20.414,,,EVENT 8 END,532
+52,start,2024-05-07 23:00:00.000,,,start,533
+52,Take order,2024-05-07 23:00:00.000,Waiter-000005,,Take order,534
+49,Deliver to customer,2024-05-07 23:00:01.097,Waiter-000003,,Deliver to customer,535
+52,review,2024-05-07 23:00:29.121,Waiter-000001,homonymous Label(Activity:'Review order'),Review order,536
+52,prepare drinks,2024-05-07 23:00:56.114,Barman-000001,,prepare drinks,537
+52,Prepare starter,2024-05-07 23:00:56.114,Cook helper-000003,,Prepare starter,538
+52,Prepare main course,2024-05-07 23:00:56.114,Cook-000003,,Prepare main course,539
+49,EVENT 8 END,2024-05-07 23:01:37.626,,,EVENT 8 END,540
+52,Bring drinks,2024-05-07 23:04:41.125,Barman-000002,,Bring drinks,541
+52,Review drinks,2024-05-07 23:05:05.026,Waiter-000004,,Review drinks,542
+51,Signal food complete,2024-05-07 23:17:25.152,Cook-000001,,Signal food complete,543
+51,Bring food,2024-05-07 23:35:40.944,Cook helper-000001,,Bring food,544
+51,Deliver to customer,2024-05-07 23:38:04.266,Waiter-000002,,Deliver to customer,545
+51,EVENT 8 END,2024-05-07 23:39:57.799,,,EVENT 8 END,546
+55,Take order,2024-05-07 23:45:00.000,Waiter-000003,,Take order,547
+55,start,2024-05-07 23:45:00.000,,,start,548
+55,review,2024-05-07 23:47:24.436,Waiter-000005,homonymous Label(Activity:'Review order'),Review order,549
+55,prepare order,2024-05-07 23:47:37.021,Cook-000001,homonymous Label(Activity:'Prepare main course'),Prepare main course,550
+55,prepare drinks,2024-05-07 23:47:37.021,Barman-000002,,prepare drinks,551
+55,Bring drinks,2024-05-07 23:48:13.185,Barman-000001,,Bring drinks,552
+55,Signal food complete,2024-05-07 23:50:11.562,Cook-000001,,Signal food complete,553
+55,Bring food,2024-05-07 23:50:32.829,Cook helper-000003,,Bring food,554
+55,review,2024-05-07 23:52:43.587,Waiter-000003,homonymous Label(Activity:'Review drinks'),Review drinks,555
+55,Deliver to customer,2024-05-07 23:57:28.759,Waiter-000005,,Deliver to customer,556
+55,EVENT 8 END,2024-05-07 23:58:28.858,,,EVENT 8 END,557
+56,Take order,2024-05-08 00:00:00.000,Waiter-000002,,Take order,558
+56,start,2024-05-08 00:00:00.000,,,start,559
+56,review,2024-05-08 00:00:06.420,Waiter-000004,homonymous Label(Activity:'Review order'),Review order,560
+52,Signal food complete,2024-05-08 00:00:48.900,Cook-000001,,Signal food complete,561
+56,prepare order,2024-05-08 00:01:06.541,Cook-000003,homonymous Label(Activity:'Prepare main course'),Prepare main course,562
+56,prepare drinks,2024-05-08 00:01:06.541,Barman-000003,,prepare drinks,563
+56,Signal food complete,2024-05-08 00:04:10.873,Cook-000003,,Signal food complete,564
+56,Bring food,2024-05-08 00:06:50.052,Cook helper-000001,,Bring food,565
+56,Bring drinks,2024-05-08 00:06:56.879,Barman-000002,,Bring drinks,566
+56,Review drinks,2024-05-08 00:08:23.918,Waiter-000001,,Review drinks,567
+56,Deliver to customer,2024-05-08 00:09:05.848,Waiter-000003,,Deliver to customer,568
+56,EVENT 8 END,2024-05-08 00:09:18.690,,,EVENT 8 END,569
+57,Take order,2024-05-08 00:15:00.000,Waiter-000005,,Take order,570
+57,start,2024-05-08 00:15:00.000,,,start,571
+57,review,2024-05-08 00:17:12.713,Waiter-000002,homonymous Label(Activity:'Review order'),Review order,572
+57,prepare order,2024-05-08 00:17:46.411,Cook helper-000002,homonymous Label(Activity:'Prepare starter'),Prepare starter,573
+57,prepare drinks,2024-05-08 00:17:46.411,Barman-000001,,prepare drinks,574
+57,bring order,2024-05-08 00:17:53.988,Barman-000003,homonymous Label(Activity:'Bring drinks'),Bring drinks,575
+57,Signal food complete,2024-05-08 00:19:29.803,Cook-000003,,Signal food complete,576
+57,bring order,2024-05-08 00:21:07.502,Cook helper-000003,homonymous Label(Activity:'Bring food'),Bring food,577
+57,review,2024-05-08 00:27:03.116,Waiter-000001,homonymous Label(Activity:'Review drinks'),Review drinks,578
+57,prepare drinks,2024-05-08 00:28:27.380,Barman-000002,,prepare drinks,579
+57,bring order,2024-05-08 00:34:35.651,Barman-000003,homonymous Label(Activity:'Bring drinks'),Bring drinks,580
+52,bring order,2024-05-08 00:38:03.552,Cook helper-000003,homonymous Label(Activity:'Bring food'),Bring food,581
+59,start,2024-05-08 00:45:00.000,,,start,583
+59,Take order,2024-05-08 00:45:00.000,Waiter-000004,,Take order,582
+59,Review order,2024-05-08 00:47:19.753,Waiter-000003,,Review order,584
+59,Prepare main course,2024-05-08 00:47:33.437,Cook-000002,,Prepare main course,585
+59,prepare drinks,2024-05-08 00:47:33.437,Barman-000002,,prepare drinks,586
+57,review,2024-05-08 00:48:16.802,Waiter-000005,homonymous Label(Activity:'Review drinks'),Review drinks,587
+57,prepare order,2024-05-08 00:50:13.126,Barman-000001,homonymous Label(Activity:'prepare drinks'),prepare drinks,588
+57,Bring drinks,2024-05-08 00:51:51.764,Barman-000003,,Bring drinks,589
+52,Deliver to customer,2024-05-08 00:52:36.984,Waiter-000001,,Deliver to customer,590
+52,EVENT 8 END,2024-05-08 00:52:44.943,,,EVENT 8 END,591
+59,bring order,2024-05-08 00:52:48.326,Barman-000001,homonymous Label(Activity:'Bring drinks'),Bring drinks,592
+57,Review drinks,2024-05-08 00:59:35.993,Waiter-000004,,Review drinks,593
+57,Deliver to customer,2024-05-08 01:00:26.578,Waiter-000002,,Deliver to customer,594
+57,EVENT 8 END,2024-05-08 01:00:40.525,,,EVENT 8 END,595
+59,review,2024-05-08 01:07:27.384,Waiter-000001,homonymous Label(Activity:'Review drinks'),Review drinks,596
+59,Signal food complete,2024-05-08 01:10:05.984,Cook-000002,,Signal food complete,597
+59,bring order,2024-05-08 01:20:05.285,Cook helper-000001,homonymous Label(Activity:'Bring food'),Bring food,598
+62,Take order,2024-05-08 01:30:00.000,Waiter-000003,,Take order,599
+62,start,2024-05-08 01:30:00.000,,,start,600
+62,Review order,2024-05-08 01:31:05.114,Waiter-000001,,Review order,601
+59,Deliver to customer,2024-05-08 01:31:08.518,Waiter-000004,,Deliver to customer,602
+62,prepare drinks,2024-05-08 01:31:22.555,Barman-000003,,prepare drinks,603
+59,EVENT 8 END,2024-05-08 01:31:43.712,,,EVENT 8 END,604
+62,bring order,2024-05-08 01:39:40.755,Barman-000002,homonymous Label(Activity:'Bring drinks'),Bring drinks,605
+62,Review drinks,2024-05-08 01:39:52.824,Waiter-000002,,Review drinks,606
+62,Prepare main course,2024-05-08 01:40:48.124,Cook-000002,,Prepare main course,607
+62,prepare drinks,2024-05-08 01:42:17.766,Barman-000001,,prepare drinks,608
+63,Take order,2024-05-08 01:45:00.000,Waiter-000003,,Take order,609
+63,start,2024-05-08 01:45:00.000,,,start,610
+62,Bring drinks,2024-05-08 01:46:11.041,Barman-000003,,Bring drinks,611
+63,Review order,2024-05-08 01:47:12.768,Waiter-000001,,Review order,612
+63,prepare order,2024-05-08 01:49:13.154,Barman-000002,homonymous Label(Activity:'prepare drinks'),prepare drinks,613
+63,bring order,2024-05-08 01:54:13.351,Barman-000001,homonymous Label(Activity:'Bring drinks'),Bring drinks,614
+63,Prepare main course,2024-05-08 01:55:26.353,Cook-000002,,Prepare main course,615
+62,review,2024-05-08 01:56:29.765,Waiter-000004,homonymous Label(Activity:'Review drinks'),Review drinks,616
+63,review,2024-05-08 01:56:47.306,Waiter-000002,homonymous Label(Activity:'Review drinks'),Review drinks,617
+62,Signal food complete,2024-05-08 01:58:39.545,Cook-000003,,Signal food complete,618
+62,prepare order,2024-05-08 01:58:51.966,Barman-000002,homonymous Label(Activity:'prepare drinks'),prepare drinks,619
+62,Bring food,2024-05-08 18:03:29.410,Cook helper-000002,,Bring food,620
+62,bring order,2024-05-08 18:06:51.209,Barman-000003,homonymous Label(Activity:'Bring drinks'),Bring drinks,621
+63,Signal food complete,2024-05-08 18:12:46.966,Cook-000002,,Signal food complete,622
+62,review,2024-05-08 18:13:29.511,Waiter-000004,homonymous Label(Activity:'Review drinks'),Review drinks,623
+62,Deliver to customer,2024-05-08 18:13:33.433,Waiter-000005,,Deliver to customer,624
+65,start,2024-05-08 18:15:00.000,,,start,625
+65,Take order,2024-05-08 18:15:00.000,Waiter-000003,,Take order,626
+62,EVENT 8 END,2024-05-08 18:15:43.137,,,EVENT 8 END,627
+65,Review order,2024-05-08 18:16:15.488,Waiter-000001,,Review order,628
+65,prepare order,2024-05-08 18:16:59.216,Barman-000001,homonymous Label(Activity:'prepare drinks'),prepare drinks,629
+65,Prepare main course,2024-05-08 18:19:21.990,Cook-000003,,Prepare main course,630
+65,bring order,2024-05-08 18:21:12.196,Barman-000002,homonymous Label(Activity:'Bring drinks'),Bring drinks,631
+65,Review drinks,2024-05-08 18:26:18.807,Waiter-000002,,Review drinks,632
+65,prepare order,2024-05-08 18:28:20.572,Barman-000003,homonymous Label(Activity:'prepare drinks'),prepare drinks,633
+65,bring order,2024-05-08 18:29:15.951,Barman-000001,homonymous Label(Activity:'Bring drinks'),Bring drinks,634
+66,Take order,2024-05-08 18:30:00.000,Waiter-000004,,Take order,635
+66,start,2024-05-08 18:30:00.000,,,start,636
+65,review,2024-05-08 18:31:03.910,Waiter-000005,homonymous Label(Activity:'Review drinks'),Review drinks,637
+66,Review order,2024-05-08 18:31:05.308,Waiter-000003,,Review order,638
+66,prepare order,2024-05-08 18:31:33.806,Barman-000002,homonymous Label(Activity:'prepare drinks'),prepare drinks,639
+65,prepare drinks,2024-05-08 18:32:04.522,Barman-000003,,prepare drinks,640
+65,Bring drinks,2024-05-08 18:32:46.281,Barman-000001,,Bring drinks,641
+66,Bring drinks,2024-05-08 18:33:13.388,Barman-000003,,Bring drinks,642
+65,review,2024-05-08 18:35:23.840,Waiter-000002,homonymous Label(Activity:'Review drinks'),Review drinks,643
+66,Prepare main course,2024-05-08 18:42:13.165,Cook-000003,,Prepare main course,644
+67,Take order,2024-05-08 18:45:00.000,Waiter-000004,,Take order,646
+67,start,2024-05-08 18:45:00.000,,,start,645
+66,Review drinks,2024-05-08 18:46:34.747,Waiter-000003,,Review drinks,647
+67,Review order,2024-05-08 18:47:17.665,Waiter-000005,,Review order,648
+67,prepare order,2024-05-08 18:49:08.330,Barman-000002,homonymous Label(Activity:'prepare drinks'),prepare drinks,649
+67,Prepare starter,2024-05-08 18:49:08.330,Cook helper-000002,,Prepare starter,650
+66,prepare order,2024-05-08 18:52:16.027,Barman-000001,homonymous Label(Activity:'prepare drinks'),prepare drinks,651
+67,bring order,2024-05-08 18:55:31.271,Barman-000003,homonymous Label(Activity:'Bring drinks'),Bring drinks,652
+67,Review drinks,2024-05-08 18:56:43.745,Waiter-000001,,Review drinks,653
+66,bring order,2024-05-08 18:57:44.030,Barman-000002,homonymous Label(Activity:'Bring drinks'),Bring drinks,654
+66,review,2024-05-08 18:59:21.403,Waiter-000002,homonymous Label(Activity:'Review drinks'),Review drinks,655
+66,prepare drinks,2024-05-08 18:59:24.562,Barman-000003,,prepare drinks,656
+63,bring order,2024-05-08 19:00:45.596,Cook helper-000003,homonymous Label(Activity:'Bring food'),Bring food,658
+65,Signal food complete,2024-05-08 19:00:45.596,Cook-000002,,Signal food complete,657
+67,Signal food complete,2024-05-08 19:03:19.430,Cook-000003,,Signal food complete,659
+67,bring order,2024-05-08 19:06:51.654,Cook helper-000001,homonymous Label(Activity:'Bring food'),Bring food,660
+66,Signal food complete,2024-05-08 19:06:51.654,Cook-000003,,Signal food complete,661
+66,bring order,2024-05-08 19:07:00.828,Barman-000001,homonymous Label(Activity:'Bring drinks'),Bring drinks,662
+67,Deliver to customer,2024-05-08 19:09:33.845,Waiter-000001,,Deliver to customer,663
+63,Deliver to customer,2024-05-08 19:10:31.160,Waiter-000002,,Deliver to customer,664
+63,EVENT 8 END,2024-05-08 19:10:33.583,,,EVENT 8 END,665
+67,EVENT 8 END,2024-05-08 19:13:48.717,,,EVENT 8 END,666
+69,start,2024-05-08 19:15:00.000,,,start,667
+69,Take order,2024-05-08 19:15:00.000,Waiter-000004,,Take order,668
+69,review,2024-05-08 19:18:56.335,Waiter-000005,homonymous Label(Activity:'Review order'),Review order,669
+69,prepare drinks,2024-05-08 19:19:32.956,Barman-000003,,prepare drinks,670
+69,bring order,2024-05-08 19:21:33.886,Barman-000002,homonymous Label(Activity:'Bring drinks'),Bring drinks,671
+69,Review drinks,2024-05-08 19:25:03.770,Waiter-000003,,Review drinks,672
+66,review,2024-05-08 19:29:10.021,Waiter-000002,homonymous Label(Activity:'Review drinks'),Review drinks,673
+70,Take order,2024-05-08 19:30:00.000,Waiter-000001,,Take order,674
+70,start,2024-05-08 19:30:00.000,,,start,675
+66,prepare drinks,2024-05-08 19:30:31.126,Barman-000003,,prepare drinks,676
+70,review,2024-05-08 19:32:29.353,Waiter-000004,homonymous Label(Activity:'Review order'),Review order,677
+70,Prepare starter,2024-05-08 19:34:01.531,Cook helper-000002,,Prepare starter,678
+70,prepare order,2024-05-08 19:34:01.531,Barman-000002,homonymous Label(Activity:'prepare drinks'),prepare drinks,679
+66,Bring drinks,2024-05-08 19:35:46.979,Barman-000001,,Bring drinks,680
+66,review,2024-05-08 19:40:32.315,Waiter-000005,homonymous Label(Activity:'Review drinks'),Review drinks,681
+70,bring order,2024-05-08 19:40:41.534,Barman-000003,homonymous Label(Activity:'Bring drinks'),Bring drinks,682
+66,prepare order,2024-05-08 19:41:47.827,Barman-000001,homonymous Label(Activity:'prepare drinks'),prepare drinks,683
+70,Review drinks,2024-05-08 19:42:39.719,Waiter-000003,,Review drinks,684
+71,Take order,2024-05-08 19:45:00.000,Waiter-000002,,Take order,686
+71,start,2024-05-08 19:45:00.000,,,start,685
+71,review,2024-05-08 19:45:22.330,Waiter-000001,homonymous Label(Activity:'Review order'),Review order,687
+71,prepare order,2024-05-08 19:46:07.581,Barman-000002,homonymous Label(Activity:'prepare drinks'),prepare drinks,688
+66,bring order,2024-05-08 19:47:39.596,Barman-000003,homonymous Label(Activity:'Bring drinks'),Bring drinks,689
+66,review,2024-05-08 19:48:08.274,Waiter-000005,homonymous Label(Activity:'Review drinks'),Review drinks,690
+66,prepare order,2024-05-08 19:48:55.776,Barman-000001,homonymous Label(Activity:'prepare drinks'),prepare drinks,691
+69,prepare order,2024-05-08 19:49:27.199,Cook-000001,homonymous Label(Activity:'Prepare main course'),Prepare main course,692
+71,Bring drinks,2024-05-08 19:50:48.832,Barman-000003,,Bring drinks,693
+70,Prepare main course,2024-05-08 19:51:08.207,Cook-000001,,Prepare main course,694
+71,review,2024-05-08 19:52:27.241,Waiter-000002,homonymous Label(Activity:'Review drinks'),Review drinks,695
+71,prepare order,2024-05-08 19:53:15.632,Cook-000001,homonymous Label(Activity:'Prepare main course'),Prepare main course,696
+65,bring order,2024-05-08 19:56:21.796,Cook helper-000003,homonymous Label(Activity:'Bring food'),Bring food,697
+66,bring order,2024-05-08 19:57:18.174,Barman-000002,homonymous Label(Activity:'Bring drinks'),Bring drinks,698
+65,Deliver to customer,2024-05-08 19:59:31.329,Waiter-000003,,Deliver to customer,699
+65,EVENT 8 END,2024-05-08 19:59:49.662,,,EVENT 8 END,700
+72,start,2024-05-08 20:00:00.000,,,start,701
+72,Take order,2024-05-08 20:00:00.000,Waiter-000001,,Take order,702
+72,Review order,2024-05-08 20:00:30.221,Waiter-000004,,Review order,703
+72,prepare drinks,2024-05-08 20:00:33.125,Barman-000003,,prepare drinks,704
+72,Prepare starter,2024-05-08 20:00:33.125,Cook helper-000002,,Prepare starter,705
+72,bring order,2024-05-08 20:03:11.245,Barman-000001,homonymous Label(Activity:'Bring drinks'),Bring drinks,706
+69,Signal food complete,2024-05-08 20:04:05.602,Cook-000003,,Signal food complete,707
+66,bring order,2024-05-08 20:04:05.602,Cook helper-000001,homonymous Label(Activity:'Bring food'),Bring food,708
+72,review,2024-05-08 20:04:24.789,Waiter-000005,homonymous Label(Activity:'Review drinks'),Review drinks,709
+72,prepare order,2024-05-08 20:05:32.978,Barman-000003,homonymous Label(Activity:'prepare drinks'),prepare drinks,710
+70,Signal food complete,2024-05-08 20:06:16.955,Cook-000001,,Signal food complete,711
+66,Review drinks,2024-05-08 20:08:06.949,Waiter-000002,,Review drinks,712
+66,Deliver to customer,2024-05-08 20:08:29.213,Waiter-000003,,Deliver to customer,713
+66,EVENT 8 END,2024-05-08 20:08:55.059,,,EVENT 8 END,714
+72,bring order,2024-05-08 20:12:36.471,Barman-000001,homonymous Label(Activity:'Bring drinks'),Bring drinks,715
+72,Review drinks,2024-05-08 20:14:39.649,Waiter-000001,,Review drinks,716
+72,prepare drinks,2024-05-08 20:14:45.339,Barman-000002,,prepare drinks,717
+72,prepare order,2024-05-08 20:19:48.724,Cook-000001,homonymous Label(Activity:'Prepare main course'),Prepare main course,718
+70,bring order,2024-05-08 20:19:48.724,Cook helper-000003,homonymous Label(Activity:'Bring food'),Bring food,719
+70,Deliver to customer,2024-05-08 20:20:26.043,Waiter-000002,,Deliver to customer,720
+70,EVENT 8 END,2024-05-08 20:25:09.903,,,EVENT 8 END,721
+72,Bring drinks,2024-05-08 20:26:31.098,Barman-000003,,Bring drinks,722
+72,review,2024-05-08 20:28:00.634,Waiter-000003,homonymous Label(Activity:'Review drinks'),Review drinks,723
+74,start,2024-05-08 20:30:00.000,,,start,725
+74,Take order,2024-05-08 20:30:00.000,Waiter-000004,,Take order,724
+74,Review order,2024-05-08 20:32:22.091,Waiter-000005,,Review order,726
+74,prepare drinks,2024-05-08 20:35:01.148,Barman-000003,,prepare drinks,727
+74,bring order,2024-05-08 20:38:49.277,Barman-000001,homonymous Label(Activity:'Bring drinks'),Bring drinks,728
+69,Bring food,2024-05-08 20:39:16.622,Cook helper-000001,,Bring food,729
+71,Signal food complete,2024-05-08 20:39:16.622,Cook-000003,,Signal food complete,730
+71,bring order,2024-05-08 20:40:29.881,Cook helper-000002,homonymous Label(Activity:'Bring food'),Bring food,731
+75,Take order,2024-05-08 20:45:00.000,Waiter-000002,,Take order,732
+75,start,2024-05-08 20:45:00.000,,,start,733
+71,Deliver to customer,2024-05-08 20:45:52.299,Waiter-000003,,Deliver to customer,734
+75,review,2024-05-08 20:47:48.395,Waiter-000004,homonymous Label(Activity:'Review order'),Review order,735
+71,EVENT 8 END,2024-05-08 20:48:07.051,,,EVENT 8 END,736
+75,prepare drinks,2024-05-08 20:49:05.954,Barman-000002,,prepare drinks,737
+74,Review drinks,2024-05-08 20:50:35.669,Waiter-000005,,Review drinks,738
+75,bring order,2024-05-08 20:50:45.042,Barman-000003,homonymous Label(Activity:'Bring drinks'),Bring drinks,739
+74,prepare drinks,2024-05-08 20:52:21.853,Barman-000001,,prepare drinks,740
+74,Bring drinks,2024-05-08 20:53:15.124,Barman-000002,,Bring drinks,741
+74,Review drinks,2024-05-08 20:54:56.871,Waiter-000001,,Review drinks,742
+69,Deliver to customer,2024-05-08 20:56:08.071,Waiter-000002,,Deliver to customer,743
+74,Prepare main course,2024-05-08 20:57:54.234,Cook-000002,,Prepare main course,744
+75,prepare order,2024-05-08 20:58:49.718,Cook-000003,homonymous Label(Activity:'Prepare main course'),Prepare main course,745
+69,EVENT 8 END,2024-05-08 20:59:25.544,,,EVENT 8 END,746
+76,Take order,2024-05-08 21:00:00.000,Waiter-000004,,Take order,747
+76,start,2024-05-08 21:00:00.000,,,start,748
+75,review,2024-05-08 21:00:36.467,Waiter-000005,homonymous Label(Activity:'Review drinks'),Review drinks,749
+75,prepare drinks,2024-05-08 21:00:43.549,Barman-000001,,prepare drinks,750
+76,review,2024-05-08 21:01:13.781,Waiter-000001,homonymous Label(Activity:'Review order'),Review order,751
+76,prepare drinks,2024-05-08 21:01:15.982,Barman-000002,,prepare drinks,752
+76,Prepare starter,2024-05-08 21:01:15.982,Cook helper-000002,,Prepare starter,753
+75,Bring drinks,2024-05-08 21:04:02.223,Barman-000003,,Bring drinks,754
+75,Review drinks,2024-05-08 21:10:09.631,Waiter-000002,,Review drinks,755
+76,Bring drinks,2024-05-08 21:10:14.393,Barman-000001,,Bring drinks,756
+74,Signal food complete,2024-05-08 21:14:17.119,Cook-000001,,Signal food complete,757
+77,Take order,2024-05-08 21:15:00.000,Waiter-000005,,Take order,758
+77,start,2024-05-08 21:15:00.000,,,start,759
+76,review,2024-05-08 21:15:07.876,Waiter-000004,homonymous Label(Activity:'Review drinks'),Review drinks,760
+76,Signal food complete,2024-05-08 21:17:48.536,Cook-000003,,Signal food complete,761
+72,Signal food complete,2024-05-08 21:23:24.858,Cook-000003,,Signal food complete,763
+76,Bring food,2024-05-08 21:23:24.858,Cook helper-000001,,Bring food,762
+76,Deliver to customer,2024-05-08 21:25:01.735,Waiter-000001,,Deliver to customer,764
+76,EVENT 8 END,2024-05-08 21:26:20.427,,,EVENT 8 END,765
+77,Review order,2024-05-08 21:28:52.580,Waiter-000003,,Review order,766
+77,prepare drinks,2024-05-08 21:29:05.515,Barman-000003,,prepare drinks,767
+77,Bring drinks,2024-05-08 21:29:24.935,Barman-000002,,Bring drinks,768
+78,Take order,2024-05-08 21:30:00.000,Waiter-000002,,Take order,769
+78,start,2024-05-08 21:30:00.000,,,start,770
+78,Review order,2024-05-08 21:32:27.307,Waiter-000004,,Review order,771
+78,prepare order,2024-05-08 21:32:51.939,Barman-000001,homonymous Label(Activity:'prepare drinks'),prepare drinks,772
+78,bring order,2024-05-08 21:34:11.593,Barman-000003,homonymous Label(Activity:'Bring drinks'),Bring drinks,773
+78,Review drinks,2024-05-08 21:37:14.947,Waiter-000001,,Review drinks,774
+79,Take order,2024-05-08 21:45:00.000,Waiter-000005,,Take order,776
+79,start,2024-05-08 21:45:00.000,,,start,775
+79,Review order,2024-05-08 21:46:12.415,Waiter-000003,,Review order,777
+79,prepare drinks,2024-05-08 21:46:35.114,Barman-000001,,prepare drinks,778
+79,prepare order,2024-05-08 21:46:35.114,Cook helper-000003,homonymous Label(Activity:'Prepare starter'),Prepare starter,779
+79,bring order,2024-05-08 21:50:13.115,Barman-000003,homonymous Label(Activity:'Bring drinks'),Bring drinks,780
+75,Signal food complete,2024-05-08 21:50:45.611,Cook-000002,,Signal food complete,781
+77,Review drinks,2024-05-08 21:54:03.513,Waiter-000002,,Review drinks,782
+79,review,2024-05-08 21:56:58.396,Waiter-000004,homonymous Label(Activity:'Review drinks'),Review drinks,783
+79,prepare order,2024-05-08 21:57:40.839,Barman-000001,homonymous Label(Activity:'prepare drinks'),prepare drinks,784
+80,start,2024-05-08 22:00:00.000,,,start,785
+80,Take order,2024-05-08 22:00:00.000,Waiter-000001,,Take order,786
+80,review,2024-05-08 22:00:43.147,Waiter-000005,homonymous Label(Activity:'Review order'),Review order,787
+80,prepare order,2024-05-08 22:01:25.969,Cook helper-000001,homonymous Label(Activity:'Prepare starter'),Prepare starter,789
+80,prepare order,2024-05-08 22:01:25.969,Barman-000002,homonymous Label(Activity:'prepare drinks'),prepare drinks,788
+79,Bring drinks,2024-05-08 22:02:07.975,Barman-000003,,Bring drinks,790
+79,review,2024-05-08 22:03:15.611,Waiter-000002,homonymous Label(Activity:'Review drinks'),Review drinks,791
+79,prepare order,2024-05-08 22:04:23.137,Barman-000001,homonymous Label(Activity:'prepare drinks'),prepare drinks,792
+77,prepare order,2024-05-08 22:06:45.165,Cook-000003,homonymous Label(Activity:'Prepare main course'),Prepare main course,793
+72,bring order,2024-05-08 22:06:45.165,Cook helper-000003,homonymous Label(Activity:'Bring food'),Bring food,794
+72,Deliver to customer,2024-05-08 22:08:23.428,Waiter-000004,,Deliver to customer,795
+72,EVENT 8 END,2024-05-08 22:12:16.895,,,EVENT 8 END,796
+80,bring order,2024-05-08 22:13:26.175,Barman-000003,homonymous Label(Activity:'Bring drinks'),Bring drinks,797
+81,start,2024-05-08 22:15:00.000,,,start,798
+81,Take order,2024-05-08 22:15:00.000,Waiter-000001,,Take order,799
+78,Prepare main course,2024-05-08 22:16:29.065,Cook-000001,,Prepare main course,801
+74,bring order,2024-05-08 22:16:29.065,Cook helper-000002,homonymous Label(Activity:'Bring food'),Bring food,800
+81,Review order,2024-05-08 22:17:15.723,Waiter-000005,,Review order,802
+74,Deliver to customer,2024-05-08 22:17:45.609,Waiter-000003,,Deliver to customer,803
+79,Bring drinks,2024-05-08 22:17:55.689,Barman-000002,,Bring drinks,804
+81,prepare drinks,2024-05-08 22:18:16.137,Barman-000001,,prepare drinks,805
+79,Prepare main course,2024-05-08 22:18:27.407,Cook-000001,,Prepare main course,806
+79,review,2024-05-08 22:19:13.397,Waiter-000002,homonymous Label(Activity:'Review drinks'),Review drinks,807
+74,EVENT 8 END,2024-05-08 22:21:57.495,,,EVENT 8 END,808
+80,review,2024-05-08 22:23:27.940,Waiter-000004,homonymous Label(Activity:'Review drinks'),Review drinks,809
+80,Signal food complete,2024-05-08 22:26:18.558,Cook-000002,,Signal food complete,810
+75,bring order,2024-05-08 22:26:18.558,Cook helper-000003,homonymous Label(Activity:'Bring food'),Bring food,811
+75,Deliver to customer,2024-05-08 22:27:52.207,Waiter-000001,,Deliver to customer,812
+82,Take order,2024-05-08 22:30:00.000,Waiter-000005,,Take order,814
+82,start,2024-05-08 22:30:00.000,,,start,813
+82,Review order,2024-05-08 22:30:25.874,Waiter-000002,,Review order,815
+82,prepare order,2024-05-08 22:30:28.108,Barman-000002,homonymous Label(Activity:'prepare drinks'),prepare drinks,816
+75,EVENT 8 END,2024-05-08 22:31:29.665,,,EVENT 8 END,817
+82,bring order,2024-05-08 22:33:24.208,Barman-000003,homonymous Label(Activity:'Bring drinks'),Bring drinks,818
+81,bring order,2024-05-08 22:39:04.708,Barman-000002,homonymous Label(Activity:'Bring drinks'),Bring drinks,819
+82,Review drinks,2024-05-08 22:39:13.683,Waiter-000003,,Review drinks,820
+81,review,2024-05-08 22:39:31.791,Waiter-000004,homonymous Label(Activity:'Review drinks'),Review drinks,821
+81,prepare drinks,2024-05-08 22:39:49.289,Barman-000001,,prepare drinks,822
+83,Take order,2024-05-08 22:45:00.000,Waiter-000005,,Take order,823
+83,start,2024-05-08 22:45:00.000,,,start,824
+83,review,2024-05-08 22:45:10.698,Waiter-000002,homonymous Label(Activity:'Review order'),Review order,825
+83,prepare drinks,2024-05-08 22:45:16.189,Barman-000003,,prepare drinks,826
+83,bring order,2024-05-08 22:47:02.780,Barman-000002,homonymous Label(Activity:'Bring drinks'),Bring drinks,827
+81,Prepare main course,2024-05-08 22:48:21.967,Cook-000003,,Prepare main course,828
+83,Review drinks,2024-05-08 22:49:47.868,Waiter-000001,,Review drinks,829
+81,bring order,2024-05-08 22:50:23.549,Barman-000003,homonymous Label(Activity:'Bring drinks'),Bring drinks,830
+78,Signal food complete,2024-05-08 22:55:18.610,Cook-000002,,Signal food complete,831
+80,bring order,2024-05-08 22:55:18.610,Cook helper-000001,homonymous Label(Activity:'Bring food'),Bring food,832
+81,review,2024-05-08 22:57:10.509,Waiter-000004,homonymous Label(Activity:'Review drinks'),Review drinks,833
+81,prepare order,2024-05-08 22:57:32.955,Barman-000002,homonymous Label(Activity:'prepare drinks'),prepare drinks,834
+81,Bring drinks,2024-05-08 22:57:46.878,Barman-000001,,Bring drinks,835
+80,Deliver to customer,2024-05-08 22:58:34.219,Waiter-000003,,Deliver to customer,836
+84,start,2024-05-08 23:00:00.000,,,start,837
+84,Take order,2024-05-08 23:00:00.000,Waiter-000005,,Take order,838
+80,EVENT 8 END,2024-05-08 23:00:49.234,,,EVENT 8 END,839
+84,review,2024-05-08 23:02:00.376,Waiter-000002,homonymous Label(Activity:'Review order'),Review order,840
+82,prepare order,2024-05-08 23:02:05.828,Cook-000001,homonymous Label(Activity:'Prepare main course'),Prepare main course,841
+84,prepare drinks,2024-05-08 23:02:07.649,Barman-000003,,prepare drinks,842
+83,Prepare main course,2024-05-08 23:06:19.549,Cook-000001,,Prepare main course,843
+84,bring order,2024-05-08 23:08:15.079,Barman-000002,homonymous Label(Activity:'Bring drinks'),Bring drinks,844
+77,Signal food complete,2024-05-08 23:08:30.576,Cook-000001,,Signal food complete,845
+79,Signal food complete,2024-05-08 23:11:09.225,Cook-000002,,Signal food complete,846
+78,Bring food,2024-05-08 23:11:09.225,Cook helper-000002,,Bring food,847
+78,Deliver to customer,2024-05-08 23:12:03.434,Waiter-000001,,Deliver to customer,848
+78,EVENT 8 END,2024-05-08 23:16:18.715,,,EVENT 8 END,849
+84,Review drinks,2024-05-08 23:18:53.001,Waiter-000002,,Review drinks,850
+81,review,2024-05-08 23:18:54.704,Waiter-000004,homonymous Label(Activity:'Review drinks'),Review drinks,851
+86,start,2024-05-08 23:30:00.000,,,start,852
+86,Take order,2024-05-08 23:30:00.000,Waiter-000001,,Take order,853
+86,Review order,2024-05-08 23:32:01.069,Waiter-000003,,Review order,854
+84,Prepare main course,2024-05-08 23:34:04.954,Cook-000003,,Prepare main course,855
+86,prepare order,2024-05-08 23:34:35.163,Barman-000003,homonymous Label(Activity:'prepare drinks'),prepare drinks,856
+86,Prepare starter,2024-05-08 23:34:35.163,Cook helper-000003,,Prepare starter,857
+86,bring order,2024-05-08 23:36:58.336,Barman-000002,homonymous Label(Activity:'Bring drinks'),Bring drinks,858
+87,Take order,2024-05-08 23:45:00.000,Waiter-000005,,Take order,859
+87,start,2024-05-08 23:45:00.000,,,start,860
+86,review,2024-05-08 23:46:36.111,Waiter-000004,homonymous Label(Activity:'Review drinks'),Review drinks,861
+87,Review order,2024-05-08 23:47:11.560,Waiter-000002,,Review order,862
+87,prepare order,2024-05-08 23:51:19.064,Barman-000001,homonymous Label(Activity:'prepare drinks'),prepare drinks,863
+87,Bring drinks,2024-05-08 23:51:44.392,Barman-000003,,Bring drinks,864
+82,Signal food complete,2024-05-08 23:55:03.688,Cook-000003,,Signal food complete,865
+77,Bring food,2024-05-08 23:56:32.770,Cook helper-000001,,Bring food,867
+83,Signal food complete,2024-05-08 23:56:32.770,Cook-000001,,Signal food complete,866
+83,Bring food,2024-05-08 23:58:19.063,Cook helper-000002,,Bring food,868
+87,review,2024-05-08 23:59:05.316,Waiter-000001,homonymous Label(Activity:'Review drinks'),Review drinks,869
+88,start,2024-05-09 00:00:00.000,,,start,870
+88,Take order,2024-05-09 00:00:00.000,Waiter-000003,,Take order,871
+83,Deliver to customer,2024-05-09 00:00:03.337,Waiter-000004,,Deliver to customer,872
+79,bring order,2024-05-09 00:02:04.944,Cook helper-000003,homonymous Label(Activity:'Bring food'),Bring food,873
+81,Signal food complete,2024-05-09 00:02:04.944,Cook-000002,,Signal food complete,874
+83,EVENT 8 END,2024-05-09 00:03:47.088,,,EVENT 8 END,875
+86,prepare order,2024-05-09 00:03:53.547,Cook-000002,homonymous Label(Activity:'Prepare main course'),Prepare main course,876
+81,bring order,2024-05-09 00:03:53.547,Cook helper-000002,homonymous Label(Activity:'Bring food'),Bring food,877
+88,Review order,2024-05-09 00:04:23.292,Waiter-000005,,Review order,878
+88,prepare drinks,2024-05-09 00:04:44.453,Barman-000002,,prepare drinks,879
+81,Deliver to customer,2024-05-09 00:05:30.170,Waiter-000002,,Deliver to customer,880
+79,Deliver to customer,2024-05-09 00:05:32.201,Waiter-000001,,Deliver to customer,881
+79,EVENT 8 END,2024-05-09 00:05:57.794,,,EVENT 8 END,882
+77,Deliver to customer,2024-05-09 00:07:55.133,Waiter-000004,,Deliver to customer,883
+77,EVENT 8 END,2024-05-09 00:08:39.782,,,EVENT 8 END,884
+87,Prepare main course,2024-05-09 00:09:41.510,Cook-000003,,Prepare main course,885
+82,bring order,2024-05-09 00:09:41.510,Cook helper-000002,homonymous Label(Activity:'Bring food'),Bring food,886
+81,EVENT 8 END,2024-05-09 00:10:17.186,,,EVENT 8 END,887
+84,Signal food complete,2024-05-09 00:13:51.516,Cook-000002,,Signal food complete,888
+88,bring order,2024-05-09 00:15:08.144,Barman-000001,homonymous Label(Activity:'Bring drinks'),Bring drinks,889
+88,Review drinks,2024-05-09 00:15:48.009,Waiter-000001,,Review drinks,890
+88,prepare order,2024-05-09 00:18:43.094,Cook-000003,homonymous Label(Activity:'Prepare main course'),Prepare main course,891
+82,Deliver to customer,2024-05-09 00:28:35.099,Waiter-000002,,Deliver to customer,892
+90,Take order,2024-05-09 00:30:00.000,Waiter-000003,,Take order,894
+90,start,2024-05-09 00:30:00.000,,,start,893
+90,Review order,2024-05-09 00:30:20.166,Waiter-000001,,Review order,895
+90,prepare drinks,2024-05-09 00:30:24.813,Barman-000001,,prepare drinks,896
+90,Prepare starter,2024-05-09 00:30:24.813,Cook helper-000001,,Prepare starter,897
+82,EVENT 8 END,2024-05-09 00:30:30.430,,,EVENT 8 END,898
+84,bring order,2024-05-09 00:32:31.219,Cook helper-000003,homonymous Label(Activity:'Bring food'),Bring food,899
+86,Signal food complete,2024-05-09 00:32:31.219,Cook-000002,,Signal food complete,900
+90,bring order,2024-05-09 00:42:42.479,Barman-000003,homonymous Label(Activity:'Bring drinks'),Bring drinks,901
+90,Review drinks,2024-05-09 00:43:01.251,Waiter-000005,,Review drinks,902
+87,Signal food complete,2024-05-09 00:43:37.653,Cook-000002,,Signal food complete,903
+86,bring order,2024-05-09 00:43:37.653,Cook helper-000002,homonymous Label(Activity:'Bring food'),Bring food,904
+86,Deliver to customer,2024-05-09 00:44:55.337,Waiter-000004,,Deliver to customer,905
+91,Take order,2024-05-09 00:45:00.000,Waiter-000003,,Take order,907
+91,start,2024-05-09 00:45:00.000,,,start,906
+91,Review order,2024-05-09 00:45:15.763,Waiter-000001,,Review order,908
+86,EVENT 8 END,2024-05-09 00:45:30.378,,,EVENT 8 END,909
+84,Deliver to customer,2024-05-09 00:47:23.382,Waiter-000002,,Deliver to customer,910
+90,prepare drinks,2024-05-09 00:47:28.110,Barman-000002,,prepare drinks,911
+87,Bring food,2024-05-09 00:47:54.060,Cook helper-000001,,Bring food,912
+84,EVENT 8 END,2024-05-09 00:48:30.794,,,EVENT 8 END,913
+91,prepare drinks,2024-05-09 00:48:36.502,Barman-000001,,prepare drinks,914
+90,Bring drinks,2024-05-09 00:48:42.357,Barman-000003,,Bring drinks,915
+90,Prepare main course,2024-05-09 00:49:35.691,Cook-000003,,Prepare main course,916
+91,Prepare main course,2024-05-09 00:50:19.561,Cook-000003,,Prepare main course,917
+88,Signal food complete,2024-05-09 00:51:21.388,Cook-000001,,Signal food complete,918
+90,review,2024-05-09 00:52:26.328,Waiter-000003,homonymous Label(Activity:'Review drinks'),Review drinks,919
+91,Bring drinks,2024-05-09 00:53:27.385,Barman-000002,,Bring drinks,920
+91,Review drinks,2024-05-09 00:54:17.402,Waiter-000004,,Review drinks,921
+91,prepare order,2024-05-09 00:55:11.120,Barman-000003,homonymous Label(Activity:'prepare drinks'),prepare drinks,922
+87,Deliver to customer,2024-05-09 00:57:12.973,Waiter-000005,,Deliver to customer,923
+92,start,2024-05-09 01:00:00.000,,,start,924
+92,Take order,2024-05-09 01:00:00.000,Waiter-000002,,Take order,925
+91,Bring drinks,2024-05-09 01:00:12.507,Barman-000001,,Bring drinks,926
+92,Review order,2024-05-09 01:01:01.685,Waiter-000001,,Review order,927
+92,prepare drinks,2024-05-09 01:02:19.745,Barman-000002,,prepare drinks,928
+92,prepare order,2024-05-09 01:02:19.745,Cook helper-000002,homonymous Label(Activity:'Prepare starter'),Prepare starter,929
+92,Bring drinks,2024-05-09 01:03:16.554,Barman-000003,,Bring drinks,930
+91,review,2024-05-09 01:03:45.151,Waiter-000003,homonymous Label(Activity:'Review drinks'),Review drinks,931
+87,EVENT 8 END,2024-05-09 01:03:54.894,,,EVENT 8 END,932
+92,Review drinks,2024-05-09 01:04:34.693,Waiter-000004,,Review drinks,933
+91,prepare drinks,2024-05-09 01:06:19.601,Barman-000002,,prepare drinks,934
+91,bring order,2024-05-09 01:07:11.194,Barman-000001,homonymous Label(Activity:'Bring drinks'),Bring drinks,935
+90,Signal food complete,2024-05-09 01:10:58.639,Cook-000003,,Signal food complete,936
+91,Review drinks,2024-05-09 01:11:15.744,Waiter-000002,,Review drinks,937
+91,prepare order,2024-05-09 01:12:15.118,Barman-000003,homonymous Label(Activity:'prepare drinks'),prepare drinks,938
+91,Bring drinks,2024-05-09 01:14:53.307,Barman-000002,,Bring drinks,939
+93,start,2024-05-09 01:15:00.000,,,start,940
+93,Take order,2024-05-09 01:15:00.000,Waiter-000001,,Take order,941
+93,review,2024-05-09 01:16:45.126,Waiter-000005,homonymous Label(Activity:'Review order'),Review order,942
+93,prepare order,2024-05-09 01:16:52.900,Barman-000001,homonymous Label(Activity:'prepare drinks'),prepare drinks,943
+92,Signal food complete,2024-05-09 01:21:25.277,Cook-000003,,Signal food complete,945
+90,Bring food,2024-05-09 01:21:25.277,Cook helper-000001,,Bring food,944
+93,Bring drinks,2024-05-09 01:26:48.945,Barman-000003,,Bring drinks,946
+94,start,2024-05-09 01:30:00.000,,,start,947
+94,Take order,2024-05-09 01:30:00.000,Waiter-000003,,Take order,948
+91,Review drinks,2024-05-09 01:31:20.962,Waiter-000002,,Review drinks,949
+94,review,2024-05-09 01:31:40.152,Waiter-000001,homonymous Label(Activity:'Review order'),Review order,950
+90,Deliver to customer,2024-05-09 01:32:49.821,Waiter-000005,,Deliver to customer,951
+90,EVENT 8 END,2024-05-09 01:33:51.083,,,EVENT 8 END,952
+93,Review drinks,2024-05-09 01:35:07.533,Waiter-000004,,Review drinks,953
+94,prepare order,2024-05-09 01:35:30.653,Barman-000001,homonymous Label(Activity:'prepare drinks'),prepare drinks,954
+94,bring order,2024-05-09 01:37:37.056,Barman-000002,homonymous Label(Activity:'Bring drinks'),Bring drinks,955
+91,Signal food complete,2024-05-09 01:38:01.777,Cook-000003,,Signal food complete,957
+92,Bring food,2024-05-09 01:38:01.777,Cook helper-000002,,Bring food,956
+88,Bring food,2024-05-09 01:38:25.628,Cook helper-000003,,Bring food,958
+93,Prepare main course,2024-05-09 01:38:25.628,Cook-000001,,Prepare main course,959
+94,Review drinks,2024-05-09 01:41:59.249,Waiter-000003,,Review drinks,960
+88,Deliver to customer,2024-05-09 01:42:17.437,Waiter-000002,,Deliver to customer,961
+94,prepare order,2024-05-09 01:43:27.732,Cook-000001,homonymous Label(Activity:'Prepare main course'),Prepare main course,962
+88,EVENT 8 END,2024-05-09 01:43:46.855,,,EVENT 8 END,963
+95,start,2024-05-09 01:45:00.000,,,start,964
+95,Take order,2024-05-09 01:45:00.000,Waiter-000005,,Take order,965
+95,Review order,2024-05-09 01:47:30.109,Waiter-000001,,Review order,966
+95,prepare order,2024-05-09 01:48:13.735,Cook helper-000001,homonymous Label(Activity:'Prepare starter'),Prepare starter,968
+95,prepare order,2024-05-09 01:48:13.735,Barman-000003,homonymous Label(Activity:'prepare drinks'),prepare drinks,967
+95,bring order,2024-05-09 01:49:14.771,Barman-000001,homonymous Label(Activity:'Bring drinks'),Bring drinks,969
+95,review,2024-05-09 01:51:52.451,Waiter-000004,homonymous Label(Activity:'Review drinks'),Review drinks,970
+92,Deliver to customer,2024-05-09 01:54:42.296,Waiter-000003,,Deliver to customer,971
+92,EVENT 8 END,2024-05-09 01:55:41.726,,,EVENT 8 END,972
+93,Signal food complete,2024-05-09 01:58:39.052,Cook-000003,,Signal food complete,973
+91,bring order,2024-05-09 01:58:39.052,Cook helper-000003,homonymous Label(Activity:'Bring food'),Bring food,974
+96,start,2024-05-09 02:00:00.000,,,start,975
+96,Take order,2024-05-09 18:00:00.000,Waiter-000002,,Take order,976
+91,Deliver to customer,2024-05-09 18:01:04.485,Waiter-000005,,Deliver to customer,977
+91,EVENT 8 END,2024-05-09 18:03:48.772,,,EVENT 8 END,978
+96,review,2024-05-09 18:03:59.883,Waiter-000001,homonymous Label(Activity:'Review order'),Review order,979
+96,prepare drinks,2024-05-09 18:04:33.333,Barman-000002,,prepare drinks,980
+96,bring order,2024-05-09 18:04:49.099,Barman-000003,homonymous Label(Activity:'Bring drinks'),Bring drinks,981
+96,review,2024-05-09 18:11:20.096,Waiter-000004,homonymous Label(Activity:'Review drinks'),Review drinks,982
+95,Signal food complete,2024-05-09 18:24:44.840,Cook-000003,,Signal food complete,984
+93,Bring food,2024-05-09 18:24:44.840,Cook helper-000002,,Bring food,983
+96,prepare order,2024-05-09 18:27:23.678,Cook-000001,homonymous Label(Activity:'Prepare main course'),Prepare main course,985
+98,start,2024-05-09 18:30:00.000,,,start,986
+98,Take order,2024-05-09 18:30:00.000,Waiter-000001,,Take order,987
+98,Review order,2024-05-09 18:31:22.092,Waiter-000004,,Review order,988
+98,Prepare starter,2024-05-09 18:31:45.829,Cook helper-000003,,Prepare starter,989
+98,prepare order,2024-05-09 18:31:45.829,Barman-000003,homonymous Label(Activity:'prepare drinks'),prepare drinks,990
+98,Bring drinks,2024-05-09 18:33:36.686,Barman-000001,,Bring drinks,991
+98,review,2024-05-09 18:34:31.763,Waiter-000003,homonymous Label(Activity:'Review drinks'),Review drinks,992
+98,prepare drinks,2024-05-09 18:36:06.192,Barman-000002,,prepare drinks,993
+93,Deliver to customer,2024-05-09 18:36:42.840,Waiter-000005,,Deliver to customer,994
+93,EVENT 8 END,2024-05-09 18:36:58.193,,,EVENT 8 END,995
+98,bring order,2024-05-09 18:44:08.031,Barman-000003,homonymous Label(Activity:'Bring drinks'),Bring drinks,996
+98,review,2024-05-09 18:45:21.261,Waiter-000001,homonymous Label(Activity:'Review drinks'),Review drinks,997
+98,prepare drinks,2024-05-09 18:45:31.681,Barman-000001,,prepare drinks,998
+95,bring order,2024-05-09 18:48:15.245,Cook helper-000001,homonymous Label(Activity:'Bring food'),Bring food,999
+95,Deliver to customer,2024-05-09 18:48:33.975,Waiter-000003,,Deliver to customer,1000

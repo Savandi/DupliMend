@@ -1,0 +1,52 @@
+´
+----------------Skipped Model feb17-0936/A_1_VARIANTS because of duplicate label ------------------------
+´
+----------------Skipped Model feb17-0936/B_1_VARIANTS because of duplicate label ------------------------
+
+
+Best score found for feb17-0936/D_1:
+0.8785875781219543
+Precision of best_score model found for feb17-0936/D_1:
+0.9706961429915334
+Precision found by Xixi for feb17-0936/D_1:
+0.6831143864146108
+Adjusted Rand Index from Xixi for feb17-0936/D_1:
+0.0
+Golden_standard_precision for feb17-0936/D_1:
+0.9706961429915334
+
+
+Best score found for feb17-0936/E_1:
+0.9521114928149994
+Precision of best_score model found for feb17-0936/E_1:
+0.9997942175120897
+Precision found by Xixi for feb17-0936/E_1:
+0.4470482116230694
+Adjusted Rand Index from Xixi for feb17-0936/E_1:
+-1.6147027862707542e-16
+Golden_standard_precision for feb17-0936/E_1:
+0.9989732356766376
+´
+----------------Skipped Model feb17-0936/F_1_VARIANTS because of duplicate label ------------------------
+´
+----------------Skipped Model feb17-0936/G_1_VARIANTS because of duplicate label ------------------------
+
+
+Best score found for feb17-0936/H_1:
+0.24415175102017203
+Precision of best_score model found for feb17-0936/H_1:
+0.7508029416178899
+Precision found by Xixi for feb17-0936/H_1:
+0.7231176130258699
+Adjusted Rand Index from Xixi for feb17-0936/H_1:
+0.20810992282145446
+Golden_standard_precision for feb17-0936/H_1:
+0.7127255460588794
+´
+----------------Skipped Model feb17-0936/A_1_VARIANTS because of duplicate label ------------------------
+´
+----------------Skipped Model feb17-0936/B_1_VARIANTS because of duplicate label ------------------------
+´
+----------------Skipped Model feb17-0936/A_1_VARIANTS because of duplicate label ------------------------
+´
+----------------Skipped Model feb17-0936/B_1_VARIANTS because of duplicate label ------------------------

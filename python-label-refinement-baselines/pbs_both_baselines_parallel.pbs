@@ -1,0 +1,368 @@
+#!/bin/bash -l
+#PBS -N both_baselines_parallel
+#PBS -l select=1:ncpus=32:ngpus=1:mem=512gb:gpu_id=H100
+#PBS -l walltime=48:00:00
+#PBS -j oe
+#PBS -m abe
+#PBS -M savandi.kalukapuge@hdr.qut.edu.au
+#PBS -V
+
+set -euo pipefail
+
+# ============================================================================
+# Parallel Baseline Execution - Label-Refinement + PM-Label-Splitting
+# ============================================================================
+# Runs both baselines IN PARALLEL within a single job using background processes
+# Resources: 1 x H100 GPU, 32 CPU cores, 512GB RAM, 48 hours
+# ============================================================================
+
+cd "$PBS_O_WORKDIR"
+
+echo "=========================================="
+echo "BOTH BASELINES - PARALLEL EXECUTION"
+echo "=========================================="
+echo "JobID : ${PBS_JOBID:-N/A}"
+echo "Host  : $(hostname)"
+echo "Work  : $(pwd)"
+echo "Date  : $(date)"
+echo "CPUs  : 32 (16 per baseline)"
+echo "Memory: 512GB (256GB per baseline)"
+echo "GPU   : ${CUDA_VISIBLE_DEVICES:-H100 available but not used}"
+echo ""
+
+# Modules
+module load GCC/12.3.0
+module load Python/3.11.3
+
+# Paths
+PROJECT_ROOT="$PBS_O_WORKDIR"
+BASELINE_DIR="$PROJECT_ROOT"
+LABELREF_DIR="$BASELINE_DIR/labelrefinement"
+PM_LABEL_DIR="$BASELINE_DIR/pm-label-splitting"
+VENV_DIR="$BASELINE_DIR/venv"
+VENV_ACT="$VENV_DIR/bin/activate"
+REQS="$BASELINE_DIR/requirements.txt"
+
+# Data path
+DATA_BASE="/home/n11473584/Handling Duplicated Tasks in Process Discovery by Refining Event Labels (BPM2016)_1_all/data"
+
+# Results directory
+RESULTS_BASE="/home/n11473584/baselines"
+
+# Datasets to process
+DATASETS=(
+    "noImprInLoop_default_IMD"
+    "noImprInLoop_adaptive_OD"
+    "imprInLoop_adaptive_OD"
+)
+
+# ============================================================================
+# SANITY CHECKS - Verify everything exists before starting
+# ============================================================================
+
+echo "Performing sanity checks..."
+
+# Check baseline directories
+[[ -d "$BASELINE_DIR" ]] || { echo "ERROR: Missing baselines at $BASELINE_DIR"; exit 1; }
+[[ -d "$LABELREF_DIR" ]] || { echo "ERROR: Missing labelrefinement at $LABELREF_DIR"; exit 1; }
+[[ -d "$PM_LABEL_DIR" ]] || { echo "ERROR: Missing pm-label-splitting at $PM_LABEL_DIR"; exit 1; }
+
+# Check data directory
+[[ -d "$DATA_BASE" ]] || { echo "ERROR: Missing data at $DATA_BASE"; exit 1; }
+
+# Create ALL required directories upfront
+echo "Creating results directories..."
+mkdir -p "$RESULTS_BASE/logs"
+mkdir -p "$RESULTS_BASE/label_refinement/results"
+mkdir -p "$RESULTS_BASE/label_refinement/outputs"
+mkdir -p "$RESULTS_BASE/label_refinement/best_results"
+mkdir -p "$RESULTS_BASE/pm_label_splitting/outputs"
+mkdir -p "$RESULTS_BASE/pm_label_splitting/results"
+mkdir -p "$RESULTS_BASE/pm_label_splitting/best_results"
+
+# Verify we can write to results directory
+if ! touch "$RESULTS_BASE/test_write_$$" 2>/dev/null; then
+    echo "ERROR: Cannot write to results directory: $RESULTS_BASE"
+    exit 1
+fi
+rm -f "$RESULTS_BASE/test_write_$$"
+echo "✓ Results directory is writable"
+
+# Threads (split 32 cores between 2 baselines = 16 each)
+export OMP_NUM_THREADS=16
+export MKL_NUM_THREADS=16
+export NUMBA_NUM_THREADS=16
+export OPENBLAS_NUM_THREADS=16
+export NUMEXPR_MAX_THREADS=16
+
+# Virtualenv
+if [[ ! -d "$VENV_DIR" ]]; then
+  echo "Creating virtual environment..."
+  python -m venv "$VENV_DIR"
+fi
+source "$VENV_ACT"
+
+echo "Installing Python packages..."
+python -m pip install --upgrade pip --quiet
+
+# Install packages without strict version constraints to avoid conflicts
+echo "Installing core baseline packages..."
+python -m pip install --quiet pandas pm4py python-igraph matplotlib networkx editdistance numpy leidenalg python-louvain scikit-learn || {
+    echo "⚠️  Installation issue detected, trying with --no-cache-dir..."
+    python -m pip install --no-cache-dir pandas pm4py python-igraph matplotlib networkx editdistance numpy leidenalg python-louvain scikit-learn
+}
+
+echo "✓ Python environment ready: $(which python)"
+echo ""
+
+# ============================================================================
+# Function: Run Label-Refinement for all datasets
+# ============================================================================
+run_labelrefinement_all() {
+    echo "=========================================="
+    echo "LABEL-REFINEMENT - Starting"
+    echo "=========================================="
+    echo "Start time: $(date)"
+    echo "Working directory: $LABELREF_DIR"
+
+    cd "$LABELREF_DIR" || { echo "ERROR: Cannot cd to $LABELREF_DIR"; exit 1; }
+
+    export PYTHONPATH="$BASELINE_DIR:${PYTHONPATH:-}"
+
+    for dataset in "${DATASETS[@]}"; do
+        echo ""
+        echo "=========================================="
+        echo "[LR] Dataset: $dataset"
+        echo "=========================================="
+
+        DATA_PATH="$DATA_BASE/$dataset"
+        RESULTS_DIR="$RESULTS_BASE/label_refinement/results"
+
+        export DATA_PATH_SYNTHETIC="$DATA_PATH"
+        export DATASET_NAME="$dataset"
+        export BASELINE_RESULTS_DIR="$RESULTS_DIR"
+
+        mkdir -p "$RESULTS_DIR/$dataset"
+        mkdir -p "$RESULTS_BASE/label_refinement/outputs/$dataset"
+
+        # Get folders in this dataset (handle paths with spaces)
+        folders=()
+        while IFS= read -r -d '' dir; do
+            folders+=("$(basename "$dir")")
+        done < <(find "$DATA_PATH" -mindepth 1 -maxdepth 1 -type d -print0 | sort -z)
+
+        if [ ${#folders[@]} -eq 0 ]; then
+            echo "[LR] ⚠️  No folders found in $DATA_PATH"
+            continue
+        fi
+
+        echo "[LR] Found ${#folders[@]} folders to process"
+
+        # Process each folder
+        for folder in "${folders[@]}"; do
+            echo ""
+            echo "[LR] ----------------------------------------"
+            echo "[LR] Processing folder: $folder"
+            echo "[LR] ----------------------------------------"
+
+            # Run label-refinement
+            python test_main.py 100 10 1 -1 --folder "$folder"
+
+            if [ $? -eq 0 ]; then
+                echo "[LR] ✓ Completed: $folder"
+            else
+                echo "[LR] ✗ Failed: $folder (continuing...)"
+            fi
+        done
+
+        echo ""
+        echo "[LR] ✓ Completed dataset: $dataset"
+    done
+
+    echo ""
+    echo "=========================================="
+    echo "LABEL-REFINEMENT - Complete"
+    echo "End time: $(date)"
+    echo "=========================================="
+
+    return 0
+}
+
+# ============================================================================
+# Function: Run PM-Label-Splitting for all datasets
+# ============================================================================
+run_pm_label_splitting_all() {
+    echo "=========================================="
+    echo "PM-LABEL-SPLITTING - Starting"
+    echo "=========================================="
+    echo "Start time: $(date)"
+    echo "Working directory: $PM_LABEL_DIR"
+
+    cd "$PM_LABEL_DIR" || { echo "ERROR: Cannot cd to $PM_LABEL_DIR"; exit 1; }
+
+    for dataset in "${DATASETS[@]}"; do
+        echo ""
+        echo "=========================================="
+        echo "[PM] Dataset: $dataset"
+        echo "=========================================="
+
+        DATA_PATH="$DATA_BASE/$dataset"
+
+        export DATA_PATH_SYNTHETIC="$DATA_PATH"
+        export DATASET_NAME="$dataset"
+        export PM_LABEL_OUTPUTS="$RESULTS_BASE/pm_label_splitting/outputs"
+        export PM_LABEL_RESULTS="$RESULTS_BASE/pm_label_splitting/results"
+        export PM_LABEL_BEST_RESULTS="$RESULTS_BASE/pm_label_splitting/best_results"
+
+        mkdir -p "$PM_LABEL_OUTPUTS/$dataset"
+        mkdir -p "$PM_LABEL_RESULTS/$dataset"
+        mkdir -p "$PM_LABEL_BEST_RESULTS/$dataset"
+
+        # Get folders in this dataset (handle paths with spaces)
+        folders=()
+        while IFS= read -r -d '' dir; do
+            folders+=("$(basename "$dir")")
+        done < <(find "$DATA_PATH" -mindepth 1 -maxdepth 1 -type d -print0 | sort -z)
+
+        if [ ${#folders[@]} -eq 0 ]; then
+            echo "[PM] ⚠️  No folders found in $DATA_PATH"
+            continue
+        fi
+
+        echo "[PM] Found ${#folders[@]} folders to process"
+
+        # Process each folder by index
+        for folder_idx in "${!folders[@]}"; do
+            folder="${folders[$folder_idx]}"
+            echo ""
+            echo "[PM] ----------------------------------------"
+            echo "[PM] Processing folder: $folder (index: $folder_idx)"
+            echo "[PM] ----------------------------------------"
+
+            # Run PM-Label-Splitting
+            python ../main.py "$folder_idx" "synthetic" "$DATA_PATH"
+
+            if [ $? -eq 0 ]; then
+                echo "[PM] ✓ Completed: $folder"
+            else
+                echo "[PM] ✗ Failed: $folder (continuing...)"
+            fi
+        done
+
+        echo ""
+        echo "[PM] ✓ Completed dataset: $dataset"
+    done
+
+    echo ""
+    echo "========================================"
+    echo "PM-LABEL-SPLITTING - Complete"
+    echo "End time: $(date)"
+    echo "========================================"
+
+    return 0
+}
+
+# ============================================================================
+# MAIN EXECUTION - Run both baselines in parallel
+# ============================================================================
+
+echo "=========================================="
+echo "STARTING PARALLEL EXECUTION"
+echo "=========================================="
+echo "Running both baselines simultaneously..."
+echo "Datasets to process: ${DATASETS[@]}"
+echo ""
+
+# Run Label-Refinement in background (redirect to log file)
+run_labelrefinement_all > "$RESULTS_BASE/logs/labelrefinement_all.log" 2>&1 &
+LR_PID=$!
+echo "✓ Started Label-Refinement (PID: $LR_PID)"
+
+# Run PM-Label-Splitting in background (redirect to log file)
+run_pm_label_splitting_all > "$RESULTS_BASE/logs/pm_label_splitting_all.log" 2>&1 &
+PM_PID=$!
+echo "✓ Started PM-Label-Splitting (PID: $PM_PID)"
+
+echo ""
+echo "Both baselines running in parallel..."
+echo "  Label-Refinement PID: $LR_PID"
+echo "  PM-Label-Splitting PID: $PM_PID"
+echo ""
+echo "Waiting for completion..."
+
+# Wait for Label-Refinement
+wait $LR_PID
+LR_EXIT=$?
+
+if [ $LR_EXIT -eq 0 ]; then
+    echo ""
+    echo "✓ Label-Refinement completed successfully"
+else
+    echo ""
+    echo "✗ Label-Refinement failed"
+    echo "   Check log: $RESULTS_BASE/logs/labelrefinement_all.log"
+fi
+
+# Wait for PM-Label-Splitting
+wait $PM_PID
+PM_EXIT=$?
+
+if [ $PM_EXIT -eq 0 ]; then
+    echo "✓ PM-Label-Splitting completed successfully"
+else
+    echo "✗ PM-Label-Splitting failed"
+    echo "   Check log: $RESULTS_BASE/logs/pm_label_splitting_all.log"
+fi
+
+# ============================================================================
+# FINAL RESULTS SUMMARY
+# ============================================================================
+
+echo ""
+echo "=========================================="
+echo "PARALLEL EXECUTION COMPLETE"
+echo "=========================================="
+echo "End time: $(date)"
+echo ""
+
+echo "Exit Codes:"
+echo "  Label-Refinement:   $LR_EXIT"
+echo "  PM-Label-Splitting: $PM_EXIT"
+echo ""
+
+echo "Results Summary:"
+echo "----------------------------------------"
+
+for dataset in "${DATASETS[@]}"; do
+    echo ""
+    echo "Dataset: $dataset"
+
+    # Count Label-Refinement results
+    lr_count=$(find "$RESULTS_BASE/label_refinement/results/$dataset" -name "*.csv" 2>/dev/null | wc -l)
+    echo "  Label-Refinement: $lr_count CSV files"
+
+    # Count PM-Label-Splitting results
+    pm_count=$(find "$RESULTS_BASE/pm_label_splitting/results/$dataset" -name "*.csv" 2>/dev/null | wc -l)
+    echo "  PM-Label-Splitting: $pm_count CSV files"
+done
+
+echo ""
+echo "Log Files:"
+echo "  $RESULTS_BASE/logs/labelrefinement_all.log"
+echo "  $RESULTS_BASE/logs/pm_label_splitting_all.log"
+
+echo ""
+echo "=========================================="
+echo "All results saved to: $RESULTS_BASE"
+echo "=========================================="
+
+# Exit with failure if either baseline failed
+if [ $LR_EXIT -ne 0 ] || [ $PM_EXIT -ne 0 ]; then
+    echo ""
+    echo "⚠️  One or more baselines failed - check logs above"
+    exit 1
+fi
+
+echo ""
+echo "✓ Both baselines completed successfully!"
+exit 0

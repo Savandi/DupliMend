@@ -1,0 +1,143 @@
+{
+  "control_flow_column": "concept:name",
+  "timestamp_column": "time:timestamp",
+  "resource_column": null,
+  "case_id_column": "case:concept:name",
+  "event_id_column": "EventID",
+  "excluded_columns": [
+    "PROCESS_comm",
+    "OrgLabel",
+    "lifecycle:transition",
+    "case:concept:name",
+    "concept:name",
+    "CUSTOM_libs",
+    "org:resource",
+    "EventID",
+    "time:timestamp"
+  ],
+  "training_mode_config": {
+    "mode": "single_file",
+    "checkpoint_interval": 1000,
+    "warmup_global_events": 4000,
+    "incremental_training_interval": 1000,
+    "min_events_for_incremental_training": 1,
+    "min_events_for_dynamic_training": 10,
+    "training_folder": "U:\\Research\\Projects\\sef\\stream_quality_drift\\processed_train_data",
+    "training_file_pattern": "*.csv",
+    "test_folder": "U:\\Research\\Projects\\sef\\stream_quality_drift\\processed_test_data",
+    "test_file_pattern": "*.csv",
+    "default_input_file": "src/synthetic_logs/ipalia.csv",
+    "save_models_after_training": true,
+    "models_save_dir": "U:\\Research\\Projects\\sef\\stream_quality_drift\\cybersecurity_iotdata\\output\\new",
+    "load_pretrained_models": false,
+    "feature_vectors_base_dir": "U:\\Research\\Projects\\sef\\stream_quality_drift\\cybersecurity_iotdata\\output\\new",
+    "models_base_dir": "U:\\Research\\Projects\\sef\\stream_quality_drift\\cybersecurity_iotdata\\output\\new"
+  },
+  "use_control_flow_features": true,
+  "control_flow_context_window": 7,
+  "control_flow_pattern_window_size": 7,
+  "max_control_flow_patterns": 5,
+  "embedding_dim": 8,
+  "parallelization_threshold": 18,
+  "unfolding_threshold": 0.2,
+  "autoencoder_params": {
+    "latent_dim": 32,
+    "hidden_dims": [
+      128,
+      64
+    ],
+    "sparsity_lambda": 0.001,
+    "noise_std": 0.1,
+    "learning_rate": 0.001,
+    "max_epochs": 150,
+    "batch_size": 32,
+    "min_events_for_training": 1,
+    "early_stopping_patience": 15,
+    "min_delta": 1e-06,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-08,
+    "weight_decay": 1e-05,
+    "amsgrad": false,
+    "lr_decay_factor": 0.7,
+    "lr_patience": 5,
+    "min_lr": 1e-07,
+    "grad_clip": 1.0,
+    "enable_tensorboard": true,
+    "incremental_learning_rate": 0.0005,
+    "incremental_train_epochs": 2,
+    "buffer_retention_size": 100,
+    "cluster_regularization": {
+      "cluster_reg_weight": 0.1,
+      "separation_weight": 1.0,
+      "compactness_weight": 0.5,
+      "consistency_weight": 0.3,
+      "min_separation_distance": 0.1,
+      "max_intra_cluster_variance": 0.05
+    },
+    "memory_regularization": {
+      "enable_memory_regularization": true,
+      "memory_regularization_weight": 0.1,
+      "max_centroids_per_activity": 50,
+      "centroid_stability_threshold": 10,
+      "memory_decay_factor": 0.95,
+      "exemplar_count": 3,
+      "similarity_threshold": 0.7
+    }
+  },
+  "clustering_params": {
+    "algorithm": "river_dbstream",
+    "distance_metric": "cosine",
+    "clustering_threshold": 0.01,
+    "fading_factor": 0.001,
+    "decaying_factor": 0.01,
+    "beta": 0.5,
+    "mu": 2.5,
+    "epsilon": 0.5,
+    "n_samples_init": 10,
+    "max_micro_clusters": 200,
+    "time_gap": 1000,
+    "halflife": 0.1,
+    "n_macro_clusters": 20,
+    "split_perturbation": 0.05,
+    "n_clusters": 5,
+    "sigma": 1.0,
+    "min_cluster_weight": 20,
+    "variance_threshold": 1e-07,
+    "merge_threshold": 0.01,
+    "decay_interval": 10000,
+    "drift_detection": {
+      "variance_drift_threshold": 0.1,
+      "inter_cluster_threshold": 0.05,
+      "embedding_norm_threshold": 0.15,
+      "drift_window_size": 1000,
+      "min_observations_for_drift": 100,
+      "check_interval": 1000
+    },
+    "memory_management": {
+      "update_interval": 100,
+      "max_centroids_per_activity": 50,
+      "centroid_stability_threshold": 10,
+      "memory_decay_factor": 0.95
+    }
+  },
+  "feature_selection_params": {
+    "control_flow_feature_boost": 200
+  },
+  "categorical_feature_params": {
+    "categorical_columns": [
+      "SYSCALL_exit_hint",
+      "CUSTOM_openFiles"
+    ]
+  },
+  "forgetting_params": {
+    "decay_after_events": 10000,
+    "removal_threshold_events": 100000,
+    "frequency_decay_threshold": 2,
+    "temporal_decay_rate": 0.04,
+    "forgetting_factor": 0.85,
+    "forgetting_threshold": 0.0004
+  }
+}

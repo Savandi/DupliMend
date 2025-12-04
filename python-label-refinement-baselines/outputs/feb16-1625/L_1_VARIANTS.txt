@@ -1,0 +1,2182 @@
+
+ Performance of golden standard model:
+token_fitness
+{"perc_fit_traces": 85.3, "average_trace_fitness": 0.9747491741878447, "log_fitness": 0.9721879182115116, "percentage_of_fitting_traces": 85.3}
+precision
+0.9909194097616345
+0.7499999999999999
+generalization
+0.9001036009936705
+
+ Xixi split labels:
+['O_X_1']
+
+ Xixi refined log results:
+
+ IM without noise threshold:
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+0.870144056803441
+0.7272727272727273
+generalization
+0.9533137374043255
+
+ Xixi clustering:
+Clustering with 104 elements and 2 clusters
+
+[1] 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+    21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38,
+    39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56,
+    57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74,
+    75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92,
+    93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103
+
+ Data from log without imprecise labels
+
+ IM without noise threshold:
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+0.9874815905743741
+0.7499999999999999
+generalization
+0.9474519243158999
+
+ Original Labels:
+['I', 'L', 'O', 'K']
+
+ Ground truth clustering clustering:
+Clustering with 104 elements and 4 clusters
+[0] 1, 3, 4, 9, 12, 21, 22, 25, 27, 31, 32, 34, 37, 38, 42, 49, 55, 57, 60,
+    61, 64, 66, 68, 73, 78, 80, 83, 85, 86, 89, 92, 97, 98, 101
+[1] 7, 13, 16, 18, 28, 43, 47, 51, 69, 76, 90, 102
+[2] 6, 8, 14, 15, 17, 19, 29, 40, 44, 45, 46, 48, 52, 53, 56, 70, 71, 72, 75,
+    77, 91, 94, 95, 103
+[3] 0, 2, 5, 10, 11, 20, 23, 24, 26, 30, 33, 35, 36, 39, 41, 50, 54, 58, 59,
+    62, 63, 65, 67, 74, 79, 81, 82, 84, 87, 88, 93, 96, 99, 100
+
+ Xixi Adjusted Rand Index:
+-1.5278403185745988e-16
+
+
+
+
+----------------------------------------------------------------------------------------------
+Output from 2025-07-08 18:37:59.159197
+----------------------------------------------------------------------------------------------
+
+
+                
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\L_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 104 elements and 5 clusters
+[0] 6, 8, 14, 15, 17, 19, 29, 40, 44, 45, 46, 48, 52, 53, 56, 70, 71, 72, 75,
+    77, 91, 94, 95, 103
+[1] 1, 3, 4, 9, 11, 24, 33, 35, 36, 39, 42, 49, 54, 57, 59, 66, 74, 80, 83,
+    84, 86, 92, 97, 101
+[2] 5, 10, 12, 21, 23, 25, 27, 31, 37, 50, 55, 58, 60, 62, 64, 68, 79, 81, 85,
+    87, 89, 93, 99
+[3] 2, 7, 16, 20, 22, 26, 32, 34, 38, 43, 47, 51, 63, 65, 76, 78, 98, 102
+[4] 0, 13, 18, 28, 30, 41, 61, 67, 69, 73, 82, 88, 90, 96, 100
+
+Reassigned labels
+
+Runtime: 0.023998498916625977
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"O_0": "O", "O_1": "O", "O_2": "O", "O_3": "O", "O_4": "O"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+0.870144056803441
+0.7272727272727273
+generalization
+0.9533137374043255
+token_fitness
+{"perc_fit_traces": 87.5, "average_trace_fitness": 0.993185698402197, "log_fitness": 0.9902663136583086, "percentage_of_fitting_traces": 87.5}
+precision
+0.8347112904292612
+0.7142857142857143
+generalization
+0.9455303693777587
+
+Adjusted Rand Index:
+0.3293944920736313
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0.25
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\L_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 104 elements and 5 clusters
+[0] 6, 8, 14, 15, 17, 19, 29, 40, 44, 45, 46, 48, 52, 53, 56, 70, 71, 72, 75,
+    77, 91, 94, 95, 103
+[1] 1, 3, 4, 9, 11, 24, 33, 35, 36, 39, 42, 49, 54, 57, 59, 66, 74, 80, 83,
+    84, 86, 92, 97, 101
+[2] 5, 10, 12, 21, 23, 25, 27, 31, 37, 50, 55, 58, 60, 62, 64, 68, 79, 81, 85,
+    87, 89, 93, 99
+[3] 2, 7, 16, 20, 22, 26, 32, 34, 38, 43, 47, 51, 63, 65, 76, 78, 98, 102
+[4] 0, 13, 18, 28, 30, 41, 61, 67, 69, 73, 82, 88, 90, 96, 100
+
+Reassigned labels
+
+Runtime: 0.03778481483459473
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"O_0": "O", "O_1": "O", "O_2": "O", "O_3": "O", "O_4": "O"}
+token_fitness
+{"perc_fit_traces": 85.3, "average_trace_fitness": 0.9696820498748505, "log_fitness": 0.9658444052702316, "percentage_of_fitting_traces": 85.3}
+precision
+0.8318246784182944
+0.7142857142857143
+generalization
+0.8366023900436149
+
+Adjusted Rand Index:
+0.3293944920736313
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0.5
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\L_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 104 elements and 5 clusters
+[0] 6, 8, 14, 15, 17, 19, 29, 40, 44, 45, 46, 48, 52, 53, 56, 70, 71, 72, 75,
+    77, 91, 94, 95, 103
+[1] 1, 3, 4, 9, 11, 24, 33, 35, 36, 39, 42, 49, 54, 57, 59, 66, 74, 80, 83,
+    84, 86, 92, 97, 101
+[2] 5, 10, 12, 21, 23, 25, 27, 31, 37, 50, 55, 58, 60, 62, 64, 68, 79, 81, 85,
+    87, 89, 93, 99
+[3] 2, 7, 16, 20, 22, 26, 32, 34, 38, 43, 47, 51, 63, 65, 76, 78, 98, 102
+[4] 0, 13, 18, 28, 30, 41, 61, 67, 69, 73, 82, 88, 90, 96, 100
+
+Reassigned labels
+
+Runtime: 0.024547815322875977
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"O_0": "O", "O_1": "O", "O_2": "O", "O_3": "O", "O_4": "O"}
+token_fitness
+{"perc_fit_traces": 85.3, "average_trace_fitness": 0.986179336030607, "log_fitness": 0.9831790232005098, "percentage_of_fitting_traces": 85.3}
+precision
+0.8318246784182944
+0.7142857142857143
+generalization
+0.8374757786018778
+
+Adjusted Rand Index:
+0.3293944920736313
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0.75
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\L_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 104 elements and 5 clusters
+[0] 6, 8, 14, 15, 17, 19, 29, 40, 44, 45, 46, 48, 52, 53, 56, 70, 71, 72, 75,
+    77, 91, 94, 95, 103
+[1] 1, 3, 4, 9, 11, 24, 33, 35, 36, 39, 42, 49, 54, 57, 59, 66, 74, 80, 83,
+    84, 86, 92, 97, 101
+[2] 5, 10, 12, 21, 23, 25, 27, 31, 37, 50, 55, 58, 60, 62, 64, 68, 79, 81, 85,
+    87, 89, 93, 99
+[3] 2, 7, 16, 20, 22, 26, 32, 34, 38, 43, 47, 51, 63, 65, 76, 78, 98, 102
+[4] 0, 13, 18, 28, 30, 41, 61, 67, 69, 73, 82, 88, 90, 96, 100
+
+Reassigned labels
+
+Runtime: 0.029127836227416992
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"O_0": "O", "O_1": "O", "O_2": "O", "O_3": "O", "O_4": "O"}
+token_fitness
+{"perc_fit_traces": 61.8, "average_trace_fitness": 0.9597342284090149, "log_fitness": 0.9501697236815563, "percentage_of_fitting_traces": 61.8}
+precision
+0.8596008258774949
+0.7142857142857143
+generalization
+0.8336333437340921
+
+Adjusted Rand Index:
+0.3293944920736313
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 1
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\L_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 104 elements and 5 clusters
+[0] 6, 8, 14, 15, 17, 19, 29, 40, 44, 45, 46, 48, 52, 53, 56, 70, 71, 72, 75,
+    77, 91, 94, 95, 103
+[1] 1, 3, 4, 9, 11, 24, 33, 35, 36, 39, 42, 49, 54, 57, 59, 66, 74, 80, 83,
+    84, 86, 92, 97, 101
+[2] 5, 10, 12, 21, 23, 25, 27, 31, 37, 50, 55, 58, 60, 62, 64, 68, 79, 81, 85,
+    87, 89, 93, 99
+[3] 2, 7, 16, 20, 22, 26, 32, 34, 38, 43, 47, 51, 63, 65, 76, 78, 98, 102
+[4] 0, 13, 18, 28, 30, 41, 61, 67, 69, 73, 82, 88, 90, 96, 100
+
+Reassigned labels
+
+Runtime: 0.031180620193481445
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"O_0": "O", "O_1": "O", "O_2": "O", "O_3": "O", "O_4": "O"}
+token_fitness
+{"perc_fit_traces": 61.8, "average_trace_fitness": 0.9597342284090149, "log_fitness": 0.9501697236815563, "percentage_of_fitting_traces": 61.8}
+precision
+0.8596008258774949
+0.7142857142857143
+generalization
+0.8336333437340921
+
+Adjusted Rand Index:
+0.3293944920736313
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\L_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 104 elements and 5 clusters
+[0] 6, 8, 14, 15, 17, 19, 29, 40, 44, 45, 46, 48, 52, 53, 56, 70, 71, 72, 75,
+    77, 91, 94, 95, 103
+[1] 1, 3, 4, 9, 11, 24, 33, 35, 36, 39, 42, 49, 54, 57, 59, 66, 74, 80, 83,
+    84, 86, 92, 97, 101
+[2] 5, 10, 12, 21, 23, 25, 27, 31, 37, 50, 55, 58, 60, 62, 64, 68, 79, 81, 85,
+    87, 89, 93, 99
+[3] 2, 7, 16, 20, 22, 26, 32, 34, 38, 43, 47, 51, 63, 65, 76, 78, 98, 102
+[4] 0, 13, 18, 28, 30, 41, 61, 67, 69, 73, 82, 88, 90, 96, 100
+
+Reassigned labels
+
+Runtime: 0.03301715850830078
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"O_0": "O", "O_1": "O", "O_2": "O", "O_3": "O", "O_4": "O"}
+token_fitness
+{"perc_fit_traces": 87.5, "average_trace_fitness": 0.993185698402197, "log_fitness": 0.9902663136583086, "percentage_of_fitting_traces": 87.5}
+precision
+0.8347112904292612
+0.7142857142857143
+generalization
+0.9455303693777587
+
+Adjusted Rand Index:
+0.3293944920736313
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0.25
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\L_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 104 elements and 5 clusters
+[0] 6, 8, 14, 15, 17, 19, 29, 40, 44, 45, 46, 48, 52, 53, 56, 70, 71, 72, 75,
+    77, 91, 94, 95, 103
+[1] 1, 3, 4, 9, 11, 24, 33, 35, 36, 39, 42, 49, 54, 57, 59, 66, 74, 80, 83,
+    84, 86, 92, 97, 101
+[2] 5, 10, 12, 21, 23, 25, 27, 31, 37, 50, 55, 58, 60, 62, 64, 68, 79, 81, 85,
+    87, 89, 93, 99
+[3] 2, 7, 16, 20, 22, 26, 32, 34, 38, 43, 47, 51, 63, 65, 76, 78, 98, 102
+[4] 0, 13, 18, 28, 30, 41, 61, 67, 69, 73, 82, 88, 90, 96, 100
+
+Reassigned labels
+
+Runtime: 0.029999256134033203
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"O_0": "O", "O_1": "O", "O_2": "O", "O_3": "O", "O_4": "O"}
+token_fitness
+{"perc_fit_traces": 61.8, "average_trace_fitness": 0.9742113618638056, "log_fitness": 0.9662041068213835, "percentage_of_fitting_traces": 61.8}
+precision
+0.832628485413232
+0.7142857142857143
+generalization
+0.8740041386461601
+
+Adjusted Rand Index:
+0.3293944920736313
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0.5
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\L_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 104 elements and 5 clusters
+[0] 6, 8, 14, 15, 17, 19, 29, 40, 44, 45, 46, 48, 52, 53, 56, 70, 71, 72, 75,
+    77, 91, 94, 95, 103
+[1] 1, 3, 4, 9, 11, 24, 33, 35, 36, 39, 42, 49, 54, 57, 59, 66, 74, 80, 83,
+    84, 86, 92, 97, 101
+[2] 5, 10, 12, 21, 23, 25, 27, 31, 37, 50, 55, 58, 60, 62, 64, 68, 79, 81, 85,
+    87, 89, 93, 99
+[3] 2, 7, 16, 20, 22, 26, 32, 34, 38, 43, 47, 51, 63, 65, 76, 78, 98, 102
+[4] 0, 13, 18, 28, 30, 41, 61, 67, 69, 73, 82, 88, 90, 96, 100
+
+Reassigned labels
+
+Runtime: 0.032114505767822266
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"O_0": "O", "O_1": "O", "O_2": "O", "O_3": "O", "O_4": "O"}
+token_fitness
+{"perc_fit_traces": 85.3, "average_trace_fitness": 0.9696820498748505, "log_fitness": 0.9658444052702316, "percentage_of_fitting_traces": 85.3}
+precision
+0.8318246784182944
+0.7142857142857143
+generalization
+0.8366023900436149
+
+Adjusted Rand Index:
+0.3293944920736313
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0.75
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\L_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 104 elements and 5 clusters
+[0] 6, 8, 14, 15, 17, 19, 29, 40, 44, 45, 46, 48, 52, 53, 56, 70, 71, 72, 75,
+    77, 91, 94, 95, 103
+[1] 1, 3, 4, 9, 11, 24, 33, 35, 36, 39, 42, 49, 54, 57, 59, 66, 74, 80, 83,
+    84, 86, 92, 97, 101
+[2] 5, 10, 12, 21, 23, 25, 27, 31, 37, 50, 55, 58, 60, 62, 64, 68, 79, 81, 85,
+    87, 89, 93, 99
+[3] 2, 7, 16, 20, 22, 26, 32, 34, 38, 43, 47, 51, 63, 65, 76, 78, 98, 102
+[4] 0, 13, 18, 28, 30, 41, 61, 67, 69, 73, 82, 88, 90, 96, 100
+
+Reassigned labels
+
+Runtime: 0.02863287925720215
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"O_0": "O", "O_1": "O", "O_2": "O", "O_3": "O", "O_4": "O"}
+token_fitness
+{"perc_fit_traces": 87.5, "average_trace_fitness": 0.993185698402197, "log_fitness": 0.9902663136583086, "percentage_of_fitting_traces": 87.5}
+precision
+0.8347112904292612
+0.7142857142857143
+generalization
+0.9455303693777587
+
+Adjusted Rand Index:
+0.3293944920736313
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 1
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\L_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 104 elements and 5 clusters
+[0] 6, 8, 14, 15, 17, 19, 29, 40, 44, 45, 46, 48, 52, 53, 56, 70, 71, 72, 75,
+    77, 91, 94, 95, 103
+[1] 1, 3, 4, 9, 11, 24, 33, 35, 36, 39, 42, 49, 54, 57, 59, 66, 74, 80, 83,
+    84, 86, 92, 97, 101
+[2] 5, 10, 12, 21, 23, 25, 27, 31, 37, 50, 55, 58, 60, 62, 64, 68, 79, 81, 85,
+    87, 89, 93, 99
+[3] 2, 7, 16, 20, 22, 26, 32, 34, 38, 43, 47, 51, 63, 65, 76, 78, 98, 102
+[4] 0, 13, 18, 28, 30, 41, 61, 67, 69, 73, 82, 88, 90, 96, 100
+
+Reassigned labels
+
+Runtime: 0.02704906463623047
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"O_0": "O", "O_1": "O", "O_2": "O", "O_3": "O", "O_4": "O"}
+token_fitness
+{"perc_fit_traces": 61.8, "average_trace_fitness": 0.9742113618638056, "log_fitness": 0.9662041068213835, "percentage_of_fitting_traces": 61.8}
+precision
+0.832628485413232
+0.7142857142857143
+generalization
+0.8740041386461601
+
+Adjusted Rand Index:
+0.3293944920736313
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\L_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 104 elements and 5 clusters
+[0] 6, 8, 14, 15, 17, 19, 29, 40, 44, 45, 46, 48, 52, 53, 56, 70, 71, 72, 75,
+    77, 91, 94, 95, 103
+[1] 1, 3, 4, 9, 11, 24, 33, 35, 36, 39, 42, 49, 54, 57, 59, 66, 74, 80, 83,
+    84, 86, 92, 97, 101
+[2] 5, 10, 12, 21, 23, 25, 27, 31, 37, 50, 55, 58, 60, 62, 64, 68, 79, 81, 85,
+    87, 89, 93, 99
+[3] 2, 7, 16, 20, 22, 26, 32, 34, 38, 43, 47, 51, 63, 65, 76, 78, 98, 102
+[4] 0, 13, 18, 28, 30, 41, 61, 67, 69, 73, 82, 88, 90, 96, 100
+
+Reassigned labels
+
+Runtime: 0.03043341636657715
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"O_0": "O", "O_1": "O", "O_2": "O", "O_3": "O", "O_4": "O"}
+token_fitness
+{"perc_fit_traces": 61.8, "average_trace_fitness": 0.9742113618638056, "log_fitness": 0.9662041068213835, "percentage_of_fitting_traces": 61.8}
+precision
+0.832628485413232
+0.7142857142857143
+generalization
+0.8740041386461601
+
+Adjusted Rand Index:
+0.3293944920736313
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0.25
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\L_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 104 elements and 5 clusters
+[0] 6, 8, 14, 15, 17, 19, 29, 40, 44, 45, 46, 48, 52, 53, 56, 70, 71, 72, 75,
+    77, 91, 94, 95, 103
+[1] 1, 3, 4, 9, 11, 24, 33, 35, 36, 39, 42, 49, 54, 57, 59, 66, 74, 80, 83,
+    84, 86, 92, 97, 101
+[2] 5, 10, 12, 21, 23, 25, 27, 31, 37, 50, 55, 58, 60, 62, 64, 68, 79, 81, 85,
+    87, 89, 93, 99
+[3] 2, 7, 16, 20, 22, 26, 32, 34, 38, 43, 47, 51, 63, 65, 76, 78, 98, 102
+[4] 0, 13, 18, 28, 30, 41, 61, 67, 69, 73, 82, 88, 90, 96, 100
+
+Reassigned labels
+
+Runtime: 0.030041933059692383
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"O_0": "O", "O_1": "O", "O_2": "O", "O_3": "O", "O_4": "O"}
+token_fitness
+{"perc_fit_traces": 87.5, "average_trace_fitness": 0.993185698402197, "log_fitness": 0.9902663136583086, "percentage_of_fitting_traces": 87.5}
+precision
+0.8347112904292612
+0.7142857142857143
+generalization
+0.9455303693777587
+
+Adjusted Rand Index:
+0.3293944920736313
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0.5
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\L_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 104 elements and 5 clusters
+[0] 6, 8, 14, 15, 17, 19, 29, 40, 44, 45, 46, 48, 52, 53, 56, 70, 71, 72, 75,
+    77, 91, 94, 95, 103
+[1] 1, 3, 4, 9, 11, 24, 33, 35, 36, 39, 42, 49, 54, 57, 59, 66, 74, 80, 83,
+    84, 86, 92, 97, 101
+[2] 5, 10, 12, 21, 23, 25, 27, 31, 37, 50, 55, 58, 60, 62, 64, 68, 79, 81, 85,
+    87, 89, 93, 99
+[3] 2, 7, 16, 20, 22, 26, 32, 34, 38, 43, 47, 51, 63, 65, 76, 78, 98, 102
+[4] 0, 13, 18, 28, 30, 41, 61, 67, 69, 73, 82, 88, 90, 96, 100
+
+Reassigned labels
+
+Runtime: 0.02800297737121582
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"O_0": "O", "O_1": "O", "O_2": "O", "O_3": "O", "O_4": "O"}
+token_fitness
+{"perc_fit_traces": 61.8, "average_trace_fitness": 0.9742113618638056, "log_fitness": 0.9662041068213835, "percentage_of_fitting_traces": 61.8}
+precision
+0.832628485413232
+0.7142857142857143
+generalization
+0.8740041386461601
+
+Adjusted Rand Index:
+0.3293944920736313
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 0.75
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\L_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 104 elements and 5 clusters
+[0] 6, 8, 14, 15, 17, 19, 29, 40, 44, 45, 46, 48, 52, 53, 56, 70, 71, 72, 75,
+    77, 91, 94, 95, 103
+[1] 1, 3, 4, 9, 11, 24, 33, 35, 36, 39, 42, 49, 54, 57, 59, 66, 74, 80, 83,
+    84, 86, 92, 97, 101
+[2] 5, 10, 12, 21, 23, 25, 27, 31, 37, 50, 55, 58, 60, 62, 64, 68, 79, 81, 85,
+    87, 89, 93, 99
+[3] 2, 7, 16, 20, 22, 26, 32, 34, 38, 43, 47, 51, 63, 65, 76, 78, 98, 102
+[4] 0, 13, 18, 28, 30, 41, 61, 67, 69, 73, 82, 88, 90, 96, 100
+
+Reassigned labels
+
+Runtime: 0.02899909019470215
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"O_0": "O", "O_1": "O", "O_2": "O", "O_3": "O", "O_4": "O"}
+token_fitness
+{"perc_fit_traces": 87.5, "average_trace_fitness": 0.993185698402197, "log_fitness": 0.9902663136583086, "percentage_of_fitting_traces": 87.5}
+precision
+0.8347112904292612
+0.7142857142857143
+generalization
+0.9455303693777587
+
+Adjusted Rand Index:
+0.3293944920736313
+
+
+
+Parameters of this run:
+
+Window size: 1
+Threshold for edges: 1
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\L_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 104 elements and 5 clusters
+[0] 6, 8, 14, 15, 17, 19, 29, 40, 44, 45, 46, 48, 52, 53, 56, 70, 71, 72, 75,
+    77, 91, 94, 95, 103
+[1] 1, 3, 4, 9, 11, 24, 33, 35, 36, 39, 42, 49, 54, 57, 59, 66, 74, 80, 83,
+    84, 86, 92, 97, 101
+[2] 5, 10, 12, 21, 23, 25, 27, 31, 37, 50, 55, 58, 60, 62, 64, 68, 79, 81, 85,
+    87, 89, 93, 99
+[3] 2, 7, 16, 20, 22, 26, 32, 34, 38, 43, 47, 51, 63, 65, 76, 78, 98, 102
+[4] 0, 13, 18, 28, 30, 41, 61, 67, 69, 73, 82, 88, 90, 96, 100
+
+Reassigned labels
+
+Runtime: 0.025000333786010742
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"O_0": "O", "O_1": "O", "O_2": "O", "O_3": "O", "O_4": "O"}
+token_fitness
+{"perc_fit_traces": 61.8, "average_trace_fitness": 0.9597342284090149, "log_fitness": 0.9501697236815563, "percentage_of_fitting_traces": 61.8}
+precision
+0.8596008258774949
+0.7142857142857143
+generalization
+0.8336333437340921
+
+Adjusted Rand Index:
+0.3293944920736313
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\L_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 104 elements and 4 clusters
+[0] 1, 3, 6, 8, 14, 15, 17, 19, 29, 33, 35, 39, 40, 42, 44, 45, 46, 48, 52,
+    53, 56, 66, 70, 71, 72, 74, 75, 77, 83, 91, 94, 95, 97, 101, 103
+[1] 0, 11, 13, 18, 28, 30, 31, 41, 49, 54, 57, 59, 61, 62, 67, 68, 69, 73, 82,
+    84, 86, 88, 89, 90, 96, 100
+[2] 4, 5, 9, 10, 12, 21, 23, 24, 25, 27, 36, 37, 50, 55, 58, 60, 64, 79, 80,
+    81, 85, 87, 92, 93, 99
+[3] 2, 7, 16, 20, 22, 26, 32, 34, 38, 43, 47, 51, 63, 65, 76, 78, 98, 102
+
+Reassigned labels
+
+Runtime: 0.027999162673950195
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"O_0": "O", "O_1": "O", "O_2": "O", "O_3": "O"}
+token_fitness
+{"perc_fit_traces": 66.1, "average_trace_fitness": 0.9542653758686994, "log_fitness": 0.9407113607063614, "percentage_of_fitting_traces": 66.1}
+precision
+0.8789325842696629
+0.6585365853658536
+generalization
+0.5458925982206715
+
+Adjusted Rand Index:
+0.22402707227350574
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0.25
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\L_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 104 elements and 4 clusters
+[0] 1, 3, 6, 8, 14, 15, 17, 19, 29, 33, 35, 39, 40, 42, 44, 45, 46, 48, 52,
+    53, 56, 66, 70, 71, 72, 74, 75, 77, 83, 91, 94, 95, 97, 101, 103
+[1] 0, 11, 13, 18, 28, 30, 31, 41, 49, 54, 57, 59, 61, 62, 67, 68, 69, 73, 82,
+    84, 86, 88, 89, 90, 96, 100
+[2] 4, 5, 9, 10, 12, 21, 23, 24, 25, 27, 36, 37, 50, 55, 58, 60, 64, 79, 80,
+    81, 85, 87, 92, 93, 99
+[3] 2, 7, 16, 20, 22, 26, 32, 34, 38, 43, 47, 51, 63, 65, 76, 78, 98, 102
+
+Reassigned labels
+
+Runtime: 0.027999162673950195
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"O_0": "O", "O_1": "O", "O_2": "O", "O_3": "O"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+0.8598124536193753
+0.6585365853658536
+generalization
+0.6910069876713261
+
+Adjusted Rand Index:
+0.22402707227350574
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0.5
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\L_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 104 elements and 3 clusters
+[0] 1, 3, 5, 6, 8, 10, 12, 14, 15, 17, 19, 25, 29, 33, 35, 37, 39, 40, 42, 44,
+    45, 46, 48, 50, 52, 53, 55, 56, 58, 60, 66, 70, 71, 72, 74, 75, 77, 81,
+    83, 85, 87, 91, 93, 94, 95, 97, 101, 103
+[1] 2, 4, 7, 9, 16, 20, 21, 22, 23, 24, 26, 27, 32, 34, 36, 38, 43, 47, 51,
+    63, 64, 65, 76, 78, 79, 80, 92, 98, 99, 102
+[2] 0, 11, 13, 18, 28, 30, 31, 41, 49, 54, 57, 59, 61, 62, 67, 68, 69, 73, 82,
+    84, 86, 88, 89, 90, 96, 100
+
+Reassigned labels
+
+Runtime: 0.024999618530273438
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"O_0": "O", "O_1": "O", "O_2": "O"}
+token_fitness
+{"perc_fit_traces": 51.4, "average_trace_fitness": 0.8754981310086228, "log_fitness": 0.8549265592328767, "percentage_of_fitting_traces": 51.4}
+precision
+0.9792490987426361
+0.6969696969696969
+generalization
+0.5642093493288002
+
+Adjusted Rand Index:
+0.13184960171418686
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0.75
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\L_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 104 elements and 7 clusters
+[0] 6, 8, 14, 15, 17, 19, 29, 40, 42, 44, 45, 46, 48, 52, 53, 56, 70, 71, 72,
+    74, 75, 77, 83, 91, 94, 95, 97, 101, 103
+[1] 2, 7, 16, 20, 22, 26, 32, 34, 38, 43, 47, 51, 63, 65, 76, 78, 98, 102
+[2] 0, 13, 18, 28, 30, 41, 61, 67, 69, 73, 82, 88, 90, 96, 100
+[3] 5, 10, 12, 25, 37, 50, 55, 58, 60, 81, 85, 87, 93
+[4] 4, 9, 21, 23, 24, 27, 36, 64, 79, 80, 92, 99
+[5] 11, 31, 49, 54, 57, 59, 62, 68, 84, 86, 89
+[6] 1, 3, 33, 35, 39, 66
+
+Reassigned labels
+
+Runtime: 0.02799820899963379
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"O_0": "O", "O_1": "O", "O_2": "O", "O_3": "O", "O_4": "O", "O_5": "O", "O_6": "O"}
+token_fitness
+{"perc_fit_traces": 61.8, "average_trace_fitness": 0.9771304277867832, "log_fitness": 0.9714755077658304, "percentage_of_fitting_traces": 61.8}
+precision
+0.8182010283862788
+0.6716417910447761
+generalization
+0.8385053424540849
+
+Adjusted Rand Index:
+0.2633009115698346
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 1
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\L_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 104 elements and 21 clusters
+[ 0] 6, 40, 45, 56, 75, 94, 95
+[ 1] 7, 16, 43, 47, 51, 76, 102
+[ 2] 8, 17, 44, 48, 52, 77, 103
+[ 3] 11, 49, 54, 57, 59, 84, 86
+[ 4] 12, 50, 55, 58, 60, 85, 87
+[ 5] 4, 9, 24, 36, 80, 92
+[ 6] 5, 10, 25, 37, 81, 93
+[ 7] 20, 22, 26, 63, 78, 98
+[ 8] 21, 23, 27, 64, 79, 99
+[ 9] 1, 42, 74, 83, 97, 101
+[10] 14, 19, 29, 70, 91
+[11] 2, 32, 34, 38, 65
+[12] 3, 33, 35, 39, 66
+[13] 15, 46, 53, 71, 72
+[14] 41, 73, 82, 96, 100
+[15] 13, 28, 69, 90
+[16] 31, 62, 68, 89
+[17] 61, 67, 88
+[18] 0
+[19] 18
+[20] 30
+
+Reassigned labels
+
+Runtime: 0.025998592376708984
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"O_0": "O", "O_1": "O", "O_2": "O", "O_3": "O", "O_4": "O", "O_5": "O", "O_6": "O", "O_7": "O", "O_8": "O", "O_9": "O", "O_10": "O", "O_11": "O", "O_12": "O", "O_13": "O", "O_14": "O", "O_15": "O", "O_16": "O", "O_17": "O", "O_18": "O", "O_19": "O", "O_20": "O"}
+token_fitness
+{"perc_fit_traces": 61.8, "average_trace_fitness": 0.9284431646183195, "log_fitness": 0.9276628691516425, "percentage_of_fitting_traces": 61.8}
+precision
+0.9917071018967799
+0.6875
+generalization
+0.5963462608698511
+
+Adjusted Rand Index:
+0.33859552107812185
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\L_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 104 elements and 4 clusters
+[0] 2, 4, 7, 9, 16, 20, 21, 22, 23, 24, 26, 27, 32, 34, 36, 38, 43, 47, 51,
+    63, 64, 65, 76, 78, 79, 80, 92, 98, 99, 102
+[1] 0, 11, 13, 18, 28, 30, 31, 41, 49, 54, 57, 59, 61, 62, 67, 68, 69, 73, 82,
+    84, 86, 88, 89, 90, 96, 100
+[2] 6, 8, 14, 15, 17, 19, 29, 40, 44, 45, 46, 48, 52, 53, 56, 70, 71, 72, 75,
+    77, 91, 94, 95, 103
+[3] 1, 3, 5, 10, 12, 25, 33, 35, 37, 39, 42, 50, 55, 58, 60, 66, 74, 81, 83,
+    85, 87, 93, 97, 101
+
+Reassigned labels
+
+Runtime: 0.1549999713897705
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"O_0": "O", "O_1": "O", "O_2": "O", "O_3": "O"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+0.8049643150382113
+0.6923076923076922
+generalization
+0.7962859577432253
+
+Adjusted Rand Index:
+0.3015213953015942
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0.25
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\L_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 104 elements and 4 clusters
+[0] 2, 4, 7, 9, 16, 20, 21, 22, 23, 24, 26, 27, 32, 34, 36, 38, 43, 47, 51,
+    63, 64, 65, 76, 78, 79, 80, 92, 98, 99, 102
+[1] 0, 11, 13, 18, 28, 30, 31, 41, 49, 54, 57, 59, 61, 62, 67, 68, 69, 73, 82,
+    84, 86, 88, 89, 90, 96, 100
+[2] 6, 8, 14, 15, 17, 19, 29, 40, 44, 45, 46, 48, 52, 53, 56, 70, 71, 72, 75,
+    77, 91, 94, 95, 103
+[3] 1, 3, 5, 10, 12, 25, 33, 35, 37, 39, 42, 50, 55, 58, 60, 66, 74, 81, 83,
+    85, 87, 93, 97, 101
+
+Reassigned labels
+
+Runtime: 0.03300023078918457
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"O_0": "O", "O_1": "O", "O_2": "O", "O_3": "O"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+0.8049643150382113
+0.6923076923076922
+generalization
+0.7962859577432253
+
+Adjusted Rand Index:
+0.3015213953015942
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0.5
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\L_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 104 elements and 2 clusters
+[0] 2, 3, 4, 5, 6, 7, 8, 9, 10, 16, 17, 20, 21, 22, 23, 24, 25, 26, 27, 32,
+    33, 34, 35, 36, 37, 38, 39, 40, 43, 44, 45, 47, 48, 51, 52, 56, 63, 64,
+    65, 66, 75, 76, 77, 78, 79, 80, 81, 92, 93, 94, 95, 98, 99, 102, 103
+[1] 0, 1, 11, 12, 13, 14, 15, 18, 19, 28, 29, 30, 31, 41, 42, 46, 49, 50, 53,
+    54, 55, 57, 58, 59, 60, 61, 62, 67, 68, 69, 70, 71, 72, 73, 74, 82, 83,
+    84, 85, 86, 87, 88, 89, 90, 91, 96, 97, 100, 101
+
+Reassigned labels
+
+Runtime: 0.022999286651611328
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"O_0": "O", "O_1": "O"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+0.870144056803441
+0.7241379310344828
+generalization
+0.7949932743679623
+
+Adjusted Rand Index:
+-0.012248278084073241
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0.75
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\L_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 104 elements and 5 clusters
+[0] 3, 4, 5, 8, 9, 10, 17, 21, 23, 24, 25, 27, 33, 35, 36, 37, 39, 44, 48, 52,
+    64, 66, 77, 79, 80, 81, 92, 93, 99, 103
+[1] 1, 11, 12, 14, 19, 29, 31, 42, 49, 50, 54, 55, 57, 58, 59, 60, 62, 68, 70,
+    74, 83, 84, 85, 86, 87, 89, 91, 97, 101
+[2] 2, 7, 16, 20, 22, 26, 32, 34, 38, 43, 47, 51, 63, 65, 76, 78, 98, 102
+[3] 0, 13, 18, 28, 30, 41, 61, 67, 69, 73, 82, 88, 90, 96, 100
+[4] 6, 15, 40, 45, 46, 53, 56, 71, 72, 75, 94, 95
+
+Reassigned labels
+
+Runtime: 0.027997255325317383
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"O_0": "O", "O_1": "O", "O_2": "O", "O_3": "O", "O_4": "O"}
+token_fitness
+{"perc_fit_traces": 66.1, "average_trace_fitness": 0.9307928907836721, "log_fitness": 0.8967893749581295, "percentage_of_fitting_traces": 66.1}
+precision
+0.9476792609979556
+0.6811594202898551
+generalization
+0.6445273436544368
+
+Adjusted Rand Index:
+0.13124452335483372
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 1
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\L_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 104 elements and 19 clusters
+[ 0] 1, 12, 42, 50, 55, 58, 60, 74, 83, 85, 87, 97, 101
+[ 1] 3, 5, 10, 25, 33, 35, 37, 39, 66, 81, 93
+[ 2] 6, 40, 45, 56, 75, 94, 95
+[ 3] 7, 16, 43, 47, 51, 76, 102
+[ 4] 8, 17, 44, 48, 52, 77, 103
+[ 5] 11, 49, 54, 57, 59, 84, 86
+[ 6] 4, 9, 24, 36, 80, 92
+[ 7] 20, 22, 26, 63, 78, 98
+[ 8] 21, 23, 27, 64, 79, 99
+[ 9] 14, 19, 29, 70, 91
+[10] 2, 32, 34, 38, 65
+[11] 15, 46, 53, 71, 72
+[12] 41, 73, 82, 96, 100
+[13] 13, 28, 69, 90
+[14] 31, 62, 68, 89
+[15] 61, 67, 88
+[16] 0
+[17] 18
+[18] 30
+
+Reassigned labels
+
+Runtime: 0.0299990177154541
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"O_0": "O", "O_1": "O", "O_2": "O", "O_3": "O", "O_4": "O", "O_5": "O", "O_6": "O", "O_7": "O", "O_8": "O", "O_9": "O", "O_10": "O", "O_11": "O", "O_12": "O", "O_13": "O", "O_14": "O", "O_15": "O", "O_16": "O", "O_17": "O", "O_18": "O"}
+token_fitness
+{"perc_fit_traces": 74.3, "average_trace_fitness": 0.9570889400704898, "log_fitness": 0.956029603831084, "percentage_of_fitting_traces": 74.3}
+precision
+0.991133254517818
+0.6716417910447761
+generalization
+0.6719458868597822
+
+Adjusted Rand Index:
+0.351582757779846
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\L_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 104 elements and 4 clusters
+[0] 2, 4, 7, 9, 16, 20, 21, 22, 23, 24, 26, 27, 32, 34, 36, 38, 43, 47, 51,
+    63, 64, 65, 76, 78, 79, 80, 92, 98, 99, 102
+[1] 0, 11, 13, 18, 28, 30, 31, 41, 49, 54, 57, 59, 61, 62, 67, 68, 69, 73, 82,
+    84, 86, 88, 89, 90, 96, 100
+[2] 6, 8, 14, 15, 17, 19, 29, 40, 44, 45, 46, 48, 52, 53, 56, 70, 71, 72, 75,
+    77, 91, 94, 95, 103
+[3] 1, 3, 5, 10, 12, 25, 33, 35, 37, 39, 42, 50, 55, 58, 60, 66, 74, 81, 83,
+    85, 87, 93, 97, 101
+
+Reassigned labels
+
+Runtime: 0.09499716758728027
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"O_0": "O", "O_1": "O", "O_2": "O", "O_3": "O"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+0.8049643150382113
+0.6923076923076922
+generalization
+0.7962859577432253
+
+Adjusted Rand Index:
+0.3015213953015942
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0.25
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\L_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 104 elements and 4 clusters
+[0] 2, 4, 7, 9, 16, 20, 21, 22, 23, 24, 26, 27, 32, 34, 36, 38, 43, 47, 51,
+    63, 64, 65, 76, 78, 79, 80, 92, 98, 99, 102
+[1] 0, 11, 13, 18, 28, 30, 31, 41, 49, 54, 57, 59, 61, 62, 67, 68, 69, 73, 82,
+    84, 86, 88, 89, 90, 96, 100
+[2] 6, 8, 14, 15, 17, 19, 29, 40, 44, 45, 46, 48, 52, 53, 56, 70, 71, 72, 75,
+    77, 91, 94, 95, 103
+[3] 1, 3, 5, 10, 12, 25, 33, 35, 37, 39, 42, 50, 55, 58, 60, 66, 74, 81, 83,
+    85, 87, 93, 97, 101
+
+Reassigned labels
+
+Runtime: 0.024999380111694336
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"O_0": "O", "O_1": "O", "O_2": "O", "O_3": "O"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+0.8049643150382113
+0.6923076923076922
+generalization
+0.7962859577432253
+
+Adjusted Rand Index:
+0.3015213953015942
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0.5
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\L_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 104 elements and 2 clusters
+[0] 2, 3, 4, 5, 6, 7, 8, 9, 10, 16, 17, 20, 21, 22, 23, 24, 25, 26, 27, 32,
+    33, 34, 35, 36, 37, 38, 39, 40, 43, 44, 45, 47, 48, 51, 52, 56, 63, 64,
+    65, 66, 75, 76, 77, 78, 79, 80, 81, 92, 93, 94, 95, 98, 99, 102, 103
+[1] 0, 1, 11, 12, 13, 14, 15, 18, 19, 28, 29, 30, 31, 41, 42, 46, 49, 50, 53,
+    54, 55, 57, 58, 59, 60, 61, 62, 67, 68, 69, 70, 71, 72, 73, 74, 82, 83,
+    84, 85, 86, 87, 88, 89, 90, 91, 96, 97, 100, 101
+
+Reassigned labels
+
+Runtime: 0.022999286651611328
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"O_0": "O", "O_1": "O"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+0.870144056803441
+0.7241379310344828
+generalization
+0.7949932743679623
+
+Adjusted Rand Index:
+-0.012248278084073241
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 0.75
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\L_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 104 elements and 5 clusters
+[0] 3, 4, 5, 8, 9, 10, 17, 21, 23, 24, 25, 27, 33, 35, 36, 37, 39, 44, 48, 52,
+    64, 66, 77, 79, 80, 81, 92, 93, 99, 103
+[1] 1, 11, 12, 14, 19, 29, 31, 42, 49, 50, 54, 55, 57, 58, 59, 60, 62, 68, 70,
+    74, 83, 84, 85, 86, 87, 89, 91, 97, 101
+[2] 2, 7, 16, 20, 22, 26, 32, 34, 38, 43, 47, 51, 63, 65, 76, 78, 98, 102
+[3] 0, 13, 18, 28, 30, 41, 61, 67, 69, 73, 82, 88, 90, 96, 100
+[4] 6, 15, 40, 45, 46, 53, 56, 71, 72, 75, 94, 95
+
+Reassigned labels
+
+Runtime: 0.03000164031982422
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"O_0": "O", "O_1": "O", "O_2": "O", "O_3": "O", "O_4": "O"}
+token_fitness
+{"perc_fit_traces": 51.4, "average_trace_fitness": 0.9178949631925345, "log_fitness": 0.9076239156466073, "percentage_of_fitting_traces": 51.4}
+precision
+0.9553916101913014
+0.6811594202898551
+generalization
+0.5423842434042206
+
+Adjusted Rand Index:
+0.13124452335483372
+
+
+
+Parameters of this run:
+
+Window size: 3
+Threshold for edges: 1
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\L_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 104 elements and 19 clusters
+[ 0] 1, 12, 42, 50, 55, 58, 60, 74, 83, 85, 87, 97, 101
+[ 1] 3, 5, 10, 25, 33, 35, 37, 39, 66, 81, 93
+[ 2] 6, 40, 45, 56, 75, 94, 95
+[ 3] 7, 16, 43, 47, 51, 76, 102
+[ 4] 8, 17, 44, 48, 52, 77, 103
+[ 5] 11, 49, 54, 57, 59, 84, 86
+[ 6] 4, 9, 24, 36, 80, 92
+[ 7] 20, 22, 26, 63, 78, 98
+[ 8] 21, 23, 27, 64, 79, 99
+[ 9] 14, 19, 29, 70, 91
+[10] 2, 32, 34, 38, 65
+[11] 15, 46, 53, 71, 72
+[12] 41, 73, 82, 96, 100
+[13] 13, 28, 69, 90
+[14] 31, 62, 68, 89
+[15] 61, 67, 88
+[16] 0
+[17] 18
+[18] 30
+
+Reassigned labels
+
+Runtime: 0.027107954025268555
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"O_0": "O", "O_1": "O", "O_2": "O", "O_3": "O", "O_4": "O", "O_5": "O", "O_6": "O", "O_7": "O", "O_8": "O", "O_9": "O", "O_10": "O", "O_11": "O", "O_12": "O", "O_13": "O", "O_14": "O", "O_15": "O", "O_16": "O", "O_17": "O", "O_18": "O"}
+token_fitness
+{"perc_fit_traces": 61.8, "average_trace_fitness": 0.9284431646183195, "log_fitness": 0.9276628691516425, "percentage_of_fitting_traces": 61.8}
+precision
+0.9917071018967799
+0.6716417910447761
+generalization
+0.5750481801244992
+
+Adjusted Rand Index:
+0.351582757779846
+
+
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 0
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\L_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 104 elements and 3 clusters
+[0] 2, 3, 4, 5, 6, 7, 8, 9, 10, 16, 17, 20, 21, 22, 23, 24, 25, 26, 27, 32,
+    33, 34, 35, 36, 37, 38, 39, 40, 43, 44, 45, 47, 48, 51, 52, 56, 63, 64,
+    65, 66, 75, 76, 77, 78, 79, 80, 81, 92, 93, 94, 95, 98, 99, 102, 103
+[1] 1, 11, 12, 14, 15, 19, 29, 31, 42, 46, 49, 50, 53, 54, 55, 57, 58, 59, 60,
+    62, 68, 70, 71, 72, 74, 83, 84, 85, 86, 87, 89, 91, 97, 101
+[2] 0, 13, 18, 28, 30, 41, 61, 67, 69, 73, 82, 88, 90, 96, 100
+
+Reassigned labels
+
+Runtime: 0.026999473571777344
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"O_0": "O", "O_1": "O", "O_2": "O"}
+token_fitness
+{"perc_fit_traces": 85.3, "average_trace_fitness": 0.992402605416979, "log_fitness": 0.9903946680606377, "percentage_of_fitting_traces": 85.3}
+precision
+0.8583467940164338
+0.6867469879518072
+generalization
+0.7482508166716966
+
+Adjusted Rand Index:
+0.01725989320728119
+
+
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 0.25
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\L_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 104 elements and 3 clusters
+[0] 2, 3, 4, 5, 6, 7, 8, 9, 10, 16, 17, 20, 21, 22, 23, 24, 25, 26, 27, 32,
+    33, 34, 35, 36, 37, 38, 39, 40, 43, 44, 45, 47, 48, 51, 52, 56, 63, 64,
+    65, 66, 75, 76, 77, 78, 79, 80, 81, 92, 93, 94, 95, 98, 99, 102, 103
+[1] 1, 11, 12, 14, 15, 19, 29, 31, 42, 46, 49, 50, 53, 54, 55, 57, 58, 59, 60,
+    62, 68, 70, 71, 72, 74, 83, 84, 85, 86, 87, 89, 91, 97, 101
+[2] 0, 13, 18, 28, 30, 41, 61, 67, 69, 73, 82, 88, 90, 96, 100
+
+Reassigned labels
+
+Runtime: 0.027999401092529297
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"O_0": "O", "O_1": "O", "O_2": "O"}
+token_fitness
+{"perc_fit_traces": 85.3, "average_trace_fitness": 0.992402605416979, "log_fitness": 0.9903946680606377, "percentage_of_fitting_traces": 85.3}
+precision
+0.8583467940164338
+0.6867469879518072
+generalization
+0.7482508166716966
+
+Adjusted Rand Index:
+0.01725989320728119
+
+
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 0.5
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\L_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 104 elements and 2 clusters
+[0] 2, 3, 4, 5, 6, 7, 8, 9, 10, 16, 17, 20, 21, 22, 23, 24, 25, 26, 27, 32,
+    33, 34, 35, 36, 37, 38, 39, 40, 43, 44, 45, 47, 48, 51, 52, 56, 63, 64,
+    65, 66, 75, 76, 77, 78, 79, 80, 81, 92, 93, 94, 95, 98, 99, 102, 103
+[1] 0, 1, 11, 12, 13, 14, 15, 18, 19, 28, 29, 30, 31, 41, 42, 46, 49, 50, 53,
+    54, 55, 57, 58, 59, 60, 61, 62, 67, 68, 69, 70, 71, 72, 73, 74, 82, 83,
+    84, 85, 86, 87, 88, 89, 90, 91, 96, 97, 100, 101
+
+Reassigned labels
+
+Runtime: 0.02399897575378418
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"O_0": "O", "O_1": "O"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+0.870144056803441
+0.7241379310344828
+generalization
+0.7949932743679623
+
+Adjusted Rand Index:
+-0.012248278084073241
+
+
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 0.75
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\L_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 104 elements and 5 clusters
+[0] 3, 4, 5, 6, 8, 9, 10, 17, 21, 23, 24, 25, 27, 33, 35, 36, 37, 39, 40, 44,
+    45, 48, 52, 56, 64, 66, 75, 77, 79, 80, 81, 92, 93, 94, 95, 99, 103
+[1] 1, 11, 12, 14, 15, 19, 29, 31, 42, 46, 49, 50, 53, 54, 55, 57, 58, 59, 60,
+    62, 68, 70, 71, 72, 74, 83, 84, 85, 86, 87, 89, 91, 97, 101
+[2] 2, 7, 16, 20, 22, 26, 32, 34, 38, 43, 47, 51, 63, 65, 76, 78, 98, 102
+[3] 13, 28, 41, 61, 67, 69, 73, 82, 88, 90, 96, 100
+[4] 0, 18, 30
+
+Reassigned labels
+
+Runtime: 0.027999162673950195
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"O_0": "O", "O_1": "O", "O_2": "O", "O_3": "O", "O_4": "O"}
+token_fitness
+{"perc_fit_traces": 37.2, "average_trace_fitness": 0.8749166405947053, "log_fitness": 0.8451664680767672, "percentage_of_fitting_traces": 37.2}
+precision
+0.9476792609979556
+0.6969696969696969
+generalization
+0.6348722118514096
+
+Adjusted Rand Index:
+0.07991853465499685
+
+
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 1
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.EDIT_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\L_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 104 elements and 35 clusters
+[ 0] 6, 40, 45, 56, 75, 94, 95
+[ 1] 8, 17, 44, 48, 52, 77, 103
+[ 2] 5, 10, 25, 37, 81, 93
+[ 3] 16, 43, 47, 51, 76, 102
+[ 4] 50, 55, 58, 60, 85, 87
+[ 5] 49, 54, 57, 59, 84, 86
+[ 6] 4, 24, 36, 80, 92
+[ 7] 20, 26, 63, 78, 98
+[ 8] 21, 27, 64, 79, 99
+[ 9] 3, 33, 35, 39, 66
+[10] 42, 74, 83, 97, 101
+[11] 14, 29, 70, 91
+[12] 32, 34, 38, 65
+[13] 46, 53, 71, 72
+[14] 62, 68, 89
+[15] 13, 69, 90
+[16] 82, 96, 100
+[17] 61, 88
+[18] 41, 73
+[19] 0
+[20] 1
+[21] 2
+[22] 7
+[23] 9
+[24] 11
+[25] 12
+[26] 15
+[27] 18
+[28] 19
+[29] 22
+[30] 23
+[31] 28
+[32] 30
+[33] 31
+[34] 67
+
+Reassigned labels
+
+Runtime: 0.03399848937988281
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"O_0": "O", "O_1": "O", "O_2": "O", "O_3": "O", "O_4": "O", "O_5": "O", "O_6": "O", "O_7": "O", "O_8": "O", "O_9": "O", "O_10": "O", "O_11": "O", "O_12": "O", "O_13": "O", "O_14": "O", "O_15": "O", "O_16": "O", "O_17": "O", "O_18": "O", "O_19": "O", "O_20": "O", "O_21": "O", "O_22": "O", "O_23": "O", "O_24": "O", "O_25": "O", "O_26": "O", "O_27": "O", "O_28": "O", "O_29": "O", "O_30": "O", "O_31": "O", "O_32": "O", "O_33": "O", "O_34": "O"}
+token_fitness
+{"perc_fit_traces": 61.8, "average_trace_fitness": 0.9094525221940071, "log_fitness": 0.9121435142594296, "percentage_of_fitting_traces": 61.8}
+precision
+0.9917071018967799
+0.6708860759493671
+generalization
+0.5422540370206337
+
+Adjusted Rand Index:
+0.333679950954627
+
+
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 0
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\L_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 104 elements and 2 clusters
+[0] 2, 3, 4, 5, 6, 7, 8, 9, 10, 16, 17, 20, 21, 22, 23, 24, 25, 26, 27, 32,
+    33, 34, 35, 36, 37, 38, 39, 40, 43, 44, 45, 47, 48, 51, 52, 56, 63, 64,
+    65, 66, 75, 76, 77, 78, 79, 80, 81, 92, 93, 94, 95, 98, 99, 102, 103
+[1] 0, 1, 11, 12, 13, 14, 15, 18, 19, 28, 29, 30, 31, 41, 42, 46, 49, 50, 53,
+    54, 55, 57, 58, 59, 60, 61, 62, 67, 68, 69, 70, 71, 72, 73, 74, 82, 83,
+    84, 85, 86, 87, 88, 89, 90, 91, 96, 97, 100, 101
+
+Reassigned labels
+
+Runtime: 0.027000904083251953
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"O_0": "O", "O_1": "O"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+0.870144056803441
+0.7241379310344828
+generalization
+0.7949932743679623
+
+Adjusted Rand Index:
+-0.012248278084073241
+
+
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 0.25
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\L_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 104 elements and 2 clusters
+[0] 2, 3, 4, 5, 6, 7, 8, 9, 10, 16, 17, 20, 21, 22, 23, 24, 25, 26, 27, 32,
+    33, 34, 35, 36, 37, 38, 39, 40, 43, 44, 45, 47, 48, 51, 52, 56, 63, 64,
+    65, 66, 75, 76, 77, 78, 79, 80, 81, 92, 93, 94, 95, 98, 99, 102, 103
+[1] 0, 1, 11, 12, 13, 14, 15, 18, 19, 28, 29, 30, 31, 41, 42, 46, 49, 50, 53,
+    54, 55, 57, 58, 59, 60, 61, 62, 67, 68, 69, 70, 71, 72, 73, 74, 82, 83,
+    84, 85, 86, 87, 88, 89, 90, 91, 96, 97, 100, 101
+
+Reassigned labels
+
+Runtime: 0.02399897575378418
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"O_0": "O", "O_1": "O"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+0.870144056803441
+0.7241379310344828
+generalization
+0.7949932743679623
+
+Adjusted Rand Index:
+-0.012248278084073241
+
+
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 0.5
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\L_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 104 elements and 2 clusters
+[0] 2, 3, 4, 5, 6, 7, 8, 9, 10, 16, 17, 20, 21, 22, 23, 24, 25, 26, 27, 32,
+    33, 34, 35, 36, 37, 38, 39, 40, 43, 44, 45, 47, 48, 51, 52, 56, 63, 64,
+    65, 66, 75, 76, 77, 78, 79, 80, 81, 92, 93, 94, 95, 98, 99, 102, 103
+[1] 0, 1, 11, 12, 13, 14, 15, 18, 19, 28, 29, 30, 31, 41, 42, 46, 49, 50, 53,
+    54, 55, 57, 58, 59, 60, 61, 62, 67, 68, 69, 70, 71, 72, 73, 74, 82, 83,
+    84, 85, 86, 87, 88, 89, 90, 91, 96, 97, 100, 101
+
+Reassigned labels
+
+Runtime: 0.022000789642333984
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"O_0": "O", "O_1": "O"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+0.870144056803441
+0.7241379310344828
+generalization
+0.7949932743679623
+
+Adjusted Rand Index:
+-0.012248278084073241
+
+
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 0.75
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\L_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 104 elements and 4 clusters
+[0] 3, 4, 5, 6, 8, 9, 10, 17, 21, 23, 24, 25, 27, 33, 35, 36, 37, 39, 40, 44,
+    45, 48, 52, 56, 64, 66, 75, 77, 79, 80, 81, 92, 93, 94, 95, 99, 103
+[1] 1, 11, 12, 14, 15, 19, 29, 31, 42, 46, 49, 50, 53, 54, 55, 57, 58, 59, 60,
+    62, 68, 70, 71, 72, 74, 83, 84, 85, 86, 87, 89, 91, 97, 101
+[2] 2, 7, 16, 20, 22, 26, 32, 34, 38, 43, 47, 51, 63, 65, 76, 78, 98, 102
+[3] 0, 13, 18, 28, 30, 41, 61, 67, 69, 73, 82, 88, 90, 96, 100
+
+Reassigned labels
+
+Runtime: 0.02399897575378418
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"O_0": "O", "O_1": "O", "O_2": "O", "O_3": "O"}
+token_fitness
+{"perc_fit_traces": 85.3, "average_trace_fitness": 0.9915140271698588, "log_fitness": 0.9889056603773585, "percentage_of_fitting_traces": 85.3}
+precision
+0.9485448195576252
+0.6969696969696969
+generalization
+0.7415190761266419
+
+Adjusted Rand Index:
+0.07991853465499685
+
+
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 1
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.SET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\L_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 104 elements and 32 clusters
+[ 0] 3, 5, 10, 25, 33, 35, 37, 39, 66, 81, 93
+[ 1] 42, 50, 55, 58, 60, 74, 83, 85, 87, 97, 101
+[ 2] 6, 40, 45, 56, 75, 94, 95
+[ 3] 8, 17, 44, 48, 52, 77, 103
+[ 4] 16, 43, 47, 51, 76, 102
+[ 5] 49, 54, 57, 59, 84, 86
+[ 6] 4, 24, 36, 80, 92
+[ 7] 20, 26, 63, 78, 98
+[ 8] 21, 27, 64, 79, 99
+[ 9] 14, 29, 70, 91
+[10] 32, 34, 38, 65
+[11] 46, 53, 71, 72
+[12] 62, 68, 89
+[13] 13, 69, 90
+[14] 82, 96, 100
+[15] 1, 12
+[16] 61, 88
+[17] 41, 73
+[18] 0
+[19] 2
+[20] 7
+[21] 9
+[22] 11
+[23] 15
+[24] 18
+[25] 19
+[26] 22
+[27] 23
+[28] 28
+[29] 30
+[30] 31
+[31] 67
+
+Reassigned labels
+
+Runtime: 0.027999401092529297
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"O_0": "O", "O_1": "O", "O_2": "O", "O_3": "O", "O_4": "O", "O_5": "O", "O_6": "O", "O_7": "O", "O_8": "O", "O_9": "O", "O_10": "O", "O_11": "O", "O_12": "O", "O_13": "O", "O_14": "O", "O_15": "O", "O_16": "O", "O_17": "O", "O_18": "O", "O_19": "O", "O_20": "O", "O_21": "O", "O_22": "O", "O_23": "O", "O_24": "O", "O_25": "O", "O_26": "O", "O_27": "O", "O_28": "O", "O_29": "O", "O_30": "O", "O_31": "O"}
+token_fitness
+{"perc_fit_traces": 61.8, "average_trace_fitness": 0.9284431646183195, "log_fitness": 0.9276628691516425, "percentage_of_fitting_traces": 61.8}
+precision
+0.9917071018967799
+0.6470588235294118
+generalization
+0.48667308614731986
+
+Adjusted Rand Index:
+0.3405728371385245
+
+
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 0
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\L_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 104 elements and 2 clusters
+[0] 2, 3, 4, 5, 6, 7, 8, 9, 10, 16, 17, 20, 21, 22, 23, 24, 25, 26, 27, 32,
+    33, 34, 35, 36, 37, 38, 39, 40, 43, 44, 45, 47, 48, 51, 52, 56, 63, 64,
+    65, 66, 75, 76, 77, 78, 79, 80, 81, 92, 93, 94, 95, 98, 99, 102, 103
+[1] 0, 1, 11, 12, 13, 14, 15, 18, 19, 28, 29, 30, 31, 41, 42, 46, 49, 50, 53,
+    54, 55, 57, 58, 59, 60, 61, 62, 67, 68, 69, 70, 71, 72, 73, 74, 82, 83,
+    84, 85, 86, 87, 88, 89, 90, 91, 96, 97, 100, 101
+
+Reassigned labels
+
+Runtime: 0.026000261306762695
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"O_0": "O", "O_1": "O"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+0.870144056803441
+0.7241379310344828
+generalization
+0.7949932743679623
+
+Adjusted Rand Index:
+-0.012248278084073241
+
+
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 0.25
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\L_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 104 elements and 2 clusters
+[0] 2, 3, 4, 5, 6, 7, 8, 9, 10, 16, 17, 20, 21, 22, 23, 24, 25, 26, 27, 32,
+    33, 34, 35, 36, 37, 38, 39, 40, 43, 44, 45, 47, 48, 51, 52, 56, 63, 64,
+    65, 66, 75, 76, 77, 78, 79, 80, 81, 92, 93, 94, 95, 98, 99, 102, 103
+[1] 0, 1, 11, 12, 13, 14, 15, 18, 19, 28, 29, 30, 31, 41, 42, 46, 49, 50, 53,
+    54, 55, 57, 58, 59, 60, 61, 62, 67, 68, 69, 70, 71, 72, 73, 74, 82, 83,
+    84, 85, 86, 87, 88, 89, 90, 91, 96, 97, 100, 101
+
+Reassigned labels
+
+Runtime: 0.023000478744506836
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"O_0": "O", "O_1": "O"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+0.870144056803441
+0.7241379310344828
+generalization
+0.7949932743679623
+
+Adjusted Rand Index:
+-0.012248278084073241
+
+
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 0.5
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\L_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 104 elements and 2 clusters
+[0] 2, 3, 4, 5, 6, 7, 8, 9, 10, 16, 17, 20, 21, 22, 23, 24, 25, 26, 27, 32,
+    33, 34, 35, 36, 37, 38, 39, 40, 43, 44, 45, 47, 48, 51, 52, 56, 63, 64,
+    65, 66, 75, 76, 77, 78, 79, 80, 81, 92, 93, 94, 95, 98, 99, 102, 103
+[1] 0, 1, 11, 12, 13, 14, 15, 18, 19, 28, 29, 30, 31, 41, 42, 46, 49, 50, 53,
+    54, 55, 57, 58, 59, 60, 61, 62, 67, 68, 69, 70, 71, 72, 73, 74, 82, 83,
+    84, 85, 86, 87, 88, 89, 90, 91, 96, 97, 100, 101
+
+Reassigned labels
+
+Runtime: 0.02399921417236328
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"O_0": "O", "O_1": "O"}
+token_fitness
+{"perc_fit_traces": 100.0, "average_trace_fitness": 1.0, "log_fitness": 1.0, "percentage_of_fitting_traces": 100.0}
+precision
+0.870144056803441
+0.7241379310344828
+generalization
+0.7949932743679623
+
+Adjusted Rand Index:
+-0.012248278084073241
+
+
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 0.75
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\L_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 104 elements and 5 clusters
+[0] 3, 4, 5, 6, 8, 9, 10, 17, 21, 23, 24, 25, 27, 33, 35, 36, 37, 39, 40, 44,
+    45, 48, 52, 56, 64, 66, 75, 77, 79, 80, 81, 92, 93, 94, 95, 99, 103
+[1] 1, 11, 12, 14, 15, 19, 29, 31, 42, 46, 49, 50, 53, 54, 55, 57, 58, 59, 60,
+    62, 68, 70, 71, 72, 74, 83, 84, 85, 86, 87, 89, 91, 97, 101
+[2] 2, 7, 16, 20, 22, 26, 32, 34, 38, 43, 47, 51, 63, 65, 76, 78, 98, 102
+[3] 13, 28, 41, 61, 67, 69, 73, 82, 88, 90, 96, 100
+[4] 0, 18, 30
+
+Reassigned labels
+
+Runtime: 0.025999069213867188
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"O_0": "O", "O_1": "O", "O_2": "O", "O_3": "O", "O_4": "O"}
+token_fitness
+{"perc_fit_traces": 37.2, "average_trace_fitness": 0.8749166405947053, "log_fitness": 0.8451664680767672, "percentage_of_fitting_traces": 37.2}
+precision
+0.9476792609979556
+0.6969696969696969
+generalization
+0.6348722118514096
+
+Adjusted Rand Index:
+0.07991853465499685
+
+
+
+Parameters of this run:
+
+Window size: 5
+Threshold for edges: 1
+Split candidates: O
+Max number of traces: 5000000
+Method for distance calculation: Distance.MULTISET_DISTANCE
+Method for finding clusters: ClusteringMethod.COMMUNITY_DETECTION
+Original log location: ./data/noImprInLoop_default_OD\feb16-1625\logs\L_1_LogD_Sequence_feb16-1625.xes.gz
+Use frequency: True
+
+Found communities: 
+
+Clustering with 104 elements and 32 clusters
+[ 0] 3, 5, 10, 25, 33, 35, 37, 39, 66, 81, 93
+[ 1] 42, 50, 55, 58, 60, 74, 83, 85, 87, 97, 101
+[ 2] 6, 40, 45, 56, 75, 94, 95
+[ 3] 8, 17, 44, 48, 52, 77, 103
+[ 4] 16, 43, 47, 51, 76, 102
+[ 5] 49, 54, 57, 59, 84, 86
+[ 6] 4, 24, 36, 80, 92
+[ 7] 20, 26, 63, 78, 98
+[ 8] 21, 27, 64, 79, 99
+[ 9] 14, 29, 70, 91
+[10] 32, 34, 38, 65
+[11] 46, 53, 71, 72
+[12] 62, 68, 89
+[13] 13, 69, 90
+[14] 82, 96, 100
+[15] 1, 12
+[16] 61, 88
+[17] 41, 73
+[18] 0
+[19] 2
+[20] 7
+[21] 9
+[22] 11
+[23] 15
+[24] 18
+[25] 19
+[26] 22
+[27] 23
+[28] 28
+[29] 30
+[30] 31
+[31] 67
+
+Reassigned labels
+
+Runtime: 0.02899932861328125
+
+Performance split_log:
+
+IM without threshold:
+Map:
+{"O_0": "O", "O_1": "O", "O_2": "O", "O_3": "O", "O_4": "O", "O_5": "O", "O_6": "O", "O_7": "O", "O_8": "O", "O_9": "O", "O_10": "O", "O_11": "O", "O_12": "O", "O_13": "O", "O_14": "O", "O_15": "O", "O_16": "O", "O_17": "O", "O_18": "O", "O_19": "O", "O_20": "O", "O_21": "O", "O_22": "O", "O_23": "O", "O_24": "O", "O_25": "O", "O_26": "O", "O_27": "O", "O_28": "O", "O_29": "O", "O_30": "O", "O_31": "O"}
+token_fitness
+{"perc_fit_traces": 61.8, "average_trace_fitness": 0.9094525221940071, "log_fitness": 0.9121435142594296, "percentage_of_fitting_traces": 61.8}
+precision
+0.9917071018967799
+0.6470588235294118
+generalization
+0.511268092048026
+
+Adjusted Rand Index:
+0.3405728371385245
+
+Best precision found:
+0.991133254517818

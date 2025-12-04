@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ptml>
+  <processTree name="a07d6583-e5aa-4b29-8c0a-c7e9087a1db8" root="b3bad77d-0984-4ba2-bb57-890211d2b797" id="f0d1a84c-4ab0-47f4-a49c-a73cbdb30cea">
+    <sequence name="" id="b3bad77d-0984-4ba2-bb57-890211d2b797"/>
+    <xor name="" id="5db195cf-ff70-421f-b2ea-503703baf59c"/>
+    <xorLoop name="" id="f5560af5-6df4-4d5c-9d71-174079969b4f"/>
+    <and name="" id="8866db24-a202-4342-a663-2e891f1402e4"/>
+    <manualTask name="N" id="88947916-79c7-4ac8-be4a-75aa5845a032"/>
+    <manualTask name="O" id="99b3fba5-1073-484c-92ac-6878a02f26fc"/>
+    <manualTask name="C" id="1033d5eb-c8bb-498f-99d7-2d58208464b2"/>
+    <manualTask name="E" id="2aa97fb3-69bd-45ff-aaa5-5e1b0871ec8c"/>
+    <manualTask name="D" id="e5019a02-2ac1-4785-9ef0-954ba90976ef"/>
+    <and name="" id="1ce0bf17-faca-4c06-8249-2ff8558f4dfb"/>
+    <manualTask name="L_1" id="a124ee48-9f75-41b6-bafe-affad0e7f515"/>
+    <automaticTask name="" id="63dde0bb-3338-4fb2-a013-ea50ba742bf3"/>
+    <automaticTask name="" id="9cfcc748-a1eb-4698-a10e-3f54069e3e2d"/>
+    <manualTask name="H" id="66a73df0-66a7-48a9-855a-15c18744e2e7"/>
+    <manualTask name="J" id="6f9efbc8-a0d1-42ad-a8a3-11216ae858d1"/>
+    <sequence name="" id="7e325a71-5fe0-4a61-9f67-3862f052e39d"/>
+    <manualTask name="A" id="11774c88-5026-4ec8-bf53-c6315d2d06e3"/>
+    <manualTask name="B" id="a97b2612-cbc6-4376-86d2-0d34605ef224"/>
+    <xorLoop name="" id="6cf31124-1f4a-4f1d-abbb-b1ba3e34cdb5"/>
+    <and name="" id="82d63773-1483-4722-afea-475dffa5dfca"/>
+    <manualTask name="L_2" id="4c9b32e8-7694-4fb8-96dd-6b6ab3aa0344"/>
+    <automaticTask name="" id="13a468f1-90b2-4dac-98ba-a3b05393d8a0"/>
+    <automaticTask name="" id="ea4195d9-84fe-4d78-bd97-7e4806d255c4"/>
+    <xorLoop name="" id="2a9572b5-2558-4dfc-9ea7-a8ca2ac4e15a"/>
+    <sequence name="" id="bfd9e275-33a9-45e3-8690-7c1b98d660c4"/>
+    <manualTask name="L_0" id="8f05e9cb-6ce0-4659-abad-b4ac7653f142"/>
+    <automaticTask name="" id="6aad9e52-24bb-4a1e-8a0b-292e6c4f5726"/>
+    <automaticTask name="" id="cbc00fec-25f9-4baa-9fe8-5231fa7e8b44"/>
+    <manualTask name="K" id="f08fdcf7-9a9c-4cc1-aa82-c851b00ca85b"/>
+    <manualTask name="M" id="17c6c1b3-15a3-439f-8327-4ac3f045d8e7"/>
+    <parentsNode id="54dbfb4f-d18f-4605-8c82-eb50beeaed8f" sourceId="b3bad77d-0984-4ba2-bb57-890211d2b797" targetId="5db195cf-ff70-421f-b2ea-503703baf59c"/>
+    <parentsNode id="bf1d8026-7161-4841-bac4-6f1c1689687a" sourceId="b3bad77d-0984-4ba2-bb57-890211d2b797" targetId="f5560af5-6df4-4d5c-9d71-174079969b4f"/>
+    <parentsNode id="c6dde5ab-04d0-4c0b-a8e1-f1e2fa97069d" sourceId="b3bad77d-0984-4ba2-bb57-890211d2b797" targetId="8866db24-a202-4342-a663-2e891f1402e4"/>
+    <parentsNode id="2a90f7eb-15cd-40b3-bba5-d731214977a8" sourceId="b3bad77d-0984-4ba2-bb57-890211d2b797" targetId="88947916-79c7-4ac8-be4a-75aa5845a032"/>
+    <parentsNode id="d105c295-a284-46c1-997e-2ce3a653c7b3" sourceId="b3bad77d-0984-4ba2-bb57-890211d2b797" targetId="99b3fba5-1073-484c-92ac-6878a02f26fc"/>
+    <parentsNode id="923b6fb1-c743-43d6-93e9-a84f7d1da4f2" sourceId="5db195cf-ff70-421f-b2ea-503703baf59c" targetId="1033d5eb-c8bb-498f-99d7-2d58208464b2"/>
+    <parentsNode id="4ab025b2-74c2-42a2-8f11-3e5d6e4742d8" sourceId="5db195cf-ff70-421f-b2ea-503703baf59c" targetId="2aa97fb3-69bd-45ff-aaa5-5e1b0871ec8c"/>
+    <parentsNode id="5f2507cb-9940-4eed-b52c-0bb59a9859ad" sourceId="5db195cf-ff70-421f-b2ea-503703baf59c" targetId="e5019a02-2ac1-4785-9ef0-954ba90976ef"/>
+    <parentsNode id="c7f27e28-2d5b-4241-977d-caf9a6165c8c" sourceId="5db195cf-ff70-421f-b2ea-503703baf59c" targetId="1ce0bf17-faca-4c06-8249-2ff8558f4dfb"/>
+    <parentsNode id="94e2792c-f3a7-471e-8e7a-bae14fccca69" sourceId="f5560af5-6df4-4d5c-9d71-174079969b4f" targetId="a124ee48-9f75-41b6-bafe-affad0e7f515"/>
+    <parentsNode id="249a3c59-e2db-4c06-8e28-a49391919a32" sourceId="f5560af5-6df4-4d5c-9d71-174079969b4f" targetId="63dde0bb-3338-4fb2-a013-ea50ba742bf3"/>
+    <parentsNode id="1d3fe226-bdda-4f3a-8e62-1cf76630966a" sourceId="f5560af5-6df4-4d5c-9d71-174079969b4f" targetId="9cfcc748-a1eb-4698-a10e-3f54069e3e2d"/>
+    <parentsNode id="ed4871b4-f4be-46cf-9f3c-29d81f363060" sourceId="8866db24-a202-4342-a663-2e891f1402e4" targetId="66a73df0-66a7-48a9-855a-15c18744e2e7"/>
+    <parentsNode id="3ba035cc-1b92-41cb-8f90-0b4df49edd82" sourceId="8866db24-a202-4342-a663-2e891f1402e4" targetId="6f9efbc8-a0d1-42ad-a8a3-11216ae858d1"/>
+    <parentsNode id="ff829e90-d7e1-4f19-a0cb-499d04dc0900" sourceId="8866db24-a202-4342-a663-2e891f1402e4" targetId="7e325a71-5fe0-4a61-9f67-3862f052e39d"/>
+    <parentsNode id="fbf2ac5f-0e06-465a-9203-0d9f681ada04" sourceId="1ce0bf17-faca-4c06-8249-2ff8558f4dfb" targetId="11774c88-5026-4ec8-bf53-c6315d2d06e3"/>
+    <parentsNode id="855834b8-edb7-435c-b393-f5b1241bb763" sourceId="1ce0bf17-faca-4c06-8249-2ff8558f4dfb" targetId="a97b2612-cbc6-4376-86d2-0d34605ef224"/>
+    <parentsNode id="339b1e7f-89b2-42b8-b590-fe625ce5d631" sourceId="7e325a71-5fe0-4a61-9f67-3862f052e39d" targetId="6cf31124-1f4a-4f1d-abbb-b1ba3e34cdb5"/>
+    <parentsNode id="bbedb41b-d400-483b-a563-1d42dee462b2" sourceId="7e325a71-5fe0-4a61-9f67-3862f052e39d" targetId="82d63773-1483-4722-afea-475dffa5dfca"/>
+    <parentsNode id="da5f53f4-5043-4e12-919c-6d71c654c33d" sourceId="6cf31124-1f4a-4f1d-abbb-b1ba3e34cdb5" targetId="4c9b32e8-7694-4fb8-96dd-6b6ab3aa0344"/>
+    <parentsNode id="b467f79d-45d9-4097-bdfe-c578d34a2e70" sourceId="6cf31124-1f4a-4f1d-abbb-b1ba3e34cdb5" targetId="13a468f1-90b2-4dac-98ba-a3b05393d8a0"/>
+    <parentsNode id="d03d85d1-c5f2-41ec-8991-897886e57599" sourceId="6cf31124-1f4a-4f1d-abbb-b1ba3e34cdb5" targetId="ea4195d9-84fe-4d78-bd97-7e4806d255c4"/>
+    <parentsNode id="c254888f-456f-4917-9b6e-886b42c8105b" sourceId="82d63773-1483-4722-afea-475dffa5dfca" targetId="2a9572b5-2558-4dfc-9ea7-a8ca2ac4e15a"/>
+    <parentsNode id="b6b5bd88-775c-4393-b452-ee8103852f78" sourceId="82d63773-1483-4722-afea-475dffa5dfca" targetId="bfd9e275-33a9-45e3-8690-7c1b98d660c4"/>
+    <parentsNode id="0420f660-45e5-4800-a2e4-037ab3b53892" sourceId="2a9572b5-2558-4dfc-9ea7-a8ca2ac4e15a" targetId="8f05e9cb-6ce0-4659-abad-b4ac7653f142"/>
+    <parentsNode id="d0fdbff8-0490-4228-9278-862bd8a7303e" sourceId="2a9572b5-2558-4dfc-9ea7-a8ca2ac4e15a" targetId="6aad9e52-24bb-4a1e-8a0b-292e6c4f5726"/>
+    <parentsNode id="83cae4f9-6b9c-445f-a5e9-f75ede11a620" sourceId="2a9572b5-2558-4dfc-9ea7-a8ca2ac4e15a" targetId="cbc00fec-25f9-4baa-9fe8-5231fa7e8b44"/>
+    <parentsNode id="70662c10-a81e-4f48-81e7-9fd6f86e81fb" sourceId="bfd9e275-33a9-45e3-8690-7c1b98d660c4" targetId="f08fdcf7-9a9c-4cc1-aa82-c851b00ca85b"/>
+    <parentsNode id="e7f90742-2de1-4645-b669-fef98cf16707" sourceId="bfd9e275-33a9-45e3-8690-7c1b98d660c4" targetId="17c6c1b3-15a3-439f-8327-4ac3f045d8e7"/>
+  </processTree>
+</ptml>

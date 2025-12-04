@@ -1,0 +1,278 @@
+#!/bin/bash -l
+#PBS -N duplimend_job3_cybersec
+#PBS -l select=1:ncpus=32:ngpus=1:mem=512gb:gpu_id=H100
+#PBS -l walltime=48:00:00
+#PBS -j oe
+#PBS -m abe
+#PBS -M savandi.kalukapuge@hdr.qut.edu.au
+#PBS -V
+
+set -euo pipefail
+
+cd "$PBS_O_WORKDIR"
+
+echo "===== JOB 3: CYBERSECURITY MAIN PROCESSING (5376 COMBINATIONS) ====="
+echo "JobID : ${PBS_JOBID:-N/A}"
+echo "Host  : $(hostname)"
+echo "Work  : $(pwd)"
+echo "Date  : $(date)"
+echo "CUDA_VISIBLE_DEVICES: ${CUDA_VISIBLE_DEVICES:-unset}"
+echo "===================================================================="
+
+# Modules
+module load GCC/12.3.0
+module load Python/3.11.3
+
+# Environment setup
+PROJECT_ROOT="$PBS_O_WORKDIR"
+SRC_DIR="$PROJECT_ROOT/src"
+VENV_DIR="$PROJECT_ROOT/venv"
+VENV_ACT="$VENV_DIR/bin/activate"
+REQS="$PROJECT_ROOT/requirements.txt"
+
+# Performance settings
+export OMP_NUM_THREADS=32
+export MKL_NUM_THREADS=32
+export NUMBA_NUM_THREADS=32
+export OPENBLAS_NUM_THREADS=32
+export NUMEXPR_MAX_THREADS=32
+export PYTHONPATH="$SRC_DIR:${PYTHONPATH:-}"
+
+# Setup virtualenv
+if [[ ! -d "$VENV_DIR" ]]; then
+  python -m venv "$VENV_DIR"
+fi
+source "$VENV_ACT"
+python -m pip install --upgrade pip
+[[ -f "$REQS" ]] && python -m pip install -r "$REQS"
+
+# Create progress tracking
+mkdir -p "Z:/cybersecurity_iotdata/checkpoints"
+PROGRESS_FILE="Z:/cybersecurity_iotdata/checkpoints/job3_progress.log"
+SUMMARY_FILE="Z:/cybersecurity_iotdata/checkpoints/job3_summary.txt"
+
+echo "$(date): Starting Job 3 - Main Processing Loop (5376 combinations)" >> "$PROGRESS_FILE"
+
+# Initialize summary
+cat > "$SUMMARY_FILE" << EOF
+Main Processing Loop Summary
+===========================
+Started: $(date)
+Host: $(hostname)
+Total Combinations: 5376 (768 training × 7 clustering configs)
+
+Progress:
+EOF
+
+# Statistics tracking
+COMPLETED_COUNT=0
+SKIPPED_COUNT=0
+FAILED_COUNT=0
+
+# Loop through all main processing combinations (768 training × 7 clustering = 5376)
+for PBS_ARRAY_INDEX in {1..5376}; do
+    echo ""
+    echo "================================================================="
+    echo "PROCESSING MAIN COMBINATION ${PBS_ARRAY_INDEX} of 5376"
+    echo "================================================================="
+
+    # Calculate training config index and clustering config index
+    TRAINING_INDEX=$(( (PBS_ARRAY_INDEX - 1) / 7 + 1 ))
+    CLUSTERING_INDEX=$(( (PBS_ARRAY_INDEX - 1) % 7 + 1 ))
+
+    echo "Mapping: Main ${PBS_ARRAY_INDEX} -> Training Index ${TRAINING_INDEX}, Clustering Index ${CLUSTERING_INDEX}"
+
+    # Load training configuration from Job 2
+    TRAINING_CONFIG_FILE="Z:/cybersecurity_iotdata/output_${TRAINING_INDEX}/job2_config.env"
+
+    if [[ ! -f "$TRAINING_CONFIG_FILE" ]]; then
+        echo "ERROR: Training configuration file not found for training index $TRAINING_INDEX"
+        echo "Expected: $TRAINING_CONFIG_FILE"
+        echo "$(date): FAILED main ${PBS_ARRAY_INDEX} - missing training config" >> "$PROGRESS_FILE"
+        ((FAILED_COUNT++))
+        continue
+    fi
+
+    echo "Loading training configuration from: $TRAINING_CONFIG_FILE"
+    source "$TRAINING_CONFIG_FILE"
+
+    # Set clustering parameters (7 combinations using your specified values)
+    case ${CLUSTERING_INDEX} in
+        1) export CLUSTER_CONFIG_NAME="clst01_var1e7_mrg001_temp04_forg85_decay10k_upd500_cent50_adwin002";
+           export CLUSTERING_THRESHOLD=0.01; export VARIANCE_THRESHOLD=1e-7; export MERGE_THRESHOLD=0.001; export TEMPORAL_DECAY_RATE=0.04; export FORGETTING_FACTOR=0.85; export DECAY_AFTER_EVENTS=10000; export MEMORY_UPDATE_INTERVAL=500; export MAX_CENTROIDS_PER_ACTIVITY=50; export ADWIN_DELTA=0.002 ;;
+        2) export CLUSTER_CONFIG_NAME="clst025_var11e5_mrg01_temp08_forg70_decay20k_upd1000_cent100_adwin005";
+           export CLUSTERING_THRESHOLD=0.25; export VARIANCE_THRESHOLD=1.1e-05; export MERGE_THRESHOLD=0.01; export TEMPORAL_DECAY_RATE=0.08; export FORGETTING_FACTOR=0.70; export DECAY_AFTER_EVENTS=20000; export MEMORY_UPDATE_INTERVAL=1000; export MAX_CENTROIDS_PER_ACTIVITY=100; export ADWIN_DELTA=0.005 ;;
+        3) export CLUSTER_CONFIG_NAME="clst1_var1e6_mrg1_temp15_forg90_decay50k_upd2000_cent200_adwin01";
+           export CLUSTERING_THRESHOLD=0.1; export VARIANCE_THRESHOLD=1e-06; export MERGE_THRESHOLD=0.1; export TEMPORAL_DECAY_RATE=0.15; export FORGETTING_FACTOR=0.90; export DECAY_AFTER_EVENTS=50000; export MEMORY_UPDATE_INTERVAL=2000; export MAX_CENTROIDS_PER_ACTIVITY=200; export ADWIN_DELTA=0.01 ;;
+        4) export CLUSTER_CONFIG_NAME="clst9_var1e4_mrg2_temp01_forg95_decay5k_upd100_cent25_adwin001";
+           export CLUSTERING_THRESHOLD=0.9; export VARIANCE_THRESHOLD=1e-04; export MERGE_THRESHOLD=0.2; export TEMPORAL_DECAY_RATE=0.01; export FORGETTING_FACTOR=0.95; export DECAY_AFTER_EVENTS=5000; export MEMORY_UPDATE_INTERVAL=100; export MAX_CENTROIDS_PER_ACTIVITY=25; export ADWIN_DELTA=0.001 ;;
+        5) export CLUSTER_CONFIG_NAME="clst005_var1e8_mrg005_temp04_forg80_decay10k_upd500_cent50_adwin002";
+           export CLUSTERING_THRESHOLD=0.005; export VARIANCE_THRESHOLD=1e-8; export MERGE_THRESHOLD=0.005; export TEMPORAL_DECAY_RATE=0.04; export FORGETTING_FACTOR=0.80; export DECAY_AFTER_EVENTS=10000; export MEMORY_UPDATE_INTERVAL=500; export MAX_CENTROIDS_PER_ACTIVITY=50; export ADWIN_DELTA=0.002 ;;
+        6) export CLUSTER_CONFIG_NAME="clst02_var1e7_mrg02_temp08_forg85_decay20k_upd1000_cent100_adwin005";
+           export CLUSTERING_THRESHOLD=0.02; export VARIANCE_THRESHOLD=1e-7; export MERGE_THRESHOLD=0.02; export TEMPORAL_DECAY_RATE=0.08; export FORGETTING_FACTOR=0.85; export DECAY_AFTER_EVENTS=20000; export MEMORY_UPDATE_INTERVAL=1000; export MAX_CENTROIDS_PER_ACTIVITY=100; export ADWIN_DELTA=0.005 ;;
+        7) export CLUSTER_CONFIG_NAME="clst01_var1e6_mrg01_temp04_forg85_decay10k_upd500_cent50_adwin002";
+           export CLUSTERING_THRESHOLD=0.01; export VARIANCE_THRESHOLD=1e-6; export MERGE_THRESHOLD=0.01; export TEMPORAL_DECAY_RATE=0.04; export FORGETTING_FACTOR=0.85; export DECAY_AFTER_EVENTS=10000; export MEMORY_UPDATE_INTERVAL=500; export MAX_CENTROIDS_PER_ACTIVITY=50; export ADWIN_DELTA=0.002 ;;
+        *) echo "ERROR: Invalid CLUSTERING_INDEX: ${CLUSTERING_INDEX}"; continue ;;
+    esac
+
+    # Fixed parameters
+    export CLUSTERING_ALGORITHM="river_dbstream"
+    export DISTANCE_METRIC="cosine"
+    export FADING_FACTOR=0.001
+    export MIN_CLUSTER_WEIGHT=10
+    export MEMORY_DECAY_FACTOR=0.95
+    export CLUSTER_REG_WEIGHT=0.1
+    export MEMORY_REGULARIZATION_WEIGHT=0.1
+
+    FINAL_CONFIG_NAME="${FULL_CONFIG_NAME}_${CLUSTER_CONFIG_NAME}"
+
+    # Create output directories
+    MAIN_OUTPUT_DIR="Z:/cybersecurity_iotdata/output_${PBS_ARRAY_INDEX}"
+    RUN_OUTPUT_DIR="Z:/cybersecurity_iotdata/run_output_${PBS_ARRAY_INDEX}"
+
+    mkdir -p "$MAIN_OUTPUT_DIR"
+    mkdir -p "$RUN_OUTPUT_DIR"
+
+    # === OUTPUT FILE VERIFICATION ===
+    echo "---------- CHECKING EXISTING MAIN OUTPUTS ----------"
+
+    # Define expected output files from main.py processing
+    EXPECTED_MAIN_FILES=(
+        "$RUN_OUTPUT_DIR/final_centroids.json"
+        "$RUN_OUTPUT_DIR/event_feature_vectors.jsonl"
+        "$RUN_OUTPUT_DIR/config_snapshot.json"
+        "$MAIN_OUTPUT_DIR/job3_final_config.env"
+    )
+
+    # Check if all expected main processing files exist and are non-empty
+    MAIN_COMPLETE=true
+    for file in "${EXPECTED_MAIN_FILES[@]}"; do
+        if [[ ! -f "$file" ]] || [[ ! -s "$file" ]]; then
+            echo "❌ Missing or empty: $file"
+            MAIN_COMPLETE=false
+        else
+            echo "✅ Found: $file ($(du -h "$file" | cut -f1))"
+        fi
+    done
+
+    # If main processing is complete, skip this combination
+    if [[ "$MAIN_COMPLETE" == true ]]; then
+        echo "✅ RESUME: Main combination ${PBS_ARRAY_INDEX} already completed - SKIPPING"
+        echo "$(date): SKIPPED main ${PBS_ARRAY_INDEX} - $FINAL_CONFIG_NAME (already completed)" >> "$PROGRESS_FILE"
+        ((SKIPPED_COUNT++))
+        continue
+    fi
+
+    echo "⚠️  INCOMPLETE MAIN OUTPUTS - Running main processing ${PBS_ARRAY_INDEX}"
+
+    # Set environment variables for Python scripts (config.py expects lowercase)
+    export experiment_output_dir="$MAIN_OUTPUT_DIR"
+    export experiment_config_name="$FINAL_CONFIG_NAME"
+    export TRAINING_APPROACH="offline"
+
+    echo "---------- MAIN CONFIG: $FINAL_CONFIG_NAME ----------"
+    echo "Training: $FULL_CONFIG_NAME, Clustering: $CLUSTER_CONFIG_NAME"
+    echo "Parameters: threshold=$CLUSTERING_THRESHOLD, merge=$MERGE_THRESHOLD"
+    echo "-------------------------------------------------------"
+
+    # Link to training outputs from Job 2
+    if [[ -d "$TRAINING_OUTPUT_DIR" ]]; then
+        ln -sf "$TRAINING_OUTPUT_DIR"/* "$MAIN_OUTPUT_DIR/" 2>/dev/null || true
+        echo "✓ Linked training outputs from: $TRAINING_OUTPUT_DIR"
+    fi
+
+    # Run main processing
+    echo "---------- RUNNING MAIN PROCESSING ----------"
+    START_TIME=$(date +%s)
+
+    cd "$PROJECT_ROOT"
+    if python -m main; then
+        END_TIME=$(date +%s)
+        DURATION=$((END_TIME - START_TIME))
+        echo "✓ Main processing completed in ${DURATION}s"
+
+        # Verify main outputs
+        echo "---------- VERIFYING MAIN OUTPUTS ----------"
+        MAIN_VERIFICATION=true
+        for file in "${EXPECTED_MAIN_FILES[@]}"; do
+            if [[ ! -f "$file" ]] || [[ ! -s "$file" ]]; then
+                echo "❌ VERIFICATION FAILED: $file"
+                MAIN_VERIFICATION=false
+            else
+                echo "✅ VERIFIED: $file"
+            fi
+        done
+
+        if [[ "$MAIN_VERIFICATION" == true ]]; then
+            echo "✅ All main outputs verified successfully"
+
+            # Save final configuration
+            cat > "$MAIN_OUTPUT_DIR/job3_final_config.env" << EOF
+# Job 3 Final Configuration
+export FINAL_CONFIG_NAME="$FINAL_CONFIG_NAME"
+export PBS_ARRAY_INDEX=${PBS_ARRAY_INDEX}
+export TRAINING_INDEX=${TRAINING_INDEX}
+export CLUSTERING_INDEX=${CLUSTERING_INDEX}
+export CLUSTERING_THRESHOLD=$CLUSTERING_THRESHOLD
+export VARIANCE_THRESHOLD=$VARIANCE_THRESHOLD
+export MERGE_THRESHOLD=$MERGE_THRESHOLD
+export TEMPORAL_DECAY_RATE=$TEMPORAL_DECAY_RATE
+export FORGETTING_FACTOR=$FORGETTING_FACTOR
+export DECAY_AFTER_EVENTS=$DECAY_AFTER_EVENTS
+export MEMORY_UPDATE_INTERVAL=$MEMORY_UPDATE_INTERVAL
+export MAX_CENTROIDS_PER_ACTIVITY=$MAX_CENTROIDS_PER_ACTIVITY
+export ADWIN_DELTA=$ADWIN_DELTA
+export MAIN_OUTPUT_DIR="$MAIN_OUTPUT_DIR"
+export RUN_OUTPUT_DIR="$RUN_OUTPUT_DIR"
+export COMPLETION_TIME="$(date)"
+export DURATION_SECONDS=${DURATION}
+EOF
+
+            echo "$(date): COMPLETED main ${PBS_ARRAY_INDEX} - $FINAL_CONFIG_NAME (${DURATION}s)" >> "$PROGRESS_FILE"
+            ((COMPLETED_COUNT++))
+
+        else
+            echo "❌ MAIN VERIFICATION FAILED"
+            echo "$(date): FAILED main ${PBS_ARRAY_INDEX} - $FINAL_CONFIG_NAME (verification failed)" >> "$PROGRESS_FILE"
+            ((FAILED_COUNT++))
+        fi
+
+    else
+        echo "✗ ERROR: Main processing failed for combination ${PBS_ARRAY_INDEX}"
+        echo "$(date): FAILED main ${PBS_ARRAY_INDEX} - $FINAL_CONFIG_NAME (execution failed)" >> "$PROGRESS_FILE"
+        ((FAILED_COUNT++))
+    fi
+
+    echo "Progress: Completed=${COMPLETED_COUNT}, Skipped=${SKIPPED_COUNT}, Failed=${FAILED_COUNT}"
+
+done
+
+# Final summary
+echo ""
+echo "========== JOB 3 LOOP COMPLETED =========="
+echo "✓ Processed all 5376 main processing combinations"
+echo "✓ Completed: $COMPLETED_COUNT"
+echo "✓ Skipped: $SKIPPED_COUNT"
+echo "✓ Failed: $FAILED_COUNT"
+echo "✓ All outputs saved to Z:/cybersecurity_iotdata/ directories"
+echo "✓ Complete sensitivity analysis finished!"
+echo "✓ Finished on: $(date)"
+
+# Update summary file
+cat >> "$SUMMARY_FILE" << EOF
+
+==============================
+Completed: $(date)
+Host: $(hostname)
+Results:
+- Completed: $COMPLETED_COUNT
+- Skipped: $SKIPPED_COUNT
+- Failed: $FAILED_COUNT
+- Total: 5376
+
+Complete Sensitivity Analysis Done!
+==============================
+EOF
+
+echo "✓ Final summary saved to: $SUMMARY_FILE"
+echo "=========================================="

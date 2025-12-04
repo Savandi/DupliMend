@@ -1,0 +1,17 @@
+.claude/
+.idea/
+__pycache__/main.cpython-39.pyc
+__pycache__/config.cpython-39.pyc
+__pycache__/dbstream.cpython-312.pyc
+venv/
+*.log
+*.pyc
+__pycache__/
+.DS_Store
+.idea/misc.xml
+refined_log.csv
+logs/traceability_log.txt
+refined_log.csv
+logs/traceability_log.txt
+.venv
+savienv

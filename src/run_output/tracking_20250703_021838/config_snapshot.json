@@ -1,0 +1,92 @@
+{
+  "control_flow_column": "concept:name",
+  "timestamp_column": "Timestamp",
+  "resource_column": null,
+  "case_id_column": "case:concept:name",
+  "event_id_column": "EventID",
+  "excluded_columns": [
+    "Timestamp",
+    "case:concept:name",
+    "CUSTOM_libs",
+    "lifecycle:transition",
+    "EventID",
+    "PROCESS_comm",
+    "concept:name",
+    "OrgLabel",
+    "org:resource"
+  ],
+  "training_mode_config": {
+    "mode": "single_file",
+    "warmup_global_events": 6042,
+    "incremental_training_interval": 1000,
+    "retraining_interval": 5000000,
+    "retraining_warmup_events": 10000,
+    "min_events_for_incremental_training": 1,
+    "min_events_for_dynamic_training": 10,
+    "training_folder": "C:\\Users\\drana\\Downloads\\cybersec_iot_spinet_data\\processed_train_data",
+    "training_file_pattern": "*.csv",
+    "test_folder": "C:\\Users\\drana\\Downloads\\cybersec_iot_spinet_data\\processed_test_data",
+    "test_file_pattern": "*.csv",
+    "default_input_file": "src/synthetic_logs/A_1_LogD_Sequence_feb16-1625.csv",
+    "save_models_after_training": true,
+    "models_save_dir": "C:\\Users\\drana\\Documents\\GitHub\\DupliMend\\trained_models",
+    "load_pretrained_models": false
+  },
+  "use_control_flow_features": true,
+  "control_flow_context_window": 7,
+  "control_flow_pattern_window_size": 7,
+  "max_control_flow_patterns": 5,
+  "embedding_dim": 8,
+  "parallelization_threshold": 18,
+  "unfolding_threshold": 0.2,
+  "autoencoder_params": {
+    "latent_dim": 32,
+    "hidden_dims": [
+      128,
+      64
+    ],
+    "sparsity_lambda": 0.001,
+    "noise_std": 0.1,
+    "learning_rate": 0.01,
+    "incremental_learning_rate": 0.005,
+    "incremental_train_epochs": 2,
+    "min_events_for_training": 1,
+    "buffer_retention_size": 100
+  },
+  "clustering_params": {
+    "algorithm": "river_dbstream",
+    "distance_metric": "cosine",
+    "clustering_threshold": 0.15,
+    "fading_factor": 0.001,
+    "decaying_factor": 0.01,
+    "beta": 0.5,
+    "mu": 2.5,
+    "epsilon": 0.5,
+    "n_samples_init": 10,
+    "max_micro_clusters": 200,
+    "time_gap": 1000,
+    "halflife": 0.1,
+    "n_macro_clusters": 20,
+    "split_perturbation": 0.05,
+    "n_clusters": 5,
+    "sigma": 1.0,
+    "min_cluster_weight": 5,
+    "variance_threshold": 1.1e-05,
+    "merge_threshold": 0.3,
+    "decay_interval": 10000
+  },
+  "feature_selection_params": {
+    "control_flow_feature_boost": 200
+  },
+  "categorical_feature_params": {
+    "categorical_columns": []
+  },
+  "forgetting_params": {
+    "decay_after_events": 10000,
+    "removal_threshold_events": 100000,
+    "frequency_decay_threshold": 2,
+    "temporal_decay_rate": 0.04,
+    "forgetting_factor": 0.85,
+    "forgetting_threshold": 0.0004
+  }
+}

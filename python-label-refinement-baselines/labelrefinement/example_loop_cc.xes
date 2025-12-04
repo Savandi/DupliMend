@@ -1,0 +1,3304 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<log xes.version="1849-2016" xes.features="nested-attributes" xmlns="http://www.xes-standard.org/">
+	<string key="concept:name" value="generated log from process tree" />
+	<trace>
+		<string key="concept:name" value="-1 [C, G, H, I, J]" />
+		<event>
+			<string key="OrgLabel" value="C" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="C" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="G" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="G" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="H" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_1" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="I" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_4" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_3" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="0 [A, E, F, D, J]" />
+		<event>
+			<string key="OrgLabel" value="A" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="A" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="1 [A, E, D, F, J]" />
+		<event>
+			<string key="OrgLabel" value="A" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="A" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="2 [C, G, H, I, J]" />
+		<event>
+			<string key="OrgLabel" value="C" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="C" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="G" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="G" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="H" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_1" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="I" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_4" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_3" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="3 [A, G, H, I, J]" />
+		<event>
+			<string key="OrgLabel" value="A" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="A" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="G" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="G" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="H" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_1" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="I" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_4" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_3" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="4 [B, D, E, F, J]" />
+		<event>
+			<string key="OrgLabel" value="B" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="B" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="5 [A, G, H, I, J]" />
+		<event>
+			<string key="OrgLabel" value="A" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="A" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="G" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="G" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="H" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_1" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="I" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_4" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_3" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="6 [B, E, F, D, J]" />
+		<event>
+			<string key="OrgLabel" value="B" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="B" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="7 [C, E, D, F, J]" />
+		<event>
+			<string key="OrgLabel" value="C" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="C" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="8 [A, G, H, I, J]" />
+		<event>
+			<string key="OrgLabel" value="A" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="A" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="G" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="G" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="H" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_1" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="I" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_4" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_3" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="9 [C, E, D, F, J]" />
+		<event>
+			<string key="OrgLabel" value="C" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="C" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="10 [C, D, E, F, J]" />
+		<event>
+			<string key="OrgLabel" value="C" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="C" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="11 [A, E, D, F, J]" />
+		<event>
+			<string key="OrgLabel" value="A" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="A" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="12 [C, G, H, I, J]" />
+		<event>
+			<string key="OrgLabel" value="C" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="C" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="G" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="G" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="H" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_1" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="I" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_4" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_3" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="13 [C, G, H, I, J]" />
+		<event>
+			<string key="OrgLabel" value="C" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="C" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="G" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="G" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="H" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_1" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="I" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_4" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_3" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="14 [A, E, D, F, J]" />
+		<event>
+			<string key="OrgLabel" value="A" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="A" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="15 [A, E, D, F, J]" />
+		<event>
+			<string key="OrgLabel" value="A" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="A" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="16 [A, G, H, I, J]" />
+		<event>
+			<string key="OrgLabel" value="A" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="A" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="G" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="G" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="H" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_1" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="I" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_4" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_3" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="17 [C, G, H, I, J]" />
+		<event>
+			<string key="OrgLabel" value="C" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="C" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="G" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="G" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="H" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_1" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="I" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_4" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_3" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="18 [A, G, H, I, J]" />
+		<event>
+			<string key="OrgLabel" value="A" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="A" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="G" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="G" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="H" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_1" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="I" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_4" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_3" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="19 [B, E, F, D, J]" />
+		<event>
+			<string key="OrgLabel" value="B" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="B" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="20 [C, D, E, F, J]" />
+		<event>
+			<string key="OrgLabel" value="C" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="C" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="21 [C, G, H, I, J]" />
+		<event>
+			<string key="OrgLabel" value="C" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="C" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="G" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="G" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="H" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_1" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="I" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_4" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_3" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="22 [B, G, H, I, J]" />
+		<event>
+			<string key="OrgLabel" value="B" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="B" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="G" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="G" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="H" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_1" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="I" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_4" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_3" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="23 [A, D, E, F, J]" />
+		<event>
+			<string key="OrgLabel" value="A" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="A" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="24 [C, E, D, F, J]" />
+		<event>
+			<string key="OrgLabel" value="C" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="C" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="25 [B, G, H, I, J]" />
+		<event>
+			<string key="OrgLabel" value="B" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="B" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="G" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="G" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="H" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_1" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="I" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_4" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_3" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="26 [A, D, E, F, J]" />
+		<event>
+			<string key="OrgLabel" value="A" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="A" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="27 [A, G, H, I, J]" />
+		<event>
+			<string key="OrgLabel" value="A" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="A" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="G" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="G" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="H" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_1" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="I" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_4" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_3" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="28 [A, E, D, F, J]" />
+		<event>
+			<string key="OrgLabel" value="A" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="A" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="29 [B, G, H, I, J]" />
+		<event>
+			<string key="OrgLabel" value="B" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="B" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="G" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="G" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="H" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_1" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="I" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_4" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_3" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="30 [C, E, F, D, J]" />
+		<event>
+			<string key="OrgLabel" value="C" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="C" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="31 [B, G, H, I, J]" />
+		<event>
+			<string key="OrgLabel" value="B" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="B" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="G" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="G" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="H" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_1" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="I" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_4" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_3" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="32 [B, D, E, F, J]" />
+		<event>
+			<string key="OrgLabel" value="B" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="B" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="33 [C, G, H, I, J]" />
+		<event>
+			<string key="OrgLabel" value="C" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="C" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="G" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="G" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="H" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_1" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="I" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_4" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_3" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="34 [A, D, E, F, J]" />
+		<event>
+			<string key="OrgLabel" value="A" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="A" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="35 [C, G, H, I, J]" />
+		<event>
+			<string key="OrgLabel" value="C" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="C" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="G" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="G" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="H" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_1" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="I" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_4" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_3" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="36 [C, E, F, D, J]" />
+		<event>
+			<string key="OrgLabel" value="C" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="C" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="37 [B, G, H, I, J]" />
+		<event>
+			<string key="OrgLabel" value="B" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="B" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="G" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="G" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="H" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_1" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="I" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_4" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_3" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="38 [C, G, H, I, J]" />
+		<event>
+			<string key="OrgLabel" value="C" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="C" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="G" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="G" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="H" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_1" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="I" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_4" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_3" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="39 [A, G, H, I, J]" />
+		<event>
+			<string key="OrgLabel" value="A" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="A" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="G" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="G" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="H" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_1" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="I" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_4" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_3" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="40 [A, E, F, D, J]" />
+		<event>
+			<string key="OrgLabel" value="A" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="A" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="41 [C, E, D, F, J]" />
+		<event>
+			<string key="OrgLabel" value="C" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="C" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="42 [C, E, F, D, J]" />
+		<event>
+			<string key="OrgLabel" value="C" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="C" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="43 [A, E, D, F, J]" />
+		<event>
+			<string key="OrgLabel" value="A" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="A" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="44 [B, G, H, I, J]" />
+		<event>
+			<string key="OrgLabel" value="B" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="B" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="G" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="G" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="H" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_1" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="I" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_4" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_3" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="45 [A, G, H, I, J]" />
+		<event>
+			<string key="OrgLabel" value="A" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="A" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="G" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="G" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="H" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_1" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="I" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_4" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_3" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="46 [C, E, D, F, J]" />
+		<event>
+			<string key="OrgLabel" value="C" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="C" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="47 [B, G, H, I, J]" />
+		<event>
+			<string key="OrgLabel" value="B" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="B" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="G" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="G" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="H" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_1" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="I" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_4" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_3" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="48 [B, D, E, F, J]" />
+		<event>
+			<string key="OrgLabel" value="B" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="B" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="49 [C, E, D, F, J]" />
+		<event>
+			<string key="OrgLabel" value="C" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="C" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="50 [A, G, H, I, J]" />
+		<event>
+			<string key="OrgLabel" value="A" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="A" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="G" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="G" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="H" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_1" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="I" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_4" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_3" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="51 [A, E, F, D, J]" />
+		<event>
+			<string key="OrgLabel" value="A" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="A" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="52 [C, E, D, F, J]" />
+		<event>
+			<string key="OrgLabel" value="C" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="C" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="53 [A, G, H, I, J]" />
+		<event>
+			<string key="OrgLabel" value="A" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="A" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="G" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="G" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="H" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_1" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="I" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_4" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_3" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="54 [A, D, E, F, J]" />
+		<event>
+			<string key="OrgLabel" value="A" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="A" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="55 [A, E, F, D, J]" />
+		<event>
+			<string key="OrgLabel" value="A" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="A" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="56 [B, G, H, I, J]" />
+		<event>
+			<string key="OrgLabel" value="B" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="B" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="G" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="G" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="H" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_1" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="I" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_4" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_3" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="57 [B, G, H, I, J]" />
+		<event>
+			<string key="OrgLabel" value="B" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="B" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="G" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="G" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="H" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_1" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="I" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_4" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_3" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="58 [B, D, E, F, J]" />
+		<event>
+			<string key="OrgLabel" value="B" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="B" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="59 [C, E, D, F, J]" />
+		<event>
+			<string key="OrgLabel" value="C" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="C" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="60 [A, E, F, D, J]" />
+		<event>
+			<string key="OrgLabel" value="A" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="A" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="61 [C, G, H, I, J]" />
+		<event>
+			<string key="OrgLabel" value="C" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="C" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="G" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="G" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="H" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_1" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="I" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_4" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_3" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="62 [A, E, D, F, J]" />
+		<event>
+			<string key="OrgLabel" value="A" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="A" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="63 [C, G, H, I, J]" />
+		<event>
+			<string key="OrgLabel" value="C" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="C" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="G" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="G" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="H" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_1" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="I" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_4" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_3" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="64 [B, G, H, I, J]" />
+		<event>
+			<string key="OrgLabel" value="B" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="B" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="G" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="G" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="H" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_1" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="I" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_4" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_3" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="65 [B, E, D, F, J]" />
+		<event>
+			<string key="OrgLabel" value="B" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="B" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="66 [B, E, F, D, J]" />
+		<event>
+			<string key="OrgLabel" value="B" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="B" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="67 [C, G, H, I, J]" />
+		<event>
+			<string key="OrgLabel" value="C" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="C" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="G" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="G" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="H" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_1" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="I" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_4" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_3" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="68 [A, G, H, I, J]" />
+		<event>
+			<string key="OrgLabel" value="A" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="A" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="G" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="G" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="H" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_1" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="I" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_4" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_3" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="69 [C, G, H, I, J]" />
+		<event>
+			<string key="OrgLabel" value="C" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="C" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="G" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="G" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="H" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_1" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="I" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_4" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_3" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="70 [A, G, H, I, J]" />
+		<event>
+			<string key="OrgLabel" value="A" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="A" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="G" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="G" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="H" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_1" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="I" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_4" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_3" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="71 [A, E, D, F, J]" />
+		<event>
+			<string key="OrgLabel" value="A" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="A" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="72 [B, E, D, F, J]" />
+		<event>
+			<string key="OrgLabel" value="B" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="B" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="73 [A, G, H, I, J]" />
+		<event>
+			<string key="OrgLabel" value="A" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="A" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="G" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="G" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="H" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_1" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="I" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_4" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_3" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="74 [B, G, H, I, J]" />
+		<event>
+			<string key="OrgLabel" value="B" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="B" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="G" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="G" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="H" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_1" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="I" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_4" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_3" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="75 [A, G, H, I, J]" />
+		<event>
+			<string key="OrgLabel" value="A" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="A" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="G" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="G" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="H" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_1" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="I" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_4" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_3" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="76 [A, D, E, F, J]" />
+		<event>
+			<string key="OrgLabel" value="A" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="A" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="77 [A, E, D, F, J]" />
+		<event>
+			<string key="OrgLabel" value="A" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="A" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="78 [B, D, E, F, J]" />
+		<event>
+			<string key="OrgLabel" value="B" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="B" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="79 [C, E, D, F, J]" />
+		<event>
+			<string key="OrgLabel" value="C" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="C" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="80 [B, D, E, F, J]" />
+		<event>
+			<string key="OrgLabel" value="B" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="B" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="81 [C, D, E, F, J]" />
+		<event>
+			<string key="OrgLabel" value="C" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="C" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="82 [A, E, D, F, J]" />
+		<event>
+			<string key="OrgLabel" value="A" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="A" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="83 [B, D, E, F, J]" />
+		<event>
+			<string key="OrgLabel" value="B" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="B" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="84 [C, G, H, I, J]" />
+		<event>
+			<string key="OrgLabel" value="C" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="C" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="G" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="G" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="H" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_1" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="I" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_4" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_3" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="85 [B, D, E, F, J]" />
+		<event>
+			<string key="OrgLabel" value="B" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="B" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="86 [A, G, H, I, J]" />
+		<event>
+			<string key="OrgLabel" value="A" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="A" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="G" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="G" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="H" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_1" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="I" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_4" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_3" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="87 [C, D, E, F, J]" />
+		<event>
+			<string key="OrgLabel" value="C" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="C" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="88 [C, G, H, I, J]" />
+		<event>
+			<string key="OrgLabel" value="C" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="C" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="G" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="G" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="H" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_1" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="I" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_4" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_3" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="89 [A, G, H, I, J]" />
+		<event>
+			<string key="OrgLabel" value="A" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="A" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="G" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="G" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="H" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_1" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="I" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_4" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_3" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="90 [C, G, H, I, J]" />
+		<event>
+			<string key="OrgLabel" value="C" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="C" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="G" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="G" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="H" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_1" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="I" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_4" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_3" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="91 [C, E, F, D, J]" />
+		<event>
+			<string key="OrgLabel" value="C" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="C" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="92 [A, D, E, F, J]" />
+		<event>
+			<string key="OrgLabel" value="A" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="A" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="93 [B, G, H, I, J]" />
+		<event>
+			<string key="OrgLabel" value="B" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="B" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="G" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="G" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="H" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_1" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="I" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_4" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_3" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="94 [A, G, H, I, J]" />
+		<event>
+			<string key="OrgLabel" value="A" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="A" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="G" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="G" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="H" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_1" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="I" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_4" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_3" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="95 [A, D, E, F, J]" />
+		<event>
+			<string key="OrgLabel" value="A" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="A" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="96 [C, E, F, D, J]" />
+		<event>
+			<string key="OrgLabel" value="C" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="C" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="E" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="E" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="F" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="D" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="D" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_2" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="97 [A, G, H, I, J]" />
+		<event>
+			<string key="OrgLabel" value="A" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="A" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="G" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="G" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="H" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_1" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="I" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_4" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_3" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="98 [C, G, H, I, J]" />
+		<event>
+			<string key="OrgLabel" value="C" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="C" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="G" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="G" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="H" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_1" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="I" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_4" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+		<event>
+			<string key="OrgLabel" value="J" />
+			<string key="org:resource" value="artificial" />
+			<string key="concept:name" value="J_X_3" />
+			<string key="lifecycle:transition" value="complete" />
+		</event>
+	</trace>
+</log>

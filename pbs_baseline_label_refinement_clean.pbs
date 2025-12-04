@@ -1,0 +1,182 @@
+#!/bin/bash -l
+#PBS -N baseline_label_refinement
+#PBS -l select=1:ncpus=32:ngpus=1:mem=512gb:gpu_id=H100
+#PBS -l walltime=48:00:00
+#PBS -j oe
+#PBS -m abe
+#PBS -M savandi.kalukapuge@hdr.qut.edu.au
+#PBS -V
+
+set -euo pipefail
+
+# Start in the directory you ran qsub from
+cd "$PBS_O_WORKDIR"
+
+echo "JobID : ${PBS_JOBID:-N/A}"
+echo "Host  : $(hostname)"
+echo "Work  : $(pwd)"
+echo "Date  : $(date)"
+echo "CUDA_VISIBLE_DEVICES: ${CUDA_VISIBLE_DEVICES:-unset}"
+
+# Modules
+module load GCC/12.3.0
+module load Python/3.11.3
+
+# Paths
+PROJECT_ROOT="$PBS_O_WORKDIR"
+BASELINE_DIR="$PROJECT_ROOT/python-label-refinement-baseline"
+LABELREF_DIR="$BASELINE_DIR/labelrefinement"
+VENV_DIR="$PROJECT_ROOT/venv"
+VENV_ACT="$VENV_DIR/bin/activate"
+REQS="$PROJECT_ROOT/requirements.txt"
+
+# Data path - ABSOLUTE PATH to your actual data location
+DATA_PATH="/home/n11473584/Handling Duplicated Tasks in Process Discovery by Refining Event Labels (BPM2016)_1_all/data/noImprInLoop_default_OD"
+
+# Results directory - DIRECT WRITE to permanent network storage (matches config.py structure)
+RESULTS_DIR="/home/n11473584/baselines/label_refinement/results"
+
+# Create results directory structure
+mkdir -p "$RESULTS_DIR"
+mkdir -p "/home/n11473584/baselines/label_refinement/outputs"
+mkdir -p "/home/n11473584/baselines/label_refinement/best_results"
+mkdir -p "$RESULTS_DIR/exp_xixi_cc_1"
+mkdir -p "$RESULTS_DIR/exp_xixi_cd_1"
+mkdir -p "$RESULTS_DIR/exp_1"
+
+# Export results directory for Python scripts to use
+export BASELINE_RESULTS_DIR="$RESULTS_DIR"
+
+# Verify results directory is writable
+if ! touch "$RESULTS_DIR/test_write_$$" 2>/dev/null; then
+    echo "ERROR: Cannot write to results directory: $RESULTS_DIR"
+    exit 1
+fi
+rm -f "$RESULTS_DIR/test_write_$$"
+echo "✓ Results directory is writable: $RESULTS_DIR"
+
+echo "=========================================="
+echo "STORAGE CONFIGURATION:"
+echo "  Results directory: $RESULTS_DIR"
+echo "=========================================="
+
+# Sanity checks
+[[ -d "$LABELREF_DIR" ]] || { echo "ERROR: Missing labelrefinement at $LABELREF_DIR"; exit 1; }
+[[ -d "$DATA_PATH" ]] || { echo "ERROR: Missing data at $DATA_PATH"; exit 1; }
+
+# Threads (match ncpus)
+export OMP_NUM_THREADS=32
+export MKL_NUM_THREADS=32
+export NUMBA_NUM_THREADS=32
+export OPENBLAS_NUM_THREADS=32
+export NUMEXPR_MAX_THREADS=32
+
+# make labelrefinement importable
+export PYTHONPATH="$BASELINE_DIR:$PROJECT_ROOT:${PYTHONPATH:-}"
+
+# Virtualenv
+if [[ ! -d "$VENV_DIR" ]]; then
+  python -m venv "$VENV_DIR"
+fi
+# shellcheck disable=SC1090
+source "$VENV_ACT"
+
+python -m pip install --upgrade pip
+[[ -f "$REQS" ]] && python -m pip install -r "$REQS"
+
+# Change to labelrefinement directory
+cd "$LABELREF_DIR"
+
+echo "=========================================="
+echo "Starting Label Refinement Baseline"
+echo "Data path: $DATA_PATH"
+echo "Results path: $RESULTS_DIR"
+echo "Total folders to process..."
+find "$DATA_PATH" -maxdepth 1 -type d | wc -l
+echo "=========================================="
+
+# Run test_main.py
+# Parameters: log_size batch_size experiment_nr start_batch_index [--max-datasets N]
+# SPECIAL MODE: start_batch_index=-1 means process ALL complete datasets found (or limited by --max-datasets)
+# batch_size is used for memory management (garbage collection every N datasets)
+#
+# AUTO-DISCOVERY: Script automatically finds all complete datasets (those with Log, LogD, and LogR files)
+#
+# LIMITING OPTIONS (recommended to fit in 48h walltime):
+#   --max-datasets 50            : Process first 50 complete datasets found
+#   --folder feb16-1625          : Only process logs from this folder
+#   --logs A_1,W_1,HO_1          : Only process these log types (comma-separated)
+#
+# EXAMPLES:
+#   python test_main.py 1000 10 1 -1                              # All 647 datasets (will timeout!)
+#   python test_main.py 1000 10 1 -1 --max-datasets 50           # First 50 datasets (~20h, fits in 48h)
+#   python test_main.py 1000 10 1 -1 --max-datasets 100          # First 100 datasets (~40h, fits in 48h)
+#   python test_main.py 1000 10 1 -1 --folder feb16-1625         # One folder only (~30 datasets)
+#   python test_main.py 1000 10 1 -1 --logs A_1,W_1,HO_1         # 3 log types from all folders
+
+echo "Running: python test_main.py 500 10 1 -1 --per-folder 3"
+echo "Mode: AUTO-DISCOVER and process 3 datasets from each folder"
+echo "Auto-discovering complete datasets from ALL folders..."
+echo "Log size: 500 traces per dataset"
+echo "Memory management: Garbage collection every 10 datasets"
+echo "Estimated datasets: ~60 (3 per folder × ~20 folders)"
+echo "Estimated time: ~5-15 hours (well within 48h walltime limit)"
+echo "Note: 500 traces balances quality and performance"
+echo ""
+echo "Environment check:"
+echo "  BASELINE_RESULTS_DIR=$BASELINE_RESULTS_DIR"
+echo "  PYTHONPATH=$PYTHONPATH"
+echo "  Working directory: $(pwd)"
+echo ""
+
+# Run and capture exit code
+python test_main.py 500 10 1 -1 --per-folder 3
+EXIT_CODE=$?
+
+echo ""
+echo "=========================================="
+echo "EXECUTION SUMMARY"
+echo "=========================================="
+echo "Exit code: $EXIT_CODE"
+echo ""
+
+# Check if execution failed
+if [ $EXIT_CODE -ne 0 ]; then
+    echo ""
+    echo "✗ ERROR: Python script failed with exit code $EXIT_CODE"
+    echo "  Check job output for Python errors above"
+    exit $EXIT_CODE
+fi
+
+# List result files
+echo ""
+echo "=========================================="
+echo "RESULTS SUMMARY"
+echo "=========================================="
+
+if [ -d "$RESULTS_DIR/exp_xixi_cc_1" ]; then
+    echo "✓ CC Results:"
+    find "$RESULTS_DIR/exp_xixi_cc_1" -name "*.csv" -exec ls -lh {} \; | head -10
+    CSV_COUNT=$(find "$RESULTS_DIR/exp_xixi_cc_1" -name "*.csv" | wc -l)
+    echo "  Total CSV files: $CSV_COUNT"
+else
+    echo "✗ WARNING: No exp_xixi_cc_1 directory found"
+    echo "  Listing results directory contents:"
+    ls -la "$RESULTS_DIR/"
+fi
+
+if [ -d "$RESULTS_DIR/exp_xixi_cd_1" ]; then
+    echo ""
+    echo "✓ CD Results:"
+    find "$RESULTS_DIR/exp_xixi_cd_1" -name "*.csv" -exec ls -lh {} \; | head -10
+    CSV_COUNT_CD=$(find "$RESULTS_DIR/exp_xixi_cd_1" -name "*.csv" | wc -l)
+    echo "  Total CSV files: $CSV_COUNT_CD"
+else
+    echo "  No CD results directory (expected if not configured)"
+fi
+
+echo ""
+echo "=========================================="
+echo "Job completed on: $(date)"
+echo "All results saved to: $RESULTS_DIR"
+echo "=========================================="

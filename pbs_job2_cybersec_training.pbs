@@ -1,0 +1,400 @@
+#!/bin/bash -l
+#PBS -N duplimend_job2_cybersec
+#PBS -l select=1:ncpus=32:ngpus=1:mem=512gb:gpu_id=H100
+#PBS -l walltime=48:00:00
+#PBS -j oe
+#PBS -m abe
+#PBS -M savandi.kalukapuge@hdr.qut.edu.au
+#PBS -V
+
+# Removed 'set -e' to allow loop to continue through all combinations
+# Keep -u for undefined variable checking and -o pipefail for pipeline errors
+set -uo pipefail
+
+cd "$PBS_O_WORKDIR"
+
+echo "===== JOB 2: CYBERSECURITY AUTOENCODER TRAINING (768 COMBINATIONS) ====="
+echo "JobID : ${PBS_JOBID:-N/A}"
+echo "Host  : $(hostname)"
+echo "Work  : $(pwd)"
+echo "Date  : $(date)"
+echo "CUDA_VISIBLE_DEVICES: ${CUDA_VISIBLE_DEVICES:-unset}"
+echo "========================================================================="
+
+# Modules
+module load GCC/12.3.0
+module load Python/3.11.3
+
+# Environment setup
+PROJECT_ROOT="$PBS_O_WORKDIR"
+SRC_DIR="$PROJECT_ROOT/src"
+VENV_DIR="$PROJECT_ROOT/venv"
+VENV_ACT="$VENV_DIR/bin/activate"
+REQS="$PROJECT_ROOT/requirements.txt"
+
+# Performance settings
+export OMP_NUM_THREADS=32
+export MKL_NUM_THREADS=32
+export NUMBA_NUM_THREADS=32
+export OPENBLAS_NUM_THREADS=32
+export NUMEXPR_MAX_THREADS=32
+export PYTHONPATH="$SRC_DIR:${PYTHONPATH:-}"
+
+# Setup virtualenv
+if [[ ! -d "$VENV_DIR" ]]; then
+  python -m venv "$VENV_DIR"
+fi
+source "$VENV_ACT"
+python -m pip install --upgrade pip
+[[ -f "$REQS" ]] && python -m pip install -r "$REQS"
+
+# Create progress tracking
+mkdir -p "Z:/cybersecurity_iotdata/checkpoints"
+PROGRESS_FILE="Z:/cybersecurity_iotdata/checkpoints/job2_progress.log"
+SUMMARY_FILE="Z:/cybersecurity_iotdata/checkpoints/job2_summary.txt"
+
+echo "$(date): Starting Job 2 - Autoencoder Training Loop (768 combinations)" >> "$PROGRESS_FILE"
+
+# Initialize summary
+cat > "$SUMMARY_FILE" << EOF
+Autoencoder Training Loop Summary
+================================
+Started: $(date)
+Host: $(hostname)
+Total Combinations: 768 (32 features × 24 autoencoder configs)
+
+Progress:
+EOF
+
+# Statistics tracking
+COMPLETED_COUNT=0
+SKIPPED_COUNT=0
+FAILED_COUNT=0
+
+# Loop through all training combinations (32 features × 24 autoencoder configs = 768)
+TRAINING_COMBINATION=0
+for FEATURE_INDEX in {1..32}; do
+    # Load feature configuration from Job 1
+    FEATURE_CONFIG_FILE="Z:/cybersecurity_iotdata/output_${FEATURE_INDEX}/job1_config.env"
+
+    if [[ ! -f "$FEATURE_CONFIG_FILE" ]]; then
+        echo "ERROR: Feature configuration file not found for feature index $FEATURE_INDEX"
+        echo "Expected: $FEATURE_CONFIG_FILE"
+        echo "$(date): FAILED feature ${FEATURE_INDEX} - missing feature config" >> "$PROGRESS_FILE"
+        ((FAILED_COUNT+=24))  # Skip all 24 autoencoder configs for this feature
+        continue
+    fi
+
+    echo ""
+    echo "================================================================="
+    echo "PROCESSING FEATURE SET ${FEATURE_INDEX} of 32"
+    echo "================================================================="
+    echo "Loading feature configuration from: $FEATURE_CONFIG_FILE"
+
+    if source "$FEATURE_CONFIG_FILE"; then
+        echo "✓ Successfully loaded feature configuration"
+        echo "  CONFIG_NAME: ${CONFIG_NAME:-not set}"
+        echo "  USE_CONTROL_FLOW: ${USE_CONTROL_FLOW:-not set}"
+        echo "  CONTROL_FLOW_CONTEXT_WINDOW: ${CONTROL_FLOW_CONTEXT_WINDOW:-not set}"
+        echo "  CONTROL_FLOW_FEATURE_BOOST: ${CONTROL_FLOW_FEATURE_BOOST:-not set}"
+    else
+        echo "❌ ERROR: Failed to load feature configuration"
+        echo "$(date): FAILED to load config for feature ${FEATURE_INDEX}" >> "$PROGRESS_FILE"
+        ((FAILED_COUNT+=24))  # Skip all 24 autoencoder configs for this feature
+        continue
+    fi
+
+    # Now loop through all 24 autoencoder configurations for this feature set
+    for AUTOENCODER_INDEX in {1..24}; do
+        ((TRAINING_COMBINATION++))
+
+        echo ""
+        echo "----------------------------------------------------------------"
+        echo "TRAINING COMBINATION ${TRAINING_COMBINATION} of 768"
+        echo "Feature ${FEATURE_INDEX}/32 × Autoencoder ${AUTOENCODER_INDEX}/24"
+        echo "----------------------------------------------------------------"
+
+    # Set autoencoder parameters based on index (24 combinations with 4 values each)
+    case ${AUTOENCODER_INDEX} in
+        1) export AE_CONFIG_NAME="lat16_hid6432_sp0001_n05_d00_b16_lr001_ep100";
+           export LATENT_DIM=16; export HIDDEN_DIMS="[64,32]"; export SPARSITY_LAMBDA=0.0001; export NOISE_STD=0.05; export DROPOUT_RATE=0.0; export BATCH_SIZE=16; export LEARNING_RATE=0.001; export MAX_EPOCHS=100 ;;
+        2) export AE_CONFIG_NAME="lat16_hid6432_sp001_n1_d01_b32_lr002_ep200";
+           export LATENT_DIM=16; export HIDDEN_DIMS="[64,32]"; export SPARSITY_LAMBDA=0.001; export NOISE_STD=0.1; export DROPOUT_RATE=0.1; export BATCH_SIZE=32; export LEARNING_RATE=0.002; export MAX_EPOCHS=200 ;;
+        3) export AE_CONFIG_NAME="lat16_hid6432_sp01_n15_d02_b64_lr01_ep300";
+           export LATENT_DIM=16; export HIDDEN_DIMS="[64,32]"; export SPARSITY_LAMBDA=0.01; export NOISE_STD=0.15; export DROPOUT_RATE=0.2; export BATCH_SIZE=64; export LEARNING_RATE=0.01; export MAX_EPOCHS=300 ;;
+        4) export AE_CONFIG_NAME="lat16_hid12864_sp1_n2_d03_b128_lr02_ep500";
+           export LATENT_DIM=16; export HIDDEN_DIMS="[128,64]"; export SPARSITY_LAMBDA=0.1; export NOISE_STD=0.2; export DROPOUT_RATE=0.3; export BATCH_SIZE=128; export LEARNING_RATE=0.02; export MAX_EPOCHS=500 ;;
+        5) export AE_CONFIG_NAME="lat32_hid6432_sp0001_n1_d01_b32_lr002_ep300";
+           export LATENT_DIM=32; export HIDDEN_DIMS="[64,32]"; export SPARSITY_LAMBDA=0.0001; export NOISE_STD=0.1; export DROPOUT_RATE=0.1; export BATCH_SIZE=32; export LEARNING_RATE=0.002; export MAX_EPOCHS=300 ;;
+        6) export AE_CONFIG_NAME="lat32_hid6432_sp001_n15_d02_b64_lr01_ep500";
+           export LATENT_DIM=32; export HIDDEN_DIMS="[64,32]"; export SPARSITY_LAMBDA=0.001; export NOISE_STD=0.15; export DROPOUT_RATE=0.2; export BATCH_SIZE=64; export LEARNING_RATE=0.01; export MAX_EPOCHS=500 ;;
+        7) export AE_CONFIG_NAME="lat32_hid12864_sp01_n2_d03_b128_lr02_ep100";
+           export LATENT_DIM=32; export HIDDEN_DIMS="[128,64]"; export SPARSITY_LAMBDA=0.01; export NOISE_STD=0.2; export DROPOUT_RATE=0.3; export BATCH_SIZE=128; export LEARNING_RATE=0.02; export MAX_EPOCHS=100 ;;
+        8) export AE_CONFIG_NAME="lat32_hid12864_sp1_n05_d00_b16_lr001_ep200";
+           export LATENT_DIM=32; export HIDDEN_DIMS="[128,64]"; export SPARSITY_LAMBDA=0.1; export NOISE_STD=0.05; export DROPOUT_RATE=0.0; export BATCH_SIZE=16; export LEARNING_RATE=0.001; export MAX_EPOCHS=200 ;;
+        9) export AE_CONFIG_NAME="lat64_hid6432_sp0001_n05_d02_b64_lr01_ep500";
+           export LATENT_DIM=64; export HIDDEN_DIMS="[64,32]"; export SPARSITY_LAMBDA=0.0001; export NOISE_STD=0.05; export DROPOUT_RATE=0.2; export BATCH_SIZE=64; export LEARNING_RATE=0.01; export MAX_EPOCHS=500 ;;
+        10) export AE_CONFIG_NAME="lat64_hid6432_sp001_n1_d03_b128_lr02_ep100";
+            export LATENT_DIM=64; export HIDDEN_DIMS="[64,32]"; export SPARSITY_LAMBDA=0.001; export NOISE_STD=0.1; export DROPOUT_RATE=0.3; export BATCH_SIZE=128; export LEARNING_RATE=0.02; export MAX_EPOCHS=100 ;;
+        11) export AE_CONFIG_NAME="lat64_hid12864_sp01_n15_d00_b16_lr001_ep200";
+            export LATENT_DIM=64; export HIDDEN_DIMS="[128,64]"; export SPARSITY_LAMBDA=0.01; export NOISE_STD=0.15; export DROPOUT_RATE=0.0; export BATCH_SIZE=16; export LEARNING_RATE=0.001; export MAX_EPOCHS=200 ;;
+        12) export AE_CONFIG_NAME="lat64_hid12864_sp1_n2_d01_b32_lr002_ep300";
+            export LATENT_DIM=64; export HIDDEN_DIMS="[128,64]"; export SPARSITY_LAMBDA=0.1; export NOISE_STD=0.2; export DROPOUT_RATE=0.1; export BATCH_SIZE=32; export LEARNING_RATE=0.002; export MAX_EPOCHS=300 ;;
+        13) export AE_CONFIG_NAME="lat128_hid6432_sp0001_n1_d01_b64_lr01_ep300";
+            export LATENT_DIM=128; export HIDDEN_DIMS="[64,32]"; export SPARSITY_LAMBDA=0.0001; export NOISE_STD=0.1; export DROPOUT_RATE=0.1; export BATCH_SIZE=64; export LEARNING_RATE=0.01; export MAX_EPOCHS=300 ;;
+        14) export AE_CONFIG_NAME="lat128_hid6432_sp001_n05_d02_b128_lr02_ep500";
+            export LATENT_DIM=128; export HIDDEN_DIMS="[64,32]"; export SPARSITY_LAMBDA=0.001; export NOISE_STD=0.05; export DROPOUT_RATE=0.2; export BATCH_SIZE=128; export LEARNING_RATE=0.02; export MAX_EPOCHS=500 ;;
+        15) export AE_CONFIG_NAME="lat128_hid12864_sp01_n15_d03_b16_lr001_ep100";
+            export LATENT_DIM=128; export HIDDEN_DIMS="[128,64]"; export SPARSITY_LAMBDA=0.01; export NOISE_STD=0.15; export DROPOUT_RATE=0.3; export BATCH_SIZE=16; export LEARNING_RATE=0.001; export MAX_EPOCHS=100 ;;
+        16) export AE_CONFIG_NAME="lat128_hid12864_sp1_n2_d00_b32_lr002_ep200";
+            export LATENT_DIM=128; export HIDDEN_DIMS="[128,64]"; export SPARSITY_LAMBDA=0.1; export NOISE_STD=0.2; export DROPOUT_RATE=0.0; export BATCH_SIZE=32; export LEARNING_RATE=0.002; export MAX_EPOCHS=200 ;;
+        17) export AE_CONFIG_NAME="lat16_hid6432_sp001_n2_d03_b64_lr01_ep200";
+            export LATENT_DIM=16; export HIDDEN_DIMS="[64,32]"; export SPARSITY_LAMBDA=0.001; export NOISE_STD=0.2; export DROPOUT_RATE=0.3; export BATCH_SIZE=64; export LEARNING_RATE=0.01; export MAX_EPOCHS=200 ;;
+        18) export AE_CONFIG_NAME="lat32_hid6432_sp01_n05_d00_b128_lr02_ep300";
+            export LATENT_DIM=32; export HIDDEN_DIMS="[64,32]"; export SPARSITY_LAMBDA=0.01; export NOISE_STD=0.05; export DROPOUT_RATE=0.0; export BATCH_SIZE=128; export LEARNING_RATE=0.02; export MAX_EPOCHS=300 ;;
+        19) export AE_CONFIG_NAME="lat64_hid6432_sp1_n15_d01_b16_lr001_ep500";
+            export LATENT_DIM=64; export HIDDEN_DIMS="[64,32]"; export SPARSITY_LAMBDA=0.1; export NOISE_STD=0.15; export DROPOUT_RATE=0.1; export BATCH_SIZE=16; export LEARNING_RATE=0.001; export MAX_EPOCHS=500 ;;
+        20) export AE_CONFIG_NAME="lat128_hid6432_sp0001_n1_d02_b32_lr002_ep100";
+            export LATENT_DIM=128; export HIDDEN_DIMS="[64,32]"; export SPARSITY_LAMBDA=0.0001; export NOISE_STD=0.1; export DROPOUT_RATE=0.2; export BATCH_SIZE=32; export LEARNING_RATE=0.002; export MAX_EPOCHS=100 ;;
+        21) export AE_CONFIG_NAME="lat16_hid12864_sp001_n15_d03_b64_lr01_ep300";
+            export LATENT_DIM=16; export HIDDEN_DIMS="[128,64]"; export SPARSITY_LAMBDA=0.001; export NOISE_STD=0.15; export DROPOUT_RATE=0.3; export BATCH_SIZE=64; export LEARNING_RATE=0.01; export MAX_EPOCHS=300 ;;
+        22) export AE_CONFIG_NAME="lat32_hid12864_sp01_n2_d00_b128_lr02_ep500";
+            export LATENT_DIM=32; export HIDDEN_DIMS="[128,64]"; export SPARSITY_LAMBDA=0.01; export NOISE_STD=0.2; export DROPOUT_RATE=0.0; export BATCH_SIZE=128; export LEARNING_RATE=0.02; export MAX_EPOCHS=500 ;;
+        23) export AE_CONFIG_NAME="lat64_hid12864_sp1_n05_d01_b16_lr001_ep100";
+            export LATENT_DIM=64; export HIDDEN_DIMS="[128,64]"; export SPARSITY_LAMBDA=0.1; export NOISE_STD=0.05; export DROPOUT_RATE=0.1; export BATCH_SIZE=16; export LEARNING_RATE=0.001; export MAX_EPOCHS=100 ;;
+        24) export AE_CONFIG_NAME="lat128_hid12864_sp0001_n1_d02_b32_lr002_ep200";
+            export LATENT_DIM=128; export HIDDEN_DIMS="[128,64]"; export SPARSITY_LAMBDA=0.0001; export NOISE_STD=0.1; export DROPOUT_RATE=0.2; export BATCH_SIZE=32; export LEARNING_RATE=0.002; export MAX_EPOCHS=200 ;;
+        *) echo "ERROR: Invalid AUTOENCODER_INDEX: ${AUTOENCODER_INDEX}"; continue ;;
+    esac
+
+    # Set early stopping patience based on epochs
+    if [[ $MAX_EPOCHS -le 100 ]]; then export EARLY_STOPPING_PATIENCE=15
+    elif [[ $MAX_EPOCHS -le 200 ]]; then export EARLY_STOPPING_PATIENCE=20
+    elif [[ $MAX_EPOCHS -le 300 ]]; then export EARLY_STOPPING_PATIENCE=25
+    else export EARLY_STOPPING_PATIENCE=30; fi
+
+    FULL_CONFIG_NAME="${CONFIG_NAME}_${AE_CONFIG_NAME}"
+
+    # Create structured output directories within the feature folder
+    TRAINING_OUTPUT_DIR="Z:/cybersecurity_iotdata/output_${FEATURE_INDEX}/trained_models_ae${AUTOENCODER_INDEX}_${AE_CONFIG_NAME}"
+    RUN_OUTPUT_DIR="Z:/cybersecurity_iotdata/output_${FEATURE_INDEX}/run_output_ae${AUTOENCODER_INDEX}"
+
+    mkdir -p "$TRAINING_OUTPUT_DIR"
+    mkdir -p "$RUN_OUTPUT_DIR"
+
+    # === OUTPUT FILE VERIFICATION ===
+    echo "---------- CHECKING EXISTING TRAINING OUTPUTS ----------"
+
+    # Define expected output files from autoencoder training
+    EXPECTED_TRAINING_FILES=(
+        "$TRAINING_OUTPUT_DIR/autoencoder_model.pth"
+        "$TRAINING_OUTPUT_DIR/model_metadata.json"
+        "Z:/cybersecurity_iotdata/output_${FEATURE_INDEX}/job2_ae${AUTOENCODER_INDEX}_config.env"
+    )
+
+    # Check if all expected training files exist and are non-empty
+    TRAINING_COMPLETE=true
+    for file in "${EXPECTED_TRAINING_FILES[@]}"; do
+        if [[ ! -f "$file" ]] || [[ ! -s "$file" ]]; then
+            echo "❌ Missing or empty: $file"
+            TRAINING_COMPLETE=false
+        else
+            echo "✅ Found: $file ($(du -h "$file" | cut -f1))"
+        fi
+    done
+
+    # Additional verification: Check if model file is valid PyTorch model
+    if [[ -f "$TRAINING_OUTPUT_DIR/autoencoder_model.pth" ]]; then
+        if python -c "
+import torch
+import sys
+try:
+    model = torch.load('$TRAINING_OUTPUT_DIR/autoencoder_model.pth', map_location='cpu')
+    if model is None:
+        print('Empty model')
+        sys.exit(1)
+    else:
+        print(f'Valid model loaded successfully')
+        sys.exit(0)
+except Exception as e:
+    print(f'Corrupt model: {e}')
+    sys.exit(1)
+" 2>/dev/null; then
+            echo "✅ Autoencoder model is valid"
+        else
+            echo "❌ Autoencoder model is corrupt or empty"
+            TRAINING_COMPLETE=false
+        fi
+    fi
+
+    # If training is complete, skip this combination
+    if [[ "$TRAINING_COMPLETE" == true ]]; then
+        echo "✅ RESUME: Training combination ${TRAINING_COMBINATION} already completed - SKIPPING"
+        echo "$(date): SKIPPED training ${TRAINING_COMBINATION} - $FULL_CONFIG_NAME (already completed)" >> "$PROGRESS_FILE"
+        ((SKIPPED_COUNT++))
+        continue
+    fi
+
+    echo "⚠️  INCOMPLETE TRAINING OUTPUTS - Running training ${TRAINING_COMBINATION}"
+
+    # Set environment variables for Python scripts (config.py expects lowercase)
+    export experiment_output_dir="$TRAINING_OUTPUT_DIR"
+    export experiment_config_name="$FULL_CONFIG_NAME"
+    export TRAINING_APPROACH="offline"
+    export WARMUP_EVENTS=5000
+
+    echo "---------- TRAINING CONFIG: $FULL_CONFIG_NAME ----------"
+    echo "Feature: $CONFIG_NAME, Autoencoder: $AE_CONFIG_NAME"
+    echo "Parameters: latent=$LATENT_DIM, lr=$LEARNING_RATE, epochs=$MAX_EPOCHS"
+    echo "Feature Vectors Dir: Z:/cybersecurity_iotdata/output_${FEATURE_INDEX}/feature_vectors_processed_train_data"
+    echo "Models Output Dir: $TRAINING_OUTPUT_DIR"
+    echo "------------------------------------------------------------"
+
+    # Point to feature vectors from Job 1 (no linking needed, just set path)
+    export FEATURE_VECTORS_DIR="Z:/cybersecurity_iotdata/output_${FEATURE_INDEX}/feature_vectors_processed_train_data"
+
+    # Filter out openat_root.jsonl files
+    export EXCLUDE_ACTIVITIES="openat_root"
+
+    if [[ -d "$FEATURE_VECTORS_DIR" ]]; then
+        echo "✓ Using feature vectors from: $FEATURE_VECTORS_DIR"
+        echo "✓ Excluding activities: $EXCLUDE_ACTIVITIES"
+    else
+        echo "❌ ERROR: Feature vectors directory not found: $FEATURE_VECTORS_DIR"
+        echo "$(date): FAILED training ${TRAINING_COMBINATION} - missing feature vectors" >> "$PROGRESS_FILE"
+        ((FAILED_COUNT++))
+        continue
+    fi
+
+    # Run autoencoder training
+    echo "---------- RUNNING AUTOENCODER TRAINING ----------"
+    echo "[DEBUG] Environment variables set:"
+    echo "  FEATURE_VECTORS_DIR=$FEATURE_VECTORS_DIR"
+    echo "  experiment_output_dir=$experiment_output_dir"
+    echo "  EXCLUDE_ACTIVITIES=$EXCLUDE_ACTIVITIES"
+    echo "  LATENT_DIM=$LATENT_DIM"
+    echo "  LEARNING_RATE=$LEARNING_RATE"
+    echo "  MAX_EPOCHS=$MAX_EPOCHS"
+
+    START_TIME=$(date +%s)
+
+    cd "$PROJECT_ROOT"
+    if env FEATURE_VECTORS_DIR="$FEATURE_VECTORS_DIR" \
+           experiment_output_dir="$experiment_output_dir" \
+           EXCLUDE_ACTIVITIES="$EXCLUDE_ACTIVITIES" \
+           TRAINING_APPROACH="offline" \
+           WARMUP_EVENTS=5000 \
+           USE_CONTROL_FLOW="$USE_CONTROL_FLOW" \
+           CONTROL_FLOW_CONTEXT_WINDOW=$CONTROL_FLOW_CONTEXT_WINDOW \
+           CONTROL_FLOW_FEATURE_BOOST=$CONTROL_FLOW_FEATURE_BOOST \
+           LATENT_DIM=$LATENT_DIM \
+           HIDDEN_DIMS="$HIDDEN_DIMS" \
+           SPARSITY_LAMBDA=$SPARSITY_LAMBDA \
+           NOISE_STD=$NOISE_STD \
+           DROPOUT_RATE=$DROPOUT_RATE \
+           BATCH_SIZE=$BATCH_SIZE \
+           LEARNING_RATE=$LEARNING_RATE \
+           MAX_EPOCHS=$MAX_EPOCHS \
+           EARLY_STOPPING_PATIENCE=$EARLY_STOPPING_PATIENCE \
+           python -m training_autoencoders; then
+        END_TIME=$(date +%s)
+        DURATION=$((END_TIME - START_TIME))
+        echo "✓ Autoencoder training completed in ${DURATION}s"
+
+        # Verify training outputs
+        echo "---------- VERIFYING TRAINING OUTPUTS ----------"
+        TRAINING_VERIFICATION=true
+        for file in "${EXPECTED_TRAINING_FILES[@]}"; do
+            if [[ ! -f "$file" ]] || [[ ! -s "$file" ]]; then
+                echo "❌ VERIFICATION FAILED: $file"
+                TRAINING_VERIFICATION=false
+            else
+                echo "✅ VERIFIED: $file"
+            fi
+        done
+
+        if [[ "$TRAINING_VERIFICATION" == true ]]; then
+            echo "✅ All training outputs verified successfully"
+
+            # Save configuration for Job 3
+            cat > "Z:/cybersecurity_iotdata/output_${FEATURE_INDEX}/job2_ae${AUTOENCODER_INDEX}_config.env" << EOF
+# Job 2 Configuration - Source this in Job 3
+export CONFIG_NAME="$CONFIG_NAME"
+export AE_CONFIG_NAME="$AE_CONFIG_NAME"
+export FULL_CONFIG_NAME="$FULL_CONFIG_NAME"
+export TRAINING_COMBINATION=${TRAINING_COMBINATION}
+export FEATURE_INDEX=${FEATURE_INDEX}
+export AUTOENCODER_INDEX=${AUTOENCODER_INDEX}
+export USE_CONTROL_FLOW="$USE_CONTROL_FLOW"
+export CONTROL_FLOW_CONTEXT_WINDOW=$CONTROL_FLOW_CONTEXT_WINDOW
+export CONTROL_FLOW_FEATURE_BOOST=$CONTROL_FLOW_FEATURE_BOOST
+export LATENT_DIM=$LATENT_DIM
+export HIDDEN_DIMS="$HIDDEN_DIMS"
+export SPARSITY_LAMBDA=$SPARSITY_LAMBDA
+export NOISE_STD=$NOISE_STD
+export DROPOUT_RATE=$DROPOUT_RATE
+export BATCH_SIZE=$BATCH_SIZE
+export LEARNING_RATE=$LEARNING_RATE
+export MAX_EPOCHS=$MAX_EPOCHS
+export TRAINING_OUTPUT_DIR="$TRAINING_OUTPUT_DIR"
+export FEATURE_VECTORS_DIR="$FEATURE_VECTORS_DIR"
+export EXCLUDE_ACTIVITIES="$EXCLUDE_ACTIVITIES"
+export TRAINING_APPROACH="offline"
+export COMPLETION_TIME="$(date)"
+export DURATION_SECONDS=${DURATION}
+EOF
+
+            echo "$(date): COMPLETED training ${TRAINING_COMBINATION} - $FULL_CONFIG_NAME (${DURATION}s)" >> "$PROGRESS_FILE"
+            ((COMPLETED_COUNT++))
+
+        else
+            echo "❌ TRAINING VERIFICATION FAILED"
+            echo "$(date): FAILED training ${TRAINING_COMBINATION} - $FULL_CONFIG_NAME (verification failed)" >> "$PROGRESS_FILE"
+            ((FAILED_COUNT++))
+        fi
+
+    else
+        echo "✗ ERROR: Autoencoder training failed for combination ${TRAINING_COMBINATION}"
+        echo "$(date): FAILED training ${TRAINING_COMBINATION} - $FULL_CONFIG_NAME (execution failed)" >> "$PROGRESS_FILE"
+        ((FAILED_COUNT++))
+    fi
+
+    echo "Progress: Completed=${COMPLETED_COUNT}, Skipped=${SKIPPED_COUNT}, Failed=${FAILED_COUNT}"
+
+    done  # End autoencoder loop
+
+    echo "================================================================="
+    echo "COMPLETED ALL AUTOENCODERS FOR FEATURE SET ${FEATURE_INDEX}"
+    echo "================================================================="
+
+done  # End feature loop
+
+# Final summary
+echo ""
+echo "========== JOB 2 LOOP COMPLETED =========="
+echo "✓ Processed all 768 autoencoder training combinations"
+echo "✓ Completed: $COMPLETED_COUNT"
+echo "✓ Skipped: $SKIPPED_COUNT"
+echo "✓ Failed: $FAILED_COUNT"
+echo "✓ All outputs saved to Z:/cybersecurity_iotdata/output_X/ directories"
+echo "✓ Ready for Job 3 main processing"
+echo "✓ Finished on: $(date)"
+
+# Update summary file
+cat >> "$SUMMARY_FILE" << EOF
+
+==============================
+Completed: $(date)
+Host: $(hostname)
+Results:
+- Completed: $COMPLETED_COUNT
+- Skipped: $SKIPPED_COUNT
+- Failed: $FAILED_COUNT
+- Total: 768
+
+Ready for Job 3!
+==============================
+EOF
+
+echo "✓ Final summary saved to: $SUMMARY_FILE"
+echo "=========================================="

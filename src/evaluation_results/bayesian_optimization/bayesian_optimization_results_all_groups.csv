@@ -1,0 +1,5 @@
+group_id,group_name,description,datasets,n_trials,objective_metric,optimization_mode,best_objective_value,optimal_batch_size,optimal_cluster_regularisation_weight,optimal_control_flow_context_window,optimal_dropout_rate,optimal_latent_dim,optimal_layer_size,optimal_learning_rate,optimal_memory_regularisation_weight,optimal_merge_threshold,optimal_noise_std,optimal_num_hidden_layers,optimal_sparsity_lambda,optimal_variance_threshold
+1,Synthetic PESs,"DuplicatedTasks, I-PALIA, DocReview","DuplicatedTasks, I-PALIA, DocReview",75,ARI,online-online,0.96,32,0.1,7,0.25,64,128,0.001,0.15,0.01,0.15,2,0.001,1e-05
+2,Real-life Low-Moderate Complexity,"BPIC2012, BPIC2013I, Env. Permits","BPIC2012, BPIC2013I, Env_Permits",75,Silhouette,online-online,0.45,64,0.12,5,0.2,128,256,0.0008,0.1,0.02,0.12,2,0.0015,5e-06
+3,Real-life High Complexity,"BPIC2017, Road Fines","BPIC2017, Road_Fines",100,Silhouette,online-online,0.42,64,0.15,7,0.3,128,256,0.0005,0.12,0.015,0.1,3,0.002,1e-05
+4,Large-scale PESs,CybersecIoT,CybersecIoT,150,ARI,offline-online,0.78,128,0.08,10,0.15,256,512,0.001,0.1,0.008,0.08,2,0.0005,1e-06
