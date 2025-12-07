@@ -20,7 +20,34 @@ Source code (re-initialised from a legacy repository for this new release) and a
 
 
 ## Approach High-Level Overview
-![DupliMend High-Level Overview](DupliMend_Approach_New.png)
+![DupliMend High-Level Overview](DupliMend_Approach_Overview.png)
+
+## 📊 Key Experimental Results
+
+**Clustering quality (ARI) on synthetic PESs**
+
+![ARI comparison across methods and datasets](evaluation_results/ari_boxplot_comparison.png)
+
+**Discovered model precision across all PESs**
+
+![Precision for DupliMend vs baselines](evaluation_results/precision_all_categories.png)
+
+**Statistical comparison of precision (Friedman + Nemenyi)**
+
+![Critical difference diagram for precision](evaluation_results/cd_diagram_logprecision_9.png)
+
+**Precision convergence over the stream (real-life PESs)**
+
+![Precision convergence on real-life datasets](evaluation_results/precision_convergence_reallife_datasets.png)
+
+
+## 📚 Comprehensive Experimental Results
+
+The full experimental results are available at: 👉 **(https://www.dropbox.com/scl/fo/qfxvyagrczl68hiq1xd17/ANasY83Ti-5otlTkbnrYmW8?rlkey=yocrf8hy63euj8hwodfq2kids&st=e2ng9b3v&dl=0)**
+
+Optimised hyperparameter values from Bayesian optimisation are available in:  
+`src/evaluation_results/bayesian_optimization/`
+
 ## Installation
 
 ### Prerequisites
@@ -377,16 +404,6 @@ DupliMend is compared against two established offline methods:
 | Distance Metric | Cosine similarity |
 
 ---
-
-### Comprehensive Experimental Results
-
-The complete experimental results (CSV files with all metrics across all parameter configurations) are available at:
-
-**[(Dropbox Link)](https://www.dropbox.com/scl/fo/qfxvyagrczl68hiq1xd17/ANasY83Ti-5otlTkbnrYmW8?rlkey=yocrf8hy63euj8hwodfq2kids&st=e2ng9b3v&dl=0)**
-
-If the link expires or you cannot access the files, please get in touch with me at [**savandi.kalukapuge@hdr.qut.edu.com**](mailto:savandi.kalukapuge@hdr.qut.edu.com) to receive the full results.
-
-Optimised hyperparameter values from Bayesian optimisation are available in [`src/evaluation_results/bayesian_optimization/`](src/evaluation_results/bayesian_optimization/).
 
 ## Technical Details
 
