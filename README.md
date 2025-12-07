@@ -9,15 +9,11 @@ Source code (re-initialised from a legacy repository for this new release) and a
 
 ## ⭐ Key Novel Contributions
 
-1. **A fully unsupervised, near–real-time framework for homonymous label detection and refinement**  
-   DupliMend is the *first* streaming process mining approach that treats **all activity labels as potential homonym candidates**, without requiring prior specification, complete traces, or full-log analysis to enable **automatic, on-the-fly detection and refinement** of imprecise labels as events arrive.
+1. **A streaming, unsupervised framework that detects and refines homonymous activity labels on-the-fly without prior specification, complete traces, or full-log analysis.**  
 
-2. **Multi-perspective deep representation learning using activity-specific sparse denoising autoencoders (SDAEs)**  
-   DupliMend introduces activity-specific SDAEs that encode **control-flow context**, **categorical attributes**, and **numerical attributes** into compact latent representations. Coupled with online clustering, this allows the system to **dynamically split and merge label variants** as behavioural patterns evolve in the process event stream.
+2. **Activity-specific sparse denoising autoencoders that learn multi-perspective representations and enable dynamic splitting and merging of label variants as behaviour evolves through online machine learning, specifically, online clustering.**  
 
-3. **A hybrid drift-aware continual learning mechanism for stable refinement under evolving PESs**  
-   DupliMend integrates **statistical drift detection (ADWIN)** with **cluster-aware regularisation** and **centroid memory replay**, enabling the model to adapt to changing execution behaviour while **mitigating catastrophic forgetting**, ensuring stable label refinement even under volatility, long-running cases, and concept drift.
-
+3. **A drift-aware continual learning mechanism combining ADWIN, cluster regularisation, and centroid memory replay to maintain stability and prevent forgetting under evolving process event streams.**  
 
 ## Approach High-Level Overview
 ![DupliMend High-Level Overview](DupliMend_Approach_Overview.png)
@@ -26,19 +22,19 @@ Source code (re-initialised from a legacy repository for this new release) and a
 
 **Clustering quality (ARI) on synthetic PESs**
 
-![ARI comparison across methods and datasets](evaluation_results/ari_boxplot_comparison.png)
+![ARI comparison across methods and datasets](experimental_results/ari_boxplot_comparison.png)
 
 **Discovered model precision across all PESs**
 
-![Precision for DupliMend vs baselines](evaluation_results/precision_all_categories.png)
+![Precision for DupliMend vs baselines](experimental_results/precision_all_categories.png)
 
 **Statistical comparison of precision (Friedman + Nemenyi)**
 
-![Critical difference diagram for precision](evaluation_results/cd_diagram_logprecision_9.png)
+![Critical difference diagram for precision](experimental_results/cd_diagram_logprecision_9.png)
 
 **Precision convergence over the stream (real-life PESs)**
 
-![Precision convergence on real-life datasets](evaluation_results/precision_convergence_reallife_datasets.png)
+![Precision convergence on real-life datasets](experimental_results/precision_convergence_reallife_datasets.png)
 
 
 ## 📚 Comprehensive Experimental Results
@@ -46,7 +42,7 @@ Source code (re-initialised from a legacy repository for this new release) and a
 The full experimental results are available at: 👉 **(https://www.dropbox.com/scl/fo/qfxvyagrczl68hiq1xd17/ANasY83Ti-5otlTkbnrYmW8?rlkey=yocrf8hy63euj8hwodfq2kids&st=e2ng9b3v&dl=0)**
 
 Optimised hyperparameter values from Bayesian optimisation are available in:  
-`src/evaluation_results/bayesian_optimization/`
+`src/bayesian_optimization/`
 
 ## Installation
 
