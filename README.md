@@ -455,36 +455,6 @@ python main.py --method lblsplit --input data/event_log.xes
 
 See [`python-label-refinement-baselines/README.md`](python-label-refinement-baselines/README.md) for detailed baseline execution guides.
 
-## Project Structure
-
-```
-DupliMend/
-├── main.py                                    # Main entry point
-├── optimize_duplimend_bayesian.py             # Bayesian hyperparameter optimization
-├── feature_vector_file_generation.py          # Pre-compute feature vectors
-├── config/
-│   └── config.py                              # Configuration parameters
-├── src/
-│   ├── duplimend_framework/                   # Core framework
-│   │   ├── streaming_sparse_denoising_autoencoder.py  # SDAE implementation
-│   │   ├── cluster_adapter.py                 # Adaptive micro-clustering
-│   │   ├── cluster_manager.py                 # Activity-specific cluster management
-│   │   ├── feature_vector_builder.py          # Multi-perspective feature construction
-│   │   ├── drift_retraining/                  # Drift detection & retraining
-│   │   │   └── hybrid_drift_detector.py       # ADWIN-based hybrid drift detection
-│   │   └── utils/                             # Utility functions
-│   │       ├── control_flow_feature_utils.py  # DFG-based features
-│   │       └── online_onehot_encoder.py       # Streaming one-hot encoding
-│   └── evaluation/                            # Evaluation scripts
-│       ├── evaluate_single_test_file.py       # Single file evaluation
-│       ├── evaluate_multiple_test_files.py    # Batch evaluation
-│       └── evaluate_expected_entropy.py       # Entropy-based evaluation
-├── python-label-refinement-baselines/         # Baseline implementations
-│   ├── labelrefinement/                       # lblrefine (Lu et al.)
-│   └── pm-label-splitting/                    # lblsplit (van Zelst et al.)
-└── requirements.txt                           # Python dependencies
-```
-
 ## Results Summary
 
 ### Streaming Performance
