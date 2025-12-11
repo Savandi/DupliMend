@@ -181,29 +181,26 @@ if ENV_OVERRIDES:
 # case_id_column = 'SYSCALL_pid'
 # event_id_column = 'EventID'
 
-control_flow_column = 'Activity'
-timestamp_column = 'Timestamp'
-resource_column = 'Resource'
-case_id_column = 'CaseID'
+# === I-PALIA Dataset Configuration (Default for Quick Start) ===
+control_flow_column = 'concept:name'
+timestamp_column = 'time:timestamp'
+resource_column = None
+case_id_column = 'case:concept:name'
 event_id_column = 'EventID'
 
-#
-# control_flow_column = 'activity'
-# timestamp_column = 'timestamps'
-# resource_column = None
-# case_id_column = 'stay_id'
-# event_id_column = 'EventID'
-
-# control_flow_column = 'concept:name'
-# timestamp_column = 'time:timestamp'
-# resource_column = None
-# case_id_column = 'case:concept:name'
-# event_id_column = 'EventID'
-
-# control_flow_column = 'concept:name'
+# === Alternative configurations (uncomment to switch datasets) ===
+# --- Document Review Process ---
+# control_flow_column = 'Activity'
 # timestamp_column = 'Timestamp'
+# resource_column = 'Resource'
+# case_id_column = 'CaseID'
+# event_id_column = 'EventID'
+
+# --- CybersecIoT ---
+# control_flow_column = 'activity_label'
+# timestamp_column = 'SYSCALL_timestamp'
 # resource_column = None
-# case_id_column = 'case:concept:name'
+# case_id_column = 'SYSCALL_pid'
 # event_id_column = 'EventID'
 
 excluded_columns = {
@@ -216,97 +213,71 @@ training_mode_config = {
     "mode": training_mode_string,  # Uses detected approach: offline_mode or online_mode
     "checkpoint_interval": 5000,
 
-    "warmup_global_events": ENV_OVERRIDES.get('warmup_global_events', 100000),
-    "incremental_training_interval": ENV_OVERRIDES.get('incremental_training_interval', 1000),  
+    # I-PALIA has ~8400 events, use 4000 for warmup (about 50%)
+    "warmup_global_events": ENV_OVERRIDES.get('warmup_global_events', 4000),
+    "incremental_training_interval": ENV_OVERRIDES.get('incremental_training_interval', 1000),
 
     "min_events_for_incremental_training": 1,
     "min_events_for_dynamic_training": 10,
-    
-    # FOLDER-BASED CONFIGURATION
-    "training_folder": r"U:\Research\Projects\sef\stream_quality_drift\processed_train_data",
-    # "training_folder": "/processed_train_data",
-    # "training_folder": "/home/n11473584/processed_train_data",
-    "training_file_pattern": "*.csv",  # Process all CSV files in folder
-    
-    # Test folder configuration
-    "test_folder":  r"U:\Research\Projects\sef\stream_quality_drift\processed_test_data",
-    # "test_folder":  "C:/Users/drana/Documents/GitHub/DupliMend/src/case_study_log/cybersec_iot_spinet_data"
-    #                 "/processed_test_data",
-    # "test_folder": "/home/n11473584/processed_test_data",
-    "test_file_pattern": "*.csv",
-    
-    # Fallback single file settings
-    "default_input_file": r"U:\Research\Projects\sef\stream_quality_drift\homonym_experiment\synthetic_logs\document_review_process.csv",
 
-    # Model persistence - with environment override support
+    # FOLDER-BASED CONFIGURATION (for large-scale experiments)
+    "training_folder": r"U:\Research\Projects\sef\stream_quality_drift\processed_train_data",
+    "training_file_pattern": "*.csv",
+    "test_folder":  r"U:\Research\Projects\sef\stream_quality_drift\processed_test_data",
+    "test_file_pattern": "*.csv",
+
+    # === DEFAULT: I-PALIA dataset for Quick Start ===
+    "default_input_file": "src/synthetic_logs/ipalia.csv",
+
+    # Model persistence - uses local output directory by default
     "save_models_after_training": True,
-    "models_save_dir": ENV_OVERRIDES.get('experiment_output_dir', r"Z:\cybersecurity_iotdata\output"),
-    # "models_save_dir":  "/home/n11473584/homonym_experiment/output",
+    "models_save_dir": ENV_OVERRIDES.get('experiment_output_dir', "run_output"),
     "load_pretrained_models": False,
 
-    "feature_vectors_base_dir": ENV_OVERRIDES.get('experiment_output_dir', r"Z:\cybersecurity_iotdata\output"),
-    # "feature_vectors_base_dir":"/home/n11473584/homonym_experiment/output",
-    "models_base_dir": ENV_OVERRIDES.get('experiment_output_dir', r"Z:\cybersecurity_iotdata\output"),
-    # "models_base_dir": "C:/Users/drana/Downloads"
-     # "models_base_dir": "/home/n11473584/homonym_experiment/output"
+    "feature_vectors_base_dir": ENV_OVERRIDES.get('experiment_output_dir', "run_output"),
+    "models_base_dir": ENV_OVERRIDES.get('experiment_output_dir', "run_output"),
 }
 
 evaluation_config = {
-    # Main output directory for DupliMend runs (used by main.py)
-    "results_base_dir": r"U:\Research\Projects\sef\stream_quality_drift\homonym_experiment\run_output",
-    # Alternative: use environment variable or local path
-    # "results_base_dir": os.environ.get('DUPLIMEND_OUTPUT_DIR', './run_output'),
+    # Main output directory for DupliMend runs (uses local path by default)
+    "results_base_dir": os.environ.get('DUPLIMEND_OUTPUT_DIR', 'run_output'),
 
     "multi_test_evaluation_config": {
         "default_tracking_base_dir": r"Z:\cybersecurity_iotdata\run_output\tracking_20250820_195312",
         "default_ground_truth_dir": r"Z:\processed_groundtruth_test_data",
         "default_output_dir": r"Z:\cybersecurity_iotdata\evaluation_results",
         "default_activity": "openat_www-data",
-        # Evaluation-specific column configurations
         "event_id_column": "EventID",
-        "control_flow_column": ""
-        "",           # Column in event logs
-        "control_flow_column_ground_truth": "ground_truth_activity_label",  # Column in ground truth
+        "control_flow_column": "activity_label",
+        "control_flow_column_ground_truth": "ground_truth_activity_label",
         "case_id_column": "SYSCALL_pid"
     },
 
     "single_evaluation_config": {
-        # Tracking directory 
-        "default_output_dir": r"U:\Research\Projects\sef\stream_quality_drift\homonym_experiment\evaluation_results\duplimend",
-        # Paths within tracking directory (will be auto-constructed)
-        "default_event_vectors_path": None,  # Will be auto-detected from tracking dir
-        "default_centroids_path": None,      # Will be auto-detected from tracking dir
-        
-        # Ground truth configuration
-        # "default_ground_truth_path": r"U:\Research\Projects\sef\stream_quality_drift\homonym_experiment\synthetic_logs\ipalia_groundtruth.csv",
-        # "default_activity": "A",
-        # "event_id_column": "EventID",
-        # "control_flow_column": "concept:name",
-        # "control_flow_column_ground_truth": "ground_truth_activity",
-        # "case_id_column": "case:concept:name",
+        # Output directory for evaluation results (local by default)
+        "default_output_dir": "evaluation_results",
+        "default_event_vectors_path": None,  # Auto-detected from tracking dir
+        "default_centroids_path": None,      # Auto-detected from tracking dir
 
         # Process Mining Configuration
-        "inductive_miner_noise_threshold": 0.0,  # Noise filtering threshold (0.0-1.0). 0.2 = filter out 20% least frequent behavior
+        "inductive_miner_noise_threshold": 0.0,
 
-        "default_ground_truth_path": ENV_OVERRIDES.get('ground_truth_path', r"U:\Research\Projects\sef\stream_quality_drift\homonym_experiment\synthetic_logs\document_review_process_groundtruth.csv"),
-        "default_activity": ENV_OVERRIDES.get('default_activity', "Submit application"),
+        # === I-PALIA Dataset Configuration (Default for Quick Start) ===
+        # Ground truth: ipalia_groundtruth.csv contains ground_truth_activity column
+        # Activity of interest: "A" (the homonymous label to be refined into A_start, A_middle, A_end)
+        "default_ground_truth_path": ENV_OVERRIDES.get('ground_truth_path', "src/synthetic_logs/ipalia_groundtruth.csv"),
+        "default_activity": ENV_OVERRIDES.get('default_activity', "A"),
         "event_id_column": ENV_OVERRIDES.get('event_id_column', "EventID"),
-        "control_flow_column": ENV_OVERRIDES.get('control_flow_column', "Activity"),
+        "control_flow_column": ENV_OVERRIDES.get('control_flow_column', "concept:name"),
         "control_flow_column_ground_truth": ENV_OVERRIDES.get('ground_truth_activity_column', "ground_truth_activity"),
-        "case_id_column": ENV_OVERRIDES.get('case_id_column', "CaseID")
-        
-        # Alternative configurations (commented out for easy switching)
-        # For document review process:
-        # "default_ground_truth_path": "C:\\Users\\drana\\Documents\\GitHub\\DupliMend\\src\\synthetic_logs\\document_review_process_parallel_groundtruth.csv",
+        "case_id_column": ENV_OVERRIDES.get('case_id_column', "case:concept:name")
+
+        # === Alternative: Document Review Process ===
+        # "default_ground_truth_path": "src/synthetic_logs/document_review_process_groundtruth.csv",
         # "default_activity": "Submit application",
         # "control_flow_column": "Activity",
-        # "control_flow_column_ground_truth": "ground_truth_activity"
-        
-        # For cybersecurity data:
-        # "default_ground_truth_path": "C:\\Users\\drana\\Documents\\GitHub\\DupliMend\\src\\case_study_log\\cybersec_iot_spinet_data\\test_data\\ground_truth_event_log.csv",
-        # "default_activity": "openat_root",
-        # "control_flow_column": "base_activity_label",
-        # "control_flow_column_ground_truth": "ground_truth_activity_label"
+        # "control_flow_column_ground_truth": "ground_truth_activity",
+        # "case_id_column": "CaseID"
     },
     
     "baseline_evaluation_config": {
