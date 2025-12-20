@@ -123,13 +123,17 @@ Optimised hyperparameters from Bayesian optimisation: `src/bayesian_optimization
 
 ### Real-Life Process Event Streams
 
-| PES | Events | Cases | Activities | Avg Case Length |
-|-----|--------|-------|------------|-----------------|
-| **BPIC2012** | 262,200 | 13,087 | 36 | 20 |
-| **BPIC2013** | 65,533 | 7,554 | 13 | 9 |
-| **BPIC2017** | 1,202,267 | 31,509 | 26 | 38 |
-| **Road Fines** | 561,470 | 150,370 | 11 | 4 |
-| **Env. Permits** | 8,577 | 1,434 | 27 | 6 |
+These event logs are obtained from [4TU.ResearchData](https://data.4tu.nl/), the standard repository for publicly available process mining datasets.
+
+| PES | Events | Cases | Activities | Avg Case Length | Publicly Available Link |
+|-----|--------|-------|------------|-----------------|-----|
+| **BPIC2012** | 262,200 | 13,087 | 36 | 20 | [BPIC Challenge 2012](https://data.4tu.nl/articles/_/12689204/1) |
+| **BPIC2013C** | 6,660 | 1,487 | 7 | 4 | [BPI Challenge 2013, closed problems](https://data.4tu.nl/datasets/1987a2a6-9f5b-4b14-8d26-ab7056b17929/1) |
+| **BPIC2013I** | 65,533 | 7,554 | 13 | 9 | [BPI Challenge 2013, incidents](https://data.4tu.nl/articles/_/12693914/1) |
+| **BPIC2013O** | 2,351 | 819 | 5 | 3 | [BPI Challenge 2013, open problems](https://data.4tu.nl/articles/_/12688556/1) |
+| **BPIC2017** | 1,202,267 | 31,509 | 26 | 38 | [BPI Challenge 2017](https://data.4tu.nl/articles/_/12696884/1) |
+| **Road Fines** | 561,470 | 150,370 | 11 | 4 | [Road Traffic Fine Management Process](https://data.4tu.nl/articles/_/12683249/1) |
+| **Env. Permits** | 8,577 | 1,434 | 27 | 6 | [Receipt phase of an environmental permit application process (WABO), CoSeLoG project](https://data.4tu.nl/articles/_/12709127/2) |
 
 ### Large-Scale: CybersecIoT
 
