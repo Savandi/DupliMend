@@ -46,8 +46,6 @@ python main.py
 
 This will process events in streaming fashion, train activity-specific autoencoders online, cluster events, and output results to `run_output/tracking_YYYYMMDD_HHMMSS/`.
 
-**Expected runtime:** ~2-5 minutes on a standard laptop.
-
 ### Step 3: Evaluate Results
 
 After `main.py` completes, evaluate clustering quality against ground truth:
@@ -118,8 +116,8 @@ Optimised hyperparameters from Bayesian optimisation: `src/bayesian_optimization
 | Dataset | Events | Cases | Activities | Description |
 |---------|--------|-------|------------|-------------|
 | **DuplicatedTasks** | ~1,000/log | 1,000/log | varies | 1,295 synthetic logs from [4TU](https://data.4tu.nl/articles/_/12718226/1) with injected homonyms |
-| **I-PALIA** | 8,415 | 990 | 8 (10 GT) | Healthcare workflow with duplicated activity "A" |
-| **DocReview** | 158,855 | 20,090 | 10 (11 GT) | Document review workflow with multi-attribute events |
+| **I-PALIA** | 8,415 | 990 | 8 (10 GT) | Healthcare workflow with duplicated activity "A" (accessible in the [synthetic logs folder](./src/synthetic_logs/)) | 
+| **DocReview** | 158,855 | 20,090 | 10 (11 GT) | Document review workflow with multi-attribute events (accessible in the [synthetic logs folder](./src/synthetic_logs/)) | 
 
 ### Real-Life Process Event Streams
 
@@ -135,18 +133,6 @@ These event logs are obtained from [4TU.ResearchData](https://data.4tu.nl/), the
 | **Road Fines** | 561,470 | 150,370 | 11 | 4 | [Road Traffic Fine Management Process](https://data.4tu.nl/articles/_/12683249/1) |
 | **Env. Permits** | 8,577 | 1,434 | 27 | 6 | [Receipt phase of an environmental permit application process (WABO), CoSeLoG project](https://data.4tu.nl/articles/_/12709127/2) |
 
-### Large-Scale: CybersecIoT
-
-| Metric | Value |
-|--------|-------|
-| **Total Events** | 38,399,367 |
-| **Total Cases** | 648,539 |
-| **Ground Truth Labels** | 77 |
-| **Training Files** | 15,027 |
-| **Test Files** | 5,017 |
-
-Data sources: [4TU Repository](https://data.4tu.nl/)
-
 ---
 
 ## Baseline Methods
@@ -157,14 +143,6 @@ DupliMend is compared against two established offline methods:
 |--------|-----------|-----------|
 | **lblrefine** | Lu et al. (BPM 2016) | Connected-components on event graph |
 | **lblsplit** | van Zelst et al. (BPM 2023) | Leiden community detection with variant compression |
-
-```bash
-cd python-label-refinement-baselines
-python main.py --method labelrefinement --input data/event_log.xes
-python main.py --method lblsplit --input data/event_log.xes
-```
-
-See [`python-label-refinement-baselines/README.md`](python-label-refinement-baselines/README.md) for details.
 
 ---
 
@@ -206,3 +184,9 @@ Using Friedman test with Nemenyi post-hoc analysis (α = 0.05), **DupliMend achi
 ## Acknowledgments
 
 This work was conducted at the Queensland University of Technology (QUT), School of Information Systems in the Faculty of Science and Centre for Data Science.
+
+## References
+
+1. Lu, X., Fahland, D., van den Biggelaar, F. J. H. M., & van der Aalst, W. M. P. (2016). *Handling duplicated tasks in process discovery by refining event labels.* In BPM 2016 (LNCS 9850, pp. 90–107). Springer. [DOI](https://doi.org/10.1007/978-3-319-45348-4_6)
+
+2. van Zelst, S. J., Tai, J., Langenberg, M., & Lu, X. (2023). *Context-based activity label-splitting.* In BPM 2023 (LNCS 14159, pp. 232–248). Springer. [DOI](https://doi.org/10.1007/978-3-031-41620-0_14)
