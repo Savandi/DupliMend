@@ -96,7 +96,7 @@ Results are saved to `evaluation_results/`.
 ![Precision for DupliMend vs baselines](experimental_results/precision_all_categories.png)
 
 **Statistical comparison of precision (Friedman + Nemenyi)**
-
+- Using the Friedman test with Nemenyi post-hoc analysis (α = 0.05), **DupliMend achieves the best mean rank (1.43)** for Precision and is the only method that differs significantly from the unrefined baseline.
 ![Critical difference diagram for precision](experimental_results/cd_diagram_logprecision_9.png)
 
 **Precision convergence over the stream (real-life PESs)**
@@ -174,10 +174,6 @@ DupliMend is compared against two established offline methods:
 | Road Fines | **DupliMend** | 0.88 | **0.78** | **0.83** |
 | BPIC2017 | Unrefined | 0.79 | 0.58 | 0.67 |
 | BPIC2017 | **DupliMend** | 0.82 | **0.71** | **0.76** |
-
-### Statistical Significance
-
-Using Friedman test with Nemenyi post-hoc analysis (α = 0.05), **DupliMend achieves the best mean rank (1.43)** for Precision and is the only method that differs significantly from the unrefined baseline.
 
 ---
 
