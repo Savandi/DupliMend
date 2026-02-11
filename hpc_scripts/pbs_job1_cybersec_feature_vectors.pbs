@@ -127,7 +127,7 @@ for PBS_ARRAY_INDEX in {1..32}; do
     # === OUTPUT FILE VERIFICATION ===
     echo "---------- CHECKING EXISTING OUTPUTS ----------"
 
-    # Define expected output files from feature vector generation (based on your actual output)
+    # Define expected output files from feature vector generation (based on actual output)
     EXPECTED_FILES=(
         "$FEATURE_OUTPUT_DIR/activity_embeddings.pkl"
         "$FEATURE_OUTPUT_DIR/generation_metadata.json"
