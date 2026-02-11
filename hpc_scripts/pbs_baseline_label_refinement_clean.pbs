@@ -30,7 +30,7 @@ VENV_DIR="$PROJECT_ROOT/venv"
 VENV_ACT="$VENV_DIR/bin/activate"
 REQS="$PROJECT_ROOT/requirements.txt"
 
-# Data path - ABSOLUTE PATH to your actual data location
+# Data path - ABSOLUTE PATH to actual data location
 DATA_PATH="/home/n11473584/Handling Duplicated Tasks in Process Discovery by Refining Event Labels (BPM2016)_1_all/data/noImprInLoop_default_OD"
 
 # Results directory - DIRECT WRITE to permanent network storage (matches config.py structure)
