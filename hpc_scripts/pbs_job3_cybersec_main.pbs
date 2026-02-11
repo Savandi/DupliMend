@@ -96,7 +96,7 @@ for PBS_ARRAY_INDEX in {1..5376}; do
     echo "Loading training configuration from: $TRAINING_CONFIG_FILE"
     source "$TRAINING_CONFIG_FILE"
 
-    # Set clustering parameters (7 combinations using your specified values)
+    # Set clustering parameters (7 combinations using specified values)
     case ${CLUSTERING_INDEX} in
         1) export CLUSTER_CONFIG_NAME="clst01_var1e7_mrg001_temp04_forg85_decay10k_upd500_cent50_adwin002";
            export CLUSTERING_THRESHOLD=0.01; export VARIANCE_THRESHOLD=1e-7; export MERGE_THRESHOLD=0.001; export TEMPORAL_DECAY_RATE=0.04; export FORGETTING_FACTOR=0.85; export DECAY_AFTER_EVENTS=10000; export MEMORY_UPDATE_INTERVAL=500; export MAX_CENTROIDS_PER_ACTIVITY=50; export ADWIN_DELTA=0.002 ;;
