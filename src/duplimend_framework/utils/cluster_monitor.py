@@ -53,7 +53,6 @@ class ClusterMonitor:
         """Generate a plot showing how clusters have evolved over time"""
         plt.figure(figsize=(12, 8))
 
-        # Plot cluster counts over time
         for activity, data in self.history.items():
             if "cluster_count" in data and len(data["cluster_count"]) > 1:
                 plt.plot(
@@ -68,11 +67,9 @@ class ClusterMonitor:
         plt.legend()
         plt.grid(True)
 
-        # Save the plot
         plt.savefig("cluster_evolution.png")
         print(f"[MONITOR] Evolution plot saved to cluster_evolution.png")
 
-        # Operation summary
         print("\n=== CLUSTER OPERATION SUMMARY ===")
         for activity in sorted(set(list(self.split_count.keys()) + list(self.merge_count.keys()))):
             print(f"{activity}: {self.split_count[activity]} splits, {self.merge_count[activity]} merges")

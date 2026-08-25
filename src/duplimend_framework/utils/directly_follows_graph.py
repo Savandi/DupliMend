@@ -12,13 +12,10 @@ class DirectlyFollowsGraph:
         """
         Initialize the directly follows graph with incremental transition tracking.
         """
-        # Core transition matrix: (prev_activity, curr_activity) -> {"count": int, "last_seen_event": int}
         self.graph: DefaultDict[Tuple[str, str], Dict[str, int]] = defaultdict(_default_transition_dict)
         
-        # Track transitions per case for forgetting
-        self.case_transitions = defaultdict(list)  # case_id -> [(prev, curr), ...]
+        self.case_transitions = defaultdict(list)
         
-        # Statistics for monitoring
         self.total_transitions = 0
         self.unique_transitions = 0
 
@@ -31,11 +28,9 @@ class DirectlyFollowsGraph:
         
         transitions_reset = 0
         for transition_key, meta in self.graph.items():
-            # Reset last_seen_event to the new base
             meta["last_seen_event"] = new_base_event
             transitions_reset += 1
         
-        # Clear case transitions since test cases are different from training cases
         cases_cleared = len(self.case_transitions)
         self.case_transitions.clear()
         
@@ -55,7 +50,6 @@ class DirectlyFollowsGraph:
         """
         key = (prev_activity, curr_activity)
         
-        # Update global transition count
         if self.graph[key]["count"] == 0:
             self.unique_transitions += 1
             
@@ -63,7 +57,6 @@ class DirectlyFollowsGraph:
         self.graph[key]["last_seen_event"] = global_event_counter
         self.total_transitions += 1
         
-        # Track this transition for the case (for forgetting)
         self.case_transitions[case_id].append(key)
         
         print(f"[DFG] Added transition: {prev_activity} -> {curr_activity} (count: {self.graph[key]['count']})")
@@ -81,16 +74,13 @@ class DirectlyFollowsGraph:
             current_count = meta["count"]
             age = global_event_counter - last_seen
             
-            # Apply decay based on age and frequency
             if (current_count < forgetting_params["frequency_decay_threshold"] and 
                 age > forgetting_params["removal_threshold_events"]):
                 
-                # Mark for removal
                 transitions_to_remove.append(transition_key)
                 print(f"[DFG] Removing old transition: {transition_key[0]} -> {transition_key[1]} (age: {age}, count: {current_count})")
             
             elif age > forgetting_params["removal_threshold_events"] // 2:
-                # Apply gradual decay to older transitions
                 decay_factor = forgetting_params["temporal_decay_rate"]
                 new_count = max(1, int(current_count * (1 - decay_factor)))
                 
@@ -99,7 +89,6 @@ class DirectlyFollowsGraph:
                     self.total_transitions -= (current_count - new_count)
                     print(f"[DFG] Decayed transition: {transition_key[0]} -> {transition_key[1]} ({current_count} -> {new_count})")
         
-        # Remove transitions marked for deletion
         for transition_key in transitions_to_remove:
             removed_count = self.graph[transition_key]["count"]
             self.total_transitions -= removed_count
@@ -118,17 +107,14 @@ class DirectlyFollowsGraph:
         
         for transition_key in self.case_transitions[case_id]:
             if transition_key in self.graph:
-                # Decrement the count
                 self.graph[transition_key]["count"] -= 1
                 self.total_transitions -= 1
                 
-                # Remove if count reaches zero
                 if self.graph[transition_key]["count"] <= 0:
                     del self.graph[transition_key]
                     self.unique_transitions -= 1
                     print(f"[DFG] Removed transition: {transition_key[0]} -> {transition_key[1]}")
         
-        # Clean up case tracking
         del self.case_transitions[case_id]
 
     def get_global_frequency(self, prev_activity, curr_activity):
@@ -184,7 +170,6 @@ class DirectlyFollowsGraph:
                 count_ab = meta.get("count", 0)
                 count_ba = self.graph.get((b, a), {}).get("count", 0)
                 
-                # Both directions must meet threshold
                 if count_ab >= threshold and count_ba >= threshold:
                     parallel_acts.add(b)
                     

@@ -13,16 +13,13 @@ class ClusterAwareRegularizer:
     def __init__(self, config=None):
         self.config = config or {}
         
-        # Regularization weights
         self.separation_weight = self.config.get("separation_weight", 1.0)
         self.compactness_weight = self.config.get("compactness_weight", 0.5)
         self.consistency_weight = self.config.get("consistency_weight", 0.3)
         
-        # Thresholds
         self.min_separation_distance = self.config.get("min_separation_distance", 0.1)
         self.max_intra_cluster_variance = self.config.get("max_intra_cluster_variance", 0.05)
         
-        # State tracking
         self.previous_centroids = {}
         self.cluster_assignments = defaultdict(list)
         self.regularization_history = defaultdict(list)
@@ -47,11 +44,9 @@ class ClusterAwareRegularizer:
         if embeddings.size(0) < 2:
             return torch.tensor(0.0, device=embeddings.device), {}
         
-        # Group embeddings by cluster
         clusters = self._group_embeddings_by_cluster(embeddings, cluster_assignments)
         
         if len(clusters) < 2:
-            # Single cluster - only compactness matters
             compactness_loss = self._calculate_compactness_loss(clusters)
             return compactness_loss * self.compactness_weight, {
                 'compactness_loss': compactness_loss.item(),
@@ -59,21 +54,18 @@ class ClusterAwareRegularizer:
                 'consistency_loss': 0.0
             }
         
-        # Calculate individual loss components
         separation_loss = self._calculate_separation_loss(clusters)
         compactness_loss = self._calculate_compactness_loss(clusters)
         consistency_loss = self._calculate_consistency_loss(
             clusters, activity_label, previous_centroids
         )
         
-        # Combine losses
         total_loss = (
             self.separation_weight * separation_loss +
             self.compactness_weight * compactness_loss +
             self.consistency_weight * consistency_loss
         )
         
-        # Update state
         self._update_regularization_state(clusters, activity_label)
         
         loss_components = {
@@ -91,10 +83,9 @@ class ClusterAwareRegularizer:
         clusters = defaultdict(list)
         
         for i, cluster_id in enumerate(cluster_assignments):
-            if cluster_id >= 0:  # Valid cluster assignment
+            if cluster_id >= 0:
                 clusters[cluster_id].append(embeddings[i])
         
-        # Convert lists to tensors
         cluster_tensors = {}
         for cluster_id, embedding_list in clusters.items():
             if embedding_list:
@@ -110,12 +101,10 @@ class ClusterAwareRegularizer:
         if len(clusters) < 2:
             return torch.tensor(0.0)
         
-        # Calculate centroids
         centroids = {}
         for cluster_id, cluster_embeddings in clusters.items():
             centroids[cluster_id] = torch.mean(cluster_embeddings, dim=0)
         
-        # Calculate pairwise distances between centroids
         cluster_ids = list(centroids.keys())
         separation_loss = torch.tensor(0.0, device=list(centroids.values())[0].device)
         pair_count = 0
@@ -125,12 +114,9 @@ class ClusterAwareRegularizer:
                 centroid_i = centroids[cluster_ids[i]]
                 centroid_j = centroids[cluster_ids[j]]
                 
-                # Euclidean distance between centroids
                 distance = torch.norm(centroid_i - centroid_j, p=2)
                 
-                # Penalize if distance is below threshold
                 if distance < self.min_separation_distance:
-                    # Penalty increases as distance decreases
                     penalty = torch.exp(-distance / self.min_separation_distance)
                     separation_loss += penalty
                 
@@ -152,14 +138,11 @@ class ClusterAwareRegularizer:
         
         for cluster_id, cluster_embeddings in clusters.items():
             if cluster_embeddings.size(0) > 1:
-                # Calculate centroid
                 centroid = torch.mean(cluster_embeddings, dim=0)
                 
-                # Calculate variance (mean squared distance from centroid)
                 distances = torch.norm(cluster_embeddings - centroid.unsqueeze(0), p=2, dim=1)
                 variance = torch.var(distances)
                 
-                # Penalize high variance
                 if variance > self.max_intra_cluster_variance:
                     penalty = variance - self.max_intra_cluster_variance
                     compactness_loss += penalty
@@ -180,7 +163,6 @@ class ClusterAwareRegularizer:
         if prev_centroids is None or len(prev_centroids) == 0:
             return torch.tensor(0.0)
         
-        # Calculate current centroids
         current_centroids = {}
         for cluster_id, cluster_embeddings in clusters.items():
             current_centroids[cluster_id] = torch.mean(cluster_embeddings, dim=0)
@@ -190,18 +172,15 @@ class ClusterAwareRegularizer:
             device = list(current_centroids.values())[0].device
             consistency_loss = consistency_loss.to(device)
         
-        # Compare with previous centroids
         matched_clusters = 0
         for cluster_id in current_centroids:
             if cluster_id in prev_centroids:
                 current_centroid = current_centroids[cluster_id]
                 previous_centroid = prev_centroids[cluster_id]
                 
-                # Ensure tensors are on same device
                 if previous_centroid.device != current_centroid.device:
                     previous_centroid = previous_centroid.to(current_centroid.device)
                 
-                # Calculate movement distance
                 movement = torch.norm(current_centroid - previous_centroid, p=2)
                 consistency_loss += movement
                 matched_clusters += 1
@@ -210,14 +189,12 @@ class ClusterAwareRegularizer:
     
     def _update_regularization_state(self, clusters: Dict[int, torch.Tensor], activity_label: str):
         """Update internal state for tracking"""
-        # Update previous centroids
         current_centroids = {}
         for cluster_id, cluster_embeddings in clusters.items():
             current_centroids[cluster_id] = torch.mean(cluster_embeddings, dim=0).detach()
         
         self.previous_centroids[activity_label] = current_centroids
         
-        # Track regularization history
         self.regularization_history[activity_label].append({
             'num_clusters': len(clusters),
             'cluster_sizes': {cid: embs.size(0) for cid, embs in clusters.items()}
@@ -236,33 +213,27 @@ class ClusterAwareRegularizer:
                 'metrics': {}
             }
         
-        # Calculate current metrics
         metrics = self._calculate_cluster_quality_metrics(clusters)
         
-        # Compare with historical performance
         history = self.regularization_history.get(activity_label, [])
-        if len(history) < 10:  # Need sufficient history
+        if len(history) < 10:
             return {
                 'degradation_detected': False,
                 'reason': 'insufficient_history',
                 'metrics': metrics
             }
         
-        # Analyze trends
         degradation_signals = []
         
-        # Check for cluster collapse (too many small clusters or too few clusters)
         recent_cluster_counts = [h['num_clusters'] for h in history[-5:]]
         avg_recent_clusters = np.mean(recent_cluster_counts)
         
         if metrics['num_clusters'] < avg_recent_clusters * 0.7:
             degradation_signals.append('cluster_collapse')
         
-        # Check separation quality
         if metrics['min_inter_cluster_distance'] < self.min_separation_distance:
             degradation_signals.append('poor_separation')
         
-        # Check compactness
         if metrics['max_intra_cluster_variance'] > self.max_intra_cluster_variance:
             degradation_signals.append('poor_compactness')
         
@@ -280,12 +251,10 @@ class ClusterAwareRegularizer:
         if not clusters:
             return {}
         
-        # Calculate centroids
         centroids = {}
         for cluster_id, cluster_embeddings in clusters.items():
             centroids[cluster_id] = torch.mean(cluster_embeddings, dim=0)
         
-        # Inter-cluster distances
         cluster_ids = list(centroids.keys())
         inter_distances = []
         
@@ -294,7 +263,6 @@ class ClusterAwareRegularizer:
                 dist = torch.norm(centroids[cluster_ids[i]] - centroids[cluster_ids[j]], p=2)
                 inter_distances.append(dist.item())
         
-        # Intra-cluster variances
         intra_variances = []
         cluster_sizes = []
         

@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import argparse
 import pandas as pd
 import numpy as np
 from scipy.stats import friedmanchisquare
@@ -6,8 +7,77 @@ from scipy import stats
 from scikit_posthocs import posthoc_nemenyi_friedman
 from itertools import combinations
 import os
+import sys
 
-OUTPUT_DIR = '/mnt/c/Users/drana/Documents/Duplimend/statistical_significance_output'
+parser = argparse.ArgumentParser(
+    description='Friedman + Nemenyi significance tests over per-seed evaluation results.')
+parser.add_argument('--results-dir', type=str,
+                    default=os.environ.get('DUPLIMEND_SIGNIFICANCE_DIR', 'statistical_significance_output'),
+                    help='Directory holding the per-seed result CSVs. Overrides '
+                         'DUPLIMEND_SIGNIFICANCE_DIR; defaults to ./statistical_significance_output')
+parser.add_argument('--seeds', type=int, nargs='+', default=None,
+                    help='Explicit list of seeds to test, e.g. --seeds 1 2 3 4 5. '
+                         'Defaults to every seed present in the input files.')
+parser.add_argument('--skip-incomplete', action='store_true',
+                    help='Exclude any dataset/method missing a seed instead of aborting. '
+                         'Skipped entries are reported and written to skipped_entries.csv. '
+                         'Values are never imputed under either mode.')
+args = parser.parse_args()
+
+OUTPUT_DIR = args.results_dir
+
+SKIPPED_ENTRIES = []
+
+
+def collect_seed_values(rows, metric, seeds, dataset, method, single_value=False):
+    """Return one value per seed, in seed order.
+
+    Every seed must be present. A missing seed is a data problem, not something to
+    impute: under the default strict mode it aborts, and with --skip-incomplete the
+    dataset/method is dropped from the test and recorded in SKIPPED_ENTRIES. This
+    function never invents a value.
+    """
+    values = []
+    missing = []
+
+    for seed in seeds:
+        seed_data = rows[rows['Seed'] == seed]
+        if len(seed_data) == 0:
+            missing.append(seed)
+            continue
+        values.append(seed_data[metric].values[0] if single_value else seed_data[metric].mean())
+
+    if missing:
+        detail = (f"{dataset} / {method} / {metric}: missing seed(s) "
+                  f"{', '.join(str(s) for s in missing)} "
+                  f"(expected {len(seeds)}: {', '.join(str(s) for s in seeds)})")
+        if not args.skip_incomplete:
+            sys.exit(
+                f"\nERROR: incomplete seed matrix — {detail}\n"
+                f"Every method must have a result for every seed before significance "
+                f"testing. Re-run the missing seeds, or pass --skip-incomplete to exclude "
+                f"this entry from the analysis.\n")
+        SKIPPED_ENTRIES.append({'Dataset': dataset, 'Method': method,
+                                'Metric': metric, 'Missing_Seeds': ';'.join(str(s) for s in missing)})
+        return None
+
+    return values
+
+
+def resolve_seeds(*frames):
+    """Determine the seed set to test, either from --seeds or from the input files."""
+    if args.seeds:
+        return list(args.seeds)
+
+    present = set()
+    for frame in frames:
+        if frame is not None and 'Seed' in frame.columns:
+            present.update(frame['Seed'].dropna().unique().tolist())
+
+    if not present:
+        sys.exit("ERROR: no 'Seed' column found in the input files — cannot determine "
+                 "the number of independent runs. Pass --seeds explicitly.")
+    return sorted(present)
 
 
 def run_significance_test_for_stream(dataset_name, metric_name, method_data_dict):
@@ -67,10 +137,14 @@ def run_significance_test_for_stream(dataset_name, metric_name, method_data_dict
 
 print("="*80)
 print("GENERATING STATISTICAL SIGNIFICANCE TESTS")
-print("For ALL event streams (6,319 total)")
 print("="*80)
 
-print("\nLoading data files...")
+print(f"\nResults directory: {OUTPUT_DIR}")
+if not os.path.isdir(OUTPUT_DIR):
+    sys.exit(f"ERROR: results directory not found: {OUTPUT_DIR}\n"
+             f"Pass --results-dir or set DUPLIMEND_SIGNIFICANCE_DIR.")
+
+print("Loading data files...")
 baseline_df = pd.read_csv(os.path.join(OUTPUT_DIR, 'baseline_results_with_all_parameters.csv'))
 checkpoint_df = pd.read_csv(os.path.join(OUTPUT_DIR, 'duplimend_baseline_checkpoints.csv'))
 cybersec_df = pd.read_csv(os.path.join(OUTPUT_DIR, 'cybersec_results_with_parameters.csv'))
@@ -78,6 +152,10 @@ cybersec_checkpoint_df = pd.read_csv(os.path.join(OUTPUT_DIR, 'duplimend_cyberse
 
 print(f"  Baseline: {len(baseline_df):,} rows")
 print(f"  Cybersec: {len(cybersec_df):,} rows")
+
+SEEDS = resolve_seeds(baseline_df, checkpoint_df, cybersec_df, cybersec_checkpoint_df)
+print(f"\nSeeds under test ({len(SEEDS)}): {', '.join(str(s) for s in SEEDS)}")
+print(f"Missing-seed policy: {'skip incomplete entries' if args.skip_incomplete else 'abort (strict)'}")
 
 all_results = []
 
@@ -111,15 +189,8 @@ for i, dataset in enumerate(baseline_datasets):
             if len(method_rows) == 0 or metric not in method_rows.columns:
                 continue
 
-            values = []
-            for seed in range(1, 6):
-                seed_data = method_rows[method_rows['Seed'] == seed]
-                if len(seed_data) > 0:
-                    values.append(seed_data[metric].mean())
-                else:
-                    values.append(method_rows[metric].mean() + np.random.normal(0, 0.001))
-
-            if len(values) == 5:
+            values = collect_seed_values(method_rows, metric, SEEDS, dataset, method)
+            if values is not None:
                 method_data[method] = values
 
         dup_rows = checkpoint_df[
@@ -128,15 +199,9 @@ for i, dataset in enumerate(baseline_datasets):
         ]
 
         if len(dup_rows) > 0 and metric in dup_rows.columns:
-            values = []
-            for seed in range(1, 6):
-                seed_data = dup_rows[dup_rows['Seed'] == seed]
-                if len(seed_data) > 0:
-                    values.append(seed_data[metric].values[0])
-                else:
-                    values.append(dup_rows[metric].mean() + np.random.normal(0, 0.001))
-
-            if len(values) == 5:
+            values = collect_seed_values(dup_rows, metric, SEEDS, dataset, 'DupliMend',
+                                         single_value=True)
+            if values is not None:
                 method_data['DupliMend'] = values
 
         if len(method_data) >= 2:
@@ -149,12 +214,11 @@ print("\n" + "="*80)
 print("TESTING CYBERSECURITY DATASETS")
 print("="*80)
 
-test_log_ids = cybersec_df['Test_Log_ID'].unique() if 'Test_Log_ID' in cybersec_df.columns else []
+if 'Test_Log_ID' not in cybersec_df.columns:
+    sys.exit("ERROR: 'Test_Log_ID' column missing from cybersec_results_with_parameters.csv.\n"
+             "Log identities must come from the results file; they cannot be synthesised.")
 
-if len(test_log_ids) == 0:
-    print("  No Test_Log_ID column found, using index-based approach...")
-    test_log_ids = [f"cybersec_test_{i:04d}" for i in range(1, 5018)]
-
+test_log_ids = cybersec_df['Test_Log_ID'].unique()
 print(f"\nTotal cybersec test logs: {len(test_log_ids)}")
 
 for i, test_log_id in enumerate(test_log_ids):
@@ -172,15 +236,9 @@ for i, test_log_id in enumerate(test_log_ids):
                 ]
 
                 if len(method_rows) > 0 and metric in method_rows.columns:
-                    values = []
-                    for seed in range(1, 6):
-                        seed_data = method_rows[method_rows['Seed'] == seed]
-                        if len(seed_data) > 0:
-                            values.append(seed_data[metric].mean())
-                        else:
-                            values.append(method_rows[metric].mean() + np.random.normal(0, 0.001))
-
-                    if len(values) == 5:
+                    values = collect_seed_values(method_rows, metric, SEEDS,
+                                                 test_log_id, method)
+                    if values is not None:
                         method_data[method] = values
 
             if 'Test_Log_ID' in cybersec_checkpoint_df.columns:
@@ -190,15 +248,10 @@ for i, test_log_id in enumerate(test_log_ids):
                 ]
 
                 if len(dup_rows) > 0 and metric in dup_rows.columns:
-                    values = []
-                    for seed in range(1, 6):
-                        seed_data = dup_rows[dup_rows['Seed'] == seed]
-                        if len(seed_data) > 0:
-                            values.append(seed_data[metric].values[0])
-                        else:
-                            values.append(dup_rows[metric].mean() + np.random.normal(0, 0.001))
-
-                    if len(values) == 5:
+                    values = collect_seed_values(dup_rows, metric, SEEDS,
+                                                 test_log_id, 'DupliMend',
+                                                 single_value=True)
+                    if values is not None:
                         method_data['DupliMend'] = values
 
         if len(method_data) >= 2:
@@ -210,6 +263,17 @@ for i, test_log_id in enumerate(test_log_ids):
 print("\n" + "="*80)
 print("SAVING RESULTS")
 print("="*80)
+
+if SKIPPED_ENTRIES:
+    skipped_df = pd.DataFrame(SKIPPED_ENTRIES)
+    skipped_file = os.path.join(OUTPUT_DIR, 'skipped_entries.csv')
+    skipped_df.to_csv(skipped_file, index=False)
+    print(f"\nWARNING: {len(SKIPPED_ENTRIES):,} dataset/method/metric entries were EXCLUDED "
+          f"for missing seeds.")
+    print(f"  Details: {skipped_file}")
+    print(f"  The coverage below is therefore partial — it does not span every log.")
+else:
+    print(f"\nSeed matrix complete for every tested entry ({len(SEEDS)} seeds).")
 
 results_df = pd.DataFrame(all_results)
 output_file = os.path.join(OUTPUT_DIR, 'statistical_significance_results.csv')

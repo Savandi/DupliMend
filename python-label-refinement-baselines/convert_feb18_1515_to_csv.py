@@ -9,9 +9,14 @@ import gzip
 import pandas as pd
 from pm4py.objects.log.importer.xes import importer as xes_importer
 
-# Paths
-INPUT_DIR = "/mnt/c/Users/drana/Downloads/Handling Duplicated Tasks in Process Discovery by Refining Event Labels (BPM2016)_1_all/data/noImprInLoop_default_OD/feb18-1515/logs"
-OUTPUT_DIR = "/mnt/c/Users/drana/Downloads/baseline_csv_logs/feb18-1515"
+# Paths — repo-relative defaults, overridable by environment.
+_REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+_BASELINE_DATA = os.environ.get('DUPLIMEND_BASELINE_DATA',
+                                os.path.join(_REPO_ROOT, 'data', 'noImprInLoop_default_OD'))
+INPUT_DIR = os.environ.get('CONVERT_INPUT_DIR',
+                           os.path.join(_BASELINE_DATA, 'feb18-1515', 'logs'))
+OUTPUT_DIR = os.environ.get('CONVERT_OUTPUT_DIR',
+                            os.path.join(_REPO_ROOT, 'data', 'baseline_csv_logs', 'feb18-1515'))
 
 def extract_xes_gz(xes_gz_path):
     """Extract .xes.gz to temporary .xes file"""

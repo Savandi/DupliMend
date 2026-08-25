@@ -1,0 +1,97 @@
+{
+  "description": "Inventory of logs for the DupliMend experiment runner. Each entry fully specifies how one log is loaded and evaluated, so a run is reproducible from this file plus duplimend_global.json plus seeds.json.",
+  "paper_inventory": {
+    "total_logs": 1304,
+    "breakdown": {
+      "synthetic_duplicated_tasks": 1295,
+      "real_life": 7,
+      "synthetic_named": 2
+    },
+    "real_life_logs": [
+      "BPIC2012",
+      "BPIC2013C",
+      "BPIC2013I",
+      "BPIC2013O",
+      "BPIC2017",
+      "Environmental_Permits",
+      "Road_Traffic_Fines"
+    ],
+    "synthetic_named_logs": [
+      "ipalia",
+      "document_review_process"
+    ],
+    "note": "1,304 logs x 10 seeds = 13,040 runs per method, which matches the row count of the per-run result files.",
+    "availability": "The bundled manifest below covers only the two logs generated for this study (I-PALIA and the document-review process), which are the ones this repository redistributes. Every other log in the 1,304 is a publicly available third-party dataset and is not vendored here; obtain it from its original source and add a manifest entry. The synthetic duplicated-task logs come from the BPM2016 duplicated-tasks collection (a partial copy of four generator folders -- feb16-1625, feb17-0936, mrt02-1452, mrt03-1655 -- is included under python-label-refinement-baselines/data/noImprInLoop_default_OD/ for the baseline code); the real-life logs (BPIC 2012/2013/2017, Environmental Permits, Road Traffic Fines) are published on 4TU.ResearchData."
+  },
+  "entry_schema": {
+    "id": "Stable identifier used in the results file and the resume ledger.",
+    "dataset_type": "Synthetic | Real-life | Synthetic-named. Free text; carried into the results file.",
+    "input": "Path to the input CSV, relative to the repository root.",
+    "ground_truth": "Path to the ground-truth CSV, relative to the repository root.",
+    "activity": "The imprecise activity label to be refined (DEFAULT_ACTIVITY).",
+    "event_id_column": "EVENT_ID_COLUMN",
+    "case_id_column": "CASE_ID_COLUMN",
+    "control_flow_column": "CONTROL_FLOW_COLUMN, the activity column in the input log.",
+    "ground_truth_activity_column": "GROUND_TRUTH_ACTIVITY_COLUMN, the true-label column in the ground-truth file.",
+    "timestamp_column": "TIMESTAMP_COLUMN, the event timestamp column. Required: main.py reads it while consuming the stream, and a wrong name fails on every event.",
+    "resource_column": "RESOURCE_COLUMN, optional resource attribute. Omit or null when the log has none.",
+    "config_overrides": "Per-log environment overrides applied AFTER the global paper config. These settings are dataset-specific: clustering_threshold in particular differs per log because the feature paths differ (I-PALIA has no data columns and uses control-flow features only, DocReview adds four data attributes), so the useful DBSTREAM radius is not shared between them."
+  },
+  "logs": [
+    {
+      "id": "ipalia",
+      "dataset_type": "Synthetic-named",
+      "input": "src/synthetic_logs/ipalia.csv",
+      "ground_truth": "src/synthetic_logs/ipalia_groundtruth.csv",
+      "activity": "A",
+      "event_id_column": "EventID",
+      "case_id_column": "case:concept:name",
+      "control_flow_column": "concept:name",
+      "ground_truth_activity_column": "ground_truth_activity",
+      "timestamp_column": "time:timestamp",
+      "resource_column": null,
+      "config_overrides": {
+        "CONTROL_FLOW_CONTEXT_WINDOW": "7",
+        "CLUSTERING_THRESHOLD": "0.01",
+        "WARMUP_EVENTS": "4000"
+      }
+    },
+    {
+      "id": "document_review_process",
+      "dataset_type": "Synthetic-named",
+      "input": "src/synthetic_logs/document_review_process.csv",
+      "ground_truth": "src/synthetic_logs/document_review_process_groundtruth.csv",
+      "activity": "Submit application",
+      "event_id_column": "EventID",
+      "case_id_column": "CaseID",
+      "control_flow_column": "Activity",
+      "ground_truth_activity_column": "ground_truth_activity",
+      "timestamp_column": "Timestamp",
+      "resource_column": "Resource",
+      "config_overrides": {
+        "CONTROL_FLOW_CONTEXT_WINDOW": "7",
+        "CLUSTERING_THRESHOLD": "0.95",
+        "WARMUP_EVENTS": "100000"
+      }
+    },
+    {
+      "id": "document_review_process_parallel",
+      "dataset_type": "Synthetic-named",
+      "input": "src/synthetic_logs/document_review_process_parallel.csv",
+      "ground_truth": "src/synthetic_logs/document_review_process_parallel_groundtruth.csv",
+      "activity": "Submit application",
+      "event_id_column": "EventID",
+      "case_id_column": "CaseID",
+      "control_flow_column": "Activity",
+      "ground_truth_activity_column": "ground_truth_activity",
+      "timestamp_column": "Timestamp",
+      "resource_column": "Resource",
+      "config_overrides": {
+        "CONTROL_FLOW_CONTEXT_WINDOW": "7",
+        "CLUSTERING_THRESHOLD": "0.95",
+        "WARMUP_EVENTS": "100000"
+      }
+    }
+  ],
+  "per_log_configuration_note": "IMPORTANT: several DupliMend settings are per-log, not global. clustering_threshold and warmup_global_events in particular must be set per dataset -- a value that works on one log produces a single micro-cluster (no refinement) on another. The correct values are recorded in each entry's config_overrides below and are applied by scripts/run_paper_experiments.py after the global configuration in duplimend_global.json. Values used for these logs: I-PALIA uses clustering_threshold 0.01 with warmup 4000; DocReview uses clustering_threshold 0.95 with warmup 100000. The logs do not share a feature path -- every column of I-PALIA is excluded as an id/timestamp/activity column, so it is embedded from control-flow features alone, whereas DocReview contributes four data attributes (PriorityLevel, FileSize, ProcessingTime, Resource) -- which is why the useful DBSTREAM radius differs by two orders of magnitude between them."
+}

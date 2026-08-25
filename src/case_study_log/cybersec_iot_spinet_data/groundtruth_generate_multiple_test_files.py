@@ -3,7 +3,6 @@ import ast
 import os
 from pathlib import Path
 
-# Extract filenames from list-based paths, preserving original order
 def extract_filenames_preserve_order(path_str):
     try:
         paths = ast.literal_eval(path_str)
@@ -11,23 +10,17 @@ def extract_filenames_preserve_order(path_str):
     except:
         return []
 
-# Function to transform a single CSV file
 def transform_ground_truth_log(input_file, output_file):
     df = pd.read_csv(input_file, dtype=str)
-    # Convert SYSCALL_exit to numeric (supports +ve and -ve), invalids become NaN
     df["SYSCALL_exit"] = pd.to_numeric(df["SYSCALL_exit"], errors="coerce")
 
-    # Drop rows with missing essential values
     df.dropna(subset=["SYSCALL_syscall", "PROCESS_uid", "SYSCALL_exit"], inplace=True)
 
-    # Fill optional list fields if null
     df["CUSTOM_openFiles"] = df["CUSTOM_openFiles"].fillna("[]")
     df["CUSTOM_libs"] = df["CUSTOM_libs"].fillna("[]")
 
-    # Drop rows that are entirely empty
     df.dropna(how='all', inplace=True)
 
-    # Remove duplicated rows (exact matches)
     df.drop_duplicates(inplace=True)
 
     filename_prefix = Path(input_file).stem
@@ -65,7 +58,6 @@ def transform_ground_truth_log(input_file, output_file):
     final_df.to_csv(output_file, index=False)
     print(f"Transformed file saved to: {output_file}")
 
-# Batch process all CSV files in test_files folder
 def batch_process_test_logs():
     input_path = Path(r"C:\Users\drana\Downloads\cybersec_iot_spinet_data\test_data")
     output_path = Path(r"C:\Users\drana\Downloads\cybersec_iot_spinet_data\processed_groundtruth_test_data")

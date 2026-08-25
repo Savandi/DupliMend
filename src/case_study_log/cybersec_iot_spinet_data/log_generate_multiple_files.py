@@ -13,20 +13,15 @@ def extract_filenames_preserve_order(path_str):
 
 def transform_event_log(input_file, output_file):
     df = pd.read_csv(input_file, dtype=str)
-    # Convert SYSCALL_exit to numeric (supports +ve and -ve), invalids become NaN
     df["SYSCALL_exit"] = pd.to_numeric(df["SYSCALL_exit"], errors="coerce")
 
-    # Drop rows with missing essential values
     df.dropna(subset=["SYSCALL_syscall", "PROCESS_uid", "SYSCALL_exit"], inplace=True)
 
-    # Fill optional list fields if null
     df["CUSTOM_openFiles"] = df["CUSTOM_openFiles"].fillna("[]")
     df["CUSTOM_libs"] = df["CUSTOM_libs"].fillna("[]")
 
-    # Drop rows that are entirely empty
     df.dropna(how='all', inplace=True)
 
-    # Remove duplicated rows (exact matches)
     df.drop_duplicates(inplace=True)
 
     filename_prefix = Path(input_file).stem

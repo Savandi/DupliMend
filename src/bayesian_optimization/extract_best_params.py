@@ -29,9 +29,6 @@ import argparse
 import pandas as pd
 from pathlib import Path
 
-# ============================================================================
-# DATASET GROUP CONFIGURATIONS (matches optimize_duplimend_bayesian.py)
-# ============================================================================
 
 DATASET_GROUPS = {
     1: {
@@ -64,7 +61,6 @@ DATASET_GROUPS = {
     },
 }
 
-# Parameter names matching Table 3 from paper
 PARAMETER_NAMES = [
     'num_hidden_layers',
     'layer_size',
@@ -103,7 +99,6 @@ def load_group_results(group_id: int) -> dict:
 
     row = df.iloc[0]
 
-    # Extract parameters
     params = {}
     for col in df.columns:
         if col.startswith('optimal_'):
@@ -137,7 +132,6 @@ def load_all_group_results() -> dict:
     for _, row in df.iterrows():
         group_id = int(row['group_id'])
 
-        # Extract parameters
         params = {}
         for col in df.columns:
             if col.startswith('optimal_'):
@@ -200,7 +194,6 @@ def print_main_py_command(results: dict, dataset_path: str = None, output_dir: s
     print("COMMAND TO RUN MAIN.PY WITH OPTIMIZED PARAMETERS")
     print("=" * 70)
 
-    # Determine default paths based on group
     if dataset_path is None:
         dataset_path = "<PATH_TO_YOUR_INPUT_CSV>"
     if output_dir is None:
@@ -214,7 +207,6 @@ def print_main_py_command(results: dict, dataset_path: str = None, output_dir: s
     print(f'  --timestamp_column Timestamp \\')
     print(f'  --control_flow_column Activity \\')
 
-    # Autoencoder parameters
     print(f'  --num_hidden_layers {int(params.get("num_hidden_layers", 2))} \\')
     print(f'  --layer_size {int(params.get("layer_size", 128))} \\')
     print(f'  --latent_dim {int(params.get("latent_dim", 64))} \\')
@@ -224,18 +216,14 @@ def print_main_py_command(results: dict, dataset_path: str = None, output_dir: s
     print(f'  --noise_std {params.get("noise_std", 0.1)} \\')
     print(f'  --sparsity_lambda {params.get("sparsity_lambda", 0.001)} \\')
 
-    # Clustering parameters
     print(f'  --variance_threshold {params.get("variance_threshold", 1e-5)} \\')
     print(f'  --merge_threshold {params.get("merge_threshold", 0.01)} \\')
 
-    # Online adaptation parameters
     print(f'  --cluster_regularisation_weight {params.get("cluster_regularisation_weight", 0.1)} \\')
     print(f'  --memory_regularisation_weight {params.get("memory_regularisation_weight", 0.1)} \\')
 
-    # Context parameters
     print(f'  --control_flow_context_window {int(params.get("control_flow_context_window", 7))} \\')
 
-    # Training mode
     mode = results.get('optimization_mode', 'online-online')
     if mode == 'offline-online':
         print(f'  --training_approach offline')
@@ -251,7 +239,6 @@ def print_latex_table_row(results: dict):
     print("LATEX TABLE ROW (for paper)")
     print("=" * 70)
 
-    # Format: Group & Layers & Size & Latent & Batch & Dropout & LR & Noise & Sparsity & VarThr & MergeThr & ClusterReg & MemReg & Window & Score
     row_parts = [
         f"Group {results['group_id']}",
         str(int(params.get('num_hidden_layers', 2))),
@@ -326,13 +313,11 @@ Groups:
 
     args = parser.parse_args()
 
-    # Default behavior: show all groups summary
     if not args.group and not args.all and not args.json:
         args.all = True
 
     try:
         if args.json:
-            # Load from JSON file
             results = load_json_results(args.json)
             print_group_summary(results)
             if args.command:
@@ -341,7 +326,6 @@ Groups:
                 print_latex_table_row(results)
 
         elif args.all:
-            # Load and display all groups
             all_results = load_all_group_results()
             print_all_groups_summary(all_results)
 
@@ -352,7 +336,6 @@ Groups:
                     print_latex_table_row(all_results[group_id])
 
         elif args.group:
-            # Load specific group
             results = load_group_results(args.group)
             print_group_summary(results)
             if args.command:

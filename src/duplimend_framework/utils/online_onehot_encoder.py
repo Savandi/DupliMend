@@ -7,7 +7,7 @@ class OnlineOneHotEncoder:
     def encode(self, values):
         one_hot = [0] * self.max_categories
         if not isinstance(values, list):
-            values = [values]  # Convert single value to list
+            values = [values]
 
         for value in values:
             if value is None or (isinstance(value, str) and value.strip().lower() in {"", "nan", "null", "none"}):
@@ -17,7 +17,7 @@ class OnlineOneHotEncoder:
                     self.value_to_index[value] = self.next_index
                     self.next_index += 1
                 else:
-                    continue  # Ignore unknowns if capacity is full
+                    continue
             index = self.value_to_index.get(value)
             if index is not None and index < self.max_categories:
                 one_hot[index] = 1

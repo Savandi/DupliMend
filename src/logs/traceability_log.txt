@@ -1,0 +1,275 @@
+2026-08-26 09:03:57,292 - DEBUG - matplotlib data path: /home/savi/duplimend_repro/venv311/lib/python3.11/site-packages/matplotlib/mpl-data
+2026-08-26 09:03:57,296 - DEBUG - CONFIGDIR=/home/savi/.config/matplotlib
+2026-08-26 09:03:57,297 - DEBUG - interactive is False
+2026-08-26 09:03:57,298 - DEBUG - platform is linux
+2026-08-26 09:03:57,663 - DEBUG - deprecate positional args: graphviz.backend.piping.pipe(['renderer', 'formatter', 'neato_no_op', 'quiet'])
+2026-08-26 09:03:57,664 - DEBUG - deprecate positional args: graphviz.backend.rendering.render(['renderer', 'formatter', 'neato_no_op', 'quiet'])
+2026-08-26 09:03:57,665 - DEBUG - deprecate positional args: graphviz.backend.unflattening.unflatten(['stagger', 'fanout', 'chain', 'encoding'])
+2026-08-26 09:03:57,665 - DEBUG - deprecate positional args: graphviz.backend.viewing.view(['quiet'])
+2026-08-26 09:03:57,668 - DEBUG - deprecate positional args: graphviz.quoting.quote(['is_html_string', 'is_valid_id', 'dot_keywords', 'endswith_odd_number_of_backslashes', 'escape_unescaped_quotes'])
+2026-08-26 09:03:57,668 - DEBUG - deprecate positional args: graphviz.quoting.a_list(['kwargs', 'attributes'])
+2026-08-26 09:03:57,669 - DEBUG - deprecate positional args: graphviz.quoting.attr_list(['kwargs', 'attributes'])
+2026-08-26 09:03:57,669 - DEBUG - deprecate positional args: graphviz.dot.Dot.clear(['self', 'keep_attrs'])
+2026-08-26 09:03:57,669 - DEBUG - deprecate positional args: graphviz.dot.Dot.__iter__(['self', 'subgraph'])
+2026-08-26 09:03:57,669 - DEBUG - deprecate positional args: graphviz.dot.Dot.node(['label', '_attributes'])
+2026-08-26 09:03:57,669 - DEBUG - deprecate positional args: graphviz.dot.Dot.edge(['label', '_attributes'])
+2026-08-26 09:03:57,670 - DEBUG - deprecate positional args: graphviz.dot.Dot.attr(['kw', '_attributes'])
+2026-08-26 09:03:57,670 - DEBUG - deprecate positional args: graphviz.dot.Dot.subgraph(['graph', 'name', 'comment', 'graph_attr', 'node_attr', 'edge_attr', 'body'])
+2026-08-26 09:03:57,671 - DEBUG - deprecate positional args: graphviz.piping.Pipe._pipe_legacy(['format', 'renderer', 'formatter', 'neato_no_op', 'quiet'])
+2026-08-26 09:03:57,671 - DEBUG - deprecate positional args: graphviz.saving.Save.save(['filename', 'directory'])
+2026-08-26 09:03:57,672 - DEBUG - deprecate positional args: graphviz.rendering.Render.render(['filename', 'directory', 'view', 'cleanup', 'format', 'renderer', 'formatter', 'neato_no_op', 'quiet', 'quiet_view'])
+2026-08-26 09:03:57,672 - DEBUG - deprecate positional args: graphviz.rendering.Render.view(['filename', 'directory', 'cleanup', 'quiet', 'quiet_view'])
+2026-08-26 09:03:57,674 - DEBUG - deprecate positional args: graphviz.unflattening.Unflatten.unflatten(['self', 'stagger', 'fanout', 'chain'])
+2026-08-26 09:03:57,674 - DEBUG - deprecate positional args: graphviz.graphs.BaseGraph.__init__(['name', 'comment', 'filename', 'directory', 'format', 'engine', 'encoding', 'graph_attr', 'node_attr', 'edge_attr', 'body', 'strict'])
+2026-08-26 09:03:57,675 - DEBUG - deprecate positional args: graphviz.sources.Source.from_file(['filename', 'directory', 'format', 'engine', 'encoding', 'renderer', 'formatter'])
+2026-08-26 09:03:57,675 - DEBUG - deprecate positional args: graphviz.sources.Source.__init__(['source', 'filename', 'directory', 'format', 'engine', 'encoding'])
+2026-08-26 09:03:57,676 - DEBUG - deprecate positional args: graphviz.sources.Source.save(['filename', 'directory'])
+2026-08-26 09:04:03,702 - DEBUG - CLUSTER_MANAGER - A: {'action': 'created_adapter', 'algorithm': 'river_dbstream'}
+2026-08-26 09:04:03,702 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 0, 'reason': 'river_new_cluster', 'feature_count': 64}
+2026-08-26 09:04:03,706 - DEBUG - CLUSTER_MANAGER - F: {'action': 'created_adapter', 'algorithm': 'river_dbstream'}
+2026-08-26 09:04:03,706 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 0, 'reason': 'river_new_cluster', 'feature_count': 64}
+2026-08-26 09:04:03,708 - DEBUG - CLUSTER_MANAGER - C: {'action': 'created_adapter', 'algorithm': 'river_dbstream'}
+2026-08-26 09:04:03,708 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 0, 'reason': 'river_new_cluster', 'feature_count': 64}
+2026-08-26 09:04:03,710 - DEBUG - CLUSTER_MANAGER - E1: {'action': 'created_adapter', 'algorithm': 'river_dbstream'}
+2026-08-26 09:04:03,710 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 0, 'reason': 'river_new_cluster', 'feature_count': 64}
+2026-08-26 09:04:03,711 - DEBUG - CLUSTER_MANAGER - B1: {'action': 'created_adapter', 'algorithm': 'river_dbstream'}
+2026-08-26 09:04:03,711 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 0, 'reason': 'river_new_cluster', 'feature_count': 64}
+2026-08-26 09:04:03,713 - DEBUG - CLUSTER_MANAGER - D: {'action': 'created_adapter', 'algorithm': 'river_dbstream'}
+2026-08-26 09:04:03,713 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 0, 'reason': 'river_new_cluster', 'feature_count': 64}
+2026-08-26 09:04:03,721 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 1, 'reason': 'river_new_cluster', 'feature_count': 64}
+2026-08-26 09:04:03,723 - DEBUG - CLUSTER_MANAGER - B2: {'action': 'created_adapter', 'algorithm': 'river_dbstream'}
+2026-08-26 09:04:03,723 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 0, 'reason': 'river_new_cluster', 'feature_count': 64}
+2026-08-26 09:04:03,726 - DEBUG - CLUSTER_MANAGER - E2: {'action': 'created_adapter', 'algorithm': 'river_dbstream'}
+2026-08-26 09:04:03,727 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 0, 'reason': 'river_new_cluster', 'feature_count': 64}
+2026-08-26 09:04:03,734 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 2, 'reason': 'river_new_cluster', 'feature_count': 64}
+2026-08-26 09:04:03,770 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 3, 'reason': 'river_new_cluster', 'feature_count': 64}
+2026-08-26 09:04:03,801 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 4, 'reason': 'river_new_cluster', 'feature_count': 64}
+2026-08-26 09:04:03,825 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 5, 'reason': 'river_new_cluster', 'feature_count': 64}
+2026-08-26 09:04:04,654 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 6, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:04,661 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 7, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:04,668 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 8, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:04,729 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 9, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:04,771 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 10, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:04,801 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 11, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:04,808 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 12, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:04,856 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 13, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:04,865 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 14, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:04,896 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 15, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:04,961 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 16, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:05,000 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 17, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:05,033 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 18, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:05,084 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 19, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:05,138 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 20, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:05,151 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 21, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:05,223 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 22, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:05,232 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 23, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:05,247 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 24, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:05,255 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 25, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:05,274 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 26, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:05,304 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 27, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:05,384 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 28, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:05,415 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 29, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:05,418 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 30, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:05,420 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 31, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:05,474 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 32, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:05,479 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 33, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:05,674 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 34, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:05,688 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 35, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:05,697 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 36, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:05,708 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 37, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:05,744 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 38, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:05,746 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 39, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:05,763 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 40, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:05,819 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 41, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:05,821 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 42, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:05,838 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 43, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:05,842 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 44, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:05,913 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 45, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:05,923 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 46, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:05,928 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 47, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:06,103 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 48, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:06,240 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 49, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:06,255 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 50, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:06,259 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 51, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:06,268 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 52, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:06,313 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 53, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:06,337 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 54, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:06,411 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 55, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:06,415 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 56, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:06,482 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 57, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:06,487 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 58, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:06,582 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 59, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:06,595 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 60, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:06,609 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 61, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:06,645 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 62, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:06,654 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 63, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:06,722 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 64, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:06,755 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 65, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:06,806 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 66, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:06,813 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 67, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:06,833 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 68, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:07,005 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 69, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:07,027 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 70, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:07,086 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 71, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:07,141 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 72, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:07,186 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 73, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:07,235 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 74, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:07,247 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 75, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:07,261 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 76, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:07,357 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 77, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:07,383 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 78, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:07,425 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 79, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:07,452 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 80, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:07,454 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 81, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:07,478 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 82, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:07,547 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 83, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:07,681 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 84, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:07,693 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 85, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:07,711 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 86, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:07,810 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 87, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:07,823 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 88, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:07,892 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 89, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:07,991 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 90, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:07,993 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 91, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:08,001 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 92, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:08,179 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 93, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:08,222 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 94, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:08,239 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 95, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:08,272 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 96, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:08,385 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 97, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:08,396 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 98, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:08,420 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 99, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:08,438 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 100, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:08,458 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 101, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:08,493 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 102, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:08,576 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 103, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:08,627 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 104, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:08,704 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 105, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:08,920 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 106, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:08,950 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 107, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:08,969 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 108, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:08,983 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 109, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:09,008 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 110, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:09,067 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 111, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:09,273 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 112, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:09,376 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 113, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:09,413 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 114, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:09,458 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 115, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:09,525 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 116, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:09,539 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 117, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:09,553 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 118, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:09,590 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 119, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:09,665 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 120, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:09,722 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 121, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:09,765 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 122, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:09,771 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 123, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:09,784 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 124, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:09,945 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 125, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:09,950 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 126, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:10,029 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 127, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:10,122 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 128, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:10,176 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 129, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:10,195 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 130, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:10,269 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 131, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:10,298 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 132, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:10,310 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 133, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:10,367 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 134, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:10,536 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 135, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:10,606 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 136, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:10,618 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 137, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:10,680 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 138, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:10,704 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 139, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:10,848 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 140, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:10,855 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 141, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:10,924 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 142, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:10,977 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 143, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:11,068 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 144, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:11,105 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 145, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:11,413 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 146, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:11,441 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 147, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:11,542 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 148, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:11,551 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 149, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:11,711 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 150, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:11,955 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 151, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:11,961 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 152, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:11,970 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 153, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:12,006 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 154, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:12,016 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 155, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:12,025 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 156, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:12,046 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 157, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:12,216 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 158, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:12,312 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 159, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:12,576 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 160, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:12,908 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 161, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:12,964 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 162, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:13,023 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 163, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:13,034 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 164, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:13,053 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 165, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:13,059 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 166, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:13,096 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 167, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:13,227 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 168, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:13,273 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 169, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:13,317 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 170, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:13,387 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 171, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:13,484 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 172, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:13,536 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 173, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:13,591 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 174, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:13,679 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 175, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:13,809 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 176, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:13,812 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 177, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:13,819 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 178, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:14,014 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 179, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:14,103 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 180, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:14,106 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 181, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:14,150 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 182, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:14,213 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 183, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:14,313 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 184, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:14,352 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 185, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:14,423 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 186, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:14,562 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 187, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:14,592 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 188, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:14,631 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 189, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:14,850 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 190, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:14,865 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 191, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:14,942 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 192, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:15,025 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 193, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:15,045 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 194, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:15,365 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 195, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:15,459 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 196, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:15,481 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 197, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:15,521 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 198, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:15,528 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 199, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:15,543 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 200, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:15,588 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 201, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:15,651 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 202, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:16,048 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 203, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:16,188 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 204, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:16,286 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 205, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:16,289 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 206, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:16,303 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 207, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:16,387 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 208, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:16,579 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 209, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:16,695 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 210, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:16,701 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 211, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:16,853 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 212, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:17,018 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 213, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:17,104 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 214, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:17,106 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 215, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:17,132 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 216, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:17,228 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 217, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:17,422 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 218, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:17,465 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 219, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:17,495 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 220, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:17,516 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 221, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:17,633 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 222, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:17,733 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 223, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:17,852 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 224, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:17,859 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 225, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:18,039 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 226, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:18,302 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 227, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:18,438 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 228, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:18,493 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 229, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:18,552 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 230, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:18,594 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 231, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:18,611 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 232, 'reason': 'update_missing_cluster', 'feature_count': 64}
+2026-08-26 09:04:18,691 - DEBUG - CLUSTER_CREATION - RiverDBStream: {'cluster_id': 233, 'reason': 'update_missing_cluster', 'feature_count': 64}

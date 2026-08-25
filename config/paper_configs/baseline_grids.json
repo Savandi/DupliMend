@@ -1,0 +1,62 @@
+{
+  "description": "Exact parameter sweeps used for the two comparison methods. Both baselines were swept exhaustively over the full grid on every log and every seed.",
+
+  "selection_protocol": {
+    "summary": "Per-log, per-seed best-parameter selection for the baselines; a single global configuration for DupliMend.",
+    "detail": [
+      "For each (log, seed) pair the full grid below was evaluated and the best-scoring parameter combination was retained for that pair.",
+      "This is deliberately favourable to the baselines: they effectively receive per-log oracle tuning, whereas DupliMend is evaluated with one fixed global configuration (config/paper_configs/duplimend_global.json) across all logs.",
+      "Report both the swept results and the selected-best results when comparing; the raw sweep is the file with all parameter columns, the selected subset is the BEST_PARAMS_ONLY file."
+    ],
+    "row_counts": {
+      "logs": 1304,
+      "seeds": 10,
+      "rows_per_method_after_selection": 13040,
+      "methods": ["Label-Refinement", "PM-Label-Splitting", "Unrefined"]
+    }
+  },
+
+  "methods": {
+    "Label-Refinement": {
+      "reference": "Lu et al., label refinement via variant/unfolding thresholds",
+      "grid": {
+        "variant_threshold": [0.0, 0.1, 0.2, 0.25, 0.3, 0.4, 0.5, 0.6, 0.7, 0.75, 0.8, 0.9, 1.0],
+        "unfolding_threshold": [0.0, 0.1, 0.2, 0.25, 0.3, 0.4, 0.5, 0.6, 0.7, 0.75, 0.8, 0.9, 1.0]
+      },
+      "n_combinations": 169
+    },
+
+    "PM-Label-Splitting": {
+      "reference": "PM label-splitting baseline over context-window distance",
+      "grid": {
+        "similarity_threshold": [0.0, 0.1, 0.2, 0.25, 0.3, 0.4, 0.5, 0.6, 0.7, 0.75, 0.8, 0.9, 1.0],
+        "context_size": [1, 2, 3, 4, 5],
+        "distance_metric": ["edit", "multiset", "set"]
+      },
+      "n_combinations": 195
+    },
+
+    "Unrefined": {
+      "reference": "The input log with no refinement applied; the lower-bound control condition.",
+      "grid": {},
+      "n_combinations": 1,
+      "note": "No parameters. One row per (log, seed)."
+    }
+  },
+
+  "metrics_recorded": [
+    "Expected_Entropy_Clusters",
+    "Expected_Entropy_Labels",
+    "NMI",
+    "ARI",
+    "Log_Precision",
+    "Log_Fitness",
+    "F-score",
+    "Silhouette_Score"
+  ],
+
+  "simulation_fallback": {
+    "status": "disabled by default",
+    "detail": "python-label-refinement-baselines/main.py previously substituted simulated metrics when a real run failed. It now aborts instead. Simulated output requires the explicit --allow-simulation-fallback flag (or PM_ALLOW_SIM_FALLBACK=1), and no published result was produced with that flag set."
+  }
+}

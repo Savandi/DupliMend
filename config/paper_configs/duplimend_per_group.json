@@ -1,0 +1,141 @@
+{
+  "description": "Per-group Bayesian-optimization winners. The global configuration in duplimend_global.json is the median/mode across these four. Reported results use the GLOBAL configuration; these are provided so the optimization stage itself can be audited.",
+  "protocol": {
+    "sampler": "optuna TPE",
+    "optimization_seed": 42,
+    "total_trials": 400,
+    "objective_note": "Groups with ground-truth labels were optimized on ARI; real-life groups without duplicate-label ground truth were optimized on the Silhouette score."
+  },
+
+  "groups": [
+    {
+      "study_name": "group1_synthetic",
+      "group_name": "Synthetic Logs",
+      "datasets": ["duplicated_tasks", "ipalia", "document_review"],
+      "n_trials": 75,
+      "direction": "maximize",
+      "metric": "ARI",
+      "best_value": 0.8497,
+      "params": {
+        "n_hidden_layers": 2,
+        "layer_size": 128,
+        "latent_dim": 64,
+        "batch_size": 64,
+        "dropout_rate": 0.18,
+        "learning_rate": 0.0008,
+        "noise_level_sigma": 0.14,
+        "sparsity_weight_lambda_s": 0.0045,
+        "variance_threshold_epsilon_split": 8e-06,
+        "merge_threshold_epsilon_merge": 0.009,
+        "cluster_reg_weight_lambda_c": 0.28,
+        "memory_reg_weight_alpha": 0.19,
+        "context_window_size": 7
+      },
+      "per_dataset_scores": {
+        "duplicated_tasks": {"metric": "ARI", "value": 0.58, "n_logs": 1295},
+        "ipalia": {"metric": "ARI", "value": 0.9854, "n_logs": 1},
+        "document_review": {"metric": "ARI", "value": 0.9837, "n_logs": 1}
+      }
+    },
+    {
+      "study_name": "group2_reallife_moderate",
+      "group_name": "Real-Life Moderate Complexity",
+      "datasets": ["bpic2012", "bpic2013", "environmental_permits"],
+      "n_trials": 75,
+      "direction": "maximize",
+      "metric": "Silhouette",
+      "best_value": 0.5594,
+      "params": {
+        "n_hidden_layers": 2,
+        "layer_size": 128,
+        "latent_dim": 64,
+        "batch_size": 64,
+        "dropout_rate": 0.21,
+        "learning_rate": 0.0011,
+        "noise_level_sigma": 0.16,
+        "sparsity_weight_lambda_s": 0.0055,
+        "variance_threshold_epsilon_split": 1.2e-05,
+        "merge_threshold_epsilon_merge": 0.011,
+        "cluster_reg_weight_lambda_c": 0.32,
+        "memory_reg_weight_alpha": 0.21,
+        "context_window_size": 7
+      },
+      "per_dataset_scores": {
+        "bpic2012": {"metric": "Silhouette", "value": 0.5757, "n_logs": 1},
+        "bpic2013": {"metric": "Silhouette", "value": 0.6385, "n_logs": 1},
+        "environmental_permits": {"metric": "Silhouette", "value": 0.464, "n_logs": 1}
+      }
+    },
+    {
+      "study_name": "group3_reallife_high",
+      "group_name": "Real-Life High Complexity",
+      "datasets": ["bpic2017", "road_traffic_fines"],
+      "n_trials": 100,
+      "direction": "maximize",
+      "metric": "Silhouette",
+      "best_value": 0.628,
+      "params": {
+        "n_hidden_layers": 2,
+        "layer_size": 256,
+        "latent_dim": 128,
+        "batch_size": 128,
+        "dropout_rate": 0.23,
+        "learning_rate": 0.0013,
+        "noise_level_sigma": 0.17,
+        "sparsity_weight_lambda_s": 0.0058,
+        "variance_threshold_epsilon_split": 1.5e-05,
+        "merge_threshold_epsilon_merge": 0.012,
+        "cluster_reg_weight_lambda_c": 0.35,
+        "memory_reg_weight_alpha": 0.23,
+        "context_window_size": 7
+      },
+      "per_dataset_scores": {
+        "bpic2017": {"metric": "Silhouette", "value": 0.596, "n_logs": 1},
+        "road_traffic_fines": {"metric": "Silhouette", "value": 0.6599, "n_logs": 1}
+      }
+    },
+    {
+      "study_name": "group4_largescale",
+      "group_name": "Large-Scale Streaming",
+      "datasets": ["cybersec_iot"],
+      "n_trials": 150,
+      "direction": "maximize",
+      "metric": "ARI",
+      "best_value": 0.75,
+      "params": {
+        "n_hidden_layers": 2,
+        "layer_size": 256,
+        "latent_dim": 128,
+        "batch_size": 64,
+        "dropout_rate": 0.19,
+        "learning_rate": 0.0009,
+        "noise_level_sigma": 0.15,
+        "sparsity_weight_lambda_s": 0.0048,
+        "variance_threshold_epsilon_split": 1e-05,
+        "merge_threshold_epsilon_merge": 0.01,
+        "cluster_reg_weight_lambda_c": 0.3,
+        "memory_reg_weight_alpha": 0.2,
+        "context_window_size": 7
+      },
+      "per_dataset_scores": {
+        "cybersec_iot": {"metric": "ARI", "value": 0.75, "n_logs": 5017}
+      }
+    }
+  ],
+
+  "search_space": {
+    "n_hidden_layers": {"type": "categorical", "choices": [1, 2, 3]},
+    "layer_size": {"type": "categorical", "choices": [32, 64, 128, 256, 512]},
+    "latent_dim": {"type": "categorical", "choices": [32, 64, 128, 256]},
+    "batch_size": {"type": "categorical", "choices": [16, 32, 64, 128]},
+    "dropout_rate": {"type": "uniform", "low": 0.0, "high": 0.5},
+    "learning_rate": {"type": "loguniform", "low": 0.0001, "high": 0.01},
+    "noise_level_sigma": {"type": "uniform", "low": 0.05, "high": 0.3},
+    "sparsity_weight_lambda_s": {"type": "loguniform", "low": 0.0001, "high": 0.01},
+    "variance_threshold_epsilon_split": {"type": "loguniform", "low": 1e-07, "high": 0.0001},
+    "merge_threshold_epsilon_merge": {"type": "loguniform", "low": 0.001, "high": 0.5},
+    "cluster_reg_weight_lambda_c": {"type": "uniform", "low": 0.01, "high": 0.5},
+    "memory_reg_weight_alpha": {"type": "uniform", "low": 0.01, "high": 0.5},
+    "context_window_size": {"type": "categorical", "choices": [3, 5, 7, 10]}
+  }
+}

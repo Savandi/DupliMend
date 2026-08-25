@@ -15,7 +15,6 @@ class ClusterAwareAutoencoder(SparseDenoisingAutoencoder):
                  noise_std=0.1, cluster_regularization_config=None, memory_config=None):
         super().__init__(input_dim, latent_dim, hidden_dims, sparsity_lambda, noise_std)
         
-        # Initialize cluster-aware regularizer (can be None during warmup)
         if cluster_regularization_config is not None:
             self.cluster_regularizer = ClusterAwareRegularizer(cluster_regularization_config)
             self.enable_cluster_regularization = True
@@ -25,7 +24,6 @@ class ClusterAwareAutoencoder(SparseDenoisingAutoencoder):
             self.enable_cluster_regularization = False
             self.cluster_reg_weight = 0.0
         
-        # Initialize centroid memory manager (can be disabled during warmup)
         if memory_config is not None:
             self.memory_manager = CentroidMemoryManager(memory_config)
             self.enable_memory_regularization = memory_config.get("enable_memory_regularization", True)
@@ -33,7 +31,6 @@ class ClusterAwareAutoencoder(SparseDenoisingAutoencoder):
             self.memory_manager = None
             self.enable_memory_regularization = False
         
-        # Track training state
         self.current_activity = None
         self.training_step = 0
 
@@ -53,10 +50,8 @@ class ClusterAwareAutoencoder(SparseDenoisingAutoencoder):
             z: Latent embeddings
             losses: Dictionary containing all loss components
         """
-        # Standard forward pass
         x_reconstructed, z = self.forward(x)
         
-        # Calculate standard losses
         reconstruction_loss = nn.functional.mse_loss(x_reconstructed, x)
         sparsity_loss = self.sparsity_lambda * torch.mean(torch.abs(z))
         
@@ -122,15 +117,13 @@ class ClusterAwareAutoencoder(SparseDenoisingAutoencoder):
         if not cluster_assignments or z.size(0) == 0:
             return
         
-        # Group embeddings by cluster
         clusters = {}
         for i, cluster_id in enumerate(cluster_assignments):
-            if cluster_id >= 0:  # Valid cluster
+            if cluster_id >= 0:
                 if cluster_id not in clusters:
                     clusters[cluster_id] = []
                 clusters[cluster_id].append(z[i].detach().cpu().numpy())
         
-        # Update memory for each cluster
         for cluster_id, embeddings in clusters.items():
             if embeddings:
                 self.memory_manager.update_cluster_memory(
@@ -143,7 +136,6 @@ class ClusterAwareAutoencoder(SparseDenoisingAutoencoder):
         if not cluster_assignments or len(set(cluster_assignments)) < 2:
             return {'quality_ok': True, 'reason': 'insufficient_clusters'}
         
-        # Group embeddings by cluster
         clusters = {}
         for i, cluster_id in enumerate(cluster_assignments):
             if cluster_id >= 0:
@@ -151,13 +143,11 @@ class ClusterAwareAutoencoder(SparseDenoisingAutoencoder):
                     clusters[cluster_id] = []
                 clusters[cluster_id].append(z[i])
         
-        # Convert to tensors
         cluster_tensors = {}
         for cluster_id, embedding_list in clusters.items():
             if embedding_list:
                 cluster_tensors[cluster_id] = torch.stack(embedding_list)
         
-        # Check for degradation
         degradation_result = self.cluster_regularizer.detect_cluster_quality_degradation(
             cluster_tensors, activity_label
         )

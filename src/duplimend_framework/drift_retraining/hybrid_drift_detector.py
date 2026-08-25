@@ -11,17 +11,13 @@ class HybridDriftDetector:
     def __init__(self, config=None):
         self.config = config or {}
         
-        # Initialize drift detectors
         self.adwin_detector = ADWINDriftDetector(config)
         
-        # Control flags
         self.use_embedding_detector = self.config.get("use_embedding_detector", False)
         self.use_adwin_detector = self.config.get("use_adwin_detector", True)
         
-        # Drift combination strategy
-        self.combination_strategy = self.config.get("drift_combination_strategy", "any")  # "any", "all", "majority"
+        self.combination_strategy = self.config.get("drift_combination_strategy", "any")
         
-        # Tracking
         self.min_observations = self.config.get("min_observations_for_drift", 100)
         self.warmup_events = self.config.get("warmup_global_events", 4000)
         self.event_counter = 0
@@ -41,9 +37,9 @@ class HybridDriftDetector:
         """Detect drift for an activity using configured detectors"""
         return self.update_and_detect_drift(
             activity_label=activity_label,
-            centroids=[],  # Will be fetched from history if needed
-            embeddings=np.array([]),  # Will be fetched from history if needed
-            reconstruction_error=0.0,  # Will be fetched from ADWIN if needed
+            centroids=[],
+            embeddings=np.array([]),
+            reconstruction_error=0.0,
             timestamp=timestamp
         )
     
@@ -65,7 +61,6 @@ class HybridDriftDetector:
         """
         self.event_counter += 1
         
-        # Check warmup phase
         if self.event_counter < self.warmup_events:
             return {
                 'drift_detected': False,
@@ -80,14 +75,12 @@ class HybridDriftDetector:
             'detection_methods': {}
         }
         
-        # Embedding-based drift detection
         if self.use_embedding_detector:
             self.embedding_detector.update_centroids(activity_label, centroids, timestamp)
             self.embedding_detector.update_embedding_norms(activity_label, embeddings, timestamp)
             embedding_drift = self.embedding_detector.detect_drift(activity_label, timestamp)
             results['detection_methods']['embedding'] = embedding_drift
         
-        # ADWIN-based comprehensive drift detection
         if self.use_adwin_detector:
             adwin_drift = self.adwin_detector.detect_combined_drift(
                 activity_label=activity_label,
@@ -98,14 +91,11 @@ class HybridDriftDetector:
             )
             results['detection_methods']['adwin'] = adwin_drift
         
-        # Combine drift signals based on strategy
         results['drift_detected'] = self._combine_drift_signals(results['detection_methods'])
         
-        # Determine severity and recommendation
         results['severity'] = self._calculate_overall_severity(results['detection_methods'])
         results['recommendation'] = self._get_recommendation(results)
         
-        # Record drift event if detected
         if results['drift_detected']:
             self.drift_history.append({
                 'activity': activity_label,
@@ -185,15 +175,12 @@ class HybridDriftDetector:
         severity = results['severity']
         triggered_methods = self._get_triggered_methods(results['detection_methods'])
         
-        # High severity or multiple drift types
         if severity == 'high' or len(triggered_methods) >= 3:
             return 'immediate_retraining'
         
-        # Medium severity with reconstruction error drift
         if severity == 'medium' and 'adwin_reconstruction_error' in triggered_methods:
             return 'schedule_retraining'
         
-        # Low severity or single drift type
         if severity == 'low':
             return 'increase_monitoring'
         
@@ -204,7 +191,7 @@ class HybridDriftDetector:
         summary = {
             'total_events': self.event_counter,
             'warmup_complete': self.event_counter >= self.warmup_events,
-            'drift_history': self.drift_history[-10:],  # Last 10 drift events
+            'drift_history': self.drift_history[-10:],
             'total_drifts': len(self.drift_history)
         }
         
@@ -227,44 +214,36 @@ class HybridDriftDetector:
         Returns:
             Tuple of (should_retrain: bool, info: dict with details)
         """
-        # Check recent drift history for this activity
         recent_drifts = [d for d in self.drift_history 
                         if d['activity'] == activity_label]
         
         if not recent_drifts:
             return False, {'reason': 'no_drift_history'}
         
-        # Get the most recent drift event
         latest_drift = recent_drifts[-1]
         
-        # Decision based on severity and recommendation
         should_retrain = False
         info = {
             'latest_drift': latest_drift,
             'total_drifts': len(recent_drifts)
         }
         
-        # Immediate retraining for high severity
         if latest_drift['severity'] == 'high':
             should_retrain = True
             info['reason'] = 'high_severity_drift'
-        # Check for repeated medium severity drifts
         elif latest_drift['severity'] == 'medium' and len(recent_drifts) >= 2:
             should_retrain = True
             info['reason'] = 'repeated_medium_severity_drift'
-        # Multiple drift types detected simultaneously
         elif len(latest_drift.get('methods_triggered', [])) >= 3:
             should_retrain = True
             info['reason'] = 'multiple_drift_types_detected'
         
-        # Check ADWIN-specific drift counts
         if self.use_adwin_detector:
             adwin_summary = self.adwin_detector.get_drift_summary(activity_label)
             if adwin_summary and 'activities' in adwin_summary:
                 activity_data = adwin_summary['activities'].get(activity_label, {})
                 drift_counts = activity_data.get('drift_counts', {})
                 
-                # Count different types of ADWIN drifts
                 reconstruction_drifts = drift_counts.get('reconstruction_error', 0)
                 embedding_drifts = drift_counts.get('embedding_norm', 0) + drift_counts.get('embedding_variance', 0)
                 cluster_drifts = drift_counts.get('inter_cluster_distance', 0)
@@ -273,14 +252,13 @@ class HybridDriftDetector:
                 info['adwin_drift_counts'] = drift_counts
                 info['total_adwin_drifts'] = total_adwin_drifts
                 
-                # Trigger based on ADWIN drift patterns (no fixed windows)
-                if reconstruction_drifts >= 2:  # Reconstruction error is critical
+                if reconstruction_drifts >= 2:
                     should_retrain = True
                     info['reason'] = f'multiple_reconstruction_error_drifts ({reconstruction_drifts})'
-                elif total_adwin_drifts >= 4:  # Multiple drifts across metrics
+                elif total_adwin_drifts >= 4:
                     should_retrain = True
                     info['reason'] = f'excessive_total_drifts ({total_adwin_drifts})'
-                elif embedding_drifts >= 3:  # Embedding space is changing
+                elif embedding_drifts >= 3:
                     should_retrain = True
                     info['reason'] = f'embedding_space_instability ({embedding_drifts})'
         
@@ -292,11 +270,9 @@ class HybridDriftDetector:
             if activity_label:
                 self.adwin_detector.reset_detector(activity_label)
             else:
-                # Reset all activities
                 for activity in self.adwin_detector.event_counters.keys():
                     self.adwin_detector.reset_detector(activity)
         
-        # Note: embedding_detector doesn't have a reset method, but we could add one if needed
         
     def save_state(self, filepath: str):
         """Save drift detection state"""
@@ -313,7 +289,6 @@ class HybridDriftDetector:
         with open(filepath, 'w') as f:
             json.dump(state, f, indent=2, default=str)
         
-        # Save individual detector states
         if self.use_embedding_detector:
             self.embedding_detector.save_drift_state(filepath.replace('.json', '_embedding.json'))
         

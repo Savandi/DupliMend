@@ -9,7 +9,6 @@ df = pm4py.format_dataframe(
 )
 bpmn_model = pm4py.discover_bpmn_inductive(df)
 
-# Save as SVG
 from pm4py.visualization.bpmn import visualizer as bpmn_visualizer
 gviz = bpmn_visualizer.apply(bpmn_model)
 bpmn_visualizer.save(gviz, "bpmn_model.svg")

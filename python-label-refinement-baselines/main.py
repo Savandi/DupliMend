@@ -12,6 +12,43 @@ from pathlib import Path
 # Add the pm-label-splitting directory to Python path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'pm-label-splitting'))
 
+# === SIMULATION FALLBACK POLICY ===
+# When the real algorithm fails, this pipeline used to silently substitute simulated
+# or hardcoded metrics, producing CSVs indistinguishable from genuine results. That is
+# now opt-in: by default a failure aborts the run so it cannot be mistaken for a result.
+# Explicit simulation ('main.py <index> sim') is unaffected — that is a deliberate request.
+ALLOW_SIM_FALLBACK = (
+    '--allow-simulation-fallback' in sys.argv
+    or os.environ.get('PM_ALLOW_SIM_FALLBACK', '').lower() in ('1', 'true', 'yes')
+)
+
+
+# Repo-relative path defaults, overridable by environment, so this runs on any machine.
+_REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+_DEFAULT_SYNTHETIC = os.environ.get(
+    'DUPLIMEND_BASELINE_DATA', os.path.join(_REPO_ROOT, 'data', 'noImprInLoop_default_OD'))
+_DEFAULT_REAL = os.environ.get(
+    'DUPLIMEND_REAL_LOG',
+    os.path.join(_REPO_ROOT, 'data', 'BPI_Challenge_2013_closed_problems.xes'))
+_DEFAULT_RESULTS = os.path.join(
+    os.environ.get('DUPLIMEND_RESULTS_DIR', os.path.join(_REPO_ROOT, 'evaluation_results')),
+    'baselines', 'pm_label_splitting')
+
+
+def refuse_fallback(context, error=None):
+    """Abort rather than substitute simulated values for a failed real run."""
+    print("\n" + "=" * 60)
+    print(f"❌ REAL PROCESSING FAILED: {context}")
+    if error is not None:
+        print(f"   Cause: {error}")
+    print("   Refusing to substitute simulated metrics, which would be")
+    print("   indistinguishable from real results in the output CSV.")
+    print("   Fix the underlying failure, or re-run with")
+    print("   --allow-simulation-fallback (or PM_ALLOW_SIM_FALLBACK=1) if you")
+    print("   explicitly want clearly-labelled simulated output.")
+    print("=" * 60)
+    sys.exit(1)
+
 # Import CSV support
 try:
     from csv_adapter import CSVToXESAdapter
@@ -47,13 +84,13 @@ else:
         pm_config = evaluation_config.get("baseline_evaluation_config", {}).get("pm_label_splitting", {})
 
         # Get data paths
-        DATA_PATH_SYNTHETIC = pm_config.get("data_path_synthetic", "./data/noImprInLoop_default_OD")
-        DATA_PATH_REAL = pm_config.get("data_path_real", r"U:\Research\Projects\sef\stream_quality_drift\BPI Challenge 2013, closed problems_1_all\BPI_Challenge_2013_closed_problems.xes")
+        DATA_PATH_SYNTHETIC = pm_config.get("data_path_synthetic", _DEFAULT_SYNTHETIC)
+        DATA_PATH_REAL = pm_config.get("data_path_real", _DEFAULT_REAL)
 
         # Get output paths
-        OUTPUT_BASE_DIR = pm_config.get("output_dir", r"U:\Research\Projects\sef\stream_quality_drift\homonym_experiment\evaluation_results\baselines\pm_label_splitting\outputs")
-        RESULTS_BASE_DIR = pm_config.get("results_dir", r"U:\Research\Projects\sef\stream_quality_drift\homonym_experiment\evaluation_results\baselines\pm_label_splitting\results")
-        BEST_RESULTS_DIR = pm_config.get("best_results_dir", r"U:\Research\Projects\sef\stream_quality_drift\homonym_experiment\evaluation_results\baselines\pm_label_splitting\best_results")
+        OUTPUT_BASE_DIR = pm_config.get("output_dir", os.path.join(_DEFAULT_RESULTS, 'outputs'))
+        RESULTS_BASE_DIR = pm_config.get("results_dir", os.path.join(_DEFAULT_RESULTS, 'results'))
+        BEST_RESULTS_DIR = pm_config.get("best_results_dir", os.path.join(_DEFAULT_RESULTS, 'best_results'))
 
         # DATA_PATH will be set based on command line arguments in main() function
         # Both synthetic and real paths are available
@@ -66,11 +103,11 @@ else:
     except ImportError:
         # PRIORITY 3: Fallback if config import fails
         print("⚠️  Could not import DupliMend config, using fallback paths")
-        DATA_PATH_SYNTHETIC = "./data/noImprInLoop_default_OD"  # Fallback synthetic data path
-        DATA_PATH_REAL = "./data/noImprInLoop_default_OD/feb16-1625/logs/A_1_Log.xes.gz"  # Fallback real data path
-        OUTPUT_BASE_DIR = r"C:\Users\drana\Documents\GitHub\DupliMend\src\evaluation_results\baselines\label_refinement\outputs"
-        RESULTS_BASE_DIR = r"C:\Users\drana\Documents\GitHub\DupliMend\src\evaluation_results\baselines\label_refinement\results"
-        BEST_RESULTS_DIR = r"C:\Users\drana\Documents\GitHub\DupliMend\src\evaluation_results\baselines\label_refinement\best_results"
+        DATA_PATH_SYNTHETIC = _DEFAULT_SYNTHETIC  # Fallback synthetic data path
+        DATA_PATH_REAL = os.path.join(_DEFAULT_SYNTHETIC, 'feb16-1625', 'logs', 'A_1_Log.xes.gz')
+        OUTPUT_BASE_DIR = os.path.join(_DEFAULT_RESULTS, 'outputs')
+        RESULTS_BASE_DIR = os.path.join(_DEFAULT_RESULTS, 'results')
+        BEST_RESULTS_DIR = os.path.join(_DEFAULT_RESULTS, 'best_results')
 
 # Create required directories using configuration
 Path(OUTPUT_BASE_DIR).mkdir(parents=True, exist_ok=True)
@@ -374,6 +411,9 @@ def create_real_enhanced_csv_with_fallback(folder_name, log_identifier, log_name
         pm4py_available = False
     
     if not pm4py_available:
+        if not ALLOW_SIM_FALLBACK:
+            refuse_fallback(f"pm4py unavailable, required for real analysis of "
+                            f"{folder_name}/{log_identifier}")
         print("🎭 pm4py unavailable - falling back to simulation mode...")
         return create_enhanced_synthetic_csv_single_log(folder_name, log_identifier, log_name, log_path)
     
@@ -502,6 +542,11 @@ def create_real_enhanced_csv_with_fallback(folder_name, log_identifier, log_name
 
                             except Exception as analysis_error:
                                 print(f"    ⚠️  Analysis error for {distance_metric}, threshold {threshold}: {analysis_error}")
+                                if not ALLOW_SIM_FALLBACK:
+                                    refuse_fallback(
+                                        f"analysis of {log_name} ({distance_metric}, "
+                                        f"window {window_size}, threshold {threshold})",
+                                        analysis_error)
                                 # Use fallback values for this parameter combination
                                 row = [
                                     log_name, 100, 'AUTO', 'A,B,C', 0.75, 0.70, 0.65, 0.85,
@@ -514,6 +559,9 @@ def create_real_enhanced_csv_with_fallback(folder_name, log_identifier, log_name
 
             except Exception as variant_error:
                 print(f"    ⚠️  Error processing {variant_name}: {variant_error}")
+                if not ALLOW_SIM_FALLBACK:
+                    refuse_fallback(f"processing variant {variant_name} of {log_name}",
+                                    variant_error)
                 print(f"    🔄 Using fallback for {variant_name}...")
 
                 # Generate fallback data for this variant
@@ -544,6 +592,8 @@ def create_real_enhanced_csv_with_fallback(folder_name, log_identifier, log_name
         
     except Exception as e:
         print(f"⚠️  Real PM processing failed: {e}")
+        if not ALLOW_SIM_FALLBACK:
+            refuse_fallback(f"real PM processing for {folder_name}/{log_identifier}", e)
         print("🎭 Falling back to simulation mode...")
 
         # Remove incomplete file and use simulation
@@ -779,6 +829,8 @@ def main() -> None:
                 print(f"❌ Error running actual pm-label-splitting: {e}")
                 import traceback
                 traceback.print_exc()
+                if not ALLOW_SIM_FALLBACK:
+                    refuse_fallback("the actual pm-label-splitting algorithm", e)
                 print("\n🔄 Falling back to simulation mode...")
 
                 # Use simulation mode as final fallback - process each log separately

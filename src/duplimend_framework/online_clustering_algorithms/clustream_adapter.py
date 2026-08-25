@@ -11,14 +11,12 @@ class CluStreamAdapter(ClusteringAdapter):
     def __init__(self, config=None):
         super().__init__("RiverCluStream", config)
         
-        # Default parameters
         self.n_macro_clusters = self.config.get("n_macro_clusters")
         self.max_micro_clusters = self.config.get("max_micro_clusters")
         self.time_gap = self.config.get("time_gap")
         self.halflife = self.config.get("halflife")
         self.split_perturbation = self.config.get("split_perturbation", 0.05)
         
-        # Initialize River's CluStream
         self.clustream = cluster.CluStream(
             n_macro_clusters=self.n_macro_clusters,
             max_micro_clusters=self.max_micro_clusters,
@@ -27,7 +25,6 @@ class CluStreamAdapter(ClusteringAdapter):
         )
         print(f"[DEBUG] CluStream parameters: n_macro_clusters={self.n_macro_clusters}, max_micro_clusters={self.max_micro_clusters}, time_gap={self.time_gap}, halflife={self.halflife}")
         
-        # Map River's internal cluster IDs to our IDs
         self.river_to_adapter_ids = {}
         self.micro_clusters = {}
         self.feature_names = None
@@ -41,20 +38,16 @@ class CluStreamAdapter(ClusteringAdapter):
         Synchronize River's micro-clusters with the adapter's clusters.
         Ensures every River micro-cluster has a corresponding adapter cluster.
         """
-        # Get River's micro-clusters (assume self.clustream.microclusters is a dict)
         river_micro_clusters = getattr(self.clustream, "microclusters", {})
         for river_id, mc in river_micro_clusters.items():
-            # Defensive: skip if missing attributes
             if not hasattr(mc, "center") or not hasattr(mc, "n"):
                 continue
-            # Update or add micro-cluster info
             self.micro_clusters[river_id] = {
                 "centroid": np.array(mc.center),
                 "weight": mc.n,
                 "samples": mc.n,
                 "feature_names": self.feature_names
             }
-            # Ensure mapping exists
             if river_id not in self.river_to_adapter_ids:
                 adapter_id = self.create_new_cluster(
                     np.array(mc.center),
@@ -77,12 +70,10 @@ class CluStreamAdapter(ClusteringAdapter):
 
         river_id = self.clustream.predict_one(x)
         if river_id is None:
-            # Fallback: assign to latest micro-cluster if available
             river_id = max(self.micro_clusters.keys()) if self.micro_clusters else 0
 
         adapter_id = self.river_to_adapter_ids.get(river_id)
         if adapter_id is None:
-            # Should not happen if _update_micro_clusters is correct, but fallback
             adapter_id = self.create_new_cluster(vector, feature_names, reason="clustream_fallback", timestamp=timestamp)
             self.river_to_adapter_ids[river_id] = adapter_id
             is_new_cluster = True
@@ -95,7 +86,6 @@ class CluStreamAdapter(ClusteringAdapter):
         return adapter_id, is_new_cluster
     
     def get_significant_clusters(self, min_weight):
-        # Return adapter IDs, not River IDs
         print(f"[DEBUG] get_significant_clusters: river_to_adapter_ids={self.river_to_adapter_ids}, micro_clusters={self.micro_clusters}")
         return [
             self.river_to_adapter_ids[river_id]
@@ -104,7 +94,6 @@ class CluStreamAdapter(ClusteringAdapter):
         ]
 
     def get_cluster_centroid(self, cluster_id):
-        # Find the River ID for this adapter ID
         for river_id, adapter_id in self.river_to_adapter_ids.items():
             if adapter_id == cluster_id:
                 return self.micro_clusters[river_id]["centroid"]
@@ -112,7 +101,7 @@ class CluStreamAdapter(ClusteringAdapter):
 
     def get_macro_clusters(self, n_macro_clusters=None, min_cluster_weight=None):
         n_macro_clusters = n_macro_clusters or self.n_macro_clusters
-        min_cluster_weight = min_cluster_weight or 0  # Default to 0 if not set
+        min_cluster_weight = min_cluster_weight or 0
         centroids = []
         micro_ids = []
         for cid, info in self.micro_clusters.items():

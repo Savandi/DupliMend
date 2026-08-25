@@ -19,18 +19,15 @@ def save_checkpoint_state(checkpoint_event_count, total_processed, cluster_manag
     checkpoint_dir = os.path.join(output_dir, f"checkpoint_{checkpoint_event_count}")
     os.makedirs(checkpoint_dir, exist_ok=True)
     
-    # 1. Save event vectors up to this point
     event_vectors_path = os.path.join(checkpoint_dir, f"event_feature_vectors_checkpoint_{checkpoint_event_count}.jsonl")
     with open(event_vectors_path, "w") as f:
         for event_vector_data in event_vectors_buffer:
             f.write(json.dumps(event_vector_data) + "\n")
     
-    # 2. Save centroids at this checkpoint
     centroids_path = os.path.join(checkpoint_dir, f"centroids_checkpoint_{checkpoint_event_count}.json")
     checkpoint_name = f"{file_name_prefix}_checkpoint_{checkpoint_event_count}" if file_name_prefix else f"checkpoint_{checkpoint_event_count}"
     cluster_tracker.save_final_centroids(cluster_manager, centroids_path, checkpoint_name)
     
-    # 3. Create refined log with cluster mapping for events up to this point
     refined_log_path = os.path.join(checkpoint_dir, f"refined_log_with_clusters_checkpoint_{checkpoint_event_count}.csv")
     
     create_refined_log_with_cluster_mapping(

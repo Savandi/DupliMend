@@ -143,6 +143,25 @@ def load_env_config():
 # Load environment overrides
 ENV_OVERRIDES = load_env_config()
 
+# === PORTABLE PATH ROOTS ===
+# All dataset and results locations are resolved relative to these roots so the
+# repository runs on any machine. Override them with environment variables to point
+# at a shared drive or scratch space; the defaults are repo-relative.
+#
+#   DUPLIMEND_DATA_DIR      raw/processed input logs        (default ./data)
+#   DUPLIMEND_OUTPUT_DIR    run artefacts and tracking dirs (default ./run_output)
+#   DUPLIMEND_RESULTS_DIR   evaluation results              (default ./evaluation_results)
+#   DUPLIMEND_BASELINE_DATA folder-based BPM2016 synthetic logs
+#                                                           (default $DUPLIMEND_DATA_DIR/noImprInLoop_default_OD)
+REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+DATA_DIR = os.environ.get('DUPLIMEND_DATA_DIR', os.path.join(REPO_ROOT, 'data'))
+OUTPUT_DIR = os.environ.get('DUPLIMEND_OUTPUT_DIR', 'run_output')
+RESULTS_DIR = os.environ.get('DUPLIMEND_RESULTS_DIR', 'evaluation_results')
+BASELINE_DATA_DIR = os.environ.get('DUPLIMEND_BASELINE_DATA',
+                                   os.path.join(DATA_DIR, 'noImprInLoop_default_OD'))
+SYNTHETIC_LOGS_DIR = os.path.join(REPO_ROOT, 'src', 'synthetic_logs')
+
 # === TRAINING APPROACH DETECTION ===
 def detect_training_approach():
     """Detect whether we're using offline or online training approach"""
@@ -181,27 +200,24 @@ if ENV_OVERRIDES:
 # case_id_column = 'SYSCALL_pid'
 # event_id_column = 'EventID'
 
-# === I-PALIA Dataset Configuration (Default for Quick Start) ===
-control_flow_column = 'concept:name'
-timestamp_column = 'time:timestamp'
-resource_column = None
-case_id_column = 'case:concept:name'
-event_id_column = 'EventID'
-
-# === Alternative configurations (uncomment to switch datasets) ===
-# --- Document Review Process ---
-# control_flow_column = 'Activity'
-# timestamp_column = 'Timestamp'
-# resource_column = 'Resource'
-# case_id_column = 'CaseID'
-# event_id_column = 'EventID'
-
-# --- CybersecIoT ---
-# control_flow_column = 'activity_label'
-# timestamp_column = 'SYSCALL_timestamp'
-# resource_column = None
-# case_id_column = 'SYSCALL_pid'
-# event_id_column = 'EventID'
+# === Stream-processing column configuration ===
+# These name the columns main.py reads while consuming the stream. They default
+# to I-PALIA but are environment-driven, so a different log can be processed
+# without editing this file -- previously the only way to switch datasets was to
+# uncomment one of the blocks below, and a mismatched case column fails on every
+# single event.
+#
+#   I-PALIA          CONTROL_FLOW_COLUMN=concept:name   CASE_ID_COLUMN=case:concept:name
+#                    TIMESTAMP_COLUMN=time:timestamp    RESOURCE_COLUMN=(unset)
+#   Document Review  CONTROL_FLOW_COLUMN=Activity       CASE_ID_COLUMN=CaseID
+#                    TIMESTAMP_COLUMN=Timestamp         RESOURCE_COLUMN=Resource
+#   CybersecIoT      CONTROL_FLOW_COLUMN=activity_label CASE_ID_COLUMN=SYSCALL_pid
+#                    TIMESTAMP_COLUMN=SYSCALL_timestamp RESOURCE_COLUMN=(unset)
+control_flow_column = os.environ.get('CONTROL_FLOW_COLUMN', 'concept:name')
+timestamp_column = os.environ.get('TIMESTAMP_COLUMN', 'time:timestamp')
+resource_column = os.environ.get('RESOURCE_COLUMN') or None
+case_id_column = os.environ.get('CASE_ID_COLUMN', 'case:concept:name')
+event_id_column = os.environ.get('EVENT_ID_COLUMN', 'EventID')
 
 excluded_columns = {
         case_id_column, event_id_column, timestamp_column, control_flow_column, 'PROCESS_comm', 'CUSTOM_libs', 'OrgLabel', 'org:resource', 'lifecycle:transition', 'Timestamp', 'Lifecycle'
@@ -221,9 +237,11 @@ training_mode_config = {
     "min_events_for_dynamic_training": 10,
 
     # FOLDER-BASED CONFIGURATION (for large-scale experiments)
-    "training_folder": r"U:\Research\Projects\sef\stream_quality_drift\processed_train_data",
+    "training_folder": os.environ.get('DUPLIMEND_TRAIN_FOLDER',
+                                      os.path.join(DATA_DIR, 'processed_train_data')),
     "training_file_pattern": "*.csv",
-    "test_folder":  r"U:\Research\Projects\sef\stream_quality_drift\processed_test_data",
+    "test_folder": os.environ.get('DUPLIMEND_TEST_FOLDER',
+                                  os.path.join(DATA_DIR, 'processed_test_data')),
     "test_file_pattern": "*.csv",
 
     # === DEFAULT: I-PALIA dataset for Quick Start ===
@@ -243,9 +261,10 @@ evaluation_config = {
     "results_base_dir": os.environ.get('DUPLIMEND_OUTPUT_DIR', 'run_output'),
 
     "multi_test_evaluation_config": {
-        "default_tracking_base_dir": r"Z:\cybersecurity_iotdata\run_output\tracking_20250820_195312",
-        "default_ground_truth_dir": r"Z:\processed_groundtruth_test_data",
-        "default_output_dir": r"Z:\cybersecurity_iotdata\evaluation_results",
+        "default_tracking_base_dir": os.environ.get('DUPLIMEND_TRACKING_BASE_DIR', OUTPUT_DIR),
+        "default_ground_truth_dir": os.environ.get('DUPLIMEND_GROUND_TRUTH_DIR',
+                                                   os.path.join(DATA_DIR, 'processed_groundtruth_test_data')),
+        "default_output_dir": os.environ.get('DUPLIMEND_MULTI_EVAL_OUTPUT_DIR', RESULTS_DIR),
         "default_activity": "openat_www-data",
         "event_id_column": "EventID",
         "control_flow_column": "activity_label",
@@ -282,61 +301,64 @@ evaluation_config = {
     
     "baseline_evaluation_config": {
         # Base directory for all baseline results
-        # "baseline_results_base_dir": r"U:\Research\Projects\sef\stream_quality_drift\homonym_experiment\evaluation_results\baselines",
-        "baseline_results_base_dir": r"U:\Research\Projects\sef\stream_quality_drift\homonym_experiment\evaluation_results",
+        "baseline_results_base_dir": os.environ.get('DUPLIMEND_BASELINE_RESULTS_DIR',
+                                                    os.path.join(RESULTS_DIR, 'baselines')),
 
         # Label Refinement Baseline Configuration
         "label_refinement": {
-            # Data paths
-            "data_path_synthetic": r"C:\Users\drana\Downloads\Handling Duplicated Tasks in Process Discovery by Refining Event Labels (BPM2016)_1_all\data\noImprInLoop_default_OD",  # For folder-based synthetic logs
+            # Folder-based BPM2016 synthetic logs. Set DUPLIMEND_BASELINE_DATA to the
+            # extracted "noImprInLoop_default_OD" directory.
+            "data_path_synthetic": BASELINE_DATA_DIR,
 
             # Single file (CSV/XES) - WITH ground truth (EDIT THESE TO SWITCH DATASETS)
             # Example: document_review_process.csv or ipalia.csv
-            "data_path_real": r"U:\Research\Projects\sef\stream_quality_drift\homonym_experiment\synthetic_logs\document_review_process.csv",  # Main file
+            "data_path_real": os.path.join(SYNTHETIC_LOGS_DIR, 'document_review_process.csv'),
             "csv_config_name": "document_review_config",  # For CSV: "ipalia_config" or "document_review_config" | For XES: set to None
 
             # Ground truth configuration (for synthetic logs with ground truth)
             "has_ground_truth": True,
-            "ground_truth_path": r"U:\Research\Projects\sef\stream_quality_drift\homonym_experiment\synthetic_logs\document_review_process_groundtruth.csv",
+            "ground_truth_path": os.path.join(SYNTHETIC_LOGS_DIR,
+                                              'document_review_process_groundtruth.csv'),
             "ground_truth_activity_column": "ground_truth_activity",
             "event_id_column": "EventID",
 
             # Real-world log without ground truth (XES files) - UNCOMMENT AND CONFIGURE TO USE
-            # "data_path_real": r"U:\Research\Projects\sef\stream_quality_drift\BPI Challenge 2013, closed problems_1_all\BPI_Challenge_2013_closed_problems.xes",
+            # "data_path_real": os.path.join(DATA_DIR, 'BPI_Challenge_2013_closed_problems.xes'),
             # "csv_config_name": None,  # Not needed for XES
             # "has_ground_truth": False,  # No ground truth = only process mining metrics
 
             # Output directories
-            "output_dir": r"U:\Research\Projects\sef\stream_quality_drift\homonym_experiment\evaluation_results\labelrefinement\outputs",
-            "results_dir": r"U:\Research\Projects\sef\stream_quality_drift\homonym_experiment\evaluation_results\labelrefinement\results",
-            "best_results_dir": r"U:\Research\Projects\sef\stream_quality_drift\homonym_experiment\evaluation_results\labelrefinement\best_results"
+            "output_dir": os.path.join(RESULTS_DIR, 'baselines', 'label_refinement', 'outputs'),
+            "results_dir": os.path.join(RESULTS_DIR, 'baselines', 'label_refinement', 'results'),
+            "best_results_dir": os.path.join(RESULTS_DIR, 'baselines', 'label_refinement', 'best_results')
         },
 
         # PM Label Splitting Baseline Configuration
         "pm_label_splitting": {
             # Data paths
-            "data_path_synthetic": r"C:\Users\drana\Downloads\Handling Duplicated Tasks in Process Discovery by Refining Event Labels (BPM2016)_1_all\data\noImprInLoop_default_OD",  # For folder-based synthetic logs
+            "data_path_synthetic": BASELINE_DATA_DIR,
 
             # Single file (CSV/XES) - WITH ground truth (EDIT THESE TO SWITCH DATASETS)
             # Example: document_review_process.csv or ipalia.csv
-            "data_path_real": r"U:\Research\Projects\sef\stream_quality_drift\homonym_experiment\synthetic_logs\document_review_process.csv",  # Main file
+            "data_path_real": os.path.join(SYNTHETIC_LOGS_DIR, 'document_review_process.csv'),
             "csv_config_name": "document_review_config",  # For CSV: "ipalia_config" or "document_review_config" | For XES: set to None
 
             # Ground truth configuration (for synthetic logs with ground truth)
             "has_ground_truth": True,
-            "ground_truth_path": r"U:\Research\Projects\sef\stream_quality_drift\homonym_experiment\synthetic_logs\document_review_process_groundtruth.csv",
+            "ground_truth_path": os.path.join(SYNTHETIC_LOGS_DIR,
+                                              'document_review_process_groundtruth.csv'),
             "ground_truth_activity_column": "ground_truth_activity",
             "event_id_column": "EventID",
 
             # Real-world log without ground truth (XES files) - UNCOMMENT AND CONFIGURE TO USE
-            # "data_path_real": r"U:\Research\Projects\sef\stream_quality_drift\BPI Challenge 2013, closed problems_1_all\BPI_Challenge_2013_closed_problems.xes",
+            # "data_path_real": os.path.join(DATA_DIR, 'BPI_Challenge_2013_closed_problems.xes'),
             # "csv_config_name": None,  # Not needed for XES
             # "has_ground_truth": False,  # No ground truth = only process mining metrics
 
             # Output directories
-            "output_dir": r"U:\Research\Projects\sef\stream_quality_drift\homonym_experiment\evaluation_results\baselines\pm_label_splitting\outputs",
-            "results_dir": r"U:\Research\Projects\sef\stream_quality_drift\homonym_experiment\evaluation_results\baselines\pm_label_splitting\results",
-            "best_results_dir": r"U:\Research\Projects\sef\stream_quality_drift\homonym_experiment\evaluation_results\baselines\pm_label_splitting\best_results"
+            "output_dir": os.path.join(RESULTS_DIR, 'baselines', 'pm_label_splitting', 'outputs'),
+            "results_dir": os.path.join(RESULTS_DIR, 'baselines', 'pm_label_splitting', 'results'),
+            "best_results_dir": os.path.join(RESULTS_DIR, 'baselines', 'pm_label_splitting', 'best_results')
         }
     }
 }

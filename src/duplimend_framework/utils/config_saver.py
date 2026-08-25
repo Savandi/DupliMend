@@ -22,13 +22,10 @@ def save_config_to_output(output_dir, stage_name="general", additional_info=None
         str: Path to saved config file, or None if failed
     """
     try:
-        # Ensure output directory exists
         os.makedirs(output_dir, exist_ok=True)
         
-        # Generate timestamp for unique filenames
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
         
-        # Find config.py file - try multiple possible locations
         possible_config_paths = [
             "config/config.py",
             "config.py", 
@@ -45,21 +42,17 @@ def save_config_to_output(output_dir, stage_name="general", additional_info=None
         if not config_source:
             return None
         
-        # Save config file with stage-specific name
         config_dest = os.path.join(output_dir, f"config_{stage_name}_{timestamp}.py")
         shutil.copy2(config_source, config_dest)
         
-        # Try to extract config values for metadata
         config_values = {}
         try:
-            # Add project root to path to import config
             project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
             if project_root not in sys.path:
                 sys.path.insert(0, project_root)
             
             import config.config as config_module
             
-            # Extract relevant config values using getattr to avoid import * issues
             config_values = {
                 'feature_vectors_base_dir': getattr(config_module, 'feature_vectors_base_dir', 'N/A'),
                 'models_save_dir': getattr(config_module, 'models_save_dir', 'N/A'),
@@ -73,7 +66,6 @@ def save_config_to_output(output_dir, stage_name="general", additional_info=None
         except Exception:
             pass
         
-        # Create comprehensive metadata
         metadata = {
             'execution_stage': stage_name,
             'timestamp': datetime.now().isoformat(),
@@ -86,7 +78,6 @@ def save_config_to_output(output_dir, stage_name="general", additional_info=None
             'additional_info': additional_info or {}
         }
         
-        # Save metadata file
         metadata_file = os.path.join(output_dir, f"execution_info_{stage_name}_{timestamp}.json")
         with open(metadata_file, 'w') as f:
             json.dump(metadata, f, indent=2)
@@ -150,14 +141,12 @@ def verify_config_consistency(output_dir, stages=None):
         for stage in stages:
             metadata_list = load_config_metadata(output_dir, stage)
             if metadata_list:
-                # Get the most recent config for this stage
                 latest_metadata = max(metadata_list, key=lambda x: x.get('timestamp', ''))
                 configs[stage] = latest_metadata.get('config_values', {})
         
         if len(configs) < 2:
             return True
         
-        # Compare configs
         reference_stage = list(configs.keys())[0]
         reference_config = configs[reference_stage]
         

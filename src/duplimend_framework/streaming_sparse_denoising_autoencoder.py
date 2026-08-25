@@ -10,7 +10,6 @@ class SparseDenoisingAutoencoder(nn.Module):
         self.sparsity_lambda = sparsity_lambda
         self.dropout_rate = dropout_rate
 
-        # Encoder with dropout
         layers = []
         prev_dim = input_dim
         for h in hidden_dims:
@@ -20,10 +19,8 @@ class SparseDenoisingAutoencoder(nn.Module):
             prev_dim = h
         layers.append(nn.Linear(prev_dim, latent_dim))
         layers.append(nn.ReLU())
-        # Note: No dropout before latent representation
         self.encoder = nn.Sequential(*layers)
 
-        # Decoder with dropout
         layers = []
         prev_dim = latent_dim
         for h in reversed(hidden_dims):
@@ -32,11 +29,9 @@ class SparseDenoisingAutoencoder(nn.Module):
             layers.append(nn.Dropout(dropout_rate)) 
             prev_dim = h
         layers.append(nn.Linear(prev_dim, input_dim))
-        # Note: No dropout on output layer
         self.decoder = nn.Sequential(*layers)
 
     def forward(self, x):
-        # Add Gaussian noise for denoising
         if self.training:
             noise = torch.randn_like(x) * self.noise_std
             x = x + noise

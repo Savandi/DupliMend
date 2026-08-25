@@ -28,10 +28,10 @@ class ClusteringAdapter(ABC):
         self.algorithm_name = algorithm_name
         self.config = config or {}
         self.cluster_counter = 0
-        self.micro_clusters = {}  # Track centroid and metadata for each cluster
-        self.cluster_history = defaultdict(list)  # Track evolution of clusters
-        self.last_modified = {}  # Track when each cluster was last modified
-        self.vector_hash_cache = {}  # Cache vector hashes for faster lookups
+        self.micro_clusters = {}
+        self.cluster_history = defaultdict(list)
+        self.last_modified = {}
+        self.vector_hash_cache = {}
         self.variance_cache = {}
         self.variance_dirty = set()
 
@@ -60,11 +60,9 @@ class ClusteringAdapter(ABC):
         new_cluster_id = self.cluster_counter
         self.cluster_counter += 1
         
-        # Ensure consistent timestamp handling
         if timestamp is None:
             timestamp = datetime.now()
         elif not isinstance(timestamp, datetime):
-            # Convert other timestamp formats if needed
             try:
                 if isinstance(timestamp, (int, float)):
                     timestamp = datetime.fromtimestamp(timestamp)
@@ -73,22 +71,19 @@ class ClusteringAdapter(ABC):
             except (ValueError, OSError):
                 timestamp = datetime.now()
         
-        # Initialize with zeros for sum_squares (no variance when only one point)
         self.micro_clusters[new_cluster_id] = {
             "centroid": np.array(vector, dtype=np.float64),
             "feature_names": feature_names,
             "weight": 1.0,
             "samples": 1,
-            "sum_squares": np.zeros_like(vector),  # Initialize with zeros
+            "sum_squares": np.zeros_like(vector),
             "creation_timestamp": timestamp,
             "last_updated": timestamp,
             "creation_reason": reason
         }
             
-        # Update last modified timestamp
         self.last_modified[new_cluster_id] = timestamp
         
-        # Save initial state in history
         self.cluster_history[new_cluster_id].append({
             "timestamp": timestamp,
             "centroid": np.array(vector).copy(),
@@ -111,7 +106,6 @@ class ClusteringAdapter(ABC):
         Returns: updated cluster_id
         """
         if cluster_id not in self.micro_clusters:
-            # If cluster doesn't exist, create a new one
             return self.create_new_cluster(new_vector, feature_names, "update_missing_cluster", timestamp)
         
         cluster_info = self.micro_clusters[cluster_id]
@@ -119,40 +113,30 @@ class ClusteringAdapter(ABC):
         old_weight = cluster_info["weight"]
         old_samples = cluster_info["samples"]
         
-        # Calculate learning rate based on cluster weight
         alpha = self.config.get("learning_rate", 0.1)
         decay = 1.0 / (1.0 + old_weight * alpha)
         
-        # Update centroid with weighted average
         if len(old_centroid) == len(new_vector):
-            # Store old centroid for variance calculation
             current_centroid = np.array(old_centroid)
             
-            # Update the centroid
             new_centroid = (1.0 - decay) * current_centroid + decay * new_vector
             cluster_info["centroid"] = new_centroid
             
-            # Update sum of squares for online variance calculation
-            # Using a modified version of Welford's algorithm
             delta = new_vector - current_centroid
             if "sum_squares" not in cluster_info:
                 cluster_info["sum_squares"] = np.square(delta)
             else:
-                # Scale factor to correct for the moving centroid
                 scale = (old_samples) / (old_samples + 1.0)
                 cluster_info["sum_squares"] = scale * cluster_info["sum_squares"] + np.square(delta) * decay
         else:
             cluster_info["centroid"] = old_centroid
         
-        # Update other metadata
         cluster_info["weight"] += 1.0
         cluster_info["samples"] += 1
         cluster_info["last_updated"] = timestamp or datetime.now()
                 
-        # Update last modified timestamp
         self.last_modified[cluster_id] = timestamp or datetime.now()
         
-        # Save state in history
         self.cluster_history[cluster_id].append({
             "timestamp": timestamp or datetime.now(),
             "centroid": np.array(cluster_info["centroid"]).copy(),
@@ -171,21 +155,18 @@ class ClusteringAdapter(ABC):
         if not c1 or not c2:
             return None
             
-        # Calculate weighted average of centroids
         w1 = c1.get("weight", 1.0)
         w2 = c2.get("weight", 1.0)
         total_weight = w1 + w2
         
         merged_centroid = (c1["centroid"] * w1 + c2["centroid"] * w2) / total_weight
         
-        # Use the ID of the heavier cluster as the merged ID
         merged_id = cid1 if w1 >= w2 else cid2
         other_id = cid2 if merged_id == cid1 else cid1
         
-        # Update the merged cluster
         self.micro_clusters[merged_id] = {
             "centroid": merged_centroid,
-            "feature_names": c1["feature_names"],  # Assuming same features
+            "feature_names": c1["feature_names"],
             "weight": total_weight,
             "samples": c1.get("samples", 1) + c2.get("samples", 1),
             "sum_squares": (c1.get("sum_squares", np.zeros_like(c1["centroid"])) * w1 + 
@@ -196,14 +177,12 @@ class ClusteringAdapter(ABC):
         self.variance_dirty.update([cid1, cid2, merged_id])
         self.variance_cache.pop(cid1, None)
         self.variance_cache.pop(cid2, None)
-        # Log the merge in history
         self.cluster_history[merged_id].append({
             "timestamp": timestamp,
             "action": "merge",
             "merged_with": other_id
         })
         
-        # Remove the other cluster
         if other_id in self.micro_clusters:
             self.cluster_history[other_id].append({
                 "timestamp": timestamp,
@@ -218,11 +197,9 @@ class ClusteringAdapter(ABC):
         """
         Update the mappings between events and clusters
         """
-        # Map event to cluster
         if event_id is not None:
             event_cluster_mapping[event_id] = (activity_label, cluster_id)
             
-            # Also track which events are in each cluster
             cluster_key = (activity_label, cluster_id)
             if cluster_key not in cluster_event_mapping:
                 cluster_event_mapping[cluster_key] = []
@@ -268,35 +245,29 @@ class ClusteringAdapter(ABC):
         v1 = np.array(vector1)
         v2 = np.array(vector2)
 
-        # Get distance metric from config (default to cosine for backward compatibility)
         distance_metric = self.config.get("distance_metric", "cosine").lower()
 
         if distance_metric == "euclidean":
-            # Normalize vectors to unit length for bounded range [0, 2]
             norm1 = np.linalg.norm(v1)
             norm2 = np.linalg.norm(v2)
 
             if norm1 == 0 or norm2 == 0:
-                return 2.0  # Maximum distance if either vector is zero
+                return 2.0
 
             v1_normalized = v1 / norm1
             v2_normalized = v2 / norm2
 
-            # Euclidean distance on normalized vectors: range [0, 2]
             return np.linalg.norm(v1_normalized - v2_normalized)
 
         elif distance_metric == "manhattan":
-            # Manhattan distance (L1 norm)
             return np.sum(np.abs(v1 - v2))
 
-        else:  # default to cosine
-            # Cosine distance (1 - cosine similarity)
+        else:
             norm1 = np.linalg.norm(v1)
             norm2 = np.linalg.norm(v2)
             if norm1 == 0 or norm2 == 0:
-                return 1.0  # Maximum distance if either vector is zero
+                return 1.0
             cosine_similarity = np.dot(v1, v2) / (norm1 * norm2)
-            # Clamp value to [-1, 1] to avoid floating point issues
             cosine_similarity = np.clip(cosine_similarity, -1.0, 1.0)
             return 1.0 - cosine_similarity
     
@@ -314,16 +285,12 @@ class ClusteringAdapter(ABC):
         min_distance = float('inf')
         
         for cluster_id, info in self.micro_clusters.items():
-            # Skip clusters with weight below threshold
             if info["weight"] < min_weight:
                 continue
                 
-            # Check feature name compatibility
             if len(info["centroid"]) != len(vector):
-                # Skip clusters with mismatched dimensions
                 continue
             
-            # Calculate distance
             distance = self.calculate_distance(info["centroid"], vector, feature_names)
             
             if distance < min_distance:
@@ -334,18 +301,14 @@ class ClusteringAdapter(ABC):
     
     def _hash_vector(self, vector):
         """Generate a stable hash for a vector"""
-        # Convert to string with fixed precision to ensure stable hashing
         vec_str = ";".join([f"{v:.6f}" for v in vector])
         
-        # Check cache first
         if vec_str in self.vector_hash_cache:
             return self.vector_hash_cache[vec_str]
         
-        # Hash the vector string
         m = hashlib.md5(vec_str.encode())
         h = m.hexdigest()
         
-        # Cache the result
         self.vector_hash_cache[vec_str] = h
         
         return h
@@ -363,39 +326,33 @@ class ClusteringAdapter(ABC):
         merge_operations = []
         merge_candidates = []
         
-        # Get clusters with sufficient weight
         significant_clusters = self.get_significant_clusters(min_weight)
         if len(significant_clusters) < 2:
             return {"merge_occurred": False, "operations": []}
             
-        # Compute distances between all pairs
         for i, cid1 in enumerate(significant_clusters):
             for j, cid2 in enumerate(significant_clusters):
-                if i >= j:  # Only process upper triangle
+                if i >= j:
                     continue
                     
-                # Get cluster centroids
                 c1 = self.micro_clusters.get(cid1)
                 c2 = self.micro_clusters.get(cid2)
                 
                 if not c1 or not c2:
                     continue
                     
-                # Calculate distance
                 distance = self.calculate_distance(c1["centroid"], c2["centroid"], c1["feature_names"])
                 
                 if distance < merge_threshold:
                     merge_candidates.append((cid1, cid2, distance))
         
-        # Process merges (sorted by distance)
         merge_candidates.sort(key=lambda x: x[2])
         processed_clusters = set()
         
         for cid1, cid2, distance in merge_candidates:
             if cid1 in processed_clusters or cid2 in processed_clusters:
-                continue  # Skip if either cluster already merged
+                continue
                 
-            # Merge the clusters
             merged_id = self.merge_clusters(cid1, cid2, timestamp)
             if merged_id:
                 merge_operations.append((cid1, cid2, merged_id, distance))
@@ -413,7 +370,6 @@ class ClusteringAdapter(ABC):
         
         info = self.micro_clusters[cluster_id]
         
-        # Get history summary
         history = self.cluster_history.get(cluster_id, [])
         history_summary = {
             "creation_time": history[0]["timestamp"] if history else None,
@@ -421,7 +377,6 @@ class ClusteringAdapter(ABC):
             "merge_count": len([h for h in history if h["action"] == "merge_target"])
         }
         
-        # Build result dictionary
         return {
             "cluster_id": cluster_id,
             "centroid": info["centroid"].tolist() if isinstance(info["centroid"], np.ndarray) else info["centroid"],
@@ -441,19 +396,15 @@ class ClusteringAdapter(ABC):
         removed_clusters = []
         
         for cluster_id in list(self.micro_clusters.keys()):
-            # Apply decay
             self.micro_clusters[cluster_id]["weight"] *= decay_factor
             
-            # Check if cluster should be removed
             if self.micro_clusters[cluster_id]["weight"] < min_weight:
-                # Record removal in history
                 self.cluster_history[cluster_id].append({
                     "timestamp": timestamp or datetime.now(),
                     "action": "decay_removed",
                     "final_weight": self.micro_clusters[cluster_id]["weight"]
                 })
                 
-                # Remove the cluster
                 del self.micro_clusters[cluster_id]
                 removed_clusters.append(cluster_id)
                 
@@ -474,7 +425,6 @@ class ClusteringAdapter(ABC):
         if not original:
             return None
 
-        # Get all event IDs for this cluster
         activity_label = None
         for (act, cid) in cluster_event_mapping:
             if cid == cluster_id:
@@ -485,25 +435,21 @@ class ClusteringAdapter(ABC):
 
         event_ids = cluster_event_mapping.get((activity_label, cluster_id), [])
         if len(event_ids) < 2:
-            return None  # Not enough members to split
+            return None
 
-        # Gather embeddings for all members
         member_vectors = [event_embedding_mapping[eid] for eid in event_ids if eid in event_embedding_mapping]
         if len(member_vectors) < 2:
             return None
 
         X = np.stack(member_vectors)
 
-        # Get distance metric from config
         distance_metric = self.config.get("distance_metric", "cosine").lower()
 
-        # Normalize vectors for cosine and euclidean (to ensure bounded range)
         if distance_metric in ["cosine", "euclidean"]:
             X_normalized = normalize(X, norm='l2')
         else:
-            X_normalized = X  # Use raw vectors for manhattan
+            X_normalized = X
         
-        # Check for duplicate points before clustering
         unique_vectors, inverse_indices = np.unique(X_normalized, axis=0, return_inverse=True)
         
         if len(unique_vectors) < 2:
@@ -515,7 +461,6 @@ class ClusteringAdapter(ABC):
                 return None
         
         try:
-            # Use standard KMeans on normalized vectors (equivalent to cosine distance)
             kmeans = KMeans(n_clusters=2, n_init=10, random_state=42, max_iter=100)
             labels = kmeans.fit_predict(X_normalized)
             
@@ -526,13 +471,10 @@ class ClusteringAdapter(ABC):
         except Exception:
             return None
 
-        # Continue with the rest of the split logic...
-        # Determine which label should keep the original cluster ID (e.g., the larger group)
         label_counts = np.bincount(labels)
         original_label = np.argmax(label_counts)
         new_label = 1 - original_label
 
-        # Update the original cluster with its new centroid and members
         original_members = [eid for eid, label in zip(event_ids, labels) if label == original_label]
         new_members = [eid for eid, label in zip(event_ids, labels) if label == new_label]
 
@@ -543,7 +485,6 @@ class ClusteringAdapter(ABC):
         for eid in original_members:
             event_cluster_mapping[eid] = (activity_label, cluster_id)
 
-        # Create the new cluster for the split-off members
         new_id = self.create_new_cluster(
             kmeans.cluster_centers_[new_label],
             original["feature_names"],
@@ -555,7 +496,6 @@ class ClusteringAdapter(ABC):
         for eid in new_members:
             event_cluster_mapping[eid] = (activity_label, new_id)
 
-        # Log the split operation
         self.cluster_history[cluster_id].append({
             "timestamp": timestamp,
             "action": "split",
@@ -578,7 +518,6 @@ class ClusteringAdapter(ABC):
         if cluster_id is None:
             return 0.0
         
-        # Get actual member vectors for more accurate variance calculation
         activity_label = None
         for (act, cid) in cluster_event_mapping:
             if cid == cluster_id:
@@ -594,12 +533,10 @@ class ClusteringAdapter(ABC):
                     X = np.array(member_vectors)
                     X_normalized = normalize(X, norm='l2')
                     
-                    # Check for duplicate points
                     unique_vectors = np.unique(X_normalized, axis=0)
                     if len(unique_vectors) < 2:
                         return 0.0
                     
-                    # FAST variance calculation using numpy
                     variance = np.var(X_normalized, axis=0).mean()
                     return variance
         
@@ -613,54 +550,15 @@ class ClusteringAdapter(ABC):
                 event_ids.extend(cluster_event_mapping[key])
         return event_ids
     
-    # def check_for_splits(self, variance_threshold, min_weight, timestamp=None):
-    #     """Check if any clusters should be split based on internal variance"""
-    #     split_operations = []
         
-    #     # Get clusters with sufficient weight
-    #     significant_clusters = self.get_significant_clusters(min_weight)
                 
-    #     for cluster_id in significant_clusters:
-    #         cluster = self.micro_clusters.get(cluster_id)
-    #         if not cluster:
-    #             continue
             
-    #         # Pre-check: Do we have enough diverse points to split?
-    #         activity_label = None
-    #         for (act, cid) in cluster_event_mapping:
-    #             if cid == cluster_id:
-    #                 activity_label = act
-    #                 break
             
-    #         if activity_label:
-    #             event_ids = cluster_event_mapping.get((activity_label, cluster_id), [])
-    #             if len(event_ids) < 4:  # Need at least 4 points for meaningful split
-    #                 continue
                     
-    #             # Check for unique vectors
-    #             member_vectors = [event_embedding_mapping[eid] for eid in event_ids if eid in event_embedding_mapping]
-    #             if len(member_vectors) < 4:
-    #                 continue
                     
-    #             X_normalized = normalize(np.array(member_vectors), norm='l2')
-    #             unique_vectors = np.unique(X_normalized, axis=0)
-    #             if len(unique_vectors) < 2:
-    #                 print(f"[DEBUG] Skipping split for cluster {cluster_id}: only {len(unique_vectors)} unique points")
-    #                 continue
                 
-    #         # Calculate cluster variance only after pre-checks pass
-    #         variance = self.calculate_cluster_variance(cluster)
-    #         print(f"[DEBUG] Cluster {cluster_id} variance: {variance}, threshold: {variance_threshold}")
             
-    #         if variance > variance_threshold:
-    #             print(f"[SPLIT] Cluster {cluster_id} split, variance={variance}")
-    #             # Create new cluster from this one
-    #             new_id = self.split_cluster(cluster_id, timestamp)
-    #             if new_id:
-    #                 # Make sure format matches what process_event expects
-    #                 split_operations.append((cluster_id, [new_id]))
                     
-    #     return {"split_occurred": len(split_operations) > 0, "operations": split_operations}
     def check_for_splits(self, variance_threshold, min_weight, timestamp=None):
         split_operations = []
         significant_clusters = self.get_significant_clusters(min_weight)

@@ -15,23 +15,19 @@ class CentroidMemoryManager:
     def __init__(self, config=None):
         self.config = config or {}
         
-        # Memory management parameters
         self.max_centroids_per_activity = self.config.get("max_centroids_per_activity", 50)
-        self.centroid_stability_threshold = self.config.get("centroid_stability_threshold", 10)  # Min events to be stable
-        self.memory_decay_factor = self.config.get("memory_decay_factor", 0.95)  # Decay unused centroids
-        self.exemplar_count = self.config.get("exemplar_count", 3)  # Additional exemplars per cluster
+        self.centroid_stability_threshold = self.config.get("centroid_stability_threshold", 10)
+        self.memory_decay_factor = self.config.get("memory_decay_factor", 0.95)
+        self.exemplar_count = self.config.get("exemplar_count", 3)
         
-        # Regularization parameters
         self.memory_regularization_weight = self.config.get("memory_regularization_weight", 0.1)
-        self.similarity_threshold = self.config.get("similarity_threshold", 0.7)  # For matching clusters
+        self.similarity_threshold = self.config.get("similarity_threshold", 0.7)
         
-        # Storage
-        self.cluster_centroids = defaultdict(dict)  # {activity: {cluster_id: centroid_info}}
-        self.cluster_exemplars = defaultdict(dict)  # {activity: {cluster_id: [exemplar_embeddings]}}
-        self.cluster_stats = defaultdict(dict)      # {activity: {cluster_id: {count, last_seen, confidence}}}
+        self.cluster_centroids = defaultdict(dict)
+        self.cluster_exemplars = defaultdict(dict)
+        self.cluster_stats = defaultdict(dict)
         self.memory_usage_stats = defaultdict(int)
         
-        # Tracking
         self.last_cleanup = 0
         self.memory_updates = 0
         
@@ -49,24 +45,19 @@ class CentroidMemoryManager:
         if not embeddings:
             return
         
-        # Ensure we have the activity in our memory
         if activity_label not in self.cluster_centroids:
             self.cluster_centroids[activity_label] = {}
             self.cluster_exemplars[activity_label] = {}
             self.cluster_stats[activity_label] = {}
         
-        # Calculate new centroid
         embeddings_array = np.array(embeddings)
         new_centroid = np.mean(embeddings_array, axis=0)
         
-        # Update or create cluster memory
         if cluster_id in self.cluster_centroids[activity_label]:
-            # Update existing centroid with moving average
             existing_info = self.cluster_centroids[activity_label][cluster_id]
             existing_centroid = existing_info['centroid']
             existing_count = self.cluster_stats[activity_label][cluster_id]['count']
             
-            # Weighted update: give more weight to established centroids
             alpha = min(len(embeddings) / (existing_count + len(embeddings)), 0.3)
             updated_centroid = (1 - alpha) * existing_centroid + alpha * new_centroid
             
@@ -77,7 +68,6 @@ class CentroidMemoryManager:
                 'version': existing_info['version'] + 1
             }
             
-            # Update stats
             self.cluster_stats[activity_label][cluster_id]['count'] += len(embeddings)
             self.cluster_stats[activity_label][cluster_id]['last_seen'] = timestamp
             self.cluster_stats[activity_label][cluster_id]['confidence'] = min(
@@ -85,7 +75,6 @@ class CentroidMemoryManager:
             )
             
         else:
-            # Create new cluster memory
             self.cluster_centroids[activity_label][cluster_id] = {
                 'centroid': new_centroid,
                 'created_at': timestamp,
@@ -96,17 +85,14 @@ class CentroidMemoryManager:
             self.cluster_stats[activity_label][cluster_id] = {
                 'count': len(embeddings),
                 'last_seen': timestamp,
-                'confidence': 0.5  # Start with medium confidence
+                'confidence': 0.5
             }
         
-        # Update exemplars (store diverse representative points)
         self._update_exemplars(activity_label, cluster_id, embeddings_array, new_centroid)
         
-        # Update memory usage tracking
         self.memory_usage_stats[activity_label] = len(self.cluster_centroids[activity_label])
         self.memory_updates += 1
         
-        # Periodic cleanup
         if self.memory_updates % 100 == 0:
             self._cleanup_memory()
     
@@ -118,15 +104,11 @@ class CentroidMemoryManager:
         
         current_exemplars = self.cluster_exemplars[activity_label][cluster_id]
         
-        # Find diverse points: closest to centroid, furthest from centroid, and median distance
         distances = np.linalg.norm(embeddings - centroid.reshape(1, -1), axis=1)
         
         if len(embeddings) >= self.exemplar_count:
-            # Closest point (most representative)
             closest_idx = np.argmin(distances)
-            # Furthest point (boundary case)
             furthest_idx = np.argmax(distances)
-            # Median distance point (typical case)
             median_idx = np.argsort(distances)[len(distances) // 2]
             
             new_exemplars = [
@@ -135,17 +117,13 @@ class CentroidMemoryManager:
                 embeddings[median_idx]
             ]
         else:
-            # Use all available points
             new_exemplars = [emb for emb in embeddings]
         
-        # Merge with existing exemplars and keep only the best ones
         all_exemplars = current_exemplars + new_exemplars
         if len(all_exemplars) > self.exemplar_count:
-            # Keep the most diverse set
             exemplar_array = np.array(all_exemplars)
             distances_to_centroid = np.linalg.norm(exemplar_array - centroid.reshape(1, -1), axis=1)
             
-            # Sort by distance and pick evenly spaced ones
             sorted_indices = np.argsort(distances_to_centroid)
             step = len(sorted_indices) // self.exemplar_count
             selected_indices = sorted_indices[::max(step, 1)][:self.exemplar_count]
@@ -183,23 +161,20 @@ class CentroidMemoryManager:
         cluster_matches = defaultdict(int)
         
         for i, cluster_id in enumerate(cluster_assignments):
-            if cluster_id < 0:  # Invalid cluster assignment
+            if cluster_id < 0:
                 continue
                 
             total_points += 1
             current_embedding = embeddings[i]
             
-            # Find matching stored cluster
             matching_centroid = self._find_matching_centroid(
                 current_embedding, cluster_id, stored_centroids, stored_stats
             )
             
             if matching_centroid is not None:
-                # Apply regularization: pull current embedding toward stored centroid
                 centroid_tensor = torch.tensor(matching_centroid, device=embeddings.device, dtype=embeddings.dtype)
                 point_loss = torch.norm(current_embedding - centroid_tensor, p=2) ** 2
                 
-                # Weight by centroid confidence
                 confidence = stored_stats[cluster_id]['confidence'] if cluster_id in stored_stats else 0.5
                 weighted_loss = confidence * point_loss
                 
@@ -207,11 +182,9 @@ class CentroidMemoryManager:
                 matched_points += 1
                 cluster_matches[cluster_id] += 1
         
-        # Normalize by matched points
         if matched_points > 0:
             memory_loss = memory_loss / matched_points
         
-        # Apply global weight
         memory_loss = self.memory_regularization_weight * memory_loss
         
         loss_info = {
@@ -239,39 +212,30 @@ class CentroidMemoryManager:
         Returns:
             Matching centroid or None if no good match found
         """
-        # First, try exact cluster ID match
         if cluster_id in stored_centroids:
             cluster_info = stored_centroids[cluster_id]
             stored_centroid = cluster_info['centroid']
             
-            # Check if this centroid is stable enough
             if cluster_id in stored_stats:
                 stats = stored_stats[cluster_id]
                 if stats['count'] >= self.centroid_stability_threshold:
                     return stored_centroid
         
-        # If no exact match or unstable, try distance-based matching
         embedding_np = embedding.detach().cpu().numpy()
         best_centroid = None
         best_distance = float('inf')
 
-        # Get distance metric from config (default to cosine)
         distance_metric = self.config.get("distance_metric", "cosine").lower()
 
-        # Convert similarity_threshold to distance_threshold
-        # For cosine: similarity 0.7 ≈ distance 0.3
-        # For euclidean (normalized): similar conversion applies
         distance_threshold = 1.0 - self.similarity_threshold
 
         for cid, cluster_info in stored_centroids.items():
             if cid in stored_stats:
                 stats = stored_stats[cid]
 
-                # Only consider stable clusters
                 if stats['count'] >= self.centroid_stability_threshold:
                     stored_centroid = cluster_info['centroid']
 
-                    # Calculate distance based on metric
                     distance = self._calculate_distance(embedding_np, stored_centroid, distance_metric)
 
                     if distance < best_distance and distance < distance_threshold:
@@ -286,7 +250,6 @@ class CentroidMemoryManager:
         v2 = np.array(vector2)
 
         if distance_metric == "euclidean":
-            # Normalize vectors to unit length for bounded range [0, 2]
             norm1 = np.linalg.norm(v1)
             norm2 = np.linalg.norm(v2)
 
@@ -300,7 +263,7 @@ class CentroidMemoryManager:
         elif distance_metric == "manhattan":
             return np.sum(np.abs(v1 - v2))
 
-        else:  # cosine (default)
+        else:
             norm1 = np.linalg.norm(v1)
             norm2 = np.linalg.norm(v2)
 
@@ -323,33 +286,23 @@ class CentroidMemoryManager:
             
             clusters_to_remove = []
             
-            # Find clusters to remove based on criteria
             for cluster_id in list(activity_centroids.keys()):
                 if cluster_id in activity_stats:
                     stats = activity_stats[cluster_id]
                     
-                    # Remove if:
-                    # 1. Very low confidence and few samples
-                    # 2. Not seen recently (implement time-based decay if needed)
-                    # 3. Activity has too many clusters
                     
                     should_remove = False
                     
-                    # Low confidence + few samples
                     if stats['confidence'] < 0.3 and stats['count'] < self.centroid_stability_threshold:
                         should_remove = True
                     
-                    # Too many clusters - remove least confident ones
                     elif len(activity_centroids) > self.max_centroids_per_activity:
-                        # This will be handled separately by sorting
                         pass
                     
                     if should_remove:
                         clusters_to_remove.append(cluster_id)
             
-            # Handle too many clusters - keep most confident ones
             if len(activity_centroids) > self.max_centroids_per_activity:
-                # Sort by confidence and count
                 cluster_scores = []
                 for cluster_id in activity_centroids.keys():
                     if cluster_id in activity_stats:
@@ -357,14 +310,13 @@ class CentroidMemoryManager:
                         score = stats['confidence'] * np.log(1 + stats['count'])
                         cluster_scores.append((score, cluster_id))
                 
-                cluster_scores.sort(reverse=True)  # Highest score first
+                cluster_scores.sort(reverse=True)
                 clusters_to_keep = set(cid for _, cid in cluster_scores[:self.max_centroids_per_activity])
                 
                 for cluster_id in list(activity_centroids.keys()):
                     if cluster_id not in clusters_to_keep:
                         clusters_to_remove.append(cluster_id)
             
-            # Remove selected clusters
             for cluster_id in clusters_to_remove:
                 if cluster_id in activity_centroids:
                     del activity_centroids[cluster_id]
@@ -375,7 +327,6 @@ class CentroidMemoryManager:
                 
                 total_removed += 1
             
-            # Update memory usage stats
             self.memory_usage_stats[activity_label] = len(activity_centroids)
         
         self.last_cleanup = self.memory_updates
@@ -395,7 +346,6 @@ class CentroidMemoryManager:
             'timestamp': datetime.now().isoformat()
         }
         
-        # Convert numpy arrays to lists for JSON serialization
         for activity_label, clusters in self.cluster_centroids.items():
             memory_state['cluster_centroids'][activity_label] = {}
             for cluster_id, cluster_info in clusters.items():
@@ -427,14 +377,12 @@ class CentroidMemoryManager:
         with open(filepath, 'r') as f:
             memory_state = json.load(f)
         
-        # Restore configuration
         self.config.update(memory_state.get('config', {}))
         self.last_cleanup = memory_state.get('last_cleanup', 0)
         self.memory_updates = memory_state.get('memory_updates', 0)
         self.memory_usage_stats = defaultdict(int, memory_state.get('memory_usage_stats', {}))
         self.cluster_stats = defaultdict(dict, memory_state.get('cluster_stats', {}))
         
-        # Restore centroids
         for activity_label, clusters in memory_state.get('cluster_centroids', {}).items():
             self.cluster_centroids[activity_label] = {}
             for cluster_id_str, cluster_info in clusters.items():
@@ -446,7 +394,6 @@ class CentroidMemoryManager:
                     'version': cluster_info['version']
                 }
         
-        # Restore exemplars
         for activity_label, clusters in memory_state.get('cluster_exemplars', {}).items():
             self.cluster_exemplars[activity_label] = {}
             for cluster_id_str, exemplars in clusters.items():

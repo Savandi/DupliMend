@@ -15,23 +15,34 @@ from input_data import InputData
 from input_preprocessor import InputPreprocessor
 
 # CONFIGURATION - Load from DupliMend config
+# Repo-relative defaults, overridable by environment, so this runs on any machine.
+_REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+_DEFAULT_SYNTHETIC = os.environ.get(
+    'DUPLIMEND_BASELINE_DATA', os.path.join(_REPO_ROOT, 'data', 'noImprInLoop_default_OD'))
+_DEFAULT_REAL = os.environ.get(
+    'DUPLIMEND_REAL_LOG',
+    os.path.join(_REPO_ROOT, 'data', 'BPI_Challenge_2013_closed_problems.xes'))
+_DEFAULT_RESULTS = os.path.join(
+    os.environ.get('DUPLIMEND_RESULTS_DIR', os.path.join(_REPO_ROOT, 'evaluation_results')),
+    'baselines', 'pm_label_splitting')
+
 try:
     import sys
     sys.path.append('../config')
     from config import evaluation_config
-    
+
     # Use DupliMend's PM label splitting config (since this runs PM splitting)
     pm_config = evaluation_config.get("baseline_evaluation_config", {}).get("pm_label_splitting", {})
     
     # Get data paths
-    DATA_PATH_SYNTHETIC = pm_config.get("data_path_synthetic", "./data/noImprInLoop_default_OD")
-    DATA_PATH_REAL = pm_config.get("data_path_real", "C:\\Users\\drana\\Documents\\GitHub\\DupliMend\\data\\BPI_Challenge_2013_closed_problems.xes")
-    
-    # Get output paths  
-    OUTPUT_BASE_DIR = pm_config.get("output_dir", r"C:\Users\drana\Documents\GitHub\DupliMend\src\evaluation_results\baselines\pm_label_splitting\outputs")
-    RESULTS_BASE_DIR = pm_config.get("results_dir", r"C:\Users\drana\Documents\GitHub\DupliMend\src\evaluation_results\baselines\pm_label_splitting\results")
-    BEST_RESULTS_DIR = pm_config.get("best_results_dir", r"C:\Users\drana\Documents\GitHub\DupliMend\src\evaluation_results\baselines\pm_label_splitting\best_results")
-    
+    DATA_PATH_SYNTHETIC = pm_config.get("data_path_synthetic", _DEFAULT_SYNTHETIC)
+    DATA_PATH_REAL = pm_config.get("data_path_real", _DEFAULT_REAL)
+
+    # Get output paths
+    OUTPUT_BASE_DIR = pm_config.get("output_dir", os.path.join(_DEFAULT_RESULTS, 'outputs'))
+    RESULTS_BASE_DIR = pm_config.get("results_dir", os.path.join(_DEFAULT_RESULTS, 'results'))
+    BEST_RESULTS_DIR = pm_config.get("best_results_dir", os.path.join(_DEFAULT_RESULTS, 'best_results'))
+
     print(f"✅ Using DupliMend PM Label Splitting config")
     print(f"   Synthetic data: {DATA_PATH_SYNTHETIC}")
     print(f"   Real data: {DATA_PATH_REAL}")
@@ -40,11 +51,11 @@ try:
 except ImportError:
     # Fallback if config import fails
     print("⚠️  Could not import DupliMend config, using fallback paths")
-    DATA_PATH_SYNTHETIC = "./data/noImprInLoop_default_OD"
-    DATA_PATH_REAL = "C:\\Users\\drana\\Documents\\GitHub\\DupliMend\\data\\BPI_Challenge_2013_closed_problems.xes"
-    OUTPUT_BASE_DIR = r"C:\Users\drana\Documents\GitHub\DupliMend\src\evaluation_results\baselines\pm_label_splitting\outputs"
-    RESULTS_BASE_DIR = r"C:\Users\drana\Documents\GitHub\DupliMend\src\evaluation_results\baselines\pm_label_splitting\results"
-    BEST_RESULTS_DIR = r"C:\Users\drana\Documents\GitHub\DupliMend\src\evaluation_results\baselines\pm_label_splitting\best_results"
+    DATA_PATH_SYNTHETIC = _DEFAULT_SYNTHETIC
+    DATA_PATH_REAL = _DEFAULT_REAL
+    OUTPUT_BASE_DIR = os.path.join(_DEFAULT_RESULTS, 'outputs')
+    RESULTS_BASE_DIR = os.path.join(_DEFAULT_RESULTS, 'results')
+    BEST_RESULTS_DIR = os.path.join(_DEFAULT_RESULTS, 'best_results')
 from label_splitter_event_based_igraph import LabelSplitter as LabelSplitterEventBased
 from label_splitter_variant_based_igraph import LabelSplitter as LabelSplitterVariantBased
 from label_splitter_variant_multiplex import LabelSplitter as LabelSplitterVariantMultiplex

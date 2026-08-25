@@ -49,7 +49,6 @@ def launch_tensorboard_isolated(logdir, port=6007):
         print(f"[ERROR] Log directory doesn't exist: {logdir}")
         return False
     
-    # List contents to verify
     contents = []
     for root, dirs, files in os.walk(logdir):
         for file in files:
@@ -61,7 +60,6 @@ def launch_tensorboard_isolated(logdir, port=6007):
     else:
         print(f"[INFO] Found {len(contents)} TensorBoard event files")
     
-    # Launch with minimal flags to avoid plugin conflicts
     cmd = [
         sys.executable, "-m", "tensorboard",
         "--logdir", logdir,

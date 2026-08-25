@@ -15,7 +15,7 @@ def generate_ground_truth_labels(df, activity_column, activity_feature_map, new_
                 values = ['MISSING' for _ in cols]
             return f"{activity}_" + "_".join(values)
         else:
-            return activity  # fallback
+            return activity
 
     df[new_column] = df.apply(build_ground_truth, axis=1)
     return df
@@ -28,21 +28,12 @@ if __name__ == "__main__":
     if not os.path.exists(input_file):
         raise FileNotFoundError(f"File not found: {input_file}. Please check the path and try again.")
 
-    # activity_feature_map = {
-    #     'Incident': ['HazardClass', 'EventType (1A)'],
-    #     'Inspection': ['InspectionType (MRE)', 'MineType'],
-    #     'Action': ['DisplayTitle (CA)', 'MineType']
-    # }
 
     activity_feature_map = {
         'Incident': ['HazardClass', 'EventType (1A)'],
-        # 'Inspection': ['InspectionType (MRE)'],
-        # 'Action': ['DisplayTitle (CA)']
     }
 
-    # Fix encoding issue here
     df = pd.read_csv(input_file, encoding='ISO-8859-1')
-    # Debug: Show Inspection rows and relevant columns
     inspection_rows = df[df['Activity'] == 'Inspection']
     print("Number of Inspection rows:", len(inspection_rows))
     print(inspection_rows[['InspectionType (MRE)', 'MineType']].head(10))

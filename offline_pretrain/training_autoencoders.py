@@ -356,7 +356,6 @@ def train_autoencoder_worker(args):
                     scaler_amp.scale(loss).backward()
                     accumulation_loss += loss.item()
                     
-                    # OPTIMIZER STEP (every N batches)
                     if (batch_idx + 1) % gradient_accumulation_steps == 0:
                         scaler_amp.unscale_(optimizer)
                         torch.nn.utils.clip_grad_norm_(model.parameters(), ae_params["grad_clip"])
@@ -378,7 +377,6 @@ def train_autoencoder_worker(args):
                     loss.backward()
                     accumulation_loss += loss.item()
                     
-                    # OPTIMIZER STEP (every N batches)
                     if (batch_idx + 1) % gradient_accumulation_steps == 0:
                         torch.nn.utils.clip_grad_norm_(model.parameters(), ae_params["grad_clip"])
                         optimizer.step()

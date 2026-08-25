@@ -30,18 +30,14 @@ class ClusterManager:
         self.decay_interval = self.config.get("decay_interval", 100)
         self.event_counter = 0
 
-        # Drift detection - only initialize if not in offline mode
         if not self.offline_mode:
             drift_config = self.config.get("drift_detection", {})
-            # Use HybridDriftDetector instead of EmbeddingDriftDetector
             self.drift_detector = HybridDriftDetector(drift_config)
             self.drift_check_interval = drift_config.get("check_interval", 1000)
             self.last_drift_check = {}
 
-            # Get memory config before using it
             memory_config = self.config.get("memory_management", {})
 
-            # Track embeddings for drift detection
             self.recent_embeddings = defaultdict(
                 lambda: deque(maxlen=memory_config.get("recent_embeddings_maxlen", 1000)))
             self.memory_manager = CentroidMemoryManager(memory_config)
@@ -57,7 +53,6 @@ class ClusterManager:
     def get_or_create_adapter(self, activity_label):
         """Get or create a clustering adapter for this activity"""
         if activity_label not in self.clustering_adapters:
-            # Create the appropriate adapter based on configuration
             if self.cluster_algorithm == "river_dbstream":
                 self.clustering_adapters[activity_label] = DBStreamAdapter(self.config)
             elif self.cluster_algorithm == "river_streamkmeans":
@@ -67,7 +62,6 @@ class ClusterManager:
             elif self.cluster_algorithm == "river_clustream":
                 self.clustering_adapters[activity_label] = CluStreamAdapter(self.config)
             else:
-                # Default to River's DBStream
                 self.clustering_adapters[activity_label] = DBStreamAdapter(self.config)
 
             log_traceability("cluster_manager", activity_label, {
@@ -87,7 +81,6 @@ class ClusterManager:
         if not adapter:
             return
 
-        # Get current centroids
         significant_clusters = adapter.get_significant_clusters(self.min_cluster_weight)
         if not significant_clusters:
             return
@@ -99,10 +92,8 @@ class ClusterManager:
                 centroids.append(centroid)
 
         if centroids:
-            # Update drift detector with current centroids
             self.drift_detector.update_centroids(activity_label, centroids, timestamp)
 
-            # Get recent embeddings for norm analysis
             recent_embs = list(self.recent_embeddings[activity_label])
             if recent_embs:
                 memory_config = self.config.get("memory_management", {})
@@ -110,7 +101,6 @@ class ClusterManager:
                 embeddings = [emb['embedding'] for emb in recent_embs[-n_norm:]]
                 self.drift_detector.update_embedding_norms(activity_label, embeddings, timestamp)
 
-            # Perform drift detection
             drift_result = self.drift_detector.detect_drift(activity_label, timestamp)
 
             if drift_result.get('drift_detected', False):
@@ -128,25 +118,20 @@ class ClusterManager:
         if not adapter:
             return
 
-        # Get current significant clusters
         significant_clusters = adapter.get_significant_clusters(self.min_cluster_weight)
         if not significant_clusters:
             return
 
-        # Get recent embeddings for this activity
         recent_embs = list(self.recent_embeddings[activity_label])
         memory_config = self.config.get("memory_management", {})
         if len(recent_embs) < memory_config.get("min_recent_embeddings_for_memory", 10):
             return
-        # Group recent embeddings by cluster assignment
         cluster_embeddings = defaultdict(list)
 
         n_mem = memory_config.get("recent_embeddings_for_memory", 50)
         for emb_data in recent_embs[-n_mem:]:
             embedding = emb_data['embedding']
 
-            # Find which cluster this embedding belongs to
-            # (Simple approach: find nearest cluster centroid)
             best_cluster = None
             best_distance = float('inf')
 
@@ -161,7 +146,6 @@ class ClusterManager:
             if best_cluster is not None:
                 cluster_embeddings[best_cluster].append(embedding)
 
-        # Update memory for each cluster with sufficient data
         min_per_cluster = memory_config.get("min_embeddings_per_cluster_for_memory", 3)
         for cluster_id, embeddings in cluster_embeddings.items():
             if len(embeddings) >= min_per_cluster:
@@ -209,7 +193,6 @@ class ClusterManager:
 
         adapter = self.get_or_create_adapter(activity_label)
 
-        # Only store embeddings for drift detection if not in offline mode
         if not self.offline_mode and self.recent_embeddings is not None:
             self.recent_embeddings[activity_label].append({
                 'embedding': feature_vector.copy(),
@@ -266,14 +249,12 @@ class ClusterManager:
 
             pass
 
-        # Memory management - only in online mode
         if not self.offline_mode and self.memory_update_interval is not None and self.event_counter % self.memory_update_interval == 0:
             self._update_memory_for_activity(activity_label, timestamp)
 
         if self.tracker is not None:
             self.tracker.track_assignment(event_id, activity_label, cluster_id, timestamp)
 
-        # Only check for merges/splits if NOT a new cluster AND not in offline mode
         if not is_new_cluster and not self.offline_mode:
             merge_details = adapter.check_for_merges(self.merge_threshold, self.min_cluster_weight, timestamp)
             if merge_details.get("merge_occurred", False) and self.tracker:
@@ -289,7 +270,7 @@ class ClusterManager:
                         activity_label,
                         [cid1, cid2],
                         merged_id,
-                        [],  # Affected event IDs
+                        [],
                         before_centroids,
                         after_centroid,
                         feature_names
@@ -332,22 +313,18 @@ class ClusterManager:
             merge_details = {"merge_occurred": False, "operations": []}
             split_details = {"split_occurred": False, "operations": []}
 
-        # Decay clusters still periodically (this is a maintenance operation) - only in online mode
         if not self.offline_mode and self.event_counter % self.decay_interval == 0:
             adapter.decay_clusters(0.9, self.min_cluster_weight / 2, timestamp)
 
-        # Check for homonyms when we have multiple clusters
         homonym_details = {}
         if len(adapter.get_significant_clusters(self.min_cluster_weight)) > 1:
             homonym_details = self.analyze_cluster_relationships(
                 activity_label, adapter, cluster_id, feature_vector, feature_names
             )
 
-        # If not using hybrid drift detector, fallback to should_trigger_retraining (only in online mode)
         if not self.offline_mode and drift_result is None and self.drift_detector is not None:
             drift_triggered, drift_info = self.drift_detector.should_trigger_retraining(activity_label)
 
-        # Combine results
         combined_details = {
             "cluster_id": cluster_id,
             "is_new_cluster": is_new_cluster,
@@ -371,15 +348,13 @@ class ClusterManager:
         if len(significant_clusters) <= 1:
             return {"detected": False, "reason": "insufficient_clusters"}
 
-        # Calculate distances between clusters
         distances = {}
         for i, cid1 in enumerate(significant_clusters):
             for j, cid2 in enumerate(significant_clusters):
-                if i < j:  # Only compute upper triangle
+                if i < j:
                     centroid1 = adapter.get_cluster_centroid(cid1)
                     centroid2 = adapter.get_cluster_centroid(cid2)
 
-                    # Skip if dimensions don't match
                     if centroid1 is None or centroid2 is None or len(centroid1) != len(centroid2):
                         continue
 
@@ -388,12 +363,9 @@ class ClusterManager:
                     )
                     distances[(cid1, cid2)] = dist
 
-        # Sort distances for analysis
         sorted_distances = sorted(distances.items(), key=lambda x: x[1])
 
-        # Analyze for clear separation (potential homonyms)
         if len(sorted_distances) > 0:
-            # If we have clear separation between some clusters
             most_distant = sorted_distances[-1]
             if most_distant[1] > self.variance_threshold:
                 return {
@@ -403,7 +375,6 @@ class ClusterManager:
                     "distance": most_distant[1]
                 }
 
-            # Check if the current cluster is far from others
             current_distances = []
             for (cid1, cid2), dist in distances.items():
                 if cid1 == current_cluster_id or cid2 == current_cluster_id:
@@ -421,22 +392,20 @@ class ClusterManager:
 
     def get_macro_cluster_summary(self, activity_label):
         adapter = self.get_or_create_adapter(activity_label)
-        # If the adapter has get_macro_clusters, use it
         if hasattr(adapter, "get_macro_clusters"):
             macro_clusters = adapter.get_macro_clusters(n_macro_clusters=self.config.get("n_macro_clusters"),
                                                         min_cluster_weight=self.config.get("min_cluster_weight", 0))
             summary = []
             for macro_id, micro_ids in macro_clusters.items():
-                # Only keep micro_ids that still exist
                 valid_micro_ids = [cid for cid in micro_ids if cid in adapter.micro_clusters]
                 centroids = []
                 for cid in valid_micro_ids:
                     try:
                         centroids.append(adapter.get_cluster_centroid(cid))
                     except KeyError:
-                        continue  # Skip if the centroid is missing
+                        continue
                 if not centroids:
-                    continue  # Skip this macro-cluster if none of its centroids exist
+                    continue
 
                 samples = sum(
                     adapter.micro_clusters[cid]["samples"] for cid in valid_micro_ids if cid in adapter.micro_clusters)
@@ -450,7 +419,6 @@ class ClusterManager:
                 })
             return summary
         else:
-            # Fallback: treat each significant micro-cluster as a macro-cluster
             clusters = adapter.get_significant_clusters(self.min_cluster_weight)
             summary = []
             for i, cid in enumerate(clusters):
@@ -474,20 +442,17 @@ class ClusterManager:
 
         for activity_label, adapter in self.clustering_adapters.items():
 
-            # Reset adapter internal state
             adapter.cluster_counter = 0
             adapter.micro_clusters.clear()
             adapter.cluster_history.clear()
             adapter.last_modified.clear()
             adapter.vector_hash_cache.clear()
 
-            # Reset algorithm-specific mappings (if any)
             if hasattr(adapter, 'river_to_adapter_ids'):
                 adapter.river_to_adapter_ids.clear()
             if hasattr(adapter, 'adapter_to_river_ids'):
                 adapter.adapter_to_river_ids.clear()
 
-            # Recreate the underlying River algorithm instance for fresh state
             if hasattr(adapter, '_recreate_algorithm'):
                 adapter._recreate_algorithm()
 
@@ -522,13 +487,11 @@ class ClusterManager:
         if self.offline_mode or self.drift_detector is None:
             return
         if activity_label:
-            # Reset for specific activity
             if activity_label in self.drift_detector.activity_drift_scores:
                 del self.drift_detector.activity_drift_scores[activity_label]
             if activity_label in self.recent_embeddings:
                 self.recent_embeddings[activity_label].clear()
         else:
-            # Reset all
             self.drift_detector = HybridDriftDetector(self.config.get("drift_detection", {}))
             self.recent_embeddings.clear()
             self.last_drift_check.clear()

@@ -8,21 +8,17 @@ class SimpleKMeansAdapter(ClusteringAdapter):
     def __init__(self, config=None):
         super().__init__("SimpleKMeans", config)
         
-        # Configuration
         self.k = self.config.get("k", 5)
         self.distance_threshold = self.config.get("distance_threshold", 0.5)
         
     def partial_fit(self, vector, feature_names, timestamp=None):
         """Process a new vector and assign to best cluster or create a new one"""
-        # Find closest cluster
         closest_id, min_distance = self.find_closest_cluster(vector, feature_names)
         
-        # Create new cluster if needed and we haven't reached k clusters
         is_new_cluster = False
         if (closest_id is None or min_distance > self.distance_threshold) and len(self.micro_clusters) < self.k:
             closest_id = self.create_new_cluster(vector, feature_names, "kmeans_new_cluster", timestamp)
             is_new_cluster = True
-        # Otherwise update closest cluster
         elif closest_id is not None:
             self.update_cluster(closest_id, vector, feature_names, timestamp)
             

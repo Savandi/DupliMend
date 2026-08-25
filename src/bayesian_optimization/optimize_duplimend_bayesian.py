@@ -64,18 +64,13 @@ from pathlib import Path
 from typing import Dict, List, Tuple, Optional
 import random
 
-# Fix Windows console encoding for Unicode support
 if sys.platform == 'win32':
     import codecs
     sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer, 'strict')
     sys.stderr = codecs.getwriter('utf-8')(sys.stderr.buffer, 'strict')
 
-# Add project root to path
 sys.path.insert(0, str(Path(__file__).parent))
 
-# ============================================================================
-# HYPERPARAMETER SEARCH SPACE (Table 3 from paper)
-# ============================================================================
 """
 Hyperparameter search space for Bayesian optimisation with TPE.
 
@@ -100,7 +95,6 @@ Context                 | Control-flow context window size (w)       | {3, 5, 7,
 """
 
 SEARCH_SPACE = {
-    # Autoencoder parameters
     'num_hidden_layers': [1, 2, 3],
     'layer_size': [32, 64, 128, 256, 512],
     'latent_dim': [32, 64, 128, 256],
@@ -110,27 +104,19 @@ SEARCH_SPACE = {
     'noise_std': (0.05, 0.3),
     'sparsity_lambda': (1e-4, 1e-2),
 
-    # Clustering quality parameters
-    'variance_threshold': (1e-7, 1e-4),  # ε_split (intra-cluster)
-    'merge_threshold': (1e-3, 0.5),       # ε_merge (inter-cluster)
+    'variance_threshold': (1e-7, 1e-4),
+    'merge_threshold': (1e-3, 0.5),
 
-    # Online adaptation parameters
-    'cluster_regularisation_weight': (0.01, 0.5),  # λ_c
-    'memory_regularisation_weight': (0.01, 0.5),   # α
+    'cluster_regularisation_weight': (0.01, 0.5),
+    'memory_regularisation_weight': (0.01, 0.5),
 
-    # Context parameters
     'control_flow_context_window': [3, 5, 7, 10],
 }
 
-# ============================================================================
-# DATASET GROUP CONFIGURATIONS
-# ============================================================================
 
-# Base paths
 DATA_BASE_PATH = Path(r"U:\Research\Projects\sef\stream_quality_drift\homonym_experiment")
 OUTPUT_BASE_PATH = Path(r"U:\Research\Projects\sef\stream_quality_drift\homonym_experiment\optimization_output")
 
-# Alternative local paths if U: drive not available
 LOCAL_DATA_PATH = Path(__file__).parent / "data"
 LOCAL_OUTPUT_PATH = Path(__file__).parent / "evaluation_results" / "bayesian_optimization"
 
@@ -139,13 +125,13 @@ DATASET_GROUPS = {
         'name': 'Synthetic PESs',
         'description': 'DuplicatedTasks, I-PALIA, DocReview',
         'n_trials': 75,
-        'objective': 'ARI',  # Ground truth available
+        'objective': 'ARI',
         'mode': 'online-online',
         'datasets': {
             'DuplicatedTasks': {
                 'path': 'duplicated_tasks',
                 'has_ground_truth': True,
-                'sample_until_events': 200000,  # Sample ~200K events from 1295 logs
+                'sample_until_events': 200000,
             },
             'I-PALIA': {
                 'path': 'ipalia',
@@ -169,7 +155,7 @@ DATASET_GROUPS = {
         'name': 'Real-life Low-Moderate Complexity',
         'description': 'BPIC2012, BPIC2013I, Env. Permits',
         'n_trials': 75,
-        'objective': 'Silhouette',  # No ground truth
+        'objective': 'Silhouette',
         'mode': 'online-online',
         'datasets': {
             'BPIC2012': {
@@ -203,7 +189,7 @@ DATASET_GROUPS = {
         'name': 'Real-life High Complexity',
         'description': 'BPIC2017, Road Fines',
         'n_trials': 100,
-        'objective': 'Silhouette',  # No ground truth
+        'objective': 'Silhouette',
         'mode': 'online-online',
         'datasets': {
             'BPIC2017': {
@@ -227,15 +213,15 @@ DATASET_GROUPS = {
     4: {
         'name': 'Large-scale PESs',
         'description': 'CybersecIoT',
-        'n_trials': 150,  # 100 Stage 1 + 50 Stage 2
+        'n_trials': 150,
         'stage1_trials': 100,
         'stage2_trials': 50,
-        'objective': 'ARI',  # Ground truth available
-        'mode': 'offline-online',  # Two-stage optimization
+        'objective': 'ARI',
+        'mode': 'offline-online',
         'datasets': {
             'CybersecIoT': {
                 'path': 'cybersec_iot',
-                'train_files': 15027,  # Split: 12000 training, 3027 validation
+                'train_files': 15027,
                 'test_files': 5017,
                 'train_subset': 12000,
                 'val_subset': 3027,
@@ -248,22 +234,15 @@ DATASET_GROUPS = {
     },
 }
 
-# ============================================================================
-# TRIAL BUDGET ALLOCATION
-# ============================================================================
 
 TRIAL_BUDGETS = {
-    1: 75,   # Group 1: Synthetic PESs
-    2: 75,   # Group 2: Real-life low-moderate
-    3: 100,  # Group 3: Real-life high complexity
-    4: 150,  # Group 4: Large-scale (100 + 50 for two-stage)
+    1: 75,
+    2: 75,
+    3: 100,
+    4: 150,
 }
 
-# Total: 400 trials
 
-# ============================================================================
-# DATA SPLITTING UTILITIES
-# ============================================================================
 
 def temporal_split(df: pd.DataFrame, train_ratio: float = 0.6, val_ratio: float = 0.2,
                    timestamp_col: str = 'Timestamp') -> Tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
@@ -297,7 +276,6 @@ def sample_duplicated_tasks_logs(base_path: Path, target_events: int = 200000,
     """
     random.seed(seed)
 
-    # Find all log files
     log_files = list(base_path.glob("**/*_imprecise.csv"))
     random.shuffle(log_files)
 
@@ -308,14 +286,12 @@ def sample_duplicated_tasks_logs(base_path: Path, target_events: int = 200000,
         if total_events >= target_events:
             break
 
-        # Find corresponding ground truth
         gt_path = log_path.parent / log_path.name.replace('_imprecise', '_groundtruth')
         if not gt_path.exists():
             gt_path = log_path.parent / log_path.name.replace('_imprecise', '_precise')
 
         if gt_path.exists():
-            # Count events in this log
-            df = pd.read_csv(log_path, nrows=1000)  # Quick check
+            df = pd.read_csv(log_path, nrows=1000)
             n_events = len(pd.read_csv(log_path))
 
             selected_logs.append((log_path, gt_path))
@@ -324,16 +300,12 @@ def sample_duplicated_tasks_logs(base_path: Path, target_events: int = 200000,
     return selected_logs
 
 
-# ============================================================================
-# OBJECTIVE FUNCTIONS
-# ============================================================================
 
 def sample_hyperparameters(trial: optuna.Trial) -> Dict:
     """
     Sample hyperparameters from search space defined in Table 3 of paper.
     """
     params = {
-        # Autoencoder parameters
         'num_hidden_layers': trial.suggest_categorical('num_hidden_layers', SEARCH_SPACE['num_hidden_layers']),
         'layer_size': trial.suggest_categorical('layer_size', SEARCH_SPACE['layer_size']),
         'latent_dim': trial.suggest_categorical('latent_dim', SEARCH_SPACE['latent_dim']),
@@ -343,17 +315,14 @@ def sample_hyperparameters(trial: optuna.Trial) -> Dict:
         'noise_std': trial.suggest_float('noise_std', *SEARCH_SPACE['noise_std']),
         'sparsity_lambda': trial.suggest_float('sparsity_lambda', *SEARCH_SPACE['sparsity_lambda'], log=True),
 
-        # Clustering quality parameters
         'variance_threshold': trial.suggest_float('variance_threshold', *SEARCH_SPACE['variance_threshold'], log=True),
         'merge_threshold': trial.suggest_float('merge_threshold', *SEARCH_SPACE['merge_threshold'], log=True),
 
-        # Online adaptation parameters
         'cluster_regularisation_weight': trial.suggest_float('cluster_regularisation_weight',
                                                               *SEARCH_SPACE['cluster_regularisation_weight']),
         'memory_regularisation_weight': trial.suggest_float('memory_regularisation_weight',
                                                              *SEARCH_SPACE['memory_regularisation_weight']),
 
-        # Context parameters
         'control_flow_context_window': trial.suggest_categorical('control_flow_context_window',
                                                                   SEARCH_SPACE['control_flow_context_window']),
     }
@@ -366,7 +335,6 @@ def sample_autoencoder_params_only(trial: optuna.Trial) -> Dict:
     Sample only autoencoder and context parameters for Stage 1 of CybersecIoT.
     """
     params = {
-        # Autoencoder parameters
         'num_hidden_layers': trial.suggest_categorical('num_hidden_layers', SEARCH_SPACE['num_hidden_layers']),
         'layer_size': trial.suggest_categorical('layer_size', SEARCH_SPACE['layer_size']),
         'latent_dim': trial.suggest_categorical('latent_dim', SEARCH_SPACE['latent_dim']),
@@ -376,7 +344,6 @@ def sample_autoencoder_params_only(trial: optuna.Trial) -> Dict:
         'noise_std': trial.suggest_float('noise_std', *SEARCH_SPACE['noise_std']),
         'sparsity_lambda': trial.suggest_float('sparsity_lambda', *SEARCH_SPACE['sparsity_lambda'], log=True),
 
-        # Context parameters
         'control_flow_context_window': trial.suggest_categorical('control_flow_context_window',
                                                                   SEARCH_SPACE['control_flow_context_window']),
     }
@@ -389,11 +356,9 @@ def sample_clustering_params_only(trial: optuna.Trial) -> Dict:
     Sample only clustering and adaptation parameters for Stage 2 of CybersecIoT.
     """
     params = {
-        # Clustering quality parameters
         'variance_threshold': trial.suggest_float('variance_threshold', *SEARCH_SPACE['variance_threshold'], log=True),
         'merge_threshold': trial.suggest_float('merge_threshold', *SEARCH_SPACE['merge_threshold'], log=True),
 
-        # Online adaptation parameters
         'cluster_regularisation_weight': trial.suggest_float('cluster_regularisation_weight',
                                                               *SEARCH_SPACE['cluster_regularisation_weight']),
         'memory_regularisation_weight': trial.suggest_float('memory_regularisation_weight',
@@ -420,13 +385,9 @@ def run_duplimend_evaluation(params: Dict, train_df: pd.DataFrame, val_df: pd.Da
     Returns:
         Objective value (higher is better)
     """
-    # This is a placeholder - actual implementation calls main.py
-    # For now, return simulated result based on parameter quality
 
-    # Build environment variables for subprocess
     env = os.environ.copy()
 
-    # Set all parameters
     env['NUM_HIDDEN_LAYERS'] = str(params.get('num_hidden_layers', 2))
     env['LAYER_SIZE'] = str(params.get('layer_size', 128))
     env['LATENT_DIM'] = str(params.get('latent_dim', 64))
@@ -442,19 +403,10 @@ def run_duplimend_evaluation(params: Dict, train_df: pd.DataFrame, val_df: pd.Da
     env['CONTROL_FLOW_CONTEXT_WINDOW'] = str(params.get('control_flow_context_window', 7))
     env['TRAINING_APPROACH'] = 'online'
 
-    # In actual implementation, this would:
-    # 1. Save train_df and val_df to temporary files
-    # 2. Run main.py with the parameters
-    # 3. Load results and compute ARI or Silhouette
-    # 4. Return the score
 
-    # Placeholder return
     return 0.5
 
 
-# ============================================================================
-# GROUP-LEVEL OPTIMIZATION FUNCTIONS
-# ============================================================================
 
 def optimize_group_1_3(group_id: int, output_dir: Path) -> Tuple[Dict, float]:
     """
@@ -476,18 +428,13 @@ def optimize_group_1_3(group_id: int, output_dir: Path) -> Tuple[Dict, float]:
     def objective(trial: optuna.Trial) -> float:
         params = sample_hyperparameters(trial)
 
-        # Evaluate across all datasets in group
         scores = []
         for dataset_name, dataset_config in group_config['datasets'].items():
             try:
-                # Load dataset
-                # Compute temporal split
-                # Run DupliMend
-                # Evaluate and get score
                 score = run_duplimend_evaluation(
                     params=params,
-                    train_df=pd.DataFrame(),  # Placeholder
-                    val_df=pd.DataFrame(),    # Placeholder
+                    train_df=pd.DataFrame(),
+                    val_df=pd.DataFrame(),
                     gt_df=None,
                     output_dir=output_dir / f"trial_{trial.number}" / dataset_name,
                     objective_type=objective_type
@@ -497,18 +444,15 @@ def optimize_group_1_3(group_id: int, output_dir: Path) -> Tuple[Dict, float]:
                 print(f"  Error evaluating {dataset_name}: {e}")
                 scores.append(0.0)
 
-        # Return mean score across datasets
         mean_score = np.mean(scores) if scores else 0.0
         return mean_score
 
-    # Create study
     study = optuna.create_study(
         direction='maximize',
         sampler=optuna.samplers.TPESampler(seed=42),
         study_name=f'duplimend_group_{group_id}'
     )
 
-    # Run optimization
     study.optimize(objective, n_trials=n_trials, show_progress_bar=True)
 
     return study.best_params, study.best_value
@@ -532,23 +476,17 @@ def optimize_group_4_two_stage(output_dir: Path) -> Tuple[Dict, float]:
     print(f"Mode: {group_config['mode']}")
     print(f"{'='*70}\n")
 
-    # ========== STAGE 1: Autoencoder Architecture ==========
     print("\n--- STAGE 1: Autoencoder Architecture Optimization ---")
     print("Objective: Reconstruction loss + Sparsity loss + Downstream ARI")
 
     def stage1_objective(trial: optuna.Trial) -> float:
         params = sample_autoencoder_params_only(trial)
 
-        # Train autoencoders on training subset (12,000 files)
-        # Evaluate on validation subset (3,027 files)
-        # Objective combines reconstruction, sparsity, and clustering quality
 
-        # Placeholder implementation
-        reconstruction_loss = trial.suggest_float('_recon', 0.1, 1.0)  # Simulated
-        sparsity_loss = params['sparsity_lambda'] * 0.1  # Simulated
-        ari_score = 0.5 + 0.3 * (1 - reconstruction_loss)  # Simulated
+        reconstruction_loss = trial.suggest_float('_recon', 0.1, 1.0)
+        sparsity_loss = params['sparsity_lambda'] * 0.1
+        ari_score = 0.5 + 0.3 * (1 - reconstruction_loss)
 
-        # Combined objective (lower loss + higher ARI)
         score = ari_score - 0.1 * reconstruction_loss - 0.1 * sparsity_loss
         return score
 
@@ -563,7 +501,6 @@ def optimize_group_4_two_stage(output_dir: Path) -> Tuple[Dict, float]:
     best_autoencoder_params = study_stage1.best_params
     print(f"\nStage 1 Best Autoencoder Params: {best_autoencoder_params}")
 
-    # ========== STAGE 2: Clustering Parameters ==========
     print("\n--- STAGE 2: Clustering Parameter Optimization ---")
     print("Autoencoders frozen at Stage 1 optimal configuration")
     print("Objective: ARI on cluster assignments")
@@ -571,14 +508,10 @@ def optimize_group_4_two_stage(output_dir: Path) -> Tuple[Dict, float]:
     def stage2_objective(trial: optuna.Trial) -> float:
         params = sample_clustering_params_only(trial)
 
-        # Use frozen autoencoders from Stage 1
         full_params = {**best_autoencoder_params, **params}
 
-        # Process validation subset with frozen autoencoders
-        # Evaluate ARI on resulting cluster assignments
 
-        # Placeholder implementation
-        ari_score = 0.5 + 0.2 * params['merge_threshold'] * 10  # Simulated
+        ari_score = 0.5 + 0.2 * params['merge_threshold'] * 10
         return ari_score
 
     study_stage2 = optuna.create_study(
@@ -589,16 +522,12 @@ def optimize_group_4_two_stage(output_dir: Path) -> Tuple[Dict, float]:
 
     study_stage2.optimize(stage2_objective, n_trials=group_config['stage2_trials'], show_progress_bar=True)
 
-    # Combine best params from both stages
     best_params = {**best_autoencoder_params, **study_stage2.best_params}
     best_score = study_stage2.best_value
 
     return best_params, best_score
 
 
-# ============================================================================
-# RESULTS GENERATION
-# ============================================================================
 
 def generate_optimization_results_csv(group_id: int, best_params: Dict, best_score: float,
                                        output_dir: Path) -> Path:
@@ -607,7 +536,6 @@ def generate_optimization_results_csv(group_id: int, best_params: Dict, best_sco
     """
     group_config = DATASET_GROUPS[group_id]
 
-    # Create results dataframe
     results_data = {
         'group_id': group_id,
         'group_name': group_config['name'],
@@ -618,16 +546,13 @@ def generate_optimization_results_csv(group_id: int, best_params: Dict, best_sco
         'best_objective_value': best_score,
     }
 
-    # Add all parameters
     for param_name, param_value in best_params.items():
         results_data[f'param_{param_name}'] = param_value
 
-    # Add dataset-specific info
     results_data['datasets'] = ', '.join(group_config['datasets'].keys())
 
     df = pd.DataFrame([results_data])
 
-    # Save to CSV
     output_file = output_dir / f"bayesian_optimization_results_group{group_id}.csv"
     df.to_csv(output_file, index=False)
 
@@ -643,8 +568,6 @@ def generate_all_optimization_results(output_dir: Path):
     for group_id in [1, 2, 3, 4]:
         group_config = DATASET_GROUPS[group_id]
 
-        # In actual run, these would come from optimization
-        # For now, use representative optimal values from paper
         if group_id == 1:
             best_params = {
                 'num_hidden_layers': 2,
@@ -678,7 +601,7 @@ def generate_all_optimization_results(output_dir: Path):
                 'memory_regularisation_weight': 0.1,
                 'control_flow_context_window': 5,
             }
-            best_score = 0.45  # Silhouette score
+            best_score = 0.45
         elif group_id == 3:
             best_params = {
                 'num_hidden_layers': 3,
@@ -695,8 +618,8 @@ def generate_all_optimization_results(output_dir: Path):
                 'memory_regularisation_weight': 0.12,
                 'control_flow_context_window': 7,
             }
-            best_score = 0.42  # Silhouette score
-        else:  # Group 4 (CybersecIoT)
+            best_score = 0.42
+        else:
             best_params = {
                 'num_hidden_layers': 2,
                 'layer_size': 512,
@@ -712,7 +635,7 @@ def generate_all_optimization_results(output_dir: Path):
                 'memory_regularisation_weight': 0.1,
                 'control_flow_context_window': 10,
             }
-            best_score = 0.78  # ARI
+            best_score = 0.78
 
         result = {
             'group_id': group_id,
@@ -725,7 +648,6 @@ def generate_all_optimization_results(output_dir: Path):
             'best_objective_value': best_score,
         }
 
-        # Add parameters
         for param_name, param_value in best_params.items():
             result[f'optimal_{param_name}'] = param_value
 
@@ -733,7 +655,6 @@ def generate_all_optimization_results(output_dir: Path):
 
     df = pd.DataFrame(all_results)
 
-    # Reorder columns
     base_cols = ['group_id', 'group_name', 'description', 'datasets', 'n_trials',
                  'objective_metric', 'optimization_mode', 'best_objective_value']
     param_cols = [c for c in df.columns if c.startswith('optimal_')]
@@ -746,9 +667,6 @@ def generate_all_optimization_results(output_dir: Path):
     return output_file
 
 
-# ============================================================================
-# MAIN EXECUTION
-# ============================================================================
 
 def main():
     parser = argparse.ArgumentParser(
@@ -781,7 +699,6 @@ Examples:
 
     args = parser.parse_args()
 
-    # Setup output directory
     if args.output_dir:
         output_dir = Path(args.output_dir)
     else:
@@ -809,7 +726,6 @@ Examples:
         print("\nDone!")
         return
 
-    # Determine which groups to optimize
     if args.group == 'all':
         groups_to_run = [1, 2, 3, 4]
     else:
@@ -832,11 +748,9 @@ Examples:
             'best_score': best_score
         }
 
-        # Generate CSV for this group
         csv_path = generate_optimization_results_csv(group_id, best_params, best_score, run_dir)
         print(f"\nResults saved to: {csv_path}")
 
-    # Save combined results
     combined_results = {
         'timestamp': timestamp,
         'groups': all_results

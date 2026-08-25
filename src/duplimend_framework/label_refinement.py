@@ -29,17 +29,14 @@ class LabelRefiner:
         if cluster_id is None:
             return event_label
         
-        # Always use the actual cluster ID - this ensures consistent tracking
         return f"{event_label}_{cluster_id}"
     
 
     def add_representative(self, event_label, cluster_id, event_dict, max_representatives=10):
         """Add an event as a representative for its cluster (for future label generation)"""
-        # Store a copy of the event
         representatives = self.cluster_representatives[event_label][cluster_id]
         representatives.append(event_dict.copy())
 
-        # Keep only the most recent representatives
         if len(representatives) > max_representatives:
             representatives.pop(0)
 
@@ -51,14 +48,11 @@ class LabelRefiner:
         if not event_label:
             raise ValueError("Activity label is missing in the event.")
         
-        # Extract force_relabel flag from split_merge_result
         force_relabel = split_merge_result.get("merge_occurred", False)
         force_split = split_merge_result.get("split_occurred", False)
         
-        # Store this event as a representative for its cluster
         self.add_representative(event_label, cluster_id, event)
         
-        # Generate the refined label using the cluster ID
         refined_label = self.refine_label(
             event_label, 
             cluster_id, 
@@ -67,7 +61,6 @@ class LabelRefiner:
             force_relabel=force_relabel
         )
         
-        # Create clean event with only original columns + refined_activity
         clean_event = {}
         for column in self.input_columns:
             if column == "refined_activity":
