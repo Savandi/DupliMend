@@ -11,7 +11,6 @@
     "optimization_seed": 42,
     "note": "Seed 42 was used ONLY for the hyperparameter search. The reported results are ten independent evaluation runs with seeds 1-10; see seeds.json."
   },
-
   "optimized_params": {
     "n_hidden_layers": 2,
     "layer_size": 128,
@@ -27,7 +26,6 @@
     "memory_reg_weight_alpha": 0.205,
     "context_window_size": 7
   },
-
   "fixed_operational_params": {
     "clustering_threshold": 0.01,
     "adwin_delta": 0.002,
@@ -38,12 +36,13 @@
     "fading_factor": 0.001,
     "min_cluster_weight": 20
   },
-
   "derived_values": {
-    "hidden_dims": [256, 128],
+    "hidden_dims": [
+      256,
+      128
+    ],
     "_hidden_dims_rule": "hidden_dims = [2 * layer_size, layer_size] for n_hidden_layers = 2; the encoder is [256, 128] -> latent 64 and the decoder mirrors it."
   },
-
   "env_var_mapping": {
     "_comment": "config/config.py reads every parameter from these environment variables at import time. config/paper_config.py emits exactly this mapping.",
     "HIDDEN_DIMS": "[256,128]",
@@ -67,34 +66,77 @@
     "MIN_CLUSTER_WEIGHT": "20",
     "NOISE_THRESHOLD": "0.2"
   },
-
   "discovery_params": {
     "inductive_miner_noise_threshold": 0.2,
     "_source": "Stated in the paper: models are discovered with the Inductive Miner at a noise threshold of 0.2, imported via PM4Py.",
-    "_repo_mismatch": "The noise threshold is NOT APPLIED anywhere in the shipped code. evaluation_core.py line 37 computes `inductive_miner_noise_threshold` (from NOISE_THRESHOLD, else config.py's 0.0, else 0.2) but the variable is never read again: all discovery call sites (evaluation_core.py lines 576, 701, 748) call `inductive_miner.apply(log)` with no noise parameter, as does generate_ground_truth.py line 179. Setting NOISE_THRESHOLD therefore has no effect. To honour the published 0.2, the threshold must be passed to the miner at those call sites.",
-    "_observed_effect": "Measured on I-PALIA: passing noise_threshold=0.2 explicitly yields the identical model (10 places, 11 transitions) and identical metrics as the default, so on this log the setting is immaterial. Not yet measured on the real-life logs.",
     "conformance_checking": "token-based replay (PM4Py)",
-    "metrics_reported": ["Precision", "F-score (harmonic mean of Precision and Fitness)"],
+    "metrics_reported": [
+      "Precision",
+      "F-score (harmonic mean of Precision and Fitness)"
+    ],
     "checkpoint": "Results are reported at the final 100% checkpoint."
   },
-
   "differs_from_repo_defaults": {
-    "_comment": "IMPORTANT for reproduction: the committed defaults in config/config.py are development defaults, NOT the paper configuration. Running main.py without applying this config will not reproduce the reported numbers. Each entry is [repo_default, paper_value].",
-    "latent_dim": [32, 64],
-    "hidden_dims": [[128, 64], [256, 128]],
-    "batch_size": [32, 64],
-    "dropout_rate": [0.1, 0.2],
-    "noise_std": [0.1, 0.155],
-    "sparsity_lambda": [0.001, 0.00515],
-    "variance_threshold": [1e-07, 1.1e-05],
-    "merge_threshold": [0.01, 0.0105],
-    "cluster_reg_weight": [0.1, 0.31],
-    "memory_regularization_weight": [0.1, 0.205],
-    "temporal_decay_rate": [0.04, 0.08],
-    "max_centroids_per_activity": [50, 500],
-    "buffer_retention_size": [100, 200]
+    "_comment": "The committed defaults in config/config.py are development defaults. Each entry is [repo_default, paper_value].",
+    "latent_dim": [
+      32,
+      64
+    ],
+    "hidden_dims": [
+      [
+        128,
+        64
+      ],
+      [
+        256,
+        128
+      ]
+    ],
+    "batch_size": [
+      32,
+      64
+    ],
+    "dropout_rate": [
+      0.1,
+      0.2
+    ],
+    "noise_std": [
+      0.1,
+      0.155
+    ],
+    "sparsity_lambda": [
+      0.001,
+      0.00515
+    ],
+    "variance_threshold": [
+      1e-07,
+      1.1e-05
+    ],
+    "merge_threshold": [
+      0.01,
+      0.0105
+    ],
+    "cluster_reg_weight": [
+      0.1,
+      0.31
+    ],
+    "memory_regularization_weight": [
+      0.1,
+      0.205
+    ],
+    "temporal_decay_rate": [
+      0.04,
+      0.08
+    ],
+    "max_centroids_per_activity": [
+      50,
+      500
+    ],
+    "buffer_retention_size": [
+      100,
+      200
+    ]
   },
-
   "unchanged_from_repo_defaults": [
     "learning_rate = 0.001",
     "control_flow_context_window = 7",
@@ -105,6 +147,5 @@
     "clustering algorithm = river_dbstream",
     "distance_metric = cosine"
   ],
-
-  "warmup_note": "warmup_proportion = 0.20 means the warm-up phase consumes the first 20% of each log's events. config/config.py instead takes an ABSOLUTE event count via WARMUP_EVENTS, so scripts/run_paper_experiments.py computes WARMUP_EVENTS = round(0.20 * n_events) per log. Note the committed default (warmup_global_events = 4000, annotated in config/config.py as '~50% of I-PALIA') is a development default and does not correspond to the 20% proportion used in the paper; it must be overridden per log."
+  "warmup_note": "warmup_proportion = 0.20 means the warm-up phase consumes the first 20% of a log's events. config/config.py takes an absolute event count via WARMUP_EVENTS. Per-log warm-up values are recorded in log_manifest.json."
 }

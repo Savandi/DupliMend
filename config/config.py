@@ -202,10 +202,8 @@ if ENV_OVERRIDES:
 
 # === Stream-processing column configuration ===
 # These name the columns main.py reads while consuming the stream. They default
-# to I-PALIA but are environment-driven, so a different log can be processed
-# without editing this file -- previously the only way to switch datasets was to
-# uncomment one of the blocks below, and a mismatched case column fails on every
-# single event.
+# to I-PALIA and are environment-driven, so a different log can be processed
+# without editing this file.
 #
 #   I-PALIA          CONTROL_FLOW_COLUMN=concept:name   CASE_ID_COLUMN=case:concept:name
 #                    TIMESTAMP_COLUMN=time:timestamp    RESOURCE_COLUMN=(unset)

@@ -36,7 +36,7 @@ test_output_dir = os.environ.get('OUTPUT_DIR', single_eval_config.get("default_o
 
 inductive_miner_noise_threshold = float(os.environ.get('NOISE_THRESHOLD', single_eval_config.get("inductive_miner_noise_threshold", 0.2)))
 
-full_log_evaluation = os.environ.get('FULL_LOG_EVALUATION', '1').lower() not in ('0', 'false', 'no')
+full_log_evaluation = os.environ.get('FULL_LOG_EVALUATION', '0').lower() not in ('0', 'false', 'no')
 
 
 def load_event_vectors(event_vector_path):

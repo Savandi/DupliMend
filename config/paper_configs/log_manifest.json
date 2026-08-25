@@ -35,7 +35,7 @@
     "ground_truth_activity_column": "GROUND_TRUTH_ACTIVITY_COLUMN, the true-label column in the ground-truth file.",
     "timestamp_column": "TIMESTAMP_COLUMN, the event timestamp column. Required: main.py reads it while consuming the stream, and a wrong name fails on every event.",
     "resource_column": "RESOURCE_COLUMN, optional resource attribute. Omit or null when the log has none.",
-    "config_overrides": "Per-log environment overrides applied AFTER the global paper config. These settings are dataset-specific: clustering_threshold in particular differs per log because the feature paths differ (I-PALIA has no data columns and uses control-flow features only, DocReview adds four data attributes), so the useful DBSTREAM radius is not shared between them."
+    "config_overrides": "Per-log environment overrides applied after the global paper config. clustering_threshold and the warm-up size are dataset-specific."
   },
   "logs": [
     {
@@ -93,5 +93,5 @@
       }
     }
   ],
-  "per_log_configuration_note": "IMPORTANT: several DupliMend settings are per-log, not global. clustering_threshold and warmup_global_events in particular must be set per dataset -- a value that works on one log produces a single micro-cluster (no refinement) on another. The correct values are recorded in each entry's config_overrides below and are applied by scripts/run_paper_experiments.py after the global configuration in duplimend_global.json. Values used for these logs: I-PALIA uses clustering_threshold 0.01 with warmup 4000; DocReview uses clustering_threshold 0.95 with warmup 100000. The logs do not share a feature path -- every column of I-PALIA is excluded as an id/timestamp/activity column, so it is embedded from control-flow features alone, whereas DocReview contributes four data attributes (PriorityLevel, FileSize, ProcessingTime, Resource) -- which is why the useful DBSTREAM radius differs by two orders of magnitude between them."
+  "per_log_configuration_note": "Several DupliMend settings are per-log rather than global. clustering_threshold and warmup_global_events in particular are configured per dataset; the values are recorded in each entry's config_overrides and applied by scripts/run_paper_experiments.py after the global configuration in duplimend_global.json. I-PALIA uses clustering_threshold 0.01 with warmup 4000; DocReview uses 0.95 with warmup 100000. The logs differ in feature composition: every column of I-PALIA is excluded as an id/timestamp/activity column, so it is embedded from control-flow features alone, whereas DocReview contributes four data attributes (PriorityLevel, FileSize, ProcessingTime, Resource)."
 }

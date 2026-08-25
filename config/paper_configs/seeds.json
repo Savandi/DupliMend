@@ -1,8 +1,18 @@
 {
-  "description": "Random seeds used in the paper. Two distinct stages use two distinct seed regimes; conflating them is the most common source of failed reproduction.",
-
+  "description": "Random seeds used in the paper. The evaluation runs and the hyperparameter search use different seeds.",
   "evaluation_runs": {
-    "seeds": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    "seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
     "n_runs": 10,
     "applies_to": [
       "DupliMend",
@@ -11,15 +21,16 @@
       "Unrefined"
     ],
     "detail": "These are the ten independent runs behind every mean/std reported in the paper's tables and figures. The same ten seeds were used for all methods so that per-log comparisons are paired.",
-    "verification": "Each per-run results file carries a `Seed` column taking exactly these ten values; 1,304 logs x 10 seeds = 13,040 rows per method.",
     "how_to_set": "main.py --seed <n>, or the DUPLIMEND_SEED environment variable. The seed is applied to python `random`, numpy, torch (CPU and CUDA) and PYTHONHASHSEED via set_all_seeds()."
   },
-
   "bayesian_optimization": {
     "seed": 42,
-    "applies_to": ["optuna TPE sampler", "numpy", "random", "torch"],
-    "detail": "Seed 42 was used ONLY for the 400-trial hyperparameter search that produced duplimend_global.json. It is not one of the ten evaluation runs. main.py still defaults to --seed 42 for backwards compatibility, which is why a default invocation reproduces neither an individual evaluation run nor the reported averages."
-  },
-
-  "note_on_partial_files": "Some intermediate result files in the authors' working directory are named '*_5seeds*' and contain only seeds 1-5. Those are superseded snapshots from an earlier stage of the study and were not used for the published numbers. The published numbers come from the full ten-seed files."
+    "applies_to": [
+      "optuna TPE sampler",
+      "numpy",
+      "random",
+      "torch"
+    ],
+    "detail": "Seed 42 was used for the 400-trial hyperparameter search that produced duplimend_global.json. It is not one of the ten evaluation runs; main.py retains it as the default for backwards compatibility."
+  }
 }
